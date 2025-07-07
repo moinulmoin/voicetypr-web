@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { AudioLines, ChevronRight, Github,  ShieldCheck, Sparkles } from "lucide-react";
+import { AudioLines, ChevronRight, Github, ShieldCheck, Sparkles } from "lucide-react";
 import { useFormState, useFormStatus } from "react-dom";
 import { joinWaitlist } from "./actions";
 
@@ -70,7 +70,7 @@ export default function Page() {
               Open source <span className="font-semibold text-neutral-900 dark:text-neutral-100">AI voice to text</span> dictation tool, alternative to{" "}
               <span className="font-medium text-neutral-800 dark:text-neutral-200">Wispr Flow</span>,{" "}
               <span className="font-medium text-neutral-800 dark:text-neutral-200">SuperWhisper</span>, made for{" "}
-              <span className="font-medium text-neutral-800 dark:text-neutral-200">viber coders</span>,{" "}
+              <span className="font-medium text-neutral-800 dark:text-neutral-200">vibe coders</span>,{" "}
               <span className="font-medium text-neutral-800 dark:text-neutral-200">super AI users</span> in macOS, Windows.
             </p>
 
