@@ -5,13 +5,20 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "prisma generate && next build --turbopack",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@polar-sh/nextjs": "^0.4.2",
+    "@polar-sh/sdk": "^0.34.3",
+    "@prisma/client": "^6.11.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/postcss": "^4.1.11",
     "@upstash/redis": "^1.35.0",
@@ -21,10 +28,12 @@
     "next": "^15.3.4",
     "next-themes": "^0.4.4",
     "postcss": "^8.5.6",
+    "prisma": "^6.11.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "zod": "^3.25.75"
   },
   "devDependencies": {
     "@types/node": "^20",

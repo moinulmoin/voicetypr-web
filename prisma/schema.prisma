@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// One model to rule them all - a device can have a trial, a license, or neither
+model Device {
+  deviceHash String @id @unique @map("device_hash")
+
+  // License fields (null = no license)
+  licenseKey   String? @unique @map("license_key")
+  activationId String? @map("activation_id") // Polar activation ID for webhook handling
+  customerId   String? @map("customer_id") // Polar customer ID for webhook handling
+
+  // Trial fields (null = no trial)
+  trialStartedAt DateTime? @default(now()) @map("trial_started_at")
+  trialExpiresAt DateTime? @map("trial_expires_at")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  lastChecked DateTime @default(now()) @map("last_checked") // For offline grace period
+
+  appVersion String? @map("app_version")
+
+  activities ActivityLog[]
+
+  @@unique([licenseKey, deviceHash])
+  @@map("devices")
+}
+
+// Activity logging for debugging and analytics
+model ActivityLog {
+  id         String   @id @default(cuid())
+  timestamp  DateTime @default(now())
+  deviceHash String   @map("device_hash")
+  action     String // 'trial_start', 'activate', 'deactivate', 'validate', 'order_refunded'
+  metadata   Json? // Additional data like license key, error messages, etc
+
+  device Device? @relation(fields: [deviceHash], references: [deviceHash])
+
+  @@index([deviceHash, timestamp])
+  @@map("activity_logs")
+}
