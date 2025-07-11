@@ -1,0 +1,82 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Download, Github, Star } from "lucide-react";
+
+export default function Header() {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Left: VoiceTypr Brand */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-3"
+          >
+            <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 backdrop-blur-sm">
+              <svg className="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <line x1="12" x2="12" y1="19" y2="22" />
+              </svg>
+            </div>
+            <span className="text-xl font-bold text-foreground">VoiceTypr</span>
+          </motion.div>
+
+          {/* Middle: Navigation Links */}
+          <motion.nav
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="hidden md:flex items-center gap-8"
+          >
+            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+              Features
+            </a>
+            <a href="#demo" className="text-muted-foreground hover:text-foreground transition-colors">
+              Demo
+            </a>
+            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+              Pricing
+            </a>
+            <a href="#docs" className="text-muted-foreground hover:text-foreground transition-colors">
+              Docs
+            </a>
+          </motion.nav>
+
+          {/* Right: GitHub Star + Download Button */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex items-center gap-3"
+          >
+            {/* GitHub Star Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden sm:flex items-center gap-2 hover:bg-card/50"
+              onClick={() => window.open('https://github.com/moinulmoin/voicetypr', '_blank')}
+            >
+              <Github className="w-4 h-4" />
+              <span>Star</span>
+            </Button>
+
+            {/* Download Button */}
+            <Button
+              size="sm"
+              className="group"
+              onClick={() => window.open('#download', '_blank')}
+            >
+              <Download className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
+              Download
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+    </header>
+  );
+}

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__browsermcp__browser_press_key",
+      "mcp__browsermcp__browser_screenshot"
+    ],
+    "deny": []
+  }
+}
