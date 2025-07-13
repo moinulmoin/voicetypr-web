@@ -10,19 +10,19 @@ import {
 const faqs = [
   {
     question: "Can I try VoiceTypr for free?",
-    answer: "Yes! VoiceTypr offers a free plan with 5 minutes of daily transcription. This lets you test all the core features before upgrading to Pro."
+    answer: "Yes! VoiceTypr offers a free trial with 3 days of unlimited transcription. This lets you test all the core features before upgrading to Pro."
   },
   {
     question: "Will it work on my Intel Mac?",
-    answer: "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs (M1/M2/M3) will have better performance with local AI models."
+    answer: "VoiceTypr works on both Intel and Apple Silicon Macs."
   },
   {
     question: "Which platforms are supported?",
-    answer: "VoiceTypr is currently available for macOS (13+) and Windows (10+). We're working on Linux support and mobile apps."
+    answer: "VoiceTypr is currently available for macOS (13+). We're working on Windows support."
   },
   {
     question: "Can I use my Pro license on all my devices?",
-    answer: "Yes, you can activate your Pro license on up to 3 devices simultaneously. Perfect for using VoiceTypr on your work and personal computers."
+    answer: "Yes, you can activate your Pro license on up to 1 device."
   },
   {
     question: "How does offline mode work?",
@@ -40,8 +40,7 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto px-4">
         {/* Section header */}
         <div className="mb-12">
-          <p className="text-muted-foreground mb-2">Support</p>
-          <h2 className="text-3xl sm:text-4xl font-bold">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center">
             Frequently asked questions
           </h2>
         </div>

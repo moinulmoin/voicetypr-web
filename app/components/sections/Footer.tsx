@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Main content */}
         <div className="flex flex-col items-center text-center">
           <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
-          <p className="text-muted-foreground mb-8 max-w-md">
+          <p className="text-muted-foreground mb-8 max-w-md text-balance">
             Type with your voice in any app. Fast, private, and works offline.
           </p>
 

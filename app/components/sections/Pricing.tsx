@@ -1,21 +1,17 @@
 "use client";
 
-import { Check, ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Check } from "lucide-react";
 
 const plans = [
   {
     name: "Free Trial",
     price: "$0",
-    period: "3 days",
-    description: "Try all features risk-free",
+    description: "Try it for free",
     features: [
-      "All Pro features included",
       "3 days unlimited usage",
-      "100+ languages",
-      "Advanced AI models",
       "No credit card required"
     ],
     cta: "Start Free Trial",
@@ -26,15 +22,12 @@ const plans = [
   {
     name: "Pro",
     price: "$25",
-    period: "lifetime",
     description: "Perfect for individual use",
     features: [
       "Lifetime access",
       "1 device license",
-      "Unlimited transcription",
-      "100+ languages",
       "Priority support",
-      "Future updates included"
+      "Future updates"
     ],
     cta: "Get Lifetime Access",
     popular: true,
@@ -44,17 +37,14 @@ const plans = [
   {
     name: "Max",
     price: "$100",
-    period: "lifetime",
     description: "Best value for multiple devices",
     features: [
       "Lifetime access",
       "5 device licenses",
-      "Everything in Pro",
-      "Share with family",
-      "Premium support",
-      "Early access to features"
+      "Priority support",
+      "Future updates"
     ],
-    cta: "Get Max License",
+    cta: "Get Max plan",
     popular: false,
     originalPrice: "$250",
     discount: "60% OFF"
@@ -81,8 +71,8 @@ export default function Pricing() {
             <Card
               key={plan.name}
               className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none ${
-                plan.popular 
-                  ? "border-primary/50" 
+                plan.popular
+                  ? "border-primary/50"
                   : "border-border/50 hover:border-border/70"
               }`}
             >
@@ -95,7 +85,7 @@ export default function Pricing() {
 
               <CardHeader className="text-center pb-2 px-8 pt-8">
                 <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                
+
                 {/* Pricing with discount */}
                 <div className="mt-3">
                   <div className="flex items-baseline justify-center gap-2">
@@ -103,9 +93,6 @@ export default function Pricing() {
                       <span className="text-xl text-muted-foreground line-through">{plan.originalPrice}</span>
                     )}
                     <span className="text-4xl font-bold">{plan.price}</span>
-                    {plan.period !== "lifetime" && (
-                      <span className="text-muted-foreground">/ {plan.period}</span>
-                    )}
                   </div>
                   {plan.originalPrice && (
                     <div className="text-center mt-2">
@@ -115,7 +102,7 @@ export default function Pricing() {
                     </div>
                   )}
                 </div>
-                
+
                 <p className="text-muted-foreground text-sm mt-2">{plan.description}</p>
               </CardHeader>
 
@@ -131,10 +118,10 @@ export default function Pricing() {
               </CardContent>
 
               <CardFooter className="px-8 pb-8">
-                <Button 
+                <Button
                   className={`w-full group ${
-                    plan.popular 
-                      ? "bg-primary hover:bg-primary/90" 
+                    plan.popular
+                      ? "bg-primary hover:bg-primary/90"
                       : "bg-card hover:bg-muted"
                   }`}
                   variant={plan.popular ? "default" : "outline"}
