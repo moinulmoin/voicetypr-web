@@ -125,3 +125,71 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Section backgrounds for consistent flow */
+.section-hero {
+  position: relative;
+  background: radial-gradient(ellipse at top, rgba(20, 20, 30, 0.3) 0%, transparent 50%);
+}
+
+.section-features {
+  position: relative;
+  background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 20, 0.2) 50%, transparent 100%);
+}
+
+.section-pricing {
+  position: relative;
+  background: radial-gradient(ellipse at bottom, rgba(20, 20, 30, 0.3) 0%, transparent 50%);
+}
+
+.grid-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 800px 600px at 50% 200px,
+    rgba(51, 51, 51, 0.3) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.grid-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Dot grid alternative */
+.dot-grid {
+  position: relative;
+  background-color: #000000;
+}
+
+.dot-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Animated grid fade */
+@keyframes grid-fade {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.grid-fade {
+  animation: grid-fade 4s ease-in-out infinite;
+}

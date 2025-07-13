@@ -36,7 +36,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="relative py-24 bg-background" id="faq">
+    <section className="relative py-24" id="faq">
       <div className="max-w-3xl mx-auto px-4">
         {/* Section header */}
         <div className="mb-12">

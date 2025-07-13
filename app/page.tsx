@@ -5,10 +5,12 @@ import Reviews from "./components/sections/Reviews";
 import Pricing from "./components/sections/Pricing";
 import FAQ from "./components/sections/FAQ";
 import Footer from "./components/sections/Footer";
+import GridBackground from "./components/GridBackground";
 
 export default function Page() {
   return (
-    <div className="relative min-h-screen bg-background">
+    <div className="relative min-h-screen">
+      <GridBackground />
       <Header />
       <Hero />
       <Features />

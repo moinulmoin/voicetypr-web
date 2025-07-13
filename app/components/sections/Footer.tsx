@@ -4,7 +4,7 @@ import { Github, Mail, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-background/50 backdrop-blur-sm">
+    <footer className="relative">
       <div className="max-w-7xl mx-auto px-4 py-20">
         {/* Main content */}
         <div className="flex flex-col items-center text-center">
