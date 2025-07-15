@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$20",
+    price: "$25",
     description: "Perfect for individual use",
     features: [
       "Lifetime access",
@@ -37,7 +37,7 @@ const plans = [
   },
   {
     name: "Max",
-    price: "$100",
+    price: "$120",
     description: "Best value for multiple devices",
     features: [
       "Lifetime access",
@@ -104,10 +104,10 @@ export default function Pricing() {
                   )}
                 </div>
 
-                <p className="text-muted-foreground text-sm mt-2">{plan.description}</p>
+                {/* <p className="text-muted-foreground text-sm mt-2">{plan.description}</p> */}
               </CardHeader>
 
-              <CardContent className="px-8 py-6">
+              <CardContent className="px-8 py-4">
                 <ul className="space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">

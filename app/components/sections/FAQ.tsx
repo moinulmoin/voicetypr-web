@@ -17,16 +17,16 @@ const faqs = [
     answer: "VoiceTypr works on both Intel and Apple Silicon Macs."
   },
   {
-    question: "Which platforms are supported?",
-    answer: "VoiceTypr is currently available for macOS (13+). We're working on Windows support."
-  },
-  {
-    question: "How many devices can I use my Pro license on?",
-    answer: "You can activate your Pro license on up to 1 device."
-  },
-  {
     question: "How does offline mode work?",
     answer: "VoiceTypr downloads AI models directly to your device. Once downloaded, you can transcribe without any internet connection. Your data never leaves your device."
+  },
+  {
+    question: "What is the roadmap for VoiceTypr?",
+    answer: "We keep VoiceTypr purposely minimal so it always feels fast and reliable. Instead of chasing an endless list of features, we focus on perfecting speech-to-text dictation and shipping ongoing bug fixes and quality-of-life improvements."
+  },
+  {
+    question: "How is VoiceTypr different from alternatives like SuperWhisper or Wispr?",
+    answer: "VoiceTypr runs entirely on your computer—your voice never leaves your device unless you want it to. There are no $189/year subscriptions here: you pay once for fast, private, on-device transcription that does one job exceptionally well."
   },
 ];
 

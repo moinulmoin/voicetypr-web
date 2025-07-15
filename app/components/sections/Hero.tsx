@@ -22,11 +22,15 @@ export default function Hero() {
 
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
             VoiceTypr is an AI powered voice to text dictation tool for macOS and Windows.
-            Open-source alternative to Wispr Flow, SuperWhisper.
+            Open-source minimalistic alternative to Wispr Flow, SuperWhisper.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <Button variant="outline" onClick={() => window.open("#download", "_blank")}>
+              <Download className="transition-transform group-hover:scale-110" />
+              Download
+            </Button>
             <Button
               onClick={() =>
                 document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
@@ -34,10 +38,6 @@ export default function Hero() {
             >
               <DollarSign className="transition-transform group-hover:scale-110" />
               Buy Now
-            </Button>
-            <Button variant="outline" onClick={() => window.open("#download", "_blank")}>
-              <Download className="transition-transform group-hover:scale-110" />
-              Download
             </Button>
           </div>
           <div className="flex justify-center items-center mb-12">
