@@ -21,17 +21,13 @@ const faqs = [
     answer: "VoiceTypr is currently available for macOS (13+). We're working on Windows support."
   },
   {
-    question: "Can I use my Pro license on all my devices?",
-    answer: "Yes, you can activate your Pro license on up to 1 device."
+    question: "How many devices can I use my Pro license on?",
+    answer: "You can activate your Pro license on up to 1 device."
   },
   {
     question: "How does offline mode work?",
     answer: "VoiceTypr downloads AI models directly to your device. Once downloaded, you can transcribe without any internet connection. Your data never leaves your device."
   },
-  {
-    question: "What languages are supported?",
-    answer: "VoiceTypr supports over 100 languages for transcription and can translate them all to English. The accuracy varies by language, with major languages having the best support."
-  }
 ];
 
 export default function FAQ() {

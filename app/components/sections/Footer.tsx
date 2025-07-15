@@ -5,7 +5,7 @@ import { Github, Mail, Twitter } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="relative">
-      <div className="max-w-7xl mx-auto px-4 py-20">
+      <div className="max-w-4xl mx-auto px-4 py-20">
         {/* Main content */}
         <div className="flex flex-col items-center text-center">
           <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
@@ -16,7 +16,7 @@ export default function Footer() {
           {/* Social links */}
           <div className="flex items-center gap-6 mb-12">
             <a
-              href="https://github.com/voicetypr"
+              href="https://github.com/moinulmoin/voicetypr"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -25,7 +25,7 @@ export default function Footer() {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://twitter.com/immoinulmoin"
+              href="https://x.com/voicetypr"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-8 text-sm mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
             <a href="/changelog" className="text-muted-foreground hover:text-foreground transition-colors">
               Changelog
             </a>
@@ -56,17 +56,17 @@ export default function Footer() {
           </div>
 
           {/* Made with love - integrated */}
-          <p className="text-sm text-muted-foreground">
+          {/* <p className="text-sm text-muted-foreground">
             Made with <span className="text-red-500">❤️</span> by{" "}
             <a
-              href="https://x.com/immoinulmoin"
+              href="https://moinulmoin.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground hover:text-primary transition-colors"
             >
               Moinul Moin
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

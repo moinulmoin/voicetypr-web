@@ -33,7 +33,7 @@ const plans = [
     cta: "Get Lifetime Access",
     popular: true,
     originalPrice: "$60",
-    discount: "Limited Offer"
+    discount: "Most Popular"
   },
   {
     name: "Max",
@@ -48,7 +48,7 @@ const plans = [
     cta: "Get Max plan",
     popular: false,
     originalPrice: "$250",
-    discount: "Limited Offer"
+    discount: "Most Valuable"
   }
 ];
 
