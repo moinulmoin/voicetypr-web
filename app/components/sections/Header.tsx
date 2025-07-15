@@ -1,8 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Download, Github } from "lucide-react";
+import { DollarSign, Github } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,17 +22,10 @@ export default function Header() {
       <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
         isScrolled ? 'bg-black/20 backdrop-blur-md' : ''
       }`}>
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between py-4">
           {/* Left: VoiceTypr Brand */}
-          <div className="flex items-center gap-3">
-            <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 backdrop-blur-sm">
-              <svg className="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                <line x1="12" x2="12" y1="19" y2="22" />
-              </svg>
-            </div>
-            <span className="text-xl font-bold text-foreground">VoiceTypr</span>
+          <div className="p-1">
+            <Image src="/logo.png" alt="VoiceTypr" width={40} height={40} className="invert" />
           </div>
 
           {/* Middle: Navigation Links */}
@@ -63,14 +57,14 @@ export default function Header() {
               <span>Star</span>
             </Button>
 
-            {/* Download Button */}
+            {/* Buy Now Button */}
             <Button
               size="sm"
               className="group"
-              onClick={() => window.open('#download', '_blank')}
+              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <Download className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
-              Download
+              <DollarSign className="w-4 h-4 mr-1 transition-transform group-hover:scale-110" />
+              Buy Now
             </Button>
           </div>
         </div>

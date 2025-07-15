@@ -11,17 +11,18 @@ const plans = [
     price: "$0",
     description: "Try it for free",
     features: [
+      "Full app access",
       "3 days unlimited usage",
       "No credit card required"
     ],
-    cta: "Start Free Trial",
+    cta: "Try for free",
     popular: false,
     originalPrice: null,
     discount: null
   },
   {
     name: "Pro",
-    price: "$25",
+    price: "$20",
     description: "Perfect for individual use",
     features: [
       "Lifetime access",
@@ -31,8 +32,8 @@ const plans = [
     ],
     cta: "Get Lifetime Access",
     popular: true,
-    originalPrice: "$50",
-    discount: "50% OFF"
+    originalPrice: "$60",
+    discount: "Limited Offer"
   },
   {
     name: "Max",
@@ -47,7 +48,7 @@ const plans = [
     cta: "Get Max plan",
     popular: false,
     originalPrice: "$250",
-    discount: "60% OFF"
+    discount: "Limited Offer"
   }
 ];
 
@@ -67,7 +68,7 @@ export default function Pricing() {
       {/* Pricing cards */}
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan, index) => (
+          {plans.map((plan) => (
             <Card
               key={plan.name}
               className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none ${
