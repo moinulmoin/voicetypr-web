@@ -10,19 +10,19 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
         <div>
           {/* Main Heading with VoiceTypr's gradient style */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 text-balance">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground">
               Write 5x faster with
-            </span>
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-muted-foreground to-foreground">
+            </span>{" "}<span className="text-transparent bg-clip-text bg-gradient-to-r from-muted-foreground to-foreground">
               your voice
             </span>
           </h1>
-
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            VoiceTypr is an AI powered voice to text dictation tool for macOS and Windows.
-            Open-source minimalistic alternative to Wispr Flow, SuperWhisper.
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
+            VoiceTypr is an AI powered voice to text dictation tool.
+            Open source minimalistic alternative to Wispr Flow, SuperWhisper.
+          </p>
+          <p className="text-lg font-semibold text-primary mb-10 text-balance">
+            Pay once. Use it forever. No subscriptions. No upsells.
           </p>
 
           {/* CTA Buttons */}
@@ -36,11 +36,11 @@ export default function Hero() {
                 document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              <DollarSign className="transition-transform group-hover:scale-110" />
+              {/* <DollarSign className="transition-transform group-hover:scale-110" /> */}
               Buy Now
             </Button>
           </div>
-          <div className="flex justify-center items-center mb-12">
+          <div className="flex justify-center items-center mb-8">
             {/* Platform badges */}
             <div className="flex items-center gap-6 text-sm text-muted-foreground mt-2">
               <span className="flex items-center gap-2">
@@ -66,7 +66,6 @@ export default function Hero() {
               </span>
             </div>
           </div>
-
           {/* Video Demo Placeholder */}
           <div className="mb-12">
             <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 max-w-3xl mx-auto">
@@ -82,9 +81,6 @@ export default function Hero() {
                   <div className="text-center">
                     <p className="text-lg font-semibold text-foreground mb-1">
                       See VoiceTypr in Action
-                    </p>
-                    <p className="text-muted-foreground">
-                      Watch how voice-to-text works seamlessly in any app
                     </p>
                   </div>
                 </div>

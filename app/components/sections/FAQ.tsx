@@ -14,19 +14,15 @@ const faqs = [
   },
   {
     question: "Will it work on my Intel Mac?",
-    answer: "VoiceTypr works on both Intel and Apple Silicon Macs."
-  },
-  {
-    question: "How does offline mode work?",
-    answer: "VoiceTypr downloads AI models directly to your device. Once downloaded, you can transcribe without any internet connection. Your data never leaves your device."
+    answer: "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs are recommended for better performance."
   },
   {
     question: "What is the roadmap for VoiceTypr?",
-    answer: "We keep VoiceTypr purposely minimal so it always feels fast and reliable. Instead of chasing an endless list of features, we focus on perfecting speech-to-text dictation and shipping ongoing bug fixes and quality-of-life improvements."
+    answer: "We want to keep VoiceTypr purposely minimal. Instead of chasing an endless list of features, we focus on shaping core feature and shipping bug fixes and quality-of-life improvements."
   },
   {
-    question: "How is VoiceTypr different from alternatives like SuperWhisper or Wispr?",
-    answer: "VoiceTypr runs entirely on your computer—your voice never leaves your device unless you want it to. There are no $189/year subscriptions here: you pay once for fast, private, on-device transcription that does one job exceptionally well."
+    question: "How is VoiceTypr different from others",
+    answer: "VoiceTypr runs entirely on your computer. There are no $XXX/year subscriptions here: you pay once for fast, private, on-device transcription that does one job very well."
   },
 ];
 

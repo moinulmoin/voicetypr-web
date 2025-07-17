@@ -52,7 +52,6 @@ async function handleLicenseRevocation(data: WebhookOrderRefundedPayload["data"]
       after(async () => {
         await prisma.activityLog.create({
           data: {
-            deviceHash: "webhook",
             action: "order_refunded",
             metadata: {
               customerId,

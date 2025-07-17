@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
 
 const plans = [
@@ -18,7 +19,9 @@ const plans = [
     cta: "Try for free",
     popular: false,
     originalPrice: null,
-    discount: null
+    discount: null,
+    onClick: () => {
+    }
   },
   {
     name: "Pro",
@@ -33,7 +36,10 @@ const plans = [
     cta: "Get Lifetime Access",
     popular: true,
     originalPrice: "$60",
-    discount: "Most Popular"
+    discount: "Most Popular",
+    onClick: () => {
+      window.location.href = "/api/v1/checkout?products=499e7a0f-9ac4-4ae4-83da-4a5eda1e25b1";
+    }
   },
   {
     name: "Max",
@@ -48,7 +54,10 @@ const plans = [
     cta: "Get Max plan",
     popular: false,
     originalPrice: "$250",
-    discount: "Most Valuable"
+    discount: "Most Valuable",
+    onClick: () => {
+      window.location.href = siteUrl+"/api/v1/checkout?products=prod_123,prod_123";
+    }
   }
 ];
 
@@ -58,10 +67,10 @@ export default function Pricing() {
       {/* Section intro */}
       <div className="text-center mb-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
-          Simple, transparent pricing
+        One-time purchase. Lifetime access.
         </h2>
         <p className="text-muted-foreground">
-          Choose the plan that fits your needs
+        No subscriptions. No hidden fees.
         </p>
       </div>
 
@@ -79,7 +88,7 @@ export default function Pricing() {
             >
               {/* Discount badge */}
               {plan.discount && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-red-500 text-white rounded-full px-3 py-1">
+                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-primary rounded-full px-3 py-1">
                   {plan.discount}
                 </Badge>
               )}
@@ -126,6 +135,7 @@ export default function Pricing() {
                       : "bg-card hover:bg-muted"
                   }`}
                   variant={plan.popular ? "default" : "outline"}
+                  onClick={plan.onClick}
                 >
                   {plan.cta}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -137,11 +147,11 @@ export default function Pricing() {
 
         {/* Limited time notice */}
         <div className="text-center mt-12 space-y-2">
-          <p className="text-sm font-medium text-red-500">
-            ⏰ Limited Time Offer - Lifetime licenses at discounted prices
+          <p className="text-sm font-medium text-yellow-500">
+            🚀 Launch Offer - Lifetime license at one time payment
           </p>
           <p className="text-sm text-muted-foreground">
-            30-day money-back guarantee • One-time payment • No subscriptions
+            30-day money-back guarantee • One time payment • No subscriptions
           </p>
         </div>
       </div>

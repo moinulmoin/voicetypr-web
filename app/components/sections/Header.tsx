@@ -1,9 +1,10 @@
 "use client";
 
+import logo from "@/app/assets/transparent-logo.png";
 import { Button } from "@/components/ui/button";
 import { DollarSign, Github } from "lucide-react";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,8 +25,8 @@ export default function Header() {
       }`}>
         <div className="flex items-center justify-between py-4">
           {/* Left: VoiceTypr Brand */}
-          <div className="p-1">
-            <Image src="/logo.png" alt="VoiceTypr" width={40} height={40} className="invert" />
+          <div className="">
+            <Image src={logo} alt="VoiceTypr" width={50} height={50} />
           </div>
 
           {/* Middle: Navigation Links */}
@@ -63,7 +64,7 @@ export default function Header() {
               className="group"
               onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <DollarSign className="w-4 h-4 mr-1 transition-transform group-hover:scale-110" />
+              {/* <DollarSign className="w-4 h-4 mr-1 transition-transform group-hover:scale-110" /> */}
               Buy Now
             </Button>
           </div>
