@@ -38,7 +38,7 @@ const plans = [
     originalPrice: "$60",
     discount: "Most Popular",
     onClick: () => {
-      window.location.href = "/api/v1/checkout?products=499e7a0f-9ac4-4ae4-83da-4a5eda1e25b1";
+      window.location.href = "/api/v1/checkout?products="+process.env.NEXT_PUBLIC_PRO_PRODUCT_ID;
     }
   },
   {
@@ -56,7 +56,7 @@ const plans = [
     originalPrice: "$250",
     discount: "Most Valuable",
     onClick: () => {
-      window.location.href = siteUrl+"/api/v1/checkout?products=prod_123,prod_123";
+      window.location.href = siteUrl+"/api/v1/checkout?products="+process.env.NEXT_PUBLIC_MAX_PRODUCT_ID;
     }
   }
 ];
