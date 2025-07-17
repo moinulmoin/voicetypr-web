@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: "Will it work on my Intel Mac?",
-    answer: "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs are recommended for better performance."
+    answer: "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs are more optimized for the local ai processing."
   },
   {
     question: "What is the roadmap for VoiceTypr?",
