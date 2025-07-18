@@ -17,7 +17,7 @@ export default function HomePage() {
         <Header />
         <Hero />
         <Features />
-        <Reviews />
+        {/* <Reviews /> */}
         <Pricing />
         <FAQ />
         <Footer />

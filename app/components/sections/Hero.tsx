@@ -2,8 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Download, Play } from "lucide-react";
+import { useLatestRelease } from "@/app/hooks/useLatestRelease";
 
 export default function Hero() {
+  const { downloadUrl } = useLatestRelease();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-24 lg:pt-28">
       {/* Content */}
@@ -27,7 +29,11 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <Button variant="outline" onClick={() => window.open("#download", "_blank")}>
+            <Button
+              variant="outline"
+              onClick={() => downloadUrl && window.open(downloadUrl, "_blank")}
+              disabled={!downloadUrl}
+            >
               <Download className="transition-transform group-hover:scale-110" />
               Download
             </Button>
@@ -66,34 +72,37 @@ export default function Hero() {
               </span>
             </div>
           </div>
-          {/* Video Demo Placeholder */}
-          <div className="mb-12">
-            <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 max-w-3xl mx-auto">
-              <div className="aspect-video bg-muted/20 rounded-lg flex items-center justify-center relative overflow-hidden">
-                {/* Video placeholder background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
 
-                {/* Play button overlay */}
-                <div className="relative z-10 flex flex-col items-center gap-4">
-                  <div className="w-16 h-16 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary/30 transition-all cursor-pointer">
-                    <Play className="w-8 h-8 text-primary ml-1" />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-lg font-semibold text-foreground mb-1">
-                      See VoiceTypr in Action
-                    </p>
-                  </div>
-                </div>
-
-                {/* Video placeholder grid pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
 }
+
+
+          // {/* Video Demo Placeholder */}
+          // <div className="mb-12">
+          //   <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 max-w-3xl mx-auto">
+          //     <div className="aspect-video bg-muted/20 rounded-lg flex items-center justify-center relative overflow-hidden">
+          //       {/* Video placeholder background */}
+          //       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
+
+          //       {/* Play button overlay */}
+          //       <div className="relative z-10 flex flex-col items-center gap-4">
+          //         <div className="w-16 h-16 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary/30 transition-all cursor-pointer">
+          //           <Play className="w-8 h-8 text-primary ml-1" />
+          //         </div>
+          //         <div className="text-center">
+          //           <p className="text-lg font-semibold text-foreground mb-1">
+          //             See VoiceTypr in Action
+          //           </p>
+          //         </div>
+          //       </div>
+
+          //       {/* Video placeholder grid pattern */}
+          //       <div className="absolute inset-0 opacity-10">
+          //         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
+          //       </div>
+          //     </div>
+          //   </div>
+          // </div>
