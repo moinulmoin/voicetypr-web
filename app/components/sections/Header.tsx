@@ -34,9 +34,9 @@ export default function Header() {
             <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
               Features
             </a>
-            <a href="#reviews" className="text-muted-foreground hover:text-foreground transition-colors">
+            {/* <a href="#reviews" className="text-muted-foreground hover:text-foreground transition-colors">
               Reviews
-            </a>
+            </a> */}
             <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </a>
