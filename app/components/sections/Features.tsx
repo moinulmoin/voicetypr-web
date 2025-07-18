@@ -58,7 +58,7 @@ export default function Features() {
             {/* Text content */}
             <div className="mt-auto">
               <h3 className="text-3xl lg:text-4xl font-bold mb-2">100+ Languages</h3>
-              <p className="text-base lg:text-lg text-muted-Foreground">Speak in your language.</p>
+              <p className="text-base lg:text-lg text-muted-foreground">Speak in your language.</p>
             </div>
           </Card>
 
