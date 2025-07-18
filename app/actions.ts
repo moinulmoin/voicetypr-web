@@ -1,6 +1,7 @@
 "use server"
 
 import { Redis } from "@upstash/redis"
+import { revalidateTag } from "next/cache"
 
 const redis = Redis.fromEnv()
 
@@ -36,9 +37,12 @@ export async function joinWaitlist(
       }
     }
 
+    // Revalidate the waitlist count cache
+    revalidateTag("waitlist-count")
+
     return {
       status: "success",
-      message: "Welcome to the waitlist! We'll notify you when VoiceTypr launches.",
+      message: "Joined! We'll notify you when VoiceTypr launches.",
     }
   } catch (error) {
     console.error("Waitlist error:", error)
