@@ -1,5 +1,9 @@
 # VoiceTypr API Documentation
 
+**Version:** 1.0.0  
+**Last Updated:** January 17, 2025  
+**Authors:** VoiceTypr Development Team
+
 ## Implementation Status: ✅ **COMPLETE**
 
 All endpoints and features described in this documentation have been implemented and are ready for production use.
@@ -267,9 +271,158 @@ Configure webhook in Polar dashboard:
 
 The webhook handler will automatically clear license data (set licenseKey and customerId to null) when licenses are revoked or refunded, preserving the device record for history. Other events are logged for tracking and debugging purposes.
 
-## Testing
+## Error Scenario Flows
 
-```bash
+### License Already Activated on Another Device
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant App
+    participant API
+    participant Polar
+    participant DB
+
+    User->>App: Enter license key
+    App->>API: POST /license/activate
+    API->>DB: Check if license exists
+    
+    alt License bound to different device
+        DB-->>API: License exists with different deviceHash
+        API-->>App: 409 Conflict
+        App-->>User: "License already activated on another device"
+        Note over User: Must deactivate on other device first
+    end
+```
+
+### Invalid License Key
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant App
+    participant API
+    participant Polar
+
+    User->>App: Enter license key
+    App->>API: POST /license/activate
+    API->>Polar: Activate license
+    
+    alt Invalid license
+        Polar-->>API: 404 Not Found
+        API-->>App: 400 Bad Request
+        App-->>User: "Invalid license key"
+    else Revoked license
+        Polar-->>API: 403 Forbidden
+        API-->>App: 400 Bad Request
+        App-->>User: "License has been revoked"
+    end
+```
+
+### Network Failure During Validation
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant API
+    participant Polar
+    participant Cache
+
+    App->>API: POST /license/validate
+    API->>Polar: Validate license
+    
+    alt Network timeout
+        Note over Polar: No response
+        API-->>API: Timeout after 30s
+        API->>Cache: Check last validation
+        
+        alt Within grace period
+            Cache-->>API: Last validated < 7 days ago
+            API-->>App: 200 OK (offline mode)
+            App-->>App: Show offline indicator
+        else Grace period expired
+            Cache-->>API: Last validated > 7 days ago
+            API-->>App: 503 Service Unavailable
+            App-->>App: Block access, require online
+        end
+    end
+```
+
+### Webhook Processing Failure
+
+```mermaid
+sequenceDiagram
+    participant Polar
+    participant API
+    participant DB
+    participant Monitor
+
+    Polar->>API: POST /webhooks/polar (order.refunded)
+    API->>API: Verify webhook signature
+    
+    alt Database error
+        API->>DB: Update devices
+        DB-->>API: Connection error
+        API->>Monitor: Log critical error
+        API-->>Polar: 500 Internal Error
+        Note over Polar: Will retry webhook
+    else Success
+        API->>DB: Clear license from devices
+        DB-->>API: Success
+        API->>DB: Log activity
+        API-->>Polar: 200 OK
+    end
+```
+
+### Trial Expired Check
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant API
+    participant DB
+
+    App->>API: POST /trial/check
+    API->>DB: Get device record
+    
+    alt Device not found
+        DB-->>API: No record
+        API->>DB: Create device with trial
+        DB-->>API: Device created
+        API-->>App: {isExpired: false}
+    else Trial expired
+        DB-->>API: Device with expired trial
+        API-->>App: {isExpired: true}
+        App-->>App: Show purchase options
+        Note over App: Cannot restart trial
+    end
+```
+
+### Deactivation Permission Denied
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant App
+    participant API
+    participant DB
+
+    User->>App: Click "Deactivate License"
+    App->>API: POST /license/deactivate
+    API->>DB: Check device ownership
+    
+    alt Wrong device
+        DB-->>API: License belongs to different device
+        API-->>App: 403 Forbidden
+        App-->>User: "This license is not activated on this device"
+    else License not found
+        DB-->>API: No license for this device
+        API-->>App: 404 Not Found
+        App-->>User: "No active license found"
+    end
+```
+
+## Testing
 # Check trial (auto-creates device with trial)
 curl -X POST http://localhost:3000/api/v1/trial/check \
   -H "Content-Type: application/json" \
@@ -355,3 +508,12 @@ async function restoreLicense() {
 7. **Customer ID Tracking** - Store Polar customer ID to handle webhooks properly
 8. **User-Initiated License Management** - No automatic license checks on startup
 9. **Preserved Device History** - Devices never deleted, preventing abuse
+
+## Changelog
+
+### Version 1.0.0 (January 17, 2025)
+- Initial release with complete API implementation
+- Added comprehensive error scenario diagrams
+- Full integration with Polar.sh
+- Trial and license management endpoints
+- Webhook support for order lifecycle events

@@ -34,10 +34,10 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    // check if trial started in between 60s of now then create a new trial
-    const newTrialDevice =
-      trialDevice.trialStartedAt && trialDevice.trialStartedAt < new Date(Date.now() - 60 * 1000);
-    if (newTrialDevice) {
+    // Check if trial started within the last 60 seconds (new trial)
+    const isNewTrial = trialDevice.trialStartedAt &&
+      trialDevice.trialStartedAt > new Date(Date.now() - 60 * 1000);
+    if (isNewTrial) {
       // Log trial activation
       await prisma.activityLog.create({
         data: {
@@ -52,7 +52,10 @@ export async function POST(request: NextRequest) {
     }
 
     const data = {
-      isExpired: (trialDevice.trialExpiresAt && trialDevice.trialExpiresAt < new Date()) || false
+      isExpired: !!trialDevice.trialExpiresAt && trialDevice.trialExpiresAt < new Date(),
+      daysLeft: trialDevice.trialExpiresAt && trialDevice.trialExpiresAt > new Date()
+        ? Math.ceil((trialDevice.trialExpiresAt.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+        : 0
     };
 
     return createSuccessResponse(data);

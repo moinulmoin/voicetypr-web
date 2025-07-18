@@ -1,14 +1,15 @@
 export const CONFIG = {
   // Trial
-  trialDurationDays: 5,
+  trialDurationDays: 3,
   trialsPerDevice: 1, // One trial per device forever
 
   // License
   devicesPerLicense: 1, // One device at a time
+  devicesPerMaxLicense: 5, // Up to 4 devices for Max plan
 
   // Validation
   validationIntervalInHours: 6, // Check license status every 6 hours
-  offlineGracePeriodDays: 3, // Work offline for 3 days
+  offlineGracePeriodDays: 7, // Work offline for 3 days
 
   // Versions
   minSupportedVersion: '1.0.0',
@@ -39,7 +40,7 @@ export enum ErrorCode {
 }
 
 export const ERROR_MESSAGES: Record<ErrorCode, string> = {
-  [ErrorCode.TRIAL_EXPIRED]: 'Your 5-day trial has ended. Purchase a license to continue.',
+  [ErrorCode.TRIAL_EXPIRED]: 'Your 3 day trial has ended. Purchase a license to continue.',
   [ErrorCode.TRIAL_ALREADY_USED]: 'A trial has already been used on this device.',
   [ErrorCode.INVALID_LICENSE]: 'Invalid license key.',
   [ErrorCode.LICENSE_ALREADY_ACTIVATED]:

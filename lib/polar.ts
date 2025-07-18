@@ -2,7 +2,8 @@ import { Polar } from "@polar-sh/sdk";
 
 // Initialize Polar SDK
 export const polar = new Polar({
-  accessToken: process.env.POLAR_ACCESS_TOKEN!
+  accessToken: process.env.POLAR_ACCESS_TOKEN!,
+  server: process.env.NODE_ENV !== "production" ? "sandbox" : "production",
 });
 
 // Validate a license key with Polar

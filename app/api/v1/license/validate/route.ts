@@ -1,6 +1,5 @@
 import {
   corsHeaders,
-  createErrorResponse,
   createSuccessResponse,
   handleInternalError,
   handleValidationError
