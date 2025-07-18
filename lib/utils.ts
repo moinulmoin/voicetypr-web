@@ -5,3 +5,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 export const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+export const downloadURL = process.env.NEXT_PUBLIC_DOWNLOAD_URL!

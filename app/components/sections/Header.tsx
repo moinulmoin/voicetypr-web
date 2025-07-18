@@ -1,8 +1,8 @@
 "use client";
 
 import logo from "@/app/assets/transparent-logo.png";
+import { GitHub } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { DollarSign, Github } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -54,7 +54,7 @@ export default function Header() {
               className="hidden sm:flex items-center gap-2 bg-white/5 hover:bg-white/10 border-white/10"
               onClick={() => window.open('https://github.com/moinulmoin/voicetypr', '_blank')}
             >
-              <Github className="w-4 h-4" />
+              <GitHub className="w-4 h-4" />
               <span>Star</span>
             </Button>
 

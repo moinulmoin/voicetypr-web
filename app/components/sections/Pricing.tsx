@@ -3,9 +3,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { siteUrl } from "@/lib/utils";
+import { downloadURL, siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
-import { useLatestRelease } from "@/app/hooks/useLatestRelease";
 
 const plans = [
   {
@@ -22,6 +21,7 @@ const plans = [
     originalPrice: null,
     discount: null,
     onClick: () => {
+      window.open(downloadURL, "_blank");
     }
   },
   {
@@ -63,22 +63,6 @@ const plans = [
 ];
 
 export default function Pricing() {
-  const { downloadUrl } = useLatestRelease();
-
-  const plansWithDownload = plans.map(plan => {
-    if (plan.name === "Free Trial") {
-      return {
-        ...plan,
-        onClick: () => {
-          if (downloadUrl) {
-            window.open(downloadUrl, "_blank");
-          }
-        }
-      };
-    }
-    return plan;
-  });
-
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
@@ -94,7 +78,7 @@ export default function Pricing() {
       {/* Pricing cards */}
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plansWithDownload.map((plan) => (
+          {plans.map((plan) => (
             <Card
               key={plan.name}
               className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none ${

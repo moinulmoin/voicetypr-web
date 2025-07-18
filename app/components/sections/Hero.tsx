@@ -1,11 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Download, Play } from "lucide-react";
-import { useLatestRelease } from "@/app/hooks/useLatestRelease";
+import { downloadURL } from "@/lib/utils";
+import { Download } from "lucide-react";
 
 export default function Hero() {
-  const { downloadUrl } = useLatestRelease();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-24 lg:pt-28">
       {/* Content */}
@@ -31,8 +30,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <Button
               variant="outline"
-              onClick={() => downloadUrl && window.open(downloadUrl, "_blank")}
-              disabled={!downloadUrl}
+              onClick={() => downloadURL && window.open(downloadURL, "_blank")}
             >
               <Download className="transition-transform group-hover:scale-110" />
               Download

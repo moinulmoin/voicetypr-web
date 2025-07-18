@@ -31,7 +31,7 @@ export default function PrivacyPage() {
 
           <h3 className="text-xl font-semibold mb-2 mt-4">2.3 Purchase Information</h3>
           <p>
-            Payment processing is handled by Polar.sh. We receive only essential order information (customer ID, order ID) necessary for license management. We do not store credit card or payment details.
+            Payment processing is handled by Polar.sh. We receive only essential info for trial check. We do not store credit card or payment details.
           </p>
         </section>
 
