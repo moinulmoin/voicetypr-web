@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Download, Play, DollarSign } from "lucide-react";
+import { Download, Play } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -62,7 +62,7 @@ export default function Hero() {
                     fill="currentColor"
                   />
                 </svg>
-                Windows (10+)
+                Windows (coming soon)
               </span>
             </div>
           </div>

@@ -3,7 +3,7 @@ export default function TermsPage() {
     <div className="container max-w-4xl mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-8">Terms and Conditions</h1>
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <p className="text-sm text-muted-foreground mb-8">Last Updated: January 17, 2025</p>
+        <p className="text-sm text-muted-foreground mb-8">Last Updated: July 18, 2025</p>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Agreement to Terms</h2>
@@ -31,7 +31,7 @@ export default function TermsPage() {
           <ul className="list-disc pl-6 space-y-2">
             <li>VoiceTypr is sold as a one-time purchase with no recurring fees</li>
             <li>All purchases include future updates for the lifetime of the product</li>
-            <li>We offer a 30-day money-back guarantee from the date of purchase</li>
+            <li>We offer a 14 day money-back guarantee from the date of purchase</li>
             <li>Refunds will result in immediate license deactivation</li>
           </ul>
         </section>

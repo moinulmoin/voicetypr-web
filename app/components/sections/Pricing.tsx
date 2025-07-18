@@ -29,7 +29,7 @@ const plans = [
     description: "Perfect for individual use",
     features: [
       "Lifetime access",
-      "1 device license",
+      "1 device",
       "Priority support",
       "Future updates"
     ],
@@ -43,11 +43,11 @@ const plans = [
   },
   {
     name: "Max",
-    price: "$120",
+    price: "$100",
     description: "Best value for multiple devices",
     features: [
       "Lifetime access",
-      "5 device licenses",
+      "up to 5 devices",
       "Priority support",
       "Future updates"
     ],

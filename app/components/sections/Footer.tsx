@@ -1,6 +1,7 @@
 "use client";
 
-import { Github, Mail, Twitter } from "lucide-react";
+import { GitHub, XformerlyTwitter } from "@/components/icons";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -22,7 +23,7 @@ export default function Footer() {
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
             >
-              <Github className="w-5 h-5" />
+              <GitHub className="w-5 h-5 fill-current" />
             </a>
             <a
               href="https://x.com/voicetypr"
@@ -31,7 +32,7 @@ export default function Footer() {
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Twitter"
             >
-              <Twitter className="w-5 h-5" />
+              <XformerlyTwitter className="w-5 h-5 fill-current" />
             </a>
             <a
               href="mailto:support@voicetypr.com"

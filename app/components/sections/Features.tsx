@@ -1,32 +1,21 @@
 "use client";
 
+import { ClaudeAI, Cursor, Discord, Gemini, Gmail, Linear, Notion, OpenAI, Slack, XformerlyTwitter } from "@/components/icons";
 import { Card } from "@/components/ui/card";
-import {
-  Chrome,
-  Code,
-  Figma,
-  FileText,
-  Github,
-  Mail,
-  MessageSquare,
-  Shield,
-  Slack,
-  Twitter,
-  Video
-} from "lucide-react";
+import { Shield } from "lucide-react";
 
 // App icons grid
 const appIcons = [
-  { icon: Twitter, name: "X" },
+  { icon: XformerlyTwitter, name: "X" },
   { icon: Slack, name: "Slack" },
-  { icon: MessageSquare, name: "Telegram" },
-  { icon: Chrome, name: "Chrome" },
-  { icon: Github, name: "GitHub" },
-  { icon: FileText, name: "Notion" },
-  { icon: Figma, name: "Figma" },
-  { icon: Video, name: "Zoom" },
-  { icon: Code, name: "VS Code" },
-  { icon: Mail, name: "Gmail" },
+  { icon: Linear, name: "Linear" },
+  { icon: Notion, name: "Notion" },
+  { icon: Cursor, name: "Cursor" },
+  { icon: Discord, name: "Discord" },
+  { icon: Gemini, name: "Gemini" },
+  { icon: OpenAI, name: "Open AI" },
+  { icon: ClaudeAI, name: "Claude AI" },
+  { icon: Gmail, name: "Gmail" },
 ];
 
 export default function Features() {
@@ -83,7 +72,7 @@ export default function Features() {
               <div className="grid grid-cols-5 gap-3 mt-auto">
                 {appIcons.map(({ icon: Icon }, index) => (
                   <div key={index} className="flex flex-col items-center justify-center p-3 rounded-lg bg-muted/10 transition-all duration-300 group-hover:bg-muted/20">
-                    <Icon className="w-6 h-6 text-muted-foreground/40 group-hover:text-muted-foreground/60" />
+                    <Icon className="w-6 h-6 group-hover:text-muted-foreground/60" />
                   </div>
                 ))}
               </div>

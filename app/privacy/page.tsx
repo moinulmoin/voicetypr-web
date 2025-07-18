@@ -3,7 +3,7 @@ export default function PrivacyPage() {
     <div className="container max-w-4xl mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <p className="text-sm text-muted-foreground mb-8">Last Updated: January 17, 2025</p>
+        <p className="text-sm text-muted-foreground mb-8">Last Updated: July 18, 2025</p>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">2. Information We Collect</h2>
-          
+
           <h3 className="text-xl font-semibold mb-2 mt-4">2.1 Device Information</h3>
           <ul className="list-disc pl-6 space-y-2">
             <li>Device hash (anonymized device identifier)</li>
