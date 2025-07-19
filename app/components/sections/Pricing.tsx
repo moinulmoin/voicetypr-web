@@ -152,7 +152,7 @@ export default function Pricing() {
             🚀 Launch Offer - Lifetime license at one time payment
           </p>
           <p className="text-sm text-muted-foreground">
-            30-day money-back guarantee • One time payment • No subscriptions
+            14 days money-back guarantee • One time payment • No subscriptions
           </p>
         </div>
       </div>
