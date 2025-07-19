@@ -1,9 +1,10 @@
 "use client";
 
+import { useLatestRelease } from "@/app/hooks/useLatestRelease";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { downloadURL, siteUrl } from "@/lib/utils";
+import { siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
 
 const plans = [
@@ -20,9 +21,7 @@ const plans = [
     popular: false,
     originalPrice: null,
     discount: null,
-    onClick: () => {
-      window.open(downloadURL, "_blank");
-    }
+    onClick: () =>{}
   },
   {
     name: "Pro",
@@ -63,6 +62,7 @@ const plans = [
 ];
 
 export default function Pricing() {
+  const { downloadUrl } = useLatestRelease();
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
@@ -78,7 +78,7 @@ export default function Pricing() {
       {/* Pricing cards */}
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan) => (
+          {plans.map((plan, i) => (
             <Card
               key={plan.name}
               className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none ${
@@ -136,7 +136,7 @@ export default function Pricing() {
                       : "bg-card hover:bg-muted"
                   }`}
                   variant={plan.popular ? "default" : "outline"}
-                  onClick={plan.onClick}
+                  onClick={i === 0 ? () => window.open(downloadUrl, "_blank") : plan.onClick}
                 >
                   {plan.cta}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

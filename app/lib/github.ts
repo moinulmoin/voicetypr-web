@@ -1,10 +1,10 @@
-export async function getLatestReleaseDMG(): Promise<string | null> {
+export async function getLatestReleaseDMG(): Promise<string> {
   // Fallback URL for the first release
   const FALLBACK_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL!
 
   try {
     const response = await fetch('https://api.github.com/repos/moinulmoin/voicetypr/releases/latest', {
-      next: { revalidate: 3600 }, // Cache for 1 hour
+      next: { revalidate: 24 * 3600 }, // Cache for 24 hours
       headers: {
         'Accept': 'application/vnd.github.v3+json',
       }
