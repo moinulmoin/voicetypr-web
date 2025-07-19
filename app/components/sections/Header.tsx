@@ -51,11 +51,11 @@ export default function Header() {
             <Button
               variant="outline"
               size="sm"
-              className="hidden sm:flex items-center gap-2 bg-white/5 hover:bg-white/10 border-white/10"
+              className="items-center gap-2 bg-white/5 hover:bg-white/10 border-white/10"
               onClick={() => window.open('https://github.com/moinulmoin/voicetypr', '_blank')}
             >
               <GitHub className="w-4 h-4" />
-              <span>Star</span>
+              <span>Star us</span>
             </Button>
 
             {/* Buy Now Button */}
