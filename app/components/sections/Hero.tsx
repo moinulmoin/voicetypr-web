@@ -78,21 +78,34 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
 
                 <div
-                  style={{ position: "relative", paddingBottom: "56.25%", height: "0" }}
-                  className="w-full h-full"
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    height: "0px",
+                    paddingBottom: "56.250%"
+                  }}
                 >
                   <iframe
-                    id="js_video_iframe"
-                    src="https://jumpshare.com/embed/NJI28P2f5Q3wnh3Wf7sp"
-                    allowFullScreen
-                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                    allow="fullscreen"
+                    height="100%"
+                    src="https://streamable.com/e/ok9zc6?"
+                    width="100%"
+                    style={{
+                      border: "none",
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
+                      left: "0px",
+                      top: "0px",
+                      overflow: "hidden"
+                    }}
                   ></iframe>
                 </div>
 
                 {/* Video placeholder grid pattern */}
-                <div className="absolute inset-0 opacity-10">
+                {/* <div className="absolute inset-0 opacity-10">
                   <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
