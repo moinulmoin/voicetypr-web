@@ -27,7 +27,6 @@ export async function getLatestReleaseDMG(): Promise<string> {
     );
 
     if (dmgAsset?.browser_download_url) {
-      console.log('Found latest release:', dmgAsset.browser_download_url);
       return dmgAsset.browser_download_url;
     }
 

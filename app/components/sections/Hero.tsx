@@ -2,7 +2,7 @@
 
 import { useLatestRelease } from "@/app/hooks/useLatestRelease";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Play } from "lucide-react";
 
 export default function Hero() {
   const { downloadUrl } = useLatestRelease();
@@ -15,13 +15,14 @@ export default function Hero() {
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 text-balance">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground">
               Write 5x faster with
-            </span>{" "}<span className="text-transparent bg-clip-text bg-gradient-to-r from-muted-foreground to-foreground">
+            </span>{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-muted-foreground to-foreground">
               your voice
             </span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
-            VoiceTypr is an AI powered voice to text dictation tool.
-            Open source minimalistic alternative to Wispr Flow, SuperWhisper.
+            VoiceTypr is an AI powered voice to text dictation tool. Open source minimalistic
+            alternative to Wispr Flow, SuperWhisper.
           </p>
           <p className="text-lg font-semibold text-primary mb-10 text-balance">
             Pay once. Use it forever. No subscriptions. No upsells.
@@ -29,10 +30,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <Button
-              variant="outline"
-              onClick={() => window.open(downloadUrl, "_blank")}
-            >
+            <Button variant="outline" onClick={() => window.open(downloadUrl, "_blank")}>
               <Download className="transition-transform group-hover:scale-110" />
               Download
             </Button>
@@ -72,36 +70,34 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* Video Demo Placeholder */}
+          <div className="mb-12">
+            <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 max-w-3xl mx-auto">
+              <div className="aspect-video bg-muted/20 rounded-lg flex items-center justify-center relative overflow-hidden">
+                {/* Video placeholder background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
+
+                <div
+                  style={{ position: "relative", paddingBottom: "56.25%", height: "0" }}
+                  className="w-full h-full"
+                >
+                  <iframe
+                    id="js_video_iframe"
+                    src="https://jumpshare.com/embed/NJI28P2f5Q3wnh3Wf7sp"
+                    allowFullScreen
+                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                  ></iframe>
+                </div>
+
+                {/* Video placeholder grid pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-
-          // {/* Video Demo Placeholder */}
-          // <div className="mb-12">
-          //   <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 max-w-3xl mx-auto">
-          //     <div className="aspect-video bg-muted/20 rounded-lg flex items-center justify-center relative overflow-hidden">
-          //       {/* Video placeholder background */}
-          //       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
-
-          //       {/* Play button overlay */}
-          //       <div className="relative z-10 flex flex-col items-center gap-4">
-          //         <div className="w-16 h-16 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary/30 transition-all cursor-pointer">
-          //           <Play className="w-8 h-8 text-primary ml-1" />
-          //         </div>
-          //         <div className="text-center">
-          //           <p className="text-lg font-semibold text-foreground mb-1">
-          //             See VoiceTypr in Action
-          //           </p>
-          //         </div>
-          //       </div>
-
-          //       {/* Video placeholder grid pattern */}
-          //       <div className="absolute inset-0 opacity-10">
-          //         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
