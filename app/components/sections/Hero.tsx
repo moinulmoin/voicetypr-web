@@ -1,11 +1,10 @@
 "use client";
 
-import { useLatestRelease } from "@/app/hooks/useLatestRelease";
 import { Button } from "@/components/ui/button";
+import { downloadURL } from "@/lib/utils";
 import { Download, Play } from "lucide-react";
 
 export default function Hero() {
-  const { downloadUrl } = useLatestRelease();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-24 lg:pt-28">
       {/* Content */}
@@ -30,7 +29,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex items-center justify-center gap-4 mb-6">
-            <Button variant="outline" onClick={() => window.open(downloadUrl, "_blank")}>
+            <Button variant="outline" onClick={() => window.open(downloadURL, "_blank")}>
               <Download className="transition-transform group-hover:scale-110" />
               Download
             </Button>

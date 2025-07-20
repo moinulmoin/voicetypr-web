@@ -1,10 +1,9 @@
 "use client";
 
-import { useLatestRelease } from "@/app/hooks/useLatestRelease";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { siteUrl } from "@/lib/utils";
+import { downloadURL, siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
 
 const plans = [
@@ -62,7 +61,6 @@ const plans = [
 ];
 
 export default function Pricing() {
-  const { downloadUrl } = useLatestRelease();
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
@@ -136,7 +134,7 @@ export default function Pricing() {
                       : "bg-card hover:bg-muted"
                   }`}
                   variant={plan.popular ? "default" : "outline"}
-                  onClick={i === 0 ? () => window.open(downloadUrl, "_blank") : plan.onClick}
+                  onClick={i === 0 ? () => window.open(downloadURL, "_blank") : plan.onClick}
                 >
                   {plan.cta}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
