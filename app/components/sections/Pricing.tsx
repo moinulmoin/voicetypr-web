@@ -24,7 +24,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$25",
+    price: "$20",
     description: "Perfect for individual use",
     features: [
       "Lifetime access",
