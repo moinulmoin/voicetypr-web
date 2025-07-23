@@ -82,6 +82,8 @@ export default function Reviews() {
               <Card
                 className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl hover:bg-card/60 transition-all duration-200 shadow-none cursor-pointer"
                 onClick={() => window.open(testimonial.tweetUrl, "_blank")}
+                data-umami-event="review-click"
+                data-umami-event-author={testimonial.author.handle}
               >
                 <CardContent className="p-6">
                   {/* Tweet author header */}

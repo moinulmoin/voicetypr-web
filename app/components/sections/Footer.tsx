@@ -2,6 +2,7 @@
 
 import { GitHub, XformerlyTwitter } from "@/components/icons";
 import { Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -22,6 +23,8 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
+              data-umami-event="social-link-click"
+              data-umami-event-platform="github"
             >
               <GitHub className="w-5 h-5 fill-current" />
             </a>
@@ -31,6 +34,8 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Twitter"
+              data-umami-event="social-link-click"
+              data-umami-event-platform="twitter"
             >
               <XformerlyTwitter className="w-5 h-5 fill-current" />
             </a>
@@ -38,6 +43,8 @@ export default function Footer() {
               href="mailto:support@voicetypr.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Support"
+              data-umami-event="social-link-click"
+              data-umami-event-platform="email"
             >
               <Mail className="w-5 h-5" />
             </a>
@@ -45,15 +52,15 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
-            <a href="/changelog" className="text-muted-foreground hover:text-foreground transition-colors">
+            {/* <a href="/changelog" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event="footer-link-click" data-umami-event-page="changelog">
               Changelog
-            </a>
-            <a href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
+            </a> */}
+            <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event="footer-link-click" data-umami-event-page="privacy">
               Privacy Policy
-            </a>
-            <a href="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event="footer-link-click" data-umami-event-page="terms">
               Terms & Conditions
-            </a>
+            </Link>
           </div>
 
           {/* Made with love - integrated */}

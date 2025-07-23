@@ -31,16 +31,31 @@ export default function Header() {
 
           {/* Middle: Navigation Links */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a 
+              href="#features" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="nav-click"
+              data-umami-event-section="features"
+            >
               Features
             </a>
             {/* <a href="#reviews" className="text-muted-foreground hover:text-foreground transition-colors">
               Reviews
             </a> */}
-            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a 
+              href="#pricing" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="nav-click"
+              data-umami-event-section="pricing"
+            >
               Pricing
             </a>
-            <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a 
+              href="#faq" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="nav-click"
+              data-umami-event-section="faq"
+            >
               FAQ
             </a>
           </nav>
@@ -53,6 +68,7 @@ export default function Header() {
               size="sm"
               className="items-center gap-2 bg-white/5 hover:bg-white/10 border-white/10"
               onClick={() => window.open('https://github.com/moinulmoin/voicetypr', '_blank')}
+              data-umami-event="github-star-click"
             >
               <GitHub className="w-4 h-4" />
               <span>Star us</span>
@@ -63,6 +79,7 @@ export default function Header() {
               size="sm"
               className="group"
               onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+              data-umami-event="header-buy-click"
             >
               {/* <DollarSign className="w-4 h-4 mr-1 transition-transform group-hover:scale-110" /> */}
               Buy Now

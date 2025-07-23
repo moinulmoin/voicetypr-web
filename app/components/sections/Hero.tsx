@@ -32,6 +32,7 @@ export default function Hero() {
             <Button
               variant="outline"
               onClick={() => window.open(downloadURL, "_blank")}
+              data-umami-event="hero-download-click"
             >
               <Download className="transition-transform group-hover:scale-110" />
               Download
@@ -42,6 +43,7 @@ export default function Hero() {
                   .getElementById("pricing")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
+              data-umami-event="hero-buy-click"
             >
               {/* <DollarSign className="transition-transform group-hover:scale-110" /> */}
               Buy Now

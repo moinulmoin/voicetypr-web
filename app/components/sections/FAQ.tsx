@@ -54,7 +54,11 @@ export default function FAQ() {
               value={`item-${index}`}
               className="border border-border/50 rounded-2xl overflow-hidden bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 px-6"
             >
-              <AccordionTrigger className="text-lg font-medium py-5 hover:no-underline">
+              <AccordionTrigger 
+                className="text-lg font-medium py-5 hover:no-underline"
+                data-umami-event="faq-toggle"
+                data-umami-event-question={faq.question}
+              >
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground pb-5">

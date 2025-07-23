@@ -138,6 +138,12 @@ export default function Pricing() {
                     }`}
                     variant={plan.popular ? "default" : "outline"}
                     onClick={i === 0 ? () => window.open(downloadURL, "_blank") : plan.onClick}
+                    data-umami-event={
+                      i === 0 ? "pricing-trial-click" : 
+                      plan.name === "Pro" ? "pricing-pro-click" : 
+                      "pricing-max-click"
+                    }
+                    data-umami-event-plan={plan.name.toLowerCase()}
                   >
                     {plan.cta}
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
