@@ -75,72 +75,75 @@ export default function Pricing() {
 
       {/* Pricing cards */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {plans.map((plan, i) => (
             <Card
               key={plan.name}
               className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none ${
-                plan.popular
-                  ? "border-primary/50"
-                  : "border-border/50 hover:border-border/70"
-              }`}
-            >
-              {/* Discount badge */}
-              {plan.discount && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-primary rounded-full px-3 py-1">
-                  {plan.discount}
-                </Badge>
-              )}
+                // On md screens, make the third card span both columns and center it
+                i === 2 ? 'md:col-span-2 md:w-1/2 md:mx-auto lg:col-span-1 lg:w-full lg:mx-0' : ''
+              } ${
+                  plan.popular
+                    ? "border-primary/50"
+                    : "border-border/50 hover:border-border/70"
+                }`}
+              >
+                {/* Discount badge */}
+                {plan.discount && (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-primary rounded-full px-3 py-1">
+                    {plan.discount}
+                  </Badge>
+                )}
 
-              <CardHeader className="text-center pb-2 px-8 pt-8">
-                <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                <CardHeader className="text-center pb-2 px-8 pt-8">
+                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
 
-                {/* Pricing with discount */}
-                <div className="mt-3">
-                  <div className="flex items-baseline justify-center gap-2">
-                    {plan.originalPrice && (
-                      <span className="text-xl text-muted-foreground line-through">{plan.originalPrice}</span>
-                    )}
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                  </div>
-                  {plan.originalPrice && (
-                    <div className="text-center mt-2">
-                      <span className="text-sm text-green-500">
-                        Save ${parseInt(plan.originalPrice.slice(1)) - parseInt(plan.price.slice(1))}
-                      </span>
+                  {/* Pricing with discount */}
+                  <div className="mt-3">
+                    <div className="flex items-baseline justify-center gap-2">
+                      {plan.originalPrice && (
+                        <span className="text-xl text-muted-foreground line-through">{plan.originalPrice}</span>
+                      )}
+                      <span className="text-4xl font-bold">{plan.price}</span>
                     </div>
-                  )}
-                </div>
+                    {plan.originalPrice && (
+                      <div className="text-center mt-2">
+                        <span className="text-sm text-green-500">
+                          Save ${parseInt(plan.originalPrice.slice(1)) - parseInt(plan.price.slice(1))}
+                        </span>
+                      </div>
+                    )}
+                  </div>
 
-                {/* <p className="text-muted-foreground text-sm mt-2">{plan.description}</p> */}
-              </CardHeader>
+                  {/* <p className="text-muted-foreground text-sm mt-2">{plan.description}</p> */}
+                </CardHeader>
 
-              <CardContent className="px-8 py-4">
-                <ul className="space-y-3">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                <CardContent className="px-8 py-4">
+                  <ul className="space-y-3">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
 
-              <CardFooter className="px-8 pb-8">
-                <Button
-                  className={`w-full group ${
-                    plan.popular
-                      ? "bg-primary hover:bg-primary/90"
-                      : "bg-card hover:bg-muted"
-                  }`}
-                  variant={plan.popular ? "default" : "outline"}
-                  onClick={i === 0 ? () => window.open(downloadURL, "_blank") : plan.onClick}
-                >
-                  {plan.cta}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </CardFooter>
-            </Card>
+                <CardFooter className="px-8 pb-8">
+                  <Button
+                    className={`w-full group ${
+                      plan.popular
+                        ? "bg-primary hover:bg-primary/90"
+                        : "bg-card hover:bg-muted"
+                    }`}
+                    variant={plan.popular ? "default" : "outline"}
+                    onClick={i === 0 ? () => window.open(downloadURL, "_blank") : plan.onClick}
+                  >
+                    {plan.cta}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </CardFooter>
+              </Card>
           ))}
         </div>
 

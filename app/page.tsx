@@ -6,6 +6,7 @@ import Features from "./components/sections/Features";
 import Footer from "./components/sections/Footer";
 import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
+import HowItWorks from "./components/sections/HowItWorks";
 import Pricing from "./components/sections/Pricing";
 import Reviews from "./components/sections/Reviews";
 
@@ -17,6 +18,7 @@ export default function HomePage() {
         <Header />
         <Hero />
         <Features />
+        <HowItWorks />
         {/* <Reviews /> */}
         <Pricing />
         <FAQ />
