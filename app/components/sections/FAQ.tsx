@@ -10,19 +10,28 @@ import {
 const faqs = [
   {
     question: "Can I try VoiceTypr for free?",
-    answer: "Yes! VoiceTypr offers a free trial with 3 days of unlimited transcription. This lets you test all the core features before upgrading to Pro."
+    answer:
+      "Yes! VoiceTypr offers a free trial with 3 days of unlimited transcription. This lets you test all the core features before upgrading to Pro.",
   },
   {
     question: "Will it work on my Intel Mac?",
-    answer: "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs are more optimized for the local ai processing."
+    answer:
+      "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs are more optimized for the local ai processing.",
   },
   {
     question: "What is the roadmap for VoiceTypr?",
-    answer: "We want to keep VoiceTypr purposely minimal. Instead of chasing an endless list of features, we focus on shaping core feature and shipping bug fixes and quality-of-life improvements."
+    answer:
+      "We want to keep VoiceTypr purposely minimal. Instead of chasing an endless list of features, we focus on shaping core feature and shipping bug fixes and quality-of-life improvements.",
   },
   {
     question: "How is VoiceTypr different from others",
-    answer: "VoiceTypr runs entirely on your computer. There are no $XXX/year subscriptions here: you pay once for fast, private, on-device transcription that does one job very well."
+    answer:
+      "VoiceTypr runs entirely on your computer. There are no $XXX/year subscriptions here: you pay once for fast, private, on-device transcription that does one job very well.",
+  },
+  {
+    question: "I have a feature request",
+    answer:
+      "You can mail us or dm us on X for your feature request. We'll review your requests and let you know if that's something we can work on.",
   },
 ];
 
