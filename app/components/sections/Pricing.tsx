@@ -1,13 +1,13 @@
 "use client";
 
+import WindowsWaitlist from "@/app/components/WindowsWaitlist";
+import { useCountdownOffer } from "@/app/hooks/useCountdownOffer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { downloadURL, siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
-import { useCountdownOffer } from "@/app/hooks/useCountdownOffer";
-import WindowsWaitlist from "@/app/components/WindowsWaitlist";
 
 const plans = [
   {
@@ -19,7 +19,7 @@ const plans = [
       "3 days unlimited usage",
       "No credit card required"
     ],
-    cta: "Try free → Then decide",
+    cta: "Try for free",
     popular: false,
     originalPrice: null,
     discount: null,
@@ -35,7 +35,7 @@ const plans = [
       "Priority support",
       "Future updates"
     ],
-    cta: "Get Lifetime Access",
+    cta: "Start writing faster",
     popular: true,
     originalPrice: "$60",
     discount: "Most Popular",
@@ -66,7 +66,7 @@ const plans = [
 export default function Pricing() {
   // Use the countdown hook
   const { timeLeft, offerProgress } = useCountdownOffer(6);
-  
+
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
@@ -78,9 +78,9 @@ export default function Pricing() {
         No subscriptions. No hidden fees.
         </p>
         <p className="text-sm text-muted-foreground mb-8">
-          Replaces $15/month transcription services
+          Replaces $15/month or $140/year transcription tools
         </p>
-        
+
         {/* Urgency indicators - time-based */}
         <div className="max-w-sm mx-auto px-4">
           <div className="flex items-center justify-between text-sm mb-2">
@@ -157,8 +157,8 @@ export default function Pricing() {
                     variant={plan.popular ? "default" : "outline"}
                     onClick={i === 0 ? () => window.open(downloadURL, "_blank") : plan.onClick}
                     data-umami-event={
-                      i === 0 ? "pricing-trial-click" : 
-                      plan.name === "Pro" ? "pricing-pro-click" : 
+                      i === 0 ? "pricing-trial-click" :
+                      plan.name === "Pro" ? "pricing-pro-click" :
                       "pricing-max-click"
                     }
                     data-umami-event-plan={plan.name.toLowerCase()}
@@ -174,10 +174,10 @@ export default function Pricing() {
         {/* Money-back guarantee */}
         <div className="text-center mt-12">
           <p className="text-sm text-muted-foreground">
-            Secure payment • 14-day guarantee
+            Secure payment • 14 day money back guarantee
           </p>
         </div>
-        
+
         {/* Windows Waitlist */}
         <WindowsWaitlist />
       </div>
