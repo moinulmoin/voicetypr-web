@@ -3,8 +3,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { downloadURL, siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
+import { useCountdownOffer } from "@/app/hooks/useCountdownOffer";
+import WindowsWaitlist from "@/app/components/WindowsWaitlist";
 
 const plans = [
   {
@@ -16,7 +19,7 @@ const plans = [
       "3 days unlimited usage",
       "No credit card required"
     ],
-    cta: "Try for free",
+    cta: "Try free → Then decide",
     popular: false,
     originalPrice: null,
     discount: null,
@@ -46,11 +49,11 @@ const plans = [
     description: "Best value for multiple devices",
     features: [
       "Lifetime access",
-      "up to 5 devices",
+      "Up to 5 devices",
       "Priority support",
       "Future updates"
     ],
-    cta: "Get Max plan",
+    cta: "Get Max Plan",
     popular: false,
     originalPrice: "$250",
     discount: "Most Valuable",
@@ -61,6 +64,9 @@ const plans = [
 ];
 
 export default function Pricing() {
+  // Use the countdown hook
+  const { timeLeft, offerProgress } = useCountdownOffer(6);
+  
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
@@ -68,9 +74,21 @@ export default function Pricing() {
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
         One-time purchase. Lifetime access.
         </h2>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground mb-2">
         No subscriptions. No hidden fees.
         </p>
+        <p className="text-sm text-muted-foreground mb-8">
+          Replaces $15/month transcription services
+        </p>
+        
+        {/* Urgency indicators - time-based */}
+        <div className="max-w-sm mx-auto px-4">
+          <div className="flex items-center justify-between text-sm mb-2">
+            <span className="text-muted-foreground">Limited launch offer</span>
+            <span className="font-medium text-amber-600">{timeLeft}</span>
+          </div>
+          <Progress value={offerProgress} className="h-1.5 [&>div]:bg-amber-600" />
+        </div>
       </div>
 
       {/* Pricing cards */}
@@ -84,8 +102,8 @@ export default function Pricing() {
                 i === 2 ? 'md:col-span-2 md:w-1/2 md:mx-auto lg:col-span-1 lg:w-full lg:mx-0' : ''
               } ${
                   plan.popular
-                    ? "border-primary/50"
-                    : "border-border/50 hover:border-border/70"
+                    ? "border-primary/50 scale-[1.03]"
+                    : "border-border/50 hover:border-border/70 opacity-[0.85]"
                 }`}
               >
                 {/* Discount badge */}
@@ -153,15 +171,15 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Limited time notice */}
-        <div className="text-center mt-12 space-y-2">
-          <p className="text-sm font-medium text-yellow-500">
-            🚀 Launch Offer - Lifetime license at one time payment
-          </p>
+        {/* Money-back guarantee */}
+        <div className="text-center mt-12">
           <p className="text-sm text-muted-foreground">
-            14 days money-back guarantee • One time payment • No subscriptions
+            Secure payment • 14-day guarantee
           </p>
         </div>
+        
+        {/* Windows Waitlist */}
+        <WindowsWaitlist />
       </div>
     </section>
   );
