@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "Is it really lifetime or is there any tricks?",
     answer:
-      "Yes, it's truly lifetime. When you buy VoiceTypr, you get all future updates forever. No tricks to rebuy, no upgrade fees, no hidden costs. We believe in honest pricing.",
+      "Yes, it's truly lifetime. When you buy VoiceTypr, you get all future updates forever. No tricks to rebuy, no upgrade fees, no hidden costs. Though the price may increase soon after early bird discounts.",
   },
   {
     question: "I have a feature request",

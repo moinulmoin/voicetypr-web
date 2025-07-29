@@ -171,7 +171,7 @@ export default function HowItWorks() {
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors duration-200 group"
             data-umami-event="how-it-works-cta-click"
           >
-            Write 5x faster
+            Write 5x faster with your voice
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

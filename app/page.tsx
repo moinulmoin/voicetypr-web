@@ -19,7 +19,7 @@ export default function HomePage() {
         <Hero />
         <Features />
         <HowItWorks />
-        {/* <Reviews /> */}
+        <Reviews />
         <Pricing />
         <FAQ />
         <Footer />
