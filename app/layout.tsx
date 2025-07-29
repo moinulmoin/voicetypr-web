@@ -8,11 +8,12 @@ import { Providers } from "@/components/providers";
 
 const fontSans = Geist({
   subsets: ["latin"],
-  variable: "--font-sans"
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "VoiceTypr - Open Source AI Voice to Text Dictation Tool",
+  title:
+    "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
   description:
     "Open source AI voice to text dictation tool, alternative to Wispr Flow, SuperWhisper for viber coders, super AI users in macOS, Windows.",
   keywords: [
@@ -24,11 +25,12 @@ export const metadata: Metadata = {
     "voice transcription",
     "viber coders",
     "macOS",
-    "Windows"
+    "Windows",
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title: "VoiceTypr - Open Source AI Voice to Text Dictation Tool",
+    title:
+      "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
     description:
       "Open source AI voice to text dictation tool, alternative to Wispr Flow, SuperWhisper for viber coders, super AI users in macOS, Windows.",
     type: "website",
@@ -39,21 +41,22 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VoiceTypr - Open Source AI Voice to Text Dictation Tool",
+        alt: "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceTypr - Open Source AI Voice to Text Dictation Tool",
+    title:
+      "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
     description:
       "Open source AI voice to text dictation tool, alternative to Wispr Flow, SuperWhisper for viber coders, super AI users in macOS, Windows",
     images: ["/og-image.png"],
-  }
+  },
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: ReactNode;
 }>) {

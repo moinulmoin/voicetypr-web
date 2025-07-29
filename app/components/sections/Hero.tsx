@@ -20,8 +20,8 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
-            VoiceTypr is open source minimalistic AI powered voice to text
-            dictation tool for viber coders and AI super users
+            VoiceTypr is open source AI powered voice to text dictation tool for
+            viber coders and AI power users
           </p>
           <p className="text-lg font-semibold text-primary mb-10 text-balance">
             Pay once. Use it forever. No subscriptions. No upsells.
@@ -96,10 +96,12 @@ export default function Hero() {
                   }}
                 >
                   <iframe
-                    allow="fullscreen"
+                    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     height="100%"
                     src="https://streamable.com/e/ok9zc6?"
                     width="100%"
+                    loading="lazy"
+                    title="VoiceTypr Demo Video"
                     style={{
                       border: "none",
                       width: "100%",

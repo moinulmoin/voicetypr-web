@@ -8,7 +8,7 @@ import {
   Mic,
   MousePointer2,
   Shield,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 
 const steps = [
@@ -91,16 +91,20 @@ export default function HowItWorks() {
                 key={step.id}
                 className="flex flex-col items-center text-center relative group"
                 style={{
-                  flex: '1 1 0'
+                  flex: "1 1 0",
                 }}
               >
                 {/* Dot indicator */}
                 <div className="relative mb-6">
                   {/* Outer glow */}
-                  <div className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`} />
+                  <div
+                    className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`}
+                  />
 
                   {/* Icon circle */}
-                  <div className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
                       <step.icon className="w-6 h-6 text-white" />
                     </div>
@@ -108,7 +112,9 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Content */}
-                <h3 className="font-semibold text-base mb-2 px-2">{step.title}</h3>
+                <h3 className="font-semibold text-base mb-2 px-2">
+                  {step.title}
+                </h3>
                 <p className="text-sm text-muted-foreground max-w-[150px] leading-relaxed">
                   {step.description}
                 </p>
@@ -128,10 +134,14 @@ export default function HowItWorks() {
                 {/* Icon */}
                 <div className="relative mb-4">
                   {/* Outer glow */}
-                  <div className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`} />
+                  <div
+                    className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`}
+                  />
 
                   {/* Icon circle */}
-                  <div className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
                       <step.icon className="w-6 h-6 text-white" />
                     </div>
@@ -141,9 +151,7 @@ export default function HowItWorks() {
                 {/* Content */}
                 <div>
                   <h3 className="font-semibold text-lg mb-1">{step.title}</h3>
-                  <p className="text-muted-foreground">
-                    {step.description}
-                  </p>
+                  <p className="text-muted-foreground">{step.description}</p>
                 </div>
 
                 {/* Connection Line (except last item) */}
@@ -157,15 +165,13 @@ export default function HowItWorks() {
 
         {/* Bottom CTA */}
         <div className="mt-20 text-center">
-          <p className="text-lg text-muted-foreground mb-8">
-            That's it! You're ready to write 5x faster.
-          </p>
+          <p className="text-lg text-muted-foreground mb-8">That's it!</p>
           <a
             href="#pricing"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors duration-200 group"
             data-umami-event="how-it-works-cta-click"
           >
-            Save 10+ hours per week
+            Write 5x faster
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

@@ -19,14 +19,9 @@ const faqs = [
       "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs are more optimized for the local ai processing.",
   },
   {
-    question: "What is the roadmap for VoiceTypr?",
+    question: "Is it really lifetime or is there any tricks?",
     answer:
-      "We want to keep VoiceTypr purposely minimal. Instead of chasing an endless list of features, we focus on shaping core feature and shipping bug fixes and quality-of-life improvements.",
-  },
-  {
-    question: "How is VoiceTypr different from others",
-    answer:
-      "VoiceTypr runs entirely on your computer. There are no $XXX/year subscriptions here: you pay once for fast, private, on-device transcription that does one job very well.",
+      "Yes, it's truly lifetime. When you buy VoiceTypr, you get all future updates forever. No tricks to rebuy, no upgrade fees, no hidden costs. We believe in honest pricing.",
   },
   {
     question: "I have a feature request",
@@ -54,7 +49,7 @@ export default function FAQ() {
               value={`item-${index}`}
               className="border border-border/50 rounded-2xl overflow-hidden bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 px-6"
             >
-              <AccordionTrigger 
+              <AccordionTrigger
                 className="text-lg font-medium py-5 hover:no-underline"
                 data-umami-event="faq-toggle"
                 data-umami-event-question={faq.question}
