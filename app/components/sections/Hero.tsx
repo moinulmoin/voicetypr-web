@@ -21,7 +21,7 @@ export default function Hero() {
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
             VoiceTypr is open source AI powered voice to text dictation tool for
-            viber coders and AI power users
+            vibe coders and AI power users
           </p>
           <p className="text-lg font-semibold text-primary mb-10 text-balance">
             Pay once. Use it forever. No subscriptions. No upsells.
