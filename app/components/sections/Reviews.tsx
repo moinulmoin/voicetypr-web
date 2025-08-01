@@ -69,7 +69,7 @@ const testimonials = [
 
 export default function Reviews() {
   return (
-    <section className="relative py-24 overflow-hidden" id="reviews">
+    <section className="relative py-24 overflow-hidden" id="testimonials">
       {/* Section intro */}
       <div className="text-center mb-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-3">

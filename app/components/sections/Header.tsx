@@ -51,10 +51,10 @@ export default function Header() {
               Features
             </a>
             <a
-              href="#reviews"
+              href="#testimonials"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Reviews
+              Testimonials
             </a>
             <a
               href="#pricing"

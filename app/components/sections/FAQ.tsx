@@ -9,6 +9,11 @@ import {
 
 const faqs = [
   {
+    question: "Is my voice data private?",
+    answer:
+      "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer.",
+  },
+  {
     question: "Can I try VoiceTypr for free?",
     answer:
       "Yes! VoiceTypr offers a free trial with 3 days of unlimited transcription. This lets you test all the core features before upgrading to Pro.",
