@@ -36,7 +36,22 @@ export async function POST(request: NextRequest) {
     }
 
     // 2. activate the license
-    const activation = await activateLicenseKey(licenseKey, deviceHash);
+    let activation;
+    try {
+      activation = await activateLicenseKey(licenseKey, deviceHash);
+    } catch (polarError: any) {
+      // Handle specific Polar API errors
+      if (polarError.statusCode === 403) {
+        if (polarError.detail?.includes('activation limit')) {
+          return createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400);
+        }
+      } else if (polarError.statusCode === 404 || polarError.error === 'ResourceNotFound') {
+        // License key not found
+        return createErrorResponse(ErrorCode.INVALID_LICENSE, 400);
+      }
+      // Re-throw other errors to be handled by the outer catch
+      throw polarError;
+    }
 
     // 3. Save to our database (with customer ID and activation ID!)
     await prisma.device.update({

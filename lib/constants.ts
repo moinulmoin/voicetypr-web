@@ -37,6 +37,7 @@ export enum ErrorCode {
   LICENSE_ACTIVATION_FAILED = 'license_activation_failed',
   LICENSE_REVOKED = 'license_revoked',
   LICENSE_DISABLED = 'license_disabled',
+  LICENSE_ACTIVATION_LIMIT_REACHED = 'license_activation_limit_reached',
 }
 
 export const ERROR_MESSAGES: Record<ErrorCode, string> = {
@@ -53,4 +54,5 @@ export const ERROR_MESSAGES: Record<ErrorCode, string> = {
   [ErrorCode.LICENSE_ACTIVATION_FAILED]: 'Failed to activate license.',
   [ErrorCode.LICENSE_REVOKED]: 'License revoked.',
   [ErrorCode.LICENSE_DISABLED]: 'License disabled.',
+  [ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED]: 'This license has already been activated on the maximum number of devices.',
 };
