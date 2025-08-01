@@ -14,6 +14,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { downloadURL, siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
+import { TryForFreeButton } from "@/app/components/TryForFreeButton";
 
 const plans = [
   {
@@ -191,30 +192,28 @@ export default function Pricing() {
               </CardContent>
 
               <CardFooter className="px-6 pb-5 pt-2">
-                <Button
-                  className={`w-full group ${
-                    plan.popular
-                      ? "bg-primary hover:bg-primary/90"
-                      : "bg-card hover:bg-muted"
-                  }`}
-                  variant={plan.popular ? "default" : "outline"}
-                  onClick={
-                    i === 0
-                      ? () => window.open(downloadURL, "_blank")
-                      : plan.onClick
-                  }
-                  data-umami-event={
-                    i === 0
-                      ? "pricing-trial-click"
-                      : plan.name === "Pro"
+                {i === 0 ? (
+                  <TryForFreeButton />
+                ) : (
+                  <Button
+                    className={`w-full group ${
+                      plan.popular
+                        ? "bg-primary hover:bg-primary/90"
+                        : "bg-card hover:bg-muted"
+                    }`}
+                    variant={plan.popular ? "default" : "outline"}
+                    onClick={plan.onClick}
+                    data-umami-event={
+                      plan.name === "Pro"
                         ? "pricing-pro-click"
                         : "pricing-max-click"
-                  }
-                  data-umami-event-plan={plan.name.toLowerCase()}
-                >
-                  {plan.cta}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+                    }
+                    data-umami-event-plan={plan.name.toLowerCase()}
+                  >
+                    {plan.cta}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                )}
               </CardFooter>
             </Card>
           ))}

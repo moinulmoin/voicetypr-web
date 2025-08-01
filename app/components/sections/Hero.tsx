@@ -1,8 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { downloadURL } from "@/lib/utils";
-import { Download } from "lucide-react";
+import { DownloadButton } from "@/app/components/DownloadButton";
 
 export default function Hero() {
   return (
@@ -29,14 +28,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex items-center justify-center gap-4 mb-6">
-            <Button
-              variant="outline"
-              onClick={() => window.open(downloadURL, "_blank")}
-              data-umami-event="hero-download-click"
-            >
-              <Download className="transition-transform group-hover:scale-110" />
-              Download
-            </Button>
+            <DownloadButton />
             <Button
               onClick={() =>
                 document
