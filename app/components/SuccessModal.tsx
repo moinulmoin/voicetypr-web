@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
+import { trackTwitterConversion } from "@/lib/twitter-pixel"
 
 interface SuccessModalProps {
   open: boolean
@@ -23,7 +24,9 @@ export function SuccessModal() {
   useEffect(() => {
     if (checkoutId) {
       setShowModal(true)
-
+      // Track Twitter conversion for purchase
+      // You can pass a value here if you have the purchase amount
+      trackTwitterConversion('purchase')
     }
   }, [searchParams, router])
 

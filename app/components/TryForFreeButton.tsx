@@ -10,6 +10,7 @@ import {
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getLatestReleaseAssets, ReleaseAssets } from "@/app/lib/github";
+import { trackTwitterConversion } from "@/lib/twitter-pixel";
 
 export function TryForFreeButton() {
   const [assets, setAssets] = useState<ReleaseAssets>({});
@@ -20,6 +21,8 @@ export function TryForFreeButton() {
 
   const handleDownload = (url?: string) => {
     if (url) {
+      // Track Twitter conversion for download
+      trackTwitterConversion('download');
       window.open(url, "_blank");
     }
   };
