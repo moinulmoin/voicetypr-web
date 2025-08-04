@@ -30,7 +30,6 @@ export const trackTwitterConversion = (eventType: 'download' | 'purchase', value
       window.twq('event', 'tw-q7p7w-q9s5y', {
         value: value || null,
         conversion_id: eventType,
-        event_id: `${eventType}_${Date.now()}`
       });
     } catch (error) {
       console.error('Twitter pixel tracking error:', error);
