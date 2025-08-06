@@ -51,7 +51,7 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto px-4">
         {/* Section header */}
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground text-center">
             Frequently asked questions
           </h2>
         </div>

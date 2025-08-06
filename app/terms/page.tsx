@@ -3,7 +3,7 @@ export default function TermsPage() {
     <div className="container max-w-4xl mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-8">Terms and Conditions</h1>
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <p className="text-sm text-muted-foreground mb-8">Last Updated: July 18, 2025</p>
+        <p className="text-sm text-muted-foreground mb-8">Last Updated: August 6, 2024</p>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Agreement to Terms</h2>
@@ -15,7 +15,14 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">2. License Grant</h2>
           <p>
-            Ideaplexa LLC grants you a non-exclusive, non-transferable license to use VoiceTypr on one (1) device. Each license key is valid for activation on a single device at a time. You may deactivate and reactivate your license on different devices as needed.
+            Ideaplexa LLC grants you a non-exclusive, non-transferable license to use VoiceTypr. The number of devices you can activate depends on your license tier:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 mt-4">
+            <li><strong>Pro License:</strong> Activation on one (1) device at a time</li>
+            <li><strong>Plus License:</strong> Activation on two (2) devices simultaneously</li>
+          </ul>
+          <p className="mt-4">
+            You may deactivate and reactivate your license on different devices as needed within your license limits.
           </p>
         </section>
 

@@ -14,26 +14,37 @@ const fontSans = Geist({
 
 export const metadata: Metadata = {
   title:
-    "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
+    "VoiceTypr - Voice to Text for ChatGPT, Claude & Cursor | Ship 3x Faster",
   description:
-    "Open source AI voice to text dictation tool, alternative to Wispr Flow, SuperWhisper for viber coders, super AI users in macOS, Windows.",
+    "Stop typing AI prompts. Voice dictation app for developers & solo founders. Works with ChatGPT, Claude, Cursor. One-time purchase, no subscription. Alternative to Dragon, SuperWhisper, Wispr Flow.",
   keywords: [
     "voice to text",
-    "AI dictation",
+    "voice typing",
+    "speech to text",
+    "dictation software",
+    "voice dictation",
+    "ChatGPT voice input",
+    "Claude voice typing",
+    "Cursor voice commands",
+    "AI prompt voice",
+    "developer tools",
+    "Dragon alternative",
     "Wispr Flow alternative",
     "SuperWhisper alternative",
-    "open source",
-    "voice transcription",
-    "viber coders",
-    "macOS",
-    "Windows",
+    "macOS dictation",
+    "Windows dictation",
+    "voice transcription software",
+    "Whisper AI",
+    "offline transcription",
+    "Tauri app",
+    "productivity tools",
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
     title:
-      "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
+      "VoiceTypr - Voice to Text for ChatGPT & AI Tools | Ship 3x Faster",
     description:
-      "Open source AI voice to text dictation tool, alternative to Wispr Flow, SuperWhisper for viber coders, super AI users in macOS, Windows.",
+      "Stop typing AI prompts. Voice dictation for developers & solo founders. Works with ChatGPT, Claude, Cursor. One-time purchase $19 (61% off). No subscription.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -42,17 +53,32 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
+        alt: "VoiceTypr - Voice to Text for AI Power Users",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "VoiceTypr - Write 5x faster with your voice, open source AI voice to text dictation tool",
+      "VoiceTypr - Voice to Text for ChatGPT & AI Tools",
     description:
-      "Open source AI voice to text dictation tool, alternative to Wispr Flow, SuperWhisper for viber coders, super AI users in macOS, Windows",
+      "Stop typing prompts. Ship 3x faster with voice. For developers & solo founders. One-time purchase $19.",
     images: ["/og-image.png"],
+    creator: "@moinulmoin",
+  },
+  alternates: {
+    canonical: "https://voicetypr.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

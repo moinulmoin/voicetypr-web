@@ -85,17 +85,14 @@ export default function Pricing() {
           One-time purchase, lifetime access
         </p>
         <p className="text-sm text-muted-foreground mb-8">
-          Save $101-$180/year vs subscription alternatives
+          Save $180/year vs subscription alternatives
         </p>
 
         {/* Real urgency - limited time discount */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
           <span className="text-sm font-medium">
-            🎉 Launch week special: Up to 70% off with discount codes
+            🎉 Limited Launch Special: Up to 70% off with discount
           </span>
-          <div className="px-2 py-0.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600">
-            <span className="text-xs font-medium text-white">Limited time</span>
-          </div>
         </div>
       </div>
 
@@ -105,7 +102,7 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <Card
               key={plan.name}
-              className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none relative ${
+              className={`bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative ${
                 plan.popular
                   ? "border-primary/50 scale-[1.03] ring-2 ring-primary/20"
                   : "border-border/50 hover:border-border/70"

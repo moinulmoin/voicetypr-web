@@ -27,8 +27,8 @@ const badges = [
 
 export default function TrustBadges() {
   return (
-    <section className="relative py-16">
-      <div className="max-w-4xl mx-auto px-4">
+    <section className="relative py-24">
+      <div className="max-w-5xl mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {badges.map((badge, index) => (
             <div

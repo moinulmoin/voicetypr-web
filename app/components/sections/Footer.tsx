@@ -7,12 +7,15 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="relative">
-      <div className="max-w-4xl mx-auto px-4 py-20">
+      <div className="max-w-5xl mx-auto px-4 py-24">
         {/* Main content */}
         <div className="flex flex-col items-center text-center">
           <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
-          <p className="text-muted-foreground mb-8 max-w-md text-balance">
-            Type with your voice in any app. Fast, private, and works offline.
+          <p className="text-muted-foreground mb-4 max-w-md text-balance">
+            Ship 3x faster with voice. For solo founders & AI power users.
+          </p>
+          <p className="text-sm text-muted-foreground mb-8">
+            Available for macOS (13+) and Windows (10+)
           </p>
 
           {/* Social links */}
@@ -63,18 +66,6 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* Made with love - integrated */}
-          {/* <p className="text-sm text-muted-foreground">
-            Made with <span className="text-red-500">❤️</span> by{" "}
-            <a
-              href="https://moinulmoin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Moinul Moin
-            </a>
-          </p> */}
         </div>
       </div>
     </footer>

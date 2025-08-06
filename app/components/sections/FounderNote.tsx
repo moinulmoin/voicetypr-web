@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react";
 
 export default function FounderNote() {
   return (
-    <section className="relative py-16" id="founder">
+    <section className="relative py-24" id="founder">
       <div className="max-w-3xl mx-auto px-4">
-        <Card className="p-8 bg-card/50 backdrop-blur-sm border-border/50">
+        <Card className="p-8 bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl">
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">A note from the founder</h3>
 

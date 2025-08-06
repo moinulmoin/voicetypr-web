@@ -73,15 +73,15 @@ export default function Reviews() {
       {/* Section intro */}
       <div className="text-center mb-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-3">
-          People started loving VoiceTypr
+          What users are saying
         </h2>
         <p className="text-muted-foreground text-lg">
-          Join us to level up your workflow with VoiceTypr
+          Join thousands shipping faster with voice
         </p>
       </div>
 
       {/* Flexbox Masonry with Centered Last Row */}
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4">
         <div className="flex flex-wrap justify-center gap-6">
           <a
             href={"https://x.com/PaulTheLi/status/1948158710209036387"}

@@ -1,6 +1,7 @@
 export interface ReleaseAssets {
   intel?: string;
   silicon?: string;
+  windows?: string;
 }
 
 export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
@@ -44,9 +45,17 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
       assets.silicon = siliconAsset.browser_download_url;
     }
 
+    // Find Windows installer (.msi or .exe)
+    const windowsAsset = release.assets?.find((asset: any) =>
+      asset.name.includes('x64') && (asset.name.endsWith('.msi') || asset.name.endsWith('.exe'))
+    );
+    if (windowsAsset?.browser_download_url) {
+      assets.windows = windowsAsset.browser_download_url;
+    }
+
     // If no assets found, return fallback
-    if (!assets.intel && !assets.silicon) {
-      console.log('No DMG assets found in latest release. Using fallback URL.');
+    if (!assets.intel && !assets.silicon && !assets.windows) {
+      console.log('No installer assets found in latest release. Using fallback URL.');
       return { silicon: FALLBACK_URL };
     }
 

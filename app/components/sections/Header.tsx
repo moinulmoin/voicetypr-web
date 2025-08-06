@@ -20,11 +20,11 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={cn("fixed left-0 right-0 z-50", isScrolled && "top-4")}>
+    <header className={cn("fixed left-0 right-0 z-50", isScrolled && "top-2")}>
       <div
         className={cn(
-          "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-0 transition-all duration-300",
-          isScrolled ? "" : "",
+          "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-0",
+          isScrolled ? "" : "py-2",
         )}
       >
         <div className="flex items-center justify-between">
@@ -53,8 +53,10 @@ export default function Header() {
             <a
               href="#testimonials"
               className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="nav-click"
+              data-umami-event-section="testimonials"
             >
-              Testimonials
+              Reviews
             </a>
             <a
               href="#pricing"
