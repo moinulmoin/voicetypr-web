@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "Does it work with ChatGPT and Claude?",
     answer:
-      "Yes! Works anywhere you can type - ChatGPT, Claude, VS Code, Slack, Twitter, emails. Just position your cursor and speak. Perfect for long prompts without typing fatigue.",
+      "Yes! Works anywhere you can type - ChatGPT, Claude, VS Code, Slack, X, emails. Just position your cursor and speak. Perfect for long prompts without typing fatigue.",
   },
   {
     question: "Is my voice data private?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "I have a feature request",
     answer:
-      "We'd love to hear it! DM us on Twitter @moinulmoin or email support@voicetypr.com. We review all requests and early users' feedback shapes our product.",
+      "We'd love to hear it! DM us on X @voicetypr or email support@voicetypr.com. We review all requests and early users' feedback shapes our product.",
   },
 ];
 
