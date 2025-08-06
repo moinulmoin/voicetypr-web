@@ -9,29 +9,39 @@ import {
 
 const faqs = [
   {
-    question: "Is my voice data private?",
-    answer:
-      "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer.",
-  },
-  {
     question: "Can I try VoiceTypr for free?",
     answer:
-      "Yes! VoiceTypr offers a free trial with 3 days of unlimited transcription. This lets you test all the core features before upgrading to Pro.",
+      "Yes! VoiceTypr offers a 3-day free trial with unlimited transcription. Test all features before buying. No credit card required.",
   },
   {
-    question: "Will it work on my Intel Mac?",
+    question: "Is it really lifetime or are there tricks?",
     answer:
-      "VoiceTypr works on both Intel and Apple Silicon Macs. However, Apple Silicon Macs are more optimized for the local ai processing.",
+      "It's truly lifetime. Buy once, get all future updates forever. No rebuy tricks, no upgrade fees, no subscriptions. The $19 price is an early bird discount though - will increase after launch week.",
   },
   {
-    question: "Is it really lifetime or is there any tricks?",
+    question: "Does it work with ChatGPT and Claude?",
     answer:
-      "Yes, it's truly lifetime. When you buy VoiceTypr, you get all future updates forever. No tricks to rebuy, no upgrade fees, no hidden costs. Though the price may increase soon after early bird discounts.",
+      "Yes! Works anywhere you can type - ChatGPT, Claude, VS Code, Slack, Twitter, emails. Just position your cursor and speak. Perfect for long prompts without typing fatigue.",
+  },
+  {
+    question: "Is my voice data private?",
+    answer:
+      "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer. No cloud, no servers, 100% offline.",
+  },
+  {
+    question: "Will it work on Windows/Intel Mac?",
+    answer:
+      "Windows version just launched! Works on both Intel and Apple Silicon Macs. Apple Silicon is more optimized for AI processing but Intel works great too.",
+  },
+  {
+    question: "Can I use it on multiple computers?",
+    answer:
+      "Pro plan ($19): 1 device. Plus plan ($29): 2 devices. You can deactivate and reactivate on different machines as needed. No subscription means you actually own your license.",
   },
   {
     question: "I have a feature request",
     answer:
-      "You can mail us or dm us on X for your feature request. We'll review your requests and let you know if that's something we can work on.",
+      "We'd love to hear it! DM us on Twitter @moinulmoin or email support@voicetypr.com. We review all requests and early users' feedback shapes our product.",
   },
 ];
 

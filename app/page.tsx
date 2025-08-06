@@ -6,8 +6,11 @@ import Features from "./components/sections/Features";
 import Footer from "./components/sections/Footer";
 import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
+import TrustBadges from "./components/sections/TrustBadges";
 import HowItWorks from "./components/sections/HowItWorks";
 import Pricing from "./components/sections/Pricing";
+import FounderNote from "./components/sections/FounderNote";
+// import CompetitorComparison from "./components/sections/CompetitorComparison";
 import Reviews from "./components/sections/Reviews";
 
 export default function HomePage() {
@@ -21,6 +24,8 @@ export default function HomePage() {
         <HowItWorks />
         <Reviews />
         <Pricing />
+        <TrustBadges />
+        <FounderNote />
         <FAQ />
         <Footer />
       </div>

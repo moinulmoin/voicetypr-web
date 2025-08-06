@@ -1,7 +1,5 @@
 "use client";
 
-import WindowsWaitlist from "@/app/components/WindowsWaitlist";
-import { useCountdownOffer } from "@/app/hooks/useCountdownOffer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { downloadURL, siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
 import { TryForFreeButton } from "@/app/components/TryForFreeButton";
@@ -20,30 +17,30 @@ const plans = [
   {
     name: "Free Trial",
     price: "$0",
-    description: "Try it for free",
+    description: "Try it risk-free",
     features: [
       "Full app access",
       "3 days unlimited usage",
       "No credit card required",
+      "Mac + Windows",
     ],
-    cta: "Try for free",
+    cta: "Start Free Trial",
     popular: false,
-    originalPrice: null,
-    discount: null,
-    couponCode: null,
     onClick: () => {},
   },
   {
     name: "Pro",
     price: "$19",
-    description: "Perfect for individual use",
-    features: ["1 device", "All features", "Lifetime support"],
+    originalPrice: "$49",
+    description: "For individuals",
+    features: [
+      "1 device activation",
+      "Lifetime access",
+      "All future updates",
+    ],
     cta: "Get Pro",
     popular: true,
-    originalPrice: "$49",
-    discount: "61% OFF",
-    couponCode: "EARLY61",
-    savingsAmount: "$30",
+    discount: "EARLY61",
     onClick: () => {
       window.location.href =
         "/api/v1/checkout?products=" +
@@ -55,14 +52,16 @@ const plans = [
   {
     name: "Plus",
     price: "$29",
-    description: "Great for multi-device users",
-    features: ["2 devices", "All features", "Lifetime support"],
+    originalPrice: "$99",
+    description: "For power users",
+    features: [
+      "2 device activations",
+      "Lifetime access",
+      "All future updates",
+    ],
     cta: "Get Plus",
     popular: false,
-    originalPrice: "$99",
-    discount: "71% OFF",
-    couponCode: "LAUNCH71",
-    savingsAmount: "$70",
+    discount: "LAUNCH71",
     onClick: () => {
       window.location.href =
         siteUrl +
@@ -72,66 +71,41 @@ const plans = [
         process.env.NEXT_PUBLIC_PLUS_COUPON_CODE;
     },
   },
-  {
-    name: "Max",
-    price: "$69",
-    description: "Best for teams & power users",
-    features: ["4 devices", "All features", "Lifetime support"],
-    cta: "Get Max",
-    popular: false,
-    originalPrice: "$199",
-    discount: "65% OFF",
-    couponCode: "MAX65",
-    savingsAmount: "$130",
-    onClick: () => {
-      window.location.href =
-        siteUrl +
-        "/api/v1/checkout?products=" +
-        process.env.NEXT_PUBLIC_MAX_PRODUCT_ID +
-        "&discountId=" +
-        process.env.NEXT_PUBLIC_MAX_COUPON_CODE;
-    },
-  },
 ];
 
 export default function Pricing() {
-  // Use the countdown hook
-  const { timeLeft, offerProgress } = useCountdownOffer(6);
-
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
       <div className="text-center mb-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
-          One-time purchase. Lifetime access.
+          Own it forever. No monthly fees.
         </h2>
         <p className="text-muted-foreground mb-2">
-          No subscriptions. No hidden fees.
+          One-time purchase, lifetime access
         </p>
         <p className="text-sm text-muted-foreground mb-8">
-          Replaces $15/month or $140/year transcription tools
+          Save $101-$180/year vs subscription alternatives
         </p>
 
-        {/* Urgency indicators - time-based */}
-        <div className="max-w-sm mx-auto px-4">
-          <div className="flex items-center justify-between text-sm mb-2">
-            <span className="text-muted-foreground">Limited launch offer</span>
-            <span className="font-medium text-amber-600">{timeLeft}</span>
+        {/* Real urgency - limited time discount */}
+        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
+          <span className="text-sm font-medium">
+            🎉 Launch week special: Up to 70% off with discount codes
+          </span>
+          <div className="px-2 py-0.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600">
+            <span className="text-xs font-medium text-white">Limited time</span>
           </div>
-          <Progress
-            value={offerProgress}
-            className="h-1.5 [&>div]:bg-amber-600"
-          />
         </div>
       </div>
 
       {/* Pricing cards */}
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {plans.map((plan, i) => (
             <Card
               key={plan.name}
-              className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none ${
+              className={`bg-card/50 backdrop-blur-sm rounded-3xl transition-all duration-300 hover:scale-[1.02] shadow-none relative ${
                 plan.popular
                   ? "border-primary/50 scale-[1.03] ring-2 ring-primary/20"
                   : "border-border/50 hover:border-border/70"
@@ -139,9 +113,11 @@ export default function Pricing() {
             >
               {/* Discount badge */}
               {plan.discount && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-primary rounded-full px-3 py-1">
-                  {plan.discount}
-                </Badge>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
+                    <span className="text-xs font-medium text-white">{plan.discount} applied</span>
+                  </div>
+                </div>
               )}
 
               <CardHeader className="text-center pb-1 px-6 pt-6">
@@ -149,7 +125,7 @@ export default function Pricing() {
                   {plan.name}
                 </CardTitle>
 
-                {/* Pricing with discount */}
+                {/* Pricing */}
                 <div className="mt-3">
                   <div className="flex items-baseline justify-center gap-2">
                     {plan.originalPrice && (
@@ -159,21 +135,15 @@ export default function Pricing() {
                     )}
                     <span className="text-4xl font-bold">{plan.price}</span>
                   </div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    {plan.description}
+                  </p>
                   {plan.originalPrice && (
-                    <div className="text-center mt-1">
-                      <span className="text-sm text-green-500 font-medium">
-                        Save {plan.savingsAmount}
+                    <p className="text-xs mt-1 font-semibold">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                        Save ${parseInt(plan.originalPrice.slice(1)) - parseInt(plan.price.slice(1))}
                       </span>
-                    </div>
-                  )}
-                  {/* Coupon code display */}
-                  {plan.couponCode && (
-                    <div className="mt-2 bg-green-500/10 border border-green-500/20 rounded-lg px-3 py-1 inline-flex items-center gap-2">
-                      <span className="text-xs text-green-600">✓</span>
-                      <code className="text-xs font-mono text-green-700 font-bold">
-                        {plan.couponCode}
-                      </code>
-                    </div>
+                    </p>
                   )}
                 </div>
               </CardHeader>
@@ -225,9 +195,6 @@ export default function Pricing() {
             Secure payment • 14 day money back guarantee
           </p>
         </div>
-
-        {/* Windows Waitlist */}
-        <WindowsWaitlist />
       </div>
     </section>
   );
