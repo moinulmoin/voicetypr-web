@@ -14,9 +14,9 @@ const fontSans = Geist({
 
 export const metadata: Metadata = {
   title:
-    "VoiceTypr - Voice to Text for ChatGPT, Claude & Cursor | Ship 3x Faster",
+    "VoiceTypr - Voice to Text Tool for Busy Founders & AI Super Users",
   description:
-    "Stop typing AI prompts. Voice dictation app for developers & solo founders. Works with ChatGPT, Claude, Cursor. One-time purchase, no subscription. Alternative to Dragon, SuperWhisper, Wispr Flow.",
+    "Voice to text tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice dictation. Works with any app including ChatGPT, Claude, Cursor. One-time purchase, no subscription. Alternative to Dragon, SuperWhisper, Wispr Flow.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
     title:
-      "VoiceTypr - Voice to Text for ChatGPT & AI Tools | Ship 3x Faster",
+      "VoiceTypr - Voice to Text Tool for Busy Founders & AI Super Users",
     description:
-      "Stop typing AI prompts. Voice dictation for developers & solo founders. Works with ChatGPT, Claude, Cursor. One-time purchase $19 (61% off). No subscription.",
+      "Voice to text tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice. Works with any app including ChatGPT, Claude, Cursor. One-time purchase $19 (61% off). No subscription.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "VoiceTypr - Voice to Text for ChatGPT & AI Tools",
+      "VoiceTypr - Voice to Text Tool for Busy Founders & AI Super Users",
     description:
-      "Stop typing prompts. Ship 3x faster with voice. For developers & solo founders. One-time purchase $19.",
+      "Voice to text tool for busy founders and AI super users. Stop typing, ship 3x faster. Works with any app. One-time purchase $19.",
     images: ["/og-image.png"],
     creator: "@moinulmoin",
   },

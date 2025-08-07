@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="flex flex-col items-center text-center">
           <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
           <p className="text-muted-foreground mb-4 max-w-md text-balance">
-            Ship 3x faster with voice. For solo founders & AI power users.
+            Ship 3x faster with your voice. Voice to text tool for busy founders & AI super users.
           </p>
           <p className="text-sm text-muted-foreground mb-8">
             Available for macOS (13+) and Windows (10+)

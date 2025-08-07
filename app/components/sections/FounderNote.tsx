@@ -47,11 +47,13 @@ export default function FounderNote() {
 
         {/* CTA after founder note */}
         <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground mb-4">
-            Join the first 100 users shaping the future of voice typing
-          </p>
-          <Button size="lg" onClick={() => (window.location.href = downloadURL)} className="group">
-            Get started
+          <Button 
+            size="lg" 
+            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })} 
+            className="group"
+            data-umami-event="founder-note-cta-click"
+          >
+            Join early users shaping the future of voice typing
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>

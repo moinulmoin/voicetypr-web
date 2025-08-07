@@ -43,6 +43,11 @@ const faqs = [
     answer:
       "We'd love to hear it! DM us on X @voicetypr or email support@voicetypr.com. We review all requests and early users' feedback shapes our product.",
   },
+  {
+    question: "Windows shows 'Unknown Publisher' warning. Is it safe?",
+    answer:
+      "Yes, it's completely safe! To install: click 'More info' then 'Run anyway'. This warning appears because we don't have code signing yet (costs $129-290+/year). The app is open source - you can verify the code yourself on GitHub. Once more users download it, Windows SmartScreen will stop showing this warning automatically.",
+  },
 ];
 
 export default function FAQ() {

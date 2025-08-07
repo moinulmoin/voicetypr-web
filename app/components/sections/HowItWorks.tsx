@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Cpu,
@@ -15,51 +16,44 @@ const steps = [
   {
     id: 1,
     title: "Download & Install",
-    description: "Get VoiceTypr for your Mac",
+    description: "Get VoiceTypr",
     icon: Download,
     gradient: "from-blue-600 to-purple-600",
   },
   {
     id: 2,
-    title: "Grant Permissions",
-    description: "Allow microphone & accessibility access",
-    icon: Shield,
+    title: "Download AI Model",
+    description: "Choose a language model",
+    icon: Cpu,
     gradient: "from-purple-600 to-pink-600",
   },
   {
     id: 3,
-    title: "Download AI Model",
-    description: "Choose your preferred language model",
-    icon: Cpu,
+    title: "Set Your Hotkey",
+    description: "Configure global hotkey",
+    icon: Keyboard,
     gradient: "from-pink-600 to-purple-500",
   },
   {
     id: 4,
-    title: "Set Your Hotkey",
-    description: "Configure your activation shortcut",
-    icon: Keyboard,
+    title: "Position Cursor",
+    description: "Click where you want to type",
+    icon: MousePointer2,
     gradient: "from-purple-500 to-indigo-600",
   },
   {
     id: 5,
-    title: "Position Cursor",
-    description: "Click where you want to type",
-    icon: MousePointer2,
+    title: "Press & Speak",
+    description: "Hit hotkey, speak up",
+    icon: Mic,
     gradient: "from-indigo-600 to-blue-500",
   },
   {
     id: 6,
-    title: "Press & Speak",
-    description: "Hit hotkey and dictate your text",
-    icon: Mic,
-    gradient: "from-blue-500 to-purple-600",
-  },
-  {
-    id: 7,
-    title: "Get Perfect Text",
-    description: "Receive grammatically accurate output",
+    title: "Text Pasted at Cursor",
+    description: "Words appear at your cursor",
     icon: Sparkles,
-    gradient: "from-purple-600 to-blue-600",
+    gradient: "from-blue-500 to-purple-600",
   },
 ];
 
@@ -165,15 +159,15 @@ export default function HowItWorks() {
 
         {/* Bottom CTA */}
         <div className="mt-20 text-center">
-          <p className="text-lg text-muted-foreground mb-8">That's it!</p>
-          <a
-            href="#pricing"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors duration-200 group"
+          <Button
+            size="lg"
+            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+            className="group"
             data-umami-event="how-it-works-cta-click"
           >
-            Write 5x faster with your voice
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </a>
+            That's it! Write 5x faster with your voice
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
         </div>
       </div>
     </section>

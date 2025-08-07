@@ -65,8 +65,8 @@ export default function Features() {
           {/* Use with any app - Wide card */}
           <Card className="md:col-span-2 lg:col-span-3 bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 lg:p-8 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
             <div className="flex flex-col h-full">
-              <h3 className="text-2xl lg:text-3xl font-bold mb-2">Use with any app</h3>
-              <p className="text-base text-muted-foreground mb-6">Works anywhere you can type or paste text.</p>
+              <h3 className="text-2xl lg:text-3xl font-bold mb-2">Works with any app</h3>
+              <p className="text-base text-muted-foreground mb-6">Including ChatGPT, Claude, Cursor & anywhere you can type.</p>
 
               {/* App icons grid */}
               <div className="grid grid-cols-5 gap-3 mt-auto">
@@ -114,7 +114,7 @@ export default function Features() {
 
             {/* Text content */}
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Global Shortcut</h3>
+              <h3 className="text-lg lg:text-xl font-bold mb-2">Global Hotkey</h3>
               <p className="text-sm text-muted-foreground">Activate from any app with a hotkey.</p>
             </div>
             </Card>
@@ -206,6 +206,84 @@ export default function Features() {
             <div>
               <h3 className="text-lg lg:text-xl font-bold mb-2">BYOK Cloud Models</h3>
               <p className="text-sm text-muted-foreground">Use your own API keys. Free tier with rate limits.</p>
+            </div>
+            </Card>
+
+            {/* Clean Recording Status Feature */}
+            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
+            {/* Recording status icon */}
+            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="3" fill="currentColor" />
+            </svg>
+
+            {/* Text content */}
+            <div>
+              <h3 className="text-lg lg:text-xl font-bold mb-2">Clean Recording UI</h3>
+              <p className="text-sm text-muted-foreground">Minimal recording status with clear error feedback.</p>
+            </div>
+            </Card>
+
+            {/* Easy License Management Feature */}
+            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
+            {/* License icon */}
+            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="11" width="18" height="10" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+
+            {/* Text content */}
+            <div>
+              <h3 className="text-lg lg:text-xl font-bold mb-2">Easy License Management</h3>
+              <p className="text-sm text-muted-foreground">Simple activation & deactivation. Switch devices anytime.</p>
+            </div>
+            </Card>
+
+            {/* Upload Audio Feature - Coming Soon */}
+            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none relative overflow-hidden">
+            {/* Coming Soon Badge */}
+            <div className="absolute top-2 right-2 z-10">
+              <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Coming Soon</span>
+            </div>
+            
+            {/* Blur overlay */}
+            <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px] z-[5]" />
+            
+            {/* Upload icon */}
+            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4 relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+
+            {/* Text content */}
+            <div className="relative">
+              <h3 className="text-lg lg:text-xl font-bold mb-2">Upload Audio Files</h3>
+              <p className="text-sm text-muted-foreground">Transcribe existing audio files. Support for all formats.</p>
+            </div>
+            </Card>
+
+            {/* Export Formats Feature - Coming Soon */}
+            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none relative overflow-hidden">
+            {/* Coming Soon Badge */}
+            <div className="absolute top-2 right-2 z-10">
+              <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Coming Soon</span>
+            </div>
+            
+            {/* Blur overlay */}
+            <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px] z-[5]" />
+            
+            {/* Export icon */}
+            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4 relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+
+            {/* Text content */}
+            <div className="relative">
+              <h3 className="text-lg lg:text-xl font-bold mb-2">Export Formats</h3>
+              <p className="text-sm text-muted-foreground">Export as TXT, DOCX, PDF, SRT & more.</p>
             </div>
             </Card>
           </div>

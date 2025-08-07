@@ -44,11 +44,11 @@ export default function Hero() {
               Ship 3x faster
             </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-muted-foreground to-foreground block">
-              with voice
+              with your voice
             </span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
-            For solo founders & AI power users who want to move faster
+            Voice to text tool for busy founders & AI super users
           </p>
           <p className="text-lg font-semibold text-primary mb-10 text-balance">
             Pay once. Use forever. No subscription.
