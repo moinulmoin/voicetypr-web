@@ -14,9 +14,9 @@ const fontSans = Geist({
 
 export const metadata: Metadata = {
   title:
-    "VoiceTypr - Voice to Text Tool for Busy Founders & AI Super Users",
+    "VoiceTypr - AI powered Voice to Text Dictation Tool for Busy Founders & AI Super Users",
   description:
-    "Voice to text tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice dictation. Works with any app including ChatGPT, Claude, Cursor. One-time purchase, no subscription. Alternative to Dragon, SuperWhisper, Wispr Flow.",
+    "AI powered voice to text dictation tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice dictation. Works with any app including ChatGPT, Claude, Cursor. One-time purchase, no subscription. Alternative to Dragon, SuperWhisper, Wispr Flow.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
     title:
-      "VoiceTypr - Voice to Text Tool for Busy Founders & AI Super Users",
+      "VoiceTypr - AI powered Voice to Text Dictation Tool for Busy Founders & AI Super Users",
     description:
-      "Voice to text tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice. Works with any app including ChatGPT, Claude, Cursor. One-time purchase $19 (61% off). No subscription.",
+      "AI powered voice to text dictation tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice. Works with any app including ChatGPT, Claude, Cursor. One-time purchase $19 (61% off). No subscription.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",

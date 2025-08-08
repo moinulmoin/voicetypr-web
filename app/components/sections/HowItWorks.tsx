@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   ArrowRight,
   Cpu,
@@ -161,12 +162,14 @@ export default function HowItWorks() {
         <div className="mt-20 text-center">
           <Button
             size="lg"
-            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
             className="group"
             data-umami-event="how-it-works-cta-click"
+            asChild
           >
-            Write 5x faster now
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <Link href="/download">
+              Write 5x faster now
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </Button>
         </div>
       </div>

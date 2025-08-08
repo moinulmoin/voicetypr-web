@@ -5,6 +5,7 @@ import { GitHub } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Header() {
@@ -43,7 +44,7 @@ export default function Header() {
             )}
           >
             <a
-              href="#features"
+              href="/#features"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="features"
@@ -51,7 +52,7 @@ export default function Header() {
               Features
             </a>
             <a
-              href="#testimonials"
+              href="/#testimonials"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="testimonials"
@@ -59,7 +60,7 @@ export default function Header() {
               Reviews
             </a>
             <a
-              href="#pricing"
+              href="/#pricing"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="pricing"
@@ -67,16 +68,24 @@ export default function Header() {
               Pricing
             </a>
             <a
-              href="#faq"
+              href="/#faq"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="faq"
             >
               FAQ
             </a>
+            <Link
+              href="/download"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="nav-click"
+              data-umami-event-section="download"
+            >
+              Download
+            </Link>
           </nav>
 
-          {/* Right: GitHub Star + Download Button */}
+          {/* Right: GitHub Star + Buy Now Button */}
           <div className="flex items-center gap-3">
             {/* GitHub Star Button */}
             <Button
