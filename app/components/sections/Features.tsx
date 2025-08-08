@@ -2,7 +2,8 @@
 
 import { ClaudeAI, Cursor, Discord, Gemini, Gmail, Linear, Notion, OpenAI, Slack, XformerlyTwitter } from "@/components/icons";
 import { Card } from "@/components/ui/card";
-import { Shield } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Shield, Mic, Keyboard, Zap, Sparkles, History, Layers, Key, Circle, Lock, Upload, Download, Globe, Gauge, FileText } from "lucide-react";
 
 // App icons grid
 const appIcons = [
@@ -21,272 +22,213 @@ const appIcons = [
 export default function Features() {
   return (
     <section className="relative py-24" id="features">
-      {/* Section intro */}
-      <div className="text-center mb-16">
-        <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-3">
-          All you need for Effortless Typing
+      {/* Simple, focused intro */}
+      <div className="text-center mb-16 max-w-3xl mx-auto px-4">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          Turn your voice into text
         </h2>
-        <p className="text-muted-foreground text-lg">
-          Transform your workflow with voice powered productivity.
+        <p className="text-muted-foreground text-xl">
+          Speak naturally. Type anywhere. Stay private.
         </p>
       </div>
 
-      {/* Bento Grid Features */}
-      <div className="max-w-6xl mx-auto px-4">
+      {/* Single unified grid - no separate sections */}
+      <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-min">
 
-          {/* Left Hero: 100+ Languages */}
-          <Card className="md:col-span-2 lg:col-span-3 bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 lg:p-8 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none flex flex-col">
-            {/* Language grid at top */}
-            <div className="space-y-2 mb-8">
-              <div className="grid grid-cols-5 gap-2">
-                {["EN", "ES", "FR", "DE", "IT"].map((lang, index) => (
-                  <div key={index} className="flex items-center justify-center h-10 rounded-lg bg-muted/20 text-sm font-medium text-muted-foreground/60 transition-all duration-300 group-hover:bg-muted/30 group-hover:text-muted-foreground/80">
+          {/* Hero Feature 1: Universal Language Support - spans 3 columns */}
+          <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-card to-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              <Globe className="w-14 h-14 text-blue-500 mb-6" />
+              
+              {/* Language grid */}
+              <div className="grid grid-cols-5 gap-2 mb-6">
+                {["EN", "中文", "ES", "عربي", "हिंदी", "FR", "日本", "DE", "한국", "IT"].map((lang, index) => (
+                  <div key={index} className="flex items-center justify-center h-10 rounded-lg bg-muted/30 text-sm font-medium text-muted-foreground/80 transition-all duration-300 hover:bg-primary/20 hover:text-primary">
                     {lang}
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-5 gap-2">
-                {["中文", "日本", "한국", "عربي", "हिंदी"].map((lang, index) => (
-                  <div key={index} className="flex items-center justify-center h-10 rounded-lg bg-muted/20 text-sm font-medium text-muted-foreground/60 transition-all duration-300 group-hover:bg-muted/30 group-hover:text-muted-foreground/80">
-                    {lang}
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Text content */}
-            <div className="mt-auto">
-              <h3 className="text-3xl lg:text-4xl font-bold mb-2">100+ Languages</h3>
-              <p className="text-base lg:text-lg text-muted-foreground">Speak in your language.</p>
+              <h3 className="text-2xl lg:text-3xl font-bold mb-3">100+ Languages</h3>
+              <p className="text-muted-foreground">
+                Speak in any language. It just works.
+              </p>
             </div>
           </Card>
 
-          {/* Use with any app - Wide card */}
-          <Card className="md:col-span-2 lg:col-span-3 bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 lg:p-8 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            <div className="flex flex-col h-full">
-              <h3 className="text-2xl lg:text-3xl font-bold mb-2">Works with any app</h3>
-              <p className="text-base text-muted-foreground mb-6">Including ChatGPT, Claude, Cursor & anywhere you can type.</p>
+          {/* Hero Feature 2: Works Everywhere - spans 3 columns */}
+          <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-card to-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              <Zap className="w-14 h-14 text-yellow-500 mb-6" />
+              
+              <h3 className="text-2xl lg:text-3xl font-bold mb-3">Works Everywhere</h3>
+              <p className="text-muted-foreground mb-6">
+                Type in any app using your voice. Email, chat, code - anywhere.
+              </p>
 
-              {/* App icons grid */}
-              <div className="grid grid-cols-5 gap-3 mt-auto">
+              {/* App icons */}
+              <div className="grid grid-cols-5 gap-3">
                 {appIcons.map(({ icon: Icon }, index) => (
-                  <div key={index} className="flex flex-col items-center justify-center p-3 rounded-lg bg-muted/10 transition-all duration-300 group-hover:bg-muted/20">
-                    <Icon className="w-6 h-6 group-hover:text-muted-foreground/60" />
+                  <div key={index} className="flex items-center justify-center p-3 rounded-lg bg-muted/20 transition-all duration-300 hover:bg-primary/20">
+                    <Icon className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
                   </div>
                 ))}
               </div>
             </div>
           </Card>
 
-          {/* Bottom row features - 2x2 grid on medium, 4 columns on large */}
-          <div className="md:col-span-4 lg:col-span-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Accurate Transcription Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* Microphone visual */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-              <line x1="12" x2="12" y1="19" y2="22" />
-            </svg>
-
-            {/* Text content */}
+          {/* Core Features - Medium sized cards */}
+          
+          {/* AI Enhancement */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Sparkles className="w-10 h-10 text-purple-500 mb-4" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Accurate Transcription</h3>
-              <p className="text-sm text-muted-foreground">AI powered speech recognition with solid accuracy.</p>
+              <h3 className="text-xl font-bold mb-2">Smart Formatting</h3>
+              <p className="text-sm text-muted-foreground">
+                5 modes to polish your text. From casual chat to formal documents.
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Global Shortcut Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* Keyboard visual */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect width="20" height="16" x="2" y="4" rx="2" />
-              <path d="M6 8h.01" />
-              <path d="M10 8h.01" />
-              <path d="M14 8h.01" />
-              <path d="M18 8h.01" />
-              <path d="M8 12h.01" />
-              <path d="M12 12h.01" />
-              <path d="M16 12h.01" />
-              <path d="M7 16h10" />
-            </svg>
-
-            {/* Text content */}
+          {/* Accurate Transcription */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Mic className="w-10 h-10 text-blue-500 mb-4" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Global Hotkey</h3>
-              <p className="text-sm text-muted-foreground">Activate from any app with a hotkey.</p>
+              <h3 className="text-xl font-bold mb-2">99% Accurate</h3>
+              <p className="text-sm text-muted-foreground">
+                Advanced AI that understands what you say.
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Private & Secure Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* Shield visual */}
-            <Shield className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" />
-
-            {/* Text content */}
+          {/* Private & Secure */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Shield className="w-10 h-10 text-green-500 mb-4" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Private & Secure</h3>
-              <p className="text-sm text-muted-foreground">Everything stays on your device. No data leaves your computer.</p>
+              <h3 className="text-xl font-bold mb-2">100% Private</h3>
+              <p className="text-sm text-muted-foreground">
+                Runs locally. Your voice never leaves your computer.
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Native Performance Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* Lightning bolt visual */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-
-            {/* Text content */}
+          {/* Smaller feature cards */}
+          
+          {/* Global Hotkey */}
+          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
+            <Keyboard className="w-8 h-8 text-cyan-500 mb-3" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Native Performance</h3>
-              <p className="text-sm text-muted-foreground">Lightweight app. Fast and reliable.</p>
+              <h4 className="text-base font-semibold mb-2">Global Hotkey</h4>
+              <p className="text-xs text-muted-foreground">
+                Press. Speak. Done.
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* AI Enhancement Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* AI icon */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-
-            {/* Text content */}
+          {/* Native Performance */}
+          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
+            <Gauge className="w-8 h-8 text-yellow-500 mb-3" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">AI Enhancement</h3>
-              <p className="text-sm text-muted-foreground">Transform speech to polished text. 5 smart writing modes.</p>
+              <h4 className="text-base font-semibold mb-2">Lightning Fast</h4>
+              <p className="text-xs text-muted-foreground">
+                Native app, instant response
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Transcription History Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* History icon */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 3v5h5" />
-              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-              <path d="M21 21v-5h-5" />
-              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-              <path d="M12 8v4l2 2" />
-            </svg>
-
-            {/* Text content */}
+          {/* History */}
+          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
+            <History className="w-8 h-8 text-blue-500 mb-3" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Transcription History</h3>
-              <p className="text-sm text-muted-foreground">Search & manage all recordings. Never lose your ideas.</p>
+              <h4 className="text-base font-semibold mb-2">Smart History</h4>
+              <p className="text-xs text-muted-foreground">
+                Find anything you said
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Multiple Models Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* Layers icon for models */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
-              <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
-              <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
-            </svg>
-
-            {/* Text content */}
+          {/* Multiple Models */}
+          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
+            <Layers className="w-8 h-8 text-indigo-500 mb-3" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Multiple Models</h3>
-              <p className="text-sm text-muted-foreground">Choose from small to large. Balance speed & accuracy.</p>
+              <h4 className="text-base font-semibold mb-2">Multiple Models</h4>
+              <p className="text-xs text-muted-foreground">
+                Fast or accurate. You pick.
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* BYOK Cloud Models Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* Key icon */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="7.5" cy="15.5" r="5.5" />
-              <path d="m21 2-9.6 9.6" />
-              <path d="m15.5 7.5 3 3L22 7l-3-3" />
-            </svg>
-
-            {/* Text content */}
+          {/* BYOK */}
+          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
+            <Key className="w-8 h-8 text-orange-500 mb-3" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">BYOK Cloud Models</h3>
-              <p className="text-sm text-muted-foreground">Use your own API keys. Free tier with rate limits.</p>
+              <h4 className="text-base font-semibold mb-2">BYOK Cloud</h4>
+              <p className="text-xs text-muted-foreground">
+                Use your own API keys
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Clean Recording Status Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* Recording status icon */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-            </svg>
-
-            {/* Text content */}
+          {/* Clean UI */}
+          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
+            <Circle className="w-8 h-8 text-teal-500 mb-3" />
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Clean Recording UI</h3>
-              <p className="text-sm text-muted-foreground">Minimal recording status with clear error feedback.</p>
+              <h4 className="text-base font-semibold mb-2">Clean UI</h4>
+              <p className="text-xs text-muted-foreground">
+                Minimal, stays out of way
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Easy License Management Feature */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none">
-            {/* License icon */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="3" y="11" width="18" height="10" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-
-            {/* Text content */}
+          {/* Coming Soon Features - subtle integration */}
+          
+          {/* Upload Audio - Coming Soon */}
+          <Card className="md:col-span-2 bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group relative">
+            <div className="flex items-start justify-between mb-4">
+              <Upload className="w-10 h-10 text-slate-500" />
+              <Badge variant="outline" className="text-xs border-muted-foreground/20 text-muted-foreground/60">
+                Soon
+              </Badge>
+            </div>
             <div>
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Easy License Management</h3>
-              <p className="text-sm text-muted-foreground">Simple activation & deactivation. Switch devices anytime.</p>
+              <h3 className="text-xl font-bold mb-2 text-foreground/80">Upload Audio</h3>
+              <p className="text-sm text-muted-foreground/80">
+                Transcribe any audio file.
+              </p>
             </div>
-            </Card>
+          </Card>
 
-            {/* Upload Audio Feature - Coming Soon */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none relative overflow-hidden">
-            {/* Coming Soon Badge */}
-            <div className="absolute top-2 right-2 z-10">
-              <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Coming Soon</span>
+          {/* Export Formats - Coming Soon */}
+          <Card className="md:col-span-2 bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group relative">
+            <div className="flex items-start justify-between mb-4">
+              <FileText className="w-10 h-10 text-slate-500" />
+              <Badge variant="outline" className="text-xs border-muted-foreground/20 text-muted-foreground/60">
+                Soon
+              </Badge>
             </div>
-            
-            {/* Blur overlay */}
-            <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px] z-[5]" />
-            
-            {/* Upload icon */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4 relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="17 8 12 3 7 8" />
-              <line x1="12" y1="3" x2="12" y2="15" />
-            </svg>
-
-            {/* Text content */}
-            <div className="relative">
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Upload Audio Files</h3>
-              <p className="text-sm text-muted-foreground">Transcribe existing audio files. Support for all formats.</p>
+            <div>
+              <h3 className="text-xl font-bold mb-2 text-foreground/80">Export Options</h3>
+              <p className="text-sm text-muted-foreground/80">
+                Save as TXT, PDF, DOCX.
+              </p>
             </div>
-            </Card>
-
-            {/* Export Formats Feature - Coming Soon */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:bg-card/70 hover:border-border/70 hover:shadow-lg hover:scale-[1.02] cursor-pointer group shadow-none relative overflow-hidden">
-            {/* Coming Soon Badge */}
-            <div className="absolute top-2 right-2 z-10">
-              <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Coming Soon</span>
+          </Card>
+          
+          {/* License Management - moved here to balance the grid */}
+          <Card className="md:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Lock className="w-10 h-10 text-pink-500 mb-4" />
+            <div>
+              <h3 className="text-xl font-bold mb-2">Easy Licensing</h3>
+              <p className="text-sm text-muted-foreground">
+                Use on multiple devices. Switch anytime.
+              </p>
             </div>
-            
-            {/* Blur overlay */}
-            <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px] z-[5]" />
-            
-            {/* Export icon */}
-            <svg className="w-12 h-12 text-muted-foreground/20 transition-all duration-300 group-hover:text-muted-foreground/30 group-hover:scale-110 mb-4 relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-
-            {/* Text content */}
-            <div className="relative">
-              <h3 className="text-lg lg:text-xl font-bold mb-2">Export Formats</h3>
-              <p className="text-sm text-muted-foreground">Export as TXT, DOCX, PDF, SRT & more.</p>
-            </div>
-            </Card>
-          </div>
+          </Card>
 
         </div>
       </div>
