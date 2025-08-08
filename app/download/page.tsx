@@ -230,7 +230,7 @@ export default function DownloadPage() {
                   ) : (
                     <>
                       <Download className="w-4 h-4 mr-2 group-hover/btn:translate-y-0.5 transition-transform" />
-                      Download for {selectedOption.platform === 'windows' ? 'Windows' : 'macOS'}
+                      Download for {selectedOption?.platform === 'windows' ? 'Windows' : 'macOS'}
                     </>
                   )}
                 </Button>
