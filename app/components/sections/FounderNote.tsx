@@ -53,8 +53,8 @@ export default function FounderNote() {
             className="group"
             data-umami-event="founder-note-cta-click"
           >
-            Join early users shaping the future of voice typing
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Join early users now
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
       </div>

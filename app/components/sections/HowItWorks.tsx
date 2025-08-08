@@ -165,8 +165,8 @@ export default function HowItWorks() {
             className="group"
             data-umami-event="how-it-works-cta-click"
           >
-            That's it! Write 5x faster with your voice
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Write 5x faster now
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
       </div>
