@@ -89,6 +89,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth dark">
+      {/* Google Ads tracking (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-17417755056"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="google-ads-gtag"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17417755056');
+          `,
+        }}
+      />
+      {/* End Google Ads tracking */}
       <body className={`${fontSans.variable} font-sans antialiased `}>
         {/* Google Tag Manager (noscript) */}
         <noscript dangerouslySetInnerHTML={{
