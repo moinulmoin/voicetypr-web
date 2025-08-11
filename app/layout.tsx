@@ -14,9 +14,9 @@ const fontSans = Geist({
 
 export const metadata: Metadata = {
   title:
-    "VoiceTypr - AI powered Voice to Text Dictation Tool for Busy Founders & AI Super Users",
+    "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
   description:
-    "AI powered voice to text dictation tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice dictation. Works with any app including ChatGPT, Claude, Cursor. One-time purchase, no subscription. Alternative to Dragon, SuperWhisper, Wispr Flow.",
+    "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
     title:
-      "VoiceTypr - AI powered Voice to Text Dictation Tool for Busy Founders & AI Super Users",
+      "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
     description:
-      "AI powered voice to text dictation tool for busy founders and AI super users. Stop typing prompts, ship 3x faster with voice. Works with any app including ChatGPT, Claude, Cursor. One-time purchase $19 (61% off). No subscription.",
+      "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "VoiceTypr - Voice to Text Tool for Busy Founders & AI Super Users",
+      "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
     description:
-      "Voice to text tool for busy founders and AI super users. Stop typing, ship 3x faster. Works with any app. One-time purchase $19.",
+      "Stop typing, start speaking. VoiceTypr turns voice to text instantly in any app. Perfect for AI Users. $19 one-time (61% off).",
     images: ["/og-image.png"],
     creator: "@moinulmoin",
   },
@@ -107,6 +107,108 @@ export default function RootLayout({
         }}
       />
       {/* End Google Ads tracking */}
+      
+      {/* JSON-LD Structured Data */}
+      <Script
+        id="json-ld-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "SoftwareApplication",
+                "@id": "https://voicetypr.com/#software",
+                "name": "VoiceTypr",
+                "description": "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. Works everywhere.",
+                "applicationCategory": "ProductivityApplication",
+                "operatingSystem": ["macOS 13.0+", "Windows 10+"],
+                "downloadUrl": "https://voicetypr.com/download",
+                "offers": [
+                  {
+                    "@type": "Offer",
+                    "name": "Pro Plan - Launch Special",
+                    "price": "19.00",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "description": "1 device activation - Lifetime license - Launch Special 61% off",
+                    "seller": {
+                      "@id": "https://voicetypr.com/#organization"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Plus Plan - Launch Special",
+                    "price": "29.00",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "description": "2 device activations - Lifetime license - Launch Special 70% off",
+                    "seller": {
+                      "@id": "https://voicetypr.com/#organization"
+                    }
+                  }
+                ],
+                "featureList": [
+                  "100+ Languages Support",
+                  "High Accuracy",
+                  "Works with Any Application (ChatGPT, Claude, Cursor, VS Code)",
+                  "100% Private - Offline Processing",
+                  "Global Hotkey Support",
+                  "Smart Formatting",
+                  "Audio File Transcription",
+                  "3-Day Free Trial",
+                  "Lifetime Updates"
+                ],
+                "screenshot": "https://voicetypr.com/og-image.png",
+                "author": {
+                  "@type": "Person",
+                  "name": "Moinul Moin",
+                  "url": "https://twitter.com/moinulmoin"
+                }
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://voicetypr.com/#organization",
+                "name": "VoiceTypr",
+                "url": "https://voicetypr.com",
+                "logo": "https://voicetypr.com/logo.png",
+                "sameAs": [
+                  "https://twitter.com/moinulmoin"
+                ],
+                "founder": {
+                  "@type": "Person",
+                  "name": "Moinul Moin"
+                }
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://voicetypr.com/#website",
+                "url": "https://voicetypr.com",
+                "name": "VoiceTypr",
+                "description": "Voice to Text tool for Busy Founders and AI Power Users",
+                "publisher": {
+                  "@id": "https://voicetypr.com/#organization"
+                }
+              },
+              {
+                "@type": "WebPage",
+                "@id": "https://voicetypr.com/#webpage",
+                "url": "https://voicetypr.com",
+                "name": "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
+                "isPartOf": {
+                  "@id": "https://voicetypr.com/#website"
+                },
+                "about": {
+                  "@id": "https://voicetypr.com/#software"
+                },
+                "description": "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor."
+              }
+            ]
+          })
+        }}
+      />
+      {/* End JSON-LD Structured Data */}
+      
       <body className={`${fontSans.variable} font-sans antialiased `}>
         {/* Google Tag Manager (noscript) */}
         <noscript dangerouslySetInnerHTML={{
