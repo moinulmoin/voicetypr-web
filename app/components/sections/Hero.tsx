@@ -101,44 +101,36 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Video Demo Placeholder */}
+          {/* Video Demo */}
           <div className="mb-12">
             <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 max-w-3xl mx-auto">
-              <div className="aspect-video bg-muted/20 rounded-lg flex items-center justify-center relative overflow-hidden">
-                {/* Video placeholder background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
-
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "0px",
-                    paddingBottom: "56.250%",
-                  }}
+              <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg relative overflow-hidden">
+                <video
+                  className="absolute inset-0 w-full h-full object-contain"
+                  controls
+                  playsInline
+                  preload="none"
+                  poster="https://assets.voicetypr.com/voicetypr-poster.jpg"
+                  aria-label="VoiceTypr Demo Video - Shows voice-to-text functionality"
                 >
-                  <iframe
-                    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    height="100%"
-                    src="https://streamable.com/e/ok9zc6?"
-                    width="100%"
-                    loading="lazy"
-                    title="VoiceTypr Demo Video"
-                    style={{
-                      border: "none",
-                      width: "100%",
-                      height: "100%",
-                      position: "absolute",
-                      left: "0px",
-                      top: "0px",
-                      overflow: "hidden",
-                    }}
-                  ></iframe>
-                </div>
-
-                {/* Video placeholder grid pattern */}
-                {/* <div className="absolute inset-0 opacity-10">
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
-                </div> */}
+                  <source 
+                    src="https://assets.voicetypr.com/voicetypr-better-voice.mp4" 
+                    type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" 
+                  />
+                  <source 
+                    src="https://assets.voicetypr.com/voicetypr-better-voice.webm" 
+                    type="video/webm; codecs=vp9,opus" 
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-center p-8">
+                    <div>
+                      <p className="text-lg font-semibold mb-2">Video Demo Unavailable</p>
+                      <p className="text-muted-foreground mb-4">Your browser doesn't support video playback. VoiceTypr transforms voice input into text for any application.</p>
+                      <Button variant="outline" asChild>
+                        <Link href="/download">Download VoiceTypr</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </video>
               </div>
             </div>
           </div>

@@ -80,6 +80,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    'preconnect': 'https://assets.voicetypr.com',
+    'dns-prefetch': 'https://assets.voicetypr.com',
+  },
 };
 
 export default function RootLayout({
@@ -89,6 +93,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth dark">
+      <head>
+        <link rel="preconnect" href="https://assets.voicetypr.com" />
+        <link rel="dns-prefetch" href="https://assets.voicetypr.com" />
+      </head>
       {/* Google Ads tracking (gtag.js) */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=AW-17417755056"
