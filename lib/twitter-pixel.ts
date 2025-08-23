@@ -2,6 +2,7 @@
 declare global {
   interface Window {
     twq: (action: string, eventId: string, params?: Record<string, unknown>) => void;
+    rdt: (action: string, event: string, params?: Record<string, unknown>) => void;
     dataLayer: Array<Record<string, unknown>>;
   }
 }
@@ -39,3 +40,4 @@ export const trackTwitterConversion = (eventType: 'download' | 'purchase', value
   // Also push to GTM
   trackGTMEvent(eventType, value);
 };
+

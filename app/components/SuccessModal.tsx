@@ -9,6 +9,14 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { trackTwitterConversion } from "@/lib/twitter-pixel"
 
+declare global {
+  interface Window {
+    umami?: {
+      track: (event: string, data?: Record<string, any>) => void;
+    };
+  }
+}
+
 interface SuccessModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -23,12 +31,52 @@ export function SuccessModal() {
 
   useEffect(() => {
     if (checkoutId) {
-      setShowModal(true)
-      // Track Twitter conversion for purchase
-      // You can pass a value here if you have the purchase amount
-      trackTwitterConversion('purchase')
+      // Fetch checkout data and track purchase
+      const trackPurchase = async () => {
+        try {
+          const response = await fetch(`/api/v1/checkout/${checkoutId}`)
+          
+          if (!response.ok) {
+            console.error('Failed to fetch checkout data')
+            return
+          }
+          
+          const data = await response.json()
+          
+          // Only show modal if we got valid data
+          if (data.total_amount !== undefined) {
+            setShowModal(true)
+            
+            const amount = data.total_amount / 100 // Convert cents to dollars
+            
+            // Track in Umami
+            if (window.umami) {
+              window.umami.track('purchase', { 
+                value: amount,
+                currency: data.currency || 'USD'
+              });
+            }
+            
+            // Track in Reddit Pixel
+            if ((window as any).rdt) {
+              (window as any).rdt('track', 'Purchase', { 
+                value: amount,
+                currency: data.currency || 'USD'
+              });
+            }
+            
+            // Track Twitter conversion with amount
+            trackTwitterConversion('purchase', amount)
+          }
+        } catch (error) {
+          console.error('Failed to track purchase:', error)
+          // Don't show modal if API failed
+        }
+      }
+      
+      trackPurchase()
     }
-  }, [searchParams, router])
+  }, [checkoutId])
 
   useEffect(() => {
     return () => {
