@@ -44,29 +44,35 @@ export function SuccessModal() {
           const data = await response.json()
           
           // Only show modal if we got valid data
-          if (data.total_amount !== undefined) {
+          if (typeof data.total_amount === 'number' && 
+              data.total_amount > 0 && 
+              typeof data.currency === 'string' && 
+              data.currency.length === 3) {
             setShowModal(true)
             
             const amount = data.total_amount / 100 // Convert cents to dollars
             
-            // Track in Umami
-            if (window.umami) {
-              window.umami.track('purchase', { 
-                value: amount,
-                currency: data.currency || 'USD'
-              });
+            // Only track purchases with valid amounts > 0
+            if (amount > 0 && data.currency) {
+              // Track in Umami
+              if (window.umami) {
+                window.umami.track('purchase', { 
+                  value: amount,
+                  currency: data.currency
+                });
+              }
+              
+              // Track in Reddit Pixel - only with valid amount and currency
+              if ((window as any).rdt) {
+                (window as any).rdt('track', 'Purchase', { 
+                  value: amount,
+                  currency: data.currency
+                });
+              }
+              
+              // Track Twitter conversion with amount
+              trackTwitterConversion('purchase', amount)
             }
-            
-            // Track in Reddit Pixel
-            if ((window as any).rdt) {
-              (window as any).rdt('track', 'Purchase', { 
-                value: amount,
-                currency: data.currency || 'USD'
-              });
-            }
-            
-            // Track Twitter conversion with amount
-            trackTwitterConversion('purchase', amount)
           }
         } catch (error) {
           console.error('Failed to track purchase:', error)
