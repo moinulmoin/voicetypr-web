@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="flex flex-col items-center text-center">
           <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
           <p className="text-muted-foreground mb-4 max-w-md text-balance">
-            Ship 3x faster with your voice. Voice to text tool for busy founders & AI super users.
+            AI powered voice to text tool for busy founders & AI super users.
           </p>
           <p className="text-sm text-muted-foreground mb-8">
             Available for macOS (13+) and Windows (10+)
@@ -58,14 +58,23 @@ export default function Footer() {
             {/* <a href="/changelog" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event="footer-link-click" data-umami-event-page="changelog">
               Changelog
             </a> */}
-            <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event="footer-link-click" data-umami-event-page="privacy">
+            <Link
+              href="/privacy"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="footer-link-click"
+              data-umami-event-page="privacy"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event="footer-link-click" data-umami-event-page="terms">
+            <Link
+              href="/terms"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="footer-link-click"
+              data-umami-event-page="terms"
+            >
               Terms & Conditions
             </Link>
           </div>
-
         </div>
       </div>
     </footer>

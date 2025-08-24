@@ -14,15 +14,22 @@ const fontSans = Geist({
 
 export const metadata: Metadata = {
   title:
-    "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
+    "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
   description:
-    "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
+    "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
   keywords: [
     "voice to text",
     "voice typing",
     "speech to text",
     "dictation software",
     "voice dictation",
+    "best voice dictation",
+    "superwhisper alternative",
+    "superwhisper alternative for macos",
+    "superwhisper alternative for windows",
+    "wispr flow alternative",
+    "wispr flow alternative for macos",
+    "wispr flow alternative for windows",
     "ChatGPT voice input",
     "Claude voice typing",
     "Cursor voice commands",
@@ -33,6 +40,8 @@ export const metadata: Metadata = {
     "SuperWhisper alternative",
     "macOS dictation",
     "Windows dictation",
+    "voice to text for macOS",
+    "voice to text for Windows",
     "voice transcription software",
     "Whisper AI",
     "offline transcription",
@@ -42,9 +51,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
     title:
-      "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
+      "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
     description:
-      "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
+      "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -60,7 +69,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
+      "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
     description:
       "Stop typing, start speaking. VoiceTypr turns voice to text instantly in any app. Perfect for AI Users. $19 one-time (61% off).",
     images: ["/og-image.png"],
@@ -193,7 +202,7 @@ export default function RootLayout({
                 "@id": "https://voicetypr.com/#website",
                 "url": "https://voicetypr.com",
                 "name": "VoiceTypr",
-                "description": "Voice to Text tool for Busy Founders and AI Power Users",
+                "description": "AI Powered Voice to Text tool for Busy Founders and AI Power Users",
                 "publisher": {
                   "@id": "https://voicetypr.com/#organization"
                 }
@@ -202,14 +211,52 @@ export default function RootLayout({
                 "@type": "WebPage",
                 "@id": "https://voicetypr.com/#webpage",
                 "url": "https://voicetypr.com",
-                "name": "VoiceTypr - Voice to Text tool for Busy Founders and AI Power Users",
+                "name": "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
                 "isPartOf": {
                   "@id": "https://voicetypr.com/#website"
                 },
                 "about": {
                   "@id": "https://voicetypr.com/#software"
                 },
-                "description": "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor."
+                "description": "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor."
+              },
+              {
+                "@type": "FAQPage",
+                "@id": "https://voicetypr.com/#faq",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Can I try VoiceTypr for free?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes! VoiceTypr offers a 3-day free trial with unlimited transcription. Test all features before buying. No credit card required."
+                    }
+                  },
+                  {
+                    "@type": "Question", 
+                    "name": "Does it work with ChatGPT, Claude, and Cursor?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes! Works anywhere you can type - ChatGPT, Claude, Cursor, VS Code, Slack, X, emails. Just position your cursor and start voice typing. Perfect for long prompts without typing fatigue."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Is my voice data private?", 
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer. No cloud, no servers, 100% offline."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Will it work on Windows/Intel Mac?",
+                    "acceptedAnswer": {
+                      "@type": "Answer", 
+                      "text": "Windows version just launched! Works on both Intel and Apple Silicon Macs. Apple Silicon is more optimized for AI processing but Intel works great too."
+                    }
+                  }
+                ]
               }
             ]
           })

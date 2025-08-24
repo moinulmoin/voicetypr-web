@@ -91,7 +91,7 @@ export default function Reviews() {
           >
             <Image
               src={Tweet1}
-              alt="Tweet 1"
+              alt="Customer review tweet praising VoiceTypr voice to text accuracy and speed"
               width={432}
               height={164}
               className="rounded-2xl"

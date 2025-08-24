@@ -31,7 +31,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Left: VoiceTypr Brand */}
           <div className="">
-            <Image src={logo} alt="VoiceTypr" width={50} height={50} />
+            <Image src={logo} alt="VoiceTypr logo - AI voice to text software" width={50} height={50} />
           </div>
 
           {/* Middle: Navigation Links */}

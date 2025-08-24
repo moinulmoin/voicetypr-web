@@ -19,9 +19,9 @@ const faqs = [
       "It's truly lifetime. Buy once, get all future updates forever. No rebuy tricks, no upgrade fees, no subscriptions. The $19 price is an early bird discount though - will increase after launch week.",
   },
   {
-    question: "Does it work with ChatGPT and Claude?",
+    question: "Does it work with ChatGPT, Claude, and Cursor?",
     answer:
-      "Yes! Works anywhere you can type - ChatGPT, Claude, VS Code, Slack, X, emails. Just position your cursor and speak. Perfect for long prompts without typing fatigue.",
+      "Yes! Works anywhere you can type - ChatGPT, Claude, Cursor, VS Code, Slack, X, emails. Just position your cursor and start voice typing. Perfect for long prompts without typing fatigue.",
   },
   {
     question: "Is my voice data private?",

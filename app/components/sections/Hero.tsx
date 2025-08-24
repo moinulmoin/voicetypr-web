@@ -48,7 +48,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
-            Voice to text tool for busy founders & AI super users
+            AI powered voice to text tool for busy founders & AI super users
           </p>
           <p className="text-lg font-semibold text-primary mb-10 text-balance">
             Pay once. Use forever. No subscription.
