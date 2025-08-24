@@ -110,16 +110,11 @@ export default function Hero() {
                   controls
                   playsInline
                   preload="none"
-                  poster="https://assets.voicetypr.com/voicetypr-poster.jpg"
                   aria-label="VoiceTypr Demo Video - Shows voice-to-text functionality"
                 >
                   <source 
                     src="https://assets.voicetypr.com/voicetypr-better-voice.mp4" 
                     type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" 
-                  />
-                  <source 
-                    src="https://assets.voicetypr.com/voicetypr-better-voice.webm" 
-                    type="video/webm; codecs=vp9,opus" 
                   />
                   <div className="absolute inset-0 flex items-center justify-center text-center p-8">
                     <div>
