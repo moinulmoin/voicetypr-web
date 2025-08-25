@@ -224,6 +224,8 @@ export default function DownloadPageClient() {
                   disabled={isLoading}
                   className="group/btn"
                   size="lg"
+                  data-umami-event="download-click"
+                  data-umami-event-platform={selectedOption?.platform}
                 >
                   {isLoading ? (
                     "Loading..."
@@ -387,6 +389,8 @@ export default function DownloadPageClient() {
                           "&discountId=" +
                           process.env.NEXT_PUBLIC_PRO_COUPON_CODE;
                       }}
+                      data-umami-event="download-page-pro-click"
+                      data-umami-event-plan="pro"
                     >
                       Get Pro
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -446,6 +450,8 @@ export default function DownloadPageClient() {
                           "&discountId=" +
                           process.env.NEXT_PUBLIC_PLUS_COUPON_CODE;
                       }}
+                      data-umami-event="download-page-plus-click"
+                      data-umami-event-plan="plus"
                     >
                       Get Plus
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

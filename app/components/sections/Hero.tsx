@@ -33,9 +33,9 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <div>
-          {/* Windows release announcement */}
+          {/* Launch offer announcement */}
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
-            <span className="text-sm font-medium text-muted-foreground">🎉 Windows version released!</span>
+            <span className="text-sm font-medium text-muted-foreground">⚡ Launch offer ending soon</span>
           </div>
           
           {/* Main Heading with VoiceTypr's gradient style */}
@@ -57,7 +57,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <Button variant="outline" asChild>
-              <Link href="/download">
+              <Link href="/download" data-umami-event="hero-download-click">
                 Download Now
               </Link>
             </Button>

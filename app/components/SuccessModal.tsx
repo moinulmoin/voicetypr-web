@@ -62,16 +62,6 @@ export function SuccessModal() {
                 });
               }
               
-              // Track in Reddit Pixel - only with valid amount and currency
-              if ((window as any).rdt) {
-                (window as any).rdt('track', 'Purchase', { 
-                  value: amount,
-                  currency: data.currency
-                });
-              }
-              
-              // Track Twitter conversion with amount
-              trackTwitterConversion('purchase', amount)
             }
           }
         } catch (error) {
