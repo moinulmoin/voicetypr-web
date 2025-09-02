@@ -29,7 +29,7 @@ export default function FounderNote() {
             </p>
 
             <div className="flex items-center gap-4 pt-4">
-              <div>
+              <div className="flex items-center gap-2">
                 <span className="mr-1">—</span>
                 <a
                   href="https://twitter.com/immoinulmoin"
@@ -39,6 +39,16 @@ export default function FounderNote() {
                 >
                   <span className="font-medium">Moinul</span>
                   (@immoinulmoin)
+                </a>
+                <span className="text-sm text-muted-foreground">•</span>
+                <a
+                  href="https://ideaplexa.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-primary hover:underline transition-colors"
+                  data-umami-event="founder-ideaplexa-click"
+                >
+                  Founder @Ideaplexa
                 </a>
               </div>
             </div>

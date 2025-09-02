@@ -30,8 +30,19 @@ export default function Header() {
       >
         <div className="flex items-center justify-between">
           {/* Left: VoiceTypr Brand */}
-          <div className="">
+          <div className="flex items-center gap-3">
             <Image src={logo} alt="VoiceTypr logo - AI voice to text software" width={50} height={50} />
+            <div className="hidden sm:flex items-center border-l border-border/30 pl-3">
+              <a
+                href="https://ideaplexa.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                data-umami-event="header-parent-company-click"
+              >
+                by Ideaplexa
+              </a>
+            </div>
           </div>
 
           {/* Middle: Navigation Links */}
