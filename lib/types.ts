@@ -4,23 +4,32 @@ import { z } from 'zod';
 export const baseRequestSchema = z.object({
   deviceHash: z.string().length(64).regex(/^[a-f0-9]{64}$/), // SHA256 hash
   appVersion: z.string().regex(/^\d+\.\d+\.\d+$/), // Semantic versioning
+  osType: z.enum(['windows', 'macos', 'linux']).optional(),
+  osVersion: z.string().optional(),
 });
 
 // Trial schemas
 export const trialCheckRequestSchema = z.object({
   deviceHash: z.string().length(64).regex(/^[a-f0-9]{64}$/),
+  osType: z.enum(['windows', 'macos', 'linux']).optional(),
+  osVersion: z.string().optional(),
 });
 
 // License schemas
 export const licenseActivateRequestSchema = z.object({
   licenseKey: z.string().min(1),
   deviceHash: z.string().length(64).regex(/^[a-f0-9]{64}$/),
+  osType: z.enum(['windows', 'macos', 'linux']).optional(),
+  osVersion: z.string().optional(),
+  appVersion: z.string().regex(/^\d+\.\d+\.\d+$/).optional(),
 });
 
 export const licenseValidateRequestSchema = z.object({
   licenseKey: z.string().min(1),
   deviceHash: z.string().length(64).regex(/^[a-f0-9]{64}$/),
   appVersion: z.string().regex(/^\d+\.\d+\.\d+$/),
+  osType: z.enum(['windows', 'macos', 'linux']).optional(),
+  osVersion: z.string().optional(),
 });
 
 export const licenseDeactivateRequestSchema = z.object({
