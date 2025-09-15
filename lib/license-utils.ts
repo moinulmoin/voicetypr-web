@@ -9,22 +9,22 @@
  */
 export function getMaxDevicesForLicense(licenseKey: string): number {
   // Pro plan - 1 device
-  if (licenseKey.startsWith('vtp')) {
+  if (licenseKey.startsWith('VTP')) {
     return 1;
   }
 
   // Plus plan - 2 devices
-  if (licenseKey.startsWith('vts')) {
+  if (licenseKey.startsWith('VTS')) {
     return 2;
   }
 
   // Future plans (ready when you add them)
-  if (licenseKey.startsWith('vtm')) {
+  if (licenseKey.startsWith('VTM')) {
     return 4;
   }
 
-  // Default to Pro (1 device) for unknown prefixes
-  return 1;
+  // Default 0
+  return 0;
 }
 
 /**
@@ -37,5 +37,5 @@ export function getLicenseType(licenseKey: string): string {
   if (licenseKey.startsWith('vts')) return 'Plus';
   if (licenseKey.startsWith('vtm')) return 'Team';
 
-  return 'Pro';
+  return 'Unknown';
 }
