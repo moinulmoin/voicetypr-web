@@ -33,9 +33,9 @@ export function getMaxDevicesForLicense(licenseKey: string): number {
  * @returns License type name
  */
 export function getLicenseType(licenseKey: string): string {
-  if (licenseKey.startsWith('vtp')) return 'Pro';
-  if (licenseKey.startsWith('vts')) return 'Plus';
-  if (licenseKey.startsWith('vtm')) return 'Team';
+  if (licenseKey.startsWith('VTP')) return 'Pro';
+  if (licenseKey.startsWith('VTS')) return 'Plus';
+  if (licenseKey.startsWith('VTM')) return 'Team';
 
   return 'Unknown';
 }
