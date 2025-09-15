@@ -209,9 +209,8 @@ model Device {
   deviceHash String   @id
   
   // License fields (null = no license)
-  licenseKey   String?  // The license key
+  licenseKey   String?  // The license key (references License table)
   activationId String?  // Polar activation ID for deactivation
-  customerId   String?  // Polar customer ID for webhooks
   
   // Trial fields (null = no trial)
   trialStartedAt DateTime?
@@ -269,7 +268,7 @@ Configure webhook in Polar dashboard:
   - `checkout.updated` - When checkout status changes (logged for tracking)
   - `benefit_grant.created` - When license benefits are granted (logged for tracking)
 
-The webhook handler will automatically clear license data (set licenseKey and customerId to null) when licenses are revoked or refunded, preserving the device record for history. Other events are logged for tracking and debugging purposes.
+The webhook handler will automatically clear license data (set licenseKey and activationId to null) when licenses are revoked or refunded, preserving the device record for history. License records are managed in a separate licenses table. Other events are logged for tracking and debugging purposes.
 
 ## Error Scenario Flows
 

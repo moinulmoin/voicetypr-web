@@ -20,11 +20,14 @@ export async function POST(request: NextRequest) {
       return handleValidationError(validationResult.error);
     }
 
-    const { licenseKey, deviceHash, appVersion } = validationResult.data;
+    const { licenseKey, deviceHash, appVersion, osType, osVersion } = validationResult.data;
 
-    // 1. Check device binding first to get license key
-    const device = await prisma.device.findUnique({
-      where: { licenseKey },
+    // 1. Check device binding - must match both license and device
+    const device = await prisma.device.findFirst({
+      where: {
+        licenseKey,
+        deviceHash
+      },
       select: {
         activationId: true,
         deviceHash: true,
@@ -33,7 +36,7 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    if (!device || device.deviceHash !== deviceHash) {
+    if (!device) {
       const response = {
         valid: false,
       };
@@ -63,12 +66,14 @@ export async function POST(request: NextRequest) {
 
       return handleInternalError(polarError);
     }
-    // 4. All good - update last checked time AND customer ID (in case it changed)
+    // 3. All good - update last checked time
     await prisma.device.update({
       where: { deviceHash },
       data: {
         lastChecked: new Date(),
-        appVersion
+        appVersion,
+        osType,
+        osVersion
       }
     });
 

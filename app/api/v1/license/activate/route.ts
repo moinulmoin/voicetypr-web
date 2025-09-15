@@ -7,6 +7,7 @@ import {
 } from "@/lib/api-utils";
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
+import { getMaxDevicesForLicense } from "@/lib/license-utils";
 import { activateLicenseKey } from "@/lib/polar";
 import { licenseActivateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
@@ -21,21 +22,25 @@ export async function POST(request: NextRequest) {
       return handleValidationError(validationResult.error);
     }
 
-    const { licenseKey, deviceHash } = validationResult.data;
+    const { licenseKey, deviceHash, osType, osVersion, appVersion } = validationResult.data;
 
-    // 1. Check if this license is already activated
-    const existingDevice = await prisma.device.findUnique({
-      where: { licenseKey },
-      select: {
-        deviceHash: true
+    // 1. Check device limit for this license
+    const maxDevices = getMaxDevicesForLicense(licenseKey);
+    if (isNaN(maxDevices)) {
+      return createErrorResponse(ErrorCode.INVALID_LICENSE, 400);
+    }
+    const currentDeviceCount = await prisma.device.count({
+      where: {
+        licenseKey,
+        NOT: { deviceHash } // Don't count current device if re-activating
       }
     });
 
-    if (existingDevice?.deviceHash && existingDevice.deviceHash !== deviceHash) {
-      return createErrorResponse(ErrorCode.LICENSE_ALREADY_ACTIVATED);
+    if (currentDeviceCount >= maxDevices) {
+      return createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400);
     }
 
-    // 2. activate the license
+    // 2. activate the license with Polar
     let activation;
     try {
       activation = await activateLicenseKey(licenseKey, deviceHash);
@@ -53,13 +58,28 @@ export async function POST(request: NextRequest) {
       throw polarError;
     }
 
-    // 3. Save to our database (with customer ID and activation ID!)
+    // 3. Create or update License record (source of truth for customer data)
+    await prisma.license.upsert({
+      where: { licenseKey },
+      create: {
+        licenseKey,
+        customerId: activation.licenseKey.customerId
+      },
+      update: {
+        customerId: activation.licenseKey.customerId // Update in case it changed
+      }
+    });
+
+    // 4. Update device with license and OS info
     await prisma.device.update({
       where: { deviceHash },
       data: {
         licenseKey,
         activationId: activation.id,
-        customerId: activation.licenseKey.customerId,
+        // Don't set customerId - use License table as source of truth
+        osType,
+        osVersion,
+        appVersion,
         lastChecked: new Date()
       }
     });

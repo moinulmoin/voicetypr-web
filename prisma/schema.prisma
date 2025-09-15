@@ -13,28 +13,47 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// One model to rule them all - a device can have a trial, a license, or neither
+// Minimal License table for proper data normalization
+model License {
+  licenseKey String @id @map("license_key")
+  customerId String? @map("customer_id") // Nullable for migration safety - can be populated later
+
+  createdAt DateTime @default(now()) @map("created_at")
+  devices   Device[]
+
+  @@map("licenses")
+}
+
+// Device model - each device can have a trial and/or be linked to a license
 model Device {
   deviceHash String @id @unique @map("device_hash")
 
-  // License fields (null = no license)
-  licenseKey   String? @unique @map("license_key")
-  activationId String? @map("activation_id") // Polar activation ID for webhook handling
-  customerId   String? @map("customer_id") // Polar customer ID for webhook handling
+  // Each device has its own unique activation ID from Polar
+  activationId String? @map("activation_id")
+
+  // KEPT FOR BACKWARD COMPATIBILITY - will be migrated to License table
+  customerId String? @map("customer_id")
+
+  // Reference to License (null = no license, using trial or inactive)
+  licenseKey String? @map("license_key")
+  license    License? @relation(fields: [licenseKey], references: [licenseKey], onDelete: SetNull)
 
   // Trial fields (null = no trial)
   trialStartedAt DateTime? @default(now()) @map("trial_started_at")
   trialExpiresAt DateTime? @map("trial_expires_at")
 
+  // Device info for debugging and analytics
+  osType     String? @map("os_type") // "windows", "macos", "linux"
+  osVersion  String? @map("os_version") // "10.0.19045", "14.2.1", etc
+  appVersion String? @map("app_version")
+
   // Timestamps
   createdAt   DateTime @default(now()) @map("created_at")
   lastChecked DateTime @default(now()) @map("last_checked") // For offline grace period
 
-  appVersion String? @map("app_version")
-
   activities ActivityLog[]
 
-  @@unique([licenseKey, deviceHash])
+  @@index([licenseKey]) // Index for performance
   @@map("devices")
 }
 

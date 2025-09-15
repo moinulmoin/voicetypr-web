@@ -24,8 +24,11 @@ export async function POST(request: NextRequest) {
     const { licenseKey, deviceHash } = validationResult.data;
 
     // 1. Verify ownership - check if this device has this license
-    const device = await prisma.device.findUnique({
-      where: { licenseKey },
+    const device = await prisma.device.findFirst({
+      where: {
+        licenseKey,
+        deviceHash
+      },
       select: {
         deviceHash: true,
         activationId: true,
@@ -33,12 +36,23 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    if (!device || device.deviceHash !== deviceHash) {
+    if (!device) {
       return createErrorResponse(ErrorCode.NOT_YOUR_LICENSE);
     }
 
-    // 2. Deactivate the license
-    await deactivateLicenseKey({ licenseKey, activationId: device.activationId! });
+    // 2. Try to deactivate the license on Polar
+    try {
+      await deactivateLicenseKey({ licenseKey, activationId: device.activationId! });
+    } catch (polarError: any) {
+      // If license is already deactivated (404), that's fine - we still want to clear it locally
+      if (polarError?.statusCode === 404 || polarError?.error === 'ResourceNotFound') {
+        console.log(`License already deactivated on Polar: ${licenseKey}, cleaning up local state`);
+        // Continue to step 3 to clear from our DB
+      } else {
+        // For other errors (network, permissions, etc), throw them
+        throw polarError;
+      }
+    }
 
     // 3. Remove license from device (but keep device record)
     await prisma.device.update({
