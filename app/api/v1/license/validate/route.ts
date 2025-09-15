@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
 
       return handleInternalError(polarError);
     }
-    // 4. All good - update last checked time
+    // 3. All good - update last checked time
     await prisma.device.update({
       where: { deviceHash },
       data: {
