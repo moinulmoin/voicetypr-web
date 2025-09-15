@@ -66,12 +66,14 @@ export async function POST(request: NextRequest) {
 
       return handleInternalError(polarError);
     }
-    // 4. All good - update last checked time AND customer ID (in case it changed)
+    // 4. All good - update last checked time
     await prisma.device.update({
       where: { deviceHash },
       data: {
         lastChecked: new Date(),
-        appVersion
+        appVersion,
+        osType,
+        osVersion
       }
     });
 
