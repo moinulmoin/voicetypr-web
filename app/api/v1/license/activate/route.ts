@@ -26,6 +26,9 @@ export async function POST(request: NextRequest) {
 
     // 1. Check device limit for this license
     const maxDevices = getMaxDevicesForLicense(licenseKey);
+    if (isNaN(maxDevices)) {
+      return createErrorResponse(ErrorCode.INVALID_LICENSE, 400);
+    }
     const currentDeviceCount = await prisma.device.count({
       where: {
         licenseKey,

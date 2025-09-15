@@ -24,7 +24,7 @@ export function getMaxDevicesForLicense(licenseKey: string): number {
   }
 
   // Default 0
-  return 0;
+  return NaN;
 }
 
 /**
