@@ -79,20 +79,9 @@ async function handleLicenseRevocation(data: WebhookOrderRefundedPayload["data"]
         `Cleared ${result.licenseKeys.length} license(s) from ${result.deviceCount} device(s) for refunded customer: ${customerId}`
       );
 
-      // Log the revocation
-      after(async () => {
-        await prisma.activityLog.create({
-          data: {
-            action: "order_refunded",
-            metadata: {
-              customerId,
-              clearedDevices: result.deviceCount,
-              deletedLicenses: result.licenseKeys,
-              orderId: data.id
-            }
-          }
-        });
-      });
+      // Note: Not logging to activityLog since it requires a device_hash
+      // and order refunds are customer-level, not device-level actions.
+      // The console.log above provides audit trail for now.
     } else if (result.licenseKeys.length > 0) {
       console.log(`Deleted ${result.licenseKeys.length} unused license(s) for customer: ${customerId}`);
     }
