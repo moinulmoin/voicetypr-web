@@ -22,6 +22,7 @@ export const licenseActivateRequestSchema = z.object({
   osType: z.enum(['windows', 'macos', 'linux']).optional(),
   osVersion: z.string().optional(),
   appVersion: z.string().regex(/^\d+\.\d+\.\d+$/).optional(),
+  deviceName: z.string().optional(), // Device hostname for better identification
 });
 
 export const licenseValidateRequestSchema = z.object({

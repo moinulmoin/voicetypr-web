@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       return handleValidationError(validationResult.error);
     }
 
-    const { licenseKey, deviceHash, osType, osVersion, appVersion } = validationResult.data;
+    const { licenseKey, deviceHash, osType, osVersion, appVersion, deviceName } = validationResult.data;
 
     // 1. Check device limit for this license
     const maxDevices = getMaxDevicesForLicense(licenseKey);
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     // 2. activate the license with Polar
     let activation;
     try {
-      activation = await activateLicenseKey(licenseKey, deviceHash);
+      activation = await activateLicenseKey(licenseKey, deviceHash, osType, osVersion, appVersion, deviceName);
     } catch (polarError: any) {
       // Handle specific Polar API errors
       if (polarError.statusCode === 403) {

@@ -39,14 +39,52 @@ export async function deactivateLicenseKey({
 }
 
 // activate a license key
-export async function activateLicenseKey(licenseKey: string, deviceHash: string) {
-  // Just call Polar API, let errors bubble up
+export async function activateLicenseKey(
+  licenseKey: string,
+  deviceHash: string,
+  osType?: string,
+  osVersion?: string,
+  appVersion?: string,
+  deviceName?: string
+) {
+  // Build a descriptive label for Polar
+  let label = "VoiceTypr";
+
+  // Add app version
+  if (appVersion) {
+    label += ` v${appVersion}`;
+  }
+
+  // Add OS information
+  if (osType) {
+    // Capitalize OS type for better display
+    const osDisplay = osType.charAt(0).toUpperCase() + osType.slice(1);
+    label += ` - ${osDisplay}`;
+    if (osVersion) {
+      label += ` ${osVersion}`;
+    }
+  }
+
+  // Add device name for easy identification
+  if (deviceName) {
+    label += ` - ${deviceName}`;
+  }
+
+  // Example labels:
+  // "VoiceTypr v1.2.3 - MacOS 14.6.1 - John's MacBook Pro"
+  // "VoiceTypr v1.2.3 - Windows 11"
+  // "VoiceTypr - Linux - dev-machine"
+
   const response = await polar.customerPortal.licenseKeys.activate({
     key: licenseKey,
     organizationId: process.env.POLAR_ORGANIZATION_ID!,
-    label: "VoiceTypr",
+    label,
     meta: {
-      deviceHash
+      deviceHash,
+      ...(osType && { osType }),
+      ...(osVersion && { osVersion }),
+      ...(appVersion && { appVersion }),
+      ...(deviceName && { deviceName })
     }
   });
 
