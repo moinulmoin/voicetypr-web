@@ -55,7 +55,8 @@ export async function POST(request: NextRequest) {
       isExpired: !!trialDevice.trialExpiresAt && trialDevice.trialExpiresAt < new Date(),
       daysLeft: trialDevice.trialExpiresAt && trialDevice.trialExpiresAt > new Date()
         ? Math.ceil((trialDevice.trialExpiresAt.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
-        : 0
+        : 0,
+      expiresAt: trialDevice.trialExpiresAt?.toISOString() || null
     };
 
     return createSuccessResponse(data);
