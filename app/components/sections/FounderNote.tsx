@@ -19,7 +19,7 @@ export default function FounderNote() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              We just launched. You're one of the first users, which means you get the lowest price
+              We just launched. You're an early user, which means you get the lowest price
               it'll ever be and your feedback shapes how I build next.
             </p>
 
