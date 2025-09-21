@@ -189,7 +189,7 @@ export default function Pricing() {
         {/* Money-back guarantee */}
         <div className="text-center mt-12">
           <p className="text-sm text-muted-foreground">
-            Secure payment • 14 day money back guarantee
+            Secure payment • 7 day money back guarantee
           </p>
         </div>
       </div>

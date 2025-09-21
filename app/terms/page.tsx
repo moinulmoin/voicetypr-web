@@ -38,7 +38,7 @@ export default function TermsPage() {
           <ul className="list-disc pl-6 space-y-2">
             <li>VoiceTypr is sold as a one-time purchase with no recurring fees</li>
             <li>All purchases include future updates for the lifetime of the product</li>
-            <li>We offer a 14 day money-back guarantee from the date of purchase</li>
+            <li>We offer a 7 day money-back guarantee from the date of purchase</li>
             <li>Refunds will result in immediate license deactivation</li>
           </ul>
         </section>

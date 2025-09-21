@@ -3,7 +3,7 @@
 import { ClaudeAI, Cursor, Discord, Gemini, Gmail, Linear, Notion, OpenAI, Slack, XformerlyTwitter } from "@/components/icons";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Mic, Keyboard, Zap, Sparkles, History, Layers, Key, Circle, Lock, Upload, Download, Globe, Gauge, FileText } from "lucide-react";
+import { Shield, Mic, Keyboard, Zap, Sparkles, History, Layers, Key, Circle, Lock, Upload, Download, Globe, Gauge, FileText, Radio, Search, Copy, Share2, TrendingUp, Users, FileJson, Mouse } from "lucide-react";
 
 // App icons grid
 const appIcons = [
@@ -117,115 +117,84 @@ export default function Features() {
             </div>
           </Card>
 
-          {/* Smaller feature cards */}
-          
-          {/* Global Hotkey */}
-          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
-            <Keyboard className="w-8 h-8 text-cyan-500 mb-3" />
+
+          {/* NEW v1.8 Features - Matching existing medium card style */}
+
+          {/* Push-to-Talk & Hotkeys */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Keyboard className="w-10 h-10 text-purple-500 mb-4" />
             <div>
-              <h4 className="text-base font-semibold mb-2">Global Hotkey</h4>
-              <p className="text-xs text-muted-foreground">
-                Press. Speak. Done.
+              <h3 className="text-xl font-bold mb-2">Toggle or Push-to-Talk</h3>
+              <p className="text-sm text-muted-foreground">
+                Hold or toggle your hotkey to record and transcribe.
               </p>
             </div>
           </Card>
 
-          {/* Native Performance */}
-          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
-            <Gauge className="w-8 h-8 text-yellow-500 mb-3" />
+          {/* Audio File Upload */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Upload className="w-10 h-10 text-blue-500 mb-4" />
             <div>
-              <h4 className="text-base font-semibold mb-2">Lightning Fast</h4>
-              <p className="text-xs text-muted-foreground">
-                Native app, instant response
+              <h3 className="text-xl font-bold mb-2">Upload Audio Files</h3>
+              <p className="text-sm text-muted-foreground">
+                Transcribe MP3, WAV, M4A. Drag, drop, done.
               </p>
             </div>
           </Card>
 
-          {/* History */}
-          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
-            <History className="w-8 h-8 text-blue-500 mb-3" />
+          {/* Smart History */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <History className="w-10 h-10 text-green-500 mb-4" />
             <div>
-              <h4 className="text-base font-semibold mb-2">Smart History</h4>
-              <p className="text-xs text-muted-foreground">
-                Find anything you said
+              <h3 className="text-xl font-bold mb-2">Smart History</h3>
+              <p className="text-sm text-muted-foreground">
+                Search, export to JSON, copy anything you've said.
               </p>
             </div>
           </Card>
 
-          {/* Multiple Models */}
-          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
-            <Layers className="w-8 h-8 text-indigo-500 mb-3" />
+          {/* Productivity Stats */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <TrendingUp className="w-10 h-10 text-orange-500 mb-4" />
             <div>
-              <h4 className="text-base font-semibold mb-2">Multiple Models</h4>
-              <p className="text-xs text-muted-foreground">
-                Fast or accurate. You pick.
+              <h3 className="text-xl font-bold mb-2">Track Progress</h3>
+              <p className="text-sm text-muted-foreground">
+                Build streaks, track stats, share your productivity.
               </p>
             </div>
           </Card>
 
-          {/* BYOK */}
-          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
-            <Key className="w-8 h-8 text-orange-500 mb-3" />
+          {/* Additional Features - Bottom Row */}
+
+          {/* Lightning Fast */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Gauge className="w-10 h-10 text-yellow-500 mb-4" />
             <div>
-              <h4 className="text-base font-semibold mb-2">BYOK Cloud</h4>
-              <p className="text-xs text-muted-foreground">
-                Use your own API keys
+              <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
+              <p className="text-sm text-muted-foreground">
+                Native app, instant response. No cloud latency.
               </p>
             </div>
           </Card>
 
           {/* Clean UI */}
-          <Card className="bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer group">
-            <Circle className="w-8 h-8 text-teal-500 mb-3" />
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Circle className="w-10 h-10 text-teal-500 mb-4" />
             <div>
-              <h4 className="text-base font-semibold mb-2">Clean UI</h4>
-              <p className="text-xs text-muted-foreground">
-                Minimal, stays out of way
-              </p>
-            </div>
-          </Card>
-
-          {/* Coming Soon Features - subtle integration */}
-          
-          {/* Upload Audio - Coming Soon */}
-          <Card className="md:col-span-2 bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group relative">
-            <div className="flex items-start justify-between mb-4">
-              <Upload className="w-10 h-10 text-slate-500" />
-              <Badge variant="outline" className="text-xs border-muted-foreground/20 text-muted-foreground/60">
-                Soon
-              </Badge>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-2 text-foreground/80">Upload Audio</h3>
-              <p className="text-sm text-muted-foreground/80">
-                Transcribe any audio file.
-              </p>
-            </div>
-          </Card>
-
-          {/* Export Formats - Coming Soon */}
-          <Card className="md:col-span-2 bg-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group relative">
-            <div className="flex items-start justify-between mb-4">
-              <FileText className="w-10 h-10 text-slate-500" />
-              <Badge variant="outline" className="text-xs border-muted-foreground/20 text-muted-foreground/60">
-                Soon
-              </Badge>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-2 text-foreground/80">Export Options</h3>
-              <p className="text-sm text-muted-foreground/80">
-                Save as TXT, PDF, DOCX.
-              </p>
-            </div>
-          </Card>
-          
-          {/* License Management - moved here to balance the grid */}
-          <Card className="md:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
-            <Lock className="w-10 h-10 text-pink-500 mb-4" />
-            <div>
-              <h3 className="text-xl font-bold mb-2">Easy Licensing</h3>
+              <h3 className="text-xl font-bold mb-2">Clean, Minimal UI</h3>
               <p className="text-sm text-muted-foreground">
-                Use on multiple devices. Switch anytime.
+                Stays out of your way. Simple and powerful.
+              </p>
+            </div>
+          </Card>
+
+          {/* Multiple Models */}
+          <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
+            <Layers className="w-10 h-10 text-indigo-500 mb-4" />
+            <div>
+              <h3 className="text-xl font-bold mb-2">Multiple Models</h3>
+              <p className="text-sm text-muted-foreground">
+                Choose speed or accuracy. Download what you need.
               </p>
             </div>
           </Card>

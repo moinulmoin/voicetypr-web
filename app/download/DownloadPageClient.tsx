@@ -460,7 +460,7 @@ export default function DownloadPageClient() {
                 </Card>
               </div>
               <p className="text-center text-sm text-muted-foreground mt-6">
-                Secure payment • 14 day money back guarantee
+                Secure payment • 7 day money back guarantee
               </p>
             </div>
 
