@@ -68,7 +68,7 @@ export default function Header() {
               data-umami-event="nav-click"
               data-umami-event-section="testimonials"
             >
-              Reviews
+              Testimonials
             </a>
             <a
               href="/#pricing"
