@@ -10,7 +10,7 @@ import HowItWorks from "./components/sections/HowItWorks";
 import Pricing from "./components/sections/Pricing";
 import FounderNote from "./components/sections/FounderNote";
 // import CompetitorComparison from "./components/sections/CompetitorComparison";
-import Reviews from "./components/sections/Reviews";
+import Testimonials from "./components/sections/Reviews";
 
 export default function HomePage() {
   return (
@@ -21,7 +21,7 @@ export default function HomePage() {
         <Hero />
         <Features />
         <HowItWorks />
-        <Reviews />
+        <Testimonials />
         <Pricing />
         <FounderNote />
         <FAQ />

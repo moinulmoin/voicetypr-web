@@ -109,12 +109,12 @@ export default function Hero() {
                   className="absolute inset-0 w-full h-full object-contain"
                   controls
                   playsInline
-                  preload="none"
+                  preload="metadata"
                   aria-label="VoiceTypr Demo Video - Shows voice-to-text functionality"
                 >
-                  <source 
-                    src="https://assets.voicetypr.com/voicetypr-better-voice.mp4" 
-                    type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" 
+                  <source
+                    src="https://assets.voicetypr.com/voicetypr-better-voice.mp4"
+                    type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
                   />
                   <div className="absolute inset-0 flex items-center justify-center text-center p-8">
                     <div>
