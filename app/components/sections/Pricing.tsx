@@ -30,7 +30,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$19",
+    price: "$29",
     originalPrice: "$49",
     description: "For individuals",
     features: [
@@ -40,7 +40,7 @@ const plans = [
     ],
     cta: "Get Pro",
     popular: true,
-    discount: "EARLY61",
+    discount: "EARLY41",
     onClick: () => {
       window.location.href =
         "/api/v1/checkout?products=" +
@@ -51,8 +51,8 @@ const plans = [
   },
   {
     name: "Plus",
-    price: "$29",
-    originalPrice: "$99",
+    price: "$49",
+    originalPrice: "$89",
     description: "For power users",
     features: [
       "2 device activations",
@@ -61,7 +61,7 @@ const plans = [
     ],
     cta: "Get Plus",
     popular: false,
-    discount: "LAUNCH71",
+    discount: "LAUNCH45",
     onClick: () => {
       window.location.href =
         siteUrl +
@@ -91,7 +91,7 @@ export default function Pricing() {
         {/* Real urgency - limited time discount */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
           <span className="text-sm font-medium">
-            🎉 Limited Launch Special: Up to 70% off with discount
+            🎉 Limited Launch Special: Up to 55% off with discount
           </span>
         </div>
       </div>
