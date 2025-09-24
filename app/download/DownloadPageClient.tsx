@@ -160,7 +160,7 @@ export default function DownloadPageClient() {
     }
   };
 
-  const selectedOption = downloadOptions.find(
+  const selectedOption = getDownloadOptions(assets).find(
     (opt) => opt.id === selectedPlatform,
   );
   const installationSteps =
