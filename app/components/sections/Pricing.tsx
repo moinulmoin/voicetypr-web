@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import { TryForFreeButton } from "@/app/components/TryForFreeButton";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,9 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { downloadURL, siteUrl } from "@/lib/utils";
+import { siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
-import { TryForFreeButton } from "@/app/components/TryForFreeButton";
 
 const plans = [
   {
@@ -33,14 +32,10 @@ const plans = [
     price: "$29",
     originalPrice: "$49",
     description: "For individuals",
-    features: [
-      "1 device activation",
-      "Lifetime access",
-      "All future updates",
-    ],
+    features: ["1 device activation", "Lifetime access", "All future updates"],
     cta: "Get Pro",
     popular: true,
-    discount: "EARLY41",
+    discount: "PRO35",
     onClick: () => {
       window.location.href =
         "/api/v1/checkout?products=" +
@@ -54,14 +49,10 @@ const plans = [
     price: "$49",
     originalPrice: "$89",
     description: "For power users",
-    features: [
-      "2 device activations",
-      "Lifetime access",
-      "All future updates",
-    ],
+    features: ["2 device activations", "Lifetime access", "All future updates"],
     cta: "Get Plus",
     popular: false,
-    discount: "LAUNCH45",
+    discount: "PLUS45",
     onClick: () => {
       window.location.href =
         siteUrl +
@@ -91,7 +82,7 @@ export default function Pricing() {
         {/* Real urgency - limited time discount */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
           <span className="text-sm font-medium">
-            🎉 Limited Launch Special: Up to 55% off with discount
+            🎉 Limited Early Bird Offer
           </span>
         </div>
       </div>
@@ -112,7 +103,9 @@ export default function Pricing() {
               {plan.discount && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                   <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
-                    <span className="text-xs font-medium text-white">{plan.discount} applied</span>
+                    <span className="text-xs font-medium text-white">
+                      {plan.discount} applied
+                    </span>
                   </div>
                 </div>
               )}
@@ -138,7 +131,9 @@ export default function Pricing() {
                   {plan.originalPrice && (
                     <p className="text-xs mt-1 font-semibold">
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                        Save ${parseInt(plan.originalPrice.slice(1)) - parseInt(plan.price.slice(1))}
+                        Save $
+                        {parseInt(plan.originalPrice.slice(1)) -
+                          parseInt(plan.price.slice(1))}
                       </span>
                     </p>
                   )}
