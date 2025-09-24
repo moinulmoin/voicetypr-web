@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Cpu, DollarSign, Github, Shield } from "lucide-react";
 import Link from "next/link";
-import { Shield, Github, Cpu, DollarSign } from "lucide-react";
 
 const badges = [
   {
@@ -35,9 +35,9 @@ export default function Hero() {
         <div>
           {/* Launch offer announcement */}
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
-            <span className="text-sm font-medium text-muted-foreground">⚡ Launch offer ending soon</span>
+            <span className="text-sm font-medium text-muted-foreground">⚡ Early Bird offer ending soon</span>
           </div>
-          
+
           {/* Main Heading with VoiceTypr's gradient style */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground block">
@@ -145,7 +145,7 @@ export default function Hero() {
                     </div>
                   </div>
                 </div>
-                
+
                 <h3 className="text-sm font-semibold mb-1">
                   {badge.label}
                 </h3>
