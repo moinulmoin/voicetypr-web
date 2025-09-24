@@ -4,10 +4,9 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
-import { trackTwitterConversion } from "@/lib/twitter-pixel"
+} from "@/components/ui/dialog";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 declare global {
   interface Window {
@@ -35,33 +34,33 @@ export function SuccessModal() {
       const trackPurchase = async () => {
         try {
           const response = await fetch(`/api/v1/checkout/${checkoutId}`)
-          
+
           if (!response.ok) {
             console.error('Failed to fetch checkout data')
             return
           }
-          
+
           const data = await response.json()
-          
+
           // Only show modal if we got valid data
-          if (typeof data.total_amount === 'number' && 
-              data.total_amount > 0 && 
-              typeof data.currency === 'string' && 
+          if (typeof data.total_amount === 'number' &&
+              data.total_amount > 0 &&
+              typeof data.currency === 'string' &&
               data.currency.length === 3) {
             setShowModal(true)
-            
+
             const amount = data.total_amount / 100 // Convert cents to dollars
-            
+
             // Only track purchases with valid amounts > 0
             if (amount > 0 && data.currency) {
               // Track in Umami
               if (window.umami) {
-                window.umami.track('purchase', { 
+                window.umami.track('purchase', {
                   value: amount,
                   currency: data.currency
                 });
               }
-              
+
             }
           }
         } catch (error) {
@@ -69,7 +68,7 @@ export function SuccessModal() {
           // Don't show modal if API failed
         }
       }
-      
+
       trackPurchase()
     }
   }, [checkoutId])
@@ -78,6 +77,7 @@ export function SuccessModal() {
     return () => {
       const newUrl = new URL(window.location.href)
       newUrl.searchParams.delete("checkoutId")
+      newUrl.searchParams.delete("customer_session_token")
       router.replace(newUrl.pathname + newUrl.search, { scroll: false })
     }
   }, [showModal])
