@@ -84,6 +84,33 @@ const windowsInstallationSteps = [
   },
 ];
 
+const getDownloadOptions = (assets: ReleaseAssets) => [
+  {
+    id: "macos-silicon",
+    name: "macOS (Apple Silicon)",
+    description: "For M1, M2, M3 Macs",
+    icon: AppleIcon,
+    url: assets.silicon,
+    platform: "macos",
+  },
+  {
+    id: "macos-intel",
+    name: "macOS (Intel)",
+    description: "For Intel-based Macs",
+    icon: AppleIcon,
+    url: assets.intel,
+    platform: "macos",
+  },
+  {
+    id: "windows",
+    name: "Windows",
+    description: "Windows 10 or later",
+    icon: WindowsIcon,
+    url: assets.windows,
+    platform: "windows",
+  },
+];
+
 export default function DownloadPageClient() {
   const [assets, setAssets] = useState<ReleaseAssets>({});
   const [isLoading, setIsLoading] = useState(true);
@@ -118,7 +145,7 @@ export default function DownloadPageClient() {
   }, []);
 
   const handleDownload = () => {
-    const option = downloadOptions.find((opt) => opt.id === selectedPlatform);
+    const option = getDownloadOptions(assets).find((opt) => opt.id === selectedPlatform);
     // Use the URL if available, or fallback to any available URL
     const downloadUrl =
       option?.url ||
@@ -133,33 +160,6 @@ export default function DownloadPageClient() {
     }
   };
 
-  const downloadOptions: DownloadOption[] = [
-    {
-      id: "macos-silicon",
-      name: "macOS (Apple Silicon)",
-      description: "For M1, M2, M3 Macs",
-      icon: AppleIcon,
-      url: assets.silicon,
-      platform: "macos",
-    },
-    {
-      id: "macos-intel",
-      name: "macOS (Intel)",
-      description: "For Intel-based Macs",
-      icon: AppleIcon,
-      url: assets.intel,
-      platform: "macos",
-    },
-    {
-      id: "windows",
-      name: "Windows",
-      description: "Windows 10 or later",
-      icon: WindowsIcon,
-      url: assets.windows,
-      platform: "windows",
-    },
-  ];
-
   const selectedOption = downloadOptions.find(
     (opt) => opt.id === selectedPlatform,
   );
@@ -167,6 +167,19 @@ export default function DownloadPageClient() {
     selectedOption?.platform === "windows"
       ? windowsInstallationSteps
       : macosInstallationSteps;
+
+  const [referral, setReferral] = useState("");
+
+  useEffect(() => {
+    const affonso_referral = window?.affonso_referral;
+    if (affonso_referral) {
+      setReferral(affonso_referral);
+    }
+  }, []);
+
+  const metadata = {
+    referral: referral || "none",
+  };
 
   return (
     <>
@@ -192,7 +205,7 @@ export default function DownloadPageClient() {
 
             {/* Platform Selection */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              {downloadOptions.map((option) => (
+              {getDownloadOptions(assets).map((option) => (
                 <Card
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
@@ -428,7 +441,8 @@ export default function DownloadPageClient() {
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_PRO_PRODUCT_ID +
                           "&discountId=" +
-                          process.env.NEXT_PUBLIC_PRO_COUPON_CODE;
+                          process.env.NEXT_PUBLIC_PRO_COUPON_CODE +
+                          `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-pro-click"
                       data-umami-event-plan="pro"
@@ -501,7 +515,8 @@ export default function DownloadPageClient() {
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID +
                           "&discountId=" +
-                          process.env.NEXT_PUBLIC_PLUS_COUPON_CODE;
+                          process.env.NEXT_PUBLIC_PLUS_COUPON_CODE +
+                          `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-plus-click"
                       data-umami-event-plan="plus"

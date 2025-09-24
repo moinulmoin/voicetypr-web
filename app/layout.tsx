@@ -13,8 +13,7 @@ const fontSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title:
-    "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+  title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
   description:
     "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
   keywords: [
@@ -50,8 +49,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title:
-      "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+    title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
     description:
       "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
     type: "website",
@@ -68,8 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+    title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
     description:
       "Stop typing, start speaking. VoiceTypr turns voice to text instantly in any app. Perfect for AI Users. $19 one-time (61% off).",
     images: ["/og-image.png"],
@@ -84,14 +81,14 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   other: {
-    'preconnect': 'https://assets.voicetypr.com',
-    'dns-prefetch': 'https://assets.voicetypr.com',
+    preconnect: "https://assets.voicetypr.com",
+    "dns-prefetch": "https://assets.voicetypr.com",
   },
 };
 
@@ -105,6 +102,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://assets.voicetypr.com" />
         <link rel="dns-prefetch" href="https://assets.voicetypr.com" />
+        <Script
+          src="https://affonso.io/js/pixel.min.js"
+          strategy="afterInteractive"
+          data-affonso="cmfl3j0cw001ogn7r874fqlxq"
+          data-cookie_duration="30"
+        />
       </head>
       {/* Google Ads tracking (gtag.js) */}
       <Script
@@ -124,7 +127,7 @@ export default function RootLayout({
         }}
       />
       {/* End Google Ads tracking */}
-      
+
       {/* JSON-LD Structured Data */}
       <Script
         id="json-ld-structured-data"
@@ -136,36 +139,39 @@ export default function RootLayout({
               {
                 "@type": "SoftwareApplication",
                 "@id": "https://voicetypr.com/#software",
-                "name": "VoiceTypr",
-                "description": "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. Works everywhere.",
-                "applicationCategory": "ProductivityApplication",
-                "operatingSystem": ["macOS 13.0+", "Windows 10+"],
-                "downloadUrl": "https://voicetypr.com/download",
-                "offers": [
+                name: "VoiceTypr",
+                description:
+                  "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. Works everywhere.",
+                applicationCategory: "ProductivityApplication",
+                operatingSystem: ["macOS 13.0+", "Windows 10+"],
+                downloadUrl: "https://voicetypr.com/download",
+                offers: [
                   {
                     "@type": "Offer",
-                    "name": "Pro Plan - Launch Special",
-                    "price": "19.00",
-                    "priceCurrency": "USD",
-                    "availability": "https://schema.org/InStock",
-                    "description": "1 device activation - Lifetime license - Launch Special 61% off",
-                    "seller": {
-                      "@id": "https://voicetypr.com/#organization"
-                    }
+                    name: "Pro Plan - Launch Special",
+                    price: "19.00",
+                    priceCurrency: "USD",
+                    availability: "https://schema.org/InStock",
+                    description:
+                      "1 device activation - Lifetime license - Launch Special 61% off",
+                    seller: {
+                      "@id": "https://voicetypr.com/#organization",
+                    },
                   },
                   {
                     "@type": "Offer",
-                    "name": "Plus Plan - Launch Special",
-                    "price": "29.00",
-                    "priceCurrency": "USD",
-                    "availability": "https://schema.org/InStock",
-                    "description": "2 device activations - Lifetime license - Launch Special 70% off",
-                    "seller": {
-                      "@id": "https://voicetypr.com/#organization"
-                    }
-                  }
+                    name: "Plus Plan - Launch Special",
+                    price: "29.00",
+                    priceCurrency: "USD",
+                    availability: "https://schema.org/InStock",
+                    description:
+                      "2 device activations - Lifetime license - Launch Special 70% off",
+                    seller: {
+                      "@id": "https://voicetypr.com/#organization",
+                    },
+                  },
                 ],
-                "featureList": [
+                featureList: [
                   "100+ Languages Support",
                   "High Accuracy",
                   "Works with Any Application (ChatGPT, Claude, Cursor, VS Code)",
@@ -174,102 +180,104 @@ export default function RootLayout({
                   "Smart Formatting",
                   "Audio File Transcription",
                   "3-Day Free Trial",
-                  "Lifetime Updates"
+                  "Lifetime Updates",
                 ],
-                "screenshot": "https://voicetypr.com/og-image.png",
-                "author": {
+                screenshot: "https://voicetypr.com/og-image.png",
+                author: {
                   "@type": "Person",
-                  "name": "Moinul Moin",
-                  "url": "https://twitter.com/moinulmoin"
-                }
+                  name: "Moinul Moin",
+                  url: "https://twitter.com/moinulmoin",
+                },
               },
               {
                 "@type": "Organization",
                 "@id": "https://voicetypr.com/#organization",
-                "name": "VoiceTypr",
-                "url": "https://voicetypr.com",
-                "logo": "https://voicetypr.com/logo.png",
-                "sameAs": [
-                  "https://twitter.com/moinulmoin"
-                ],
-                "founder": {
+                name: "VoiceTypr",
+                url: "https://voicetypr.com",
+                logo: "https://voicetypr.com/logo.png",
+                sameAs: ["https://twitter.com/moinulmoin"],
+                founder: {
                   "@type": "Person",
-                  "name": "Moinul Moin"
-                }
+                  name: "Moinul Moin",
+                },
               },
               {
                 "@type": "WebSite",
                 "@id": "https://voicetypr.com/#website",
-                "url": "https://voicetypr.com",
-                "name": "VoiceTypr",
-                "description": "AI Powered Voice to Text tool for Busy Founders and AI Power Users",
-                "publisher": {
-                  "@id": "https://voicetypr.com/#organization"
-                }
+                url: "https://voicetypr.com",
+                name: "VoiceTypr",
+                description:
+                  "AI Powered Voice to Text tool for Busy Founders and AI Power Users",
+                publisher: {
+                  "@id": "https://voicetypr.com/#organization",
+                },
               },
               {
                 "@type": "WebPage",
                 "@id": "https://voicetypr.com/#webpage",
-                "url": "https://voicetypr.com",
-                "name": "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
-                "isPartOf": {
-                  "@id": "https://voicetypr.com/#website"
+                url: "https://voicetypr.com",
+                name: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+                isPartOf: {
+                  "@id": "https://voicetypr.com/#website",
                 },
-                "about": {
-                  "@id": "https://voicetypr.com/#software"
+                about: {
+                  "@id": "https://voicetypr.com/#software",
                 },
-                "description": "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor."
+                description:
+                  "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor.",
               },
               {
                 "@type": "FAQPage",
                 "@id": "https://voicetypr.com/#faq",
-                "mainEntity": [
+                mainEntity: [
                   {
                     "@type": "Question",
-                    "name": "Can I try VoiceTypr for free?",
-                    "acceptedAnswer": {
+                    name: "Can I try VoiceTypr for free?",
+                    acceptedAnswer: {
                       "@type": "Answer",
-                      "text": "Yes! VoiceTypr offers a 3-day free trial with unlimited transcription. Test all features before buying. No credit card required."
-                    }
-                  },
-                  {
-                    "@type": "Question", 
-                    "name": "Does it work with ChatGPT, Claude, and Cursor?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Yes! Works anywhere you can type - ChatGPT, Claude, Cursor, VS Code, Slack, X, emails. Just position your cursor and start voice typing. Perfect for long prompts without typing fatigue."
-                    }
+                      text: "Yes! VoiceTypr offers a 3-day free trial with unlimited transcription. Test all features before buying. No credit card required.",
+                    },
                   },
                   {
                     "@type": "Question",
-                    "name": "Is my voice data private?", 
-                    "acceptedAnswer": {
+                    name: "Does it work with ChatGPT, Claude, and Cursor?",
+                    acceptedAnswer: {
                       "@type": "Answer",
-                      "text": "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer. No cloud, no servers, 100% offline."
-                    }
+                      text: "Yes! Works anywhere you can type - ChatGPT, Claude, Cursor, VS Code, Slack, X, emails. Just position your cursor and start voice typing. Perfect for long prompts without typing fatigue.",
+                    },
                   },
                   {
                     "@type": "Question",
-                    "name": "Will it work on Windows/Intel Mac?",
-                    "acceptedAnswer": {
-                      "@type": "Answer", 
-                      "text": "Windows version just launched! Works on both Intel and Apple Silicon Macs. Apple Silicon is more optimized for AI processing but Intel works great too."
-                    }
-                  }
-                ]
-              }
-            ]
-          })
+                    name: "Is my voice data private?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer. No cloud, no servers, 100% offline.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Will it work on Windows/Intel Mac?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Windows version just launched! Works on both Intel and Apple Silicon Macs. Apple Silicon is more optimized for AI processing but Intel works great too.",
+                    },
+                  },
+                ],
+              },
+            ],
+          }),
         }}
       />
       {/* End JSON-LD Structured Data */}
-      
+
       <body className={`${fontSans.variable} font-sans antialiased `}>
         {/* Google Tag Manager (noscript) */}
-        <noscript dangerouslySetInnerHTML={{
-          __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT5KZRJM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`
-        }} />
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT5KZRJM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        />
         {/* End Google Tag Manager (noscript) */}
         <Providers>
           {children}
@@ -289,7 +297,7 @@ twq('config','q7p7w');
           }}
         />
         {/* End Twitter conversion tracking base code */}
-        
+
         {/* Google Tag Manager */}
         <Script
           id="google-tag-manager"

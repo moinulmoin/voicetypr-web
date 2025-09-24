@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { siteUrl } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const plans = [
   {
@@ -36,12 +37,13 @@ const plans = [
     cta: "Get Pro",
     popular: true,
     discount: "PRO35",
-    onClick: () => {
+    onClick: (metadata: Record<string, any>) => {
       window.location.href =
         "/api/v1/checkout?products=" +
         process.env.NEXT_PUBLIC_PRO_PRODUCT_ID +
         "&discountId=" +
-        process.env.NEXT_PUBLIC_PRO_COUPON_CODE;
+        process.env.NEXT_PUBLIC_PRO_COUPON_CODE +
+        `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
     },
   },
   {
@@ -53,18 +55,32 @@ const plans = [
     cta: "Get Plus",
     popular: false,
     discount: "PLUS45",
-    onClick: () => {
+    onClick: (metadata: Record<string, any>) => {
       window.location.href =
         siteUrl +
         "/api/v1/checkout?products=" +
         process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID +
         "&discountId=" +
-        process.env.NEXT_PUBLIC_PLUS_COUPON_CODE;
+        process.env.NEXT_PUBLIC_PLUS_COUPON_CODE +
+        `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
     },
   },
 ];
 
 export default function Pricing() {
+  const [referral, setReferral] = useState("");
+
+  useEffect(() => {
+    const affonso_referral = window?.affonso_referral;
+    if (affonso_referral) {
+      setReferral(affonso_referral);
+    }
+  }, []);
+
+  const metadata = {
+    referral: referral || "none",
+  };
+
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
@@ -164,7 +180,7 @@ export default function Pricing() {
                         : "bg-card hover:bg-muted"
                     }`}
                     variant={plan.popular ? "default" : "outline"}
-                    onClick={plan.onClick}
+                    onClick={() => plan.onClick(metadata)}
                     data-umami-event={
                       plan.name === "Pro"
                         ? "pricing-pro-click"
