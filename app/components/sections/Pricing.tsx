@@ -15,20 +15,6 @@ import { useEffect, useState } from "react";
 
 const plans = [
   {
-    name: "Free Trial",
-    price: "$0",
-    description: "Try it risk-free",
-    features: [
-      "Full app access",
-      "3 days unlimited usage",
-      "No credit card required",
-      "Mac + Windows",
-    ],
-    cta: "Start Free Trial",
-    popular: false,
-    onClick: () => {},
-  },
-  {
     name: "Pro",
     price: "$25",
     originalPrice: "$50",
@@ -60,6 +46,24 @@ const plans = [
         process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID +
         "&discountId=" +
         process.env.NEXT_PUBLIC_PLUS_COUPON_CODE +
+        `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
+    },
+  },
+  {
+    name: "Max",
+    price: "$80",
+    originalPrice: "$160",
+    description: "For teams & professionals",
+    features: ["5 device activations", "Lifetime access", "Priority support", "Early feature access"],
+    cta: "Get Max",
+    popular: false,
+    onClick: (metadata: Record<string, any>) => {
+      window.location.href =
+        siteUrl +
+        "/api/v1/checkout?products=" +
+        process.env.NEXT_PUBLIC_MAX_PRODUCT_ID +
+        "&discountId=" +
+        process.env.NEXT_PUBLIC_MAX_COUPON_CODE +
         `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
     },
   },
@@ -168,31 +172,34 @@ export default function Pricing() {
               </CardContent>
 
               <CardFooter className="px-6 pb-5 pt-2">
-                {i === 0 ? (
-                  <TryForFreeButton />
-                ) : (
-                  <Button
-                    className={`w-full group ${
-                      plan.popular
-                        ? "bg-primary hover:bg-primary/90"
-                        : "bg-card hover:bg-muted"
-                    }`}
-                    variant={plan.popular ? "default" : "outline"}
-                    onClick={() => plan.onClick(metadata)}
-                    data-umami-event={
-                      plan.name === "Pro"
-                        ? "pricing-pro-click"
-                        : "pricing-max-click"
-                    }
-                    data-umami-event-plan={plan.name.toLowerCase()}
-                  >
-                    {plan.cta}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                )}
+                <Button
+                  className={`w-full group ${
+                    plan.popular
+                      ? "bg-primary hover:bg-primary/90"
+                      : "bg-card hover:bg-muted"
+                  }`}
+                  variant={plan.popular ? "default" : "outline"}
+                  onClick={() => plan.onClick(metadata)}
+                  data-umami-event={
+                    plan.name === "Pro"
+                      ? "pricing-pro-click"
+                      : plan.name === "Plus"
+                      ? "pricing-plus-click"
+                      : "pricing-max-click"
+                  }
+                  data-umami-event-plan={plan.name.toLowerCase()}
+                >
+                  {plan.cta}
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
               </CardFooter>
             </Card>
           ))}
+        </div>
+
+        {/* Free Trial Button */}
+        <div className="text-center mt-8">
+          <TryForFreeButton />
         </div>
 
         {/* Money-back guarantee */}

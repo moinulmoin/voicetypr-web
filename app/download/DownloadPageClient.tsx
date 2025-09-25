@@ -372,12 +372,12 @@ export default function DownloadPageClient() {
               </div>
             )}
 
-            {/* Minimal Pricing Section */}
+            {/* Pricing Section */}
             <div className="mb-16">
               <h2 className="text-2xl font-semibold mb-8 text-center">
                 Ready to Write 5x Faster?
               </h2>
-              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {/* Pro Plan */}
                 <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
 
@@ -518,7 +518,95 @@ export default function DownloadPageClient() {
                     </Button>
                   </CardFooter>
                 </Card>
+
+                {/* Max Plan */}
+                <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
+
+                  <CardHeader className="text-center pb-1 px-6 pt-6">
+                    <CardTitle className="text-2xl font-bold">Max</CardTitle>
+                    <div className="mt-3">
+                      <div className="flex items-baseline justify-center gap-2">
+                        <span className="text-xl text-muted-foreground line-through">
+                          $160
+                        </span>
+                        <span className="text-4xl font-bold">$80</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        For teams & professionals
+                      </p>
+                      <p className="text-xs mt-1 font-semibold">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                          Save $80
+                        </span>
+                      </p>
+                    </div>
+                  </CardHeader>
+
+                  <CardContent className="px-6 py-3">
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">
+                          5 device activations
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">
+                          Lifetime access
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">
+                          Priority support
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">
+                          Early feature access
+                        </span>
+                      </li>
+                    </ul>
+                  </CardContent>
+
+                  <CardFooter className="px-6 pb-5 pt-2">
+                    <Button
+                      className="w-full group bg-card hover:bg-muted"
+                      variant="outline"
+                      onClick={() => {
+                        window.location.href =
+                          "/api/v1/checkout?products=" +
+                          process.env.NEXT_PUBLIC_MAX_PRODUCT_ID +
+                          "&discountId=" +
+                          process.env.NEXT_PUBLIC_MAX_COUPON_CODE +
+                          `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
+                      }}
+                      data-umami-event="download-page-max-click"
+                      data-umami-event-plan="max"
+                    >
+                      Get Max
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </CardFooter>
+                </Card>
               </div>
+
+              {/* Free Trial Button */}
+              <div className="text-center mt-8">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => {
+                    window.location.href = "/api/v1/trial/check";
+                  }}
+                  data-umami-event="download-page-free-trial-click"
+                >
+                  Start Free Trial
+                </Button>
+              </div>
+
               <p className="text-center text-sm text-muted-foreground mt-6">
                 Secure payment • 7 day money back guarantee
               </p>
