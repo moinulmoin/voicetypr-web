@@ -13,11 +13,7 @@ const faqs = [
     answer:
       "Yes! VoiceTypr offers a 3-day free trial with unlimited transcription. Test all features before buying. No credit card required.",
   },
-  {
-    question: "Is it really lifetime or are there tricks?",
-    answer:
-      "It's truly lifetime. Buy once, get all future updates forever. No rebuy tricks, no upgrade fees, no subscriptions. The $19 price is an early bird discount though - will increase after launch week.",
-  },
+  
   {
     question: "Does it work with ChatGPT, Claude, and Cursor?",
     answer:
