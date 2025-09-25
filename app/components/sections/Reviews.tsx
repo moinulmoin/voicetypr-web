@@ -56,6 +56,16 @@ const testimonials = [
     },
     source: "email",
   },
+  {
+    id: 6,
+    content: "Thanks for creating this tool. There aren't a lot of local first Windows dictation tools using AI models for typing",
+    author: {
+      name: "Josip J",
+      handle: "josip.j",
+      avatar: "JJ",
+    },
+    source: "email",
+  },
 ];
 
 export default function Reviews() {
