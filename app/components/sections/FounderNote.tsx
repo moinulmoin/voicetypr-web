@@ -24,7 +24,7 @@ export default function FounderNote() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              Try the 3-day free trial. If it saves you time, get it for $19 and own it forever. No
+              Try the 3-day free trial. If it saves you time, get it at early bird price. No
               subscriptions, no upsells.
             </p>
 
