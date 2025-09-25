@@ -380,30 +380,22 @@ export default function DownloadPageClient() {
               <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {/* Pro Plan */}
                 <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
-                  {/* Discount badge */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
-                      <span className="text-xs font-medium text-white">
-                        PRO35 applied
-                      </span>
-                    </div>
-                  </div>
 
                   <CardHeader className="text-center pb-1 px-6 pt-6">
                     <CardTitle className="text-2xl font-bold">Pro</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
                         <span className="text-xl text-muted-foreground line-through">
-                          $49
+                          $50
                         </span>
-                        <span className="text-4xl font-bold">$29</span>
+                        <span className="text-4xl font-bold">$25</span>
                       </div>
                       <p className="text-sm text-muted-foreground mt-2">
                         For individuals
                       </p>
                       <p className="text-xs mt-1 font-semibold">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                          Save $20
+                          Save $25
                         </span>
                       </p>
                     </div>
@@ -455,11 +447,11 @@ export default function DownloadPageClient() {
 
                 {/* Plus Plan */}
                 <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-primary/50 scale-[1.03] ring-2 ring-primary/20">
-                  {/* Discount badge */}
+                  {/* Most popular badge */}
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                     <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
                       <span className="text-xs font-medium text-white">
-                        PRO45 applied
+                        Most Popular
                       </span>
                     </div>
                   </div>
@@ -469,9 +461,9 @@ export default function DownloadPageClient() {
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
                         <span className="text-xl text-muted-foreground line-through">
-                          $89
+                          $80
                         </span>
-                        <span className="text-4xl font-bold">$49</span>
+                        <span className="text-4xl font-bold">$40</span>
                       </div>
                       <p className="text-sm text-muted-foreground mt-2">
                         For power users
