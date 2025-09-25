@@ -30,13 +30,12 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$29",
-    originalPrice: "$49",
+    price: "$25",
+    originalPrice: "$50",
     description: "For individuals",
     features: ["1 device activation", "Lifetime access", "All future updates"],
     cta: "Get Pro",
-    popular: true,
-    discount: "PRO35",
+    popular: false,
     onClick: (metadata: Record<string, any>) => {
       window.location.href =
         "/api/v1/checkout?products=" +
@@ -48,13 +47,12 @@ const plans = [
   },
   {
     name: "Plus",
-    price: "$49",
-    originalPrice: "$89",
+    price: "$40",
+    originalPrice: "$80",
     description: "For power users",
     features: ["2 device activations", "Lifetime access", "All future updates"],
     cta: "Get Plus",
-    popular: false,
-    discount: "PLUS45",
+    popular: true,
     onClick: (metadata: Record<string, any>) => {
       window.location.href =
         siteUrl +
@@ -84,7 +82,7 @@ export default function Pricing() {
   return (
     <section className="relative py-24" id="pricing">
       {/* Section intro */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-10">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
           Own it forever. No monthly fees.
         </h2>
@@ -98,7 +96,7 @@ export default function Pricing() {
         {/* Real urgency - limited time discount */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
           <span className="text-sm font-medium">
-            🎉 Limited Early Bird Offer
+            🎉 Early Bird Offer Ending Soon
           </span>
         </div>
       </div>
@@ -115,12 +113,12 @@ export default function Pricing() {
                   : "border-border/50 hover:border-border/70"
               }`}
             >
-              {/* Discount badge */}
-              {plan.discount && (
+              {/* Most popular badge */}
+              {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                   <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
                     <span className="text-xs font-medium text-white">
-                      {plan.discount} applied
+                      Most Popular
                     </span>
                   </div>
                 </div>
