@@ -37,7 +37,7 @@ export default function Hero() {
           {/* Launch offer announcement */}
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
             <span className="text-sm font-medium text-muted-foreground">
-              ⚡ Early Bird offer ending soon
+              ⚡ Early bird price ending soon
             </span>
           </div>
           {/* Main Heading with VoiceTypr's gradient style */}
@@ -59,7 +59,7 @@ export default function Hero() {
           {/* Social Proof */}
           {/* <SocialProof /> */}
           {/* CTA Buttons */}
-          <div className="flex items-center justify-center gap-4 mb-2 mt-6">
+          <div className="flex items-center justify-center gap-4 mb-8 mt-6">
             <Button asChild>
               <Link href="/download" data-umami-event="hero-download-click">
                 Download Free
