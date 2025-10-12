@@ -100,7 +100,7 @@ export default function Pricing() {
         {/* Real urgency - limited time discount */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
           <span className="text-sm font-medium">
-            🎉 Early Bird Offer Ending Soon
+            🎉 Save 50% - Early Adopter Pricing (ending soon)
           </span>
         </div>
       </div>

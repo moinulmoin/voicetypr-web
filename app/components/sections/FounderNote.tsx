@@ -19,16 +19,10 @@ export default function FounderNote() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              We just launched. You're an early user, which means you get the lowest price
-              it'll ever be and your feedback shapes how I build next.
+              Try the 3-day free trial. If it saves you 30 minutes this week, it's already worth it.
             </p>
 
-            <p className="text-muted-foreground leading-relaxed">
-              Try the 3-day free trial. If it saves you time, get it at early bird price. No
-              subscriptions, no upsells.
-            </p>
-
-            <div className="flex items-center gap-4 pt-4">
+            <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
                 <span className="mr-1">—</span>
                 <a
@@ -57,9 +51,9 @@ export default function FounderNote() {
 
         {/* CTA after founder note */}
         <div className="text-center mt-8">
-          <Button 
-            size="lg" 
-            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })} 
+          <Button
+            size="lg"
+            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
             className="group"
             data-umami-event="founder-note-cta-click"
           >
