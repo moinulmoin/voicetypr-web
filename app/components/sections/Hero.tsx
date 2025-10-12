@@ -78,7 +78,7 @@ export default function Hero() {
           {/* Video Demo */}
           <div className="mb-12">
             <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-2 max-w-4xl mx-auto">
-              <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 border border-red-500 rounded-lg relative overflow-hidden">
+              <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg relative overflow-hidden">
                 <video
                   className="absolute inset-0 w-full h-full object-contain"
                   controls
