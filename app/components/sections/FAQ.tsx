@@ -24,6 +24,11 @@ const faqs = [
     answer:
       "Yes, it's completely safe! To install: click 'More info' then 'Run anyway'. This warning appears because we don't have code signing yet (costs $129-290+/year). The app is open source - you can verify the code yourself on GitHub. Once more users download it, Windows SmartScreen will stop showing this warning automatically.",
   },
+  {
+    question: "What are the system requirements?",
+    answer:
+      "macOS 13 or later, Windows 10 or later and minimum 4 GB RAM required.",
+  },
 ];
 
 export default function FAQ() {

@@ -2,22 +2,9 @@
 
 import { getLatestReleaseAssets, ReleaseAssets } from "@/app/lib/github";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import {
-  ArrowRight,
-  Check,
-  CheckCircle,
-  Download,
-  Github,
-  Shield,
-} from "lucide-react";
+import { ArrowRight, Check, CheckCircle, Download, Github, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
@@ -50,56 +37,46 @@ const macosInstallationSteps = [
   {
     step: "1",
     title: "Download VoiceTypr",
-    description: "Download the .dmg file for your Mac",
+    description: "Download the .dmg file for your Mac"
   },
   {
     step: "2",
     title: "Open the Installer",
-    description:
-      "Double-click the .dmg file and drag VoiceTypr to Applications",
+    description: "Double-click the .dmg file and drag VoiceTypr to Applications"
   },
   {
     step: "3",
     title: "Launch & Use",
-    description: "Open VoiceTypr from Applications and enter your license key",
-  },
+    description: "Open Voicetypr from Applications"
+  }
 ];
 
 const windowsInstallationSteps = [
   {
     step: "1",
     title: "Download VoiceTypr",
-    description: "Download the .exe installer for Windows",
+    description: "Download the .exe installer for Windows"
   },
   {
     step: "2",
     title: "Run the Installer",
-    description:
-      "Double-click the .exe file and follow the installation wizard",
+    description: "Double-click the .exe file and follow the installation wizard"
   },
   {
     step: "3",
     title: "Launch & Use",
-    description: "Open VoiceTypr from Start Menu and enter your license key",
-  },
+    description: "Open VoiceTypr from Start Menu/Desktop"
+  }
 ];
 
 const getDownloadOptions = (assets: ReleaseAssets) => [
   {
     id: "macos-silicon",
     name: "macOS (Apple Silicon)",
-    description: "For M1, M2, M3 Macs",
+    description: "For M1, M2, M3+ Macs",
     icon: AppleIcon,
     url: assets.silicon,
-    platform: "macos",
-  },
-  {
-    id: "macos-intel",
-    name: "macOS (Intel)",
-    description: "For Intel-based Macs",
-    icon: AppleIcon,
-    url: assets.intel,
-    platform: "macos",
+    platform: "macos"
   },
   {
     id: "windows",
@@ -107,8 +84,8 @@ const getDownloadOptions = (assets: ReleaseAssets) => [
     description: "Windows 10 or later",
     icon: WindowsIcon,
     url: assets.windows,
-    platform: "windows",
-  },
+    platform: "windows"
+  }
 ];
 
 export default function DownloadPageClient() {
@@ -117,31 +94,28 @@ export default function DownloadPageClient() {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
 
   useEffect(() => {
-    // Detect OS and auto-select platform
+    // Detect OS and fetch assets in parallel
     const detectOS = () => {
       const userAgent = window.navigator.userAgent.toLowerCase();
-      const platform = window.navigator.platform?.toLowerCase() || "";
 
-      // Check for Windows
-      if (platform.includes("win") || userAgent.includes("windows")) {
+      if (userAgent.includes("windows")) {
         setSelectedPlatform("windows");
-      }
-      // Check for Mac
-      else if (platform.includes("mac") || userAgent.includes("mac")) {
-        // For Macs, default to Apple Silicon since most new Macs are M1/M2/M3
-        // Users can manually switch if they have Intel
-        // We could also check screen resolution or other hints but it's not reliable
+      } else if (userAgent.includes("mac")) {
         setSelectedPlatform("macos-silicon");
       }
-      // Linux or other - don't pre-select
     };
 
-    detectOS();
-
-    getLatestReleaseAssets().then((assets) => {
-      setAssets(assets);
-      setIsLoading(false);
-    });
+    // Run both operations in parallel with error handling
+    Promise.allSettled([Promise.resolve(detectOS()), getLatestReleaseAssets()]).then(
+      ([_, assetsResult]) => {
+        if (assetsResult.status === "fulfilled") {
+          setAssets(assetsResult.value);
+        } else {
+          console.error("Failed to load release assets:", assetsResult.reason);
+        }
+        setIsLoading(false);
+      }
+    );
   }, []);
 
   const handleDownload = () => {
@@ -160,13 +134,9 @@ export default function DownloadPageClient() {
     }
   };
 
-  const selectedOption = getDownloadOptions(assets).find(
-    (opt) => opt.id === selectedPlatform,
-  );
+  const selectedOption = getDownloadOptions(assets).find((opt) => opt.id === selectedPlatform);
   const installationSteps =
-    selectedOption?.platform === "windows"
-      ? windowsInstallationSteps
-      : macosInstallationSteps;
+    selectedOption?.platform === "windows" ? windowsInstallationSteps : macosInstallationSteps;
 
   const [referral, setReferral] = useState("");
 
@@ -178,17 +148,17 @@ export default function DownloadPageClient() {
   }, []);
 
   const metadata = {
-    referral: referral || "none",
+    referral: referral || "none"
   };
 
   return (
     <>
-      <div className="relative min-h-screen">
+      <div className="relative">
         <GridBackground />
         <Header />
 
         {/* Main Download Section */}
-        <section className="relative pt-32 pb-24">
+        <section className="relative pt-32">
           <div className="max-w-4xl mx-auto px-4 text-center">
             {/* Header */}
             <div className="mb-12">
@@ -204,12 +174,12 @@ export default function DownloadPageClient() {
             </div>
 
             {/* Platform Selection */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
               {getDownloadOptions(assets).map((option) => (
                 <Card
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
-                  className={`relative group p-8 cursor-pointer transition-all duration-300 ${"${"}
+                  className={`relative group p-6 cursor-pointer transition-all duration-300 ${"${"}
                     selectedPlatform === option.id
                       ? 'bg-card/80 border-primary shadow-lg scale-105'
                       : 'bg-card/50 border-border/50 hover:bg-card/70 hover:border-border/70'
@@ -226,13 +196,9 @@ export default function DownloadPageClient() {
                       <option.icon />
                     </div>
 
-                    <h3 className="text-lg font-semibold mb-2">
-                      {option.name}
-                    </h3>
+                    <h3 className="text-lg font-semibold mb-2">{option.name}</h3>
 
-                    <p className="text-sm text-muted-foreground">
-                      {option.description}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{option.description}</p>
 
                     {selectedPlatform === option.id && (
                       <CheckCircle className="absolute top-4 right-4 w-5 h-5 text-primary" />
@@ -257,96 +223,18 @@ export default function DownloadPageClient() {
                     "Loading..."
                   ) : (
                     <>
-                      <Download className="w-4 h-4 mr-2 group-hover/btn:translate-y-0.5 transition-transform" />
-                      Download for{" "}
-                      {selectedOption?.platform === "windows"
-                        ? "Windows"
-                        : "macOS"}
+                      <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
+                      Download for {selectedOption?.platform === "windows" ? "Windows" : "macOS"}
                     </>
                   )}
                 </Button>
               </div>
             )}
 
-            {/* Dynamic System Requirements */}
-            {selectedPlatform && (
-              <div className="mb-16 p-6 rounded-2xl bg-card/30 border border-border/30 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h2 className="text-2xl font-semibold mb-6">
-                  System Requirements
-                </h2>
-                <div className="max-w-md mx-auto text-left">
-                  {selectedOption?.platform === "windows" ? (
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <WindowsIcon />
-                        <h3 className="text-lg font-medium">Windows</h3>
-                      </div>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          Windows 10 or later
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          64-bit processor
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          4 GB RAM minimum (8 GB recommended)
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          Latest graphics driver for GPU acceleration (if
-                          available)
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          Good quality microphone device
-                        </li>
-                      </ul>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <AppleIcon />
-                        <h3 className="text-lg font-medium">macOS</h3>
-                      </div>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          macOS 13.0 (Ventura) or later
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          {selectedPlatform === "macos-silicon"
-                            ? "Apple Silicon (M1/M2/M3)"
-                            : "Intel processor"}
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          4 GB RAM minimum
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          Good quality microphone device
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          Microphone & Accessibility permissions required
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
             {/* Dynamic Installation Steps */}
             {selectedPlatform && (
-              <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h2 className="text-2xl font-semibold mb-8">
-                  Installation Guide
-                </h2>
+              <div className="my-20 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <h2 className="text-2xl font-semibold mb-8">Installation Guide</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {installationSteps.map((step, index) => (
                     <div key={step.step} className="relative">
@@ -354,12 +242,8 @@ export default function DownloadPageClient() {
                         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4">
                           {step.step}
                         </div>
-                        <h3 className="text-lg font-semibold mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-muted-foreground">
-                          {step.description}
-                        </p>
+                        <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
+                        <p className="text-muted-foreground">{step.description}</p>
                       </div>
 
                       {/* Arrow for desktop */}
@@ -373,21 +257,16 @@ export default function DownloadPageClient() {
             )}
 
             {/* Pricing Section */}
-            <div className="mb-16">
-              <h2 className="text-2xl font-semibold mb-8 text-center">
-                Ready to Write 5x Faster?
-              </h2>
+            <div className="">
+              <h2 className="text-2xl font-semibold mb-8 text-center">Ready to Write 3x Faster?</h2>
               <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {/* Pro Plan */}
                 <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
-
                   <CardHeader className="text-center pb-1 px-6 pt-6">
                     <CardTitle className="text-2xl font-bold">Pro</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-xl text-muted-foreground line-through">
-                          $50
-                        </span>
+                        <span className="text-xl text-muted-foreground line-through">$50</span>
                         <span className="text-4xl font-bold">$25</span>
                       </div>
                       <p className="text-xs mt-1 font-semibold">
@@ -402,21 +281,15 @@ export default function DownloadPageClient() {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          1 device activation
-                        </span>
+                        <span className="text-sm text-muted-foreground">1 device activation</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Lifetime access
-                        </span>
+                        <span className="text-sm text-muted-foreground">Lifetime access</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          All future updates
-                        </span>
+                        <span className="text-sm text-muted-foreground">All future updates</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -447,9 +320,7 @@ export default function DownloadPageClient() {
                   {/* Most popular badge */}
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                     <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
-                      <span className="text-xs font-medium text-white">
-                        Most Popular
-                      </span>
+                      <span className="text-xs font-medium text-white">Most Popular</span>
                     </div>
                   </div>
 
@@ -457,9 +328,7 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Plus</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-xl text-muted-foreground line-through">
-                          $80
-                        </span>
+                        <span className="text-xl text-muted-foreground line-through">$80</span>
                         <span className="text-4xl font-bold">$40</span>
                       </div>
                       <p className="text-xs mt-1 font-semibold">
@@ -474,21 +343,15 @@ export default function DownloadPageClient() {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          2 device activations
-                        </span>
+                        <span className="text-sm text-muted-foreground">2 device activations</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Lifetime access
-                        </span>
+                        <span className="text-sm text-muted-foreground">Lifetime access</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          All future updates
-                        </span>
+                        <span className="text-sm text-muted-foreground">All future updates</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -515,14 +378,11 @@ export default function DownloadPageClient() {
 
                 {/* Max Plan */}
                 <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
-
                   <CardHeader className="text-center pb-1 px-6 pt-6">
                     <CardTitle className="text-2xl font-bold">Max</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-xl text-muted-foreground line-through">
-                          $140
-                        </span>
+                        <span className="text-xl text-muted-foreground line-through">$140</span>
                         <span className="text-4xl font-bold">$70</span>
                       </div>
                       <p className="text-xs mt-1 font-semibold">
@@ -537,21 +397,15 @@ export default function DownloadPageClient() {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          4 device activations
-                        </span>
+                        <span className="text-sm text-muted-foreground">4 device activations</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Lifetime access
-                        </span>
+                        <span className="text-sm text-muted-foreground">Lifetime access</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          All future updates
-                        </span>
+                        <span className="text-sm text-muted-foreground">All future updates</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -578,21 +432,9 @@ export default function DownloadPageClient() {
                 </Card>
               </div>
 
-
-
               <p className="text-center text-sm text-muted-foreground mt-6">
                 Secure payment • 7 day money back guarantee
               </p>
-            </div>
-
-            {/* Support */}
-            <div className="text-center">
-              <p className="text-muted-foreground mb-4">
-                Need help? We're here to support you.
-              </p>
-              <Button variant="outline" asChild>
-                <a href="mailto:support@voicetypr.com">Contact Support</a>
-              </Button>
             </div>
           </div>
         </section>

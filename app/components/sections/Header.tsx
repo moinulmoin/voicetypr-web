@@ -23,15 +23,20 @@ export default function Header() {
   return (
     <header className={cn("fixed left-0 right-0 z-50", isScrolled && "top-2")}>
       <div
-        className={cn(
-          "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-0",
-          isScrolled ? "" : "py-2",
-        )}
+        className={cn("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-0", isScrolled ? "" : "py-2")}
       >
         <div className="flex items-center justify-between">
           {/* Left: VoiceTypr Brand */}
           <div className="flex items-center gap-3">
-            <Image src={logo} alt="VoiceTypr logo - AI voice to text software" width={50} height={50} className="dark:invert-0 invert" />
+            <Link href="/">
+              <Image
+                src={logo}
+                alt="VoiceTypr logo - AI voice to text software"
+                width={50}
+                height={50}
+                className="dark:invert-0 invert"
+              />
+            </Link>
             <div className="hidden sm:flex items-center">
               <a
                 href="https://ideaplexa.com"
@@ -51,7 +56,7 @@ export default function Header() {
               "hidden md:flex items-center gap-8",
               isScrolled
                 ? "bg-muted/30 backdrop-blur-md px-2 py-2 rounded-lg border border-border/50"
-                : "",
+                : ""
             )}
           >
             <a
@@ -102,13 +107,8 @@ export default function Header() {
             <Button
               variant="outline"
               size="sm"
-              className={cn(
-                "items-center gap-2",
-                isScrolled ? "backdrop-blur-md" : "",
-              )}
-              onClick={() =>
-                window.open("https://github.com/moinulmoin/voicetypr", "_blank")
-              }
+              className={cn("items-center gap-2", isScrolled ? "backdrop-blur-md" : "")}
+              onClick={() => window.open("https://github.com/moinulmoin/voicetypr", "_blank")}
               data-umami-event="github-star-click"
             >
               <GitHub className="w-4 h-4 fill-current" />
@@ -116,14 +116,8 @@ export default function Header() {
             </Button>
 
             {/* Get Lifetime License Button */}
-            <Button
-              size="sm"
-              data-umami-event="header-try-for-free-click"
-              asChild
-            >
-              <Link href="/download">
-              Try for free
-              </Link>
+            <Button size="sm" data-umami-event="header-try-for-free-click" asChild>
+              <Link href="/download">Try for free</Link>
             </Button>
           </div>
         </div>

@@ -29,7 +29,7 @@ export default function SocialProof() {
     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
       {/* User Avatars */}
       <div className="flex items-center">
-        <div className="flex -space-x-3">
+        <div className="flex -space-x-6">
           {users.map((user, index) => (
             <div
               key={index}
@@ -47,7 +47,7 @@ export default function SocialProof() {
 
       {/* Trust Text */}
       <p className="text-sm text-muted-foreground">
-        Trusted by <span className="font-semibold text-foreground">1,00+</span> founders
+        Trusted by <span className="font-semibold text-foreground">100+</span> founders
       </p>
     </div>
   );
