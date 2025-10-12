@@ -1,6 +1,6 @@
 "use client";
 
-import { TryForFreeButton } from "@/app/components/TryForFreeButton";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,7 +18,7 @@ const plans = [
     name: "Pro",
     price: "$25",
     originalPrice: "$50",
-    description: "For individuals",
+    description: "",
     features: ["1 device activation", "Lifetime access", "All future updates"],
     cta: "Get Pro",
     popular: false,
@@ -35,7 +35,7 @@ const plans = [
     name: "Plus",
     price: "$40",
     originalPrice: "$80",
-    description: "For power users",
+    description: "",
     features: ["2 device activations", "Lifetime access", "All future updates"],
     cta: "Get Plus",
     popular: true,
@@ -51,10 +51,10 @@ const plans = [
   },
   {
     name: "Max",
-    price: "$80",
-    originalPrice: "$160",
-    description: "For teams & professionals",
-    features: ["5 device activations", "Lifetime access", "Priority support", "Early feature access"],
+    price: "$70",
+    originalPrice: "$140",
+    description: "",
+    features: ["4 device activations", "Lifetime access", "All future updates"],
     cta: "Get Max",
     popular: false,
     onClick: (metadata: Record<string, any>) => {
@@ -197,10 +197,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Free Trial Button */}
-        <div className="text-center mt-8">
-          <TryForFreeButton />
-        </div>
+
 
         {/* Money-back guarantee */}
         <div className="text-center mt-12">

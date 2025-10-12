@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/db";
 import { Webhooks } from "@polar-sh/nextjs";
 import { WebhookOrderRefundedPayload } from "@polar-sh/sdk/models/components/webhookorderrefundedpayload.js";
-import { after } from "next/server";
 
 export const POST = Webhooks({
   webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -54,7 +54,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.458 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -74,7 +74,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  
+
   /* Enhanced colors */
   --black-100: #0a0a0a;
   --black-200: #111111;
@@ -129,17 +129,17 @@
 /* Section backgrounds for consistent flow */
 .section-hero {
   position: relative;
-  background: radial-gradient(ellipse at top, rgba(20, 20, 30, 0.3) 0%, transparent 50%);
+  background: radial-gradient(ellipse at top, hsl(var(--muted) / 0.3) 0%, transparent 50%);
 }
 
 .section-features {
   position: relative;
-  background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 20, 0.2) 50%, transparent 100%);
+  background: linear-gradient(to bottom, transparent 0%, hsl(var(--muted) / 0.2) 50%, transparent 100%);
 }
 
 .section-pricing {
   position: relative;
-  background: radial-gradient(ellipse at bottom, rgba(20, 20, 30, 0.3) 0%, transparent 50%);
+  background: radial-gradient(ellipse at bottom, hsl(var(--muted) / 0.3) 0%, transparent 50%);
 }
 
 .grid-background::before {
@@ -148,7 +148,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse 800px 600px at 50% 200px,
-    rgba(51, 51, 51, 0.3) 0%,
+    hsl(var(--muted) / 0.3) 0%,
     transparent 50%
   );
   pointer-events: none;
@@ -160,7 +160,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse at bottom,
-    rgba(0, 0, 0, 0.3) 0%,
+    hsl(var(--muted) / 0.3) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -169,14 +169,14 @@
 /* Dot grid alternative */
 .dot-grid {
   position: relative;
-  background-color: #000000;
+  background-color: hsl(var(--background));
 }
 
 .dot-grid::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(circle, hsl(var(--foreground) / 0.1) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 

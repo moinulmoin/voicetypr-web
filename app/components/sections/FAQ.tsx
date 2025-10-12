@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Card } from "@/components/ui/card";
 
 const faqs = [
   {
@@ -13,7 +8,7 @@ const faqs = [
     answer:
       "Yes! VoiceTypr offers a 3-day free trial with unlimited transcription. Test all features before buying. No credit card required.",
   },
-  
+
   {
     question: "Does it work with ChatGPT, Claude, and Cursor?",
     answer:
@@ -28,16 +23,6 @@ const faqs = [
     question: "Will it work on Windows/Intel Mac?",
     answer:
       "Windows version just launched! Works on both Intel and Apple Silicon Macs. Apple Silicon is more optimized for AI processing but Intel works great too.",
-  },
-  {
-    question: "Can I use it on multiple computers?",
-    answer:
-      "Pro plan ($19): 1 device. Plus plan ($29): 2 devices. You can deactivate and reactivate on different machines as needed. No subscription means you actually own your license.",
-  },
-  {
-    question: "I have a feature request",
-    answer:
-      "We'd love to hear it! DM us on X @voicetypr or email support@voicetypr.com. We review all requests and early users' feedback shapes our product.",
   },
   {
     question: "Windows shows 'Unknown Publisher' warning. Is it safe?",
@@ -57,27 +42,22 @@ export default function FAQ() {
           </h2>
         </div>
 
-        {/* FAQ items */}
-        <Accordion type="single" collapsible className="space-y-4">
+        {/* FAQ items - Simple list format */}
+        <div className="space-y-6">
           {faqs.map((faq, index) => (
-            <AccordionItem
+            <Card
               key={index}
-              value={`item-${index}`}
-              className="border border-border/50 rounded-2xl overflow-hidden bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 px-6"
+              className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl p-4 transition-all duration-300 hover:bg-card/70 hover:shadow-lg"
             >
-              <AccordionTrigger
-                className="text-lg font-medium py-5 hover:no-underline"
-                data-umami-event="faq-toggle"
-                data-umami-event-question={faq.question}
-              >
+              <h3 className="text-lg font-medium">
                 {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
                 {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+              </p>
+            </Card>
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   );

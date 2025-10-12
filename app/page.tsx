@@ -6,7 +6,6 @@ import Features from "./components/sections/Features";
 import Footer from "./components/sections/Footer";
 import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
-import HowItWorks from "./components/sections/HowItWorks";
 import Pricing from "./components/sections/Pricing";
 import FounderNote from "./components/sections/FounderNote";
 // import CompetitorComparison from "./components/sections/CompetitorComparison";
@@ -20,7 +19,6 @@ export default function HomePage() {
         <Header />
         <Hero />
         <Features />
-        <HowItWorks />
         <Testimonials />
         <Pricing />
         <FounderNote />

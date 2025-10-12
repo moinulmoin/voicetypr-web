@@ -2,84 +2,34 @@
 
 export default function GridBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Base dark background with subtle gradient */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: `
-            radial-gradient(
-              ellipse 80% 80% at 50% -20%,
-              rgba(120, 119, 198, 0.3),
-              transparent
-            ),
-            radial-gradient(
-              ellipse 80% 80% at 80% 80%,
-              rgba(255, 119, 198, 0.15),
-              transparent
-            ),
-            radial-gradient(
-              ellipse 80% 80% at 20% 80%,
-              rgba(120, 119, 198, 0.15),
-              transparent
-            ),
-            #000000
-          `
-        }}
-      />
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-background">
+      {/* Base background with subtle gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 via-transparent to-pink-500/5" />
       
-      {/* Main grid pattern - more visible */}
+      {/* Main grid pattern */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 bg-[size:50px_50px] [background-position:-1px_-1px]"
         style={{
-          backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-          backgroundPosition: '-1px -1px'
+          backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)`
         }}
       />
       
       {/* Secondary finer grid */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 bg-[size:10px_10px] [background-position:-1px_-1px]"
         style={{
-          backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '10px 10px',
-          backgroundPosition: '-1px -1px'
+          backgroundImage: `linear-gradient(color-mix(in oklch, var(--border) 50%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklch, var(--border) 50%, transparent) 1px, transparent 1px)`
         }}
       />
       
-      {/* Gradient overlay for depth - top to bottom flow */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: `
-            linear-gradient(
-              180deg,
-              rgba(0, 0, 0, 0) 0%,
-              rgba(0, 0, 0, 0.3) 50%,
-              rgba(0, 0, 0, 0.2) 100%
-            )
-          `
-        }}
-      />
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/20" />
       
       {/* Vignette for focus */}
       <div 
         className="absolute inset-0"
         style={{
-          background: `
-            radial-gradient(
-              ellipse at center,
-              transparent 0%,
-              rgba(0, 0, 0, 0.4) 100%
-            )
-          `
+          background: `radial-gradient(ellipse at center, transparent 0%, color-mix(in oklch, var(--background) 40%, transparent) 100%)`
         }}
       />
       

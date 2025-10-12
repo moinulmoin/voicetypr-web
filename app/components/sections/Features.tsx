@@ -43,9 +43,9 @@ export default function Features() {
             <div className="relative z-10">
               <Globe className="w-14 h-14 text-blue-500 mb-6" />
               
-              {/* Language grid */}
+              {/* Language grid - USA & European languages only */}
               <div className="grid grid-cols-5 gap-2 mb-6">
-                {["EN", "中文", "ES", "عربي", "हिंदी", "FR", "日本", "DE", "한국", "IT"].map((lang, index) => (
+                {["EN", "ES", "FR", "DE", "IT", "PT", "NL", "SV", "NO", "PL"].map((lang, index) => (
                   <div key={index} className="flex items-center justify-center h-10 rounded-lg bg-muted/30 text-sm font-medium text-muted-foreground/80 transition-all duration-300 hover:bg-primary/20 hover:text-primary">
                     {lang}
                   </div>

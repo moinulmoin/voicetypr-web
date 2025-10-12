@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
 import type { ReactNode } from "react";
@@ -98,7 +98,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth dark">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://assets.voicetypr.com" />
         <link rel="dns-prefetch" href="https://assets.voicetypr.com" />

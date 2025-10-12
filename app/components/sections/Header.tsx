@@ -31,8 +31,8 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Left: VoiceTypr Brand */}
           <div className="flex items-center gap-3">
-            <Image src={logo} alt="VoiceTypr logo - AI voice to text software" width={50} height={50} />
-            <div className="hidden sm:flex items-center border-l border-border/30 pl-3">
+            <Image src={logo} alt="VoiceTypr logo - AI voice to text software" width={50} height={50} className="dark:invert-0 invert" />
+            <div className="hidden sm:flex items-center">
               <a
                 href="https://ideaplexa.com"
                 target="_blank"
@@ -50,7 +50,7 @@ export default function Header() {
             className={cn(
               "hidden md:flex items-center gap-8",
               isScrolled
-                ? "bg-black/20 backdrop-blur-md px-2  py-2 rounded-lg"
+                ? "bg-muted/30 backdrop-blur-md px-2 py-2 rounded-lg border border-border/50"
                 : "",
             )}
           >
@@ -103,7 +103,7 @@ export default function Header() {
               variant="outline"
               size="sm"
               className={cn(
-                "items-center gap-2 bg-white/5 hover:bg-white/10 border-white/10",
+                "items-center gap-2",
                 isScrolled ? "backdrop-blur-md" : "",
               )}
               onClick={() =>
@@ -111,7 +111,7 @@ export default function Header() {
               }
               data-umami-event="github-star-click"
             >
-              <GitHub className="w-4 h-4" />
+              <GitHub className="w-4 h-4 fill-current" />
               <span>Star us</span>
             </Button>
 

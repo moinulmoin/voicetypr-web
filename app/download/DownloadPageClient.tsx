@@ -390,9 +390,6 @@ export default function DownloadPageClient() {
                         </span>
                         <span className="text-4xl font-bold">$25</span>
                       </div>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        For individuals
-                      </p>
                       <p className="text-xs mt-1 font-semibold">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
                           Save $25
@@ -465,9 +462,6 @@ export default function DownloadPageClient() {
                         </span>
                         <span className="text-4xl font-bold">$40</span>
                       </div>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        For power users
-                      </p>
                       <p className="text-xs mt-1 font-semibold">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
                           Save $40
@@ -527,16 +521,13 @@ export default function DownloadPageClient() {
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
                         <span className="text-xl text-muted-foreground line-through">
-                          $160
+                          $140
                         </span>
-                        <span className="text-4xl font-bold">$80</span>
+                        <span className="text-4xl font-bold">$70</span>
                       </div>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        For teams & professionals
-                      </p>
                       <p className="text-xs mt-1 font-semibold">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                          Save $80
+                          Save $70
                         </span>
                       </p>
                     </div>
@@ -547,7 +538,7 @@ export default function DownloadPageClient() {
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
                         <span className="text-sm text-muted-foreground">
-                          5 device activations
+                          4 device activations
                         </span>
                       </li>
                       <li className="flex items-center gap-2">
@@ -559,13 +550,7 @@ export default function DownloadPageClient() {
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
                         <span className="text-sm text-muted-foreground">
-                          Priority support
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Early feature access
+                          All future updates
                         </span>
                       </li>
                     </ul>
@@ -593,39 +578,11 @@ export default function DownloadPageClient() {
                 </Card>
               </div>
 
-              {/* Free Trial Button */}
-              <div className="text-center mt-8">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => {
-                    window.location.href = "/api/v1/trial/check";
-                  }}
-                  data-umami-event="download-page-free-trial-click"
-                >
-                  Start Free Trial
-                </Button>
-              </div>
+
 
               <p className="text-center text-sm text-muted-foreground mt-6">
                 Secure payment • 7 day money back guarantee
               </p>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground mb-12">
-              <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4" />
-                <span>100% Private</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Github className="w-4 h-4" />
-                <span>Open Source</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4" />
-                <span>No Subscriptions</span>
-              </div>
             </div>
 
             {/* Support */}
