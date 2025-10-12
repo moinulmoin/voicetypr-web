@@ -90,7 +90,7 @@ export default function Reviews() {
               className="break-inside-avoid bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 hover:bg-card/90 transition-all duration-200 group"
             >
               {/* Author Info & Source Icon - Top */}
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   {/* Avatar */}
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0">

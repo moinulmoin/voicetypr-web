@@ -115,19 +115,15 @@ export default function Header() {
               <span>Star us</span>
             </Button>
 
-            {/* Buy Now Button */}
+            {/* Get Lifetime License Button */}
             <Button
               size="sm"
-              className="group"
-              onClick={() =>
-                document
-                  .getElementById("pricing")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              data-umami-event="header-buy-click"
+              data-umami-event="header-try-for-free-click"
+              asChild
             >
-              {/* <DollarSign className="w-4 h-4 mr-1 transition-transform group-hover:scale-110" /> */}
-              Buy Now
+              <Link href="/download">
+              Try for free
+              </Link>
             </Button>
           </div>
         </div>

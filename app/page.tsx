@@ -8,6 +8,7 @@ import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
 import Pricing from "./components/sections/Pricing";
 import FounderNote from "./components/sections/FounderNote";
+import CTA from "./components/sections/CTA";
 // import CompetitorComparison from "./components/sections/CompetitorComparison";
 import Testimonials from "./components/sections/Reviews";
 
@@ -23,6 +24,7 @@ export default function HomePage() {
         <Pricing />
         <FounderNote />
         <FAQ />
+        <CTA />
         <Footer />
       </div>
       <Suspense>

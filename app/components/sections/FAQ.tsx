@@ -20,11 +20,6 @@ const faqs = [
       "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer. No cloud, no servers, 100% offline.",
   },
   {
-    question: "Will it work on Windows/Intel Mac?",
-    answer:
-      "Windows version just launched! Works on both Intel and Apple Silicon Macs. Apple Silicon is more optimized for AI processing but Intel works great too.",
-  },
-  {
     question: "Windows shows 'Unknown Publisher' warning. Is it safe?",
     answer:
       "Yes, it's completely safe! To install: click 'More info' then 'Run anyway'. This warning appears because we don't have code signing yet (costs $129-290+/year). The app is open source - you can verify the code yourself on GitHub. Once more users download it, Windows SmartScreen will stop showing this warning automatically.",
