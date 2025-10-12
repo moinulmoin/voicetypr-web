@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { downloadURL } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function FounderNote() {
   return (
@@ -53,12 +54,14 @@ export default function FounderNote() {
         <div className="text-center mt-8">
           <Button
             size="lg"
-            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+            asChild
             className="group"
             data-umami-event="founder-note-cta-click"
           >
-            Start 3-Day Trial
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <Link href="/download">
+              Start 3-Day Trial
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </Button>
         </div>
       </div>

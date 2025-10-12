@@ -1,9 +1,44 @@
 "use client";
 
-import { ClaudeAI, Cursor, Discord, Gemini, Gmail, Linear, Notion, OpenAI, Slack, XformerlyTwitter } from "@/components/icons";
+import {
+  ClaudeAI,
+  Cursor,
+  Discord,
+  Gemini,
+  Gmail,
+  Linear,
+  Notion,
+  OpenAI,
+  Slack,
+  XformerlyTwitter
+} from "@/components/icons";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Mic, Keyboard, Zap, Sparkles, History, Layers, Key, Circle, Lock, Upload, Download, Globe, Gauge, FileText, Radio, Search, Copy, Share2, TrendingUp, Users, FileJson, Mouse } from "lucide-react";
+import {
+  Shield,
+  Mic,
+  Keyboard,
+  Zap,
+  Sparkles,
+  History,
+  Layers,
+  Key,
+  Circle,
+  Lock,
+  Upload,
+  Download,
+  Globe,
+  Gauge,
+  FileText,
+  Radio,
+  Search,
+  Copy,
+  Share2,
+  TrendingUp,
+  Users,
+  FileJson,
+  Mouse
+} from "lucide-react";
 
 // App icons grid
 const appIcons = [
@@ -16,7 +51,7 @@ const appIcons = [
   { icon: Gemini, name: "Gemini" },
   { icon: OpenAI, name: "Open AI" },
   { icon: ClaudeAI, name: "Claude AI" },
-  { icon: Gmail, name: "Gmail" },
+  { icon: Gmail, name: "Gmail" }
 ];
 
 export default function Features() {
@@ -24,48 +59,46 @@ export default function Features() {
     <section className="relative py-24" id="features">
       {/* Simple, focused intro */}
       <div className="text-center mb-16 max-w-3xl mx-auto px-4">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-          Turn your voice into text
-        </h2>
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4">Turn your voice into text</h2>
         <p className="text-muted-foreground text-xl">
           Speak naturally. Type anywhere. Stay private.
         </p>
       </div>
 
       {/* Single unified grid - no separate sections */}
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-min">
-
           {/* Hero Feature 1: Universal Language Support - spans 3 columns */}
           <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-card to-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
-            
+
             <div className="relative z-10">
               <Globe className="w-14 h-14 text-blue-500 mb-6" />
-              
+
               {/* Language grid - USA & European languages only */}
               <div className="grid grid-cols-5 gap-2 mb-6">
                 {["EN", "ES", "FR", "DE", "IT", "PT", "NL", "SV", "NO", "PL"].map((lang, index) => (
-                  <div key={index} className="flex items-center justify-center h-10 rounded-lg bg-muted/30 text-sm font-medium text-muted-foreground/80 transition-all duration-300 hover:bg-primary/20 hover:text-primary">
+                  <div
+                    key={index}
+                    className="flex items-center justify-center h-10 rounded-lg bg-muted/30 text-sm font-medium text-muted-foreground/80 transition-all duration-300 hover:bg-primary/20 hover:text-primary"
+                  >
                     {lang}
                   </div>
                 ))}
               </div>
 
               <h3 className="text-2xl lg:text-3xl font-bold mb-3">100+ Languages</h3>
-              <p className="text-muted-foreground">
-                Speak in any language. It just works.
-              </p>
+              <p className="text-muted-foreground">Speak in any language. It just works.</p>
             </div>
           </Card>
 
           {/* Hero Feature 2: Works Everywhere - spans 3 columns */}
           <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-card to-card/60 backdrop-blur-sm border-border/50 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-3xl"></div>
-            
+
             <div className="relative z-10">
               <Zap className="w-14 h-14 text-yellow-500 mb-6" />
-              
+
               <h3 className="text-2xl lg:text-3xl font-bold mb-3">Works Everywhere</h3>
               <p className="text-muted-foreground mb-6">
                 Type in any app using your voice. Email, chat, code - anywhere.
@@ -74,7 +107,10 @@ export default function Features() {
               {/* App icons */}
               <div className="grid grid-cols-5 gap-3">
                 {appIcons.map(({ icon: Icon }, index) => (
-                  <div key={index} className="flex items-center justify-center p-3 rounded-lg bg-muted/20 transition-all duration-300 hover:bg-primary/20">
+                  <div
+                    key={index}
+                    className="flex items-center justify-center p-3 rounded-lg bg-muted/20 transition-all duration-300 hover:bg-primary/20"
+                  >
                     <Icon className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
                   </div>
                 ))}
@@ -83,7 +119,7 @@ export default function Features() {
           </Card>
 
           {/* Core Features - Medium sized cards */}
-          
+
           {/* AI Enhancement */}
           <Card className="md:col-span-2 lg:col-span-2 bg-card/80 backdrop-blur-sm border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group">
             <Sparkles className="w-10 h-10 text-purple-500 mb-4" />
@@ -116,7 +152,6 @@ export default function Features() {
               </p>
             </div>
           </Card>
-
 
           {/* NEW v1.8 Features - Matching existing medium card style */}
 
@@ -198,7 +233,6 @@ export default function Features() {
               </p>
             </div>
           </Card>
-
         </div>
       </div>
     </section>
