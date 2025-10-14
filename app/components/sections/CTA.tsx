@@ -12,7 +12,7 @@ export default function CTA() {
           Ready to get started?
         </h2>
         <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Download for free or Get lifetime license
+          Download and Get lifetime license
         </p>
         <div className="flex gap-4 flex-wrap justify-center">
           <Button asChild>
