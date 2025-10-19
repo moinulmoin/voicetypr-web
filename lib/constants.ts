@@ -5,7 +5,7 @@ export const CONFIG = {
 
   // License
   devicesPerLicense: 1, // One device at a time
-  devicesPerMaxLicense: 5, // Up to 4 devices for Max plan
+  devicesPerMaxLicense: 4, // Up to 4 devices for Max plan
 
   // Validation
   validationIntervalInHours: 6, // Check license status every 6 hours
