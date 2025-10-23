@@ -19,7 +19,7 @@ const plans = [
     price: "$25",
     originalPrice: "$50",
     description: "",
-    features: ["1 device activation", "Lifetime access", "All future updates"],
+    features: ["Includes 1 device activation", "Lifetime access", "All future updates"],
     cta: "Get Pro",
     popular: false,
     onClick: (metadata: Record<string, any>) => {
@@ -36,7 +36,7 @@ const plans = [
     price: "$40",
     originalPrice: "$80",
     description: "",
-    features: ["2 device activations", "Lifetime access", "All future updates"],
+    features: ["Includes 2 device activations", "Lifetime access", "All future updates"],
     cta: "Get Plus",
     popular: true,
     onClick: (metadata: Record<string, any>) => {
@@ -54,7 +54,7 @@ const plans = [
     price: "$70",
     originalPrice: "$140",
     description: "",
-    features: ["4 device activations", "Lifetime access", "All future updates"],
+    features: ["Includes 4 device activations", "Lifetime access", "All future updates"],
     cta: "Get Max",
     popular: false,
     onClick: (metadata: Record<string, any>) => {
@@ -172,26 +172,29 @@ export default function Pricing() {
               </CardContent>
 
               <CardFooter className="px-6 pb-5 pt-2">
-                <Button
-                  className={`w-full group ${
-                    plan.popular
-                      ? "bg-primary hover:bg-primary/90"
-                      : "bg-card hover:bg-muted"
-                  }`}
-                  variant={plan.popular ? "default" : "outline"}
-                  onClick={() => plan.onClick(metadata)}
-                  data-umami-event={
-                    plan.name === "Pro"
-                      ? "pricing-pro-click"
-                      : plan.name === "Plus"
-                      ? "pricing-plus-click"
-                      : "pricing-max-click"
-                  }
-                  data-umami-event-plan={plan.name.toLowerCase()}
-                >
-                  {plan.cta}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+                <div className="w-full">
+                  <Button
+                    className={`w-full group ${
+                      plan.popular
+                        ? "bg-primary hover:bg-primary/90"
+                        : "bg-card hover:bg-muted"
+                    }`}
+                    variant={plan.popular ? "default" : "outline"}
+                    onClick={() => plan.onClick(metadata)}
+                    data-umami-event={
+                      plan.name === "Pro"
+                        ? "pricing-pro-click"
+                        : plan.name === "Plus"
+                        ? "pricing-plus-click"
+                        : "pricing-max-click"
+                    }
+                    data-umami-event-plan={plan.name.toLowerCase()}
+                  >
+                    {plan.cta}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                  
+                </div>
               </CardFooter>
             </Card>
           ))}
@@ -199,11 +202,9 @@ export default function Pricing() {
 
 
 
-        {/* Money-back guarantee */}
-        <div className="text-center mt-12">
-          <p className="text-sm text-muted-foreground">
-            Secure payment • 7 day money back guarantee
-          </p>
+        <div className="mt-10 text-center text-sm text-muted-foreground">
+          <p className="font-medium text-foreground">Pay once, use forever</p>
+          <p>Secure checkout • 7-day money-back guarantee</p>
         </div>
       </div>
     </section>

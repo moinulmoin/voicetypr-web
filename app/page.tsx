@@ -6,6 +6,8 @@ import Features from "./components/sections/Features";
 import Footer from "./components/sections/Footer";
 import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
+import HowItWorks from "./components/sections/HowItWorks";
+// import Demo from "./components/sections/Demo";
 import Pricing from "./components/sections/Pricing";
 import FounderNote from "./components/sections/FounderNote";
 import CTA from "./components/sections/CTA";
@@ -15,10 +17,12 @@ import Testimonials from "./components/sections/Reviews";
 export default function HomePage() {
   return (
     <>
-      <div className="relative min-h-screen">
+      <main id="main-content" className="relative min-h-screen">
         <GridBackground />
         <Header />
         <Hero />
+        <HowItWorks />
+        {/* <Demo />  */}
         <Features />
         <Testimonials />
         <Pricing />
@@ -26,7 +30,7 @@ export default function HomePage() {
         <FAQ />
         <CTA />
         <Footer />
-      </div>
+      </main>
       <Suspense>
         <SuccessModal />
       </Suspense>

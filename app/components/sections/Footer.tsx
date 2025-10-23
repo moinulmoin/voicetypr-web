@@ -1,4 +1,3 @@
-
 "use client";
 
 import { GitHub, XformerlyTwitter } from "@/components/icons";
@@ -6,9 +5,10 @@ import { Mail } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="relative">
-      <div className="max-w-5xl mx-auto px-4 py-24">
+    <footer className="relative border-t border-border/50">
+      <div className="max-w-5xl mx-auto px-4 py-20">
         {/* Main content */}
         <div className="flex flex-col items-center text-center">
           <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
@@ -56,7 +56,23 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
-            {/* <a href="/changelog" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event="footer-link-click" data-umami-event-page="changelog">
+            <Link
+              href="/download"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="footer-link-click"
+              data-umami-event-page="download"
+            >
+              Download
+            </Link>
+            <Link
+              href="/cookies"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="footer-link-click"
+              data-umami-event-page="cookies"
+            >
+              Cookies
+            </Link>
+            {/* <a href="/changelog" className="text-muted-foreground hover:text-foreground transition-colors" data-track="footer-link-click" data-track-page="changelog">
               Changelog
             </a> */}
             <Link
@@ -75,9 +91,36 @@ export default function Footer() {
             >
               Terms & Conditions
             </Link>
-
-            <a href="https://voicetypr.affonso.io" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" data-umami-event= "footer-link-click" data-umami-event-page="referral"
-            >Affiliate</a>
+            <button
+              type="button"
+              onClick={() => (window as any).__openCookiePreferences?.()}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="footer-link-click"
+              data-umami-event-page="manage-cookies"
+            >
+              Manage cookies
+            </button>
+            <a
+              href="mailto:support@voicetypr.com"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="footer-link-click"
+              data-umami-event-page="support"
+            >
+              Support
+            </a>
+            <a
+              href="https://voicetypr.affonso.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-umami-event="footer-link-click"
+              data-umami-event-page="referral"
+            >
+              Affiliates
+            </a>
+          </div>
+          <div className="mt-8 text-xs text-muted-foreground">
+            © {year} VoiceTypr. All rights reserved.
           </div>
         </div>
       </div>

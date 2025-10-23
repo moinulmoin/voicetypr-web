@@ -3,7 +3,7 @@ export default function TermsPage() {
     <div className="container max-w-4xl mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-8">Terms and Conditions</h1>
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <p className="text-sm text-muted-foreground mb-8">Last Updated: August 6, 2024</p>
+        <p className="text-sm text-muted-foreground mb-8">Last Updated: October 23, 2025</p>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Agreement to Terms</h2>
@@ -44,6 +44,15 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">4A. EU Right of Withdrawal for Digital Content</h2>
+          <p>
+            If you are an EU consumer, you acknowledge that by downloading/activating the Software you expressly request
+            immediate performance and confirm you lose the statutory right of withdrawal for digital content not supplied
+            on a tangible medium. This does not affect our separate 7‑day money‑back guarantee described above.
+          </p>
+        </section>
+
+        <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">5. Acceptable Use</h2>
           <p>You agree to:</p>
           <ul className="list-disc pl-6 space-y-2">
@@ -52,6 +61,14 @@ export default function TermsPage() {
             <li>Not share, sell, or distribute your license key</li>
             <li>Be at least 13 years of age to use the Software</li>
           </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">6A. Termination and Changes</h2>
+          <p>
+            We may suspend or terminate access to license services in cases of abuse or fraud. We may update the
+            Software and these Terms; continued use after updates constitutes acceptance.
+          </p>
         </section>
 
         <section className="mb-8">
@@ -90,7 +107,31 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">11. Contact Information</h2>
+          <h2 className="text-2xl font-semibold mb-4">11. Venue and Dispute Resolution</h2>
+          <p>
+            Courts located in Sheridan County, Wyoming shall have exclusive jurisdiction. You agree to first attempt
+            informal resolution by contacting support@voicetypr.com.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">12. Export Control</h2>
+          <p>
+            You represent that you are not located in, under control of, or a national or resident of any country or
+            entity subject to U.S. sanctions and agree to comply with applicable export control laws.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">13. Age Requirements</h2>
+          <p>
+            You must be at least 13 years old to use the Software. Where local law requires a higher age for consent to
+            data processing (e.g., up to 16 in some EU countries), you confirm you meet that age or have parental consent.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">14. Contact Information</h2>
           <p>
             Ideaplexa LLC<br />
             30 N Gould St Ste N<br />

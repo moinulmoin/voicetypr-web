@@ -1,106 +1,120 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Cpu, DollarSign, Github, Shield } from "lucide-react";
 import Link from "next/link";
-import SocialProof from "./SocialProof";
-
-const badges = [
-  {
-    icon: Github,
-    label: "Open Source",
-    description: "Transparent code"
-  },
-  {
-    icon: Shield,
-    label: "100% Private",
-    description: "Your device only"
-  },
-  {
-    icon: Cpu,
-    label: "Native & Fast",
-    description: "Built with Tauri"
-  },
-  {
-    icon: DollarSign,
-    label: "One-time Purchase",
-    description: "No subscriptions"
-  }
-];
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const videoContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const node = videoContainerRef.current;
+    if (!node || shouldLoadVideo) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadVideo(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [shouldLoadVideo]);
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-24 lg:pt-28">
-      {/* Content */}
+    <section className="relative flex min-h-screen items-center overflow-hidden pt-24 lg:pt-28">
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <div>
-          {/* Launch offer announcement */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-600/20 bg-gradient-to-r from-purple-600/10 to-pink-600/10 px-4 py-2">
             <span className="text-sm font-medium text-muted-foreground">
               ⚡ Early bird price ending soon
             </span>
           </div>
-          {/* Main Heading with VoiceTypr's gradient style */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-foreground/70 block">
+
+          <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
+            <span className="block bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
               Write 3x faster
             </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground/70 via-foreground to-foreground block">
+            <span className="block bg-gradient-to-r from-foreground/70 via-foreground to-foreground bg-clip-text text-transparent">
               with your voice
             </span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto text-balance">
-            AI powered offline voice to text tool for busy founders.
+          <p className="text-balance text-xl text-muted-foreground">
+            VoiceTypr is the offline AI voice to text tool for founders and
+            builders who live inside ChatGPT, Claude, Cursor, and every writing
+            surface.
           </p>
-          <p className="text-lg font-semibold text-primary text-balance">
+          <p className="mt-4 text-lg font-semibold text-primary">
             Pay once. Use forever. No subscription.
           </p>
 
-          {/* Social Proof */}
-          {/* <SocialProof /> */}
-          {/* CTA Buttons */}
-          <div className="flex items-center justify-center gap-4 mb-8 mt-6">
-            <Button asChild>
-              <Link href="/download" data-umami-event="hero-download-click">
-                Download Free
-              </Link>
+          {/* Badges row removed per request */}
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <Button asChild size="lg" data-umami-event="hero-start-trial-click">
+              <Link href="/download">Start free 3-day trial</Link>
             </Button>
             <Button
-              onClick={() =>
-                document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
-              }
-              data-umami-event="hero-upgrade-click"
+              size="lg"
               variant="outline"
+              data-umami-event="hero-buy-click"
+              onClick={() =>
+                document
+                  .getElementById("pricing")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
-              Get lifetime license
+              Buy lifetime license
             </Button>
           </div>
-          {/* Video Demo */}
-          <div className="mb-12">
-            <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-2 max-w-4xl mx-auto">
-              <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg relative overflow-hidden">
-                <video
-                  className="absolute inset-0 w-full h-full object-contain"
-                  controls
-                  playsInline
-                  preload="metadata"
-                  aria-label="VoiceTypr Demo Video - Shows voice-to-text functionality"
-                >
-                  <source
-                    src="https://assets.voicetypr.com/voicetypr-better-voice.mp4"
-                    type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center text-center p-8">
-                    <div>
-                      <p className="text-lg font-semibold mb-2">Video Demo Unavailable</p>
-                      <p className="text-muted-foreground mb-4">
-                        Your browser doesn't support video playback. VoiceTypr transforms voice
-                        input into text for any application.
-                      </p>
-                    </div>
+
+          <div className="mt-12" ref={videoContainerRef}>
+            <div className="relative mx-auto max-w-4xl rounded-2xl border border-border/50 bg-card/50 p-2 backdrop-blur-sm">
+              <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
+                {shouldLoadVideo ? (
+                  <video
+                    className="absolute inset-0 h-full w-full object-cover"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    poster="/og-image.png"
+                    aria-label="VoiceTypr demo clip"
+                  >
+                    <source
+                      src="https://assets.voicetypr.com/voicetypr-better-voice.mp4#t=0,20"
+                      type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
+                    />
+                  </video>
+                ) : (
+                  <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
+                    <p className="text-base font-semibold text-foreground">
+                      See VoiceTypr in action
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Preview loads on scroll to keep the page fast.
+                    </p>
                   </div>
-                </video>
+                )}
               </div>
+            </div>
+            <div className="mt-4 text-sm text-muted-foreground">
+              Want the full walkthrough?{" "}
+              <a
+                href={
+                  process.env.NEXT_PUBLIC_DEMO_YT_URL ||
+                  "https://www.youtube.com"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                watch the full demo
+              </a>
             </div>
           </div>
         </div>

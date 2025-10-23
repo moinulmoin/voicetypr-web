@@ -9,24 +9,25 @@ export default function CTA() {
     <section className="relative py-20">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-          Ready to get started?
+          Ready to write without typing?
         </h2>
         <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Download and Get lifetime license
+          Start the 3-day trial in under two minutes. Love it? Unlock a lifetime license.
         </p>
         <div className="flex gap-4 flex-wrap justify-center">
-          <Button asChild>
+          <Button asChild size="lg">
             <Link href="/download" data-umami-event="cta-download-click">
               <Download />
-              Download Free
+              Start free 3-day trial
             </Link>
           </Button>
           <Button
             variant="outline"
+            size="lg"
             onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
             data-umami-event="cta-pricing-click"
           >
-            Get lifetime license
+            Buy lifetime license
           </Button>
         </div>
       </div>

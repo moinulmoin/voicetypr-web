@@ -101,9 +101,8 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Right: GitHub Star + Buy Now Button */}
+          {/* Right: GitHub Star + Try for free */}
           <div className="flex items-center gap-3">
-            {/* GitHub Star Button */}
             <Button
               variant="outline"
               size="sm"
@@ -114,8 +113,6 @@ export default function Header() {
               <GitHub className="w-4 h-4 fill-current" />
               <span>Star us</span>
             </Button>
-
-            {/* Get Lifetime License Button */}
             <Button size="sm" data-umami-event="header-try-for-free-click" asChild>
               <Link href="/download">Try for free</Link>
             </Button>

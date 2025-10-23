@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import { Geist } from "next/font/google";
-import Script from "next/script";
 import type { ReactNode } from "react";
 
 import "@/app/globals.css";
 import { Analytics } from "@/components/analytics";
 import { Providers } from "@/components/providers";
+import Script from "next/script";
+import { DeferredPixels } from "@/components/deferred-pixels";
+import { CookieConsent } from "@/components/cookie-consent";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -15,7 +17,7 @@ const fontSans = Geist({
 export const metadata: Metadata = {
   title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
   description:
-    "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
+    "VoiceTypr is the offline voice-to-text copilot for founders. Ship 3x faster in ChatGPT, Claude, Cursor and more with private, native transcription.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -51,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
     description:
-      "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor. High accuracy, works everywhere. One-time purchase, no subscription.",
+      "Write 3x faster with a local voice-to-text app built for AI power users. Pay once, use forever.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -68,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
     description:
-      "Stop typing, start speaking. VoiceTypr turns voice to text instantly in any app. Perfect for AI Users. $19 one-time (61% off).",
+      "Stop typing, start speaking. VoiceTypr pastes fast, formatted text into any app. Start free, own it for life.",
     images: ["/og-image.png"],
     creator: "@moinulmoin",
   },
@@ -102,32 +104,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://assets.voicetypr.com" />
         <link rel="dns-prefetch" href="https://assets.voicetypr.com" />
-        <Script
-          src="https://affonso.io/js/pixel.min.js"
-          strategy="afterInteractive"
-          data-affonso="cmfl3j0cw001ogn7r874fqlxq"
-          data-cookie_duration="30"
-        />
       </head>
-      {/* Google Ads tracking (gtag.js) */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-17417755056"
-        strategy="afterInteractive"
-      />
-      <Script
-        id="google-ads-gtag"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17417755056');
-          `,
-        }}
-      />
-      {/* End Google Ads tracking */}
-
       {/* JSON-LD Structured Data */}
       <Script
         id="json-ld-structured-data"
@@ -141,46 +118,58 @@ export default function RootLayout({
                 "@id": "https://voicetypr.com/#software",
                 name: "VoiceTypr",
                 description:
-                  "AI-powered voice dictation for busy founders. Ship 3x faster with ChatGPT, Claude & Cursor. Works everywhere.",
+                  "Offline voice dictation for founders and makers. Ship 3x faster with ChatGPT, Claude & Cursor while keeping data private.",
                 applicationCategory: "ProductivityApplication",
                 operatingSystem: ["macOS 13.0+", "Windows 10+"],
                 downloadUrl: "https://voicetypr.com/download",
                 offers: [
                   {
                     "@type": "Offer",
-                    name: "Pro Plan - Launch Special",
-                    price: "19.00",
+                    name: "Pro Plan",
+                    price: "25.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
-                      "1 device activation - Lifetime license - Launch Special 61% off",
+                      "Includes 1 device activation, lifetime license, free updates.",
                     seller: {
                       "@id": "https://voicetypr.com/#organization",
                     },
                   },
                   {
                     "@type": "Offer",
-                    name: "Plus Plan - Launch Special",
-                    price: "29.00",
+                    name: "Plus Plan",
+                    price: "40.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
-                      "2 device activations - Lifetime license - Launch Special 70% off",
+                      "Includes 2 device activations, lifetime license, free updates.",
+                    seller: {
+                      "@id": "https://voicetypr.com/#organization",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Max Plan",
+                    price: "70.00",
+                    priceCurrency: "USD",
+                    availability: "https://schema.org/InStock",
+                    description:
+                      "Includes 4 device activations, lifetime license, free updates.",
                     seller: {
                       "@id": "https://voicetypr.com/#organization",
                     },
                   },
                 ],
                 featureList: [
-                  "100+ Languages Support",
-                  "High Accuracy",
-                  "Works with Any Application (ChatGPT, Claude, Cursor, VS Code)",
-                  "100% Private - Offline Processing",
-                  "Global Hotkey Support",
-                  "Smart Formatting",
-                  "Audio File Transcription",
-                  "3-Day Free Trial",
-                  "Lifetime Updates",
+                  "100+ language support",
+                  "High-accuracy transcription",
+                  "Works with any application (ChatGPT, Claude, Cursor, VS Code)",
+                  "Offline processing for full privacy",
+                  "Global hotkey support",
+                  "Smart formatting modes",
+                  "Audio file transcription",
+                  "3-day free trial",
+                  "Lifetime updates",
                 ],
                 screenshot: "https://voicetypr.com/og-image.png",
                 author: {
@@ -196,10 +185,19 @@ export default function RootLayout({
                 url: "https://voicetypr.com",
                 logo: "https://voicetypr.com/logo.png",
                 sameAs: ["https://twitter.com/moinulmoin"],
+                parentOrganization: {
+                  "@id": "https://ideaplexa.com/#organization"
+                },
                 founder: {
                   "@type": "Person",
                   name: "Moinul Moin",
                 },
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://ideaplexa.com/#organization",
+                name: "Ideaplexa LLC",
+                url: "https://ideaplexa.com"
               },
               {
                 "@type": "WebSite",
@@ -224,7 +222,7 @@ export default function RootLayout({
                   "@id": "https://voicetypr.com/#software",
                 },
                 description:
-                  "AI powered voice dictation for busy founders & AI super users. Ship 3x faster with ChatGPT, Claude & Cursor.",
+                  "Offline AI voice dictation for busy founders and AI power users.",
               },
               {
                 "@type": "FAQPage",
@@ -279,40 +277,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
         {/* End Google Tag Manager (noscript) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1000] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+        >
+          Skip to main content
+        </a>
+        <CookieConsent />
         <Providers>
+          <DeferredPixels />
           {children}
           <Analytics />
         </Providers>
-        {/* Twitter conversion tracking base code */}
-        <Script
-          id="twitter-pixel"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-twq('config','q7p7w');
-            `,
-          }}
-        />
-        {/* End Twitter conversion tracking base code */}
-
-        {/* Google Tag Manager */}
-        <Script
-          id="google-tag-manager"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WT5KZRJM');
-            `,
-          }}
-        />
-        {/* End Google Tag Manager */}
       </body>
     </html>
   );

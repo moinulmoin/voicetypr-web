@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
 import { ArrowRight, Check, CheckCircle, Download, Github, Shield } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
@@ -92,6 +92,10 @@ export default function DownloadPageClient() {
   const [assets, setAssets] = useState<ReleaseAssets>({});
   const [isLoading, setIsLoading] = useState(true);
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
+  const [showMacVideo, setShowMacVideo] = useState(false);
+  const [showWinVideo, setShowWinVideo] = useState(false);
+  const macVideoRef = useRef<HTMLVideoElement | null>(null);
+  const winVideoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     // Detect OS and fetch assets in parallel
@@ -256,6 +260,77 @@ export default function DownloadPageClient() {
               </div>
             )}
 
+            {/* Platform-specific quick install videos */}
+            {selectedPlatform === "macos-silicon" && (
+              <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <h3 className="text-xl font-semibold mb-4">Watch: Install on macOS (30s)</h3>
+                <div className="rounded-2xl border border-border/60 bg-card/60 p-3 backdrop-blur">
+                  <div className="relative aspect-video overflow-hidden rounded-[18px] bg-gradient-to-br from-primary/10 to-primary/5">
+                    {showMacVideo ? (
+                      <video
+                        ref={macVideoRef}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        poster="/og-image.png"
+                        className="absolute inset-0 h-full w-full rounded-[18px] object-contain"
+                        aria-label="VoiceTypr macOS install video"
+                        onLoadedMetadata={() => macVideoRef.current?.play().catch(() => undefined)}
+                      >
+                        <source
+                          src="https://assets.voicetypr.com/voicetypr-better-voice.mp4#t=0,30"
+                          type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
+                        />
+                      </video>
+                    ) : (
+                      <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
+                        <p className="text-base font-semibold text-foreground">See how to install on macOS</p>
+                        <p className="text-sm text-muted-foreground">Drag the app to Applications and launch.</p>
+                        <Button size="lg" className="group" onClick={() => setShowMacVideo(true)}>
+                          <Download className="mr-2 h-4 w-4" /> Play 30s video
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {selectedPlatform === "windows" && (
+              <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <h3 className="text-xl font-semibold mb-4">Watch: Install on Windows (30s)</h3>
+                <div className="rounded-2xl border border-border/60 bg-card/60 p-3 backdrop-blur">
+                  <div className="relative aspect-video overflow-hidden rounded-[18px] bg-gradient-to-br from-primary/10 to-primary/5">
+                    {showWinVideo ? (
+                      <video
+                        ref={winVideoRef}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        poster="/og-image.png"
+                        className="absolute inset-0 h-full w-full rounded-[18px] object-contain"
+                        aria-label="VoiceTypr Windows install video"
+                        onLoadedMetadata={() => winVideoRef.current?.play().catch(() => undefined)}
+                      >
+                        <source
+                          src="https://assets.voicetypr.com/voicetypr-better-voice.mp4#t=0,30"
+                          type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
+                        />
+                      </video>
+                    ) : (
+                      <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
+                        <p className="text-base font-semibold text-foreground">See how to install on Windows</p>
+                        <p className="text-sm text-muted-foreground">Run the installer and click Run anyway if SmartScreen shows.</p>
+                        <Button size="lg" className="group" onClick={() => setShowWinVideo(true)}>
+                          <Download className="mr-2 h-4 w-4" /> Play 30s video
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Pricing Section */}
             <div className="">
               <h2 className="text-2xl font-semibold mb-8 text-center">Ready to Write 3x Faster?</h2>
@@ -306,7 +381,7 @@ export default function DownloadPageClient() {
                           process.env.NEXT_PUBLIC_PRO_COUPON_CODE +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
-                      data-umami-event="download-page-pro-click"
+                      data-umami-event="download-page-plan-click"
                       data-umami-event-plan="pro"
                     >
                       Get Pro
@@ -367,7 +442,7 @@ export default function DownloadPageClient() {
                           process.env.NEXT_PUBLIC_PLUS_COUPON_CODE +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
-                      data-umami-event="download-page-plus-click"
+                      data-umami-event="download-page-plan-click"
                       data-umami-event-plan="plus"
                     >
                       Get Plus
@@ -422,7 +497,7 @@ export default function DownloadPageClient() {
                           process.env.NEXT_PUBLIC_MAX_COUPON_CODE +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
-                      data-umami-event="download-page-max-click"
+                      data-umami-event="download-page-plan-click"
                       data-umami-event-plan="max"
                     >
                       Get Max

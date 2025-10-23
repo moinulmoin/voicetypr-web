@@ -8,14 +8,6 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-declare global {
-  interface Window {
-    umami?: {
-      track: (event: string, data?: Record<string, any>) => void;
-    };
-  }
-}
-
 interface SuccessModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -52,16 +44,7 @@ export function SuccessModal() {
             const amount = data.total_amount / 100 // Convert cents to dollars
 
             // Only track purchases with valid amounts > 0
-            if (amount > 0 && data.currency) {
-              // Track in Umami
-              if (window.umami) {
-                window.umami.track('purchase', {
-                  value: amount,
-                  currency: data.currency
-                });
-              }
-
-            }
+            // If needed, track purchase via analytics layer elsewhere (Umami/GTMintegration)
           }
         } catch (error) {
           console.error('Failed to track purchase:', error)
