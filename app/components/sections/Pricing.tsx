@@ -17,7 +17,6 @@ const plans = [
   {
     name: "Pro",
     price: "$25",
-    originalPrice: "$50",
     description: "",
     features: ["Includes 1 device activation", "Lifetime access", "All future updates"],
     cta: "Get Pro",
@@ -26,15 +25,12 @@ const plans = [
       window.location.href =
         "/api/v1/checkout?products=" +
         process.env.NEXT_PUBLIC_PRO_PRODUCT_ID +
-        "&discountId=" +
-        process.env.NEXT_PUBLIC_PRO_COUPON_CODE +
         `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
     },
   },
   {
     name: "Plus",
     price: "$40",
-    originalPrice: "$80",
     description: "",
     features: ["Includes 2 device activations", "Lifetime access", "All future updates"],
     cta: "Get Plus",
@@ -44,15 +40,12 @@ const plans = [
         siteUrl +
         "/api/v1/checkout?products=" +
         process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID +
-        "&discountId=" +
-        process.env.NEXT_PUBLIC_PLUS_COUPON_CODE +
         `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
     },
   },
   {
     name: "Max",
     price: "$70",
-    originalPrice: "$140",
     description: "",
     features: ["Includes 4 device activations", "Lifetime access", "All future updates"],
     cta: "Get Max",
@@ -62,8 +55,6 @@ const plans = [
         siteUrl +
         "/api/v1/checkout?products=" +
         process.env.NEXT_PUBLIC_MAX_PRODUCT_ID +
-        "&discountId=" +
-        process.env.NEXT_PUBLIC_MAX_COUPON_CODE +
         `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
     },
   },
@@ -90,19 +81,7 @@ export default function Pricing() {
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
           Own it forever. No monthly fees.
         </h2>
-        <p className="text-muted-foreground mb-2">
-          One-time purchase, lifetime access
-        </p>
-        <p className="text-sm text-muted-foreground mb-8">
-          Save $180/year vs subscription alternatives
-        </p>
-
-        {/* Real urgency - limited time discount */}
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 border border-purple-600/20">
-          <span className="text-sm font-medium">
-            🎉 Save 50% - Early Adopter Pricing (ending soon)
-          </span>
-        </div>
+        <p className="text-muted-foreground mb-8">One-time purchase, lifetime access</p>
       </div>
 
       {/* Pricing cards */}
@@ -136,25 +115,11 @@ export default function Pricing() {
                 {/* Pricing */}
                 <div className="mt-3">
                   <div className="flex items-baseline justify-center gap-2">
-                    {plan.originalPrice && (
-                      <span className="text-xl text-muted-foreground line-through">
-                        {plan.originalPrice}
-                      </span>
-                    )}
                     <span className="text-4xl font-bold">{plan.price}</span>
                   </div>
                   <p className="text-sm text-muted-foreground mt-2">
                     {plan.description}
                   </p>
-                  {plan.originalPrice && (
-                    <p className="text-xs mt-1 font-semibold">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                        Save $
-                        {parseInt(plan.originalPrice.slice(1)) -
-                          parseInt(plan.price.slice(1))}
-                      </span>
-                    </p>
-                  )}
                 </div>
               </CardHeader>
 

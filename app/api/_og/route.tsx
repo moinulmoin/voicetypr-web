@@ -148,28 +148,7 @@ export async function GET() {
             Voice to text for solo founders & AI power users
           </p>
 
-          {/* Launch offer badge */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              padding: '16px 32px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, #a855f7, #ec4899)',
-              boxShadow: '0 10px 40px rgba(168, 85, 247, 0.25)',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '20px',
-                fontWeight: '600',
-                color: 'white',
-                fontFamily: 'system-ui, -apple-system, sans-serif',
-              }}
-            >
-              ✨ Early Bird Launch Offer
-            </span>
-          </div>
+          {/* Removed launch offer badge */}
 
           {/* Bottom features */}
           <div

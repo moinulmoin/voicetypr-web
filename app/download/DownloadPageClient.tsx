@@ -341,14 +341,8 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Pro</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-xl text-muted-foreground line-through">$50</span>
                         <span className="text-4xl font-bold">$25</span>
                       </div>
-                      <p className="text-xs mt-1 font-semibold">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                          Save $25
-                        </span>
-                      </p>
                     </div>
                   </CardHeader>
 
@@ -377,8 +371,6 @@ export default function DownloadPageClient() {
                         window.location.href =
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_PRO_PRODUCT_ID +
-                          "&discountId=" +
-                          process.env.NEXT_PUBLIC_PRO_COUPON_CODE +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-plan-click"
@@ -403,14 +395,8 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Plus</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-xl text-muted-foreground line-through">$80</span>
                         <span className="text-4xl font-bold">$40</span>
                       </div>
-                      <p className="text-xs mt-1 font-semibold">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                          Save $40
-                        </span>
-                      </p>
                     </div>
                   </CardHeader>
 
@@ -438,8 +424,6 @@ export default function DownloadPageClient() {
                         window.location.href =
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID +
-                          "&discountId=" +
-                          process.env.NEXT_PUBLIC_PLUS_COUPON_CODE +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-plan-click"
@@ -457,14 +441,8 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Max</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-xl text-muted-foreground line-through">$140</span>
                         <span className="text-4xl font-bold">$70</span>
                       </div>
-                      <p className="text-xs mt-1 font-semibold">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                          Save $70
-                        </span>
-                      </p>
                     </div>
                   </CardHeader>
 
@@ -493,8 +471,6 @@ export default function DownloadPageClient() {
                         window.location.href =
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_MAX_PRODUCT_ID +
-                          "&discountId=" +
-                          process.env.NEXT_PUBLIC_MAX_COUPON_CODE +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-plan-click"
