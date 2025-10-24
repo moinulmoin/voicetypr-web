@@ -2,29 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { } from "react";
 
 export default function Hero() {
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  const videoContainerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const node = videoContainerRef.current;
-    if (!node || shouldLoadVideo) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoadVideo(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.35 },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [shouldLoadVideo]);
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden pt-24 lg:pt-28">
@@ -75,32 +55,21 @@ export default function Hero() {
             </Button>
           </div>
 
-          <div className="mt-12" ref={videoContainerRef}>
+          <div className="mt-12">
             <div className="relative mx-auto max-w-4xl rounded-2xl border border-border/50 bg-card/50 p-2 backdrop-blur-sm">
               <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-                {shouldLoadVideo ? (
-                  <video
-                    className="absolute inset-0 h-full w-full object-cover"
-                    controls
-                    playsInline
-                    preload="metadata"
-                    aria-label="VoiceTypr demo clip"
-                  >
-                    <source
-                      src="https://assets.voicetypr.com/voicetypr-ph-2.mp4#t=0,20"
-                      type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
-                    />
-                  </video>
-                ) : (
-                  <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
-                    <p className="text-base font-semibold text-foreground">
-                      See VoiceTypr in action
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Preview loads on scroll to keep the page fast.
-                    </p>
-                  </div>
-                )}
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label="VoiceTypr demo clip"
+                >
+                  <source
+                    src="https://assets.voicetypr.com/voicetypr-ph-2.mp4#t=0,20"
+                    type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
+                  />
+                </video>
               </div>
             </div>
             <div className="mt-4 text-sm text-muted-foreground">
