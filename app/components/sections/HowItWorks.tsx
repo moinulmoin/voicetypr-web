@@ -68,7 +68,7 @@ export default function HowItWorks() {
                     className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
                   >
                     <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-white" />
+                      <step.icon className="w-6 h-6 text-foreground" />
                     </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export default function HowItWorks() {
                     className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
                   >
                     <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 stroke-current fill-current" />
+                      <step.icon className="w-6 h-6 text-foreground" />
                     </div>
                   </div>
                 </div>
