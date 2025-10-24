@@ -57,7 +57,7 @@ export default function CookiesPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-muted-foreground mt-2">If you reject marketing, those scripts do not load and no third‑party cookies are set.</p>
+          <p className="text-xs text-muted-foreground mt-2">If you reject Marketing, we do not load marketing scripts. A minimal Google Tag Manager noscript iframe may still be present for basic container functionality, but we configure it to avoid setting marketing cookies.</p>
         </section>
 
         <section className="mb-8">

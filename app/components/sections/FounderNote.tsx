@@ -27,29 +27,42 @@ export default function FounderNote() {
             <p className="text-muted-foreground leading-relaxed">
               I type for 12+ hours a day. Most tools locked me into a
               subscription or felt like legacy software. VoiceTypr is fast,
-              offline, and 100% private—your voice never leaves your computer.
+              offline, and processes your voice fully locally.
             </p>
-            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-              <span className="font-medium text-foreground">— Moinul Moin</span>
-              <span>•</span>
-              <a
-                href="https://twitter.com/immoinulmoin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                @immoinulmoin
-              </a>
-              <span>•</span>
-              <a
-                href="https://ideaplexa.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-primary"
-                data-umami-event="founder-ideaplexa-click"
-              >
-                Founder @Ideaplexa
-              </a>
+            <p className="text-muted-foreground leading-relaxed">
+              Try it free for 3 days and see if it actually saves you time.
+              Spoiler: it does!
+            </p>
+            <div className="mt-2 flex items-center gap-3 text-left">
+              <img
+                src="https://github.com/moinulmoin.png"
+                alt="Moinul Moin"
+                className="h-10 w-10 rounded-full border border-border/50"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="leading-tight">
+                <a
+                  href="https://twitter.com/immoinulmoin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground hover:underline"
+                >
+                  Moinul Moin
+                </a>
+                <div className="text-xs text-muted-foreground">
+                  Founder of VoiceTypr •{" "}
+                  <a
+                    href="https://ideaplexa.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    data-umami-event="founder-ideaplexa-click"
+                  >
+                    @Ideaplexa
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </Card>

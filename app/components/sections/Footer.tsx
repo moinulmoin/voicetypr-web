@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="flex flex-col items-center text-center">
           <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
           <p className="text-muted-foreground mb-4 max-w-md text-balance">
-            AI powered voice to text tool for busy founders & AI super users.
+            Offline AI voice to text app for founders and builders.
           </p>
           <p className="text-sm text-muted-foreground mb-8">
             Available for macOS (13+) and Windows (10+)

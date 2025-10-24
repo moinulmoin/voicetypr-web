@@ -31,7 +31,7 @@ export default function Header() {
             <Link href="/">
               <Image
                 src={logo}
-                alt="VoiceTypr logo - AI voice to text software"
+                alt="VoiceTypr — Offline voice to text app for founders and builders"
                 width={50}
                 height={50}
                 className="dark:invert-0 invert"

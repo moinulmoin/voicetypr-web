@@ -32,16 +32,16 @@ export default function Hero() {
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-600/20 bg-gradient-to-r from-purple-600/10 to-pink-600/10 px-4 py-2">
             <span className="text-sm font-medium text-muted-foreground">
-              ⚡ Early bird price ending soon
+              ⚡ We are on ProductHunt
             </span>
           </div>
 
           <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
             <span className="block bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
-              Write 3x faster
+              Write thoughts
             </span>
             <span className="block bg-gradient-to-r from-foreground/70 via-foreground to-foreground bg-clip-text text-transparent">
-              with your voice
+              faster and private
             </span>
           </h1>
           <p className="text-balance text-xl text-muted-foreground">
@@ -82,11 +82,10 @@ export default function Hero() {
                     controls
                     playsInline
                     preload="metadata"
-                    poster="/og-image.png"
                     aria-label="VoiceTypr demo clip"
                   >
                     <source
-                      src="https://assets.voicetypr.com/voicetypr-better-voice.mp4#t=0,20"
+                      src="https://assets.voicetypr.com/voicetypr-ph-2.mp4#t=0,20"
                       type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
                     />
                   </video>
@@ -105,10 +104,7 @@ export default function Hero() {
             <div className="mt-4 text-sm text-muted-foreground">
               Want the full walkthrough?{" "}
               <a
-                href={
-                  process.env.NEXT_PUBLIC_DEMO_YT_URL ||
-                  "https://www.youtube.com"
-                }
+                href="https://youtu.be/L_yU879QbE4"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 hover:text-foreground"

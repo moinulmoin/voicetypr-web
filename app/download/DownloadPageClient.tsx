@@ -261,75 +261,21 @@ export default function DownloadPageClient() {
             )}
 
             {/* Platform-specific quick install videos */}
+            {/** Platform-specific quick install video (macOS) is disabled for now
             {selectedPlatform === "macos-silicon" && (
               <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h3 className="text-xl font-semibold mb-4">Watch: Install on macOS (30s)</h3>
-                <div className="rounded-2xl border border-border/60 bg-card/60 p-3 backdrop-blur">
-                  <div className="relative aspect-video overflow-hidden rounded-[18px] bg-gradient-to-br from-primary/10 to-primary/5">
-                    {showMacVideo ? (
-                      <video
-                        ref={macVideoRef}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        poster="/og-image.png"
-                        className="absolute inset-0 h-full w-full rounded-[18px] object-contain"
-                        aria-label="VoiceTypr macOS install video"
-                        onLoadedMetadata={() => macVideoRef.current?.play().catch(() => undefined)}
-                      >
-                        <source
-                          src="https://assets.voicetypr.com/voicetypr-better-voice.mp4#t=0,30"
-                          type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
-                        />
-                      </video>
-                    ) : (
-                      <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
-                        <p className="text-base font-semibold text-foreground">See how to install on macOS</p>
-                        <p className="text-sm text-muted-foreground">Drag the app to Applications and launch.</p>
-                        <Button size="lg" className="group" onClick={() => setShowMacVideo(true)}>
-                          <Download className="mr-2 h-4 w-4" /> Play 30s video
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                ...
               </div>
             )}
+            */}
 
+            {/** Platform-specific quick install video (Windows) is disabled for now
             {selectedPlatform === "windows" && (
               <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h3 className="text-xl font-semibold mb-4">Watch: Install on Windows (30s)</h3>
-                <div className="rounded-2xl border border-border/60 bg-card/60 p-3 backdrop-blur">
-                  <div className="relative aspect-video overflow-hidden rounded-[18px] bg-gradient-to-br from-primary/10 to-primary/5">
-                    {showWinVideo ? (
-                      <video
-                        ref={winVideoRef}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        poster="/og-image.png"
-                        className="absolute inset-0 h-full w-full rounded-[18px] object-contain"
-                        aria-label="VoiceTypr Windows install video"
-                        onLoadedMetadata={() => winVideoRef.current?.play().catch(() => undefined)}
-                      >
-                        <source
-                          src="https://assets.voicetypr.com/voicetypr-better-voice.mp4#t=0,30"
-                          type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
-                        />
-                      </video>
-                    ) : (
-                      <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
-                        <p className="text-base font-semibold text-foreground">See how to install on Windows</p>
-                        <p className="text-sm text-muted-foreground">Run the installer and click Run anyway if SmartScreen shows.</p>
-                        <Button size="lg" className="group" onClick={() => setShowWinVideo(true)}>
-                          <Download className="mr-2 h-4 w-4" /> Play 30s video
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                ...
               </div>
             )}
+            */}
 
             {/* Pricing Section */}
             <div className="">
@@ -341,7 +287,7 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Pro</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-4xl font-bold">$25</span>
+                        <span className="text-4xl font-bold">$50</span>
                       </div>
                     </div>
                   </CardHeader>
@@ -395,7 +341,7 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Plus</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-4xl font-bold">$40</span>
+                        <span className="text-4xl font-bold">$80</span>
                       </div>
                     </div>
                   </CardHeader>
@@ -441,7 +387,7 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Max</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-4xl font-bold">$70</span>
+                        <span className="text-4xl font-bold">$140</span>
                       </div>
                     </div>
                   </CardHeader>

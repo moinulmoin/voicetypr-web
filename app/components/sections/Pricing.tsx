@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 const plans = [
   {
     name: "Pro",
-    price: "$25",
+    price: "$50",
     description: "",
     features: ["Includes 1 device activation", "Lifetime access", "All future updates"],
     cta: "Get Pro",
@@ -30,7 +30,7 @@ const plans = [
   },
   {
     name: "Plus",
-    price: "$40",
+    price: "$80",
     description: "",
     features: ["Includes 2 device activations", "Lifetime access", "All future updates"],
     cta: "Get Plus",
@@ -45,7 +45,7 @@ const plans = [
   },
   {
     name: "Max",
-    price: "$70",
+    price: "$140",
     description: "",
     features: ["Includes 4 device activations", "Lifetime access", "All future updates"],
     cta: "Get Max",

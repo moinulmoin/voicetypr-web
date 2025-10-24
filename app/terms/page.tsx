@@ -13,6 +13,13 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">7A. Product Direction and Changes</h2>
+          <p>
+            We continually evaluate what to build next. Accordingly, Ideaplexa LLC reserves the right, in its sole discretion, to modify, suspend, or discontinue any feature or release schedule at any time. Roadmaps are aspirational and may change. Nothing in these Terms obligates us to deliver specific functionality. These decisions do not affect the validity of your license for versions already released to you.
+          </p>
+        </section>
+
+        <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">2. License Grant</h2>
           <p>
             Ideaplexa LLC grants you a non-exclusive, non-transferable license to use VoiceTypr. The number of devices you can activate depends on your license tier:
@@ -20,6 +27,7 @@ export default function TermsPage() {
           <ul className="list-disc pl-6 space-y-2 mt-4">
             <li><strong>Pro License:</strong> Activation on one (1) device at a time</li>
             <li><strong>Plus License:</strong> Activation on two (2) devices simultaneously</li>
+            <li><strong>Max License:</strong> Activation on four (4) devices simultaneously</li>
           </ul>
           <p className="mt-4">
             You may deactivate and reactivate your license on different devices as needed within your license limits.
@@ -81,7 +89,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">7. Support and Updates</h2>
           <p>
-            Support is provided via email. Updates are included with your purchase and will be provided as long as feasible. Ideaplexa LLC reserves the right to discontinue updates or support at its discretion.
+            Support is provided via email. Updates are included with your purchase, and our goal is to continue improving the Software over time. That said, development cadence and priorities may change, and we do not guarantee delivery of future features or updates. If active development is paused, your license remains valid for the latest released version available at that time, which you may continue to use under these Terms. Maintenance or compatibility updates may be provided at our discretion.
           </p>
         </section>
 

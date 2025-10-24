@@ -6,12 +6,12 @@ const faqs = [
   {
     question: "Windows says 'Unknown Publisher'. What should I do?",
     answer:
-      "SmartScreen shows this because we haven’t purchased Microsoft’s code-signing certificate yet. It’s safe to proceed: click More info → Run anyway. As more users launch the app, SmartScreen stops warning automatically.",
+      "SmartScreen shows this because we don’t use a Microsoft code‑signing certificate yet. Even the basic option is roughly $200–$300/year, so as a solo founder I’m keeping costs lean for now. The app is safe: click More info → Run anyway. As more users launch the app, SmartScreen warnings fade automatically.",
   },
   {
     question: "Can I try VoiceTypr for free?",
     answer:
-      "Yes—VoiceTypr includes a 3-day free trial with unlimited transcription. No card required: download, activate the trial, and start talking.",
+      "Yes, VoiceTypr includes a 3-day free trial with unlimited transcription. No card required: download, activate the trial, and start talking.",
   },
   {
     question: "Does it work with ChatGPT, Claude, and Cursor?",
@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "Is my voice data private?",
     answer:
-      "Yes. VoiceTypr runs locally using Whisper models—your audio never leaves your machine.",
+      "Yes. VoiceTypr runs locally using modern offline models; your audio never leaves your machine.",
   },
   {
     question: "What are the system requirements?",

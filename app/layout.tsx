@@ -15,9 +15,9 @@ const fontSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+  title: "VoiceTypr — Offline AI voice to text app for founders and builders",
   description:
-    "VoiceTypr is the offline voice-to-text copilot for founders. Ship 3x faster in ChatGPT, Claude, Cursor and more with private, native transcription.",
+    "Offline AI voice to text app that runs locally. Private by default. Pay once, use forever.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -51,27 +51,27 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+    title: "VoiceTypr — Offline AI voice to text app for founders and builders",
     description:
-      "Write 3x faster with a local voice-to-text app built for AI power users. Pay once, use forever.",
+      "Offline AI voice to text app that runs locally. Private by default. Pay once, use forever.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
     images: [
       {
-        url: "/og-image.png",
+        url: "/Write.jpg",
         width: 1200,
         height: 630,
-        alt: "VoiceTypr - Voice to Text for AI Power Users",
+        alt: "VoiceTypr — Offline AI voice to text app for founders and builders",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+    title: "VoiceTypr — Offline AI voice to text app for founders and builders",
     description:
-      "Stop typing, start speaking. VoiceTypr pastes fast, formatted text into any app. Start free, own it for life.",
-    images: ["/og-image.png"],
+      "Offline AI voice to text app that runs locally. Private by default. Pay once, use forever.",
+    images: ["/Write.jpg"],
     creator: "@moinulmoin",
   },
   alternates: {
@@ -126,7 +126,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Pro Plan",
-                    price: "25.00",
+                    price: "50.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
@@ -138,7 +138,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Plus Plan",
-                    price: "40.00",
+                    price: "80.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
@@ -150,7 +150,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Max Plan",
-                    price: "70.00",
+                    price: "140.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
@@ -171,7 +171,7 @@ export default function RootLayout({
                   "3-day free trial",
                   "Lifetime updates",
                 ],
-                screenshot: "https://voicetypr.com/og-image.png",
+                screenshot: "https://voicetypr.com/Write.jpg",
                 author: {
                   "@type": "Person",
                   name: "Moinul Moin",

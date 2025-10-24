@@ -22,7 +22,7 @@ const steps = [
   {
     id: 3,
     title: "Set your hotkey",
-    description: "Pick a global shortcut to start and stop dictation anywhere.",
+    description: "Pick a global shortcut to toggle/push to dictation anywhere.",
     icon: Keyboard,
     gradient: "from-purple-600 to-pink-600",
   },
@@ -68,7 +68,7 @@ export default function HowItWorks() {
                     className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
                   >
                     <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-foreground" />
+                      <step.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export default function HowItWorks() {
                     className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
                   >
                     <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-foreground" />
+                      <step.icon className="w-6 h-6 stroke-current fill-current" />
                     </div>
                   </div>
                 </div>
