@@ -2,10 +2,16 @@
 
 import { getLatestReleaseAssets, ReleaseAssets } from "@/app/lib/github";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { ArrowRight, Check, CheckCircle, Download, Github, Shield } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Check, CheckCircle, Download } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
@@ -37,36 +43,38 @@ const macosInstallationSteps = [
   {
     step: "1",
     title: "Download VoiceTypr",
-    description: "Download the .dmg file for your Mac"
+    description: "Download the .dmg file for your Mac",
   },
   {
     step: "2",
     title: "Open the Installer",
-    description: "Double-click the .dmg file and drag VoiceTypr to Applications"
+    description:
+      "Double-click the .dmg file and drag VoiceTypr to Applications",
   },
   {
     step: "3",
     title: "Launch & Use",
-    description: "Open Voicetypr from Applications"
-  }
+    description: "Open Voicetypr from Applications",
+  },
 ];
 
 const windowsInstallationSteps = [
   {
     step: "1",
     title: "Download VoiceTypr",
-    description: "Download the .exe installer for Windows"
+    description: "Download the .exe installer for Windows",
   },
   {
     step: "2",
     title: "Run the Installer",
-    description: "Double-click the .exe file and follow the installation wizard"
+    description:
+      "Double-click the .exe file and follow the installation wizard",
   },
   {
     step: "3",
     title: "Launch & Use",
-    description: "Open VoiceTypr from Start Menu/Desktop"
-  }
+    description: "Open VoiceTypr from Start Menu/Desktop",
+  },
 ];
 
 const getDownloadOptions = (assets: ReleaseAssets) => [
@@ -76,7 +84,7 @@ const getDownloadOptions = (assets: ReleaseAssets) => [
     description: "For M1, M2, M3+ Macs",
     icon: AppleIcon,
     url: assets.silicon,
-    platform: "macos"
+    platform: "macos",
   },
   {
     id: "windows",
@@ -84,8 +92,8 @@ const getDownloadOptions = (assets: ReleaseAssets) => [
     description: "Windows 10 or later",
     icon: WindowsIcon,
     url: assets.windows,
-    platform: "windows"
-  }
+    platform: "windows",
+  },
 ];
 
 export default function DownloadPageClient() {
@@ -110,20 +118,23 @@ export default function DownloadPageClient() {
     };
 
     // Run both operations in parallel with error handling
-    Promise.allSettled([Promise.resolve(detectOS()), getLatestReleaseAssets()]).then(
-      ([_, assetsResult]) => {
-        if (assetsResult.status === "fulfilled") {
-          setAssets(assetsResult.value);
-        } else {
-          console.error("Failed to load release assets:", assetsResult.reason);
-        }
-        setIsLoading(false);
+    Promise.allSettled([
+      Promise.resolve(detectOS()),
+      getLatestReleaseAssets(),
+    ]).then(([_, assetsResult]) => {
+      if (assetsResult.status === "fulfilled") {
+        setAssets(assetsResult.value);
+      } else {
+        console.error("Failed to load release assets:", assetsResult.reason);
       }
-    );
+      setIsLoading(false);
+    });
   }, []);
 
   const handleDownload = () => {
-    const option = getDownloadOptions(assets).find((opt) => opt.id === selectedPlatform);
+    const option = getDownloadOptions(assets).find(
+      (opt) => opt.id === selectedPlatform,
+    );
     // Use the URL if available, or fallback to any available URL
     const downloadUrl =
       option?.url ||
@@ -138,9 +149,13 @@ export default function DownloadPageClient() {
     }
   };
 
-  const selectedOption = getDownloadOptions(assets).find((opt) => opt.id === selectedPlatform);
+  const selectedOption = getDownloadOptions(assets).find(
+    (opt) => opt.id === selectedPlatform,
+  );
   const installationSteps =
-    selectedOption?.platform === "windows" ? windowsInstallationSteps : macosInstallationSteps;
+    selectedOption?.platform === "windows"
+      ? windowsInstallationSteps
+      : macosInstallationSteps;
 
   const [referral, setReferral] = useState("");
 
@@ -152,7 +167,30 @@ export default function DownloadPageClient() {
   }, []);
 
   const metadata = {
-    referral: referral || "none"
+    referral: referral || "none",
+  };
+
+  // Pricing display (mirror homepage): base + 25% off when coupon active
+  const couponActive = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
+  const base = useMemo(() => ({ pro: 50, plus: 80, max: 140 }) as const, []);
+  const discounted = useMemo(
+    () =>
+      couponActive
+        ? { pro: base.pro * 0.75, plus: base.plus * 0.75, max: base.max * 0.75 }
+        : ({ pro: null, plus: null, max: null } as any),
+    [couponActive, base],
+  );
+  const fmt = (n: number) => {
+    const isInt = Number.isInteger(n);
+    const tenth = Math.round(n * 10) / 10;
+    const hasPointFive =
+      Math.abs(tenth * 10 - Math.round(tenth * 10)) < 1e-6 && !isInt;
+    const val = isInt
+      ? n.toString()
+      : hasPointFive
+        ? tenth.toString()
+        : n.toFixed(2);
+    return `$${val}`;
   };
 
   return (
@@ -200,9 +238,13 @@ export default function DownloadPageClient() {
                       <option.icon />
                     </div>
 
-                    <h3 className="text-lg font-semibold mb-2">{option.name}</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {option.name}
+                    </h3>
 
-                    <p className="text-sm text-muted-foreground">{option.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {option.description}
+                    </p>
 
                     {selectedPlatform === option.id && (
                       <CheckCircle className="absolute top-4 right-4 w-5 h-5 text-primary" />
@@ -228,7 +270,10 @@ export default function DownloadPageClient() {
                   ) : (
                     <>
                       <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
-                      Download for {selectedOption?.platform === "windows" ? "Windows" : "macOS"}
+                      Download for{" "}
+                      {selectedOption?.platform === "windows"
+                        ? "Windows"
+                        : "macOS"}
                     </>
                   )}
                 </Button>
@@ -238,7 +283,9 @@ export default function DownloadPageClient() {
             {/* Dynamic Installation Steps */}
             {selectedPlatform && (
               <div className="my-20 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h2 className="text-2xl font-semibold mb-8">Installation Guide</h2>
+                <h2 className="text-2xl font-semibold mb-8">
+                  Installation Guide
+                </h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {installationSteps.map((step, index) => (
                     <div key={step.step} className="relative">
@@ -246,8 +293,12 @@ export default function DownloadPageClient() {
                         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4">
                           {step.step}
                         </div>
-                        <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                        <p className="text-muted-foreground">{step.description}</p>
+                        <h3 className="text-lg font-semibold mb-2">
+                          {step.title}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {step.description}
+                        </p>
                       </div>
 
                       {/* Arrow for desktop */}
@@ -279,7 +330,9 @@ export default function DownloadPageClient() {
 
             {/* Pricing Section */}
             <div className="">
-              <h2 className="text-2xl font-semibold mb-8 text-center">Ready to Write 3x Faster?</h2>
+              <h2 className="text-2xl font-semibold mb-8 text-center">
+                Ready to Write 3x Faster?
+              </h2>
               <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {/* Pro Plan */}
                 <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
@@ -287,8 +340,32 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Pro</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-4xl font-bold">$50</span>
+                        {couponActive &&
+                        discounted.pro &&
+                        discounted.pro < base.pro ? (
+                          <>
+                            <span className="text-xl text-muted-foreground line-through">
+                              {fmt(base.pro)}
+                            </span>
+                            <span className="text-4xl font-bold">
+                              {fmt(discounted.pro as number)}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-4xl font-bold">
+                            {fmt(base.pro)}
+                          </span>
+                        )}
                       </div>
+                      {couponActive &&
+                        discounted.pro &&
+                        discounted.pro < base.pro && (
+                          <p className="text-xs mt-1 font-semibold">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                              {`Save ${fmt(base.pro - (discounted.pro as number)).replace("$", "$$")}`}
+                            </span>
+                          </p>
+                        )}
                     </div>
                   </CardHeader>
 
@@ -296,15 +373,21 @@ export default function DownloadPageClient() {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">1 device activation</span>
+                        <span className="text-sm text-muted-foreground">
+                          1 device
+                        </span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">Lifetime access</span>
+                        <span className="text-sm text-muted-foreground">
+                          Lifetime access
+                        </span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">All future updates</span>
+                        <span className="text-sm text-muted-foreground">
+                          All future updates
+                        </span>
                       </li>
                     </ul>
                   </CardContent>
@@ -314,9 +397,13 @@ export default function DownloadPageClient() {
                       className="w-full group bg-card hover:bg-muted"
                       variant="outline"
                       onClick={() => {
+                        const discount = process.env.NEXT_PUBLIC_COUPON_CODE
+                          ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
+                          : "";
                         window.location.href =
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_PRO_PRODUCT_ID +
+                          discount +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-plan-click"
@@ -333,7 +420,9 @@ export default function DownloadPageClient() {
                   {/* Most popular badge */}
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                     <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
-                      <span className="text-xs font-medium text-white">Most Popular</span>
+                      <span className="text-xs font-medium text-white">
+                        Most Popular
+                      </span>
                     </div>
                   </div>
 
@@ -341,8 +430,32 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Plus</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-4xl font-bold">$80</span>
+                        {couponActive &&
+                        discounted.plus &&
+                        discounted.plus < base.plus ? (
+                          <>
+                            <span className="text-xl text-muted-foreground line-through">
+                              {fmt(base.plus)}
+                            </span>
+                            <span className="text-4xl font-bold">
+                              {fmt(discounted.plus as number)}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-4xl font-bold">
+                            {fmt(base.plus)}
+                          </span>
+                        )}
                       </div>
+                      {couponActive &&
+                        discounted.plus &&
+                        discounted.plus < base.plus && (
+                          <p className="text-xs mt-1 font-semibold">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                              {`Save ${fmt(base.plus - (discounted.plus as number)).replace("$", "$$")}`}
+                            </span>
+                          </p>
+                        )}
                     </div>
                   </CardHeader>
 
@@ -350,15 +463,21 @@ export default function DownloadPageClient() {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">2 device activations</span>
+                        <span className="text-sm text-muted-foreground">
+                          Up to 2 devices
+                        </span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">Lifetime access</span>
+                        <span className="text-sm text-muted-foreground">
+                          Lifetime access
+                        </span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">All future updates</span>
+                        <span className="text-sm text-muted-foreground">
+                          All future updates
+                        </span>
                       </li>
                     </ul>
                   </CardContent>
@@ -367,9 +486,13 @@ export default function DownloadPageClient() {
                     <Button
                       className="w-full group bg-primary hover:bg-primary/90"
                       onClick={() => {
+                        const discount = process.env.NEXT_PUBLIC_COUPON_CODE
+                          ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
+                          : "";
                         window.location.href =
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID +
+                          discount +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-plan-click"
@@ -387,8 +510,32 @@ export default function DownloadPageClient() {
                     <CardTitle className="text-2xl font-bold">Max</CardTitle>
                     <div className="mt-3">
                       <div className="flex items-baseline justify-center gap-2">
-                        <span className="text-4xl font-bold">$140</span>
+                        {couponActive &&
+                        discounted.max &&
+                        discounted.max < base.max ? (
+                          <>
+                            <span className="text-xl text-muted-foreground line-through">
+                              {fmt(base.max)}
+                            </span>
+                            <span className="text-4xl font-bold">
+                              {fmt(discounted.max as number)}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-4xl font-bold">
+                            {fmt(base.max)}
+                          </span>
+                        )}
                       </div>
+                      {couponActive &&
+                        discounted.max &&
+                        discounted.max < base.max && (
+                          <p className="text-xs mt-1 font-semibold">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                              {`Save ${fmt(base.max - (discounted.max as number)).replace("$", "$$")}`}
+                            </span>
+                          </p>
+                        )}
                     </div>
                   </CardHeader>
 
@@ -396,15 +543,21 @@ export default function DownloadPageClient() {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">4 device activations</span>
+                        <span className="text-sm text-muted-foreground">
+                          Up to 4 devices
+                        </span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">Lifetime access</span>
+                        <span className="text-sm text-muted-foreground">
+                          Lifetime access
+                        </span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">All future updates</span>
+                        <span className="text-sm text-muted-foreground">
+                          All future updates
+                        </span>
                       </li>
                     </ul>
                   </CardContent>
@@ -414,9 +567,13 @@ export default function DownloadPageClient() {
                       className="w-full group bg-card hover:bg-muted"
                       variant="outline"
                       onClick={() => {
+                        const discount = process.env.NEXT_PUBLIC_COUPON_CODE
+                          ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
+                          : "";
                         window.location.href =
                           "/api/v1/checkout?products=" +
                           process.env.NEXT_PUBLIC_MAX_PRODUCT_ID +
+                          discount +
                           `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
                       }}
                       data-umami-event="download-page-plan-click"
@@ -430,7 +587,7 @@ export default function DownloadPageClient() {
               </div>
 
               <p className="text-center text-sm text-muted-foreground mt-6">
-                Secure payment • 7 day money back guarantee
+                Secure payment • 14-day money-back guarantee
               </p>
             </div>
           </div>

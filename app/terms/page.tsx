@@ -46,9 +46,12 @@ export default function TermsPage() {
           <ul className="list-disc pl-6 space-y-2">
             <li>VoiceTypr is sold as a one-time purchase with no recurring fees</li>
             <li>All purchases include future updates for the lifetime of the product</li>
-            <li>We offer a 7 day money-back guarantee from the date of purchase</li>
+            <li>We offer a 14-day money-back guarantee from the date of purchase</li>
             <li>Refunds will result in immediate license deactivation</li>
           </ul>
+          <p className="mt-2">
+            The 14‑day period starts on the purchase date shown on your order confirmation (license issuance), regardless of when you download or activate.
+          </p>
         </section>
 
         <section className="mb-8">
@@ -56,7 +59,7 @@ export default function TermsPage() {
           <p>
             If you are an EU consumer, you acknowledge that by downloading/activating the Software you expressly request
             immediate performance and confirm you lose the statutory right of withdrawal for digital content not supplied
-            on a tangible medium. This does not affect our separate 7‑day money‑back guarantee described above.
+            on a tangible medium. This does not affect our separate 14‑day money‑back guarantee described above.
           </p>
         </section>
 
@@ -96,14 +99,17 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">8. Disclaimer of Warranties</h2>
           <p>
-            THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. IDEAPLEXA LLC DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+            THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW. IDEAPLEXA LLC DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">9. Limitation of Liability</h2>
           <p>
-            IN NO EVENT SHALL IDEAPLEXA LLC BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE.
+            TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL IDEAPLEXA LLC BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE.
+          </p>
+          <p className="mt-2 text-sm">
+            Nothing in these Terms limits liability that cannot be limited under applicable law (for example, liability for fraud, intentional misconduct, or non‑waivable consumer rights).
           </p>
         </section>
 

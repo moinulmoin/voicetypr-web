@@ -92,7 +92,8 @@ export default function PrivacyPage() {
             <li>License and trial management — <em>Performance of contract</em></li>
             <li>Fraud prevention and security — <em>Legitimate interests</em></li>
             <li>Customer support — <em>Performance of contract</em> or <em>Legitimate interests</em></li>
-            <li>Analytics/attribution (website) — <em>Consent</em> (not loaded without consent)</li>
+            <li>Analytics (cookieless) — <em>Legitimate interests</em>; no cookies used</li>
+            <li>Marketing/attribution — <em>Consent</em> (loaded only with consent)</li>
           </ul>
         </section>
 
@@ -122,6 +123,8 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Polar.sh:</strong> Payment processing and license key generation</li>
             <li><strong>Database hosting:</strong> Secure infrastructure for license validation</li>
+            <li><strong>Umami:</strong> Cookieless analytics (no cookies; aggregated usage)</li>
+            <li><strong>Google Tag Manager & Affonso:</strong> Marketing/attribution (only loaded with consent)</li>
           </ul>
           <p className="mt-4">These services have their own privacy policies and data practices.</p>
         </section>

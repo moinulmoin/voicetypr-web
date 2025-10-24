@@ -7,6 +7,7 @@ import { Analytics } from "@/components/analytics";
 import { CookieConsent } from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
 import { Providers } from "@/components/providers";
+import { cookies } from "next/headers";
 import Script from "next/script";
 
 const fontSans = Geist({
@@ -94,11 +95,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const rawConsent = cookieStore.get("vt_consent")?.value;
+  let marketingAllowed = false;
+  if (rawConsent) {
+    try {
+      const parsed = JSON.parse(decodeURIComponent(rawConsent));
+      marketingAllowed = !!parsed?.marketing;
+    } catch {}
+  }
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
@@ -269,13 +279,14 @@ export default function RootLayout({
       {/* End JSON-LD Structured Data */}
 
       <body className={`${fontSans.variable} font-sans antialiased `}>
-        {/* Google Tag Manager (noscript) */}
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT5KZRJM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-          }}
-        />
+        {/* Google Tag Manager (noscript) — only when Marketing consent is granted */}
+        {marketingAllowed ? (
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT5KZRJM" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            }}
+          />
+        ) : null}
         {/* End Google Tag Manager (noscript) */}
         <a
           href="#main-content"
