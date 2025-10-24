@@ -4,10 +4,10 @@ import type { ReactNode } from "react";
 
 import "@/app/globals.css";
 import { Analytics } from "@/components/analytics";
+import { CookieConsent } from "@/components/cookie-consent";
+import { DeferredPixels } from "@/components/deferred-pixels";
 import { Providers } from "@/components/providers";
 import Script from "next/script";
-import { DeferredPixels } from "@/components/deferred-pixels";
-import { CookieConsent } from "@/components/cookie-consent";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     siteName: "VoiceTypr",
     images: [
       {
-        url: "/Write.jpg",
+        url: "/voicetypr-og.png",
         width: 1200,
         height: 630,
         alt: "VoiceTypr — Offline AI voice to text app for founders and builders",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title: "VoiceTypr — Offline AI voice to text app for founders and builders",
     description:
       "Offline AI voice to text app that runs locally. Private by default. Pay once, use forever.",
-    images: ["/Write.jpg"],
+    images: ["/voicetypr-og.png"],
     creator: "@moinulmoin",
   },
   alternates: {
@@ -171,7 +171,7 @@ export default function RootLayout({
                   "3-day free trial",
                   "Lifetime updates",
                 ],
-                screenshot: "https://voicetypr.com/Write.jpg",
+                screenshot: "https://voicetypr.com/voicetypr-og.png",
                 author: {
                   "@type": "Person",
                   name: "Moinul Moin",
@@ -186,7 +186,7 @@ export default function RootLayout({
                 logo: "https://voicetypr.com/logo.png",
                 sameAs: ["https://twitter.com/moinulmoin"],
                 parentOrganization: {
-                  "@id": "https://ideaplexa.com/#organization"
+                  "@id": "https://ideaplexa.com/#organization",
                 },
                 founder: {
                   "@type": "Person",
@@ -197,7 +197,7 @@ export default function RootLayout({
                 "@type": "Organization",
                 "@id": "https://ideaplexa.com/#organization",
                 name: "Ideaplexa LLC",
-                url: "https://ideaplexa.com"
+                url: "https://ideaplexa.com",
               },
               {
                 "@type": "WebSite",
