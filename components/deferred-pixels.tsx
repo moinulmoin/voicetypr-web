@@ -65,7 +65,7 @@ export function DeferredPixels() {
 
 declare global {
   interface Window {
-    dataLayer?: Record<string, unknown>[];
+    dataLayer: Record<string, unknown>[];
     requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
     cancelIdleCallback?: (handle: number) => void;
   }
