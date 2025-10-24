@@ -30,11 +30,13 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden pt-24 lg:pt-28">
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <div>
+          {/** Product Hunt pill temporarily disabled
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-600/20 bg-gradient-to-r from-purple-600/10 to-pink-600/10 px-4 py-2">
             <span className="text-sm font-medium text-muted-foreground">
               ⚡ We are on ProductHunt
             </span>
           </div>
+          */}
 
           <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
             <span className="block bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
