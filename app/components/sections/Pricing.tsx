@@ -81,11 +81,11 @@ export default function Pricing() {
   const couponActive = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
   const discounted: Partial<Record<PlanKey, number>> = useMemo(() => {
     if (!couponActive) return {};
-    // 25% off exactly
+    // 30% off exactly
     return {
-      Pro: base.Pro * 0.75,
-      Plus: base.Plus * 0.75,
-      Max: base.Max * 0.75,
+      Pro: base.Pro * 0.7,
+      Plus: base.Plus * 0.7,
+      Max: base.Max * 0.7,
     };
   }, [couponActive, base]);
   const fmt = (n: number) => {

@@ -170,13 +170,13 @@ export default function DownloadPageClient() {
     referral: referral || "none",
   };
 
-  // Pricing display (mirror homepage): base + 25% off when coupon active
+  // Pricing display (mirror homepage): base + 30% off when coupon active
   const couponActive = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
   const base = useMemo(() => ({ pro: 50, plus: 80, max: 140 }) as const, []);
   const discounted = useMemo(
     () =>
       couponActive
-        ? { pro: base.pro * 0.75, plus: base.plus * 0.75, max: base.max * 0.75 }
+        ? { pro: base.pro * 0.7, plus: base.plus * 0.7, max: base.max * 0.7 }
         : ({ pro: null, plus: null, max: null } as any),
     [couponActive, base],
   );
