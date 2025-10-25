@@ -163,12 +163,12 @@ export default function Features() {
             </p>
           </Card>
 
-          {/* Audio File Upload */}
+          {/* Audio & Video File Upload */}
           <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-blue-500/5 via-card to-card/60 backdrop-blur-sm border-blue-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
             <Upload className="w-10 h-10 text-blue-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Upload Audio Files</h3>
+            <h3 className="text-xl font-bold mb-2">Upload Audio & Video Files</h3>
             <p className="text-sm text-muted-foreground">
-              Transcribe MP3, WAV, M4A. Drag, drop, done.
+              Transcribe MP3, WAV, M4A, MP4, MOV. Drag, drop, done.
             </p>
           </Card>
 

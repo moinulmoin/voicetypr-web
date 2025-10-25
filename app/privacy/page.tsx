@@ -60,13 +60,13 @@ export default function PrivacyPage() {
             This data is stored on your device and is never transmitted to our servers. You can export or share these statistics at your discretion.
           </p>
 
-          <h3 className="text-xl font-semibold mb-2 mt-4">3.2 Audio File Processing</h3>
+          <h3 className="text-xl font-semibold mb-2 mt-4">3.2 Audio/Video File Processing</h3>
           <p>
-            When you upload audio files for transcription:
+            When you upload audio or video files for transcription:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>Files are processed entirely on your device</li>
-            <li>No audio data is uploaded to any server</li>
+            <li>No audio or video data is uploaded to any server</li>
             <li>Files remain in your local system only</li>
             <li>Transcriptions are stored locally in your history</li>
           </ul>
@@ -79,10 +79,10 @@ export default function PrivacyPage() {
             <li>Text you dictate or type</li>
             <li>Personal files or documents</li>
             <li>Browsing history or app usage patterns</li>
-            <li>Audio files you upload for transcription</li>
+            <li>Audio or video files you upload for transcription</li>
           </ul>
           <p className="mt-4">
-            <strong>All voice and audio processing happens locally on your device using local AI models. Your voice data and audio files never leave your computer.</strong>
+            <strong>All voice, audio, and video processing happens locally on your device using local AI models. Your voice, audio, and video files never leave your computer.</strong>
           </p>
         </section>
 

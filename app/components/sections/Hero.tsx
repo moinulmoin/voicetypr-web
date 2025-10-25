@@ -11,6 +11,9 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <div>
           <div className="mb-6 w-full flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://theresanaiforthat.com/ai/voicetypr/?ref=featured&v=7249239" target="_blank" rel="nofollow">
+              <img width="300" src="https://media.theresanaiforthat.com/featured-on-taaft.png?width=600" />
+            </a>
             <a
               href="https://www.producthunt.com/products/voicetypr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-voicetypr"
               target="_blank"
