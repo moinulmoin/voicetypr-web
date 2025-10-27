@@ -1,5 +1,3 @@
-"use client";
-
 import { Shield, Github, Cpu, DollarSign } from "lucide-react";
 
 const badges = [

@@ -1,5 +1,3 @@
-"use client";
-
 export default function GridBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-background">

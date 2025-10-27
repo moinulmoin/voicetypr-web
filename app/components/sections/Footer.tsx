@@ -1,5 +1,3 @@
-"use client";
-
 import { GitHub, XformerlyTwitter } from "@/components/icons";
 import { Mail } from "lucide-react";
 import Link from "next/link";
@@ -91,15 +89,6 @@ export default function Footer() {
             >
               Terms & Conditions
             </Link>
-            <button
-              type="button"
-              onClick={() => (window as any).__openCookiePreferences?.()}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="manage-cookies"
-            >
-              Manage cookies
-            </button>
             <a
               href="mailto:support@voicetypr.com"
               className="text-muted-foreground hover:text-foreground transition-colors"

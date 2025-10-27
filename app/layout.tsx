@@ -1,13 +1,15 @@
 import { Metadata } from "next";
 import { Geist } from "next/font/google";
 import type { ReactNode } from "react";
+import { Suspense } from "react";
 
 import "@/app/globals.css";
 import { Analytics } from "@/components/analytics";
-import { CookieConsent } from "@/components/cookie-consent";
+import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
+// Removed client-gated marketing scripts; noscript renders unconditionally
+import MarketingNoscript from "@/app/components/MarketingNoscript";
 import { Providers } from "@/components/providers";
-import { cookies } from "next/headers";
 import Script from "next/script";
 
 const fontSans = Geist({
@@ -89,26 +91,18 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  metadataBase: new URL("https://voicetypr.com"),
   other: {
     preconnect: "https://assets.voicetypr.com",
     "dns-prefetch": "https://assets.voicetypr.com",
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const rawConsent = cookieStore.get("vt_consent")?.value;
-  let marketingAllowed = false;
-  if (rawConsent) {
-    try {
-      const parsed = JSON.parse(decodeURIComponent(rawConsent));
-      marketingAllowed = !!parsed?.marketing;
-    } catch {}
-  }
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
@@ -279,15 +273,8 @@ export default async function RootLayout({
       {/* End JSON-LD Structured Data */}
 
       <body className={`${fontSans.variable} font-sans antialiased `}>
-        {/* Google Tag Manager (noscript) — only when Marketing consent is granted */}
-        {marketingAllowed ? (
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT5KZRJM" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
-          />
-        ) : null}
-        {/* End Google Tag Manager (noscript) */}
+        {/* Google Tag Manager (noscript) rendered unconditionally */}
+        <MarketingNoscript />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1000] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
@@ -295,11 +282,13 @@ export default async function RootLayout({
           Skip to main content
         </a>
         <CookieConsent />
-        <Providers>
-          <DeferredPixels />
-          {children}
-          <Analytics />
-        </Providers>
+        <Suspense fallback={null}>
+          <Providers>
+            <DeferredPixels />
+            {children}
+            <Analytics />
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );
