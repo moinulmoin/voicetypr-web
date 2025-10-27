@@ -3,7 +3,7 @@ export default function CookiesPage() {
     <div className="container max-w-4xl mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-6">Cookie Policy</h1>
       <div className="space-y-6 text-base leading-relaxed">
-        <p className="text-muted-foreground">Last updated: October 23, 2025</p>
+        <p className="text-muted-foreground">Last updated: October 27, 2025</p>
 
         <p>
           We keep cookies simple. We set one necessary cookie (<span className="font-mono">vt_consent</span>) to remember
