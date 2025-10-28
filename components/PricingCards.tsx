@@ -53,11 +53,10 @@ export default function PricingCards({
   referral,
   eventPrefix = "pricing",
 }: PricingCardsProps) {
-  const metadata = {
-    referral: referral || "none",
-  };
-
   const handleCheckout = (productId: string | undefined) => {
+    const metadata = {
+      referral: referral || "none",
+    };
     const discount = process.env.NEXT_PUBLIC_COUPON_CODE
       ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
       : "";
