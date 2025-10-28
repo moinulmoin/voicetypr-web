@@ -1,8 +1,10 @@
 import { GitHub, XformerlyTwitter } from "@/components/icons";
 import { Mail } from "lucide-react";
 import Link from "next/link";
+import { connection } from "next/server";
 
-export default function Footer() {
+export default async function Footer() {
+  await connection();
   const year = new Date().getFullYear();
   return (
     <footer className="relative border-t border-border/50">
