@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import DownloadPageClient from "./DownloadPageClient";
+import { getLatestReleaseAssets } from "@/app/lib/github";
 
 export const metadata: Metadata = {
   title: "Download VoiceTypr - AI Voice to Text Software for Mac & Windows",
@@ -42,6 +44,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DownloadPage() {
-  return <DownloadPageClient />;
+export default async function DownloadPage() {
+  const [assets] = await Promise.all([getLatestReleaseAssets()]);
+  const ua = (await headers()).get("user-agent")?.toLowerCase() || "";
+  const defaultSelected = ua.includes("windows")
+    ? "windows"
+    : ua.includes("mac")
+      ? "macos-silicon"
+      : undefined;
+  return <DownloadPageClient assets={assets} defaultSelected={defaultSelected} />;
 }
