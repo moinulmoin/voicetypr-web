@@ -27,25 +27,25 @@ const plans: Array<{
   key: PlanKey;
   name: string;
   devices: string;
-  productIdEnvKey: string;
+  productId: string | undefined;
 }> = [
   {
     key: "pro",
     name: "Pro",
     devices: "1 device",
-    productIdEnvKey: "NEXT_PUBLIC_PRO_PRODUCT_ID",
+    productId: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID,
   },
   {
     key: "plus",
     name: "Plus",
     devices: "Up to 2 devices",
-    productIdEnvKey: "NEXT_PUBLIC_PLUS_PRODUCT_ID",
+    productId: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
   },
   {
     key: "max",
     name: "Max",
     devices: "Up to 4 devices",
-    productIdEnvKey: "NEXT_PUBLIC_MAX_PRODUCT_ID",
+    productId: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID,
   },
 ];
 
@@ -57,11 +57,10 @@ export default function PricingCards({
     referral: referral || "none",
   };
 
-  const handleCheckout = (planKey: PlanKey, productIdEnvKey: string) => {
+  const handleCheckout = (productId: string | undefined) => {
     const discount = process.env.NEXT_PUBLIC_COUPON_CODE
       ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
       : "";
-    const productId = process.env[productIdEnvKey];
     window.location.href =
       "/api/v1/checkout?products=" +
       productId +
@@ -161,7 +160,7 @@ export default function PricingCards({
                       : "bg-card hover:bg-muted"
                   }`}
                   variant={isPopular ? "default" : "outline"}
-                  onClick={() => handleCheckout(plan.key, plan.productIdEnvKey)}
+                  onClick={() => handleCheckout(plan.productId)}
                   data-umami-event={`${eventPrefix}-plan-click`}
                   data-umami-event-plan={plan.key}
                 >
