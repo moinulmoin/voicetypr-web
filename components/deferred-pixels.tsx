@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { getConsent } from "./cookie-consent";
 
 const GTM_ID = "GTM-WT5KZRJM";
 const AFFONSO_SRC = "https://affonso.io/js/pixel.min.js";
@@ -16,7 +15,11 @@ export function DeferredPixels() {
     const idleCallback =
       typeof window.requestIdleCallback !== "undefined"
         ? window.requestIdleCallback
-        : (cb: IdleRequestCallback) => window.setTimeout(() => cb({ didTimeout: false, timeRemaining: () => 0 } as IdleDeadline), 1500);
+        : (cb: IdleRequestCallback) =>
+            window.setTimeout(
+              () => cb({ didTimeout: false, timeRemaining: () => 0 } as IdleDeadline),
+              1500
+            );
 
     const cancelIdle =
       typeof window.cancelIdleCallback !== "undefined"
@@ -25,10 +28,6 @@ export function DeferredPixels() {
 
     const loadPixels = () => {
       if (typeof window === "undefined") return;
-      const consent = getConsent();
-      if (!consent || !consent.marketing) {
-        return; // respect consent; only load when analytics/marketing allowed
-      }
 
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -48,15 +47,8 @@ export function DeferredPixels() {
 
     const idleHandle = idleCallback(loadPixels);
 
-    const onConsent = () => {
-      // try loading pixels if user changed to allow
-      loadPixels();
-    };
-    window.addEventListener("voicetypr:consent-changed", onConsent as any);
-
     return () => {
       cancelIdle(idleHandle as number);
-      window.removeEventListener("voicetypr:consent-changed", onConsent as any);
     };
   }, []);
 
