@@ -1,11 +1,8 @@
-"use client";
-
 import { GitHub, XformerlyTwitter } from "@/components/icons";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
   return (
     <footer className="relative border-t border-border/50">
       <div className="max-w-5xl mx-auto px-4 py-20">
@@ -91,15 +88,6 @@ export default function Footer() {
             >
               Terms & Conditions
             </Link>
-            <button
-              type="button"
-              onClick={() => (window as any).__openCookiePreferences?.()}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="manage-cookies"
-            >
-              Manage cookies
-            </button>
             <a
               href="mailto:support@voicetypr.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -120,7 +108,7 @@ export default function Footer() {
             </a>
           </div>
           <div className="mt-8 text-xs text-muted-foreground">
-            © {year} VoiceTypr. All rights reserved.
+            © 2025 VoiceTypr. All rights reserved.
           </div>
         </div>
       </div>

@@ -1,5 +1,3 @@
-"use client";
-
 import { Card } from "@/components/ui/card";
 import { Mail, MessageCircle } from "lucide-react";
 import { XformerlyTwitter } from "@/components/icons";

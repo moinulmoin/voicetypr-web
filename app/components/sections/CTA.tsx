@@ -1,8 +1,7 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import Link from "next/link";
+import { CTAScrollButton } from "./CTAScrollButton";
 
 export default function CTA() {
   return (
@@ -21,14 +20,7 @@ export default function CTA() {
               Start free 3-day trial
             </Link>
           </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-            data-umami-event="cta-pricing-click"
-          >
-            Buy lifetime license
-          </Button>
+          <CTAScrollButton />
         </div>
       </div>
     </section>

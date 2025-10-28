@@ -1,5 +1,3 @@
-"use client";
-
 // Sample user avatars - replace with real user images if available
 const users = [
   {

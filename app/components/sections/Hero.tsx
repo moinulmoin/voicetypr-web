@@ -1,8 +1,6 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { } from "react";
+import { CTAScrollButton } from "./CTAScrollButton";
 
 export default function Hero() {
 
@@ -51,18 +49,7 @@ export default function Hero() {
             <Button asChild size="lg" data-umami-event="hero-start-trial-click">
               <Link href="/download">Start free 3-day trial</Link>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              data-umami-event="hero-buy-click"
-              onClick={() =>
-                document
-                  .getElementById("pricing")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Buy lifetime license
-            </Button>
+            <CTAScrollButton />
           </div>
 
           <div className="mt-12">

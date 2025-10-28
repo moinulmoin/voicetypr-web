@@ -1,17 +1,12 @@
 "use client";
 
-import { getLatestReleaseAssets, ReleaseAssets } from "@/app/lib/github";
+import { ReleaseAssets } from "@/app/lib/github";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
+import PricingCards from "@/components/PricingCards";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { ArrowRight, Check, CheckCircle, Download } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowRight, CheckCircle, Download } from "lucide-react";
+import { useEffect, useState } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
@@ -96,39 +91,15 @@ const getDownloadOptions = (assets: ReleaseAssets) => [
   },
 ];
 
-export default function DownloadPageClient() {
-  const [assets, setAssets] = useState<ReleaseAssets>({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
-  const [showMacVideo, setShowMacVideo] = useState(false);
-  const [showWinVideo, setShowWinVideo] = useState(false);
-  const macVideoRef = useRef<HTMLVideoElement | null>(null);
-  const winVideoRef = useRef<HTMLVideoElement | null>(null);
+export default function DownloadPageClient({ assets, defaultSelected }: { assets: ReleaseAssets; defaultSelected?: string | null }) {
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(defaultSelected ?? null);
+  const [referral, setReferral] = useState("");
 
   useEffect(() => {
-    // Detect OS and fetch assets in parallel
-    const detectOS = () => {
-      const userAgent = window.navigator.userAgent.toLowerCase();
-
-      if (userAgent.includes("windows")) {
-        setSelectedPlatform("windows");
-      } else if (userAgent.includes("mac")) {
-        setSelectedPlatform("macos-silicon");
-      }
-    };
-
-    // Run both operations in parallel with error handling
-    Promise.allSettled([
-      Promise.resolve(detectOS()),
-      getLatestReleaseAssets(),
-    ]).then(([_, assetsResult]) => {
-      if (assetsResult.status === "fulfilled") {
-        setAssets(assetsResult.value);
-      } else {
-        console.error("Failed to load release assets:", assetsResult.reason);
-      }
-      setIsLoading(false);
-    });
+    const affonso_referral = window?.affonso_referral;
+    if (affonso_referral) {
+      setReferral(affonso_referral);
+    }
   }, []);
 
   const handleDownload = () => {
@@ -156,42 +127,6 @@ export default function DownloadPageClient() {
     selectedOption?.platform === "windows"
       ? windowsInstallationSteps
       : macosInstallationSteps;
-
-  const [referral, setReferral] = useState("");
-
-  useEffect(() => {
-    const affonso_referral = window?.affonso_referral;
-    if (affonso_referral) {
-      setReferral(affonso_referral);
-    }
-  }, []);
-
-  const metadata = {
-    referral: referral || "none",
-  };
-
-  // Pricing display (mirror homepage): base + 30% off when coupon active
-  const couponActive = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
-  const base = useMemo(() => ({ pro: 50, plus: 80, max: 140 }) as const, []);
-  const discounted = useMemo(
-    () =>
-      couponActive
-        ? { pro: base.pro * 0.7, plus: base.plus * 0.7, max: base.max * 0.7 }
-        : ({ pro: null, plus: null, max: null } as any),
-    [couponActive, base],
-  );
-  const fmt = (n: number) => {
-    const isInt = Number.isInteger(n);
-    const tenth = Math.round(n * 10) / 10;
-    const hasPointFive =
-      Math.abs(tenth * 10 - Math.round(tenth * 10)) < 1e-6 && !isInt;
-    const val = isInt
-      ? n.toString()
-      : hasPointFive
-        ? tenth.toString()
-        : n.toFixed(2);
-    return `$${val}`;
-  };
 
   return (
     <>
@@ -259,23 +194,16 @@ export default function DownloadPageClient() {
               <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <Button
                   onClick={handleDownload}
-                  disabled={isLoading}
                   className="group/btn"
                   size="lg"
                   data-umami-event="download-click"
                   data-umami-event-platform={selectedOption?.platform}
                 >
-                  {isLoading ? (
-                    "Loading..."
-                  ) : (
-                    <>
-                      <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
-                      Download for{" "}
-                      {selectedOption?.platform === "windows"
-                        ? "Windows"
-                        : "macOS"}
-                    </>
-                  )}
+                  <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
+                  Download for{" "}
+                  {selectedOption?.platform === "windows"
+                    ? "Windows"
+                    : "macOS"}
                 </Button>
               </div>
             )}
@@ -311,284 +239,12 @@ export default function DownloadPageClient() {
               </div>
             )}
 
-            {/* Platform-specific quick install videos */}
-            {/** Platform-specific quick install video (macOS) is disabled for now
-            {selectedPlatform === "macos-silicon" && (
-              <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                ...
-              </div>
-            )}
-            */}
-
-            {/** Platform-specific quick install video (Windows) is disabled for now
-            {selectedPlatform === "windows" && (
-              <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                ...
-              </div>
-            )}
-            */}
-
             {/* Pricing Section */}
             <div className="">
               <h2 className="text-2xl font-semibold mb-8 text-center">
                 Ready to Write 3x Faster?
               </h2>
-              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                {/* Pro Plan */}
-                <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
-                  <CardHeader className="text-center pb-1 px-6 pt-6">
-                    <CardTitle className="text-2xl font-bold">Pro</CardTitle>
-                    <div className="mt-3">
-                      <div className="flex items-baseline justify-center gap-2">
-                        {couponActive &&
-                        discounted.pro &&
-                        discounted.pro < base.pro ? (
-                          <>
-                            <span className="text-xl text-muted-foreground line-through">
-                              {fmt(base.pro)}
-                            </span>
-                            <span className="text-4xl font-bold">
-                              {fmt(discounted.pro as number)}
-                            </span>
-                          </>
-                        ) : (
-                          <span className="text-4xl font-bold">
-                            {fmt(base.pro)}
-                          </span>
-                        )}
-                      </div>
-                      {couponActive &&
-                        discounted.pro &&
-                        discounted.pro < base.pro && (
-                          <p className="text-xs mt-1 font-semibold">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                              {`Save ${fmt(base.pro - (discounted.pro as number)).replace("$", "$$")}`}
-                            </span>
-                          </p>
-                        )}
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="px-6 py-3">
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          1 device
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Lifetime access
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          All future updates
-                        </span>
-                      </li>
-                    </ul>
-                  </CardContent>
-
-                  <CardFooter className="px-6 pb-5 pt-2">
-                    <Button
-                      className="w-full group bg-card hover:bg-muted"
-                      variant="outline"
-                      onClick={() => {
-                        const discount = process.env.NEXT_PUBLIC_COUPON_CODE
-                          ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
-                          : "";
-                        window.location.href =
-                          "/api/v1/checkout?products=" +
-                          process.env.NEXT_PUBLIC_PRO_PRODUCT_ID +
-                          discount +
-                          `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
-                      }}
-                      data-umami-event="download-page-plan-click"
-                      data-umami-event-plan="pro"
-                    >
-                      Get Pro
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-
-                {/* Plus Plan */}
-                <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-primary/50 scale-[1.03] ring-2 ring-primary/20">
-                  {/* Most popular badge */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
-                      <span className="text-xs font-medium text-white">
-                        Most Popular
-                      </span>
-                    </div>
-                  </div>
-
-                  <CardHeader className="text-center pb-1 px-6 pt-6">
-                    <CardTitle className="text-2xl font-bold">Plus</CardTitle>
-                    <div className="mt-3">
-                      <div className="flex items-baseline justify-center gap-2">
-                        {couponActive &&
-                        discounted.plus &&
-                        discounted.plus < base.plus ? (
-                          <>
-                            <span className="text-xl text-muted-foreground line-through">
-                              {fmt(base.plus)}
-                            </span>
-                            <span className="text-4xl font-bold">
-                              {fmt(discounted.plus as number)}
-                            </span>
-                          </>
-                        ) : (
-                          <span className="text-4xl font-bold">
-                            {fmt(base.plus)}
-                          </span>
-                        )}
-                      </div>
-                      {couponActive &&
-                        discounted.plus &&
-                        discounted.plus < base.plus && (
-                          <p className="text-xs mt-1 font-semibold">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                              {`Save ${fmt(base.plus - (discounted.plus as number)).replace("$", "$$")}`}
-                            </span>
-                          </p>
-                        )}
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="px-6 py-3">
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Up to 2 devices
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Lifetime access
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          All future updates
-                        </span>
-                      </li>
-                    </ul>
-                  </CardContent>
-
-                  <CardFooter className="px-6 pb-5 pt-2">
-                    <Button
-                      className="w-full group bg-primary hover:bg-primary/90"
-                      onClick={() => {
-                        const discount = process.env.NEXT_PUBLIC_COUPON_CODE
-                          ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
-                          : "";
-                        window.location.href =
-                          "/api/v1/checkout?products=" +
-                          process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID +
-                          discount +
-                          `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
-                      }}
-                      data-umami-event="download-page-plan-click"
-                      data-umami-event-plan="plus"
-                    >
-                      Get Plus
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-
-                {/* Max Plan */}
-                <Card className="bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative border-border/50 hover:border-border/70">
-                  <CardHeader className="text-center pb-1 px-6 pt-6">
-                    <CardTitle className="text-2xl font-bold">Max</CardTitle>
-                    <div className="mt-3">
-                      <div className="flex items-baseline justify-center gap-2">
-                        {couponActive &&
-                        discounted.max &&
-                        discounted.max < base.max ? (
-                          <>
-                            <span className="text-xl text-muted-foreground line-through">
-                              {fmt(base.max)}
-                            </span>
-                            <span className="text-4xl font-bold">
-                              {fmt(discounted.max as number)}
-                            </span>
-                          </>
-                        ) : (
-                          <span className="text-4xl font-bold">
-                            {fmt(base.max)}
-                          </span>
-                        )}
-                      </div>
-                      {couponActive &&
-                        discounted.max &&
-                        discounted.max < base.max && (
-                          <p className="text-xs mt-1 font-semibold">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                              {`Save ${fmt(base.max - (discounted.max as number)).replace("$", "$$")}`}
-                            </span>
-                          </p>
-                        )}
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="px-6 py-3">
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Up to 4 devices
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          Lifetime access
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">
-                          All future updates
-                        </span>
-                      </li>
-                    </ul>
-                  </CardContent>
-
-                  <CardFooter className="px-6 pb-5 pt-2">
-                    <Button
-                      className="w-full group bg-card hover:bg-muted"
-                      variant="outline"
-                      onClick={() => {
-                        const discount = process.env.NEXT_PUBLIC_COUPON_CODE
-                          ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
-                          : "";
-                        window.location.href =
-                          "/api/v1/checkout?products=" +
-                          process.env.NEXT_PUBLIC_MAX_PRODUCT_ID +
-                          discount +
-                          `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
-                      }}
-                      data-umami-event="download-page-plan-click"
-                      data-umami-event-plan="max"
-                    >
-                      Get Max
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </div>
-
-              <p className="text-center text-sm text-muted-foreground mt-6">
-                Secure payment • 14-day money-back guarantee
-              </p>
+              <PricingCards referral={referral} eventPrefix="download-page" />
             </div>
           </div>
         </section>
