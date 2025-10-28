@@ -1,11 +1,8 @@
 import { GitHub, XformerlyTwitter } from "@/components/icons";
 import { Mail } from "lucide-react";
 import Link from "next/link";
-import { connection } from "next/server";
 
-export default async function Footer() {
-  await connection();
-  const year = new Date().getFullYear();
+export default function Footer() {
   return (
     <footer className="relative border-t border-border/50">
       <div className="max-w-5xl mx-auto px-4 py-20">
@@ -111,7 +108,7 @@ export default async function Footer() {
             </a>
           </div>
           <div className="mt-8 text-xs text-muted-foreground">
-            © {year} VoiceTypr. All rights reserved.
+            © 2025 VoiceTypr. All rights reserved.
           </div>
         </div>
       </div>
