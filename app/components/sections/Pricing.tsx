@@ -34,11 +34,6 @@ export default function Pricing() {
       {/* Pricing cards */}
       <div className="max-w-5xl mx-auto px-4">
         <PricingCards referral={referral} eventPrefix="pricing" />
-
-        <div className="mt-10 text-center text-sm text-muted-foreground">
-          <p className="font-medium text-foreground">Pay once, use forever</p>
-          <p>Secure checkout • 14-day money-back guarantee</p>
-        </div>
       </div>
     </section>
   );
