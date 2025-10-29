@@ -1,0 +1,37 @@
+{
+  "name": "@voicetypr/api",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "prisma migrate deploy && prisma generate && next build",
+    "start": "next start --port 3001",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@polar-sh/nextjs": "^0.4.2",
+    "@polar-sh/sdk": "^0.34.3",
+    "@prisma/client": "^6.11.1",
+    "next": "^16",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^3.25.75"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16",
+    "prisma": "^6.11.1",
+    "typescript": "^5.7.3"
+  }
+}
