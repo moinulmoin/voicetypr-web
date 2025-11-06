@@ -91,16 +91,13 @@ const getDownloadOptions = (assets: ReleaseAssets) => [
   },
 ];
 
-export default function DownloadPageClient({ assets, defaultSelected }: { assets: ReleaseAssets; defaultSelected?: string | null }) {
+export default function DownloadPageClient({ assets, defaultSelected, affonsoReferral, referrer }: { 
+  assets: ReleaseAssets; 
+  defaultSelected?: string | null;
+  affonsoReferral: string;
+  referrer: string;
+}) {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(defaultSelected ?? null);
-  const [referral, setReferral] = useState("");
-
-  useEffect(() => {
-    const affonso_referral = window?.affonso_referral;
-    if (affonso_referral) {
-      setReferral(affonso_referral);
-    }
-  }, []);
 
   const handleDownload = () => {
     const option = getDownloadOptions(assets).find(
@@ -244,7 +241,7 @@ export default function DownloadPageClient({ assets, defaultSelected }: { assets
               <h2 className="text-2xl font-semibold mb-8 text-center">
                 Ready to Write 3x Faster?
               </h2>
-              <PricingCards referral={referral} eventPrefix="download-page" />
+              <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
             </div>
           </div>
         </section>

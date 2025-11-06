@@ -18,7 +18,8 @@ import {
 import { ArrowRight, Check } from "lucide-react";
 
 interface PricingCardsProps {
-  referral: string;
+  affonsoReferral: string;
+  referrer: string;
   /** Event prefix for analytics (e.g., "pricing" or "download-page") */
   eventPrefix?: string;
 }
@@ -50,12 +51,14 @@ const plans: Array<{
 ];
 
 export default function PricingCards({
-  referral,
+  affonsoReferral,
+  referrer,
   eventPrefix = "pricing",
 }: PricingCardsProps) {
   const handleCheckout = (productId: string | undefined) => {
     const metadata = {
-      referral: referral || "none",
+      affonso_referral: affonsoReferral,
+      referrer: referrer,
     };
     const discount = process.env.NEXT_PUBLIC_COUPON_CODE
       ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`

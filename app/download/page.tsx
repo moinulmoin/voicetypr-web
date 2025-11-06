@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import DownloadPageClient from "./DownloadPageClient";
 import { getLatestReleaseAssets } from "@/app/lib/github";
 
@@ -46,11 +46,20 @@ export const metadata: Metadata = {
 
 export default async function DownloadPage() {
   const [assets] = await Promise.all([getLatestReleaseAssets()]);
+  
+  // Read affonso_referral cookie (Next.js 15+)
+  const cookieStore = await cookies();
+  const affonsoReferral = cookieStore.get('affonso_referral')?.value || '';
+  
+  // Get referer header for analytics
+  const referrer = (await headers()).get('referer') || '';
+  
   const ua = (await headers()).get("user-agent")?.toLowerCase() || "";
   const defaultSelected = ua.includes("windows")
     ? "windows"
     : ua.includes("mac")
       ? "macos-silicon"
       : undefined;
-  return <DownloadPageClient assets={assets} defaultSelected={defaultSelected} />;
+      
+  return <DownloadPageClient assets={assets} defaultSelected={defaultSelected} affonsoReferral={affonsoReferral} referrer={referrer} />;
 }

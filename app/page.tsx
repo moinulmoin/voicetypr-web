@@ -8,7 +8,7 @@ import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
 // import Demo from "./components/sections/Demo";
-import Pricing from "./components/sections/Pricing";
+import PricingServer from "./components/sections/PricingServer";
 import FounderNote from "./components/sections/FounderNote";
 import CTA from "./components/sections/CTA";
 // import CompetitorComparison from "./components/sections/CompetitorComparison";
@@ -25,7 +25,7 @@ export default function HomePage() {
         {/* <Demo />  */}
         <Features />
         <Testimonials />
-        <Pricing />
+        <PricingServer />
         <FounderNote />
         <FAQ />
         <CTA />

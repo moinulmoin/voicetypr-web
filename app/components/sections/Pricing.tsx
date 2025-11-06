@@ -2,17 +2,13 @@
 
 import PricingCards from "@/components/PricingCards";
 import { COUPON_ACTIVE } from "@/lib/pricing";
-import { useEffect, useState } from "react";
 
-export default function Pricing() {
-  const [referral, setReferral] = useState("");
+interface PricingProps {
+  affonsoReferral: string;
+  referrer: string;
+}
 
-  useEffect(() => {
-    const affonso_referral = window?.affonso_referral;
-    if (affonso_referral) {
-      setReferral(affonso_referral);
-    }
-  }, []);
+export default function Pricing({ affonsoReferral, referrer }: PricingProps) {
 
   return (
     <section className="relative py-24" id="pricing">
@@ -33,7 +29,7 @@ export default function Pricing() {
 
       {/* Pricing cards */}
       <div className="max-w-5xl mx-auto px-4">
-        <PricingCards referral={referral} eventPrefix="pricing" />
+        <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="pricing" />
       </div>
     </section>
   );
