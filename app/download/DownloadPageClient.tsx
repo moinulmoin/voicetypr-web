@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
+import EmailCaptureModal from "../components/EmailCaptureModal";
 
 // Apple icon component
 const AppleIcon = () => (
@@ -91,15 +92,26 @@ const getDownloadOptions = (assets: ReleaseAssets) => [
   },
 ];
 
-export default function DownloadPageClient({ assets, defaultSelected, affonsoReferral, referrer }: { 
-  assets: ReleaseAssets; 
+export default function DownloadPageClient({ assets, defaultSelected, affonsoReferral, referrer }: {
+  assets: ReleaseAssets;
   defaultSelected?: string | null;
   affonsoReferral: string;
   referrer: string;
 }) {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(defaultSelected ?? null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleDownload = () => {
+  const handleDownloadClick = () => {
+    // Track modal open
+    if (typeof window !== 'undefined' && window.umami) {
+      window.umami.track('email-modal-open', {
+        platform: selectedOption?.platform
+      });
+    }
+    setIsModalOpen(true);
+  };
+
+  const handleActualDownload = () => {
     const option = getDownloadOptions(assets).find(
       (opt) => opt.id === selectedPlatform,
     );
@@ -113,6 +125,13 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
 
     if (downloadUrl) {
       trackTwitterConversion("download");
+      // Track successful download with Umami
+      if (typeof window !== 'undefined' && window.umami) {
+        window.umami.track('download-success', {
+          platform: selectedOption?.platform,
+          url: downloadUrl
+        });
+      }
       window.open(downloadUrl, "_blank");
     }
   };
@@ -190,7 +209,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             {selectedPlatform && (
               <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <Button
-                  onClick={handleDownload}
+                  onClick={handleDownloadClick}
                   className="group/btn"
                   size="lg"
                   data-umami-event="download-click"
@@ -247,6 +266,13 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
         </section>
 
         <Footer />
+
+        {/* Email Capture Modal */}
+        <EmailCaptureModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onDownload={handleActualDownload}
+        />
       </div>
     </>
   );
