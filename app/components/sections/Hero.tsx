@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { CTAScrollButton } from "./CTAScrollButton";
 
@@ -8,22 +9,10 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden pt-24 lg:pt-28">
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <div>
-          <div className="mb-6 w-full flex items-center justify-center gap-3 flex-wrap">
-            <a href="https://theresanaiforthat.com/ai/voicetypr/?ref=featured&v=7249239" target="_blank" rel="nofollow">
-              <img width="300" src="https://media.theresanaiforthat.com/featured-on-taaft.png?width=600" />
-            </a>
-            <a
-              href="https://www.producthunt.com/products/voicetypr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-voicetypr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1030200&theme=light&t=1761322858959"
-                alt="Voicetypr - Write thoughts faster and private | Product Hunt"
-                width={250}
-                height={54}
-              />
-            </a>
+          <div className="mb-6 w-full flex items-center justify-center">
+            <Badge className="px-4 py-1.5 text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+              🔥 Limited 11.11 discount is live
+            </Badge>
           </div>
 
           <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">

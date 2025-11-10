@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Mail, MessageCircle } from "lucide-react";
-import { XformerlyTwitter } from "@/components/icons";
+import { XformerlyTwitter, GitHub } from "@/components/icons";
 
 // Testimonials data with realistic feedback
 const testimonials = [
@@ -64,6 +64,16 @@ const testimonials = [
     },
     source: "email",
   },
+  {
+    id: 7,
+    content: "The app is incredible, I did not expect it to be so fast while fully offline! I don't know how you did it, but you did an amazing job!",
+    author: {
+      name: "Stephen K. L.",
+      handle: "stephenkl",
+      avatar: "SK",
+    },
+    source: "github",
+  },
 ];
 
 export default function Reviews() {
@@ -111,7 +121,9 @@ export default function Reviews() {
                 </div>
 
                 {/* Source Icon - Top Right */}
-                {testimonial.source === "twitter" ? (
+                {testimonial.source === "github" ? (
+                  <GitHub className="w-4 h-4 text-muted-foreground/50" />
+                ) : testimonial.source === "twitter" ? (
                   <XformerlyTwitter className="w-4 h-4 text-muted-foreground/50" />
                 ) : (
                   <Mail className="w-4 h-4 text-muted-foreground/50" />

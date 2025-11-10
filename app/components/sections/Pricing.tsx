@@ -22,7 +22,7 @@ export default function Pricing({ affonsoReferral, referrer }: PricingProps) {
         </p>
         {COUPON_ACTIVE && (
           <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-sm text-amber-700 dark:text-amber-300">
-            <span>🎉 Limited discount activated for you</span>
+            <span>🎉 Limited 11.11 discount for you</span>
           </div>
         )}
       </div>

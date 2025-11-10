@@ -46,11 +46,11 @@ export default function TermsPage() {
           <ul className="list-disc pl-6 space-y-2">
             <li>VoiceTypr is sold as a one-time purchase with no recurring fees</li>
             <li>All purchases include future updates for the lifetime of the product</li>
-            <li>We offer a 14-day money-back guarantee from the date of purchase</li>
+            <li>We offer a 7-day money-back guarantee from the date of purchase</li>
             <li>Refunds will result in immediate license deactivation</li>
           </ul>
           <p className="mt-2">
-            The 14‑day period starts on the purchase date shown on your order confirmation (license issuance), regardless of when you download or activate.
+            The 7‑day period starts on the purchase date shown on your order confirmation (license issuance), regardless of when you download or activate.
           </p>
         </section>
 
@@ -59,7 +59,7 @@ export default function TermsPage() {
           <p>
             If you are an EU consumer, you acknowledge that by downloading/activating the Software you expressly request
             immediate performance and confirm you lose the statutory right of withdrawal for digital content not supplied
-            on a tangible medium. This does not affect our separate 14‑day money‑back guarantee described above.
+            on a tangible medium. This does not affect our separate 7‑day money‑back guarantee described above.
           </p>
         </section>
 
