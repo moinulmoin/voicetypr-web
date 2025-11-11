@@ -1,7 +1,7 @@
 # VoiceTypr API Documentation
 
-**Version:** 1.0.0  
-**Last Updated:** January 17, 2025  
+**Version:** 1.0.0
+**Last Updated:** January 17, 2025
 **Authors:** VoiceTypr Development Team
 
 ## Implementation Status: ✅ **COMPLETE**
@@ -82,7 +82,7 @@ Content-Type: application/json
 
 **Note:** This endpoint automatically creates a device record with a 5-day trial if the device doesn't exist.
 
-#### Activate Trial  
+#### Activate Trial
 **Note:** This endpoint is not currently implemented. Trial activation happens automatically when calling `/trial/check` for a new device.
 
 ### License Management
@@ -193,7 +193,7 @@ All errors follow this format:
 
 Common error codes:
 - `validation_error` - Invalid request parameters
-- `license_already_activated` - License is already activated on another device  
+- `license_already_activated` - License is already activated on another device
 - `not_your_license` - Trying to deactivate a license not bound to this device
 - `invalid_license` - License key is invalid (from Polar)
 - `device_mismatch` - License belongs to different device
@@ -207,20 +207,20 @@ The ultra-simplified schema with everything in one Device model:
 // One model to rule them all - a device can have a trial, a license, or neither
 model Device {
   deviceHash String   @id
-  
+
   // License fields (null = no license)
   licenseKey   String?  // The license key (references License table)
   activationId String?  // Polar activation ID for deactivation
-  
+
   // Trial fields (null = no trial)
   trialStartedAt DateTime?
   trialExpiresAt DateTime?
-  
+
   // Timestamps
   createdAt   DateTime
   lastChecked DateTime // For offline grace period
   appVersion  String?  // Last known app version
-  
+
   activities ActivityLog[]
 }
 
@@ -285,7 +285,7 @@ sequenceDiagram
     User->>App: Enter license key
     App->>API: POST /license/activate
     API->>DB: Check if license exists
-    
+
     alt License bound to different device
         DB-->>API: License exists with different deviceHash
         API-->>App: 409 Conflict
@@ -306,7 +306,7 @@ sequenceDiagram
     User->>App: Enter license key
     App->>API: POST /license/activate
     API->>Polar: Activate license
-    
+
     alt Invalid license
         Polar-->>API: 404 Not Found
         API-->>App: 400 Bad Request
@@ -329,12 +329,12 @@ sequenceDiagram
 
     App->>API: POST /license/validate
     API->>Polar: Validate license
-    
+
     alt Network timeout
         Note over Polar: No response
         API-->>API: Timeout after 30s
         API->>Cache: Check last validation
-        
+
         alt Within grace period
             Cache-->>API: Last validated < 7 days ago
             API-->>App: 200 OK (offline mode)
@@ -358,7 +358,7 @@ sequenceDiagram
 
     Polar->>API: POST /webhooks/polar (order.refunded)
     API->>API: Verify webhook signature
-    
+
     alt Database error
         API->>DB: Update devices
         DB-->>API: Connection error
@@ -383,7 +383,7 @@ sequenceDiagram
 
     App->>API: POST /trial/check
     API->>DB: Get device record
-    
+
     alt Device not found
         DB-->>API: No record
         API->>DB: Create device with trial
@@ -409,7 +409,7 @@ sequenceDiagram
     User->>App: Click "Deactivate License"
     App->>API: POST /license/deactivate
     API->>DB: Check device ownership
-    
+
     alt Wrong device
         DB-->>API: License belongs to different device
         API-->>App: 403 Forbidden
