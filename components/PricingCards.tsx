@@ -56,18 +56,29 @@ export default function PricingCards({
   eventPrefix = "pricing",
 }: PricingCardsProps) {
   const handleCheckout = (productId: string | undefined) => {
-    const metadata = {
-      affonso_referral: affonsoReferral,
-      referrer: referrer,
-    };
+    const metadata: Record<string, string> = {};
+    
+    // Only include metadata fields if they have values
+    if (affonsoReferral) {
+      metadata.affonso_referral = affonsoReferral;
+    }
+    if (referrer) {
+      metadata.referrer = referrer;
+    }
+    
     const discount = process.env.NEXT_PUBLIC_COUPON_CODE
       ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
       : "";
+    
+    const metadataParam = Object.keys(metadata).length > 0 
+      ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
+      : "";
+    
     window.location.href =
       "/api/v1/checkout?products=" +
       productId +
       discount +
-      `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`;
+      metadataParam;
   };
 
   return (
