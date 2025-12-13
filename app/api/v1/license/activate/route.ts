@@ -24,23 +24,30 @@ export async function POST(request: NextRequest) {
 
     const { licenseKey, deviceHash, osType, osVersion, appVersion, deviceName } = validationResult.data;
 
-    // 1. Check device limit for this license
+    // 1. Advisory device limit check for logging/analytics only - Polar enforces the real limit
+    // This is purely informational because our DB may be stale (e.g., user deactivated via Polar portal)
     const maxDevices = getMaxDevicesForLicense(licenseKey);
     if (isNaN(maxDevices)) {
-      return createErrorResponse(ErrorCode.INVALID_LICENSE, 400);
-    }
-    const currentDeviceCount = await prisma.device.count({
-      where: {
-        licenseKey,
-        NOT: { deviceHash } // Don't count current device if re-activating
+      // Unknown license format - log but don't block, let Polar decide validity
+      console.warn(
+        `[License Activate] Unknown license format for ${licenseKey.substring(0, 8)}...; skipping local device check, relying on Polar`
+      );
+    } else {
+      const currentDeviceCount = await prisma.device.count({
+        where: {
+          licenseKey,
+          NOT: { deviceHash }
+        }
+      });
+
+      if (currentDeviceCount >= maxDevices) {
+        console.log(
+          `[License Activate] Local device count (${currentDeviceCount}) >= maxDevices (${maxDevices}) for license ${licenseKey.substring(0, 8)}... - relying on Polar to enforce actual limit`
+        );
       }
-    });
-
-    if (currentDeviceCount >= maxDevices) {
-      return createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400);
     }
 
-    // 2. activate the license with Polar
+    // 2. Activate the license with Polar (Polar is source of truth for device limits)
     let activation;
     try {
       activation = await activateLicenseKey(licenseKey, deviceHash, osType, osVersion, appVersion, deviceName);
