@@ -24,16 +24,7 @@ const testimonials = [
     },
     source: "twitter",
   },
-  {
-    id: 3,
-    content: "I just want to say how great your software is – it truly impresses me. I'm using it with a professional audio interface and a Shure microphone, and it works exceptionally well.",
-    author: {
-      name: "Justus T.",
-      handle: "justus.t",
-      avatar: "JT",
-    },
-    source: "email",
-  },
+
   {
     id: 4,
     content: "Coming from Wispr Flow, it makes a lot of sense, doing faster transcription using local AI models and having full privacy and getting this software at this price. I really love using this.",
