@@ -23,6 +23,11 @@ export function getMaxDevicesForLicense(licenseKey: string): number {
     return 4;
   }
 
+  // Team Business - up to 20 devices
+  if (licenseKey.startsWith('VTT')) {
+    return 20;
+  }
+
   // Default 0
   return NaN;
 }
@@ -36,6 +41,7 @@ export function getLicenseType(licenseKey: string): string {
   if (licenseKey.startsWith('VTP')) return 'Pro';
   if (licenseKey.startsWith('VTS')) return 'Plus';
   if (licenseKey.startsWith('VTM')) return 'Team';
+  if (licenseKey.startsWith('VTT')) return 'Team Business';
 
   return 'Unknown';
 }
