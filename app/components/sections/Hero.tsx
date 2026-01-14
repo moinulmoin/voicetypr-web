@@ -10,8 +10,8 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <div>
           <div className="mb-6 w-full flex items-center justify-center">
-            <Badge className="px-4 py-1.5 text-sm font-medium bg-gradient-to-r from-red-600 to-green-600 text-white">
-              🎄 Holiday Special - Limited Time
+            <Badge className="px-4 py-1.5 text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+              🎉 New Year Special - Limited Time
             </Badge>
           </div>
 
