@@ -41,7 +41,7 @@ export function getLicenseType(licenseKey: string): string {
   if (licenseKey.startsWith('VTP')) return 'Pro';
   if (licenseKey.startsWith('VTS')) return 'Plus';
   if (licenseKey.startsWith('VTM')) return 'Team';
-  if (licenseKey.startsWith('VTT')) return 'Team Business';
+  if (licenseKey.startsWith('VTT')) return 'Business';
 
   return 'Unknown';
 }
