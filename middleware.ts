@@ -30,6 +30,7 @@ export function middleware(request: NextRequest) {
   response.cookies.set('vt_geo_requires_consent', String(requiresConsent), {
     path: '/',
     sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
     // No 'expires' = session cookie (deleted when browser closes)
     // httpOnly: false (default) - client needs to read this
   });
