@@ -41,10 +41,32 @@ function setConsent(state: ConsentState) {
 export default function CookieConsent() {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const existing = getConsent();
-    if (!existing) setOpen(true);
-  }, []);
+   useEffect(() => {
+     // Check if user already has consent stored
+     const existing = getConsent();
+     if (existing) {
+       // User already made a choice - respect it
+       return;
+     }
+
+     // Check if user needs consent based on geo-location
+     const geoRequiresConsent = readCookie('vt_geo_requires_consent');
+     
+     if (geoRequiresConsent === 'false') {
+       // User is in non-GDPR country - auto-accept without showing banner
+       const state: ConsentState = { 
+         necessary: true, 
+         marketing: true, 
+         timestamp: Date.now() 
+       };
+       setConsent(state);
+       setOpen(false); // Keep banner hidden
+       return;
+     }
+
+     // User is in GDPR country or geo unknown - show banner
+     setOpen(true);
+   }, []);
 
   if (!open) return null;
 
