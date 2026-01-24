@@ -12,14 +12,23 @@ const CONSENT_COOKIE = "vt_consent";
 
 function readCookie(name: string) {
   if (typeof document === "undefined") return null;
-  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
-  return match && match[2] ? decodeURIComponent(match[2]) : null;
+  try {
+    const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+    return match && match[2] ? decodeURIComponent(match[2]) : null;
+  } catch {
+    // Cookie access can throw in incognito/disabled cookies
+    return null;
+  }
 }
 
 function writeCookie(name: string, value: string, days: number) {
   if (typeof document === "undefined") return;
-  const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+  try {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+  } catch {
+    // Cookie write can throw (quota exceeded, disabled cookies)
+  }
 }
 
 export function getConsent(): ConsentState | null {
