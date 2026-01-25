@@ -38,3 +38,6 @@ npm-debug.log*
 # Agent documentation (for Claude)
 agent-docs/
 /generated/prisma
+
+# Sisyphus work tracking
+.sisyphus/

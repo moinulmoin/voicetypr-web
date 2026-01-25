@@ -12,14 +12,23 @@ const CONSENT_COOKIE = "vt_consent";
 
 function readCookie(name: string) {
   if (typeof document === "undefined") return null;
-  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
-  return match && match[2] ? decodeURIComponent(match[2]) : null;
+  try {
+    const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+    return match && match[2] ? decodeURIComponent(match[2]) : null;
+  } catch {
+    // Cookie access can throw in incognito/disabled cookies
+    return null;
+  }
 }
 
 function writeCookie(name: string, value: string, days: number) {
   if (typeof document === "undefined") return;
-  const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+  try {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+  } catch {
+    // Cookie write can throw (quota exceeded, disabled cookies)
+  }
 }
 
 export function getConsent(): ConsentState | null {
@@ -42,8 +51,30 @@ export default function CookieConsent() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    // Check if user already has consent stored
     const existing = getConsent();
-    if (!existing) setOpen(true);
+    if (existing) {
+      // User already made a choice - respect it
+      return;
+    }
+
+    // Check if user needs consent based on geo-location
+    const geoRequiresConsent = readCookie('vt_geo_requires_consent');
+    
+    if (geoRequiresConsent === 'false') {
+      // User is in non-GDPR country - auto-accept without showing banner
+      const state: ConsentState = { 
+        necessary: true, 
+        marketing: true, 
+        timestamp: Date.now() 
+      };
+      setConsent(state);
+      setOpen(false); // Keep banner hidden
+      return;
+    }
+
+    // User is in GDPR country or geo unknown - show banner
+    setOpen(true);
   }, []);
 
   if (!open) return null;
