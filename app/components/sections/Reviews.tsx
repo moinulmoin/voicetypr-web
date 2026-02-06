@@ -65,6 +65,16 @@ const testimonials = [
     },
     source: "github",
   },
+  {
+    id: 8,
+    content: "I switched from Wispr Flow because I didn't want another monthly subscription, and I needed something that works on both Mac and Windows. VoiceTypr ticks both boxes. Being able to use my own API key gives me full control, and Moinul's support getting everything connected was brilliant. One payment, no ongoing costs, exactly what I was looking for.",
+    author: {
+      name: "Catherine E.",
+      handle: "catherine.e",
+      avatar: "CE",
+    },
+    source: "email",
+  },
 ];
 
 export default function Reviews() {
