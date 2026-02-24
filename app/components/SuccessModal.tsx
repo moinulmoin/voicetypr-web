@@ -8,11 +8,6 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-interface SuccessModalProps {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
-
 export function SuccessModal() {
   const searchParams = useSearchParams()
   const checkoutId = searchParams.get("checkoutId")
@@ -22,6 +17,13 @@ export function SuccessModal() {
 
   useEffect(() => {
     if (checkoutId) {
+      // Strip sensitive tokens from URL immediately - checkoutId is captured as const above
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete('checkoutId');
+      params.delete('customer_session_token');
+      const cleanPath = `${window.location.pathname}?${params.toString()}`;
+      router.replace(cleanPath, { scroll: false });
+
       // Fetch checkout data and track purchase
       const trackPurchase = async () => {
         try {
@@ -55,15 +57,6 @@ export function SuccessModal() {
       trackPurchase()
     }
   }, [checkoutId])
-
-  useEffect(() => {
-    return () => {
-      const newUrl = new URL(window.location.href)
-      newUrl.searchParams.delete("checkoutId")
-      newUrl.searchParams.delete("customer_session_token")
-      router.replace(newUrl.pathname + newUrl.search, { scroll: false })
-    }
-  }, [showModal])
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
