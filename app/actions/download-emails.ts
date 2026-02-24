@@ -6,8 +6,8 @@ import { getClientIpFromHeaders } from "@/lib/get-client-ip";
 
 export async function saveDownloadEmail(prevState: any, formData: FormData) {
   const ip = await getClientIpFromHeaders();
-  const { success: rateLimited } = await serverActionIpLimiter.limit(ip);
-  if (!rateLimited) {
+  const { success } = await serverActionIpLimiter.limit(ip);
+  if (!success) {
     return { success: false, error: 'Too many requests. Please try again later.' };
   }
 
