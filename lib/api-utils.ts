@@ -69,9 +69,34 @@ export function redactLicenseKey(key: string): string {
   return key.substring(0, 8) + '...';
 }
 
-// CORS headers for API routes
-export const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, x-device-hash',
-};
+// Dynamic CORS headers for API routes
+export function getCorsHeaders(request?: NextRequest): Record<string, string> {
+  const origin = request?.headers.get('origin');
+  const ALLOWED_ORIGINS = [
+    process.env.NEXT_PUBLIC_APP_URL,
+    'tauri://localhost',
+    'https://tauri.localhost',
+    ...(process.env.ALLOWED_ORIGINS?.split(',').map(o => o.trim()) || []),
+  ].filter(Boolean) as string[];
+
+  const isStrictCors = process.env.STRICT_CORS === 'true';
+  const allowedOrigin = isStrictCors
+    ? (origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0] || '*')
+    : '*';
+
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, x-device-hash',
+  };
+}
+
+// Backward-compatible alias (uses wildcard when no request available)
+export const corsHeaders = getCorsHeaders();
+
+// Add CORS headers to any NextResponse
+export function withCorsHeaders(response: NextResponse, request?: NextRequest): NextResponse {
+  const headers = getCorsHeaders(request);
+  Object.entries(headers).forEach(([k, v]) => response.headers.set(k, v));
+  return response;
+}

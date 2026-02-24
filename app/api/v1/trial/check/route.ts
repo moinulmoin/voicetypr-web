@@ -1,5 +1,6 @@
 import {
-  corsHeaders,
+  getCorsHeaders,
+  withCorsHeaders,
   createSuccessResponse,
   handleInternalError,
   handleValidationError
@@ -22,7 +23,7 @@ export async function POST(request: NextRequest) {
     const ip = getClientIp(request);
     const { success: ipOk } = await trialCheckIpLimiter.limit(ip);
     if (!ipOk) {
-      return createRateLimitResponse();
+      return withCorsHeaders(createRateLimitResponse(), request);
     }
 
     // Parse and validate request body
@@ -30,14 +31,14 @@ export async function POST(request: NextRequest) {
     const validationResult = trialCheckRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return handleValidationError(validationResult.error);
+      return withCorsHeaders(handleValidationError(validationResult.error), request);
     }
 
     const { deviceHash } = validationResult.data;
 
     const { success: deviceOk } = await trialCheckDeviceLimiter.limit(deviceHash);
     if (!deviceOk) {
-      return createRateLimitResponse();
+      return withCorsHeaders(createRateLimitResponse(), request);
     }
 
     const existingDevice = await prisma.device.findUnique({ where: { deviceHash } });
@@ -46,7 +47,7 @@ export async function POST(request: NextRequest) {
     if (!existingDevice) {
       const { success: createOk } = await trialCreationLimiter.limit(ip);
       if (!createOk) {
-        return createRateLimitResponse();
+        return withCorsHeaders(createRateLimitResponse(), request);
       }
 
       try {
@@ -102,12 +103,12 @@ export async function POST(request: NextRequest) {
       expiresAt: trialDevice.trialExpiresAt?.toISOString() || null
     };
 
-    return createSuccessResponse(data);
+    return withCorsHeaders(createSuccessResponse(data), request);
   } catch (error) {
-    return handleInternalError(error);
+    return withCorsHeaders(handleInternalError(error), request);
   }
 }
 
-export async function OPTIONS() {
-  return new Response(null, { status: 200, headers: corsHeaders });
+export async function OPTIONS(request: NextRequest) {
+  return new Response(null, { status: 200, headers: getCorsHeaders(request) });
 }
