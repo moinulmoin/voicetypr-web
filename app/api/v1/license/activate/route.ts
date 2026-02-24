@@ -3,17 +3,25 @@ import {
   createErrorResponse,
   createSuccessResponse,
   handleInternalError,
-  handleValidationError
+  handleValidationError,
+  redactLicenseKey
 } from "@/lib/api-utils";
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
+import { getClientIp } from "@/lib/get-client-ip";
 import { getMaxDevicesForLicense } from "@/lib/license-utils";
 import { activateLicenseKey } from "@/lib/polar";
+import { activateIpLimiter, activateDeviceLimiter, createRateLimitResponse } from "@/lib/rate-limit";
 import { licenseActivateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit by IP
+    const ip = getClientIp(request);
+    const { success: ipOk } = await activateIpLimiter.limit(ip);
+    if (!ipOk) return createRateLimitResponse();
+
     // Parse and validate request body
     const body = await request.json();
     const validationResult = licenseActivateRequestSchema.safeParse(body);
@@ -23,6 +31,10 @@ export async function POST(request: NextRequest) {
     }
 
     const { licenseKey, deviceHash, osType, osVersion, appVersion, deviceName } = validationResult.data;
+
+    // Rate limit by device
+    const { success: deviceOk } = await activateDeviceLimiter.limit(deviceHash);
+    if (!deviceOk) return createRateLimitResponse();
 
     // 1. Advisory device limit check for logging/analytics only - Polar enforces the real limit
     // This is purely informational because our DB may be stale (e.g., user deactivated via Polar portal)
@@ -96,7 +108,7 @@ export async function POST(request: NextRequest) {
         data: {
           deviceHash,
           action: "activate",
-          metadata: { licenseKey }
+          metadata: { licenseKeyRef: redactLicenseKey(licenseKey) }
         }
       });
     });

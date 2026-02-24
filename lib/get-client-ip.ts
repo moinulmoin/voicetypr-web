@@ -19,10 +19,6 @@ export function getClientIp(request: NextRequest): string {
     return realIp.trim();
   }
 
-  // request.ip may be available in some Next.js/Vercel environments
-  if (request.ip) {
-    return request.ip;
-  }
   return '0.0.0.0';
 }
 

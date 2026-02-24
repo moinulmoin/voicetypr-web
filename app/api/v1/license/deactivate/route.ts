@@ -3,16 +3,24 @@ import {
   createErrorResponse,
   createSuccessResponse,
   handleInternalError,
-  handleValidationError
+  handleValidationError,
+  redactLicenseKey
 } from "@/lib/api-utils";
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
+import { deactivateIpLimiter, createRateLimitResponse } from "@/lib/rate-limit";
+import { getClientIp } from "@/lib/get-client-ip";
 import { deactivateLicenseKey } from "@/lib/polar";
 import { licenseDeactivateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
+    // IP rate limiting
+    const ip = getClientIp(request);
+    const { success: ipOk } = await deactivateIpLimiter.limit(ip);
+    if (!ipOk) return createRateLimitResponse();
+
     // Parse and validate request body
     const body = await request.json();
     const validationResult = licenseDeactivateRequestSchema.safeParse(body);
@@ -69,7 +77,7 @@ export async function POST(request: NextRequest) {
         data: {
           deviceHash,
           action: "deactivate",
-          metadata: { licenseKey }
+          metadata: { licenseKeyRef: redactLicenseKey(licenseKey) }
         }
       });
     });

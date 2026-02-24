@@ -2,11 +2,13 @@ import {
   corsHeaders,
   createSuccessResponse,
   handleInternalError,
-  handleValidationError
+  handleValidationError,
+  redactLicenseKey
 } from "@/lib/api-utils";
 import { ERROR_MESSAGES, ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
 import { validateLicenseKey } from "@/lib/polar";
+import { validateDeviceLimiter, createRateLimitResponse } from "@/lib/rate-limit";
 import { licenseValidateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
 
@@ -21,6 +23,10 @@ export async function POST(request: NextRequest) {
     }
 
     const { licenseKey, deviceHash, appVersion, osType, osVersion } = validationResult.data;
+
+    // Rate limit by device hash (no IP limit — corporate NAT concern)
+    const { success: deviceOk } = await validateDeviceLimiter.limit(deviceHash);
+    if (!deviceOk) return createRateLimitResponse();
 
     // 1. Check device binding - must match both license and device
     const device = await prisma.device.findFirst({
@@ -152,7 +158,7 @@ export async function POST(request: NextRequest) {
         data: {
           deviceHash,
           action: "validate",
-          metadata: { licenseKey }
+          metadata: { licenseKeyRef: redactLicenseKey(licenseKey) }
         }
       });
     });

@@ -1,11 +1,23 @@
 import { prisma } from "@/lib/db";
+import { redis } from "@/lib/redis";
 import { Webhooks } from "@polar-sh/nextjs";
 import { WebhookOrderRefundedPayload } from "@polar-sh/sdk/models/components/webhookorderrefundedpayload.js";
 
 export const POST = Webhooks({
   webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
   onPayload: async (payload) => {
-    console.log(`Received Polar webhook: ${payload.type}`, payload.data);
+    console.log(`[Webhook] ${payload.type}`);
+
+    const payloadData = payload.data as { id?: string | number };
+    const eventId = payloadData?.id ?? JSON.stringify(payload.data).slice(0, 32);
+    const eventKey = `${payload.type}:${eventId}`;
+    const idempotencyKey = `webhook:processed:${eventKey}`;
+    const alreadyProcessed = await redis.get(idempotencyKey);
+
+    if (alreadyProcessed) {
+      console.log(`[Webhook] Duplicate event skipped: ${eventKey}`);
+      return;
+    }
 
     // Handle different webhook events
     switch (payload.type) {
@@ -18,6 +30,8 @@ export const POST = Webhooks({
       default:
         console.log(`Unhandled webhook event: ${payload.type}`);
     }
+
+    await redis.set(idempotencyKey, "1", { ex: 86400 });
   },
 });
 
@@ -85,7 +99,7 @@ async function handleLicenseRevocation(data: WebhookOrderRefundedPayload["data"]
       console.log(`Deleted ${result.licenseKeys.length} unused license(s) for customer: ${customerId}`);
     }
   } catch (error) {
-    console.error("Failed to handle license revocation:", error);
-    // Don't throw - we don't want to fail the webhook
+    console.error("[Webhook] License revocation failed:", error);
+    throw error;
   }
 }
