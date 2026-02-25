@@ -11,27 +11,38 @@ export const POST = Webhooks({
     const payloadData = payload.data as { id?: string | number };
     const eventId = payloadData?.id ?? JSON.stringify(payload.data).slice(0, 32);
     const eventKey = `${payload.type}:${eventId}`;
-    const idempotencyKey = `webhook:processed:${eventKey}`;
-    const alreadyProcessed = await redis.get(idempotencyKey);
+    const processedKey = `webhook:processed:${eventKey}`;
+    const lockKey = `webhook:processing:${eventKey}`;
 
+    const alreadyProcessed = await redis.get(processedKey);
     if (alreadyProcessed) {
       console.log(`[Webhook] Duplicate event skipped: ${eventKey}`);
       return;
     }
 
-    // Handle different webhook events
-    switch (payload.type) {
-      case "order.refunded":
-        // Handle license revocation by removing device bindings
-        await handleLicenseRevocation(payload.data);
-        break;
-
-      // Add more webhook handlers as needed
-      default:
-        console.log(`Unhandled webhook event: ${payload.type}`);
+    const lockClaimed = await redis.set(lockKey, "1", { ex: 300, nx: true });
+    if (!lockClaimed) {
+      console.log(`[Webhook] Event already in-flight: ${eventKey}`);
+      return;
     }
 
-    await redis.set(idempotencyKey, "1", { ex: 86400 });
+    try {
+      // Handle different webhook events
+      switch (payload.type) {
+        case "order.refunded":
+          // Handle license revocation by removing device bindings
+          await handleLicenseRevocation(payload.data);
+          break;
+
+        // Add more webhook handlers as needed
+        default:
+          console.log(`Unhandled webhook event: ${payload.type}`);
+      }
+
+      await redis.set(processedKey, "1", { ex: 86400 });
+    } finally {
+      await redis.del(lockKey);
+    }
   },
 });
 

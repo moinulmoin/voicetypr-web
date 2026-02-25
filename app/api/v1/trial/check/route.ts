@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     const ip = getClientIp(request);
     const { success: ipOk } = await trialCheckIpLimiter.limit(ip);
     if (!ipOk) {
-      return withCorsHeaders(createRateLimitResponse(), request);
+      return withCorsHeaders(createRateLimitResponse());
     }
 
     // Parse and validate request body
@@ -31,14 +31,14 @@ export async function POST(request: NextRequest) {
     const validationResult = trialCheckRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return withCorsHeaders(handleValidationError(validationResult.error), request);
+      return withCorsHeaders(handleValidationError(validationResult.error));
     }
 
     const { deviceHash } = validationResult.data;
 
     const { success: deviceOk } = await trialCheckDeviceLimiter.limit(deviceHash);
     if (!deviceOk) {
-      return withCorsHeaders(createRateLimitResponse(), request);
+      return withCorsHeaders(createRateLimitResponse());
     }
 
     const existingDevice = await prisma.device.findUnique({ where: { deviceHash } });
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     if (!existingDevice) {
       const { success: createOk } = await trialCreationLimiter.limit(ip);
       if (!createOk) {
-        return withCorsHeaders(createRateLimitResponse(), request);
+        return withCorsHeaders(createRateLimitResponse());
       }
 
       try {
@@ -103,12 +103,12 @@ export async function POST(request: NextRequest) {
       expiresAt: trialDevice.trialExpiresAt?.toISOString() || null
     };
 
-    return withCorsHeaders(createSuccessResponse(data), request);
+    return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {
-    return withCorsHeaders(handleInternalError(error), request);
+    return withCorsHeaders(handleInternalError(error));
   }
 }
 
-export async function OPTIONS(request: NextRequest) {
-  return new Response(null, { status: 200, headers: getCorsHeaders(request) });
+export async function OPTIONS() {
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
 }

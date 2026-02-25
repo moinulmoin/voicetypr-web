@@ -20,14 +20,14 @@ export async function POST(request: NextRequest) {
     // IP rate limiting
     const ip = getClientIp(request);
     const { success: ipOk } = await deactivateIpLimiter.limit(ip);
-    if (!ipOk) return withCorsHeaders(createRateLimitResponse(), request);
+    if (!ipOk) return withCorsHeaders(createRateLimitResponse());
 
     // Parse and validate request body
     const body = await request.json();
     const validationResult = licenseDeactivateRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return withCorsHeaders(handleValidationError(validationResult.error), request);
+      return withCorsHeaders(handleValidationError(validationResult.error));
     }
 
     const { licenseKey, deviceHash } = validationResult.data;
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (!device) {
-      return withCorsHeaders(createErrorResponse(ErrorCode.NOT_YOUR_LICENSE), request);
+      return withCorsHeaders(createErrorResponse(ErrorCode.NOT_YOUR_LICENSE));
     }
 
     // 2. Try to deactivate the license on Polar
@@ -87,12 +87,12 @@ export async function POST(request: NextRequest) {
       deactivatedAt: new Date().toISOString()
     };
 
-    return withCorsHeaders(createSuccessResponse(data), request);
+    return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {
-    return withCorsHeaders(handleInternalError(error), request);
+    return withCorsHeaders(handleInternalError(error));
   }
 }
 
-export async function OPTIONS(request: NextRequest) {
-  return new Response(null, { status: 200, headers: getCorsHeaders(request) });
+export async function OPTIONS() {
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
 }

@@ -21,21 +21,21 @@ export async function POST(request: NextRequest) {
     // Rate limit by IP
     const ip = getClientIp(request);
     const { success: ipOk } = await activateIpLimiter.limit(ip);
-    if (!ipOk) return withCorsHeaders(createRateLimitResponse(), request);
+    if (!ipOk) return withCorsHeaders(createRateLimitResponse());
 
     // Parse and validate request body
     const body = await request.json();
     const validationResult = licenseActivateRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return withCorsHeaders(handleValidationError(validationResult.error), request);
+      return withCorsHeaders(handleValidationError(validationResult.error));
     }
 
     const { licenseKey, deviceHash, osType, osVersion, appVersion, deviceName } = validationResult.data;
 
     // Rate limit by device
     const { success: deviceOk } = await activateDeviceLimiter.limit(deviceHash);
-    if (!deviceOk) return withCorsHeaders(createRateLimitResponse(), request);
+    if (!deviceOk) return withCorsHeaders(createRateLimitResponse());
 
     // 1. Advisory device limit check for logging/analytics only - Polar enforces the real limit
     // This is purely informational because our DB may be stale (e.g., user deactivated via Polar portal)
@@ -68,11 +68,11 @@ export async function POST(request: NextRequest) {
       // Handle specific Polar API errors
       if (polarError.statusCode === 403) {
         if (polarError.detail?.includes('activation limit')) {
-          return withCorsHeaders(createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400), request);
+          return withCorsHeaders(createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400));
         }
       } else if (polarError.statusCode === 404 || polarError.error === 'ResourceNotFound') {
         // License key not found
-        return withCorsHeaders(createErrorResponse(ErrorCode.INVALID_LICENSE, 400), request);
+        return withCorsHeaders(createErrorResponse(ErrorCode.INVALID_LICENSE, 400));
       }
       // Re-throw other errors to be handled by the outer catch
       throw polarError;
@@ -118,12 +118,12 @@ export async function POST(request: NextRequest) {
       activatedAt: new Date().toISOString()
     };
 
-    return withCorsHeaders(createSuccessResponse(data), request);
+    return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {
-    return withCorsHeaders(handleInternalError(error), request);
+    return withCorsHeaders(handleInternalError(error));
   }
 }
 
-export async function OPTIONS(request: NextRequest) {
-  return new Response(null, { status: 200, headers: getCorsHeaders(request) });
+export async function OPTIONS() {
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
 }
