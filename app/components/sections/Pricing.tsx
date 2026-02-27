@@ -1,7 +1,9 @@
 "use client";
 
 import PricingCards from "@/components/PricingCards";
-import { COUPON_ACTIVE } from "@/lib/pricing";
+import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext";
+import { FLASH_DISCOUNT_RATE } from "@/lib/pricing";
+import { Clock } from "lucide-react";
 
 interface PricingProps {
   affonsoReferral: string;
@@ -9,9 +11,12 @@ interface PricingProps {
 }
 
 export default function Pricing({ affonsoReferral, referrer }: PricingProps) {
+  const { isActive, formattedTime, pricingRef } = useFlashOfferContext();
+
+  const pct = Math.round(FLASH_DISCOUNT_RATE * 100);
 
   return (
-    <section className="relative py-24" id="pricing">
+    <section className="relative py-24" id="pricing" ref={pricingRef}>
       {/* Section intro */}
       <div className="text-center mb-10">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
@@ -20,9 +25,15 @@ export default function Pricing({ affonsoReferral, referrer }: PricingProps) {
         <p className="text-muted-foreground mb-2">
           One-time purchase, lifetime access
         </p>
-        {COUPON_ACTIVE && (
+        {isActive && (
           <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-sm text-purple-700 dark:text-purple-300">
-            <span>🎉 New Year Special - Limited Time</span>
+            <Clock className="h-3.5 w-3.5" />
+            <span>
+              {pct}% off — expires in{" "}
+              <span className="font-mono font-semibold tabular-nums">
+                {formattedTime}
+              </span>
+            </span>
           </div>
         )}
       </div>

@@ -9,15 +9,27 @@ export const BASE_PRICES = {
   max: 140,
 } as const;
 
-export const COUPON_ACTIVE = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
+/* ── Flash-offer (time-limited "random" discount) ── */
 
-export const DISCOUNTED_PRICES = COUPON_ACTIVE
-  ? {
-      pro: BASE_PRICES.pro * 0.7, // 30% off = 35
-      plus: BASE_PRICES.plus * 0.7, // 30% off = 56
-      max: BASE_PRICES.max * 0.7, // 30% off = 98
-    }
-  : null;
+/** Discount fraction applied when the flash offer is active */
+export const FLASH_DISCOUNT_RATE = 0.20; // 20 %
+
+/** Polar.sh discount-id for the 20 % flash offer */
+export const FLASH_DISCOUNT_CODE =
+  process.env.NEXT_PUBLIC_FLASH_DISCOUNT_CODE ?? "";
+
+/** Pre-computed discounted prices (used by the flash-offer UI) */
+export const FLASH_DISCOUNTED_PRICES = {
+  pro: BASE_PRICES.pro * (1 - FLASH_DISCOUNT_RATE),
+  plus: BASE_PRICES.plus * (1 - FLASH_DISCOUNT_RATE),
+  max: BASE_PRICES.max * (1 - FLASH_DISCOUNT_RATE),
+} as const;
+
+/** How long the flash-offer countdown lasts (ms) */
+export const FLASH_OFFER_DURATION_MS = 12 * 60 * 60 * 1000; // 12 h
+
+/** Cooldown before the offer can re-appear after expiry (ms) */
+export const FLASH_OFFER_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 d
 
 /**
  * Format price with smart decimal handling

@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { CTAScrollButton } from "./CTAScrollButton";
 
@@ -9,12 +8,6 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden pt-24 lg:pt-28">
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <div>
-          <div className="mb-6 w-full flex items-center justify-center">
-            <Badge className="px-4 py-1.5 text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-              🎉 New Year Special - Limited Time
-            </Badge>
-          </div>
-
           <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
             <span className="block bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
               Write thoughts
