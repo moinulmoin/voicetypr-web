@@ -13,7 +13,7 @@ export default function FlashOfferBanner() {
   const pct = Math.round(FLASH_DISCOUNT_RATE * 100);
 
   return (
-    <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 w-[92vw] max-w-lg animate-in slide-in-from-bottom-8 fade-in duration-500">
+    <div className="fixed bottom-6 left-4 z-50 w-[80vw] max-w-sm animate-in slide-in-from-bottom-8 fade-in duration-500">
       <div className="relative overflow-hidden rounded-2xl border border-purple-500/30 bg-background/95 shadow-2xl shadow-purple-500/10 backdrop-blur-md">
         {/* Gradient accent bar */}
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600" />
