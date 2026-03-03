@@ -257,14 +257,9 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
 
             {/* Pricing Section */}
             <div className="">
-              <h2 className="text-2xl font-semibold mb-4 text-center">
+              <h2 className="text-2xl font-semibold mb-8 text-center">
                 Ready to Write 3x Faster?
               </h2>
-              <div className="mb-8 flex justify-center">
-                <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-sm text-purple-700 dark:text-purple-300">
-                  <span>🎉 New Year Special - Limited Time</span>
-                </div>
-              </div>
               <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
             </div>
           </div>
