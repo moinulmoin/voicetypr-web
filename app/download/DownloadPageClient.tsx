@@ -101,13 +101,21 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
   );
 }
 
-const getDownloadOptions = (assets: ReleaseAssets) => [
+const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => [
   {
     id: "macos-silicon",
     name: "macOS (Apple Silicon)",
     description: "For M1, M2, M3+ Macs",
     icon: AppleIcon,
     url: assets.silicon,
+    platform: "macos",
+  },
+  {
+    id: "macos-intel",
+    name: "macOS (Intel)",
+    description: "For Intel-based Macs",
+    icon: AppleIcon,
+    url: assets.intel,
     platform: "macos",
   },
   {
@@ -195,7 +203,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             </div>
 
             {/* Platform Selection */}
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
               {getDownloadOptions(assets).map((option) => (
                 <Card
                   key={option.id}
