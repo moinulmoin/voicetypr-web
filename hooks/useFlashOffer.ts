@@ -170,8 +170,8 @@ export function useFlashOffer(): FlashOfferState {
       }
 
       observerRef.current = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
             activate();
             observerRef.current?.disconnect();
           }
