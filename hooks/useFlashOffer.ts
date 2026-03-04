@@ -224,12 +224,12 @@ export function useFlashOffer(): FlashOfferState {
       if (observerRef.current) {
         observerRef.current.disconnect();
         observerRef.current = null;
+        wasVisibleRef.current = false;
       }
 
       if (!FLASH_OFFER_ENABLED || !node || activatedRef.current) return;
       if (isInCooldown()) return;
 
-      const isReturn = isReturnVisitorRef.current;
       const isMobile = isTouchDevice();
 
       observerRef.current = new IntersectionObserver(
@@ -244,7 +244,8 @@ export function useFlashOffer(): FlashOfferState {
             wasVisibleRef.current = true;
 
             // Return visitors: activate immediately on seeing pricing
-            if (isReturn) {
+            // Read ref here (not at setup time) so the mount effect has run
+            if (isReturnVisitorRef.current && !activatedRef.current) {
               activate();
               observerRef.current?.disconnect();
             }

@@ -83,8 +83,8 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
       <h2 className="text-2xl font-semibold mb-2 text-center">
         Ready to Write 3x Faster?
       </h2>
-      <div className={isActive ? "flex justify-center mb-6" : "mb-8"}>
-        {isActive && (
+      {isActive && (
+        <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
             <Clock className="h-3.5 w-3.5" />
             <span>
@@ -94,8 +94,8 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
               </span>
             </span>
           </div>
-        )}
-      </div>
+        </div>
+      )}
       <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
     </div>
   );
