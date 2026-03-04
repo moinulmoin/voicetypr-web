@@ -13,7 +13,7 @@ interface FlashOfferStable {
   isActive: boolean;
   dismissBanner: () => void;
   isBannerDismissed: boolean;
-  pricingRef: (node: HTMLElement | null) => void;
+  pricingRef: (node: HTMLElement | null) => void | (() => void);
 }
 
 /** Volatile values that update every second during the countdown */
@@ -49,9 +49,9 @@ export function FlashOfferProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <StableCtx.Provider value={stable}>
-      <TimerCtx.Provider value={timer}>{children}</TimerCtx.Provider>
-    </StableCtx.Provider>
+    <StableCtx value={stable}>
+      <TimerCtx value={timer}>{children}</TimerCtx>
+    </StableCtx>
   );
 }
 

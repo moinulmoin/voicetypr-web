@@ -33,7 +33,7 @@ export interface FlashOfferState {
   /** Whether the banner was dismissed (offer can still apply to prices) */
   isBannerDismissed: boolean;
   /** Trigger ref callback — attach to the pricing section element */
-  pricingRef: (node: HTMLElement | null) => void;
+  pricingRef: (node: HTMLElement | null) => void | (() => void);
 }
 
 /* ── helpers ── */
@@ -130,7 +130,6 @@ export function useFlashOffer(): FlashOfferState {
   const [dismissed, setDismissed] = useState(false);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const activatedRef = useRef(false); // prevent double-activation
   const hasSeenPricingRef = useRef(false); // user scrolled to pricing this session
   const wasVisibleRef = useRef(false); // for mobile scroll-past detection
@@ -257,51 +256,48 @@ export function useFlashOffer(): FlashOfferState {
    * to become eligible — this is intentional to keep the observer logic simple.
    *
    * This ref is used on both Pricing.tsx and DownloadPageClient.tsx. In SPA
-   * navigation the second mount tears down the first observer via disconnect(),
-   * which is the correct behavior. */
+   * navigation React 19 calls the cleanup return when the ref detaches,
+   * which disconnects the observer automatically. */
   const pricingRef = useCallback(
     (node: HTMLElement | null) => {
-      // Tear down previous observer
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
-        wasVisibleRef.current = false;
-      }
-
       if (!FLASH_OFFER_ENABLED || !node || activatedRef.current) return;
       if (isInCooldown()) return;
 
       const isMobile = isTouchDevice();
 
-      observerRef.current = new IntersectionObserver(
+      const observer = new IntersectionObserver(
         (entries) => {
           const entry = entries[0];
           if (!entry) return;
 
           if (entry.isIntersecting) {
-            // User is viewing pricing
             hasSeenPricingRef.current = true;
             markPricingSeen();
             wasVisibleRef.current = true;
 
             // Return visitors: activate immediately on seeing pricing
-            // Read ref here (not at setup time) so the mount effect has run
             if (isReturnVisitorRef.current && !activatedRef.current) {
               activate();
-              observerRef.current?.disconnect();
+              observer.disconnect();
             }
           } else if (wasVisibleRef.current && isMobile) {
             // Mobile: activate when user scrolls PAST pricing
             if (!activatedRef.current) {
               activate();
-              observerRef.current?.disconnect();
+              observer.disconnect();
             }
           }
         },
         { threshold: 0.15 }
       );
 
-      observerRef.current.observe(node);
+      observer.observe(node);
+
+      // React 19: cleanup function called when the ref detaches
+      return () => {
+        observer.disconnect();
+        wasVisibleRef.current = false;
+      };
     },
     [activate]
   );
