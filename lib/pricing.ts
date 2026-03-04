@@ -14,6 +14,12 @@ export const BASE_PRICES = {
 /** Discount fraction applied when the flash offer is active */
 export const FLASH_DISCOUNT_RATE = 0.20; // 20 %
 
+/** Integer percentage for display (avoids duplicating Math.round everywhere) */
+export const FLASH_DISCOUNT_PCT = Math.round(FLASH_DISCOUNT_RATE * 100);
+
+/** Whether the flash offer feature is enabled (requires a coupon code) */
+export const FLASH_OFFER_ENABLED = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
+
 /** Polar.sh discount-id for the flash offer (reuses existing coupon env var) */
 export const FLASH_DISCOUNT_CODE =
   process.env.NEXT_PUBLIC_COUPON_CODE ?? "";

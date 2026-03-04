@@ -91,7 +91,7 @@ export default function PricingCards({
           const isPopular = plan.key === "plus";
           const basePrice = BASE_PRICES[plan.key];
           const discountedPrice = FLASH_DISCOUNTED_PRICES[plan.key];
-          const showDiscount = flashOfferActive && discountedPrice < basePrice;
+          const showDiscount = flashOfferActive;
 
           return (
             <Card

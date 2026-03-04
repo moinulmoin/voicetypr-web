@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   FLASH_OFFER_DURATION_MS,
   FLASH_OFFER_COOLDOWN_MS,
+  FLASH_OFFER_ENABLED,
 } from "@/lib/pricing";
 
 /* ── localStorage keys ── */
@@ -55,7 +56,9 @@ function writeStore(offer: StoredOffer) {
 function clearStore() {
   try {
     localStorage.removeItem(LS_KEY);
-  } catch {}
+  } catch {
+    // private mode or access denied
+  }
 }
 
 function formatCountdown(ms: number): string {
@@ -70,9 +73,16 @@ function formatCountdown(ms: number): string {
 /* ── hook ── */
 
 export function useFlashOffer(): FlashOfferState {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(() => {
+    if (!FLASH_OFFER_ENABLED) return false;
+    const s = readStore();
+    return s ? s.expiresAt > Date.now() : false;
+  });
   const [timeRemaining, setTimeRemaining] = useState(0);
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(() => {
+    const s = readStore();
+    return s?.dismissed ?? false;
+  });
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -80,6 +90,8 @@ export function useFlashOffer(): FlashOfferState {
 
   /* Start (or resume) the countdown */
   const startCountdown = useCallback((expiresAt: number) => {
+    if (timerRef.current) clearInterval(timerRef.current);
+
     const tick = () => {
       const remaining = expiresAt - Date.now();
       if (remaining <= 0) {
@@ -114,6 +126,8 @@ export function useFlashOffer(): FlashOfferState {
 
   /* On mount: check for existing offer or set up trigger */
   useEffect(() => {
+    if (!FLASH_OFFER_ENABLED) return;
+
     const stored = readStore();
 
     if (stored) {
@@ -160,7 +174,7 @@ export function useFlashOffer(): FlashOfferState {
         observerRef.current = null;
       }
 
-      if (!node || activatedRef.current) return;
+      if (!FLASH_OFFER_ENABLED || !node || activatedRef.current) return;
 
       // Also skip if still in cooldown
       const stored = readStore();
