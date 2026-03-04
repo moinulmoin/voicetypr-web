@@ -38,9 +38,10 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
 
     const assets: ReleaseAssets = {};
 
-    // Find Intel DMG asset (x64)
+    // Find Intel DMG asset (supports both x64 and x86_64 naming)
     const intelAsset = release.assets?.find((asset) =>
-      asset.name.includes('x64') && asset.name.endsWith('.dmg')
+      (asset.name.includes('x64') || asset.name.includes('x86_64')) &&
+      asset.name.endsWith('.dmg')
     );
     if (intelAsset?.browser_download_url) {
       assets.intel = intelAsset.browser_download_url;
