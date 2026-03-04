@@ -140,23 +140,32 @@ export function useFlashOffer(): FlashOfferState {
   const startCountdown = useCallback((expiresAt: number) => {
     if (timerRef.current) clearInterval(timerRef.current);
 
+    const remaining = expiresAt - Date.now();
+    if (remaining <= 0) {
+      // Already expired — clean up and bail without starting a timer
+      setIsActive(false);
+      setTimeRemaining(0);
+      clearStore();
+      return;
+    }
+
     const tick = () => {
-      const remaining = expiresAt - Date.now();
-      if (remaining <= 0) {
+      const left = expiresAt - Date.now();
+      if (left <= 0) {
         setIsActive(false);
         setTimeRemaining(0);
-        clearStore(); // clean up expired offer from localStorage
+        clearStore();
         if (timerRef.current) {
           clearInterval(timerRef.current);
           timerRef.current = null;
         }
         return;
       }
-      setTimeRemaining(remaining);
+      setTimeRemaining(left);
     };
 
     setIsActive(true);
-    tick(); // immediate first tick — may override isActive to false if already expired
+    setTimeRemaining(remaining);
     timerRef.current = setInterval(tick, 1000);
   }, []);
 

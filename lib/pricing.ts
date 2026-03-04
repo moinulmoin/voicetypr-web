@@ -21,7 +21,9 @@ export const FLASH_DISCOUNT_PCT = Math.round(FLASH_DISCOUNT_RATE * 100);
 /** Whether the flash offer feature is enabled (requires a coupon code) */
 export const FLASH_OFFER_ENABLED = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
 
-/** Polar.sh discount-id for the flash offer (reuses existing coupon env var) */
+/** Polar.sh discount-id for the flash offer.
+ *  Intentionally public (NEXT_PUBLIC_) — Polar validates the coupon server-side.
+ *  The env var just tells the UI which discount ID to pass at checkout. */
 export const FLASH_DISCOUNT_CODE =
   process.env.NEXT_PUBLIC_COUPON_CODE ?? "";
 
