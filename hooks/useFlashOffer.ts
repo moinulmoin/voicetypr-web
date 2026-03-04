@@ -133,7 +133,6 @@ export function useFlashOffer(): FlashOfferState {
   const activatedRef = useRef(false); // prevent double-activation
   const hasSeenPricingRef = useRef(false); // user scrolled to pricing this session
   const wasVisibleRef = useRef(false); // for mobile scroll-past detection
-  const isReturnVisitorRef = useRef(false); // has seen pricing in a prior session
 
   /* Start (or resume) the countdown */
   const startCountdown = useCallback((expiresAt: number) => {
@@ -188,9 +187,6 @@ export function useFlashOffer(): FlashOfferState {
   /* On mount: check for existing offer or set up trigger */
   useEffect(() => {
     if (!FLASH_OFFER_ENABLED) return;
-
-    // Check if this is a return visitor (seen pricing before)
-    isReturnVisitorRef.current = hasSeenPricingBefore();
 
     const stored = readStore();
 
@@ -275,8 +271,11 @@ export function useFlashOffer(): FlashOfferState {
             markPricingSeen();
             wasVisibleRef.current = true;
 
-            // Return visitors: activate immediately on seeing pricing
-            if (isReturnVisitorRef.current && !activatedRef.current) {
+            // Return visitors: activate immediately on seeing pricing.
+            // Read localStorage directly — the mount effect that sets
+            // isReturnVisitorRef may not have run yet if the observer
+            // fires during the commit phase (e.g. deep-link to #pricing).
+            if (hasSeenPricingBefore() && !activatedRef.current) {
               activate();
               observer.disconnect();
             }

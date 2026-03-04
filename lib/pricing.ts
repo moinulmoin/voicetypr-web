@@ -27,7 +27,8 @@ export const FLASH_OFFER_ENABLED = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
 export const FLASH_DISCOUNT_CODE =
   process.env.NEXT_PUBLIC_COUPON_CODE ?? "";
 
-/** Pre-computed discounted prices (rounded to avoid floating-point display issues) */
+/** Pre-computed discounted prices (rounded to avoid floating-point display issues).
+ *  Always computed regardless of FLASH_OFFER_ENABLED — gated at runtime in the UI. */
 export const FLASH_DISCOUNTED_PRICES = {
   pro: Math.round(BASE_PRICES.pro * (1 - FLASH_DISCOUNT_RATE)),
   plus: Math.round(BASE_PRICES.plus * (1 - FLASH_DISCOUNT_RATE)),
