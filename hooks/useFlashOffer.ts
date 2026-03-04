@@ -145,6 +145,7 @@ export function useFlashOffer(): FlashOfferState {
       if (remaining <= 0) {
         setIsActive(false);
         setTimeRemaining(0);
+        clearStore(); // clean up expired offer from localStorage
         if (timerRef.current) {
           clearInterval(timerRef.current);
           timerRef.current = null;
@@ -241,7 +242,14 @@ export function useFlashOffer(): FlashOfferState {
     };
   }, []);
 
-  /* Ref callback: observed element = pricing section */
+  /* Ref callback: observed element = pricing section.
+   * NOTE: isInCooldown() is checked at setup time, not at each intersection.
+   * If cooldown expires while the user is still on the page, they must reload
+   * to become eligible — this is intentional to keep the observer logic simple.
+   *
+   * This ref is used on both Pricing.tsx and DownloadPageClient.tsx. In SPA
+   * navigation the second mount tears down the first observer via disconnect(),
+   * which is the correct behavior. */
   const pricingRef = useCallback(
     (node: HTMLElement | null) => {
       // Tear down previous observer

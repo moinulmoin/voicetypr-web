@@ -16,7 +16,7 @@ import {
   formatPrice,
   type PlanKey,
 } from "@/lib/pricing";
-import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext";
+import { useFlashOfferStable } from "@/components/flash-offer/FlashOfferContext";
 import { ArrowRight, Check } from "lucide-react";
 
 interface PricingCardsProps {
@@ -57,7 +57,7 @@ export default function PricingCards({
   referrer,
   eventPrefix = "pricing",
 }: PricingCardsProps) {
-  const { isActive: flashOfferActive } = useFlashOfferContext();
+  const { isActive: flashOfferActive } = useFlashOfferStable();
 
   const handleCheckout = (productId: string | undefined) => {
     const metadata: Record<string, string> = {};
@@ -92,6 +92,9 @@ export default function PricingCards({
           const isPopular = plan.key === "plus";
           const basePrice = BASE_PRICES[plan.key];
           const discountedPrice = FLASH_DISCOUNTED_PRICES[plan.key];
+          // FLASH_DISCOUNT_RATE is a compile-time constant; the > 0 guard is a
+          // safety net so strikethrough prices aren't shown with identical values
+          // if the rate is ever set to 0 to soft-disable discounts.
           const showDiscount = flashOfferActive && FLASH_DISCOUNT_RATE > 0;
 
           return (
