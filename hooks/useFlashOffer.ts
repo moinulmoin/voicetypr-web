@@ -9,6 +9,7 @@ import {
 
 /* ── localStorage keys ── */
 const LS_KEY = "vt_flash_offer";
+const SEEN_PRICING_KEY = "vt_seen_pricing";
 
 interface StoredOffer {
   /** Timestamp when the offer was activated */
@@ -61,6 +62,35 @@ function clearStore() {
   }
 }
 
+function hasSeenPricingBefore(): boolean {
+  try {
+    return localStorage.getItem(SEEN_PRICING_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markPricingSeen() {
+  try {
+    localStorage.setItem(SEEN_PRICING_KEY, "1");
+  } catch {
+    // private mode or access denied
+  }
+}
+
+function isInCooldown(): boolean {
+  const stored = readStore();
+  if (!stored) return false;
+  const cooldownEnd = stored.expiresAt + FLASH_OFFER_COOLDOWN_MS;
+  return Date.now() < cooldownEnd;
+}
+
+/** Simple touch-device heuristic (no hover + coarse pointer) */
+function isTouchDevice(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+}
+
 function formatCountdown(ms: number): string {
   if (ms <= 0) return "00:00:00";
   const totalSec = Math.floor(ms / 1000);
@@ -87,6 +117,9 @@ export function useFlashOffer(): FlashOfferState {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const activatedRef = useRef(false); // prevent double-activation
+  const hasSeenPricingRef = useRef(false); // user scrolled to pricing this session
+  const wasVisibleRef = useRef(false); // for mobile scroll-past detection
+  const isReturnVisitorRef = useRef(false); // has seen pricing in a prior session
 
   /* Start (or resume) the countdown */
   const startCountdown = useCallback((expiresAt: number) => {
@@ -128,6 +161,9 @@ export function useFlashOffer(): FlashOfferState {
   useEffect(() => {
     if (!FLASH_OFFER_ENABLED) return;
 
+    // Check if this is a return visitor (seen pricing before)
+    isReturnVisitorRef.current = hasSeenPricingBefore();
+
     const stored = readStore();
 
     if (stored) {
@@ -154,9 +190,30 @@ export function useFlashOffer(): FlashOfferState {
       clearStore();
     }
 
-    // No active offer and no cooldown → ready for IntersectionObserver trigger
-    // (observer is set up via pricingRef below)
+    // No active offer and no cooldown → ready for triggers
+    // (observer + exit-intent set up via pricingRef and effect below)
   }, [startCountdown]);
+
+  /* Exit-intent listener (desktop only) */
+  useEffect(() => {
+    if (!FLASH_OFFER_ENABLED || isTouchDevice()) return;
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      // Only trigger when cursor leaves toward the top (browser chrome/tabs)
+      if (e.clientY > 0) return;
+      if (!hasSeenPricingRef.current || activatedRef.current) return;
+      if (isInCooldown()) return;
+      activate();
+    };
+
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      document.documentElement.removeEventListener(
+        "mouseleave",
+        handleMouseLeave
+      );
+    };
+  }, [activate]);
 
   /* Cleanup interval on unmount */
   useEffect(() => {
@@ -175,22 +232,36 @@ export function useFlashOffer(): FlashOfferState {
       }
 
       if (!FLASH_OFFER_ENABLED || !node || activatedRef.current) return;
+      if (isInCooldown()) return;
 
-      // Also skip if still in cooldown
-      const stored = readStore();
-      if (stored) {
-        const cooldownEnd = stored.expiresAt + FLASH_OFFER_COOLDOWN_MS;
-        if (Date.now() < cooldownEnd) return;
-      }
+      const isReturn = isReturnVisitorRef.current;
+      const isMobile = isTouchDevice();
 
       observerRef.current = new IntersectionObserver(
         (entries) => {
-          if (entries[0]?.isIntersecting) {
-            activate();
-            observerRef.current?.disconnect();
+          const entry = entries[0];
+          if (!entry) return;
+
+          if (entry.isIntersecting) {
+            // User is viewing pricing
+            hasSeenPricingRef.current = true;
+            markPricingSeen();
+            wasVisibleRef.current = true;
+
+            // Return visitors: activate immediately on seeing pricing
+            if (isReturn) {
+              activate();
+              observerRef.current?.disconnect();
+            }
+          } else if (wasVisibleRef.current && isMobile) {
+            // Mobile: activate when user scrolls PAST pricing
+            if (!activatedRef.current) {
+              activate();
+              observerRef.current?.disconnect();
+            }
           }
         },
-        { threshold: 0.15 } // 15 % visible
+        { threshold: 0.15 }
       );
 
       observerRef.current.observe(node);
