@@ -9,7 +9,6 @@ import {
 import { ERROR_MESSAGES, ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
 import { validateLicenseKey } from "@/lib/polar";
-import { validateDeviceLimiter, createRateLimitResponse } from "@/lib/rate-limit";
 import { licenseValidateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
 
@@ -24,10 +23,6 @@ export async function POST(request: NextRequest) {
     }
 
     const { licenseKey, deviceHash, appVersion, osType, osVersion } = validationResult.data;
-
-    // Rate limit by device hash (no IP limit — corporate NAT concern)
-    const { success: deviceOk } = await validateDeviceLimiter.limit(deviceHash);
-    if (!deviceOk) return withCorsHeaders(createRateLimitResponse());
 
     // 1. Check device binding - must match both license and device
     const device = await prisma.device.findFirst({
@@ -86,8 +81,9 @@ export async function POST(request: NextRequest) {
     // 3. Validate with Polar
     try {
       await validateLicenseKey(licenseKey, originalActivationId);
-    } catch (polarError: any) {
-      const errorMessage = polarError.error || "Unknown error";
+    } catch (polarError: unknown) {
+      const apiError = polarError as { error?: string };
+      const errorMessage = apiError.error || "Unknown error";
       console.error("Polar validation error:", errorMessage);
 
       // If Polar doesn't recognize this activation anymore, clear local bindings

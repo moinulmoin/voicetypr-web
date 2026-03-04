@@ -9,19 +9,12 @@ import {
 } from "@/lib/api-utils";
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
-import { deactivateIpLimiter, createRateLimitResponse } from "@/lib/rate-limit";
-import { getClientIp } from "@/lib/get-client-ip";
 import { deactivateLicenseKey } from "@/lib/polar";
 import { licenseDeactivateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    // IP rate limiting
-    const ip = getClientIp(request);
-    const { success: ipOk } = await deactivateIpLimiter.limit(ip);
-    if (!ipOk) return withCorsHeaders(createRateLimitResponse());
-
     // Parse and validate request body
     const body = await request.json();
     const validationResult = licenseDeactivateRequestSchema.safeParse(body);
@@ -52,9 +45,10 @@ export async function POST(request: NextRequest) {
     // 2. Try to deactivate the license on Polar
     try {
       await deactivateLicenseKey({ licenseKey, activationId: device.activationId! });
-    } catch (polarError: any) {
+    } catch (polarError: unknown) {
+      const apiError = polarError as { statusCode?: number; error?: string };
       // If license is already deactivated (404), that's fine - we still want to clear it locally
-      if (polarError?.statusCode === 404 || polarError?.error === 'ResourceNotFound') {
+      if (apiError.statusCode === 404 || apiError.error === 'ResourceNotFound') {
         console.log(`License already deactivated on Polar: ${licenseKey}, cleaning up local state`);
         // Continue to step 3 to clear from our DB
       } else {

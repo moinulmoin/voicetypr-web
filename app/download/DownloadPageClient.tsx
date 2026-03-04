@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import PricingCards from "@/components/PricingCards";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
 import { ArrowRight, CheckCircle, Download } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState, type ReactElement } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
@@ -30,7 +30,7 @@ interface DownloadOption {
   id: string;
   name: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: () => ReactElement;
   url?: string;
   platform: "macos" | "windows";
 }
@@ -73,7 +73,7 @@ const windowsInstallationSteps = [
   },
 ];
 
-const getDownloadOptions = (assets: ReleaseAssets) => [
+const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => [
   {
     id: "macos-silicon",
     name: "macOS (Apple Silicon)",

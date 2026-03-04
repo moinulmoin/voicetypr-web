@@ -1,16 +1,14 @@
 "use server";
 
 import { redis } from "@/lib/redis";
-import { serverActionIpLimiter } from "@/lib/rate-limit";
-import { getClientIpFromHeaders } from "@/lib/get-client-ip";
 
-export async function saveDownloadEmail(prevState: any, formData: FormData) {
-  const ip = await getClientIpFromHeaders();
-  const { success } = await serverActionIpLimiter.limit(ip);
-  if (!success) {
-    return { success: false, error: 'Too many requests. Please try again later.' };
-  }
+type SaveDownloadEmailState = {
+  success: boolean;
+  message?: string;
+  error?: string;
+};
 
+export async function saveDownloadEmail(_prevState: unknown, formData: FormData): Promise<SaveDownloadEmailState> {
   const email = formData.get('email') as string;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

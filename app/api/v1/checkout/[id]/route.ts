@@ -1,24 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { checkoutStatusIpLimiter, createRateLimitResponse } from '@/lib/rate-limit'
-import { getClientIp } from '@/lib/get-client-ip'
-
-const UUID_V4_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const ip = getClientIp(request)
-    const { success } = await checkoutStatusIpLimiter.limit(ip)
-    if (!success) return createRateLimitResponse()
-
     const { id: checkoutId } = await params
-
-    // UUID validation — return 404 (not 400) to avoid info leakage
-    if (!UUID_V4_REGEX.test(checkoutId)) {
-      return NextResponse.json({ error: 'Not found' }, { status: 404 })
-    }
 
     const response = await fetch(
       `${process.env.NODE_ENV !== "production" ? "https://sandbox-api.polar.sh" : "https://api.polar.sh"}/v1/checkouts/${checkoutId}`,

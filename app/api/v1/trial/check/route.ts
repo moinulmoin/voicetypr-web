@@ -7,25 +7,12 @@ import {
 } from "@/lib/api-utils";
 import { CONFIG } from "@/lib/constants";
 import { prisma } from "@/lib/db";
-import { getClientIp } from "@/lib/get-client-ip";
-import {
-  createRateLimitResponse,
-  trialCheckDeviceLimiter,
-  trialCheckIpLimiter,
-  trialCreationLimiter
-} from "@/lib/rate-limit";
 import { trialCheckRequestSchema } from "@/lib/types";
 import { NextRequest } from "next/server";
 import { Prisma } from "@prisma/client";
 
 export async function POST(request: NextRequest) {
   try {
-    const ip = getClientIp(request);
-    const { success: ipOk } = await trialCheckIpLimiter.limit(ip);
-    if (!ipOk) {
-      return withCorsHeaders(createRateLimitResponse());
-    }
-
     // Parse and validate request body
     const body = await request.json();
     const validationResult = trialCheckRequestSchema.safeParse(body);
@@ -36,20 +23,10 @@ export async function POST(request: NextRequest) {
 
     const { deviceHash } = validationResult.data;
 
-    const { success: deviceOk } = await trialCheckDeviceLimiter.limit(deviceHash);
-    if (!deviceOk) {
-      return withCorsHeaders(createRateLimitResponse());
-    }
-
     const existingDevice = await prisma.device.findUnique({ where: { deviceHash } });
 
     let trialDevice;
     if (!existingDevice) {
-      const { success: createOk } = await trialCreationLimiter.limit(ip);
-      if (!createOk) {
-        return withCorsHeaders(createRateLimitResponse());
-      }
-
       try {
         trialDevice = await prisma.device.create({
           data: {

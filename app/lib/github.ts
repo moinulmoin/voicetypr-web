@@ -4,6 +4,15 @@ export interface ReleaseAssets {
   windows?: string;
 }
 
+interface GitHubReleaseAsset {
+  name: string;
+  browser_download_url?: string;
+}
+
+interface GitHubRelease {
+  assets?: GitHubReleaseAsset[];
+}
+
 export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
   // Fallback URL for the first release
   const FALLBACK_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL!
@@ -25,12 +34,12 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
       return { silicon: FALLBACK_URL };
     }
 
-    const release = await response.json();
+    const release = (await response.json()) as GitHubRelease;
 
     const assets: ReleaseAssets = {};
 
     // Find Intel DMG asset (x64)
-    const intelAsset = release.assets?.find((asset: any) =>
+    const intelAsset = release.assets?.find((asset) =>
       asset.name.includes('x64') && asset.name.endsWith('.dmg')
     );
     if (intelAsset?.browser_download_url) {
@@ -38,7 +47,7 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
     }
 
     // Find Silicon/ARM DMG asset (aarch64)
-    const siliconAsset = release.assets?.find((asset: any) =>
+    const siliconAsset = release.assets?.find((asset) =>
       asset.name.includes('aarch64') && asset.name.endsWith('.dmg')
     );
     if (siliconAsset?.browser_download_url) {
@@ -46,7 +55,7 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
     }
 
     // Find Windows installer (.msi or .exe)
-    const windowsAsset = release.assets?.find((asset: any) =>
+    const windowsAsset = release.assets?.find((asset) =>
       asset.name.includes('x64') && (asset.name.endsWith('.msi') || asset.name.endsWith('.exe'))
     );
     if (windowsAsset?.browser_download_url) {

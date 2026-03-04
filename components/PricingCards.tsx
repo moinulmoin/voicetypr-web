@@ -74,11 +74,12 @@ export default function PricingCards({
       ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
       : "";
     
-    window.location.href =
+    window.location.assign(
       "/api/v1/checkout?products=" +
       productId +
       discount +
-      metadataParam;
+      metadataParam
+    );
   };
 
   return (

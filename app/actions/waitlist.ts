@@ -1,8 +1,6 @@
 "use server";
 
 import { Redis } from "@upstash/redis";
-import { serverActionIpLimiter } from "@/lib/rate-limit";
-import { getClientIpFromHeaders } from "@/lib/get-client-ip";
 
 // Initialize Redis client
 const redis = Redis.fromEnv()
@@ -17,13 +15,6 @@ export async function subscribeToWaitlist(
   prevState: WaitlistState,
   formData: FormData
 ): Promise<WaitlistState> {
-  // Rate limit by IP
-  const ip = await getClientIpFromHeaders();
-  const { success } = await serverActionIpLimiter.limit(ip);
-  if (!success) {
-    return { success: false, error: "Too many requests. Please try again later." };
-  }
-
   try {
     const email = formData.get("email") as string;
     

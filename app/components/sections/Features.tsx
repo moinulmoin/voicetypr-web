@@ -11,8 +11,6 @@ import {
   XformerlyTwitter
 } from "@/components/icons";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
 import {
   Shield,
   Mic,
@@ -21,22 +19,10 @@ import {
   Sparkles,
   History,
   Layers,
-  Key,
-  Circle,
-  Lock,
   Upload,
-  Download,
   Globe,
   Gauge,
-  FileText,
-  Radio,
-  Search,
-  Copy,
-  Share2,
-  TrendingUp,
-  Users,
-  FileJson,
-  Mouse
+  TrendingUp
 } from "lucide-react";
 
 // App icons grid
@@ -175,7 +161,7 @@ export default function Features() {
             <History className="w-10 h-10 text-green-500 mb-4" />
             <h3 className="text-xl font-bold mb-2">Smart History</h3>
             <p className="text-sm text-muted-foreground">
-              Search, export to JSON, copy anything you've said.
+              Search, export to JSON, copy anything you&apos;ve said.
             </p>
           </Card>
 

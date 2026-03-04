@@ -8,7 +8,7 @@ export default function PrivacyPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
           <p>
-            Ideaplexa LLC ("we," "our," or "us") respects your privacy. This Privacy Policy explains how we collect, use, and protect information when you use VoiceTypr ("the Software").
+            Ideaplexa LLC (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy. This Privacy Policy explains how we collect, use, and protect information when you use VoiceTypr (&ldquo;the Software&rdquo;).
           </p>
         </section>
 
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">11. Children's Privacy</h2>
+          <h2 className="text-2xl font-semibold mb-4">11. Children&apos;s Privacy</h2>
           <p>
             VoiceTypr is intended for users aged 13 and older. We do not knowingly collect information from children under 13. If you believe we have collected such information, please contact us.
           </p>
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">12. Changes to This Policy</h2>
           <p>
-            We may update this Privacy Policy from time to time. We will notify you of significant changes by updating the "Last Updated" date. Continued use of the Software after changes constitutes acceptance.
+            We may update this Privacy Policy from time to time. We will notify you of significant changes by updating the &ldquo;Last Updated&rdquo; date. Continued use of the Software after changes constitutes acceptance.
           </p>
         </section>
 

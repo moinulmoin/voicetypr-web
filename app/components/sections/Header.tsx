@@ -59,38 +59,38 @@ export default function Header() {
                 : ""
             )}
           >
-            <a
+            <Link
               href="/#features"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="features"
             >
               Features
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#testimonials"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="testimonials"
             >
               Testimonials
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#pricing"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="pricing"
             >
               Pricing
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#faq"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-umami-event="nav-click"
               data-umami-event-section="faq"
             >
               FAQ
-            </a>
+            </Link>
             <Link
               href="/download"
               className="text-muted-foreground hover:text-foreground transition-colors"

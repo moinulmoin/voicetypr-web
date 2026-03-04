@@ -9,20 +9,13 @@ import {
 } from "@/lib/api-utils";
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
-import { getClientIp } from "@/lib/get-client-ip";
 import { getMaxDevicesForLicense } from "@/lib/license-utils";
 import { activateLicenseKey } from "@/lib/polar";
-import { activateIpLimiter, activateDeviceLimiter, createRateLimitResponse } from "@/lib/rate-limit";
 import { licenseActivateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limit by IP
-    const ip = getClientIp(request);
-    const { success: ipOk } = await activateIpLimiter.limit(ip);
-    if (!ipOk) return withCorsHeaders(createRateLimitResponse());
-
     // Parse and validate request body
     const body = await request.json();
     const validationResult = licenseActivateRequestSchema.safeParse(body);
@@ -32,10 +25,6 @@ export async function POST(request: NextRequest) {
     }
 
     const { licenseKey, deviceHash, osType, osVersion, appVersion, deviceName } = validationResult.data;
-
-    // Rate limit by device
-    const { success: deviceOk } = await activateDeviceLimiter.limit(deviceHash);
-    if (!deviceOk) return withCorsHeaders(createRateLimitResponse());
 
     // 1. Advisory device limit check for logging/analytics only - Polar enforces the real limit
     // This is purely informational because our DB may be stale (e.g., user deactivated via Polar portal)
@@ -64,13 +53,14 @@ export async function POST(request: NextRequest) {
     let activation;
     try {
       activation = await activateLicenseKey(licenseKey, deviceHash, osType, osVersion, appVersion, deviceName);
-    } catch (polarError: any) {
+    } catch (polarError: unknown) {
+      const apiError = polarError as { statusCode?: number; detail?: string; error?: string };
       // Handle specific Polar API errors
-      if (polarError.statusCode === 403) {
-        if (polarError.detail?.includes('activation limit')) {
+      if (apiError.statusCode === 403) {
+        if (apiError.detail?.includes('activation limit')) {
           return withCorsHeaders(createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400));
         }
-      } else if (polarError.statusCode === 404 || polarError.error === 'ResourceNotFound') {
+      } else if (apiError.statusCode === 404 || apiError.error === 'ResourceNotFound') {
         // License key not found
         return withCorsHeaders(createErrorResponse(ErrorCode.INVALID_LICENSE, 400));
       }
