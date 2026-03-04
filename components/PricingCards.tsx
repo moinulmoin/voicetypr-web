@@ -10,11 +10,13 @@ import {
 } from "@/components/ui/card";
 import {
   BASE_PRICES,
-  COUPON_ACTIVE,
-  DISCOUNTED_PRICES,
+  FLASH_DISCOUNTED_PRICES,
+  FLASH_DISCOUNT_CODE,
+  FLASH_DISCOUNT_RATE,
   formatPrice,
   type PlanKey,
 } from "@/lib/pricing";
+import { useFlashOfferStable } from "@/components/flash-offer/FlashOfferContext";
 import { ArrowRight, Check } from "lucide-react";
 
 interface PricingCardsProps {
@@ -55,25 +57,27 @@ export default function PricingCards({
   referrer,
   eventPrefix = "pricing",
 }: PricingCardsProps) {
+  const { isActive: flashOfferActive } = useFlashOfferStable();
+
   const handleCheckout = (productId: string | undefined) => {
     const metadata: Record<string, string> = {};
-    
-    // Only include metadata fields if they have values
+
     if (affonsoReferral) {
       metadata.affonso_referral = affonsoReferral;
     }
     if (referrer) {
       metadata.referrer = referrer;
     }
-    
-    const discount = process.env.NEXT_PUBLIC_COUPON_CODE
-      ? `&discountId=${process.env.NEXT_PUBLIC_COUPON_CODE}`
-      : "";
-    
-    const metadataParam = Object.keys(metadata).length > 0 
+
+    const discount =
+      flashOfferActive && FLASH_DISCOUNT_CODE
+        ? `&discountId=${FLASH_DISCOUNT_CODE}`
+        : "";
+
+    const metadataParam = Object.keys(metadata).length > 0
       ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
       : "";
-    
+
     window.location.href =
       "/api/v1/checkout?products=" +
       productId +
@@ -87,9 +91,11 @@ export default function PricingCards({
         {plans.map((plan) => {
           const isPopular = plan.key === "plus";
           const basePrice = BASE_PRICES[plan.key];
-          const discountedPrice = DISCOUNTED_PRICES?.[plan.key];
-          const showDiscount =
-            COUPON_ACTIVE && discountedPrice && discountedPrice < basePrice;
+          const discountedPrice = FLASH_DISCOUNTED_PRICES[plan.key];
+          // FLASH_DISCOUNT_RATE is a compile-time constant; the > 0 guard is a
+          // safety net so strikethrough prices aren't shown with identical values
+          // if the rate is ever set to 0 to soft-disable discounts.
+          const showDiscount = flashOfferActive && FLASH_DISCOUNT_RATE > 0;
 
           return (
             <Card

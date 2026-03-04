@@ -9,15 +9,37 @@ export const BASE_PRICES = {
   max: 140,
 } as const;
 
-export const COUPON_ACTIVE = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
+/* ── Flash-offer (time-limited "random" discount) ── */
 
-export const DISCOUNTED_PRICES = COUPON_ACTIVE
-  ? {
-      pro: BASE_PRICES.pro * 0.7, // 30% off = 35
-      plus: BASE_PRICES.plus * 0.7, // 30% off = 56
-      max: BASE_PRICES.max * 0.7, // 30% off = 98
-    }
-  : null;
+/** Discount fraction applied when the flash offer is active.
+ *  Changing this requires a redeploy — not controlled via env var. */
+export const FLASH_DISCOUNT_RATE = 0.20; // 20 %
+
+/** Integer percentage for display (avoids duplicating Math.round everywhere) */
+export const FLASH_DISCOUNT_PCT = Math.round(FLASH_DISCOUNT_RATE * 100);
+
+/** Whether the flash offer feature is enabled (requires a coupon code) */
+export const FLASH_OFFER_ENABLED = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
+
+/** Polar.sh discount-id for the flash offer.
+ *  Intentionally public (NEXT_PUBLIC_) — Polar validates the coupon server-side.
+ *  The env var just tells the UI which discount ID to pass at checkout. */
+export const FLASH_DISCOUNT_CODE =
+  process.env.NEXT_PUBLIC_COUPON_CODE ?? "";
+
+/** Pre-computed discounted prices (rounded to avoid floating-point display issues).
+ *  Always computed regardless of FLASH_OFFER_ENABLED — gated at runtime in the UI. */
+export const FLASH_DISCOUNTED_PRICES = {
+  pro: Math.round(BASE_PRICES.pro * (1 - FLASH_DISCOUNT_RATE)),
+  plus: Math.round(BASE_PRICES.plus * (1 - FLASH_DISCOUNT_RATE)),
+  max: Math.round(BASE_PRICES.max * (1 - FLASH_DISCOUNT_RATE)),
+} as const;
+
+/** How long the flash-offer countdown lasts (ms) */
+export const FLASH_OFFER_DURATION_MS = 6 * 60 * 60 * 1000; // 6 h
+
+/** Cooldown before the offer can re-appear after expiry (ms) */
+export const FLASH_OFFER_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 d
 
 /**
  * Format price with smart decimal handling
