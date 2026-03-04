@@ -8,7 +8,7 @@ import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext
 import { FLASH_DISCOUNT_PCT } from "@/lib/pricing";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
 import { ArrowRight, CheckCircle, Clock, Download } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
@@ -137,8 +137,17 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
   affonsoReferral: string;
   referrer: string;
 }) {
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(defaultSelected ?? null);
+  const options = useMemo(() => getDownloadOptions(assets), [assets]);
+
+  // Validate defaultSelected against available options
+  const validatedDefault = defaultSelected && options.some(opt => opt.id === defaultSelected)
+    ? defaultSelected
+    : null;
+
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(validatedDefault);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const selectedOption = options.find((opt) => opt.id === selectedPlatform);
 
   const handleDownloadClick = () => {
     // Track modal open
@@ -151,12 +160,9 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
   };
 
   const handleActualDownload = () => {
-    const option = getDownloadOptions(assets).find(
-      (opt) => opt.id === selectedPlatform,
-    );
     // Use the URL if available, or fallback to any available URL
     const downloadUrl =
-      option?.url ||
+      selectedOption?.url ||
       assets.silicon ||
       assets.intel ||
       assets.windows ||
@@ -174,10 +180,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       window.open(downloadUrl, "_blank");
     }
   };
-
-  const selectedOption = getDownloadOptions(assets).find(
-    (opt) => opt.id === selectedPlatform,
-  );
   const installationSteps =
     selectedOption?.platform === "windows"
       ? windowsInstallationSteps
@@ -206,8 +208,8 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             </div>
 
             {/* Platform Selection */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              {getDownloadOptions(assets).map((option) => (
+            <div className={`grid gap-6 mb-12 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 max-w-2xl mx-auto'}`}>
+              {options.map((option) => (
                 <Card
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
@@ -256,9 +258,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                 >
                   <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
                   Download for{" "}
-                  {selectedOption?.platform === "windows"
-                    ? "Windows"
-                    : "macOS"}
+                  {selectedOption?.name ?? "macOS"}
                 </Button>
               </div>
             )}
