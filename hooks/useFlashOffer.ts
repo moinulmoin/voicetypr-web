@@ -155,9 +155,9 @@ export function useFlashOffer(): FlashOfferState {
       setTimeRemaining(remaining);
     };
 
-    tick(); // immediate first tick
-    timerRef.current = setInterval(tick, 1000);
     setIsActive(true);
+    tick(); // immediate first tick — may override isActive to false if already expired
+    timerRef.current = setInterval(tick, 1000);
   }, []);
 
   /* Activate a new offer */

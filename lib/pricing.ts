@@ -11,7 +11,8 @@ export const BASE_PRICES = {
 
 /* ── Flash-offer (time-limited "random" discount) ── */
 
-/** Discount fraction applied when the flash offer is active */
+/** Discount fraction applied when the flash offer is active.
+ *  Changing this requires a redeploy — not controlled via env var. */
 export const FLASH_DISCOUNT_RATE = 0.20; // 20 %
 
 /** Integer percentage for display (avoids duplicating Math.round everywhere) */
@@ -24,11 +25,11 @@ export const FLASH_OFFER_ENABLED = Boolean(process.env.NEXT_PUBLIC_COUPON_CODE);
 export const FLASH_DISCOUNT_CODE =
   process.env.NEXT_PUBLIC_COUPON_CODE ?? "";
 
-/** Pre-computed discounted prices (used by the flash-offer UI) */
+/** Pre-computed discounted prices (rounded to avoid floating-point display issues) */
 export const FLASH_DISCOUNTED_PRICES = {
-  pro: BASE_PRICES.pro * (1 - FLASH_DISCOUNT_RATE),
-  plus: BASE_PRICES.plus * (1 - FLASH_DISCOUNT_RATE),
-  max: BASE_PRICES.max * (1 - FLASH_DISCOUNT_RATE),
+  pro: Math.round(BASE_PRICES.pro * (1 - FLASH_DISCOUNT_RATE)),
+  plus: Math.round(BASE_PRICES.plus * (1 - FLASH_DISCOUNT_RATE)),
+  max: Math.round(BASE_PRICES.max * (1 - FLASH_DISCOUNT_RATE)),
 } as const;
 
 /** How long the flash-offer countdown lasts (ms) */
