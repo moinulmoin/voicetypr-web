@@ -32,7 +32,7 @@ export const FLASH_DISCOUNTED_PRICES = {
 } as const;
 
 /** How long the flash-offer countdown lasts (ms) */
-export const FLASH_OFFER_DURATION_MS = 12 * 60 * 60 * 1000; // 12 h
+export const FLASH_OFFER_DURATION_MS = 6 * 60 * 60 * 1000; // 6 h
 
 /** Cooldown before the offer can re-appear after expiry (ms) */
 export const FLASH_OFFER_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 d
