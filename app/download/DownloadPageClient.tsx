@@ -101,32 +101,35 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
   );
 }
 
-const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => [
-  {
-    id: "macos-silicon",
-    name: "macOS (Apple Silicon)",
-    description: "For M1, M2, M3+ Macs",
-    icon: AppleIcon,
-    url: assets.silicon,
-    platform: "macos",
-  },
-  {
-    id: "macos-intel",
-    name: "macOS (Intel)",
-    description: "For Intel-based Macs",
-    icon: AppleIcon,
-    url: assets.intel,
-    platform: "macos",
-  },
-  {
-    id: "windows",
-    name: "Windows",
-    description: "Windows 10 or later",
-    icon: WindowsIcon,
-    url: assets.windows,
-    platform: "windows",
-  },
-].filter(opt => opt.url);
+const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => {
+  const all: DownloadOption[] = [
+    {
+      id: "macos-silicon",
+      name: "macOS (Apple Silicon)",
+      description: "For M1, M2, M3+ Macs",
+      icon: AppleIcon,
+      url: assets.silicon,
+      platform: "macos",
+    },
+    {
+      id: "macos-intel",
+      name: "macOS (Intel)",
+      description: "For Intel-based Macs",
+      icon: AppleIcon,
+      url: assets.intel,
+      platform: "macos",
+    },
+    {
+      id: "windows",
+      name: "Windows",
+      description: "Windows 10 or later",
+      icon: WindowsIcon,
+      url: assets.windows,
+      platform: "windows",
+    },
+  ];
+  return all.filter(opt => opt.url);
+};
 
 export default function DownloadPageClient({ assets, defaultSelected, affonsoReferral, referrer }: {
   assets: ReleaseAssets;
@@ -241,6 +244,30 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
               ))}
             </div>
 
+            {/* Intel Mac hint */}
+            {selectedPlatform === "macos-silicon" && getDownloadOptions(assets).some(o => o.id === "macos-intel") && (
+              <p className="text-sm text-muted-foreground -mt-6 mb-8">
+                Using an Intel Mac?{" "}
+                <button
+                  onClick={() => setSelectedPlatform("macos-intel")}
+                  className="underline hover:text-foreground transition-colors"
+                >
+                  Switch to Intel download
+                </button>
+                . Not sure?{" "}
+                <button
+                  onClick={() => {
+                    const el = document.getElementById("faq-intel");
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="underline hover:text-foreground transition-colors"
+                >
+                  Check here
+                </button>
+                .
+              </p>
+            )}
+
             {/* Download Button - Only shows when platform is selected */}
             {selectedPlatform && (
               <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -293,6 +320,39 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
 
             {/* Pricing Section */}
             <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
+
+            {/* FAQ Section */}
+            <div className="my-20 text-left max-w-2xl mx-auto">
+              <h2 className="text-2xl font-semibold mb-8 text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-6">
+                <div id="faq-intel">
+                  <h3 className="font-semibold mb-2">How do I know if my Mac is Apple Silicon or Intel?</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Click the Apple menu () in the top-left corner and select <strong>About This Mac</strong>. If you see &ldquo;Chip&rdquo; followed by M1, M2, M3, or M4, you have Apple Silicon. If you see &ldquo;Processor&rdquo; followed by Intel, choose the Intel download.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Does VoiceTypr work on Intel Macs?</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Yes! We provide a dedicated Intel build for older Macs. Just select &ldquo;macOS (Intel)&rdquo; above to download the right version for your machine.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Is my data private?</h3>
+                  <p className="text-muted-foreground text-sm">
+                    VoiceTypr processes everything locally on your device. Your audio never leaves your machine — no cloud, no servers, 100% offline.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">What happens after the free trial?</h3>
+                  <p className="text-muted-foreground text-sm">
+                    You get a free trial to test VoiceTypr. After that, it&apos;s a one-time purchase — no subscriptions, no recurring fees.
+                  </p>
+                </div>
+              </div>
+            </div>
 
           </div>
         </section>
