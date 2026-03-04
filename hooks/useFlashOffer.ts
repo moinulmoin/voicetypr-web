@@ -9,6 +9,7 @@ import {
 
 /* ── localStorage keys ── */
 const LS_KEY = "vt_flash_offer";
+const LS_COOLDOWN_KEY = "vt_flash_cooldown";
 const SEEN_PRICING_KEY = "vt_seen_pricing";
 
 interface StoredOffer {
@@ -62,6 +63,22 @@ function clearStore() {
   }
 }
 
+function writeCooldown(cooldownEnd: number) {
+  try {
+    localStorage.setItem(LS_COOLDOWN_KEY, String(cooldownEnd));
+  } catch {
+    // quota exceeded / private mode
+  }
+}
+
+function clearCooldown() {
+  try {
+    localStorage.removeItem(LS_COOLDOWN_KEY);
+  } catch {
+    // private mode or access denied
+  }
+}
+
 function hasSeenPricingBefore(): boolean {
   try {
     return localStorage.getItem(SEEN_PRICING_KEY) === "1";
@@ -79,10 +96,13 @@ function markPricingSeen() {
 }
 
 function isInCooldown(): boolean {
-  const stored = readStore();
-  if (!stored) return false;
-  const cooldownEnd = stored.expiresAt + FLASH_OFFER_COOLDOWN_MS;
-  return Date.now() < cooldownEnd;
+  try {
+    const raw = localStorage.getItem(LS_COOLDOWN_KEY);
+    if (!raw) return false;
+    return Date.now() < Number(raw);
+  } catch {
+    return false;
+  }
 }
 
 /** Simple touch-device heuristic (no hover + coarse pointer) */
@@ -125,7 +145,10 @@ export function useFlashOffer(): FlashOfferState {
       if (remaining <= 0) {
         setIsActive(false);
         setTimeRemaining(0);
-        if (timerRef.current) clearInterval(timerRef.current);
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+          timerRef.current = null;
+        }
         return;
       }
       setTimeRemaining(remaining);
@@ -148,6 +171,7 @@ export function useFlashOffer(): FlashOfferState {
       dismissed: false,
     };
     writeStore(offer);
+    writeCooldown(offer.expiresAt + FLASH_OFFER_COOLDOWN_MS);
     setDismissed(false);
     startCountdown(offer.expiresAt);
   }, [startCountdown]);
@@ -174,15 +198,15 @@ export function useFlashOffer(): FlashOfferState {
       }
 
       // Offer expired — check cooldown
-      const cooldownEnd = stored.expiresAt + FLASH_OFFER_COOLDOWN_MS;
-      if (now < cooldownEnd) {
-        // Still in cooldown — do nothing, clear old data
+      if (isInCooldown()) {
+        // Still in cooldown — clear stale offer but preserve cooldown
         clearStore();
         return;
       }
 
       // Cooldown passed — allow re-activation
       clearStore();
+      clearCooldown();
     }
 
     // No active offer and no cooldown → ready for triggers

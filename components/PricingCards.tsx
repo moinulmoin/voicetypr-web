@@ -12,6 +12,7 @@ import {
   BASE_PRICES,
   FLASH_DISCOUNTED_PRICES,
   FLASH_DISCOUNT_CODE,
+  FLASH_DISCOUNT_RATE,
   formatPrice,
   type PlanKey,
 } from "@/lib/pricing";
@@ -91,7 +92,7 @@ export default function PricingCards({
           const isPopular = plan.key === "plus";
           const basePrice = BASE_PRICES[plan.key];
           const discountedPrice = FLASH_DISCOUNTED_PRICES[plan.key];
-          const showDiscount = flashOfferActive;
+          const showDiscount = flashOfferActive && FLASH_DISCOUNT_RATE > 0;
 
           return (
             <Card
