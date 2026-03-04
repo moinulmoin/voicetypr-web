@@ -79,12 +79,12 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
   const { isActive, formattedTime, pricingRef } = useFlashOfferContext();
 
   return (
-    <div ref={pricingRef}>
+    <div id="pricing" ref={pricingRef}>
       <h2 className="text-2xl font-semibold mb-2 text-center">
         Ready to Write 3x Faster?
       </h2>
-      {isActive && (
-        <div className="flex justify-center mb-6">
+      <div className={isActive ? "flex justify-center mb-6" : "mb-8"}>
+        {isActive && (
           <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
             <Clock className="h-3.5 w-3.5" />
             <span>
@@ -94,9 +94,8 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
               </span>
             </span>
           </div>
-        </div>
-      )}
-      {!isActive && <div className="mb-8" />}
+        )}
+      </div>
       <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
     </div>
   );

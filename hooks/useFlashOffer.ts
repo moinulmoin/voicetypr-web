@@ -103,16 +103,11 @@ function formatCountdown(ms: number): string {
 /* ── hook ── */
 
 export function useFlashOffer(): FlashOfferState {
-  const [isActive, setIsActive] = useState(() => {
-    if (!FLASH_OFFER_ENABLED) return false;
-    const s = readStore();
-    return s ? s.expiresAt > Date.now() : false;
-  });
+  // Initialise to server-safe defaults to avoid hydration mismatch.
+  // The mount effect below reads localStorage and corrects these.
+  const [isActive, setIsActive] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(0);
-  const [dismissed, setDismissed] = useState(() => {
-    const s = readStore();
-    return s?.dismissed ?? false;
-  });
+  const [dismissed, setDismissed] = useState(false);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
