@@ -126,7 +126,7 @@ const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => [
     url: assets.windows,
     platform: "windows",
   },
-];
+].filter(opt => opt.url);
 
 export default function DownloadPageClient({ assets, defaultSelected, affonsoReferral, referrer }: {
   assets: ReleaseAssets;

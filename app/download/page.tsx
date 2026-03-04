@@ -55,11 +55,10 @@ export default async function DownloadPage() {
   const referrer = (await headers()).get('referer') || '';
   
   const ua = (await headers()).get("user-agent")?.toLowerCase() || "";
+  // Can't distinguish Intel vs Apple Silicon from user-agent (all browsers report "Intel")
   const defaultSelected = ua.includes("windows")
     ? "windows"
-    : ua.includes("mac")
-      ? "macos-silicon"
-      : undefined;
+    : undefined;
       
   return <DownloadPageClient assets={assets} defaultSelected={defaultSelected} affonsoReferral={affonsoReferral} referrer={referrer} />;
 }
