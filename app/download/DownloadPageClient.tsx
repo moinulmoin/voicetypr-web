@@ -4,8 +4,10 @@ import { ReleaseAssets } from "@/app/lib/github";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import PricingCards from "@/components/PricingCards";
+import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext";
+import { FLASH_DISCOUNT_PCT } from "@/lib/pricing";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { ArrowRight, CheckCircle, Download } from "lucide-react";
+import { ArrowRight, CheckCircle, Clock, Download } from "lucide-react";
 import { useState, type ReactElement } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
@@ -72,6 +74,32 @@ const windowsInstallationSteps = [
     description: "Open VoiceTypr from Start Menu/Desktop",
   },
 ];
+
+function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: string; referrer: string }) {
+  const { isActive, formattedTime, pricingRef } = useFlashOfferContext();
+
+  return (
+    <div id="pricing" ref={pricingRef}>
+      <h2 className="text-2xl font-semibold mb-2 text-center">
+        Ready to Write 3x Faster?
+      </h2>
+      {isActive && (
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
+            <Clock className="h-3.5 w-3.5" />
+            <span>
+              {FLASH_DISCOUNT_PCT}% off — expires in{" "}
+              <span className="font-mono font-semibold tabular-nums">
+                {formattedTime}
+              </span>
+            </span>
+          </div>
+        </div>
+      )}
+      <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
+    </div>
+  );
+}
 
 const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => [
   {
@@ -256,17 +284,8 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             )}
 
             {/* Pricing Section */}
-            <div className="">
-              <h2 className="text-2xl font-semibold mb-4 text-center">
-                Ready to Write 3x Faster?
-              </h2>
-              <div className="mb-8 flex justify-center">
-                <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-sm text-purple-700 dark:text-purple-300">
-                  <span>🎉 New Year Special - Limited Time</span>
-                </div>
-              </div>
-              <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
-            </div>
+            <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
+
           </div>
         </section>
 
