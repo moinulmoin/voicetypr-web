@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Quote } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function FounderNote() {
@@ -19,8 +20,8 @@ export default function FounderNote() {
               </h3>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              "I built VoiceTypr because paying $15/month for basic dictation
-              didn’t feel right."
+              &ldquo;I built VoiceTypr because paying $15/month for basic dictation
+              didn&rsquo;t feel right.&rdquo;
             </p>
             <p className="text-muted-foreground leading-relaxed">
               I type for 12+ hours a day. Most tools locked me into a
@@ -32,12 +33,13 @@ export default function FounderNote() {
               Spoiler: it does!
             </p>
             <div className="mt-2 flex items-center gap-3 text-left">
-              <img
+              <Image
                 src="https://github.com/moinulmoin.png"
                 alt="Moinul Moin"
+                width={40}
+                height={40}
                 className="h-10 w-10 rounded-full border border-border/50"
                 loading="lazy"
-                decoding="async"
               />
               <div className="leading-tight">
                 <a

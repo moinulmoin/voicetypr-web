@@ -51,8 +51,12 @@ export default async function DownloadPage() {
   const cookieStore = await cookies();
   const affonsoReferral = cookieStore.get('affonso_referral')?.value || '';
   
-  // Get referer header for analytics
-  const referrer = (await headers()).get('referer') || '';
+  // Get referer header for analytics (sanitize to origin only, not full URL with paths/params)
+  let referrer = '';
+  try {
+    const rawReferer = (await headers()).get('referer');
+    if (rawReferer) referrer = new URL(rawReferer).origin;
+  } catch { /* invalid URL, keep empty */ }
   
   const ua = (await headers()).get("user-agent")?.toLowerCase() || "";
   const defaultSelected = ua.includes("windows")

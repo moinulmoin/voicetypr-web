@@ -8,7 +8,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Agreement to Terms</h2>
           <p>
-            By downloading, installing, or using VoiceTypr ("the Software"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, do not use the Software.
+            By downloading, installing, or using VoiceTypr (&ldquo;the Software&rdquo;), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, do not use the Software.
           </p>
         </section>
 
@@ -99,7 +99,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">8. Disclaimer of Warranties</h2>
           <p>
-            THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW. IDEAPLEXA LLC DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+            THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo; WITHOUT WARRANTY OF ANY KIND, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW. IDEAPLEXA LLC DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
           </p>
         </section>
 

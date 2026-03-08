@@ -1,9 +1,11 @@
 import {
-  corsHeaders,
+  getCorsHeaders,
+  withCorsHeaders,
   createErrorResponse,
   createSuccessResponse,
   handleInternalError,
-  handleValidationError
+  handleValidationError,
+  redactLicenseKey
 } from "@/lib/api-utils";
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
@@ -19,7 +21,7 @@ export async function POST(request: NextRequest) {
     const validationResult = licenseActivateRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return handleValidationError(validationResult.error);
+      return withCorsHeaders(handleValidationError(validationResult.error));
     }
 
     const { licenseKey, deviceHash, osType, osVersion, appVersion, deviceName } = validationResult.data;
@@ -51,15 +53,16 @@ export async function POST(request: NextRequest) {
     let activation;
     try {
       activation = await activateLicenseKey(licenseKey, deviceHash, osType, osVersion, appVersion, deviceName);
-    } catch (polarError: any) {
+    } catch (polarError: unknown) {
+      const apiError = polarError as { statusCode?: number; detail?: string; error?: string };
       // Handle specific Polar API errors
-      if (polarError.statusCode === 403) {
-        if (polarError.detail?.includes('activation limit')) {
-          return createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400);
+      if (apiError.statusCode === 403) {
+        if (apiError.detail?.includes('activation limit')) {
+          return withCorsHeaders(createErrorResponse(ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED, 400));
         }
-      } else if (polarError.statusCode === 404 || polarError.error === 'ResourceNotFound') {
+      } else if (apiError.statusCode === 404 || apiError.error === 'ResourceNotFound') {
         // License key not found
-        return createErrorResponse(ErrorCode.INVALID_LICENSE, 400);
+        return withCorsHeaders(createErrorResponse(ErrorCode.INVALID_LICENSE, 400));
       }
       // Re-throw other errors to be handled by the outer catch
       throw polarError;
@@ -96,7 +99,7 @@ export async function POST(request: NextRequest) {
         data: {
           deviceHash,
           action: "activate",
-          metadata: { licenseKey }
+          metadata: { licenseKeyRef: redactLicenseKey(licenseKey) }
         }
       });
     });
@@ -105,12 +108,12 @@ export async function POST(request: NextRequest) {
       activatedAt: new Date().toISOString()
     };
 
-    return createSuccessResponse(data);
+    return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {
-    return handleInternalError(error);
+    return withCorsHeaders(handleInternalError(error));
   }
 }
 
 export async function OPTIONS() {
-  return new Response(null, { status: 200, headers: corsHeaders });
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
 }

@@ -32,6 +32,9 @@ export async function subscribeToWaitlist(
 
     // Add email to waitlist set
     await redis.sadd("waitlist:windows", email);
+    
+    // Sliding 1-year TTL for waitlist keys (PII)
+    await redis.expire("waitlist:windows", 365 * 24 * 60 * 60);
 
     // Also store with timestamp
     await redis.hset("waitlist:windows:details", {
@@ -41,6 +44,9 @@ export async function subscribeToWaitlist(
         source: "pricing-page"
       })
     });
+    
+    // Sliding 1-year TTL for details key (PII)
+    await redis.expire("waitlist:windows:details", 365 * 24 * 60 * 60);
 
     // Increment counter
     await redis.incr("waitlist:windows:count");

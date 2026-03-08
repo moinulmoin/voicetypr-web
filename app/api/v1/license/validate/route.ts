@@ -1,8 +1,10 @@
 import {
-  corsHeaders,
+  getCorsHeaders,
+  withCorsHeaders,
   createSuccessResponse,
   handleInternalError,
-  handleValidationError
+  handleValidationError,
+  redactLicenseKey
 } from "@/lib/api-utils";
 import { ERROR_MESSAGES, ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
@@ -17,7 +19,7 @@ export async function POST(request: NextRequest) {
     const validationResult = licenseValidateRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return handleValidationError(validationResult.error);
+      return withCorsHeaders(handleValidationError(validationResult.error));
     }
 
     const { licenseKey, deviceHash, appVersion, osType, osVersion } = validationResult.data;
@@ -40,7 +42,7 @@ export async function POST(request: NextRequest) {
       const response = {
         valid: false,
       };
-      return createSuccessResponse(response, ERROR_MESSAGES[ErrorCode.DEVICE_MISMATCH]);
+      return withCorsHeaders(createSuccessResponse(response, ERROR_MESSAGES[ErrorCode.DEVICE_MISMATCH]));
     }
 
     // Store original values for race-condition-safe cleanup later
@@ -73,14 +75,15 @@ export async function POST(request: NextRequest) {
       });
 
       const data = { valid: false };
-      return createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]);
+      return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]));
     }
 
     // 3. Validate with Polar
     try {
       await validateLicenseKey(licenseKey, originalActivationId);
-    } catch (polarError: any) {
-      const errorMessage = polarError.error || "Unknown error";
+    } catch (polarError: unknown) {
+      const apiError = polarError as { error?: string };
+      const errorMessage = apiError.error || "Unknown error";
       console.error("Polar validation error:", errorMessage);
 
       // If Polar doesn't recognize this activation anymore, clear local bindings
@@ -124,16 +127,16 @@ export async function POST(request: NextRequest) {
 
         if (errorMessage === "NotPermitted") {
           const data = { valid: false };
-          return createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.LICENSE_ALREADY_ACTIVATED]);
+          return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.LICENSE_ALREADY_ACTIVATED]));
         }
 
         if (errorMessage === "ResourceNotFound") {
           const data = { valid: false };
-          return createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]);
+          return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]));
         }
       }
 
-      return handleInternalError(polarError);
+      return withCorsHeaders(handleInternalError(polarError));
     }
     // 3. All good - update last checked time
     await prisma.device.update({
@@ -152,7 +155,7 @@ export async function POST(request: NextRequest) {
         data: {
           deviceHash,
           action: "validate",
-          metadata: { licenseKey }
+          metadata: { licenseKeyRef: redactLicenseKey(licenseKey) }
         }
       });
     });
@@ -160,12 +163,12 @@ export async function POST(request: NextRequest) {
     const data = {
       valid: true
     };
-    return createSuccessResponse(data);
+    return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {
-    return handleInternalError(error);
+    return withCorsHeaders(handleInternalError(error));
   }
 }
 
 export async function OPTIONS() {
-  return new Response(null, { status: 200, headers: corsHeaders });
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
 }

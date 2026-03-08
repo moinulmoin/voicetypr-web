@@ -8,11 +8,6 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-interface SuccessModalProps {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
-
 export function SuccessModal() {
   const searchParams = useSearchParams()
   const checkoutId = searchParams.get("checkoutId")
@@ -22,6 +17,14 @@ export function SuccessModal() {
 
   useEffect(() => {
     if (checkoutId) {
+      // Strip sensitive tokens from URL immediately - checkoutId is captured as const above
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete('checkoutId');
+      params.delete('customer_session_token');
+      const query = params.toString();
+      const cleanPath = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+      router.replace(cleanPath, { scroll: false });
+
       // Fetch checkout data and track purchase
       const trackPurchase = async () => {
         try {
@@ -41,8 +44,6 @@ export function SuccessModal() {
               data.currency.length === 3) {
             setShowModal(true)
 
-            const amount = data.total_amount / 100 // Convert cents to dollars
-
             // Only track purchases with valid amounts > 0
             // If needed, track purchase via analytics layer elsewhere (Umami/GTMintegration)
           }
@@ -54,16 +55,7 @@ export function SuccessModal() {
 
       trackPurchase()
     }
-  }, [checkoutId])
-
-  useEffect(() => {
-    return () => {
-      const newUrl = new URL(window.location.href)
-      newUrl.searchParams.delete("checkoutId")
-      newUrl.searchParams.delete("customer_session_token")
-      router.replace(newUrl.pathname + newUrl.search, { scroll: false })
-    }
-  }, [showModal])
+  }, [checkoutId, router, searchParams])
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>

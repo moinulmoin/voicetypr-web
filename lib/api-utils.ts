@@ -64,9 +64,24 @@ export function extractDeviceHash(request: NextRequest): string | null {
   return deviceHash;
 }
 
+// Redact license key for logging - show only first 8 characters
+export function redactLicenseKey(key: string): string {
+  return key.substring(0, 8) + '...';
+}
+
 // CORS headers for API routes
-export const corsHeaders = {
+export const corsHeaders: Record<string, string> = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, x-device-hash',
 };
+
+// Convenience: get a copy of CORS headers
+export function getCorsHeaders(): Record<string, string> {
+  return { ...corsHeaders };
+}
+// Add CORS headers to any NextResponse
+export function withCorsHeaders(response: NextResponse): NextResponse {
+  Object.entries(corsHeaders).forEach(([k, v]) => response.headers.set(k, v));
+  return response;
+}

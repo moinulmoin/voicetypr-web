@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 import { XformerlyTwitter, GitHub } from "@/components/icons";
 
 // Testimonials data with realistic feedback

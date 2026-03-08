@@ -1,5 +1,6 @@
 import {
-  corsHeaders,
+  getCorsHeaders,
+  withCorsHeaders,
   createSuccessResponse,
   handleInternalError,
   handleValidationError
@@ -8,6 +9,7 @@ import { CONFIG } from "@/lib/constants";
 import { prisma } from "@/lib/db";
 import { trialCheckRequestSchema } from "@/lib/types";
 import { NextRequest } from "next/server";
+import { Prisma } from "@prisma/client";
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,23 +18,42 @@ export async function POST(request: NextRequest) {
     const validationResult = trialCheckRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return handleValidationError(validationResult.error);
+      return withCorsHeaders(handleValidationError(validationResult.error));
     }
 
     const { deviceHash } = validationResult.data;
 
-    // Create device record if doesn't exist
-    const trialDevice = await prisma.device.upsert({
-      where: { deviceHash },
-      update: {
-        lastChecked: new Date(),
-      },
-      create: {
-        deviceHash,
-        lastChecked: new Date(),
-        trialExpiresAt: new Date(Date.now() + CONFIG.trialDurationDays * 24 * 60 * 60 * 1000)
+    const existingDevice = await prisma.device.findUnique({ where: { deviceHash } });
+
+    let trialDevice;
+    if (!existingDevice) {
+      try {
+        trialDevice = await prisma.device.create({
+          data: {
+            deviceHash,
+            lastChecked: new Date(),
+            trialExpiresAt: new Date(Date.now() + CONFIG.trialDurationDays * 24 * 60 * 60 * 1000)
+          }
+        });
+      } catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") {
+          const createdDevice = await prisma.device.findUnique({ where: { deviceHash } });
+          if (!createdDevice) {
+            throw error;
+          }
+          trialDevice = createdDevice;
+        } else {
+          throw error;
+        }
       }
-    });
+    } else {
+      trialDevice = await prisma.device.update({
+        where: { deviceHash },
+        data: {
+          lastChecked: new Date(),
+        }
+      });
+    }
 
     // Check if trial started within the last 60 seconds (new trial)
     const isNewTrial = trialDevice.trialStartedAt &&
@@ -59,12 +80,12 @@ export async function POST(request: NextRequest) {
       expiresAt: trialDevice.trialExpiresAt?.toISOString() || null
     };
 
-    return createSuccessResponse(data);
+    return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {
-    return handleInternalError(error);
+    return withCorsHeaders(handleInternalError(error));
   }
 }
 
 export async function OPTIONS() {
-  return new Response(null, { status: 200, headers: corsHeaders });
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
 }

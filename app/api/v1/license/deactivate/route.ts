@@ -1,9 +1,11 @@
 import {
-  corsHeaders,
+  getCorsHeaders,
+  withCorsHeaders,
   createErrorResponse,
   createSuccessResponse,
   handleInternalError,
-  handleValidationError
+  handleValidationError,
+  redactLicenseKey
 } from "@/lib/api-utils";
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
@@ -18,7 +20,7 @@ export async function POST(request: NextRequest) {
     const validationResult = licenseDeactivateRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
-      return handleValidationError(validationResult.error);
+      return withCorsHeaders(handleValidationError(validationResult.error));
     }
 
     const { licenseKey, deviceHash } = validationResult.data;
@@ -37,15 +39,16 @@ export async function POST(request: NextRequest) {
     });
 
     if (!device) {
-      return createErrorResponse(ErrorCode.NOT_YOUR_LICENSE);
+      return withCorsHeaders(createErrorResponse(ErrorCode.NOT_YOUR_LICENSE));
     }
 
     // 2. Try to deactivate the license on Polar
     try {
       await deactivateLicenseKey({ licenseKey, activationId: device.activationId! });
-    } catch (polarError: any) {
+    } catch (polarError: unknown) {
+      const apiError = polarError as { statusCode?: number; error?: string };
       // If license is already deactivated (404), that's fine - we still want to clear it locally
-      if (polarError?.statusCode === 404 || polarError?.error === 'ResourceNotFound') {
+      if (apiError.statusCode === 404 || apiError.error === 'ResourceNotFound') {
         console.log(`License already deactivated on Polar: ${licenseKey}, cleaning up local state`);
         // Continue to step 3 to clear from our DB
       } else {
@@ -69,7 +72,7 @@ export async function POST(request: NextRequest) {
         data: {
           deviceHash,
           action: "deactivate",
-          metadata: { licenseKey }
+          metadata: { licenseKeyRef: redactLicenseKey(licenseKey) }
         }
       });
     });
@@ -78,12 +81,12 @@ export async function POST(request: NextRequest) {
       deactivatedAt: new Date().toISOString()
     };
 
-    return createSuccessResponse(data);
+    return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {
-    return handleInternalError(error);
+    return withCorsHeaders(handleInternalError(error));
   }
 }
 
 export async function OPTIONS() {
-  return new Response(null, { status: 200, headers: corsHeaders });
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
 }

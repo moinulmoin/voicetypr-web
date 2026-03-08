@@ -8,7 +8,7 @@ import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext
 import { FLASH_DISCOUNT_PCT } from "@/lib/pricing";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
 import { ArrowRight, CheckCircle, Clock, Download } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactElement } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
@@ -32,7 +32,7 @@ interface DownloadOption {
   id: string;
   name: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: () => ReactElement;
   url?: string;
   platform: "macos" | "windows";
 }

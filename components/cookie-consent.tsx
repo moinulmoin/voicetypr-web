@@ -48,34 +48,28 @@ function setConsent(state: ConsentState) {
 }
 
 export default function CookieConsent() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => {
+    if (getConsent()) return false;
+    return readCookie("vt_geo_requires_consent") !== "false";
+  });
 
   useEffect(() => {
-    // Check if user already has consent stored
-    const existing = getConsent();
-    if (existing) {
-      // User already made a choice - respect it
-      return;
-    }
+    if (open) return;
 
-    // Check if user needs consent based on geo-location
+    const existing = getConsent();
+    if (existing) return;
+
     const geoRequiresConsent = readCookie('vt_geo_requires_consent');
-    
+
     if (geoRequiresConsent === 'false') {
-      // User is in non-GDPR country - auto-accept without showing banner
-      const state: ConsentState = { 
-        necessary: true, 
-        marketing: true, 
-        timestamp: Date.now() 
+      const state: ConsentState = {
+        necessary: true,
+        marketing: true,
+        timestamp: Date.now()
       };
       setConsent(state);
-      setOpen(false); // Keep banner hidden
-      return;
     }
-
-    // User is in GDPR country or geo unknown - show banner
-    setOpen(true);
-  }, []);
+  }, [open]);
 
   if (!open) return null;
 

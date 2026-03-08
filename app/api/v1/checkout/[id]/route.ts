@@ -1,15 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id: checkoutId } = await params
-
-    if (!checkoutId) {
-      return NextResponse.json({ error: 'Checkout ID is required' }, { status: 400 })
-    }
 
     const response = await fetch(
       `${process.env.NODE_ENV !== "production" ? "https://sandbox-api.polar.sh" : "https://api.polar.sh"}/v1/checkouts/${checkoutId}`,

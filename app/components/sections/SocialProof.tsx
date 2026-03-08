@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 // Sample user avatars - replace with real user images if available
 const users = [
   {
@@ -33,9 +35,11 @@ export default function SocialProof() {
               key={index}
               className="relative w-10 h-10 rounded-full border-2 border-background overflow-hidden transition-transform hover:scale-110 hover:z-10"
             >
-              <img
+              <Image
                 src={user.avatar}
                 alt={user.name}
+                width={40}
+                height={40}
                 className="w-full h-full object-cover"
               />
             </div>
