@@ -35,11 +35,16 @@ export const FLASH_DISCOUNTED_PRICES = {
   max: Math.round(BASE_PRICES.max * (1 - FLASH_DISCOUNT_RATE)),
 } as const;
 
-/** How long the flash-offer countdown lasts (ms) */
-export const FLASH_OFFER_DURATION_MS = 6 * 60 * 60 * 1000; // 6 h
-
-/** Cooldown before the offer can re-appear after expiry (ms) */
-export const FLASH_OFFER_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 d
+/** Flash-offer countdown durations per visit (ms).
+ *  Each subsequent visit uses the next shorter duration.
+ *  The last entry acts as a floor — all visits beyond that use it. */
+export const FLASH_OFFER_DURATIONS_MS = [
+  8 * 60 * 60 * 1000, // Visit 1: 8 h
+  6 * 60 * 60 * 1000, // Visit 2: 6 h
+  4 * 60 * 60 * 1000, // Visit 3: 4 h
+  2 * 60 * 60 * 1000, // Visit 4: 2 h
+  1 * 60 * 60 * 1000, // Visit 5+: 1 h (floor)
+];
 
 /**
  * Format price with smart decimal handling
