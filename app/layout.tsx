@@ -5,6 +5,7 @@ import { Suspense } from "react";
 
 import "@/app/globals.css";
 import { Analytics } from "@/components/analytics";
+import { OpenPanel } from "@/components/openpanel";
 import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
 // Removed client-gated marketing scripts; noscript renders unconditionally
@@ -287,6 +288,7 @@ export default function RootLayout({
             <DeferredPixels />
             {children}
             <Analytics />
+            <OpenPanel />
           </Providers>
         </Suspense>
       </body>

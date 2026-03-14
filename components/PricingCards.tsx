@@ -62,6 +62,14 @@ export default function PricingCards({
   const handleCheckout = (productId: string | undefined) => {
     const metadata: Record<string, string> = {};
 
+    // Get OpenPanel device ID for revenue attribution
+    if (typeof window !== "undefined" && window.openpanel?.getDeviceId) {
+      const deviceId = window.openpanel.getDeviceId();
+      if (deviceId) {
+        metadata.deviceId = deviceId;
+      }
+    }
+
     if (affonsoReferral) {
       metadata.affonso_referral = affonsoReferral;
     }
@@ -183,6 +191,8 @@ export default function PricingCards({
                   onClick={() => handleCheckout(plan.productId)}
                   data-umami-event={`${eventPrefix}-plan-click`}
                   data-umami-event-plan={plan.key}
+                  data-track={`${eventPrefix}-plan-click`}
+                  data-track-plan={plan.key}
                 >
                   Get {plan.name}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

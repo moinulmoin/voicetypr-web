@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db";
 import { redis } from "@/lib/redis";
 import { Webhooks } from "@polar-sh/nextjs";
 import { WebhookOrderRefundedPayload } from "@polar-sh/sdk/models/components/webhookorderrefundedpayload.js";
+import { opServer } from "@/lib/openpanel-server";
 
 export const POST = Webhooks({
   webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
@@ -29,6 +30,10 @@ export const POST = Webhooks({
     try {
       // Handle different webhook events
       switch (payload.type) {
+        case "order.created":
+          await handleOrderCreated(payload.data);
+          break;
+
         case "order.refunded":
           // Handle license revocation by removing device bindings
           await handleLicenseRevocation(payload.data);
@@ -112,5 +117,32 @@ async function handleLicenseRevocation(data: WebhookOrderRefundedPayload["data"]
   } catch (error) {
     console.error("[Webhook] License revocation failed:", error);
     throw error;
+  }
+}
+
+async function handleOrderCreated(data: Record<string, unknown>) {
+  try {
+    const metadata = data.metadata as Record<string, string> | undefined;
+    const amount = data.totalAmount as number | undefined;
+
+    if (!amount) {
+      console.log("[Webhook] No amount found in order.created event");
+      return;
+    }
+
+    const deviceId = metadata?.deviceId;
+    const productId = data.productId as string | undefined;
+
+    // Track revenue with OpenPanel
+    opServer.revenue(amount, {
+      deviceId: deviceId || undefined,
+      productId: productId,
+      currency: "USD",
+    });
+
+    console.log(`[Webhook] Revenue tracked: $${(amount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ''}`);
+  } catch (error) {
+    console.error("[Webhook] Revenue tracking failed:", error);
+    // Don't throw - revenue tracking failure shouldn't break the webhook
   }
 }

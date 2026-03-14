@@ -150,9 +150,15 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
   const selectedOption = options.find((opt) => opt.id === selectedPlatform);
 
   const handleDownloadClick = () => {
-    // Track modal open
+    // Track modal open (Umami)
     if (typeof window !== 'undefined' && window.umami) {
       window.umami.track('email-modal-open', {
+        platform: selectedOption?.platform
+      });
+    }
+    // Track modal open (OpenPanel)
+    if (typeof window !== 'undefined' && window.openpanel) {
+      window.openpanel.track('email-modal-open', {
         platform: selectedOption?.platform
       });
     }
@@ -173,6 +179,13 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       // Track successful download with Umami
       if (typeof window !== 'undefined' && window.umami) {
         window.umami.track('download-success', {
+          platform: selectedOption?.platform,
+          url: downloadUrl
+        });
+      }
+      // Track successful download with OpenPanel
+      if (typeof window !== 'undefined' && window.openpanel) {
+        window.openpanel.track('download-success', {
           platform: selectedOption?.platform,
           url: downloadUrl
         });
@@ -255,6 +268,8 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                   size="lg"
                   data-umami-event="download-click"
                   data-umami-event-platform={selectedOption?.platform}
+                  data-track="download-click"
+                  data-track-platform={selectedOption?.platform}
                 >
                   <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
                   Download for{" "}

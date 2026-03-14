@@ -18,6 +18,18 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/op1.js",
+        destination: `${process.env.NEXT_PUBLIC_OPENPANEL_CDN_URL}/op1.js`,
+      },
+      {
+        source: "/api/op/:path*",
+        destination: `${process.env.NEXT_PUBLIC_OPENPANEL_API_URL}/:path*`,
+      },
+    ];
+  },
 }
 
 export default nextConfig
