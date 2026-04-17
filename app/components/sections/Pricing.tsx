@@ -18,10 +18,10 @@ export default function Pricing({ affonsoReferral, referrer }: PricingProps) {
       {/* Section intro */}
       <div className="text-center mb-10">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
-          Own it forever. No monthly fees.
+          Pay once. Yours forever.
         </h2>
-        <p className="text-muted-foreground mb-2">
-          One-time purchase, lifetime access
+        <p className="text-muted-foreground mb-1">
+          No subscriptions. No update locks. Real lifetime access.
         </p>
         {isActive && (
           <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">

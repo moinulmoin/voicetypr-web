@@ -16,7 +16,7 @@ const GDPR_COUNTRIES = [
   'BR',
 ];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // Read country from Vercel geo header
   const country = request.headers.get('x-vercel-ip-country');
   

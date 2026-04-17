@@ -3,6 +3,7 @@
 import { ReleaseAssets } from "@/app/lib/github";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import FAQ from "@/app/components/sections/FAQ";
 import PricingCards from "@/components/PricingCards";
 import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext";
 import { FLASH_DISCOUNT_PCT } from "@/lib/pricing";
@@ -80,12 +81,15 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
 
   return (
     <div id="pricing" ref={pricingRef}>
-      <h2 className="text-2xl font-semibold mb-2 text-center">
-        Ready to Write 3x Faster?
-      </h2>
-      {isActive && (
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
+          Pay once. Yours forever.
+        </h2>
+        <p className="text-muted-foreground mb-1">
+          No subscriptions. No update locks. Real lifetime access.
+        </p>
+        {isActive && (
+          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
             <Clock className="h-3.5 w-3.5" />
             <span>
               {FLASH_DISCOUNT_PCT}% off — expires in{" "}
@@ -94,9 +98,11 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
               </span>
             </span>
           </div>
-        </div>
-      )}
-      <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
+        )}
+      </div>
+      <div className="max-w-5xl mx-auto px-4">
+        <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
+      </div>
     </div>
   );
 }
@@ -313,19 +319,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
 
             {/* FAQ Section */}
-            <div className="my-20 text-left max-w-2xl mx-auto">
-              <h2 className="text-2xl font-semibold mb-8 text-center">
-                Frequently Asked Questions
-              </h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold mb-2">Does VoiceTypr work on Intel Macs?</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Yes! We provide a dedicated Intel build for older Macs. Just select &ldquo;macOS (Intel)&rdquo; above to download the right version for your machine.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <FAQ />
 
           </div>
         </section>

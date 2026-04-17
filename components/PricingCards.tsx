@@ -159,22 +159,28 @@ export default function PricingCards({
 
               <CardContent className="px-6 py-3">
                 <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-muted-foreground">
                       {plan.devices}
                     </span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-muted-foreground">
-                      Lifetime access
+                      All features included
                     </span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium text-foreground">
+                      Lifetime access (all future updates)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-muted-foreground">
-                      All future updates
+                      No subscription ever
                     </span>
                   </li>
                 </ul>
@@ -204,7 +210,7 @@ export default function PricingCards({
       </div>
 
       <p className="text-center text-sm text-muted-foreground mt-6">
-        Secure payment • 7-day money-back guarantee
+        One-time payment • Future updates included • 7-day money-back guarantee
       </p>
     </>
   );

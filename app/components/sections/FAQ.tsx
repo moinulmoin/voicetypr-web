@@ -2,6 +2,11 @@ import { Card } from "@/components/ui/card";
 
 const faqs = [
   {
+    question: "Does VoiceTypr work on Windows?",
+    answer:
+      "Yes! VoiceTypr supports Windows 10 and later. Download the .exe installer, run it, and you're set.",
+  },
+  {
     question: "Windows says 'Unknown Publisher'. What should I do?",
     answer:
       "SmartScreen shows this because we don’t use a Microsoft code‑signing certificate yet. Even the basic option is roughly $200–$300/year, so as a solo founder I’m keeping costs lean for now. The app is safe: click More info → Run anyway. As more users launch the app, SmartScreen warnings fade automatically.",
@@ -25,6 +30,11 @@ const faqs = [
     question: "What are the system requirements?",
     answer:
       "macOS Ventura 13+ (Apple Silicon recommended) or Windows 10+. Minimum 4 GB RAM.",
+  },
+  {
+    question: "Does VoiceTypr work on Intel Macs?",
+    answer:
+      "Yes! We provide a dedicated Intel build for older Macs. Just select \"macOS (Intel)\" on the download page to get the right version for your machine.",
   },
 ];
 

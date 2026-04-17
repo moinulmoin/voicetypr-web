@@ -13,7 +13,7 @@ export const BASE_PRICES = {
 
 /** Discount fraction applied when the flash offer is active.
  *  Changing this requires a redeploy — not controlled via env var. */
-export const FLASH_DISCOUNT_RATE = 0.20; // 20 %
+export const FLASH_DISCOUNT_RATE = 0.30; // 30 %
 
 /** Integer percentage for display (avoids duplicating Math.round everywhere) */
 export const FLASH_DISCOUNT_PCT = Math.round(FLASH_DISCOUNT_RATE * 100);
