@@ -8,8 +8,8 @@ export const OpenPanel = () => {
   return (
     <OpenPanelComponent
       clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID!}
-      apiUrl={process.env.NEXT_PUBLIC_OPENPANEL_API_URL!}
-      scriptUrl={process.env.NEXT_PUBLIC_OPENPANEL_CDN_URL!}
+      apiUrl="/api/op"
+      scriptUrl="/op1.js"
       trackScreenViews={true}
       trackOutgoingLinks={true}
       trackAttributes={true}
