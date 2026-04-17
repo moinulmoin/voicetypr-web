@@ -138,11 +138,15 @@ async function handleOrderCreated(data: Record<string, unknown>) {
     // `after` keeps the serverless invocation alive on Vercel (via waitUntil)
     // so the event actually flushes without blocking the webhook response.
     after(async () => {
-      await opServer.revenue(amount, {
-        deviceId: deviceId || undefined,
-        productId: productId,
-        currency: "USD",
-      });
+      try {
+        await opServer.revenue(amount, {
+          deviceId: deviceId || undefined,
+          productId: productId,
+          currency: "USD",
+        });
+      } catch (err) {
+        console.error("[Webhook] OpenPanel revenue flush failed:", err);
+      }
     });
 
     console.log(`[Webhook] Revenue queued: $${(amount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ''}`);
