@@ -3,6 +3,7 @@ import { redis } from "@/lib/redis";
 import { Webhooks } from "@polar-sh/nextjs";
 import { WebhookOrderRefundedPayload } from "@polar-sh/sdk/models/components/webhookorderrefundedpayload.js";
 import { opServer } from "@/lib/openpanel-server";
+import { after } from "next/server";
 
 export const POST = Webhooks({
   webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
@@ -133,14 +134,18 @@ async function handleOrderCreated(data: Record<string, unknown>) {
     const deviceId = metadata?.deviceId;
     const productId = data.productId as string | undefined;
 
-    // Track revenue with OpenPanel
-    opServer.revenue(amount, {
-      deviceId: deviceId || undefined,
-      productId: productId,
-      currency: "USD",
+    // Track revenue with OpenPanel after the webhook responds.
+    // `after` keeps the serverless invocation alive on Vercel (via waitUntil)
+    // so the event actually flushes without blocking the webhook response.
+    after(async () => {
+      await opServer.revenue(amount, {
+        deviceId: deviceId || undefined,
+        productId: productId,
+        currency: "USD",
+      });
     });
 
-    console.log(`[Webhook] Revenue tracked: $${(amount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ''}`);
+    console.log(`[Webhook] Revenue queued: $${(amount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ''}`);
   } catch (error) {
     console.error("[Webhook] Revenue tracking failed:", error);
     // Don't throw - revenue tracking failure shouldn't break the webhook
