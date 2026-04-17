@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { Suspense } from "react";
 
 import "@/app/globals.css";
-import { Analytics } from "@/components/analytics";
+// import { Analytics } from "@/components/analytics"; // Umami disabled in favor of OpenPanel
 import { OpenPanel } from "@/components/openpanel";
 import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
@@ -287,7 +287,7 @@ export default function RootLayout({
           <Providers>
             <DeferredPixels />
             {children}
-            <Analytics />
+            {/* <Analytics /> */} {/* Umami disabled in favor of OpenPanel */}
             <OpenPanel />
           </Providers>
         </Suspense>
