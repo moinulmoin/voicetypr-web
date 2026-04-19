@@ -1,5 +1,6 @@
 "use client";
 
+
 import { BASE_PRICES, formatPrice, type PlanKey } from "@/lib/pricing";
 import { ArrowRight } from "lucide-react";
 
@@ -34,7 +35,7 @@ const plans: Plan[] = [
       "Every formatting mode",
       "Lifetime free updates",
       "macOS 13+ & Windows 10+",
-      "30-day money-back guarantee",
+      "7-day money-back guarantee",
     ],
   },
   {
@@ -51,7 +52,7 @@ const plans: Plan[] = [
       "Priority email support",
       "Lifetime free updates",
       "macOS 13+ & Windows 10+",
-      "30-day money-back guarantee",
+      "7-day money-back guarantee",
     ],
   },
   {
@@ -66,7 +67,7 @@ const plans: Plan[] = [
       "Early access to new features",
       "Lifetime free updates",
       "macOS 13+ & Windows 10+",
-      "30-day money-back guarantee",
+      "7-day money-back guarantee",
     ],
   },
 ];

@@ -21,7 +21,7 @@ export default function Outcomes() {
               </h3>
               <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
                 Your brain thinks at 400 wpm. Your fingers move at 60. Close the
-                gap — ChatGPT, Claude, Cursor, specs, replies, all at the speed
+                gap. ChatGPT, Claude, Cursor, specs, replies, all at the speed
                 you actually talk.
               </p>
               <div className="mt-auto pt-3.5 border-t border-dashed border-editorial-line font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">

@@ -4,7 +4,7 @@ export default function Compare() {
   const rows: { c: string; v: string[] }[] = [
     {
       c: "Price",
-      v: ["$180 / yr", "$120 / yr", "$500 once + upgrades", "from $50 \u00B7 once"],
+      v: ["$180 / yr", "$85 / yr", "$500 once + upgrades", "from $50 \u00B7 once"],
     },
     {
       c: "Platforms",
@@ -30,13 +30,13 @@ export default function Compare() {
 
   const footer: { c: string; v: string[] } = {
     c: "2-year cost vs VoiceTypr",
-    v: ["+$310", "+$190", "+$450 (plus upgrades)", "baseline \u00B7 from $50"],
+    v: ["+$310", "+$120", "+$450 (plus upgrades)", "baseline \u00B7 from $50"],
   };
 
   return (
     <section className="ed-section">
       <div className="ed-container">
-        <div className="bg-editorial-ink text-white rounded-[28px] p-10 md:p-14">
+        <div className="bg-editorial-ink text-white rounded-[28px] p-6 sm:p-10 md:p-14">
           <div
             className="ed-eyebrow"
             style={{ color: "rgba(255,255,255,0.5)" }}
@@ -52,7 +52,8 @@ export default function Compare() {
           </p>
 
           {/* VS table */}
-          <div className="rounded-[18px] overflow-hidden border border-white/10 bg-white/[0.03] text-[14.5px] grid grid-cols-[1.4fr_1fr_1fr_1fr_1.15fr]">
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="min-w-[640px] rounded-[18px] overflow-hidden border border-white/10 bg-white/[0.03] text-[14.5px] grid grid-cols-[1.4fr_1fr_1fr_1fr_1.15fr] mx-4 sm:mx-0">
             {/* Header row — uses display:contents so grid children align */}
             <div className="contents">
               {headers.map((h, i) => (
@@ -112,14 +113,15 @@ export default function Compare() {
                 {footer.v[3]}
               </div>
             </div>
+            </div>
           </div>
 
           {/* Savings summary */}
           <p className="text-center mt-6 text-sm text-white/70">
             After 1 year:{" "}
-            <strong className="text-[#9dd6af]">save $70&ndash;$450</strong>{" "}
+            <strong className="text-[#9dd6af]">save $35&ndash;$450</strong>{" "}
             &nbsp;&middot;&nbsp; After 2 years:{" "}
-            <strong className="text-[#9dd6af]">save $190&ndash;$450+</strong>
+            <strong className="text-[#9dd6af]">save $120&ndash;$550+</strong>
           </p>
         </div>
       </div>

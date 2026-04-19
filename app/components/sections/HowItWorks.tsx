@@ -9,7 +9,7 @@ export default function HowItWorks() {
         <p className="text-[18px] text-editorial-ink-2 max-w-[560px] mt-4 mb-12">
           No cloud account. No onboarding wizard. No &ldquo;we&apos;ll email
           you when it&apos;s ready.&rdquo; Download, pick a model, start
-          talking — in about 90 seconds.
+          talking. About 90 seconds total.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -67,7 +67,7 @@ export default function HowItWorks() {
               Set your hotkey
             </h3>
             <p className="text-editorial-ink-2 text-sm leading-[1.55] mb-4">
-              Toggle or push-to-talk. Works globally — any app, any text field,
+              Toggle or push-to-talk. Works globally in any app, any text field,
               any time.
             </p>
             <div className="mt-auto min-h-[92px] flex items-end">

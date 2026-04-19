@@ -59,8 +59,8 @@ export default function Features() {
             </h3>
             <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
               English, Spanish, French, German, Italian, Portuguese, Dutch,
-              Swedish, Polish, Japanese, Mandarin, Hindi, Arabic, Korean &mdash;
-              and 85 more. Pick a model that supports your language; VoiceTypr
+              Swedish, Polish, Japanese, Mandarin, Hindi, Arabic, Korean,
+              plus 85 more. Pick a model that supports your language; VoiceTypr
               handles the rest.
             </p>
             <div className="mt-auto pt-5">
@@ -102,7 +102,7 @@ export default function Features() {
               Multiple models, your call.
             </h3>
             <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
-              Whisper base, large-v3, and 6×-faster turbo — plus Parakeet on Mac. Pick per session.
+              Whisper base, large-v3, and 6×-faster turbo. Plus Parakeet on Mac. Pick per session.
             </p>
             <div className="mt-auto pt-5">
               <div className="flex flex-col gap-1 font-mono text-xs text-editorial-ink-2 leading-[1.8]">
@@ -127,7 +127,7 @@ export default function Features() {
               4 AI presets, on tap.
             </h3>
             <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
-              Default, Prompts, Email, Commit &mdash; same voice, smarter tone out.
+              Default, Prompts, Email, Commit. Same voice, smarter tone out.
               Powered by Gemini, OpenAI, or any OpenAI-compatible API (Groq, Ollama).
             </p>
             <div className="mt-auto pt-5">
@@ -156,8 +156,8 @@ export default function Features() {
             </h3>
             <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
               ChatGPT, Claude, Cursor, VS Code, Notion, Slack, Linear, Gmail,
-              Discord, X, Figma, iMessage. Native paste &mdash; not a browser
-              extension, not a Chrome tab.
+              Discord, X, Figma, iMessage. Native paste, not a browser
+              extension. Not a Chrome tab.
             </p>
             <div className="mt-auto pt-5">
               <div className="flex flex-wrap gap-2">
@@ -196,7 +196,7 @@ export default function Features() {
               Searchable, exportable.
             </h3>
             <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
-              Everything you&apos;ve dictated &mdash; search, copy, export to
+              Everything you&apos;ve dictated. Search, copy, export to
               JSON.
             </p>
             <div className="mt-auto pt-5">

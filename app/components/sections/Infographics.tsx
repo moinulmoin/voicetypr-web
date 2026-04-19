@@ -187,11 +187,11 @@ function DayInLife() {
         <div className="text-right font-mono text-xs font-medium text-editorial-ink-3">
           TYPING
         </div>
-        <div className="h-8 rounded-lg bg-editorial-surface-2 flex items-center gap-1.5 px-1">
+        <div className="h-8 min-w-0 overflow-hidden rounded-lg bg-editorial-surface-2 flex items-center gap-1.5 px-1">
           {typingDay.map((c, i) => (
             <div
               key={i}
-              className="h-[22px] rounded-md px-2.5 flex items-center text-[11.5px] font-medium whitespace-nowrap overflow-hidden bg-[#d8cfbb] text-editorial-ink"
+              className="h-[22px] min-w-0 rounded-md px-2 sm:px-2.5 flex items-center text-[11px] sm:text-[11.5px] font-medium whitespace-nowrap overflow-hidden text-ellipsis bg-[#d8cfbb] text-editorial-ink"
               style={{ width: `${c.w}%` }}
             >
               {c.label}
@@ -203,18 +203,18 @@ function DayInLife() {
         <div className="text-right font-mono text-xs font-medium text-editorial-ink-3">
           VOICE
         </div>
-        <div className="h-8 rounded-lg bg-editorial-surface-2 flex items-center gap-1.5 px-1">
+        <div className="h-8 min-w-0 overflow-hidden rounded-lg bg-editorial-surface-2 flex items-center gap-1.5 px-1">
           {voiceDay.map((c, i) => (
             <div
               key={i}
-              className="h-[22px] rounded-md px-2.5 flex items-center text-[11.5px] font-medium whitespace-nowrap overflow-hidden bg-editorial-accent text-white"
+              className="h-[22px] min-w-0 rounded-md px-2 sm:px-2.5 flex items-center text-[11px] sm:text-[11.5px] font-medium whitespace-nowrap overflow-hidden text-ellipsis bg-editorial-accent text-white"
               style={{ width: `${c.w}%` }}
             >
               {c.label}
             </div>
           ))}
           <div
-            className="h-[22px] rounded-md px-2.5 flex items-center text-[11.5px] font-medium whitespace-nowrap overflow-hidden border border-dashed border-editorial-line-2 text-editorial-ink-3 bg-transparent"
+            className="h-[22px] min-w-0 rounded-md px-2 sm:px-2.5 flex items-center text-[11px] sm:text-[11.5px] font-medium whitespace-nowrap overflow-hidden text-ellipsis border border-dashed border-editorial-line-2 text-editorial-ink-3 bg-transparent"
             style={{ width: "69%" }}
           >
             &#8593; reclaimed: 93 min

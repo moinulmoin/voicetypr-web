@@ -10,7 +10,7 @@ export default function HeroSection() {
             v1.12 &middot; lifetime &middot; open source
           </span>
 
-          <h1 className="mt-5 font-serif text-[54px] leading-[0.98] md:text-[96px] tracking-[-0.02em]">
+          <h1 className="mt-5 font-serif text-[clamp(40px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
             Talk like a human.
             <br />
             Get text like a <em>pro.</em>
@@ -21,7 +21,7 @@ export default function HeroSection() {
               Clean, paste-ready text in any app, on Mac or Windows.
             </strong>{" "}
             Talk to Claude, draft a Slack reply, write that PR description
-            you&rsquo;ve been dodging &mdash; fully local, ~5&times; faster than
+              you&rsquo;ve been dodging. Fully local, ~5&times; faster than
             typing.
           </p>
 

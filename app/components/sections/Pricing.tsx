@@ -23,7 +23,7 @@ export default async function Pricing() {
         <p className="mb-12 max-w-[560px] text-[17px] leading-relaxed text-editorial-ink-2">
           No subscription. No update locks. No surprise email in 2027 saying
           we&rsquo;re being acquired and prices are going up. Try free for 3
-          days — no card required.
+          days. No card required.
         </p>
 
         <div className="mx-auto max-w-5xl">
@@ -35,7 +35,7 @@ export default async function Pricing() {
         </div>
 
         <p className="mt-10 text-center font-mono text-[11px] uppercase tracking-[0.14em] text-editorial-ink-3">
-          one payment · all future updates · 30-day money-back guarantee
+          one payment · all future updates · 7-day money-back guarantee
         </p>
       </div>
     </section>

@@ -45,7 +45,7 @@ const faqs = [
   },
   {
     q: "Refunds?",
-    a: "30 days, no questions. Email support@voicetypr.com. We refund first, ask questions after (if at all).",
+    a: "7 days, no questions. Email support@voicetypr.com. We refund first, ask questions after (if at all).",
   },
 ];
 

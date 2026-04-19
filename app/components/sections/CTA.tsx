@@ -50,7 +50,7 @@ export default function CTA() {
             </div>
 
             <div className="mt-4 font-mono text-xs uppercase tracking-[0.14em] text-editorial-ink-3">
-              macOS 13+ · Windows 10+ · ~ 28 MB
+              macOS 13+ · Windows 10+ · free lifetime updates
             </div>
           </div>
         </div>

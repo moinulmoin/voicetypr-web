@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -23,10 +23,10 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 });
 
-const fontSerif = Fraunces({
+const fontSerif = Instrument_Serif({
   subsets: ["latin"],
+  weight: "400",
   style: ["normal", "italic"],
-  weight: ["400", "500", "600"],
   variable: "--font-serif",
 });
 
