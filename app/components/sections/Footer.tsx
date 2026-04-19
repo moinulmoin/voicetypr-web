@@ -3,7 +3,11 @@ import Link from "next/link";
 const productLinks = [
   { label: "Download", href: "/download", internal: true },
   { label: "Pricing", href: "/#pricing", internal: true },
-  { label: "Changelog", href: "/#pricing", internal: true },
+  {
+    label: "Releases",
+    href: "https://github.com/moinulmoin/voicetypr/releases",
+    internal: false,
+  },
   { label: "Affiliates", href: "/affiliate", internal: true },
 ] as const;
 
@@ -95,14 +99,27 @@ export default function Footer() {
           <ul className="m-0 list-none p-0 text-sm">
             {productLinks.map((link) => (
               <li key={link.label} className="py-1.5 text-editorial-ink-2">
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-editorial-ink"
-                  data-umami-event="footer-link-click"
-                  data-umami-event-page={link.label.toLowerCase()}
-                >
-                  {link.label}
-                </Link>
+                {link.internal ? (
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-editorial-ink"
+                    data-umami-event="footer-link-click"
+                    data-umami-event-page={link.label.toLowerCase()}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-editorial-ink"
+                    data-umami-event="footer-link-click"
+                    data-umami-event-page={link.label.toLowerCase()}
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

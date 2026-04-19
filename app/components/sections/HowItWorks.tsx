@@ -46,15 +46,15 @@ export default function HowItWorks() {
               Turbo when you want both. Download one, swap anytime.
             </p>
             <div className="mt-auto min-h-[92px] flex items-end">
-              <div className="flex gap-1.5">
-                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2">
+              <div className="flex flex-wrap gap-1.5">
+                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2 whitespace-nowrap">
                   base.en
                 </span>
-                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2">
+                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2 whitespace-nowrap">
                   large-v3
                 </span>
-                <span className="px-2 py-1 text-[11px] font-mono rounded bg-editorial-accent text-white">
-                  large-v3-turbo
+                <span className="px-2 py-1 text-[11px] font-mono rounded bg-editorial-accent text-white whitespace-nowrap">
+                  turbo
                 </span>
               </div>
             </div>
