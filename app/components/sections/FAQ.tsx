@@ -76,7 +76,7 @@ export default function FAQ() {
               >
                 <summary className="list-none flex justify-between items-start gap-6 font-serif text-[22px] leading-[1.2] [&::-webkit-details-marker]:hidden">
                   <span>{faq.q}</span>
-                  <span className="w-7 h-7 rounded-full bg-editorial-surface-2 grid place-items-center font-mono text-sm text-editorial-ink-2 flex-shrink-0 transition-transform duration-300 group-open:rotate-45">
+                  <span className="w-7 h-7 rounded-full bg-editorial-surface-2 grid place-items-center font-mono text-sm text-editorial-ink-2 flex-shrink-0 [transition:transform_400ms_cubic-bezier(0.32,0.72,0,1)] group-open:rotate-45">
                     +
                   </span>
                 </summary>

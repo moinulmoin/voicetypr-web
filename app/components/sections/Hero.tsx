@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function HeroSection() {
@@ -30,11 +31,11 @@ export default function HeroSection() {
             <Link
               href="/download"
               data-umami-event="hero-start-trial-click"
-              className="inline-flex items-center gap-2 rounded-full bg-editorial-ink px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-black"
+              className="group inline-flex items-center gap-2 rounded-full bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-black active:scale-[0.98]"
             >
               Start free 3-day trial
-              <span className="rounded-[5px] bg-white/20 px-1.5 py-0.5 font-mono text-xs">
-                &darr;
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </span>
             </Link>
             <a
@@ -42,7 +43,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-umami-event="hero-demo-click"
-              className="inline-flex items-center rounded-full border border-editorial-line-2 bg-transparent px-5 py-3 text-sm font-medium text-editorial-ink transition-colors hover:bg-editorial-surface-2 hover:text-editorial-accent"
+              className="inline-flex items-center rounded-full border border-editorial-line-2 bg-transparent px-5 py-3 text-sm font-medium text-editorial-ink transition-[transform,color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-editorial-surface hover:text-editorial-accent active:scale-[0.98]"
             >
               Watch the demo &rarr;
             </a>

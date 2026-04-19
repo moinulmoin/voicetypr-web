@@ -259,28 +259,36 @@ html {
   .landing-editorial .ed-container { padding: 0 20px; }
 }
 
-/* Editorial eyebrow label (mono, prefixed by dash) */
+/* Editorial eyebrow pill — accent dot + mono text + bordered surface */
 .ed-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px 5px 10px;
   font-family: var(--font-mono), 'Geist Mono', monospace;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-editorial-ink-3);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
+  background: var(--color-editorial-surface);
+  border: 1px solid var(--color-editorial-line);
+  border-radius: 999px;
+  margin-bottom: 22px;
 }
 .ed-eyebrow::before {
   content: "";
-  width: 24px;
-  height: 1px;
-  background: var(--color-editorial-line-2);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-editorial-accent);
 }
-.ed-eyebrow.ed-eyebrow-center {
-  justify-content: center;
+/* On dark surfaces, eyebrow inverts */
+.ed-eyebrow.ed-eyebrow-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Mono label (without dash, for cards) */

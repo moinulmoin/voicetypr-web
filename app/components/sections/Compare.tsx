@@ -37,12 +37,9 @@ export default function Compare() {
     <section className="ed-section">
       <div className="ed-container">
         <div className="bg-editorial-ink text-white rounded-[28px] p-6 sm:p-10 md:p-14">
-          <div
-            className="ed-eyebrow"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-          >
+          <span className="ed-eyebrow ed-eyebrow-dark">
             the math, plainly
-          </div>
+          </span>
           <h2 className="font-serif text-[clamp(40px,4.2vw,62px)] leading-[1] mb-7 max-w-[760px] text-white">
             Why pay more, <em>for less?</em>
           </h2>

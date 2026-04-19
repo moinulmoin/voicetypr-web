@@ -178,17 +178,18 @@ export default function PricingCards({
               data-umami-event-plan={plan.key}
               data-track={`${eventPrefix}-plan-click`}
               data-track-plan={plan.key}
-              className={`group mt-auto inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-transform hover:-translate-y-[1px] active:translate-y-0 ${
+              className={`group mt-auto inline-flex items-center gap-2 rounded-full py-2 pl-5 pr-2 text-sm font-medium transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] ${
                 isHL
                   ? "bg-editorial-accent text-white hover:brightness-110"
                   : "bg-editorial-ink text-white hover:bg-black"
               }`}
             >
               Get {plan.name}
-              <ArrowRight
-                className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                strokeWidth={1.75}
-              />
+              <span className={`grid h-8 w-8 place-items-center rounded-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 ${
+                isHL ? "bg-white/15" : "bg-white/15"
+              }`}>
+                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+              </span>
             </button>
           </div>
         );

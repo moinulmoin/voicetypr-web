@@ -2,8 +2,8 @@ export default function Demo() {
   return (
     <section className="ed-section pt-12 md:pt-16 pb-0">
       <div className="ed-container">
-        <div className="ed-eyebrow ed-eyebrow-center mb-6">
-          see it work &middot; 20 seconds
+        <div className="mb-6 flex justify-center">
+          <span className="ed-eyebrow">see it work &middot; 20 seconds</span>
         </div>
 
         <div className="mx-auto max-w-5xl">
