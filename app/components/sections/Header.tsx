@@ -1,12 +1,15 @@
 "use client";
 
-import logo from "@/app/assets/transparent-logo.png";
-import { GitHub } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+const navLinks = [
+  { href: "/#features", label: "Features", section: "features" },
+  { href: "/#how-it-works", label: "How it works", section: "how-it-works" },
+  { href: "/#pricing", label: "Pricing", section: "pricing" },
+  { href: "/#testimonials", label: "Testimonials", section: "testimonials" },
+  { href: "/#faq", label: "FAQ", section: "faq" },
+] as const;
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,102 +24,57 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={cn("fixed left-0 right-0 z-50", isScrolled && "top-2")}>
-      <div
-        className={cn("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-0", isScrolled ? "" : "py-2")}
-      >
-        <div className="flex items-center justify-between">
-          {/* Left: VoiceTypr Brand */}
-          <div className="flex items-center gap-3">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="VoiceTypr — Offline voice to text app for founders and builders"
-                width={50}
-                height={50}
-                className="dark:invert-0 invert"
-              />
-            </Link>
-            <div className="hidden sm:flex items-center">
-              <a
-                href="https://ideaplexa.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                data-umami-event="header-parent-company-click"
-              >
-                by Ideaplexa
-              </a>
-            </div>
-          </div>
-
-          {/* Middle: Navigation Links */}
-          <nav
-            className={cn(
-              "hidden md:flex items-center gap-8",
-              isScrolled
-                ? "bg-muted/30 backdrop-blur-md px-2 py-2 rounded-lg border border-border/50"
-                : ""
-            )}
+    <header
+      className={`fixed left-0 right-0 z-50 border-b border-editorial-line bg-editorial-bg/85 backdrop-blur-md transition-[padding] duration-200 ${
+        isScrolled ? "py-2.5" : "py-[22px]"
+      }`}
+    >
+      <div className="mx-auto flex max-w-[1240px] items-center justify-between px-10 max-md:px-5">
+        {/* Left: Logo + Ideaplexa */}
+        <div className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5">
+            <span className="grid h-7 w-7 place-items-center rounded-lg bg-editorial-ink font-mono text-[13px] font-semibold text-white">
+              V
+            </span>
+            <span className="font-serif text-[22px] tracking-[-0.01em]">
+              VoiceTypr
+            </span>
+          </Link>
+          <a
+            href="https://ideaplexa.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden font-mono text-[11px] tracking-[0.08em] text-editorial-ink-3 sm:inline-block"
+            data-umami-event="header-parent-company-click"
           >
-            <Link
-              href="/#features"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="nav-click"
-              data-umami-event-section="features"
-            >
-              Features
-            </Link>
-            <Link
-              href="/#testimonials"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="nav-click"
-              data-umami-event-section="testimonials"
-            >
-              Testimonials
-            </Link>
-            <Link
-              href="/#pricing"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="nav-click"
-              data-umami-event-section="pricing"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/#faq"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="nav-click"
-              data-umami-event-section="faq"
-            >
-              FAQ
-            </Link>
-            <Link
-              href="/download"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="nav-click"
-              data-umami-event-section="download"
-            >
-              Download
-            </Link>
-          </nav>
+            by Ideaplexa
+          </a>
+        </div>
 
-          {/* Right: GitHub Star + Try for free */}
-          <div className="flex items-center gap-3">
-            <Button
-              variant="outline"
-              size="sm"
-              className={cn("items-center gap-2", isScrolled ? "backdrop-blur-md" : "")}
-              onClick={() => window.open("https://github.com/moinulmoin/voicetypr", "_blank")}
-              data-umami-event="github-star-click"
+        {/* Center: Nav */}
+        <nav className="hidden gap-8 text-sm text-editorial-ink-2 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.section}
+              href={link.href}
+              className="transition-colors hover:text-editorial-ink"
+              data-umami-event="nav-click"
+              data-umami-event-section={link.section}
             >
-              <GitHub className="w-4 h-4 fill-current" />
-              <span>Star us</span>
-            </Button>
-            <Button size="sm" data-umami-event="header-try-for-free-click" asChild>
-              <Link href="/download">Try for free</Link>
-            </Button>
-          </div>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Right: Try free */}
+        <div className="flex items-center">
+          <Link
+            href="/download"
+            className="rounded-full bg-editorial-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black"
+            data-umami-event="header-try-for-free-click"
+          >
+            Try free
+          </Link>
         </div>
       </div>
     </header>

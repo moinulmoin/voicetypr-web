@@ -1,84 +1,57 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ArrowRight, Quote } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-
 export default function FounderNote() {
   return (
-    <section className="relative py-24" id="founder">
-      <div className="mx-auto max-w-3xl px-4">
-        <Card className="rounded-2xl border-border/50 bg-card/50 p-8 backdrop-blur-sm">
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <Quote
-                className="h-6 w-6 flex-shrink-0 text-primary"
-                aria-hidden
-              />
-              <h3 className="text-lg font-semibold text-foreground">
-                Privacy first. VoiceTypr runs locally.
-              </h3>
+    <section className="ed-section" id="founder">
+      <div className="ed-container max-w-[760px] mx-auto">
+        <div className="bg-editorial-surface border border-editorial-line rounded-[18px] p-10 md:p-11">
+          <div className="ed-eyebrow" style={{ marginBottom: 20 }}>
+            a note from the founder
+          </div>
+
+          <h3 className="font-serif text-[clamp(28px,2.6vw,38px)] leading-[1.15] mb-5 text-editorial-ink tracking-[-0.01em]">
+            &ldquo;I built VoiceTypr because paying $15/month for basic dictation
+            didn&rsquo;t feel right.&rdquo;
+          </h3>
+
+          <p className="text-editorial-ink-2 text-[16px] leading-[1.65] mb-3">
+            I type for 12+ hours a day. Most tools locked me into a subscription
+            or felt like legacy software. VoiceTypr is fast, offline, and
+            processes your voice fully on your machine.
+          </p>
+
+          <p className="text-editorial-ink-2 text-[16px] leading-[1.65] mb-6">
+            Try it free for 3 days. See if it actually saves you time. (Spoiler:
+            it does.)
+          </p>
+
+          <div className="flex items-center gap-3">
+            {/* Fallback avatar — avoids external image host config drift */}
+            <div className="w-11 h-11 rounded-full bg-editorial-accent text-white grid place-items-center font-serif text-[22px]">
+              M
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              &ldquo;I built VoiceTypr because paying $15/month for basic dictation
-              didn&rsquo;t feel right.&rdquo;
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              I type for 12+ hours a day. Most tools locked me into a
-              subscription or felt like legacy software. VoiceTypr is fast,
-              offline, and processes your voice fully locally.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Try it free for 3 days and see if it actually saves you time.
-              Spoiler: it does!
-            </p>
-            <div className="mt-2 flex items-center gap-3 text-left">
-              <Image
-                src="https://github.com/moinulmoin.png"
-                alt="Moinul Moin"
-                width={40}
-                height={40}
-                className="h-10 w-10 rounded-full border border-border/50"
-                loading="lazy"
-              />
-              <div className="leading-tight">
+            <div className="leading-tight">
+              <a
+                href="https://twitter.com/immoinulmoin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-editorial-ink hover:underline"
+                data-umami-event="founder-twitter-click"
+              >
+                Moinul Moin
+              </a>
+              <div className="text-xs text-editorial-ink-3">
+                Solo founder · VoiceTypr ·{" "}
                 <a
-                  href="https://twitter.com/immoinulmoin"
+                  href="https://ideaplexa.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-foreground hover:underline"
+                  className="hover:underline"
+                  data-umami-event="founder-ideaplexa-click"
                 >
-                  Moinul Moin
+                  @Ideaplexa
                 </a>
-                <div className="text-xs text-muted-foreground">
-                  Founder of VoiceTypr •{" "}
-                  <a
-                    href="https://ideaplexa.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                    data-umami-event="founder-ideaplexa-click"
-                  >
-                    @Ideaplexa
-                  </a>
-                </div>
               </div>
             </div>
           </div>
-        </Card>
-
-        <div className="mt-8 text-center">
-          <Button
-            size="lg"
-            asChild
-            className="group"
-            data-umami-event="founder-note-cta-click"
-          >
-            <Link href="/download">
-              Start 3-day trial
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
         </div>
       </div>
     </section>

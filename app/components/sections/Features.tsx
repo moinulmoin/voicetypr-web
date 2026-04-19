@@ -1,199 +1,230 @@
-import {
-  ClaudeAI,
-  Cursor,
-  Discord,
-  Gemini,
-  Gmail,
-  Linear,
-  Notion,
-  OpenAI,
-  Slack,
-  XformerlyTwitter
-} from "@/components/icons";
-import { Card } from "@/components/ui/card";
-import {
-  Shield,
-  Mic,
-  Keyboard,
-  Zap,
-  Sparkles,
-  History,
-  Layers,
-  Upload,
-  Globe,
-  Gauge,
-  TrendingUp
-} from "lucide-react";
-
-// App icons grid
-const appIcons = [
-  { icon: XformerlyTwitter, name: "X" },
-  { icon: Slack, name: "Slack" },
-  { icon: Linear, name: "Linear" },
-  { icon: Notion, name: "Notion" },
-  { icon: Cursor, name: "Cursor" },
-  { icon: Discord, name: "Discord" },
-  { icon: Gemini, name: "Gemini" },
-  { icon: OpenAI, name: "Open AI" },
-  { icon: ClaudeAI, name: "Claude AI" },
-  { icon: Gmail, name: "Gmail" }
-];
-
 export default function Features() {
+  const languages = [
+    "EN",
+    "ES",
+    "FR",
+    "DE",
+    "IT",
+    "PT",
+    "NL",
+    "SV",
+    "NO",
+    "PL",
+    "JA",
+    "ZH",
+    "HI",
+    "AR",
+    "KO",
+    "TR",
+    "RU",
+    "+82",
+  ];
+
+  const formatModes = ["Default", "Prompts", "Email", "Commit"];
+
+  const apps = [
+    "ChatGPT",
+    "Claude",
+    "Cursor",
+    "VS Code",
+    "Notion",
+    "Slack",
+    "Linear",
+    "Gmail",
+    "Discord",
+    "X",
+    "Figma",
+  ];
+
+  const models = [
+    { name: "base.en", size: "142 MB", accent: false },
+    { name: "large-v3", size: "2.9 GB", accent: false },
+    { name: "large-v3-turbo \u25CF", size: "1.5 GB", accent: true },
+  ];
+
   return (
-    <section className="relative py-24" id="features">
-      {/* Simple, focused intro */}
-      <div className="text-center mb-16 max-w-3xl mx-auto px-4">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4">Turn your voice into text</h2>
-        <p className="text-muted-foreground text-xl">
-          Speak naturally. Type anywhere. Stay private.
-        </p>
-      </div>
+    <section className="ed-section" id="features">
+      <div className="ed-container">
+        <div className="ed-eyebrow">the feature grid &middot; not a list, a toolkit</div>
+        <h2 className="font-serif text-[clamp(42px,4.4vw,68px)] leading-[1] max-w-[760px] mt-2 mb-10">
+          Little things that make <em>the big thing</em> addictive.
+        </h2>
 
-      {/* Unified grid - 6 columns with enhanced card styles */}
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-min">
-
-          {/* Hero Feature 1: Universal Language Support - spans 3 columns */}
-          <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-blue-500/10 via-card to-card/60 backdrop-blur-sm border-blue-500/20 rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-3xl"></div>
-
-            <div className="relative z-10">
-              <Globe className="w-14 h-14 text-blue-500 mb-6" />
-
-              {/* Language grid - USA & European languages only */}
-              <div className="grid grid-cols-5 gap-2 mb-6">
-                {["EN", "ES", "FR", "DE", "IT", "PT", "NL", "SV", "NO", "PL"].map((lang, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center h-10 rounded-lg bg-muted/30 text-sm font-medium text-muted-foreground/80 transition-all duration-300 hover:bg-blue-500/20 hover:text-blue-500"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 grid-flow-dense">
+          {/* 1. Languages — WIDE */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col lg:col-span-4">
+            <div className="ed-label mb-2.5">languages</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              99+ languages. Speak naturally. It just works.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              English, Spanish, French, German, Italian, Portuguese, Dutch,
+              Swedish, Polish, Japanese, Mandarin, Hindi, Arabic, Korean &mdash;
+              and 85 more. Pick a model that supports your language; VoiceTypr
+              handles the rest.
+            </p>
+            <div className="mt-auto pt-5">
+              <div className="flex flex-wrap gap-1.5">
+                {languages.map((l) => (
+                  <span
+                    key={l}
+                    className="ed-chip text-[11px] px-2 py-1"
                   >
-                    {lang}
-                  </div>
-                ))}
-              </div>
-
-              <h3 className="text-2xl lg:text-3xl font-bold mb-3">99+ Languages</h3>
-              <p className="text-muted-foreground">Speak in any language. It just works.</p>
-            </div>
-          </Card>
-
-          {/* Hero Feature 2: Works Everywhere - spans 3 columns */}
-          <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-yellow-500/10 via-card to-card/60 backdrop-blur-sm border-yellow-500/20 rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/10 hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-yellow-500/20 to-transparent rounded-full blur-3xl"></div>
-
-            <div className="relative z-10">
-              <Zap className="w-14 h-14 text-yellow-500 mb-6" />
-
-              <h3 className="text-2xl lg:text-3xl font-bold mb-3">Works Everywhere</h3>
-              <p className="text-muted-foreground mb-6">
-                Type in any app using your voice. Email, chat, code - anywhere.
-              </p>
-
-              {/* App icons */}
-              <div className="grid grid-cols-5 gap-3">
-                {appIcons.map(({ icon: Icon }, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center p-3 rounded-lg bg-muted/20 transition-all duration-300 hover:bg-yellow-500/20"
-                  >
-                    <Icon className="w-6 h-6 text-muted-foreground hover:text-yellow-500 transition-colors" />
-                  </div>
+                    {l}
+                  </span>
                 ))}
               </div>
             </div>
-          </Card>
+          </div>
 
-          {/* Core Features - Medium sized cards */}
-
-          {/* AI Enhancement */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-purple-500/10 via-card to-card/60 backdrop-blur-sm border-purple-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-3xl gap-0"></div>
-            <div className="relative z-10">
-              <Sparkles className="w-10 h-10 text-purple-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Smart Formatting</h3>
-              <p className="text-sm text-muted-foreground">
-                5 modes to polish your text. From casual chat to formal documents.
-              </p>
+          {/* 2. Hotkeys — MEDIUM */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col md:col-span-1 lg:col-span-2">
+            <div className="ed-label mb-2.5">hotkeys</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              Toggle or push-to-talk.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              Hold to record, or tap to toggle. Remap to anything you want.
+            </p>
+            <div className="mt-auto pt-5">
+              <div className="flex gap-1.5">
+                <span className="ed-kbd">&#8984;</span>
+                <span className="ed-kbd">&#8679;</span>
+                <span className="ed-kbd">Space</span>
+              </div>
             </div>
-          </Card>
+          </div>
 
-          {/* Accurate Transcription */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-blue-500/5 via-card to-card/60 backdrop-blur-sm border-blue-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Mic className="w-10 h-10 text-blue-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">99% Accurate</h3>
-            <p className="text-sm text-muted-foreground">
-              Advanced AI that understands what you say.
+          {/* 3. Models — MEDIUM */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col md:col-span-1 lg:col-span-2">
+            <div className="ed-label mb-2.5">models</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              Multiple models, your call.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              Whisper base, large-v3, and 6×-faster turbo — plus Parakeet on Mac. Pick per session.
             </p>
-          </Card>
+            <div className="mt-auto pt-5">
+              <div className="flex flex-col gap-1 font-mono text-xs text-editorial-ink-2 leading-[1.8]">
+                {models.map((m) => (
+                  <div key={m.name} className="flex justify-between">
+                    <span className={m.accent ? "text-editorial-accent" : ""}>
+                      {m.name}
+                    </span>
+                    <span className={m.accent ? "text-editorial-accent" : ""}>
+                      {m.size}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
-          {/* Private & Secure */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-green-500/5 via-card to-card/60 backdrop-blur-sm border-green-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Shield className="w-10 h-10 text-green-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">100% Private</h3>
-            <p className="text-sm text-muted-foreground">
-              Runs locally. Your voice never leaves your computer.
+          {/* 4. Formatting — MEDIUM */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col md:col-span-1 lg:col-span-2">
+            <div className="ed-label mb-2.5">formatting</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              4 AI presets, on tap.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              Default, Prompts, Email, Commit &mdash; same voice, smarter tone out.
+              Powered by Gemini, OpenAI, or any OpenAI-compatible API (Groq, Ollama).
             </p>
-          </Card>
+            <div className="mt-auto pt-5">
+              <div className="flex flex-wrap gap-1.5">
+                {formatModes.map((m, i) => (
+                  <span
+                    key={m}
+                    className={
+                      i === 1
+                        ? "ed-chip text-[11px] px-2 py-1 bg-editorial-accent text-white border-editorial-accent"
+                        : "ed-chip text-[11px] px-2 py-1"
+                    }
+                  >
+                    {m}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
 
-          {/* NEW v1.8 Features - Matching existing medium card style */}
-
-          {/* Push-to-Talk & Hotkeys */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-purple-500/5 via-card to-card/60 backdrop-blur-sm border-purple-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Keyboard className="w-10 h-10 text-purple-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Toggle or Push-to-Talk</h3>
-            <p className="text-sm text-muted-foreground">
-              Hold or toggle your hotkey to record and transcribe.
+          {/* 5. Works with everything — WIDE */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col lg:col-span-4">
+            <div className="ed-label mb-2.5">works with everything</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              Every app that takes a cursor.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              ChatGPT, Claude, Cursor, VS Code, Notion, Slack, Linear, Gmail,
+              Discord, X, Figma, iMessage. Native paste &mdash; not a browser
+              extension, not a Chrome tab.
             </p>
-          </Card>
+            <div className="mt-auto pt-5">
+              <div className="flex flex-wrap gap-2">
+                {apps.map((app) => (
+                  <span
+                    key={app}
+                    className="ed-chip text-[11px] px-2.5 py-1.5"
+                  >
+                    {app}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
 
-          {/* Audio & Video File Upload */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-blue-500/5 via-card to-card/60 backdrop-blur-sm border-blue-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Upload className="w-10 h-10 text-blue-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Upload Audio & Video Files</h3>
-            <p className="text-sm text-muted-foreground">
-              Transcribe MP3, WAV, M4A, MP4, MOV. Drag, drop, done.
+          {/* 6. Upload — MEDIUM */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col md:col-span-1 lg:col-span-2">
+            <div className="ed-label mb-2.5">upload</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              Drag in a file.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              Transcribe WAV, MP3, M4A, FLAC, OGG, MP4, WebM. Drop it in, done.
             </p>
-          </Card>
+            <div className="mt-auto pt-5">
+              <div className="font-mono text-[11px] text-editorial-ink-2">
+                wav · mp3 · m4a · flac · ogg · mp4 · webm
+              </div>
+            </div>
+          </div>
 
-          {/* Smart History */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-green-500/5 via-card to-card/60 backdrop-blur-sm border-green-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <History className="w-10 h-10 text-green-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Smart History</h3>
-            <p className="text-sm text-muted-foreground">
-              Search, export to JSON, copy anything you&apos;ve said.
+          {/* 7. History — MEDIUM */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col md:col-span-1 lg:col-span-2">
+            <div className="ed-label mb-2.5">history</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              Searchable, exportable.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              Everything you&apos;ve dictated &mdash; search, copy, export to
+              JSON.
             </p>
-          </Card>
+            <div className="mt-auto pt-5">
+              <div className="font-mono text-[11px] text-editorial-ink-2 leading-[1.6]">
+                &rarr; search history
+                <br />
+                &rarr; export as JSON
+                <br />
+                &rarr; re-copy anything
+              </div>
+            </div>
+          </div>
 
-          {/* Productivity Stats */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-orange-500/5 via-card to-card/60 backdrop-blur-sm border-orange-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <TrendingUp className="w-10 h-10 text-orange-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Track Progress</h3>
-            <p className="text-sm text-muted-foreground">
-              Build streaks, track stats, share your productivity.
+          {/* 8. Streaks — MEDIUM */}
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[220px] flex flex-col md:col-span-1 lg:col-span-2">
+            <div className="ed-label mb-2.5">streaks</div>
+            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
+              Track your progress.
+            </h3>
+            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+              Daily streaks, words spoken, time saved. Quietly addictive.
             </p>
-          </Card>
-
-          {/* Additional Features - Bottom Row */}
-
-          {/* Lightning Fast */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-yellow-500/5 via-card to-card/60 backdrop-blur-sm border-yellow-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Gauge className="w-10 h-10 text-yellow-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
-            <p className="text-sm text-muted-foreground">
-              Native app, instant response. No cloud latency.
-            </p>
-          </Card>
-
-          {/* Multiple Models */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-indigo-500/5 via-card to-card/60 backdrop-blur-sm border-indigo-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Layers className="w-10 h-10 text-indigo-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Multiple Models</h3>
-            <p className="text-sm text-muted-foreground">
-              Choose speed or accuracy. Download what you need.
-            </p>
-          </Card>
-
+            <div className="mt-auto pt-5">
+              <div className="font-mono text-[11px] text-editorial-ink-2">
+                12-day streak &middot; 184k words &middot; 6h saved this week
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

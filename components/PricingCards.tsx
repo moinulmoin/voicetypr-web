@@ -1,23 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  BASE_PRICES,
-  FLASH_DISCOUNTED_PRICES,
-  FLASH_DISCOUNT_CODE,
-  FLASH_DISCOUNT_RATE,
-  formatPrice,
-  type PlanKey,
-} from "@/lib/pricing";
-import { useFlashOfferStable } from "@/components/flash-offer/FlashOfferContext";
-import { ArrowRight, Check } from "lucide-react";
+import { BASE_PRICES, formatPrice, type PlanKey } from "@/lib/pricing";
+import { ArrowRight } from "lucide-react";
 
 interface PricingCardsProps {
   affonsoReferral: string;
@@ -26,29 +10,64 @@ interface PricingCardsProps {
   eventPrefix?: string;
 }
 
-const plans: Array<{
+interface Plan {
   key: PlanKey;
   name: string;
   devices: string;
+  tagline: string;
   productId: string | undefined;
-}> = [
+  highlight?: boolean;
+  ribbon?: string;
+  features: string[];
+}
+
+const plans: Plan[] = [
   {
     key: "pro",
     name: "Pro",
     devices: "1 device",
+    tagline: "One machine. Lifetime access. For the solo setup.",
     productId: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID,
+    features: [
+      "1 device activation",
+      "All Whisper models · 99+ languages",
+      "Every formatting mode",
+      "Lifetime free updates",
+      "macOS 13+ & Windows 10+",
+      "30-day money-back guarantee",
+    ],
   },
   {
     key: "plus",
     name: "Plus",
     devices: "Up to 2 devices",
+    tagline: "Laptop and desktop on one license. For people with two setups.",
     productId: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
+    highlight: true,
+    ribbon: "Most chosen",
+    features: [
+      "2 device activations",
+      "Everything in Pro",
+      "Priority email support",
+      "Lifetime free updates",
+      "macOS 13+ & Windows 10+",
+      "30-day money-back guarantee",
+    ],
   },
   {
     key: "max",
     name: "Max",
     devices: "Up to 4 devices",
+    tagline: "Work, home, travel, spare. For the full toolkit.",
     productId: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID,
+    features: [
+      "4 device activations",
+      "Everything in Plus",
+      "Early access to new features",
+      "Lifetime free updates",
+      "macOS 13+ & Windows 10+",
+      "30-day money-back guarantee",
+    ],
   },
 ];
 
@@ -57,12 +76,11 @@ export default function PricingCards({
   referrer,
   eventPrefix = "pricing",
 }: PricingCardsProps) {
-  const { isActive: flashOfferActive } = useFlashOfferStable();
-
   const handleCheckout = (productId: string | undefined) => {
+    if (!productId) return;
+
     const metadata: Record<string, string> = {};
 
-    // Get OpenPanel device ID for revenue attribution
     if (typeof window !== "undefined" && window.openpanel?.getDeviceId) {
       const deviceId = window.openpanel.getDeviceId();
       if (deviceId) {
@@ -70,148 +88,110 @@ export default function PricingCards({
       }
     }
 
-    if (affonsoReferral) {
-      metadata.affonso_referral = affonsoReferral;
-    }
-    if (referrer) {
-      metadata.referrer = referrer;
-    }
+    if (affonsoReferral) metadata.affonso_referral = affonsoReferral;
+    if (referrer) metadata.referrer = referrer;
 
-    const discount =
-      flashOfferActive && FLASH_DISCOUNT_CODE
-        ? `&discountId=${FLASH_DISCOUNT_CODE}`
+    const metadataParam =
+      Object.keys(metadata).length > 0
+        ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
         : "";
 
-    const metadataParam = Object.keys(metadata).length > 0
-      ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
-      : "";
-
     window.location.assign(
-      "/api/v1/checkout?products=" +
-      productId +
-      discount +
-      metadataParam
+      `/api/v1/checkout?products=${productId}${metadataParam}`,
     );
   };
 
   return (
-    <>
-      <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        {plans.map((plan) => {
-          const isPopular = plan.key === "plus";
-          const basePrice = BASE_PRICES[plan.key];
-          const discountedPrice = FLASH_DISCOUNTED_PRICES[plan.key];
-          // FLASH_DISCOUNT_RATE is a compile-time constant; the > 0 guard is a
-          // safety net so strikethrough prices aren't shown with identical values
-          // if the rate is ever set to 0 to soft-disable discounts.
-          const showDiscount = flashOfferActive && FLASH_DISCOUNT_RATE > 0;
+    <div className="grid gap-5 md:grid-cols-3">
+      {plans.map((plan) => {
+        const isHL = Boolean(plan.highlight);
+        return (
+          <div
+            key={plan.key}
+            className={`relative flex flex-col gap-5 rounded-2xl border p-7 transition-transform ${
+              isHL
+                ? "-translate-y-1 border-editorial-ink bg-editorial-ink text-white shadow-[0_20px_40px_-12px_rgba(0,0,0,0.18)]"
+                : "border-editorial-line bg-editorial-surface"
+            }`}
+          >
+            {isHL && plan.ribbon ? (
+              <div className="absolute -top-3 left-6 rounded-md bg-editorial-accent px-2.5 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-white">
+                {plan.ribbon}
+              </div>
+            ) : null}
 
-          return (
-            <Card
-              key={plan.key}
-              className={`bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative ${
-                isPopular
-                  ? "border-primary/50 scale-[1.03] ring-2 ring-primary/20"
-                  : "border-border/50 hover:border-border/70"
+            <div
+              className={`font-mono text-[11px] font-medium uppercase tracking-[0.14em] ${
+                isHL ? "text-white/70" : "text-editorial-ink-3"
               }`}
             >
-              {/* Most popular badge */}
-              {isPopular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
-                    <span className="text-xs font-medium text-white">
-                      Most Popular
-                    </span>
-                  </div>
-                </div>
-              )}
+              {plan.name} · {plan.devices}
+            </div>
 
-              <CardHeader className="text-center pb-1 px-6 pt-6">
-                <CardTitle className="text-2xl font-bold">
-                  {plan.name}
-                </CardTitle>
-                <div className="mt-3">
-                  <div className="flex items-baseline justify-center gap-2">
-                    {showDiscount ? (
-                      <>
-                        <span className="text-xl text-muted-foreground line-through">
-                          {formatPrice(basePrice)}
-                        </span>
-                        <span className="text-4xl font-bold">
-                          {formatPrice(discountedPrice)}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="text-4xl font-bold">
-                        {formatPrice(basePrice)}
-                      </span>
-                    )}
-                  </div>
-                  {showDiscount && (
-                    <p className="text-xs mt-1 font-semibold">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                        {`Save ${formatPrice(basePrice - discountedPrice).replace("$", "$$")}`}
-                      </span>
-                    </p>
-                  )}
-                </div>
-              </CardHeader>
-
-              <CardContent className="px-6 py-3">
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">
-                      {plan.devices}
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">
-                      All features included
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm font-medium text-foreground">
-                      Lifetime access (all future updates)
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">
-                      No subscription ever
-                    </span>
-                  </li>
-                </ul>
-              </CardContent>
-
-              <CardFooter className="px-6 pb-5 pt-2">
-                <Button
-                  className={`w-full group ${
-                    isPopular
-                      ? "bg-primary hover:bg-primary/90"
-                      : "bg-card hover:bg-muted"
+            <div>
+              <div className="font-serif text-6xl leading-none">
+                {formatPrice(BASE_PRICES[plan.key])}
+                <small
+                  className={`ml-1 font-sans text-[15px] font-normal ${
+                    isHL ? "text-white/60" : "text-editorial-ink-3"
                   }`}
-                  variant={isPopular ? "default" : "outline"}
-                  onClick={() => handleCheckout(plan.productId)}
-                  data-umami-event={`${eventPrefix}-plan-click`}
-                  data-umami-event-plan={plan.key}
-                  data-track={`${eventPrefix}-plan-click`}
-                  data-track-plan={plan.key}
                 >
-                  Get {plan.name}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </CardFooter>
-            </Card>
-          );
-        })}
-      </div>
+                  /once
+                </small>
+              </div>
+              <p
+                className={`mt-3 text-sm leading-snug ${
+                  isHL ? "text-white/75" : "text-editorial-ink-2"
+                }`}
+              >
+                {plan.tagline}
+              </p>
+            </div>
 
-      <p className="text-center text-sm text-muted-foreground mt-6">
-        One-time payment • Future updates included • 7-day money-back guarantee
-      </p>
-    </>
+            <ul
+              className={`flex flex-col text-sm leading-relaxed ${
+                isHL ? "text-white/85" : "text-editorial-ink-2"
+              }`}
+            >
+              {plan.features.map((feature, i) => (
+                <li
+                  key={i}
+                  className={`flex items-start gap-2.5 border-t py-2.5 first:border-t-0 first:pt-0 ${
+                    isHL ? "border-white/12" : "border-editorial-line"
+                  }`}
+                >
+                  <span
+                    aria-hidden
+                    className={`mt-2 h-[2px] w-3 flex-shrink-0 ${
+                      isHL ? "bg-white/40" : "bg-editorial-accent"
+                    }`}
+                  />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              onClick={() => handleCheckout(plan.productId)}
+              data-umami-event={`${eventPrefix}-plan-click`}
+              data-umami-event-plan={plan.key}
+              data-track={`${eventPrefix}-plan-click`}
+              data-track-plan={plan.key}
+              className={`group mt-auto inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-transform hover:-translate-y-[1px] active:translate-y-0 ${
+                isHL
+                  ? "bg-editorial-accent text-white hover:brightness-110"
+                  : "bg-editorial-ink text-white hover:bg-black"
+              }`}
+            >
+              Get {plan.name}
+              <ArrowRight
+                className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                strokeWidth={1.75}
+              />
+            </button>
+          </div>
+        );
+      })}
+    </div>
   );
 }

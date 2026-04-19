@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -16,6 +16,18 @@ import Script from "next/script";
 const fontSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const fontMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+
+const fontSerif = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
+  variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
@@ -273,7 +285,7 @@ export default function RootLayout({
       />
       {/* End JSON-LD Structured Data */}
 
-      <body className={`${fontSans.variable} font-sans antialiased `}>
+      <body className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} font-sans antialiased`}>
         {/* Google Tag Manager (noscript) rendered unconditionally */}
         <MarketingNoscript />
         <a

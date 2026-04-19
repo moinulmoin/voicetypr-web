@@ -1,44 +1,42 @@
-"use client";
-
+import { cookies, headers } from "next/headers";
 import PricingCards from "@/components/PricingCards";
-import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext";
-import { FLASH_DISCOUNT_PCT } from "@/lib/pricing";
-import { Clock } from "lucide-react";
 
-interface PricingProps {
-  affonsoReferral: string;
-  referrer: string;
-}
-
-export default function Pricing({ affonsoReferral, referrer }: PricingProps) {
-  const { isActive, formattedTime, pricingRef } = useFlashOfferContext();
+/**
+ * Landing-page pricing section.
+ *
+ * Server component — reads the Affonso referral cookie + referer header, then
+ * hands them to the client-side PricingCards for Polar checkout with proper
+ * attribution metadata.
+ */
+export default async function Pricing() {
+  const cookieStore = await cookies();
+  const affonsoReferral = cookieStore.get("affonso_referral")?.value || "";
+  const referrer = (await headers()).get("referer") || "";
 
   return (
-    <section className="relative py-24" id="pricing" ref={pricingRef}>
-      {/* Section intro */}
-      <div className="text-center mb-10">
-        <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
-          Pay once. Yours forever.
+    <section className="ed-section" id="pricing">
+      <div className="ed-container">
+        <div className="ed-eyebrow">pricing · one-time, lifetime</div>
+        <h2 className="mb-3 text-5xl leading-[1] tracking-tight md:text-6xl">
+          Pay once. <em>Yours forever.</em>
         </h2>
-        <p className="text-muted-foreground mb-1">
-          No subscriptions. No update locks. Real lifetime access.
+        <p className="mb-12 max-w-[560px] text-[17px] leading-relaxed text-editorial-ink-2">
+          No subscription. No update locks. No surprise email in 2027 saying
+          we&rsquo;re being acquired and prices are going up. Try free for 3
+          days — no card required.
         </p>
-        {isActive && (
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
-            <Clock className="h-3.5 w-3.5" />
-            <span>
-              {FLASH_DISCOUNT_PCT}% off — expires in{" "}
-              <span className="font-mono font-semibold tabular-nums">
-                {formattedTime}
-              </span>
-            </span>
-          </div>
-        )}
-      </div>
 
-      {/* Pricing cards */}
-      <div className="max-w-5xl mx-auto px-4">
-        <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="pricing" />
+        <div className="mx-auto max-w-5xl">
+          <PricingCards
+            affonsoReferral={affonsoReferral}
+            referrer={referrer}
+            eventPrefix="pricing"
+          />
+        </div>
+
+        <p className="mt-10 text-center font-mono text-[11px] uppercase tracking-[0.14em] text-editorial-ink-3">
+          one payment · all future updates · 30-day money-back guarantee
+        </p>
       </div>
     </section>
   );

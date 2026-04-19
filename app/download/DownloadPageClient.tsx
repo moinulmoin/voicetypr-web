@@ -5,10 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import FAQ from "@/app/components/sections/FAQ";
 import PricingCards from "@/components/PricingCards";
-import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext";
-import { FLASH_DISCOUNT_PCT } from "@/lib/pricing";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { ArrowRight, CheckCircle, Clock, Download } from "lucide-react";
+import { ArrowRight, CheckCircle, Download } from "lucide-react";
 import { useMemo, useState, type ReactElement } from "react";
 import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
@@ -77,10 +75,8 @@ const windowsInstallationSteps = [
 ];
 
 function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: string; referrer: string }) {
-  const { isActive, formattedTime, pricingRef } = useFlashOfferContext();
-
   return (
-    <div id="pricing" ref={pricingRef}>
+    <div id="pricing">
       <div className="text-center mb-10">
         <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
           Pay once. Yours forever.
@@ -88,17 +84,6 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
         <p className="text-muted-foreground mb-1">
           No subscriptions. No update locks. Real lifetime access.
         </p>
-        {isActive && (
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
-            <Clock className="h-3.5 w-3.5" />
-            <span>
-              {FLASH_DISCOUNT_PCT}% off — expires in{" "}
-              <span className="font-mono font-semibold tabular-nums">
-                {formattedTime}
-              </span>
-            </span>
-          </div>
-        )}
       </div>
       <div className="max-w-5xl mx-auto px-4">
         <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />

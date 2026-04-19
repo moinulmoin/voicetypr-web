@@ -1,67 +1,59 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { CTAScrollButton } from "./CTAScrollButton";
 
-export default function Hero() {
-
+export default function HeroSection() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-24 lg:pt-28">
-      <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-        <div>
-          <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
-            <span className="block bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
-              Write thoughts
-            </span>
-            <span className="block bg-gradient-to-r from-foreground/70 via-foreground to-foreground bg-clip-text text-transparent">
-              faster and private
-            </span>
+    <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
+      <div className="ed-container">
+        <div className="mx-auto max-w-5xl text-center">
+          <span className="ed-chip text-[13px]">
+            <span className="ed-chip-dot" />
+            v1.12 &middot; lifetime &middot; open source
+          </span>
+
+          <h1 className="mt-5 font-serif text-[54px] leading-[0.98] md:text-[96px] tracking-[-0.02em]">
+            Talk like a human.
+            <br />
+            Get text like a <em>pro.</em>
           </h1>
-          <p className="text-balance text-xl text-muted-foreground">
-            VoiceTypr is the offline AI voice to text tool for founders and
-            builders who live inside ChatGPT, Claude, Cursor, and every writing
-            surface.
-          </p>
-          <p className="mt-4 text-lg font-semibold text-primary">
-            Pay once. Use forever. No subscription.
+
+          <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
+            <strong className="font-medium text-editorial-ink">
+              Clean, paste-ready text in any app, on Mac or Windows.
+            </strong>{" "}
+            Talk to Claude, draft a Slack reply, write that PR description
+            you&rsquo;ve been dodging &mdash; fully local, ~5&times; faster than
+            typing.
           </p>
 
-          {/* Badges row removed per request */}
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-            <Button asChild size="lg" data-umami-event="hero-start-trial-click">
-              <Link href="/download">Start free 3-day trial</Link>
-            </Button>
-            <CTAScrollButton />
+          {/* CTA row */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/download"
+              data-umami-event="hero-start-trial-click"
+              className="inline-flex items-center gap-2 rounded-full bg-editorial-ink px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-black"
+            >
+              Start free 3-day trial
+              <span className="rounded-[5px] bg-white/20 px-1.5 py-0.5 font-mono text-xs">
+                &darr;
+              </span>
+            </Link>
+            <a
+              href="https://youtu.be/L_yU879QbE4"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="hero-demo-click"
+              className="inline-flex items-center rounded-full border border-editorial-line-2 bg-transparent px-5 py-3 text-sm font-medium text-editorial-ink transition-colors hover:bg-editorial-surface-2 hover:text-editorial-accent"
+            >
+              Watch the demo &rarr;
+            </a>
           </div>
 
-          <div className="mt-12">
-            <div className="relative mx-auto max-w-4xl rounded-2xl border border-border/50 bg-card/50 p-2 backdrop-blur-sm">
-              <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-                <video
-                  className="absolute inset-0 h-full w-full object-cover"
-                  controls
-                  playsInline
-                  preload="metadata"
-                  aria-label="VoiceTypr demo clip"
-                >
-                  <source
-                    src="https://assets.voicetypr.com/voicetypr-ph-2.mp4#t=0,20"
-                    type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"
-                  />
-                </video>
-              </div>
-            </div>
-            <div className="mt-4 text-sm text-muted-foreground">
-              Want the full walkthrough?{" "}
-              <a
-                href="https://youtu.be/L_yU879QbE4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-foreground"
-              >
-                watch the full demo
-              </a>
-            </div>
+          {/* Meta row */}
+          <div className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-2 border-t border-dashed border-editorial-line-2 pt-6 font-mono text-xs uppercase tracking-[0.08em] text-editorial-ink-3">
+            <span className="text-[#3a7a4f]">&bull; 100% local</span>
+            <span>macOS 13+ &middot; Windows 10+</span>
+            <span>99+ languages</span>
+            <span>No subscription</span>
           </div>
         </div>
       </div>

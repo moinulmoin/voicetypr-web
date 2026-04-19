@@ -1,127 +1,111 @@
-import { Button } from "@/components/ui/button";
-import { Cpu, Download, Keyboard, Sparkles } from "lucide-react";
-import Link from "next/link";
-
-const steps = [
-  {
-    id: 1,
-    title: "Install VoiceTypr",
-    description: "Download for your OS and launch the app.",
-    icon: Download,
-    gradient: "from-blue-600 to-purple-600",
-  },
-  {
-    id: 2,
-    title: "Download model",
-    description: "Download and select a model for your language and speed.",
-    icon: Cpu,
-    gradient: "from-indigo-600 to-purple-600",
-  },
-  {
-    id: 3,
-    title: "Set your hotkey",
-    description: "Pick a global shortcut to toggle/push to dictation anywhere.",
-    icon: Keyboard,
-    gradient: "from-purple-600 to-pink-600",
-  },
-  {
-    id: 4,
-    title: "Speak & ship",
-    description: "Hold the hotkey and talk; now polished text anywhere.",
-    icon: Sparkles,
-    gradient: "from-pink-600 to-indigo-600",
-  },
-];
-
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-24">
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
-            How It Works
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Four quick steps to start writing 3x faster.
-          </p>
-        </div>
+    <section className="ed-section" id="how-it-works">
+      <div className="ed-container">
+        <div className="ed-eyebrow">how it works · four steps, two minutes</div>
+        <h2 className="font-serif text-[clamp(40px,4.2vw,68px)] leading-[1] max-w-[720px]">
+          Install. Pick a model. Set a key. Talk.
+        </h2>
+        <p className="text-[18px] text-editorial-ink-2 max-w-[560px] mt-4 mb-12">
+          No cloud account. No onboarding wizard. No &ldquo;we&apos;ll email
+          you when it&apos;s ready.&rdquo; Download, pick a model, start
+          talking — in about 90 seconds.
+        </p>
 
-        {/* Timeline - Desktop */}
-        <div className="hidden lg:block relative">
-          <div className="absolute top-[32px] left-0 right-0 h-[2px]">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted-foreground/30 to-transparent" />
-          </div>
-          <div className="relative flex justify-between items-start">
-            {steps.map((step) => (
-              <div
-                key={step.id}
-                className="group relative flex flex-col items-center text-center"
-                style={{ flex: "1 1 0" }}
-              >
-                <div className="relative mb-6">
-                  <div
-                    className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`}
-                  />
-                  <div
-                    className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-foreground" />
-                    </div>
-                  </div>
-                </div>
-                <h3 className="font-semibold text-base mb-2 px-2">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-muted-foreground max-w-[220px] leading-relaxed">
-                  {step.description}
-                </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* Step 01 */}
+          <article className="bg-editorial-surface border border-editorial-line rounded-2xl p-6 min-h-[260px] flex flex-col">
+            <div className="ed-label">STEP 01</div>
+            <h3 className="font-serif text-[24px] leading-[1.1] mt-3.5 mb-2.5">
+              Install VoiceTypr
+            </h3>
+            <p className="text-editorial-ink-2 text-sm leading-[1.55] mb-4">
+              Download the .dmg (Mac) or .exe (Windows). Apple Silicon, Intel
+              and Windows 10+ all supported.
+            </p>
+            <div className="mt-auto min-h-[92px] flex items-end">
+              <div className="flex gap-1.5">
+                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2">
+                  macOS
+                </span>
+                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2">
+                  Windows
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          </article>
 
-        {/* Timeline - Mobile */}
-        <div className="lg:hidden relative">
-          <div className="space-y-8">
-            {steps.map((step, index) => (
-              <div
-                key={step.id}
-                className="group relative flex flex-col items-center text-center"
-              >
-                <div className="relative mb-4">
-                  <div
-                    className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`}
-                  />
-                  <div
-                    className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-foreground" />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[2px] h-8 bg-gradient-to-b from-muted-foreground/40 to-transparent" />
-                )}
+          {/* Step 02 */}
+          <article className="bg-editorial-surface border border-editorial-line rounded-2xl p-6 min-h-[260px] flex flex-col">
+            <div className="ed-label">STEP 02</div>
+            <h3 className="font-serif text-[24px] leading-[1.1] mt-3.5 mb-2.5">
+              Pick a model
+            </h3>
+            <p className="text-editorial-ink-2 text-sm leading-[1.55] mb-4">
+              Base.en for English speed, Large v3 for full multilingual accuracy,
+              Turbo when you want both. Download one, swap anytime.
+            </p>
+            <div className="mt-auto min-h-[92px] flex items-end">
+              <div className="flex gap-1.5">
+                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2">
+                  base.en
+                </span>
+                <span className="px-2 py-1 text-[11px] font-mono text-editorial-ink-2 rounded bg-editorial-surface-2">
+                  large-v3
+                </span>
+                <span className="px-2 py-1 text-[11px] font-mono rounded bg-editorial-accent text-white">
+                  large-v3-turbo
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          </article>
 
-        <div className="mt-20 text-center">
-          <Button
-            size="lg"
-            className="group"
-            data-umami-event="how-it-works-cta-click"
-            asChild
-          >
-            <Link href="/download">Start in 2 minutes</Link>
-          </Button>
+          {/* Step 03 */}
+          <article className="bg-editorial-surface border border-editorial-line rounded-2xl p-6 min-h-[260px] flex flex-col">
+            <div className="ed-label">STEP 03</div>
+            <h3 className="font-serif text-[24px] leading-[1.1] mt-3.5 mb-2.5">
+              Set your hotkey
+            </h3>
+            <p className="text-editorial-ink-2 text-sm leading-[1.55] mb-4">
+              Toggle or push-to-talk. Works globally — any app, any text field,
+              any time.
+            </p>
+            <div className="mt-auto min-h-[92px] flex items-end">
+              <div className="flex gap-1.5">
+                <span className="ed-kbd">⌘</span>
+                <span className="ed-kbd">⇧</span>
+                <span className="ed-kbd">Space</span>
+              </div>
+            </div>
+          </article>
+
+          {/* Step 04 */}
+          <article className="bg-editorial-surface border border-editorial-line rounded-2xl p-6 min-h-[260px] flex flex-col">
+            <div className="ed-label">STEP 04</div>
+            <h3 className="font-serif text-[24px] leading-[1.1] mt-3.5 mb-2.5">
+              Speak &amp; ship
+            </h3>
+            <p className="text-editorial-ink-2 text-sm leading-[1.55] mb-4">
+              Hold the key, talk. Release. Polished text lands where your cursor
+              is.
+            </p>
+            <div className="mt-auto min-h-[92px] flex items-end">
+              <span className="font-serif italic text-editorial-ink-2 text-sm">
+                &ldquo;Let&apos;s ship Tuesday and iterate from there.&rdquo;
+                <span
+                  style={{
+                    width: 2,
+                    height: 14,
+                    background: "var(--color-editorial-accent)",
+                    display: "inline-block",
+                    verticalAlign: "-2px",
+                    marginLeft: 2,
+                    animation: "ed-caret 1.1s steps(2) infinite",
+                  }}
+                />
+              </span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
