@@ -195,6 +195,13 @@ export function dismissBanner(): void {
   notify();
 }
 
+export function clearOffer(): void {
+  stopTimer();
+  clearStore();
+  snapshot = INACTIVE;
+  notify();
+}
+
 /* ── pure helpers (also used in tests) ── */
 
 export function createOffer(): StoredOffer {

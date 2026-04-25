@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { clearOffer } from "@/lib/flash-offer-store";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -22,6 +23,7 @@ export function SuccessModal() {
       params.delete('checkout');
       params.delete('checkoutId');
       params.delete('customer_session_token');
+      clearOffer();
       const query = params.toString();
       const cleanPath = query ? `${window.location.pathname}?${query}` : window.location.pathname;
       router.replace(cleanPath, { scroll: false });

@@ -1,6 +1,9 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import {
   createOffer,
+  activateOffer,
+  clearOffer,
+  getSnapshot,
   resolveStoredOffer,
   readStore,
   readVisitCount,
@@ -55,6 +58,26 @@ describe("createOffer", () => {
   it("persists the offer to localStorage", () => {
     createOffer();
     expect(readStore()).not.toBeNull();
+  });
+});
+
+/* ── clearOffer ── */
+
+describe("clearOffer", () => {
+  it("removes an active offer after checkout succeeds", () => {
+    activateOffer();
+
+    expect(readStore()).not.toBeNull();
+    expect(getSnapshot().isActive).toBe(true);
+
+    clearOffer();
+
+    expect(readStore()).toBeNull();
+    expect(getSnapshot()).toEqual({
+      isActive: false,
+      timeRemaining: 0,
+      dismissed: false,
+    });
   });
 });
 
