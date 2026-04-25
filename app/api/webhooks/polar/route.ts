@@ -1,8 +1,6 @@
-import { prisma } from "@/lib/db";
 import { redis } from "@/lib/redis";
 import { Webhooks } from "@polar-sh/nextjs";
 import type { WebhookOrderPaidPayload } from "@polar-sh/sdk/models/components/webhookorderpaidpayload.js";
-import type { WebhookOrderRefundedPayload } from "@polar-sh/sdk/models/components/webhookorderrefundedpayload.js";
 import { opServer } from "@/lib/openpanel-server";
 import { after } from "next/server";
 
@@ -46,70 +44,7 @@ export const POST = Webhooks({
 
     await deduplicated(payload, () => handleOrderPaid(payload.data));
   },
-  onOrderRefunded: async (payload: WebhookOrderRefundedPayload) => {
-    console.log(`[Webhook] ${payload.type}`);
-
-    await deduplicated(payload, () => handleLicenseRevocation(payload.data));
-  },
 });
-
-async function handleLicenseRevocation(data: WebhookOrderRefundedPayload["data"]) {
-  try {
-    const customerId = data.customerId;
-
-    if (!customerId) {
-      console.log("No customer ID found in webhook data");
-      return;
-    }
-
-    const result = await prisma.$transaction(async (tx) => {
-      const licenses = await tx.license.findMany({
-        where: { customerId },
-        select: { licenseKey: true },
-      });
-
-      if (licenses.length === 0) {
-        console.log(`No licenses found for customer: ${customerId}`);
-        return { licenseKeys: [], deviceCount: 0 };
-      }
-
-      const licenseKeys = licenses.map((l) => l.licenseKey);
-
-      const updated = await tx.device.updateMany({
-        where: {
-          licenseKey: {
-            in: licenseKeys,
-          },
-        },
-        data: {
-          licenseKey: null,
-          activationId: null,
-        },
-      });
-
-      await tx.license.deleteMany({
-        where: {
-          licenseKey: {
-            in: licenseKeys,
-          },
-        },
-      });
-
-      return { licenseKeys, deviceCount: updated.count };
-    });
-
-    if (result.deviceCount > 0) {
-      console.log(
-        `Cleared ${result.licenseKeys.length} license(s) from ${result.deviceCount} device(s) for refunded customer: ${customerId}`,
-      );
-    } else if (result.licenseKeys.length > 0) {
-      console.log(`Deleted ${result.licenseKeys.length} unused license(s) for customer: ${customerId}`);
-    }
-  } catch (error) {
-    console.error("[Webhook] License revocation failed:", error);
-    throw error;
-  }
-}
 
 async function handleOrderPaid(data: WebhookOrderPaidPayload["data"]) {
   try {
