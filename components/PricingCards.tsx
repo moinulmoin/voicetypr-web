@@ -87,7 +87,7 @@ export default function PricingCards({
       : "";
 
     window.location.assign(
-      "/api/v1/checkout?products=" +
+      "/api/checkout?products=" +
       productId +
       discount +
       metadataParam

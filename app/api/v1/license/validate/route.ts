@@ -50,13 +50,13 @@ export async function POST(request: NextRequest) {
     const originalActivationId = device.activationId;
 
     // 2. Handle missing activationId (corrupted/partial data)
-    if (!originalActivationId) {
-      console.warn(
-        `[License Validate] Device ${deviceHash.substring(0, 8)}... has licenseKey but no activationId; clearing as stale`
-      );
-
-      await prisma.device.updateMany({
-        where: { deviceHash, licenseKey: originalLicenseKey },
+    const clearStaleBinding = async (reason: string) => {
+      const result = await prisma.device.updateMany({
+        where: {
+          deviceHash,
+          licenseKey: originalLicenseKey,
+          ...(originalActivationId && { activationId: originalActivationId }),
+        },
         data: {
           licenseKey: null,
           activationId: null,
@@ -64,73 +64,62 @@ export async function POST(request: NextRequest) {
         },
       });
 
-      after(async () => {
-        await prisma.activityLog.create({
-          data: {
-            deviceHash,
-            action: "license_desynced",
-            metadata: { licenseKeyPrefix: licenseKey.substring(0, 8), reason: "missing_activation_id" },
-          },
+      if (result.count > 0) {
+        console.log(
+          `[License Validate] Cleared stale license binding for device ${deviceHash.substring(0, 8)}... (${reason})`,
+        );
+
+        after(async () => {
+          await prisma.activityLog.create({
+            data: {
+              deviceHash,
+              action: 'license_desynced',
+              metadata: { licenseKeyPrefix: licenseKey.substring(0, 8), reason },
+            },
+          });
         });
-      });
+      } else {
+        console.log(
+          `[License Validate] Skipped clearing for device ${deviceHash.substring(0, 8)}...; license binding changed concurrently`,
+        );
+      }
+    };
+
+    if (!originalActivationId) {
+      console.warn(
+        `[License Validate] Device ${deviceHash.substring(0, 8)}... has licenseKey but no activationId; clearing as stale`
+      );
+
+      await clearStaleBinding('missing_activation_id');
 
       const data = { valid: false };
       return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]));
     }
 
     // 3. Validate with Polar
+    let validatedLicense;
     try {
-      await validateLicenseKey(licenseKey, originalActivationId);
+      validatedLicense = await validateLicenseKey(licenseKey, originalActivationId);
     } catch (polarError: unknown) {
       const apiError = polarError as { error?: string };
-      const errorMessage = apiError.error || "Unknown error";
-      console.error("Polar validation error:", errorMessage);
+      const errorMessage = apiError.error || 'Unknown error';
+      console.error('Polar validation error:', errorMessage);
 
       // If Polar doesn't recognize this activation anymore, clear local bindings
       // This handles the case where user deactivated via Polar customer portal
-      if (errorMessage === "NotPermitted" || errorMessage === "ResourceNotFound") {
+      if (errorMessage === 'NotPermitted' || errorMessage === 'ResourceNotFound') {
         try {
-          // Use updateMany with original values to prevent race condition:
-          // If user activated a NEW license between our read and this update,
-          // we don't want to wipe the new valid license
-          const result = await prisma.device.updateMany({
-            where: {
-              deviceHash,
-              licenseKey: originalLicenseKey,
-              activationId: originalActivationId,
-            },
-            data: {
-              licenseKey: null,
-              activationId: null,
-              lastChecked: new Date(),
-            },
-          });
-
-          if (result.count > 0) {
-            console.log(`[License Validate] Cleared stale license binding for device ${deviceHash.substring(0, 8)}... (Polar error: ${errorMessage})`);
-
-            after(async () => {
-              await prisma.activityLog.create({
-                data: {
-                  deviceHash,
-                  action: "license_desynced",
-                  metadata: { licenseKeyPrefix: licenseKey.substring(0, 8), reason: errorMessage },
-                },
-              });
-            });
-          } else {
-            console.log(`[License Validate] Skipped clearing for device ${deviceHash.substring(0, 8)}...; license binding changed concurrently`);
-          }
+          await clearStaleBinding(errorMessage);
         } catch (dbErr) {
-          console.error("Failed to clear stale license from device:", dbErr);
+          console.error('Failed to clear stale license from device:', dbErr);
         }
 
-        if (errorMessage === "NotPermitted") {
+        if (errorMessage === 'NotPermitted') {
           const data = { valid: false };
           return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.LICENSE_ALREADY_ACTIVATED]));
         }
 
-        if (errorMessage === "ResourceNotFound") {
+        if (errorMessage === 'ResourceNotFound') {
           const data = { valid: false };
           return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]));
         }
@@ -138,7 +127,22 @@ export async function POST(request: NextRequest) {
 
       return withCorsHeaders(handleInternalError(polarError));
     }
-    // 3. All good - update last checked time
+
+    if (validatedLicense.status !== 'granted') {
+      await clearStaleBinding(`license_status_${validatedLicense.status}`);
+
+      const data = { valid: false };
+      return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]));
+    }
+
+    if (!validatedLicense.activation || validatedLicense.activation.id !== originalActivationId) {
+      await clearStaleBinding('missing_or_mismatched_activation');
+
+      const data = { valid: false };
+      return withCorsHeaders(createSuccessResponse(data, ERROR_MESSAGES[ErrorCode.INVALID_LICENSE]));
+    }
+
+    // 4. All good - update last checked time
     await prisma.device.update({
       where: { deviceHash },
       data: {
@@ -154,7 +158,7 @@ export async function POST(request: NextRequest) {
       await prisma.activityLog.create({
         data: {
           deviceHash,
-          action: "validate",
+          action: 'validate',
           metadata: { licenseKeyRef: redactLicenseKey(licenseKey) }
         }
       });
