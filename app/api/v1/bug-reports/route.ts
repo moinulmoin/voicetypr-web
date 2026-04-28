@@ -272,7 +272,7 @@ function redactDiagnosticText(value: string): string {
     .replace(/\bsk-[A-Za-z0-9_-]{20,}\b/g, '[REDACTED_TOKEN]')
     .replace(/\bAKIA[0-9A-Z]{16}\b/g, '[REDACTED_AWS_KEY]')
     .replace(/\bhf_[A-Za-z0-9]{32,}\b/g, '[REDACTED_TOKEN]')
-    .replace(/\bBearer\s+[A-Za-z0-9._~+/=-]{16,}\b/gi, 'Bearer [REDACTED_TOKEN]')
+    .replace(/\bBearer\s+[A-Za-z0-9._~+/=-]{16,}/gi, 'Bearer [REDACTED_TOKEN]')
     .replace(/\b(api[_-]?key|access[_-]?token|refresh[_-]?token|secret|license[_-]?key)\b\s*[:=]\s*[^\s,;]+/gi, '$1=[REDACTED_SECRET]')
     .replace(/\/Users\/[^/\s]+/g, '/Users/[REDACTED_USER]')
     .replace(/\/home\/[^/\s]+/g, '/home/[REDACTED_USER]')

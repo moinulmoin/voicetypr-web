@@ -90,6 +90,19 @@ describe('POST /api/v1/bug-reports', () => {
     expect(payload.attachments[0].filename).toBe('voicetypr-report.txt');
   });
 
+  it('labels contact as not provided when manual reports omit name and email', async () => {
+    await POST(createRequest({
+      kind: 'manual',
+      message: 'Upload tab stopped scrolling',
+      environment: validEnvironment,
+      latestLog: validLatestLog,
+    }));
+
+    const formData = vi.mocked(fetch).mock.calls[0]![1]!.body as FormData;
+    const payload = JSON.parse(formData.get('payload_json') as string);
+    expect(payload.embeds[0].fields.find((field: { name: string }) => field.name === 'Contact')?.value).toBe('Not provided');
+  });
+
   it('delivers a valid crash report to Discord', async () => {
     const response = await POST(createRequest({
       kind: 'crash',
