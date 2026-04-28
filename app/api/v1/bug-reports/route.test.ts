@@ -342,6 +342,23 @@ describe('POST /api/v1/bug-reports', () => {
     expect(response.headers.get('Access-Control-Allow-Headers')).toContain('Content-Type');
   });
 
+  it('returns an internal error when Discord fetch throws', async () => {
+    global.fetch = vi.fn().mockRejectedValue(new Error('network error'));
+
+    const response = await POST(createRequest({
+      kind: 'manual',
+      message: 'The app broke',
+      environment: validEnvironment,
+      latestLog: validLatestLog,
+    }));
+
+    await expect(response.json()).resolves.toMatchObject({
+      success: false,
+      error: 'internal_error',
+    });
+    expect(response.status).toBe(500);
+  });
+
   it('returns an internal error when Discord delivery fails', async () => {
     global.fetch = vi.fn().mockResolvedValue(new Response('bad webhook', { status: 500 }));
 

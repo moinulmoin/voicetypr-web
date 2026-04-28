@@ -11,6 +11,7 @@ import { ERROR_MESSAGES, ErrorCode } from '@/lib/constants';
 import { redis } from '@/lib/redis';
 import { bugReportRequestSchema, type BugReportRequest } from '@/lib/types';
 
+// Per-device is the normal limit; per-IP is a harder backstop because device IDs are client supplied.
 const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
 const RATE_LIMIT_MAX_REPORTS = 5;
 const RATE_LIMIT_MAX_IP_REPORTS = 20;
@@ -42,7 +43,7 @@ export async function POST(request: NextRequest) {
         NextResponse.json(
           {
             success: false,
-            error: 'parameter_validation_error',
+            error: ErrorCode.PARAMETER_VALIDATION_ERROR,
             message: 'Invalid JSON.',
           },
           { status: 400 }
@@ -83,7 +84,6 @@ export async function OPTIONS() {
   return new Response(null, { status: 200, headers: getCorsHeaders() });
 }
 
-
 async function checkRateLimit(request: NextRequest, report: BugReportRequest): Promise<{ allowed: boolean }> {
   const ipAddress = getClientIp(request);
   const rawDeviceId = report.environment.deviceId || 'unknown-device';
@@ -103,6 +103,8 @@ async function checkRateLimit(request: NextRequest, report: BugReportRequest): P
 }
 
 function getClientIp(request: NextRequest): string {
+  // Vercel/CDN sets this for production traffic; direct clients can spoof it, so Redis
+  // also keys by the client-provided device ID and uses an IP-only backstop.
   const forwardedFor = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
   return (
     forwardedFor ||
