@@ -1,0 +1,248 @@
+import { NextRequest, NextResponse } from 'next/server';
+import {
+  getCorsHeaders,
+  withCorsHeaders,
+  createSuccessResponse,
+  handleInternalError,
+  handleValidationError,
+} from '@/lib/api-utils';
+import { redis } from '@/lib/redis';
+import { bugReportRequestSchema, type BugReportRequest } from '@/lib/types';
+
+const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
+const RATE_LIMIT_MAX_REPORTS = 5;
+const DISCORD_WAIT_QUERY = 'wait=true';
+const MAX_REQUEST_BYTES = 100_000;
+
+export async function POST(request: NextRequest) {
+  try {
+    const contentLength = Number(request.headers.get('content-length') || 0);
+    if (contentLength > MAX_REQUEST_BYTES) {
+      return withCorsHeaders(
+        NextResponse.json(
+          {
+            success: false,
+            error: 'payload_too_large',
+            message: 'Report is too large. Please copy the report and contact support directly.',
+          },
+          { status: 413 }
+        )
+      );
+    }
+
+    const body = await request.json();
+    const validationResult = bugReportRequestSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      return withCorsHeaders(handleValidationError(validationResult.error));
+    }
+
+    const report = validationResult.data;
+    const rateLimit = await checkRateLimit(request, report);
+
+    if (!rateLimit.allowed) {
+      return withCorsHeaders(
+        NextResponse.json(
+          {
+            success: false,
+            error: 'rate_limited',
+            message: 'Too many reports. Please try again later.',
+          },
+          { status: 429 }
+        )
+      );
+    }
+
+    await sendDiscordReport(report);
+
+    return withCorsHeaders(createSuccessResponse({ delivered: true }, 'Report submitted'));
+  } catch (error) {
+    return withCorsHeaders(handleInternalError(error));
+  }
+}
+
+export async function OPTIONS() {
+  return new Response(null, { status: 200, headers: getCorsHeaders() });
+}
+
+async function checkRateLimit(request: NextRequest, report: BugReportRequest): Promise<{ allowed: boolean }> {
+  const ipAddress = getClientIp(request);
+  const deviceId = normalizeRateLimitPart(report.environment.deviceId || 'unknown-device');
+  const ipPart = normalizeRateLimitPart(ipAddress);
+  const key = `bug-report:rate:${ipPart}:${deviceId}`;
+
+  const count = await redis.incr(key);
+
+  if (count === 1) {
+    await redis.expire(key, RATE_LIMIT_WINDOW_SECONDS);
+  }
+
+  return { allowed: count <= RATE_LIMIT_MAX_REPORTS };
+}
+
+function getClientIp(request: NextRequest): string {
+  const forwardedFor = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+  return (
+    forwardedFor ||
+    request.headers.get('cf-connecting-ip') ||
+    request.headers.get('x-real-ip') ||
+    'unknown-ip'
+  );
+}
+
+function normalizeRateLimitPart(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9_.:-]/g, '_').slice(0, 128) || 'unknown';
+}
+
+async function sendDiscordReport(report: BugReportRequest): Promise<void> {
+  const webhookUrl = process.env.DISCORD_BUG_REPORT_WEBHOOK_URL;
+
+  if (!webhookUrl) {
+    throw new Error('DISCORD_BUG_REPORT_WEBHOOK_URL is not configured');
+  }
+
+  const fullReport = formatFullReport(report);
+  const payload = {
+    username: 'VoiceTypr Reports',
+    content: report.kind === 'crash' ? 'New VoiceTypr crash report' : 'New VoiceTypr bug report',
+    allowed_mentions: { parse: [] },
+    embeds: [buildDiscordEmbed(report)],
+    attachments: [
+      {
+        id: 0,
+        filename: 'voicetypr-report.txt',
+        description: 'Full bounded VoiceTypr report including latest log excerpt',
+      },
+    ],
+  };
+
+  const formData = new FormData();
+  formData.append('payload_json', JSON.stringify(payload));
+  formData.append(
+    'files[0]',
+    new Blob([fullReport], { type: 'text/plain; charset=utf-8' }),
+    'voicetypr-report.txt'
+  );
+
+  const separator = webhookUrl.includes('?') ? '&' : '?';
+  const response = await fetch(`${webhookUrl}${separator}${DISCORD_WAIT_QUERY}`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const responseText = await response.text().catch(() => '');
+    throw new Error(`Discord webhook failed with ${response.status}: ${responseText.slice(0, 500)}`);
+  }
+}
+
+function buildDiscordEmbed(report: BugReportRequest) {
+  const environment = report.environment;
+  const title = report.kind === 'crash' ? 'VoiceTypr crash report' : 'VoiceTypr bug report';
+  const description = report.kind === 'crash'
+    ? truncate(redactDiagnosticText(report.crash.errorMessage), 1_000)
+    : truncate(redactDiagnosticText(report.message), 1_000);
+
+  return {
+    title,
+    description,
+    color: report.kind === 'crash' ? 0xef4444 : 0x3b82f6,
+    fields: [
+      { name: 'App Version', value: truncate(environment.appVersion, 1_024), inline: true },
+      { name: 'Platform', value: truncate(`${environment.platform} ${environment.osVersion}`, 1_024), inline: true },
+      { name: 'Architecture', value: truncate(environment.architecture, 1_024), inline: true },
+      { name: 'Model', value: truncate(environment.currentModel || 'None', 1_024), inline: true },
+      { name: 'Contact', value: truncate(formatContact(report), 1_024), inline: true },
+      { name: 'Log', value: truncate(formatLogSummary(report), 1_024), inline: false },
+    ],
+    timestamp: environment.timestamp,
+  };
+}
+
+function formatContact(report: BugReportRequest): string {
+  const parts = [];
+  if (report.name) parts.push(report.name);
+  if (report.email) parts.push(report.email);
+  return parts.length > 0 ? parts.join(' / ') : 'Not provided';
+}
+
+function formatLogSummary(report: BugReportRequest): string {
+  const latestLog = report.latestLog;
+  const source = latestLog.fileName || 'No file';
+  const truncation = latestLog.truncated ? 'truncated' : 'not truncated';
+  const status = latestLog.statusNote ? ` — ${latestLog.statusNote}` : '';
+  return `${source} (${latestLog.content.length} chars, ${truncation})${status}`;
+}
+
+function formatFullReport(report: BugReportRequest): string {
+  const lines: string[] = [];
+
+  lines.push(`# VoiceTypr ${report.kind === 'crash' ? 'Crash' : 'Bug'} Report`);
+  lines.push('');
+
+  if (report.name || report.email) {
+    lines.push('## Contact');
+    if (report.name) lines.push(`Name: ${report.name}`);
+    if (report.email) lines.push(`Email: ${report.email}`);
+    lines.push('');
+  }
+
+  if (report.kind === 'manual') {
+    lines.push('## Message');
+    lines.push(redactDiagnosticText(report.message));
+    lines.push('');
+  } else {
+    if (report.message) {
+      lines.push('## User Message');
+      lines.push(redactDiagnosticText(report.message));
+      lines.push('');
+    }
+
+    lines.push('## Crash');
+    lines.push(`Error: ${redactDiagnosticText(report.crash.errorMessage)}`);
+    if (report.crash.errorStack) {
+      lines.push('');
+      lines.push('### Stack');
+      lines.push(redactDiagnosticText(report.crash.errorStack));
+    }
+    if (report.crash.componentStack) {
+      lines.push('');
+      lines.push('### Component Stack');
+      lines.push(redactDiagnosticText(report.crash.componentStack));
+    }
+    lines.push('');
+  }
+
+  lines.push('## Environment');
+  lines.push(`App Version: ${report.environment.appVersion}`);
+  lines.push(`Platform: ${report.environment.platform}`);
+  lines.push(`OS Version: ${report.environment.osVersion}`);
+  lines.push(`Architecture: ${report.environment.architecture}`);
+  lines.push(`Current Model: ${report.environment.currentModel || 'None'}`);
+  lines.push(`Device ID: ${report.environment.deviceId || 'Unknown'}`);
+  lines.push(`Timestamp: ${report.environment.timestamp}`);
+  lines.push('');
+
+  lines.push('## Latest App Log');
+  if (report.latestLog.fileName) lines.push(`Source: ${report.latestLog.fileName}`);
+  if (report.latestLog.statusNote) lines.push(`Status: ${report.latestLog.statusNote}`);
+  if (report.latestLog.truncated) lines.push('Note: log was truncated before submission.');
+  lines.push('');
+  lines.push(redactDiagnosticText(report.latestLog.content) || '(No log content)');
+
+  return lines.join('\n');
+}
+
+function redactDiagnosticText(value: string): string {
+  return value
+    .replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, '[REDACTED_EMAIL]')
+    .replace(/\b(?:sk|sk-ant|ghp|gho|github_pat)_[A-Za-z0-9_-]{16,}\b/g, '[REDACTED_TOKEN]')
+    .replace(/\b(api[_-]?key|access[_-]?token|refresh[_-]?token|secret|license[_-]?key)\b\s*[:=]\s*[^\s,;]+/gi, '$1=[REDACTED_SECRET]')
+    .replace(/\/Users\/[^/\s]+/g, '/Users/[REDACTED_USER]')
+    .replace(/\/home\/[^/\s]+/g, '/home/[REDACTED_USER]')
+    .replace(/C:\\Users\\[^\\\s]+/gi, 'C:\\Users\\[REDACTED_USER]');
+}
+
+function truncate(value: string, maxLength: number): string {
+  return value.length <= maxLength ? value : `${value.slice(0, maxLength - 1)}…`;
+}
