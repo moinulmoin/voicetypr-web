@@ -15,11 +15,10 @@ export function createErrorResponse(
   error: ErrorCode,
   statusCode: number = 400
 ): NextResponse<ApiResponse> {
-
-
   return NextResponse.json(
     {
       success: false,
+      error,
       message: ERROR_MESSAGES[error],
     },
     { status: statusCode }

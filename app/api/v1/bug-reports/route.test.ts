@@ -224,7 +224,7 @@ describe('POST /api/v1/bug-reports', () => {
       environment: validEnvironment,
       latestLog: {
         ...validLatestLog,
-        content: 'api_key=super-secret-value user test@example.com C:\\Users\\Moin\\AppData',
+        content: 'api_key=super-secret-value user test@example.com D:\\Users\\Moin\\AppData AKIA1234567890ABCDEF hf_abcdefghijklmnopqrstuvwxyz123456 Bearer abcdefghijklmnopqrstuvwxyz',
       },
     }));
 
@@ -236,9 +236,13 @@ describe('POST /api/v1/bug-reports', () => {
     expect(text).toContain('api_key=[REDACTED_SECRET]');
     expect(text).toContain('[REDACTED_EMAIL]');
     expect(text).toContain('/Users/[REDACTED_USER]/Library');
-    expect(text).toContain('C:\\Users\\[REDACTED_USER]\\AppData');
+    expect(text).toContain('[REDACTED_DRIVE]:\\Users\\[REDACTED_USER]\\AppData');
     expect(text).not.toContain('sk_test_1234567890abcdef');
     expect(text).not.toContain('super-secret-value');
+    expect(text).toContain('[REDACTED_AWS_KEY]');
+    expect(text).toContain('Bearer [REDACTED_TOKEN]');
+    expect(text).not.toContain('AKIA1234567890ABCDEF');
+    expect(text).not.toContain('hf_abcdefghijklmnopqrstuvwxyz123456');
   });
 
   it('redacts OpenAI-style sk-proj tokens before delivery', async () => {
@@ -317,6 +321,8 @@ describe('POST /api/v1/bug-reports', () => {
 
     expect(response.status).toBe(200);
     expect(response.headers.get('Access-Control-Allow-Origin')).toBe('*');
+    expect(response.headers.get('Access-Control-Allow-Methods')).toContain('POST');
+    expect(response.headers.get('Access-Control-Allow-Headers')).toContain('Content-Type');
   });
 
   it('returns an internal error when Discord delivery fails', async () => {

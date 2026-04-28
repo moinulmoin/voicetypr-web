@@ -16,8 +16,8 @@ const RATE_LIMIT_MAX_IP_REPORTS = 20;
 const DISCORD_WAIT_QUERY = 'wait=true';
 const MAX_REQUEST_BYTES = 100_000;
 const RATE_LIMIT_SCRIPT = redis.createScript<number>(`
+  redis.call('SET', KEYS[1], 0, 'EX', ARGV[1], 'NX')
   local n = redis.call('INCR', KEYS[1])
-  if n == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]) end
   return n
 `);
 
@@ -275,10 +275,13 @@ function redactDiagnosticText(value: string): string {
     .replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, '[REDACTED_EMAIL]')
     .replace(/\b(?:sk|sk-ant|ghp|gho|github_pat)[_-][A-Za-z0-9_-]{16,}\b/g, '[REDACTED_TOKEN]')
     .replace(/\bsk-[A-Za-z0-9_-]{20,}\b/g, '[REDACTED_TOKEN]')
+    .replace(/\bAKIA[0-9A-Z]{16}\b/g, '[REDACTED_AWS_KEY]')
+    .replace(/\bhf_[A-Za-z0-9]{32,}\b/g, '[REDACTED_TOKEN]')
+    .replace(/\bBearer\s+[A-Za-z0-9._~+/=-]{16,}\b/gi, 'Bearer [REDACTED_TOKEN]')
     .replace(/\b(api[_-]?key|access[_-]?token|refresh[_-]?token|secret|license[_-]?key)\b\s*[:=]\s*[^\s,;]+/gi, '$1=[REDACTED_SECRET]')
     .replace(/\/Users\/[^/\s]+/g, '/Users/[REDACTED_USER]')
     .replace(/\/home\/[^/\s]+/g, '/home/[REDACTED_USER]')
-    .replace(/C:\\Users\\[^\\\s]+/gi, 'C:\\Users\\[REDACTED_USER]');
+    .replace(/[A-Za-z]:\\Users\\[^\\\s]+/g, '[REDACTED_DRIVE]:\\Users\\[REDACTED_USER]');
 }
 
 function truncate(value: string, maxLength: number): string {
