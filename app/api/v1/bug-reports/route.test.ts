@@ -41,10 +41,22 @@ function createRequest(body: unknown, headers: Record<string, string> = {}) {
   });
 }
 
+function createRawRequest(body: string, headers: Record<string, string> = {}) {
+  return new NextRequest('https://voicetypr.com/api/v1/bug-reports', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-forwarded-for': '203.0.113.10',
+      ...headers,
+    },
+    body,
+  });
+}
+
 describe('POST /api/v1/bug-reports', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    process.env.DISCORD_BUG_REPORT_WEBHOOK_URL = 'https://discord.test/webhook';
+    process.env.DISCORD_BUG_REPORT_WEBHOOK_URL = 'https://discord.com/api/webhooks/test-id/test-token';
     rateLimitEvalMock.mockResolvedValue(1);
     global.fetch = vi.fn().mockResolvedValue(new Response('{}', { status: 200 }));
   });
@@ -65,8 +77,9 @@ describe('POST /api/v1/bug-reports', () => {
     });
     expect(response.status).toBe(200);
     expect(rateLimitEvalMock).toHaveBeenCalledWith(['bug-report:rate:203.0.113.10:device-123'], ['600']);
+    expect(rateLimitEvalMock).toHaveBeenCalledWith(['bug-report:rate:203.0.113.10'], ['600']);
     expect(fetch).toHaveBeenCalledWith(
-      'https://discord.test/webhook?wait=true',
+      'https://discord.com/api/webhooks/test-id/test-token?wait=true',
       expect.objectContaining({ method: 'POST', body: expect.any(FormData) })
     );
 
@@ -117,7 +130,7 @@ describe('POST /api/v1/bug-reports', () => {
   });
 
   it('rate limits repeated callers', async () => {
-    rateLimitEvalMock.mockResolvedValueOnce(6);
+    rateLimitEvalMock.mockResolvedValueOnce(6).mockResolvedValueOnce(1);
 
     const response = await POST(createRequest({
       kind: 'manual',
@@ -134,14 +147,63 @@ describe('POST /api/v1/bug-reports', () => {
     expect(fetch).not.toHaveBeenCalled();
   });
 
+  it('rate limits callers even when they rotate device identifiers', async () => {
+    rateLimitEvalMock.mockResolvedValueOnce(1).mockResolvedValueOnce(21);
+
+    const response = await POST(createRequest({
+      kind: 'manual',
+      message: 'The app broke',
+      environment: { ...validEnvironment, deviceId: 'rotated-device' },
+      latestLog: validLatestLog,
+    }));
+
+    await expect(response.json()).resolves.toMatchObject({
+      success: false,
+      error: 'rate_limited',
+    });
+    expect(response.status).toBe(429);
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
   it('rejects reports whose actual body is too large before rate limiting or Discord delivery', async () => {
+    const response = await POST(createRawRequest(JSON.stringify({
+      kind: 'manual',
+      message: 'x'.repeat(100_001),
+      environment: validEnvironment,
+      latestLog: validLatestLog,
+    })));
+
+    await expect(response.json()).resolves.toMatchObject({
+      success: false,
+      error: 'payload_too_large',
+    });
+    expect(response.status).toBe(413);
+    expect(rateLimitEvalMock).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it('rejects malformed JSON as a validation error', async () => {
+    const response = await POST(createRawRequest('{not json'));
+
+    await expect(response.json()).resolves.toMatchObject({
+      success: false,
+      error: 'parameter_validation_error',
+      message: 'Invalid JSON.',
+    });
+    expect(response.status).toBe(400);
+    expect(rateLimitEvalMock).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it('rejects reports with an oversized content-length before reading the body', async () => {
     const response = await POST(createRequest(
       {
         kind: 'manual',
-        message: 'x'.repeat(100_001),
+        message: 'The app broke',
         environment: validEnvironment,
         latestLog: validLatestLog,
-      }
+      },
+      { 'content-length': '100001' }
     ));
 
     await expect(response.json()).resolves.toMatchObject({
@@ -197,6 +259,24 @@ describe('POST /api/v1/bug-reports', () => {
 
   it('returns an internal error when the Discord webhook env var is missing', async () => {
     delete process.env.DISCORD_BUG_REPORT_WEBHOOK_URL;
+
+    const response = await POST(createRequest({
+      kind: 'manual',
+      message: 'The app broke',
+      environment: validEnvironment,
+      latestLog: validLatestLog,
+    }));
+
+    await expect(response.json()).resolves.toMatchObject({
+      success: false,
+      error: 'internal_error',
+    });
+    expect(response.status).toBe(500);
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it('returns an internal error when the Discord webhook URL is not Discord-owned', async () => {
+    process.env.DISCORD_BUG_REPORT_WEBHOOK_URL = 'https://example.com/webhook';
 
     const response = await POST(createRequest({
       kind: 'manual',

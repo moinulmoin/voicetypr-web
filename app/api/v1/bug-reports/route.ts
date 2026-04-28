@@ -12,6 +12,7 @@ import { bugReportRequestSchema, type BugReportRequest } from '@/lib/types';
 
 const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
 const RATE_LIMIT_MAX_REPORTS = 5;
+const RATE_LIMIT_MAX_IP_REPORTS = 20;
 const DISCORD_WAIT_QUERY = 'wait=true';
 const MAX_REQUEST_BYTES = 100_000;
 const RATE_LIMIT_SCRIPT = redis.createScript<number>(`
@@ -22,21 +23,31 @@ const RATE_LIMIT_SCRIPT = redis.createScript<number>(`
 
 export async function POST(request: NextRequest) {
   try {
+    const contentLength = Number(request.headers.get('content-length') || 0);
+    if (contentLength > MAX_REQUEST_BYTES) {
+      return withCorsHeaders(payloadTooLargeResponse());
+    }
+
     const bodyText = await request.text();
-    if (new TextEncoder().encode(bodyText).length > MAX_REQUEST_BYTES) {
+    if (Buffer.byteLength(bodyText, 'utf8') > MAX_REQUEST_BYTES) {
+      return withCorsHeaders(payloadTooLargeResponse());
+    }
+
+    let body: unknown;
+    try {
+      body = JSON.parse(bodyText);
+    } catch {
       return withCorsHeaders(
         NextResponse.json(
           {
             success: false,
-            error: ErrorCode.PAYLOAD_TOO_LARGE,
-            message: ERROR_MESSAGES[ErrorCode.PAYLOAD_TOO_LARGE],
+            error: 'parameter_validation_error',
+            message: 'Invalid JSON.',
           },
-          { status: 413 }
+          { status: 400 }
         )
       );
     }
-
-    const body = JSON.parse(bodyText);
     const validationResult = bugReportRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
@@ -71,15 +82,34 @@ export async function OPTIONS() {
   return new Response(null, { status: 200, headers: getCorsHeaders() });
 }
 
+function payloadTooLargeResponse(): NextResponse {
+  // createErrorResponse currently omits the `error` field; desktop callers need it.
+  return NextResponse.json(
+    {
+      success: false,
+      error: ErrorCode.PAYLOAD_TOO_LARGE,
+      message: ERROR_MESSAGES[ErrorCode.PAYLOAD_TOO_LARGE],
+    },
+    { status: 413 }
+  );
+}
+
 async function checkRateLimit(request: NextRequest, report: BugReportRequest): Promise<{ allowed: boolean }> {
   const ipAddress = getClientIp(request);
-  const deviceId = normalizeRateLimitPart(report.environment.deviceId || 'unknown-device');
+  const rawDeviceId = report.environment.deviceId || 'unknown-device';
+  const deviceId = normalizeRateLimitPart(rawDeviceId);
   const ipPart = normalizeRateLimitPart(ipAddress);
-  const key = `bug-report:rate:${ipPart}:${deviceId}`;
+  const deviceKey = `bug-report:rate:${ipPart}:${deviceId}`;
+  const ipKey = `bug-report:rate:${ipPart}`;
 
-  const count = await RATE_LIMIT_SCRIPT.eval([key], [String(RATE_LIMIT_WINDOW_SECONDS)]);
+  const [deviceCount, ipCount] = await Promise.all([
+    RATE_LIMIT_SCRIPT.eval([deviceKey], [String(RATE_LIMIT_WINDOW_SECONDS)]),
+    RATE_LIMIT_SCRIPT.eval([ipKey], [String(RATE_LIMIT_WINDOW_SECONDS)]),
+  ]);
 
-  return { allowed: count <= RATE_LIMIT_MAX_REPORTS };
+  return {
+    allowed: deviceCount <= RATE_LIMIT_MAX_REPORTS && ipCount <= RATE_LIMIT_MAX_IP_REPORTS,
+  };
 }
 
 function getClientIp(request: NextRequest): string {
@@ -101,6 +131,10 @@ async function sendDiscordReport(report: BugReportRequest): Promise<void> {
 
   if (!webhookUrl) {
     throw new Error('DISCORD_BUG_REPORT_WEBHOOK_URL is not configured');
+  }
+
+  if (!webhookUrl.startsWith('https://discord.com/api/webhooks/')) {
+    throw new Error('DISCORD_BUG_REPORT_WEBHOOK_URL must be a Discord webhook URL');
   }
 
   const fullReport = formatFullReport(report);
