@@ -32,7 +32,7 @@ export function handleValidationError(error: ZodError): NextResponse<ApiResponse
   return NextResponse.json(
     {
       success: false,
-      error: 'parameter_validation_error',
+      error: ErrorCode.PARAMETER_VALIDATION_ERROR,
       message,
     },
     { status: 400 }

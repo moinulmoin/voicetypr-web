@@ -15,7 +15,6 @@ import { bugReportRequestSchema, type BugReportRequest } from '@/lib/types';
 const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
 const RATE_LIMIT_MAX_REPORTS = 5;
 const RATE_LIMIT_MAX_IP_REPORTS = 20;
-const DISCORD_WAIT_QUERY = 'wait=true';
 const MAX_REQUEST_BYTES = 100_000;
 const RATE_LIMIT_SCRIPT = redis.createScript<number>(`
   redis.call('SET', KEYS[1], 0, 'EX', ARGV[1], 'NX')
@@ -92,6 +91,10 @@ async function checkRateLimit(request: NextRequest, report: BugReportRequest): P
   const deviceKey = `bug-report:rate:${ipPart}:${deviceId}`;
   const ipKey = `bug-report:rate:${ipPart}`;
 
+  // Fail closed if Redis is unavailable. Reports keep the desktop Copy Report fallback,
+  // while allowing submission during a Redis outage would remove the only abuse guard.
+  // Both counters are incremented before the decision; the short fixed window keeps
+  // accidental shared-IP impact bounded while preserving one-round-trip atomicity.
   const [deviceCount, ipCount] = await Promise.all([
     RATE_LIMIT_SCRIPT.eval([deviceKey], [String(RATE_LIMIT_WINDOW_SECONDS)]),
     RATE_LIMIT_SCRIPT.eval([ipKey], [String(RATE_LIMIT_WINDOW_SECONDS)]),
@@ -139,7 +142,7 @@ async function sendDiscordReport(report: BugReportRequest): Promise<void> {
       {
         id: 0,
         filename: 'voicetypr-report.txt',
-        description: 'Full bounded VoiceTypr report including latest log excerpt',
+        description: 'VoiceTypr report including latest log excerpt',
       },
     ],
   };
@@ -153,7 +156,7 @@ async function sendDiscordReport(report: BugReportRequest): Promise<void> {
   );
 
   const separator = webhookUrl.includes('?') ? '&' : '?';
-  const response = await fetch(`${webhookUrl}${separator}${DISCORD_WAIT_QUERY}`, {
+  const response = await fetch(`${webhookUrl}${separator}wait=true`, {
     method: 'POST',
     body: formData,
   });

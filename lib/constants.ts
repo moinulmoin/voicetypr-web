@@ -31,8 +31,8 @@ export enum ErrorCode {
   // Report errors
   RATE_LIMITED = 'rate_limited',
   PAYLOAD_TOO_LARGE = 'payload_too_large',
-
   PARAMETER_VALIDATION_ERROR = 'parameter_validation_error',
+
   // System errors
   INTERNAL_ERROR = 'internal_error',
   INVALID_DEVICE_HASH = 'invalid_device_hash',
