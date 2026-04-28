@@ -6,6 +6,7 @@ import {
   handleInternalError,
   handleValidationError,
 } from '@/lib/api-utils';
+import { ERROR_MESSAGES, ErrorCode } from '@/lib/constants';
 import { redis } from '@/lib/redis';
 import { bugReportRequestSchema, type BugReportRequest } from '@/lib/types';
 
@@ -13,24 +14,29 @@ const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
 const RATE_LIMIT_MAX_REPORTS = 5;
 const DISCORD_WAIT_QUERY = 'wait=true';
 const MAX_REQUEST_BYTES = 100_000;
+const RATE_LIMIT_SCRIPT = redis.createScript<number>(`
+  local n = redis.call('INCR', KEYS[1])
+  if n == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]) end
+  return n
+`);
 
 export async function POST(request: NextRequest) {
   try {
-    const contentLength = Number(request.headers.get('content-length') || 0);
-    if (contentLength > MAX_REQUEST_BYTES) {
+    const bodyText = await request.text();
+    if (new TextEncoder().encode(bodyText).length > MAX_REQUEST_BYTES) {
       return withCorsHeaders(
         NextResponse.json(
           {
             success: false,
-            error: 'payload_too_large',
-            message: 'Report is too large. Please copy the report and contact support directly.',
+            error: ErrorCode.PAYLOAD_TOO_LARGE,
+            message: ERROR_MESSAGES[ErrorCode.PAYLOAD_TOO_LARGE],
           },
           { status: 413 }
         )
       );
     }
 
-    const body = await request.json();
+    const body = JSON.parse(bodyText);
     const validationResult = bugReportRequestSchema.safeParse(body);
 
     if (!validationResult.success) {
@@ -45,8 +51,8 @@ export async function POST(request: NextRequest) {
         NextResponse.json(
           {
             success: false,
-            error: 'rate_limited',
-            message: 'Too many reports. Please try again later.',
+            error: ErrorCode.RATE_LIMITED,
+            message: ERROR_MESSAGES[ErrorCode.RATE_LIMITED],
           },
           { status: 429 }
         )
@@ -71,11 +77,7 @@ async function checkRateLimit(request: NextRequest, report: BugReportRequest): P
   const ipPart = normalizeRateLimitPart(ipAddress);
   const key = `bug-report:rate:${ipPart}:${deviceId}`;
 
-  const count = await redis.incr(key);
-
-  if (count === 1) {
-    await redis.expire(key, RATE_LIMIT_WINDOW_SECONDS);
-  }
+  const count = await RATE_LIMIT_SCRIPT.eval([key], [String(RATE_LIMIT_WINDOW_SECONDS)]);
 
   return { allowed: count <= RATE_LIMIT_MAX_REPORTS };
 }
@@ -160,6 +162,7 @@ function buildDiscordEmbed(report: BugReportRequest) {
 }
 
 function formatContact(report: BugReportRequest): string {
+  // Contact is intentionally not redacted; it is the reply path the user chose to provide.
   const parts = [];
   if (report.name) parts.push(report.name);
   if (report.email) parts.push(report.email);
@@ -236,7 +239,8 @@ function formatFullReport(report: BugReportRequest): string {
 function redactDiagnosticText(value: string): string {
   return value
     .replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, '[REDACTED_EMAIL]')
-    .replace(/\b(?:sk|sk-ant|ghp|gho|github_pat)_[A-Za-z0-9_-]{16,}\b/g, '[REDACTED_TOKEN]')
+    .replace(/\b(?:sk|sk-ant|ghp|gho|github_pat)[_-][A-Za-z0-9_-]{16,}\b/g, '[REDACTED_TOKEN]')
+    .replace(/\bsk-[A-Za-z0-9_-]{20,}\b/g, '[REDACTED_TOKEN]')
     .replace(/\b(api[_-]?key|access[_-]?token|refresh[_-]?token|secret|license[_-]?key)\b\s*[:=]\s*[^\s,;]+/gi, '$1=[REDACTED_SECRET]')
     .replace(/\/Users\/[^/\s]+/g, '/Users/[REDACTED_USER]')
     .replace(/\/home\/[^/\s]+/g, '/home/[REDACTED_USER]')

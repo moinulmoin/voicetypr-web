@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { NextRequest } from 'next/server';
 
+const rateLimitEvalMock = vi.fn();
 const redisMock = {
-  incr: vi.fn(),
-  expire: vi.fn(),
+  createScript: vi.fn(() => ({ eval: rateLimitEvalMock })),
 };
 
 vi.mock('@/lib/redis', () => ({
@@ -45,8 +45,7 @@ describe('POST /api/v1/bug-reports', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     process.env.DISCORD_BUG_REPORT_WEBHOOK_URL = 'https://discord.test/webhook';
-    redisMock.incr.mockResolvedValue(1);
-    redisMock.expire.mockResolvedValue(1);
+    rateLimitEvalMock.mockResolvedValue(1);
     global.fetch = vi.fn().mockResolvedValue(new Response('{}', { status: 200 }));
   });
 
@@ -65,8 +64,7 @@ describe('POST /api/v1/bug-reports', () => {
       data: { delivered: true },
     });
     expect(response.status).toBe(200);
-    expect(redisMock.incr).toHaveBeenCalledWith('bug-report:rate:203.0.113.10:device-123');
-    expect(redisMock.expire).toHaveBeenCalledWith(expect.any(String), 600);
+    expect(rateLimitEvalMock).toHaveBeenCalledWith(['bug-report:rate:203.0.113.10:device-123'], ['600']);
     expect(fetch).toHaveBeenCalledWith(
       'https://discord.test/webhook?wait=true',
       expect.objectContaining({ method: 'POST', body: expect.any(FormData) })
@@ -114,12 +112,12 @@ describe('POST /api/v1/bug-reports', () => {
       error: 'parameter_validation_error',
     });
     expect(response.status).toBe(400);
-    expect(redisMock.incr).not.toHaveBeenCalled();
+    expect(rateLimitEvalMock).not.toHaveBeenCalled();
     expect(fetch).not.toHaveBeenCalled();
   });
 
   it('rate limits repeated callers', async () => {
-    redisMock.incr.mockResolvedValueOnce(6);
+    rateLimitEvalMock.mockResolvedValueOnce(6);
 
     const response = await POST(createRequest({
       kind: 'manual',
@@ -136,15 +134,14 @@ describe('POST /api/v1/bug-reports', () => {
     expect(fetch).not.toHaveBeenCalled();
   });
 
-  it('rejects reports with an oversized content-length before parsing', async () => {
+  it('rejects reports whose actual body is too large before rate limiting or Discord delivery', async () => {
     const response = await POST(createRequest(
       {
         kind: 'manual',
-        message: 'The app broke',
+        message: 'x'.repeat(100_001),
         environment: validEnvironment,
         latestLog: validLatestLog,
-      },
-      { 'content-length': '100001' }
+      }
     ));
 
     await expect(response.json()).resolves.toMatchObject({
@@ -152,7 +149,7 @@ describe('POST /api/v1/bug-reports', () => {
       error: 'payload_too_large',
     });
     expect(response.status).toBe(413);
-    expect(redisMock.incr).not.toHaveBeenCalled();
+    expect(rateLimitEvalMock).not.toHaveBeenCalled();
     expect(fetch).not.toHaveBeenCalled();
   });
 
@@ -180,6 +177,66 @@ describe('POST /api/v1/bug-reports', () => {
     expect(text).toContain('C:\\Users\\[REDACTED_USER]\\AppData');
     expect(text).not.toContain('sk_test_1234567890abcdef');
     expect(text).not.toContain('super-secret-value');
+  });
+
+  it('redacts OpenAI-style sk-proj tokens before delivery', async () => {
+    await POST(createRequest({
+      kind: 'manual',
+      message: 'token sk-proj-abcdefghijklmnopqrstuvwxyz1234567890',
+      environment: validEnvironment,
+      latestLog: validLatestLog,
+    }));
+
+    const formData = vi.mocked(fetch).mock.calls[0]![1]!.body as FormData;
+    const file = formData.get('files[0]') as File;
+    const text = await file.text();
+
+    expect(text).toContain('[REDACTED_TOKEN]');
+    expect(text).not.toContain('sk-proj-abcdefghijklmnopqrstuvwxyz1234567890');
+  });
+
+  it('returns an internal error when the Discord webhook env var is missing', async () => {
+    delete process.env.DISCORD_BUG_REPORT_WEBHOOK_URL;
+
+    const response = await POST(createRequest({
+      kind: 'manual',
+      message: 'The app broke',
+      environment: validEnvironment,
+      latestLog: validLatestLog,
+    }));
+
+    await expect(response.json()).resolves.toMatchObject({
+      success: false,
+      error: 'internal_error',
+    });
+    expect(response.status).toBe(500);
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it('returns an internal error when Redis rate limiting fails', async () => {
+    rateLimitEvalMock.mockRejectedValueOnce(new Error('redis down'));
+
+    const response = await POST(createRequest({
+      kind: 'manual',
+      message: 'The app broke',
+      environment: validEnvironment,
+      latestLog: validLatestLog,
+    }));
+
+    await expect(response.json()).resolves.toMatchObject({
+      success: false,
+      error: 'internal_error',
+    });
+    expect(response.status).toBe(500);
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it('responds to OPTIONS with CORS headers', async () => {
+    const { OPTIONS } = await import('./route');
+    const response = await OPTIONS();
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get('Access-Control-Allow-Origin')).toBe('*');
   });
 
   it('returns an internal error when Discord delivery fails', async () => {
