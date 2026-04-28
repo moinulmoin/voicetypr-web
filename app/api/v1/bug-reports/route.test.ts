@@ -144,6 +144,7 @@ describe('POST /api/v1/bug-reports', () => {
       error: 'rate_limited',
     });
     expect(response.status).toBe(429);
+    expect(response.headers.get('Retry-After')).toBe('600');
     expect(fetch).not.toHaveBeenCalled();
   });
 
@@ -163,6 +164,21 @@ describe('POST /api/v1/bug-reports', () => {
     });
     expect(response.status).toBe(429);
     expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it('normalizes IPv6 colons in rate limit keys', async () => {
+    await POST(createRequest(
+      {
+        kind: 'manual',
+        message: 'The app broke',
+        environment: validEnvironment,
+        latestLog: validLatestLog,
+      },
+      { 'x-forwarded-for': '2001:db8::1' }
+    ));
+
+    expect(rateLimitEvalMock).toHaveBeenCalledWith(['bug-report:rate:2001_db8__1:device-123'], ['600']);
+    expect(rateLimitEvalMock).toHaveBeenCalledWith(['bug-report:rate:2001_db8__1'], ['600']);
   });
 
   it('rejects reports whose actual body is too large before rate limiting or Discord delivery', async () => {
@@ -224,7 +240,7 @@ describe('POST /api/v1/bug-reports', () => {
       environment: validEnvironment,
       latestLog: {
         ...validLatestLog,
-        content: 'api_key=super-secret-value user test@example.com D:\\Users\\Moin\\AppData AKIA1234567890ABCDEF hf_abcdefghijklmnopqrstuvwxyz123456 Bearer abcdefghijklmnopqrstuvwxyz',
+        content: 'api_key=super-secret-value user test@example.com D:\\Users\\Moin\\AppData /root/.cache AKIA1234567890ABCDEF hf_abcdefghijklmnopqrstuvwxyz123456 Bearer abcdefghijklmnopqrstuvwxyz',
       },
     }));
 
@@ -237,6 +253,7 @@ describe('POST /api/v1/bug-reports', () => {
     expect(text).toContain('[REDACTED_EMAIL]');
     expect(text).toContain('/Users/[REDACTED_USER]/Library');
     expect(text).toContain('[REDACTED_DRIVE]:\\Users\\[REDACTED_USER]\\AppData');
+    expect(text).toContain('/[REDACTED_USER]/.cache');
     expect(text).not.toContain('sk_test_1234567890abcdef');
     expect(text).not.toContain('super-secret-value');
     expect(text).toContain('[REDACTED_AWS_KEY]');

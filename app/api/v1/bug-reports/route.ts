@@ -3,6 +3,7 @@ import {
   getCorsHeaders,
   withCorsHeaders,
   createSuccessResponse,
+  createErrorResponse,
   handleInternalError,
   handleValidationError,
 } from '@/lib/api-utils';
@@ -25,12 +26,12 @@ export async function POST(request: NextRequest) {
   try {
     const contentLength = Number(request.headers.get('content-length') || 0);
     if (contentLength > MAX_REQUEST_BYTES) {
-      return withCorsHeaders(payloadTooLargeResponse());
+      return withCorsHeaders(createErrorResponse(ErrorCode.PAYLOAD_TOO_LARGE, 413));
     }
 
     const bodyText = await request.text();
     if (Buffer.byteLength(bodyText, 'utf8') > MAX_REQUEST_BYTES) {
-      return withCorsHeaders(payloadTooLargeResponse());
+      return withCorsHeaders(createErrorResponse(ErrorCode.PAYLOAD_TOO_LARGE, 413));
     }
 
     let body: unknown;
@@ -65,7 +66,7 @@ export async function POST(request: NextRequest) {
             error: ErrorCode.RATE_LIMITED,
             message: ERROR_MESSAGES[ErrorCode.RATE_LIMITED],
           },
-          { status: 429 }
+          { status: 429, headers: { 'Retry-After': String(RATE_LIMIT_WINDOW_SECONDS) } }
         )
       );
     }
@@ -82,17 +83,6 @@ export async function OPTIONS() {
   return new Response(null, { status: 200, headers: getCorsHeaders() });
 }
 
-function payloadTooLargeResponse(): NextResponse {
-  // createErrorResponse currently omits the `error` field; desktop callers need it.
-  return NextResponse.json(
-    {
-      success: false,
-      error: ErrorCode.PAYLOAD_TOO_LARGE,
-      message: ERROR_MESSAGES[ErrorCode.PAYLOAD_TOO_LARGE],
-    },
-    { status: 413 }
-  );
-}
 
 async function checkRateLimit(request: NextRequest, report: BugReportRequest): Promise<{ allowed: boolean }> {
   const ipAddress = getClientIp(request);
@@ -123,7 +113,7 @@ function getClientIp(request: NextRequest): string {
 }
 
 function normalizeRateLimitPart(value: string): string {
-  return value.toLowerCase().replace(/[^a-z0-9_.:-]/g, '_').slice(0, 128) || 'unknown';
+  return value.toLowerCase().replace(/[^a-z0-9_.-]/g, '_').slice(0, 128) || 'unknown';
 }
 
 async function sendDiscordReport(report: BugReportRequest): Promise<void> {
@@ -281,6 +271,7 @@ function redactDiagnosticText(value: string): string {
     .replace(/\b(api[_-]?key|access[_-]?token|refresh[_-]?token|secret|license[_-]?key)\b\s*[:=]\s*[^\s,;]+/gi, '$1=[REDACTED_SECRET]')
     .replace(/\/Users\/[^/\s]+/g, '/Users/[REDACTED_USER]')
     .replace(/\/home\/[^/\s]+/g, '/home/[REDACTED_USER]')
+    .replace(/\/root\//g, '/[REDACTED_USER]/')
     .replace(/[A-Za-z]:\\Users\\[^\\\s]+/g, '[REDACTED_DRIVE]:\\Users\\[REDACTED_USER]');
 }
 
