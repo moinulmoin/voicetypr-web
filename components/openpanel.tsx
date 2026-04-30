@@ -9,7 +9,7 @@ export const OpenPanel = () => {
     <OpenPanelComponent
       clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID!}
       apiUrl="/api/op"
-      scriptUrl="/op1.js"
+      scriptUrl="/api/op/op1.js"
       trackScreenViews={true}
       trackOutgoingLinks={true}
       trackAttributes={true}
