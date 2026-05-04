@@ -3,13 +3,22 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import Header from "@/app/components/sections/Header";
 import Footer from "@/app/components/sections/Footer";
 import { mdxComponents } from "@/app/components/blog/MdxComponents";
+import { Aside } from "@/app/components/blog/Aside";
+import { AuthorBlock } from "@/app/components/blog/AuthorBlock";
+import { PostNavigation } from "@/app/components/blog/PostNavigation";
+import { Pullquote } from "@/app/components/blog/Pullquote";
+import { ReadingProgress } from "@/app/components/blog/ReadingProgress";
+import { TableOfContents } from "@/app/components/blog/TableOfContents";
+import { extractToc } from "@/lib/toc";
 import {
   BLOG_CATEGORY_LABELS,
   formatPublishedAt,
+  getAdjacentPosts,
   getAllSlugs,
   getPostBySlug,
 } from "@/lib/blog";
@@ -74,6 +83,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 
+  const toc = extractToc(post.content);
+  const { prev, next } = await getAdjacentPosts(post.slug);
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -95,12 +107,15 @@ export default async function BlogPostPage({ params }: PageProps) {
     image: post.ogImage ?? "https://voicetypr.com/voicetypr-og.png",
   };
 
+  const showToc = toc.length >= 3;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <ReadingProgress />
 
       <main
         id="main-content"
@@ -142,47 +157,66 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <section className="ed-section pt-0">
           <div className="ed-container">
-            <div className="max-w-[760px]">
-              <MDXRemote
-                source={post.content}
-                components={mdxComponents}
-                options={{
-                  mdxOptions: {
-                    remarkPlugins: [remarkGfm],
-                    rehypePlugins: [
-                      [
-                        rehypePrettyCode,
-                        {
-                          theme: "github-light",
-                          keepBackground: false,
-                        },
+            <div
+              className={
+                showToc
+                  ? "grid grid-cols-1 lg:grid-cols-[760px_1fr] gap-12"
+                  : ""
+              }
+            >
+              <div className="max-w-[760px]">
+                <MDXRemote
+                  source={post.content}
+                  components={{ ...mdxComponents, Pullquote, Aside }}
+                  options={{
+                    mdxOptions: {
+                      remarkPlugins: [remarkGfm],
+                      rehypePlugins: [
+                        rehypeSlug,
+                        [
+                          rehypePrettyCode,
+                          {
+                            theme: "github-light",
+                            keepBackground: false,
+                          },
+                        ],
                       ],
-                    ],
-                  },
-                }}
-              />
+                    },
+                  }}
+                />
 
-              {/* Closing CTA — recurs across all posts */}
-              <div className="mt-16 pt-10 border-t border-editorial-line">
-                <div className="ed-eyebrow">try the thing this post is about</div>
-                <h2 className="font-serif text-[clamp(28px,3vw,40px)] leading-[1.1] mt-3 mb-3 max-w-[600px]">
-                  VoiceTypr is the offline voice-to-text app I wish existed.
-                </h2>
-                <p className="text-editorial-ink-2 text-[16px] leading-[1.6] max-w-[600px] mb-6">
-                  Pay once. Run locally. Three-day trial, no card.
-                </p>
-                <Link
-                  href="/download"
-                  className="group inline-flex items-center gap-2 rounded-full bg-editorial-ink text-white pl-6 pr-1.5 py-1.5 text-[15px] font-medium [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                  data-track="blog-cta-click"
-                  data-track-slug={post.slug}
-                >
-                  Try VoiceTypr
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </Link>
+                <AuthorBlock />
+
+                {/* Closing CTA — recurs across all posts */}
+                <div className="mt-12 pt-10 border-t border-editorial-line">
+                  <div className="ed-eyebrow">try the thing this post is about</div>
+                  <h2 className="font-serif text-[clamp(28px,3vw,40px)] leading-[1.1] mt-3 mb-3 max-w-[600px]">
+                    VoiceTypr is the offline voice-to-text app I wish existed.
+                  </h2>
+                  <p className="text-editorial-ink-2 text-[16px] leading-[1.6] max-w-[600px] mb-6">
+                    Pay once. Run locally. Three-day trial, no card.
+                  </p>
+                  <Link
+                    href="/download"
+                    className="group inline-flex items-center gap-2 rounded-full bg-editorial-ink text-white pl-6 pr-1.5 py-1.5 text-[15px] font-medium [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+                    data-track="blog-cta-click"
+                    data-track-slug={post.slug}
+                  >
+                    Try VoiceTypr
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+                      →
+                    </span>
+                  </Link>
+                </div>
+
+                <PostNavigation prev={prev} next={next} />
               </div>
+
+              {showToc ? (
+                <aside className="hidden lg:block">
+                  <TableOfContents items={toc} />
+                </aside>
+              ) : null}
             </div>
           </div>
         </section>

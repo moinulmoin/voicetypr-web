@@ -6,6 +6,7 @@ import {
   BLOG_CATEGORY_LABELS,
   formatPublishedAt,
   getAllPosts,
+  type BlogPostMeta,
 } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -25,8 +26,81 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+function PostMeta({ post }: { post: BlogPostMeta }) {
+  return (
+    <div className="flex flex-wrap items-center gap-3 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
+      <span>{BLOG_CATEGORY_LABELS[post.category]}</span>
+      <span aria-hidden>·</span>
+      <time dateTime={post.publishedAt}>
+        {formatPublishedAt(post.publishedAt)}
+      </time>
+      <span aria-hidden>·</span>
+      <span>{post.readingTimeMinutes} min read</span>
+    </div>
+  );
+}
+
+function FeaturedPost({ post }: { post: BlogPostMeta }) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group block bg-editorial-surface border border-editorial-line rounded-[28px] p-8 md:p-12 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] hover:border-editorial-ink-3 active:scale-[0.99]"
+      data-track="blog-featured-click"
+      data-track-slug={post.slug}
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 lg:gap-12">
+        <div className="lg:max-w-[180px]">
+          <div className="font-mono uppercase tracking-[0.18em] text-[10px] text-editorial-accent mb-3">
+            Latest
+          </div>
+          <PostMeta post={post} />
+        </div>
+
+        <div>
+          <h2 className="font-serif text-[clamp(36px,4.4vw,60px)] leading-[1.04] tracking-[-0.02em] mb-4">
+            {post.title}
+          </h2>
+          <p className="text-editorial-ink-2 text-[17px] leading-[1.6] max-w-[700px] mb-6">
+            {post.description}
+          </p>
+          <div className="inline-flex items-center gap-1.5 font-mono uppercase tracking-[0.14em] text-[11px] text-editorial-ink [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+            Read the piece
+            <span aria-hidden>→</span>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function PostCard({ post }: { post: BlogPostMeta }) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group block bg-editorial-surface border border-editorial-line rounded-2xl p-7 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] hover:border-editorial-ink-3 active:scale-[0.99] h-full flex flex-col"
+      data-track="blog-card-click"
+      data-track-slug={post.slug}
+    >
+      <PostMeta post={post} />
+      <h3 className="font-serif text-[clamp(22px,2.4vw,28px)] leading-[1.15] tracking-[-0.005em] mt-4 mb-3">
+        {post.title}
+      </h3>
+      <p className="text-editorial-ink-2 text-[15px] leading-[1.6] mb-6 flex-1">
+        {post.description}
+      </p>
+      <div className="inline-flex items-center gap-1.5 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3 group-hover:text-editorial-ink-2 [transition:color_200ms]">
+        Read the piece
+        <span aria-hidden className="[transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+          →
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 export default async function BlogIndexPage() {
   const posts = await getAllPosts();
+  const [featured, ...rest] = posts;
 
   return (
     <>
@@ -53,46 +127,27 @@ export default async function BlogIndexPage() {
 
         <section className="ed-section">
           <div className="ed-container">
-            {posts.length === 0 ? (
+            {!featured ? (
               <p className="font-mono uppercase tracking-[0.14em] text-[12px] text-editorial-ink-3 py-12">
                 The first piece is being written. Check back soon.
               </p>
             ) : (
-              <ul className="grid grid-cols-1 gap-5 md:gap-6">
-                {posts.map((post) => (
-                  <li key={post.slug}>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="group block bg-editorial-surface border border-editorial-line rounded-2xl p-7 md:p-9 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] hover:border-editorial-ink-3 active:scale-[0.99]"
-                      data-track="blog-card-click"
-                      data-track-slug={post.slug}
-                    >
-                      <div className="flex flex-wrap items-center gap-3 mb-4 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
-                        <span>{BLOG_CATEGORY_LABELS[post.category]}</span>
-                        <span aria-hidden>·</span>
-                        <time dateTime={post.publishedAt}>
-                          {formatPublishedAt(post.publishedAt)}
-                        </time>
-                        <span aria-hidden>·</span>
-                        <span>{post.readingTimeMinutes} min read</span>
-                      </div>
+              <div className="space-y-10 md:space-y-14">
+                <FeaturedPost post={featured} />
 
-                      <h2 className="font-serif text-[clamp(28px,3.2vw,40px)] leading-[1.08] tracking-[-0.01em] mb-3 group-hover:text-editorial-ink">
-                        {post.title}
-                      </h2>
-
-                      <p className="text-editorial-ink-2 text-[16px] leading-[1.6] max-w-[680px]">
-                        {post.description}
-                      </p>
-
-                      <div className="mt-6 inline-flex items-center gap-1.5 font-mono uppercase tracking-[0.14em] text-[11px] text-editorial-ink [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
-                        Read the piece
-                        <span aria-hidden>→</span>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                {rest.length > 0 ? (
+                  <div>
+                    <div className="ed-eyebrow mb-6">earlier from the notebook</div>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                      {rest.map((post) => (
+                        <li key={post.slug}>
+                          <PostCard post={post} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
             )}
           </div>
         </section>

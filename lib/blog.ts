@@ -112,3 +112,18 @@ export const BLOG_CATEGORY_LABELS: Record<BlogCategory, string> = {
   benchmark: "Benchmark",
   essay: "Essay",
 };
+
+export async function getAdjacentPosts(slug: string): Promise<{
+  prev: BlogPostMeta | null;
+  next: BlogPostMeta | null;
+}> {
+  const posts = await getAllPosts();
+  const idx = posts.findIndex((post) => post.slug === slug);
+  if (idx === -1) return { prev: null, next: null };
+  // Posts are sorted newest-first, so "next" (newer) sits at idx-1
+  // and "prev" (older) sits at idx+1.
+  return {
+    prev: posts[idx + 1] ?? null,
+    next: posts[idx - 1] ?? null,
+  };
+}
