@@ -14,7 +14,7 @@ export default async function Pricing() {
   const referrer = (await headers()).get("referer") || "";
 
   return (
-    <section className="ed-section bg-editorial-surface-2" id="pricing">
+    <section className="ed-section" id="pricing">
       <div className="ed-container">
         <span className="ed-eyebrow">pricing · one-time, lifetime</span>
         <h2 className="mb-3 text-5xl leading-[1] tracking-tight md:text-6xl">

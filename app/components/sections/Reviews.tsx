@@ -48,7 +48,7 @@ const ordered = [...testimonials].sort((a, b) => {
 
 export default function Reviews() {
   return (
-    <section className="ed-section bg-editorial-surface-2" id="testimonials">
+    <section className="ed-section" id="testimonials">
       <div className="ed-container">
         <span className="ed-eyebrow">loved by the makers who prompt all day</span>
         <h2 className="font-serif text-[clamp(40px,4vw,60px)] leading-[1] mb-10">

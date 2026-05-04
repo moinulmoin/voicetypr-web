@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Funnel_Display, Geist } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -19,12 +19,15 @@ const fontSans = Geist({
   display: "swap",
 });
 
-// Funnel Display — distinctive display sans (2024). Real italic. Used for
-// h1–h5 and the rare italic accent inside <em> tags. NOT on the impeccable
-// reject list — newer than the standard editorial reflexes.
-const fontSerif = Funnel_Display({
+// Instrument Serif — modern editorial serif with REAL italic. Reserved for the
+// rare <em> punctuation accent inside hero / brand-moment H2 / final CTA only.
+// Headings themselves use Geist (sans) with heavier weight. Loaded with both
+// styles so editorial numerals (5×, 150, $50) that opt into Tailwind's
+// font-serif utility still render in upright serif.
+const fontSerif = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
 });

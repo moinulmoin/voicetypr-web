@@ -6,8 +6,7 @@ export default function HeroSection() {
     <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
       <div className="ed-container">
         <div className="mx-auto max-w-5xl text-center">
-          <span className="ed-chip text-[13px]">
-            <span className="ed-chip-dot" />
+          <span className="ed-eyebrow">
             v1.12 &middot; lifetime &middot; pay once
           </span>
 
@@ -19,11 +18,10 @@ export default function HeroSection() {
 
           <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
             <strong className="font-medium text-editorial-ink">
-              Clean, paste-ready text in any app, on Mac or Windows.
+              Local AI dictation, ~150 wpm.
             </strong>{" "}
-            Talk to Claude, draft a Slack reply, write that PR description
-              you&rsquo;ve been dodging. Fully local, ~5&times; faster than
-            typing.
+            Lands clean in any app on Mac or Windows. Fully on-device, no cloud
+            round-trip, no subscription. Pay once.
           </p>
 
           {/* CTA row */}

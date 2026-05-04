@@ -34,10 +34,7 @@ export default function Header() {
         {/* Left: Logo + Ideaplexa */}
         <div className="flex items-center gap-2.5">
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="grid h-7 w-7 place-items-center rounded-lg bg-editorial-ink font-mono text-[13px] font-semibold text-white">
-              V
-            </span>
-            <span className="font-serif text-[22px] tracking-[-0.01em]">
+            <span className="font-serif text-[22px] tracking-[-0.01em] text-editorial-ink">
               VoiceTypr
             </span>
           </Link>
