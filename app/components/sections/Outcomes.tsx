@@ -68,7 +68,7 @@ export default function Outcomes() {
                   <div className="font-serif text-[44px] leading-none text-editorial-accent">
                     0
                   </div>
-                  <span className="ed-chip text-[10px] px-2 py-1">
+                  <span className="font-mono uppercase tracking-[0.12em] text-[10px] text-editorial-ink-3">
                     100% offline
                   </span>
                 </div>

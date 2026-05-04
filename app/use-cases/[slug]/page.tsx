@@ -296,7 +296,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         {/* Final CTA */}
         <section className="ed-section">
           <div className="ed-container">
-            <div className="relative overflow-hidden rounded-[32px] border border-editorial-line bg-gradient-to-b from-white to-[#f0efeb] py-20 md:py-24 px-8 text-center">
+            <div className="relative overflow-hidden rounded-[32px] border border-editorial-line bg-editorial-surface py-20 md:py-24 px-8 text-center">
               <div className="mb-6 flex justify-center">
                 <span className="ed-eyebrow">{useCase.finalCta.eyebrow}</span>
               </div>

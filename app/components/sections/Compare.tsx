@@ -43,7 +43,7 @@ export default function Compare() {
           <h2 className="font-serif text-[clamp(40px,4.2vw,62px)] leading-[1] mb-7 max-w-[760px] text-white">
             Pay once. Keep your money.
           </h2>
-          <p className="text-[#b3aa9a] text-[17px] max-w-[540px] mb-10 leading-[1.5]">
+          <p className="text-white/65 text-[17px] max-w-[540px] mb-10 leading-[1.5]">
             Most dictation apps charge you every month, forever.
             Here&apos;s the gap, plainly.
           </p>

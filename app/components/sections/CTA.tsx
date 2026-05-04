@@ -5,7 +5,7 @@ export default function CTA() {
   return (
     <section className="ed-section">
       <div className="ed-container">
-        <div className="relative overflow-hidden rounded-[32px] border border-editorial-line bg-gradient-to-b from-white to-[#f0efeb] py-20 md:py-28 px-8 text-center">
+        <div className="relative overflow-hidden rounded-[32px] border border-editorial-line bg-editorial-surface py-20 md:py-28 px-8 text-center">
           {/* Decorative accent glow — stronger */}
           <div
             aria-hidden
@@ -32,12 +32,14 @@ export default function CTA() {
             </div>
 
             <h2 className="font-serif text-[clamp(64px,8.5vw,140px)] leading-[0.93] tracking-[-0.035em] mb-7 max-w-[920px] mx-auto">
-              Stop typing. Start talking.
+              Stop typing.
+              <br />
+              Start talking.
             </h2>
 
             <p className="text-editorial-ink-2 text-[19px] leading-[1.5] max-w-[560px] mx-auto mb-10">
-              Free to try for 3 days. $50 once if you love it. No account, no
-              card to start.
+              Free to try for 3 days. Pay once if you love it. No account,
+              no card to start.
             </p>
 
             <div className="flex items-center justify-center gap-3 flex-wrap">
@@ -63,7 +65,7 @@ export default function CTA() {
             </div>
 
             <div className="mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-editorial-ink-3">
-              from $50 · lifetime · refund within 7 days
+              pay once &middot; lifetime &middot; 7-day refund
             </div>
           </div>
         </div>

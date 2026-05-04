@@ -3,14 +3,19 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
-      <div className="ed-container">
+    <section className="ed-section !pt-[160px] md:!pt-[200px] pb-0 relative overflow-hidden">
+      {/* Subtle ambient glow behind the H1 — local-first as visual language */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[640px]"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 50% 28%, color-mix(in oklab, var(--color-editorial-accent) 11%, transparent), transparent 65%)",
+        }}
+      />
+      <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
-          <span className="ed-eyebrow">
-            from $50 &middot; 3-day trial &middot; 7-day refund
-          </span>
-
-          <h1 className="mt-5 font-serif text-[clamp(40px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
+          <h1 className="font-serif text-[clamp(40px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
             Type by talking,
             <br />
             in every app you use.
@@ -46,9 +51,11 @@ export default function HeroSection() {
             </a>
           </div>
 
-          {/* Meta row */}
+          {/* Meta row — trust signals after the CTAs */}
           <div className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-2 border-t border-dashed border-editorial-line-2 pt-6 font-mono text-xs uppercase tracking-[0.08em] text-editorial-ink-3">
             <span className="text-[#3a7a4f]">&bull; 100% offline</span>
+            <span>pay once</span>
+            <span>3-day trial</span>
             <span>macOS 13+</span>
             <span>Windows 10+</span>
           </div>
