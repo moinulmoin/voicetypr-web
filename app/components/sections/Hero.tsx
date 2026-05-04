@@ -29,7 +29,7 @@ export default function HeroSection() {
             <Link
               href="/download"
               data-umami-event="hero-start-trial-click"
-              className="group inline-flex items-center gap-2 rounded-full bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-black active:scale-[0.98]"
+              className="group inline-flex items-center gap-2 rounded-lg bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-black active:scale-[0.98]"
             >
               Start free 3-day trial
               <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
@@ -41,7 +41,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-umami-event="hero-demo-click"
-              className="inline-flex items-center rounded-full border border-editorial-line-2 bg-transparent px-5 py-3 text-sm font-medium text-editorial-ink transition-[transform,color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-editorial-surface hover:text-editorial-accent active:scale-[0.98]"
+              className="inline-flex items-center rounded-lg border border-editorial-line-2 bg-transparent px-5 py-3 text-sm font-medium text-editorial-ink transition-[transform,color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-editorial-surface hover:text-editorial-accent active:scale-[0.98]"
             >
               Watch the demo &rarr;
             </a>
@@ -52,7 +52,6 @@ export default function HeroSection() {
             <span className="text-[#3a7a4f]">&bull; 100% local</span>
             <span>macOS 13+</span>
             <span>Windows 10+</span>
-            <span>99+ languages</span>
             <span>No subscription</span>
           </div>
         </div>

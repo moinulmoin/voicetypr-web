@@ -44,7 +44,7 @@ export default function CTA() {
               <Link
                 href="/download"
                 data-umami-event="cta-download-click"
-                className="group inline-flex items-center gap-2 rounded-full bg-editorial-ink py-2 pl-6 pr-2 text-[15px] font-medium text-white transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-black active:scale-[0.98]"
+                className="group inline-flex items-center gap-2 rounded-lg bg-editorial-ink py-2 pl-6 pr-2 text-[15px] font-medium text-white transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-black active:scale-[0.98]"
               >
                 Start free 3-day trial
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
@@ -56,7 +56,7 @@ export default function CTA() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-umami-event="cta-demo-click"
-                className="inline-flex items-center justify-center rounded-full border border-editorial-line-2 bg-transparent text-editorial-ink px-6 py-3 text-[15px] font-medium transition-[transform,color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-editorial-surface hover:text-editorial-accent active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-lg border border-editorial-line-2 bg-transparent text-editorial-ink px-6 py-3 text-[15px] font-medium transition-[transform,color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-editorial-surface hover:text-editorial-accent active:scale-[0.98]"
               >
                 See the demo &rarr;
               </a>

@@ -178,7 +178,7 @@ export default function PricingCards({
               data-umami-event-plan={plan.key}
               data-track={`${eventPrefix}-plan-click`}
               data-track-plan={plan.key}
-              className={`group mt-auto inline-flex items-center gap-2 rounded-full py-2 pl-5 pr-2 text-sm font-medium transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] ${
+              className={`group mt-auto inline-flex items-center gap-2 rounded-lg py-2 pl-5 pr-2 text-sm font-medium transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] ${
                 isHL
                   ? "bg-editorial-accent text-white hover:brightness-110"
                   : "bg-editorial-ink text-white hover:bg-black"
