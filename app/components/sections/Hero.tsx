@@ -52,7 +52,7 @@ export default function HeroSection() {
           </div>
 
           {/* Meta row — trust signals after the CTAs */}
-          <div className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-2 border-t border-dashed border-editorial-line-2 pt-6 font-mono text-xs uppercase tracking-[0.08em] text-editorial-ink-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-x-7 gap-y-2 font-mono text-xs uppercase tracking-[0.08em] text-editorial-ink-3">
             <span className="text-[#3a7a4f]">&bull; 100% offline</span>
             <span>pay once</span>
             <span>3-day trial</span>

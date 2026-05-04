@@ -32,7 +32,7 @@ export default function Outcomes() {
                 putting off, the Slack reply you keep rewriting — at the speed
                 you actually think.
               </p>
-              <div className="mt-auto grid grid-cols-3 gap-4 pt-5 border-t border-dashed border-editorial-line">
+              <div className="mt-auto grid grid-cols-3 gap-4 pt-6">
                 <div>
                   <div className="font-serif text-[26px] leading-none text-editorial-ink mb-1.5">
                     150

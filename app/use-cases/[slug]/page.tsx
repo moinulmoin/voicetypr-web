@@ -202,7 +202,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                     <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
                       {outcome.body}
                     </p>
-                    <div className="mt-auto pt-3.5 border-t border-dashed border-editorial-line font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
+                    <div className="mt-auto pt-4 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
                       {outcome.meta}
                     </div>
                   </article>

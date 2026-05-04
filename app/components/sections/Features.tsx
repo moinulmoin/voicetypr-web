@@ -192,7 +192,7 @@ export default function Features() {
               Drag any audio or video file in. Transcribed where you drop it — never uploaded.
             </p>
             <div className="mt-auto pt-5">
-              <div className="rounded-lg border border-dashed border-editorial-line-2 bg-editorial-surface-2/60 p-4 flex items-center justify-between">
+              <div className="rounded-lg bg-editorial-surface-2 p-4 flex items-center justify-between">
                 <div className="font-mono text-[11px] text-editorial-ink-2">
                   wav · mp3 · m4a · flac · ogg · mp4 · webm
                 </div>
