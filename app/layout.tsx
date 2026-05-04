@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Hanken_Grotesk, Source_Serif_4 } from "next/font/google";
+import { Geist, Spectral } from "next/font/google";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -13,26 +13,25 @@ import MarketingNoscript from "@/app/components/MarketingNoscript";
 import { Providers } from "@/components/providers";
 import Script from "next/script";
 
-const fontSans = Hanken_Grotesk({
+const fontSans = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
 
-// Source Serif 4 italic — used ONLY as the rare emotional accent inside
-// <em> tags inside specific headlines. See .impeccable.md for the rule.
-const fontSerif = Source_Serif_4({
+// Spectral — distinctive editorial serif by Adobe. Used for display headings
+// (h1–h5) and as the rare italic accent inside <em> tags. Real italic, real
+// weight range, NOT on the impeccable reject list.
+const fontSerif = Spectral({
   subsets: ["latin"],
-  weight: "400",
-  style: "italic",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
 });
 
 // Mono falls back to the system stack via Tailwind's default `font-mono`.
-// No web font download for mono — it's only used in code blocks (blog).
-
+// No web font download for mono.
 export const metadata: Metadata = {
   title: "VoiceTypr — Offline AI voice to text app for founders and builders",
   description:
