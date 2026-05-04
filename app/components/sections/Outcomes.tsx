@@ -2,7 +2,6 @@ export default function Outcomes() {
   return (
     <section className="ed-section">
       <div className="ed-container">
-        <div className="bg-editorial-surface-2 rounded-[28px] p-10 md:p-14">
           <div className="ed-eyebrow">why founders keep it open all day</div>
           <h2 className="font-serif text-[clamp(40px,4vw,64px)] leading-[1] max-w-[780px] mt-2 mb-10">
             The things you didn&apos;t have time to write, you now have time to
@@ -78,12 +77,9 @@ export default function Outcomes() {
                   Audio never leaves your machine.
                 </h3>
                 <p className="text-editorial-ink-2 text-[14px] leading-[1.55]">
-                  Whisper runs on-device. No cloud, no logs, no &ldquo;we may
-                  use your data to improve the service.&rdquo;
+                  Local models do the work on-device. No cloud, no logs, no
+                  &ldquo;we may use your data to improve the service.&rdquo;
                 </p>
-                <div className="mt-auto pt-3 border-t border-dashed border-editorial-line font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
-                  Outcome &middot; privacy
-                </div>
               </article>
 
               {/* Reach */}
@@ -103,13 +99,9 @@ export default function Outcomes() {
                   Cursor, Notion, Slack, VS Code, Linear, Gmail, Discord, Figma
                   comments, even that legacy Jira textarea.
                 </p>
-                <div className="mt-auto pt-3 border-t border-dashed border-editorial-line font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
-                  Outcome &middot; reach
-                </div>
               </article>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );

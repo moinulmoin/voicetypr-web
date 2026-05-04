@@ -11,17 +11,17 @@ export default function HeroSection() {
           </span>
 
           <h1 className="mt-5 font-serif text-[clamp(40px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
-            Talk like a human.
+            Talk to your tools.
             <br />
-            Get text like a <em>pro.</em>
+            <em>On your machine.</em>
           </h1>
 
           <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
             <strong className="font-medium text-editorial-ink">
-              Local AI dictation, ~150 wpm.
+              ~150 wpm voice-to-text that runs on your machine.
             </strong>{" "}
-            Lands clean in any app on Mac or Windows. Fully on-device, no cloud
-            round-trip, no subscription. Pay once.
+            Native paste in every app on Mac and Windows. No cloud, no
+            subscription. Pay once.
           </p>
 
           {/* CTA row */}
@@ -52,7 +52,6 @@ export default function HeroSection() {
             <span className="text-[#3a7a4f]">&bull; 100% local</span>
             <span>macOS 13+</span>
             <span>Windows 10+</span>
-            <span>No subscription</span>
           </div>
         </div>
       </div>

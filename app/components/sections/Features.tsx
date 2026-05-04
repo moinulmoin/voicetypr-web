@@ -38,9 +38,10 @@ export default function Features() {
   ];
 
   const models = [
-    { name: "base.en", size: "142 MB", accent: false },
-    { name: "large-v3", size: "2.9 GB", accent: false },
-    { name: "large-v3-turbo \u25CF", size: "1.5 GB", accent: true },
+    { name: "Whisper Base", size: "142 MB", accent: false },
+    { name: "Whisper Large v3", size: "2.9 GB", accent: false },
+    { name: "Whisper Large v3 Turbo", size: "1.5 GB", accent: true },
+    { name: "Parakeet (Apple Silicon)", size: "0.6 GB", accent: false },
   ];
 
   return (
@@ -188,7 +189,7 @@ export default function Features() {
               Drag in a file.
             </h3>
             <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
-              Transcribe WAV, MP3, M4A, FLAC, OGG, MP4, WebM. Drop it in, done.
+              Drag any audio or video file in. Transcribed where you drop it — never uploaded.
             </p>
             <div className="mt-auto pt-5">
               <div className="rounded-lg border border-dashed border-editorial-line-2 bg-editorial-surface-2/60 p-4 flex items-center justify-between">
@@ -221,9 +222,8 @@ export default function Features() {
                 Every app that takes a cursor.
               </h3>
               <p className="text-white/65 text-[15px] leading-[1.6] max-w-[640px]">
-                ChatGPT, Claude, Cursor, VS Code, Notion, Slack, Linear, Gmail,
-                Discord, X, Figma, iMessage. Native paste, not a browser
-                extension. Not a Chrome tab.
+                Native paste, not a browser extension. Not a Chrome tab. If
+                your cursor lands in it, you can dictate into it.
               </p>
               <div className="mt-auto pt-6">
                 <div className="flex flex-wrap gap-2">
@@ -241,61 +241,20 @@ export default function Features() {
           </div>
 
           {/* 7. History — white */}
-          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[240px] flex flex-col md:col-span-1 lg:col-span-2">
+          <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-7 min-h-[240px] flex flex-col lg:col-span-4">
             <div className="ed-label mb-2.5">history</div>
             <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
               Searchable, exportable.
             </h3>
             <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
-              Everything you&apos;ve dictated. Search, copy, export to JSON.
+              Every transcript stays on your machine. Search by text or date,
+              copy, or export.
             </p>
             <div className="mt-auto pt-5">
               <div className="font-mono text-[11px] text-editorial-ink-2 leading-[1.8] bg-editorial-surface-2/60 rounded-md p-3.5 border border-editorial-line">
                 <div>&rarr; search history</div>
                 <div>&rarr; export as JSON</div>
                 <div>&rarr; re-copy anything</div>
-              </div>
-            </div>
-          </div>
-
-          {/* 8. Streaks — accent wash (the rewarding moment) */}
-          <div className="bg-editorial-accent-wash border border-editorial-accent/20 rounded-[20px] p-7 min-h-[240px] flex flex-col md:col-span-1 lg:col-span-2">
-            <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-editorial-accent-ink mb-2.5 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-editorial-accent" />
-              streaks
-            </div>
-            <h3 className="font-serif text-[26px] leading-[1.1] mb-2.5">
-              Track your progress.
-            </h3>
-            <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
-              Daily streaks, words spoken, time saved. Quietly addictive.
-            </p>
-            <div className="mt-auto pt-5">
-              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-dashed border-editorial-accent/30">
-                <div>
-                  <div className="font-serif text-[24px] leading-none text-editorial-accent-ink">
-                    12d
-                  </div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-editorial-ink-3 mt-1">
-                    streak
-                  </div>
-                </div>
-                <div>
-                  <div className="font-serif text-[24px] leading-none text-editorial-accent-ink">
-                    184k
-                  </div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-editorial-ink-3 mt-1">
-                    words
-                  </div>
-                </div>
-                <div>
-                  <div className="font-serif text-[24px] leading-none text-editorial-accent-ink">
-                    6h
-                  </div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-editorial-ink-3 mt-1">
-                    saved this week
-                  </div>
-                </div>
               </div>
             </div>
           </div>

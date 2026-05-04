@@ -10,7 +10,6 @@ import FounderNote from "./components/sections/FounderNote";
 import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
-import Infographics from "./components/sections/Infographics";
 import Outcomes from "./components/sections/Outcomes";
 import Pricing from "./components/sections/Pricing";
 import Testimonials from "./components/sections/Reviews";
@@ -23,7 +22,6 @@ export default function HomePage() {
         <Hero />
         <Demo />
         <Outcomes />
-        <Infographics />
         <Features />
         <HowItWorks />
         <Compare />

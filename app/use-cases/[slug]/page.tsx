@@ -265,7 +265,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                     open={i === 0}
                     className="group border-t border-editorial-line last:border-b last:border-editorial-line py-5 cursor-pointer"
                   >
-                    <summary className="list-none flex justify-between items-start gap-6 font-serif text-[22px] leading-[1.2] [&::-webkit-details-marker]:hidden">
+                    <summary className="list-none flex justify-between items-start gap-6 font-sans font-semibold text-[19px] leading-[1.3] text-editorial-ink [&::-webkit-details-marker]:hidden">
                       <span>{faq.q}</span>
                       <span className="w-7 h-7 rounded-full bg-editorial-surface-2 grid place-items-center text-base font-light text-editorial-ink-2 flex-shrink-0 [transition:transform_400ms_cubic-bezier(0.32,0.72,0,1)] group-open:rotate-45">
                         +

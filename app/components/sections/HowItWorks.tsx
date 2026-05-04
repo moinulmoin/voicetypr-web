@@ -54,25 +54,26 @@ export default function HowItWorks() {
               Pick a model
             </h3>
             <p className="text-editorial-ink-2 text-sm leading-[1.55] mb-4 relative">
-              Base.en for English speed, Large v3 for full multilingual
-              accuracy, Turbo when you want both.
+              Whisper Base for English speed, Whisper Large v3 for full
+              multilingual accuracy, Turbo when you want both. Parakeet on
+              Apple Silicon.
             </p>
             <div className="mt-auto min-h-[60px] flex items-end relative">
               <div className="flex flex-col gap-1.5 w-full font-mono text-[11px] text-editorial-ink-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-12">base.en</span>
+                  <span className="w-14">Base</span>
                   <div className="flex-1 h-1.5 rounded-full bg-editorial-surface-2 overflow-hidden">
                     <div className="h-full w-[20%] bg-editorial-ink-3" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-12">large</span>
+                  <span className="w-14">Large v3</span>
                   <div className="flex-1 h-1.5 rounded-full bg-editorial-surface-2 overflow-hidden">
                     <div className="h-full w-[100%] bg-editorial-ink-3" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2 text-editorial-accent">
-                  <span className="w-12">turbo</span>
+                  <span className="w-14">Turbo</span>
                   <div className="flex-1 h-1.5 rounded-full bg-editorial-accent-wash overflow-hidden">
                     <div className="h-full w-[55%] bg-editorial-accent" />
                   </div>

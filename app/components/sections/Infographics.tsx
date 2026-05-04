@@ -96,8 +96,8 @@ function FlowDiagram() {
     {
       badge: "on device",
       Icon: Cpu,
-      title: "Whisper runs locally",
-      body: "Audio never leaves your machine. No cloud round-trip, no API bills, no subscription.",
+      title: "Models run locally",
+      body: "Whisper or Parakeet runs on your machine. Audio never leaves the device. No cloud round-trip, no API bills, no subscription.",
     },
     {
       badge: "format",
@@ -151,96 +151,6 @@ function FlowDiagram() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Day In Life — timeline comparison                                  */
-/* ------------------------------------------------------------------ */
-
-function DayInLife() {
-  const typingDay = [
-    { label: "Slack triage", w: 22, kind: "t" as const },
-    { label: "Standup notes", w: 10, kind: "t" as const },
-    { label: "Spec draft", w: 26, kind: "t" as const },
-    { label: "Email + replies", w: 18, kind: "t" as const },
-    { label: "PR reviews", w: 14, kind: "t" as const },
-  ];
-
-  const voiceDay = [
-    { label: "Slack", w: 8, kind: "v" as const },
-    { label: "Notes", w: 3, kind: "v" as const },
-    { label: "Spec", w: 9, kind: "v" as const },
-    { label: "Email", w: 6, kind: "v" as const },
-    { label: "PR", w: 5, kind: "v" as const },
-  ];
-
-  return (
-    <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-8 md:p-9">
-      <div className="ed-label mb-5">
-        A day with VoiceTypr &middot; 9 AM &rarr; 6 PM
-      </div>
-      <h3 className="font-serif text-[26px] mb-1">
-        Get ~93 minutes of your life back.
-      </h3>
-
-      {/* Timeline */}
-      <div className="grid grid-cols-[60px_1fr] gap-x-4 gap-y-3 items-center mt-5">
-        {/* Typing row */}
-        <div className="text-right font-mono text-xs font-medium text-editorial-ink-3">
-          TYPING
-        </div>
-        <div className="h-8 min-w-0 overflow-hidden rounded-lg bg-editorial-surface-2 flex items-center gap-1.5 px-1">
-          {typingDay.map((c, i) => (
-            <div
-              key={i}
-              className="h-[22px] min-w-0 rounded-md px-2 sm:px-2.5 flex items-center text-[11px] sm:text-[11.5px] font-medium whitespace-nowrap overflow-hidden text-ellipsis bg-[#d8cfbb] text-editorial-ink"
-              style={{ width: `${c.w}%` }}
-            >
-              {c.label}
-            </div>
-          ))}
-        </div>
-
-        {/* Voice row */}
-        <div className="text-right font-mono text-xs font-medium text-editorial-ink-3">
-          VOICE
-        </div>
-        <div className="h-8 min-w-0 overflow-hidden rounded-lg bg-editorial-surface-2 flex items-center gap-1.5 px-1">
-          {voiceDay.map((c, i) => (
-            <div
-              key={i}
-              className="h-[22px] min-w-0 rounded-md px-2 sm:px-2.5 flex items-center text-[11px] sm:text-[11.5px] font-medium whitespace-nowrap overflow-hidden text-ellipsis bg-editorial-accent text-white"
-              style={{ width: `${c.w}%` }}
-            >
-              {c.label}
-            </div>
-          ))}
-          <div
-            className="h-[22px] min-w-0 rounded-md px-2 sm:px-2.5 flex items-center text-[11px] sm:text-[11.5px] font-medium whitespace-nowrap overflow-hidden text-ellipsis border border-dashed border-editorial-line-2 text-editorial-ink-3 bg-transparent"
-            style={{ width: "69%" }}
-          >
-            &#8593; reclaimed: 93 min
-          </div>
-        </div>
-      </div>
-
-      {/* Stats */}
-      <div className="mt-6 grid grid-cols-3 gap-3.5 pt-5 border-t border-dashed border-editorial-line">
-        {[
-          { num: "93", unit: "min", label: "Saved per workday" },
-          { num: "7.8", unit: "hrs", label: "Reclaimed per week" },
-          { num: "21", unit: "days", label: "Per year, not typing" },
-        ].map((s, i) => (
-          <div key={i}>
-            <div className="font-serif text-[38px] leading-none text-editorial-accent">
-              {s.num}
-              <span className="text-[18px]">{s.unit}</span>
-            </div>
-            <div className="ed-label mt-2">{s.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /*  Infographics — main section export                                 */
@@ -250,7 +160,7 @@ export default function Infographics() {
   return (
     <section className="ed-section">
       <div className="ed-container">
-        <p className="ed-eyebrow">the receipts &middot; three ways to see the gap</p>
+        <p className="ed-eyebrow">the receipts &middot; two ways to see the gap</p>
         <h2
           className="font-serif text-[clamp(38px,4vw,60px)] leading-[1] mb-9 max-w-[720px]"
         >
@@ -260,7 +170,6 @@ export default function Infographics() {
         <div className="grid grid-cols-1 gap-5">
           <WPMCompare />
           <FlowDiagram />
-          <DayInLife />
         </div>
       </div>
     </section>

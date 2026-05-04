@@ -31,7 +31,7 @@ const plans: Plan[] = [
     productId: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID,
     features: [
       "1 device activation",
-      "All Whisper models · 99+ languages",
+      "All local models · 99+ languages",
       "Every formatting mode",
       "Lifetime free updates",
       "macOS 13+ & Windows 10+",

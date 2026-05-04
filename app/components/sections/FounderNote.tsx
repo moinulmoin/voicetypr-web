@@ -8,8 +8,8 @@ export default function FounderNote() {
           </div>
 
           <h3 className="font-serif text-[clamp(28px,2.6vw,38px)] leading-[1.15] mb-5 text-editorial-ink tracking-[-0.01em]">
-            &ldquo;I built VoiceTypr because paying $15/month for basic dictation
-            didn&rsquo;t feel right.&rdquo;
+            &ldquo;I built VoiceTypr because paying a monthly fee for basic
+            dictation didn&rsquo;t feel right.&rdquo;
           </h3>
 
           <p className="text-editorial-ink-2 text-[16px] leading-[1.65] mb-3">
