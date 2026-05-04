@@ -74,21 +74,7 @@ export default function Footer() {
       </div>
 
       {/* Columns */}
-      <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 px-10 pb-10 md:grid-cols-4 max-md:px-5">
-        <div>
-          <span className="font-mono text-[12px] tracking-[0.08em] text-editorial-ink-3">
-            by{" "}
-            <a
-              href="https://ideaplexa.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-editorial-ink-2 underline underline-offset-2 transition-colors hover:text-editorial-accent"
-              data-umami-event="footer-parent-company-click"
-            >
-              Ideaplexa
-            </a>
-          </span>
-        </div>
+      <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 px-10 pb-10 md:grid-cols-3 max-md:px-5">
 
         <div>
           <h5 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
