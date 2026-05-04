@@ -46,10 +46,26 @@ export async function POST(request: NextRequest) {
     try {
       await deactivateLicenseKey({ licenseKey, activationId: device.activationId! });
     } catch (polarError: unknown) {
-      const apiError = polarError as { statusCode?: number; error?: string };
-      // If license is already deactivated (404), that's fine - we still want to clear it locally
-      if (apiError.statusCode === 404 || apiError.error === 'ResourceNotFound') {
-        console.log(`License already deactivated on Polar: ${licenseKey}, cleaning up local state`);
+      const apiError = polarError as { statusCode?: number; error?: string; body?: string };
+      let parsedError = apiError.error;
+
+      if (!parsedError && typeof apiError.body === 'string') {
+        try {
+          const parsedBody = JSON.parse(apiError.body) as { error?: string };
+          parsedError = parsedBody.error;
+        } catch {
+          // Ignore non-JSON bodies and fall through to the generic error path.
+        }
+      }
+
+      // If Polar no longer considers this activation active, that's fine -
+      // we still want to clear our local binding and keychain state.
+      if (
+        apiError.statusCode === 404 ||
+        parsedError === 'ResourceNotFound' ||
+        parsedError === 'NotPermitted'
+      ) {
+        console.log(`License already inactive on Polar: ${licenseKey}, cleaning up local state`);
         // Continue to step 3 to clear from our DB
       } else {
         // For other errors (network, permissions, etc), throw them

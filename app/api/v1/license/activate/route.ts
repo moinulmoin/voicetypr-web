@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
         customerId: activation.licenseKey.customerId
       },
       update: {
-        customerId: activation.licenseKey.customerId // Update in case it changed
+        customerId: activation.licenseKey.customerId
       }
     });
 

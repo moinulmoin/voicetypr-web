@@ -15,11 +15,10 @@ datasource db {
 
 // Minimal License table for proper data normalization
 model License {
-  licenseKey String @id @map("license_key")
-  customerId String? @map("customer_id") // Nullable for migration safety - can be populated later
-
-  createdAt DateTime @default(now()) @map("created_at")
-  devices   Device[]
+  licenseKey String   @id @map("license_key")
+  customerId String?  @map("customer_id") // Nullable for migration safety - can be populated later
+  createdAt  DateTime @default(now()) @map("created_at")
+  devices    Device[]
 
   @@map("licenses")
 }

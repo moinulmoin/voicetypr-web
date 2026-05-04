@@ -1,15 +1,18 @@
-import { Polar } from "@polar-sh/sdk";
+import { Polar } from '@polar-sh/sdk';
+
+export const polarServer =
+  process.env.NODE_ENV !== 'production' ? 'sandbox' : 'production';
 
 // Initialize Polar SDK
 export const polar = new Polar({
   accessToken: process.env.POLAR_ACCESS_TOKEN!,
-  server: process.env.NODE_ENV !== "production" ? "sandbox" : "production",
+  server: polarServer,
 });
 
 // Validate a license key with Polar
 export async function validateLicenseKey(licenseKey: string, activationId: string) {
   // Let errors bubble up to the API route
-  const response = await polar.customerPortal.licenseKeys.validate({
+  const response = await polar.licenseKeys.validate({
     key: licenseKey,
     organizationId: process.env.POLAR_ORGANIZATION_ID!,
     activationId: activationId
@@ -29,7 +32,7 @@ export async function deactivateLicenseKey({
   activationId: string;
 }) {
   // Just call Polar API, let errors bubble up
-  const response = await polar.customerPortal.licenseKeys.deactivate({
+  const response = await polar.licenseKeys.deactivate({
     key: licenseKey,
     organizationId: process.env.POLAR_ORGANIZATION_ID!,
     activationId: activationId,
@@ -75,7 +78,7 @@ export async function activateLicenseKey(
   // "VoiceTypr v1.2.3 - Windows 11"
   // "VoiceTypr - Linux - dev-machine"
 
-  const response = await polar.customerPortal.licenseKeys.activate({
+  const response = await polar.licenseKeys.activate({
     key: licenseKey,
     organizationId: process.env.POLAR_ORGANIZATION_ID!,
     label,
