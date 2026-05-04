@@ -154,7 +154,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
             <div className="mb-10 max-w-[760px]">
               <div className="ed-eyebrow">what hurts today</div>
               <h2 className="font-serif text-[clamp(36px,4vw,56px)] leading-[1.05] mt-2 mb-3">
-                The friction is <em>real, and specific.</em>
+                The friction is real, and specific.
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -184,7 +184,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
             <div className="bg-editorial-surface-2 rounded-[28px] p-10 md:p-14">
               <div className="ed-eyebrow">what changes day-one</div>
               <h2 className="font-serif text-[clamp(40px,4vw,60px)] leading-[1] max-w-[760px] mt-2 mb-10">
-                The shape of the day, <em>different.</em>
+                The shape of the day, different.
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -218,7 +218,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
             <div className="mb-10 max-w-[760px]">
               <div className="ed-eyebrow">in your day, concretely</div>
               <h2 className="font-serif text-[clamp(36px,4vw,56px)] leading-[1.05] mt-2">
-                Three workflows where it <em>shows up.</em>
+                Three workflows where it shows up.
               </h2>
             </div>
 

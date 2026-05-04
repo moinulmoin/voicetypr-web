@@ -40,12 +40,12 @@ const faqs = [
     a: "Double-press Esc while recording to cancel — nothing gets transcribed, nothing gets pasted. Or just release the hotkey in push-to-talk mode.",
   },
   {
-    q: "Is it open source?",
-    a: "Yes. The core is open on GitHub at github.com/moinulmoin/voicetypr. Star it if it helps.",
-  },
-  {
     q: "Refunds?",
     a: "7 days, no questions. Email support@voicetypr.com. We refund first, ask questions after (if at all).",
+  },
+  {
+    q: "Is it open source?",
+    a: "Yes. The core is on GitHub at github.com/moinulmoin/voicetypr. Star it if it helps.",
   },
 ];
 

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Hanken_Grotesk, Source_Serif_4 } from "next/font/google";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -13,22 +13,25 @@ import MarketingNoscript from "@/app/components/MarketingNoscript";
 import { Providers } from "@/components/providers";
 import Script from "next/script";
 
-const fontSans = Geist({
+const fontSans = Hanken_Grotesk({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
+  display: "swap",
 });
 
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
-
-const fontSerif = Instrument_Serif({
+// Source Serif 4 italic — used ONLY as the rare emotional accent inside
+// <em> tags inside specific headlines. See .impeccable.md for the rule.
+const fontSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: "400",
-  style: ["normal", "italic"],
+  style: "italic",
   variable: "--font-serif",
+  display: "swap",
 });
+
+// Mono falls back to the system stack via Tailwind's default `font-mono`.
+// No web font download for mono — it's only used in code blocks (blog).
 
 export const metadata: Metadata = {
   title: "VoiceTypr — Offline AI voice to text app for founders and builders",
@@ -285,7 +288,7 @@ export default function RootLayout({
       />
       {/* End JSON-LD Structured Data */}
 
-      <body className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} font-sans antialiased`}>
+      <body className={`${fontSans.variable} ${fontSerif.variable} font-sans antialiased`}>
         {/* Google Tag Manager (noscript) rendered unconditionally */}
         <MarketingNoscript />
         <a

@@ -254,7 +254,7 @@ export default function Infographics() {
         <h2
           className="font-serif text-[clamp(38px,4vw,60px)] leading-[1] mb-9 max-w-[720px]"
         >
-          Different charts, <em>same conclusion.</em>
+          Different charts, same conclusion.
         </h2>
 
         <div className="grid grid-cols-1 gap-5">

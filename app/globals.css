@@ -231,16 +231,20 @@ html {
 .landing-editorial h3,
 .landing-editorial h4,
 .landing-editorial h5 {
-  font-family: var(--font-serif), Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-family: var(--font-sans), -apple-system, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--color-editorial-ink);
 }
 
+/* Rare italic accent — the only place Source Serif 4 appears.
+   Inside <em> tags inside h1..h3 only, with editorial accent color. */
 .landing-editorial h1 em,
 .landing-editorial h2 em,
 .landing-editorial h3 em {
+  font-family: var(--font-serif), Georgia, serif;
   font-style: italic;
+  font-weight: 400;
   color: var(--color-editorial-accent);
 }
 
@@ -265,11 +269,11 @@ html {
   align-items: center;
   gap: 7px;
   padding: 5px 11px 5px 10px;
-  font-family: var(--font-mono), 'Geist Mono', monospace;
-  font-size: 10px;
+  font-family: var(--font-sans), -apple-system, system-ui, sans-serif;
+  font-size: 11px;
   line-height: 1;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-editorial-ink-3);
   background: var(--color-editorial-surface);
@@ -293,8 +297,8 @@ html {
 
 /* Mono label (without dash, for cards) */
 .ed-label {
-  font-family: var(--font-mono), 'Geist Mono', monospace;
-  font-size: 10px;
+  font-family: var(--font-sans), -apple-system, system-ui, sans-serif;
+  font-size: 11px;
   line-height: 1;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -335,7 +339,7 @@ html {
   border: 1px solid var(--color-editorial-line-2);
   border-bottom-width: 2px;
   border-radius: 7px;
-  font-family: var(--font-mono), monospace;
+  font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
   font-weight: 500;
   color: var(--color-editorial-ink);

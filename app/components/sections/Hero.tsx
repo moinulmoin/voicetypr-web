@@ -8,7 +8,7 @@ export default function HeroSection() {
         <div className="mx-auto max-w-5xl text-center">
           <span className="ed-chip text-[13px]">
             <span className="ed-chip-dot" />
-            v1.12 &middot; lifetime &middot; open source
+            v1.12 &middot; lifetime &middot; pay once
           </span>
 
           <h1 className="mt-5 font-serif text-[clamp(40px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">

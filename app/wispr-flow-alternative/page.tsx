@@ -317,7 +317,7 @@ export default function WisprFlowAlternativePage() {
             <div className="bg-editorial-surface-2 rounded-[28px] p-10 md:p-14">
               <div className="ed-eyebrow">three differences that matter day-to-day</div>
               <h2 className="font-serif text-[clamp(40px,4vw,60px)] leading-[1] max-w-[760px] mt-2 mb-10">
-                Why people switch <em>from Wispr.</em>
+                Why people switch from Wispr.
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -351,7 +351,7 @@ export default function WisprFlowAlternativePage() {
             <div className="mb-10 max-w-[760px]">
               <div className="ed-eyebrow">the side-by-side</div>
               <h2 className="font-serif text-[clamp(40px,4.2vw,62px)] leading-[1] mt-2 mb-3">
-                VoiceTypr vs Wispr Flow, <em>plainly.</em>
+                VoiceTypr vs Wispr Flow, plainly.
               </h2>
               <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
                 Last verified April 2026. Where we&rsquo;re uncertain we said so rather than guessing.
@@ -459,7 +459,7 @@ export default function WisprFlowAlternativePage() {
             <div className="mb-10 max-w-[760px]">
               <div className="ed-eyebrow">no migration · no account transfer</div>
               <h2 className="font-serif text-[clamp(40px,4vw,60px)] leading-[1] mt-2">
-                How to switch <em>in under five minutes.</em>
+                How to switch in under five minutes.
               </h2>
             </div>
 
@@ -492,7 +492,7 @@ export default function WisprFlowAlternativePage() {
               <div>
                 <div className="ed-eyebrow">questions people ask before switching</div>
                 <h2 className="font-serif text-[clamp(36px,3.6vw,54px)] leading-[1] mb-4 tracking-[-0.01em]">
-                  The honest <em>switch FAQ.</em>
+                The honest switch FAQ.
                 </h2>
                 <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
                   Pulled from real conversations with people who actually made the move.

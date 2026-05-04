@@ -420,7 +420,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         "Most of your day isn't typing code anymore — it's typing English at compilers, agents, reviewers, and Slack. VoiceTypr handles the English so your hands can focus on the part that still needs them.",
       metaStrip: [
         "cursor · claude · chatgpt",
-        "github · slack · linear",
+        "slack · linear · notion",
         "100% offline",
       ],
     },

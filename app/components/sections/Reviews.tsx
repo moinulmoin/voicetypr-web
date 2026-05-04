@@ -52,7 +52,7 @@ export default function Reviews() {
       <div className="ed-container">
         <span className="ed-eyebrow">loved by the makers who prompt all day</span>
         <h2 className="font-serif text-[clamp(40px,4vw,60px)] leading-[1] mb-10">
-          People who switched, <em>and stayed.</em>
+          People who switched, and stayed.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
