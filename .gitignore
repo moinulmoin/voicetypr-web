@@ -41,3 +41,8 @@ agent-docs/
 
 # Sisyphus work tracking
 .sisyphus/
+
+# Agent skill caches (per-tool, never check in)
+.agents/
+.claude/skills/
+skills-lock.json
