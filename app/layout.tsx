@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Geist, Spectral } from "next/font/google";
+import { Funnel_Display, Geist } from "next/font/google";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -19,13 +19,12 @@ const fontSans = Geist({
   display: "swap",
 });
 
-// Spectral — distinctive editorial serif by Adobe. Used for display headings
-// (h1–h5) and as the rare italic accent inside <em> tags. Real italic, real
-// weight range, NOT on the impeccable reject list.
-const fontSerif = Spectral({
+// Funnel Display — distinctive display sans (2024). Real italic. Used for
+// h1–h5 and the rare italic accent inside <em> tags. NOT on the impeccable
+// reject list — newer than the standard editorial reflexes.
+const fontSerif = Funnel_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-serif",
   display: "swap",
 });
