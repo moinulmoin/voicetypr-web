@@ -47,9 +47,9 @@ export default function Features() {
   return (
     <section className="ed-section" id="features">
       <div className="ed-container">
-        <div className="ed-eyebrow">the feature grid &middot; not a list, a toolkit</div>
+        <div className="ed-eyebrow">built around how you actually work</div>
         <h2 className="font-serif text-[clamp(42px,4.4vw,68px)] leading-[1] max-w-[760px] mt-2 mb-10">
-          Little things that make the big thing addictive.
+          Eight things I use every day.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 grid-flow-dense">

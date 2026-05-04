@@ -28,11 +28,11 @@ export default function CTA() {
           {/* Content sits above effects */}
           <div className="relative">
             <div className="mb-6 flex justify-center">
-              <span className="ed-eyebrow">ready to write without typing?</span>
+              <span className="ed-eyebrow">three days free, no card</span>
             </div>
 
             <h2 className="font-serif text-[clamp(64px,8.5vw,140px)] leading-[0.93] tracking-[-0.035em] mb-7 max-w-[920px] mx-auto">
-              Stop typing. <em>Start shipping.</em>
+              Stop typing. Start talking.
             </h2>
 
             <p className="text-editorial-ink-2 text-[19px] leading-[1.5] max-w-[560px] mx-auto mb-10">

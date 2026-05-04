@@ -7,20 +7,20 @@ export default function HeroSection() {
       <div className="ed-container">
         <div className="mx-auto max-w-5xl text-center">
           <span className="ed-eyebrow">
-            v1.12 &middot; lifetime &middot; pay once
+            from $50 &middot; 3-day trial &middot; 7-day refund
           </span>
 
           <h1 className="mt-5 font-serif text-[clamp(40px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
-            Voice typing,
+            Type by talking,
             <br />
-            <em>locally.</em>
+            in every app you use.
           </h1>
 
           <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
             <strong className="font-medium text-editorial-ink">
-              Local AI dictation for Mac and Windows.
+              Offline voice-to-text for Mac and Windows.
             </strong>{" "}
-            ~150 wpm in every app. Pay once, no subscription, no cloud.
+            ~150 words a minute. Pay once, yours forever.
           </p>
 
           {/* CTA row */}
@@ -48,7 +48,7 @@ export default function HeroSection() {
 
           {/* Meta row */}
           <div className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-2 border-t border-dashed border-editorial-line-2 pt-6 font-mono text-xs uppercase tracking-[0.08em] text-editorial-ink-3">
-            <span className="text-[#3a7a4f]">&bull; 100% local</span>
+            <span className="text-[#3a7a4f]">&bull; 100% offline</span>
             <span>macOS 13+</span>
             <span>Windows 10+</span>
           </div>

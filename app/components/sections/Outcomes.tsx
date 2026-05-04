@@ -2,10 +2,9 @@ export default function Outcomes() {
   return (
     <section className="ed-section">
       <div className="ed-container">
-          <div className="ed-eyebrow">why founders keep it open all day</div>
+          <div className="ed-eyebrow">what changes day one</div>
           <h2 className="font-serif text-[clamp(40px,4vw,64px)] leading-[1] max-w-[780px] mt-2 mb-10">
-            The things you didn&apos;t have time to write, you now have time to
-            send.
+            Talk. Get clean text where your cursor is.
           </h2>
 
           {/*

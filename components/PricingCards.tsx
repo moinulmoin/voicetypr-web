@@ -45,7 +45,6 @@ const plans: Plan[] = [
     tagline: "Laptop and desktop on one license. For people with two setups.",
     productId: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
     highlight: true,
-    ribbon: "Most chosen",
     features: [
       "2 device activations",
       "Everything in Pro",
