@@ -69,7 +69,7 @@ export const mdxComponents = {
   ),
   blockquote: (props: ComponentPropsWithoutRef<"blockquote">) => (
     <blockquote
-      className="my-7 max-w-[680px] border-l-2 border-editorial-accent pl-5 font-serif text-[20px] italic text-editorial-ink"
+      className="my-7 max-w-[680px] rounded-lg bg-editorial-surface-2 px-5 py-4 font-serif text-[19px] italic text-editorial-ink"
       {...props}
     />
   ),

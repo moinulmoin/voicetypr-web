@@ -10,7 +10,7 @@ export default function HeroSection() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[640px]"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 50% 28%, color-mix(in oklab, var(--color-editorial-accent) 11%, transparent), transparent 65%)",
+            "radial-gradient(ellipse 55% 45% at 50% 22%, rgba(58,122,79,0.15), transparent 55%)",
         }}
       />
       <div className="ed-container relative">

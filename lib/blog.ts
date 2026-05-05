@@ -34,6 +34,7 @@ export type BlogPost = BlogPostMeta & {
 };
 
 async function readPostFile(slug: string): Promise<BlogPost | null> {
+  if (!/^[a-z0-9-]+$/.test(slug)) return null;
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
   try {
     const raw = await fs.readFile(filePath, "utf8");
