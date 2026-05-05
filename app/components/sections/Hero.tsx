@@ -4,15 +4,6 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section className="ed-section !pt-[160px] md:!pt-[200px] pb-0 relative overflow-hidden">
-      {/* Subtle ambient glow behind the H1 — local-first as visual language */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[640px]"
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 45% at 50% 22%, rgba(58,122,79,0.15), transparent 55%)",
-        }}
-      />
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="font-serif text-[clamp(40px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">

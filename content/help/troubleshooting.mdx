@@ -1,0 +1,69 @@
+---
+title: Troubleshooting
+description: Fix common VoiceTypr issues. Mic not working, slow transcription, crashes, and more.
+category: troubleshooting
+order: 1
+---
+
+## Microphone Not Working
+
+### macOS
+
+1. **Check System Permissions**
+   - System Settings > Privacy & Security > Microphone
+   - Ensure VoiceTypr is toggled On
+   - Restart VoiceTypr after granting permission
+
+2. **Check Input Device**
+   - System Settings > Sound > Input
+   - Select your microphone
+   - Test that the input level moves when you speak
+
+3. **Try a Different Mic**
+   - Built-in MacBook mic works best for most users
+   - External USB mics may need driver updates
+
+### Windows
+
+1. **Check Privacy Settings**
+   - Settings > Privacy > Microphone
+   - Enable "Microphone access" and "Let apps access your microphone"
+   - Find VoiceTypr and toggle On
+
+2. **Check Default Device**
+   - Right-click the speaker icon in taskbar
+   - Select "Open Sound settings"
+   - Verify correct input device is selected
+
+## Slow or Laggy Transcription
+
+**Cause**: Model too large for your RAM, or other apps using CPU.
+
+**Fixes**:
+- Switch to a smaller model (Whisper Base or Parakeet)
+- Close unnecessary apps
+- Ensure your Mac/PC meets the [model's RAM requirements](/help/models)
+
+## Text Not Pasting
+
+**macOS**: Grant Accessibility permission
+- System Settings > Privacy & Security > Accessibility
+- Add VoiceTypr and toggle On
+
+**Windows**: Run as administrator
+- Right-click VoiceTypr > Run as administrator
+
+## Crashes on Startup
+
+1. Delete the model folder and re-download:
+   - Mac: `~/Library/Application Support/voicetypr/models`
+   - Windows: `%APPDATA%\voicetypr\models`
+2. Restart VoiceTypr
+3. Re-download your model
+
+## Still Stuck?
+
+Email [support@voicetypr.com](mailto:support@voicetypr.com) with:
+- Your macOS/Windows version
+- VoiceTypr version (check the About menu)
+- What you tried

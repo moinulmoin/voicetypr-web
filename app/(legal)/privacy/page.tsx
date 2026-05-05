@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — VoiceTypr",
@@ -73,7 +74,7 @@ export default function PrivacyPage() {
 
         <h3 className={h3Class}>2.4 Cookies and online identifiers</h3>
         <p className={pClass}>
-          See our <a href="/cookies" className="text-editorial-accent hover:underline">Cookie Policy</a> for details on cookie categories and purposes. Non&#8209;essential cookies load only with your consent.
+          See our <Link href="/cookies" className="text-editorial-accent hover:underline">Cookie Policy</Link> for details on cookie categories and purposes. Non&#8209;essential cookies load only with your consent.
         </p>
       </section>
 

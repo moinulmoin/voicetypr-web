@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms of Service — VoiceTypr",
@@ -98,7 +99,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>6. Privacy and Data</h2>
         <p className={pClass}>
-          VoiceTypr processes all voice data locally on your device. The Software only connects to our servers for license validation, activation, and trial verification. Please review our <a href="/privacy" className="text-editorial-accent hover:underline">Privacy Policy</a> for detailed information.
+          VoiceTypr processes all voice data locally on your device. The Software only connects to our servers for license validation, activation, and trial verification. Please review our <Link href="/privacy" className="text-editorial-accent hover:underline">Privacy Policy</Link> for detailed information.
         </p>
       </section>
 

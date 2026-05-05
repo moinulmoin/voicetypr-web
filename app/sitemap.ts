@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { getAllArticles } from "@/lib/help";
 import { getAllUseCases } from "@/lib/use-cases";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -38,6 +39,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/changelog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/help`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.75,
@@ -83,5 +90,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...blogRoutes, ...useCaseRoutes];
+  const helpArticles = await getAllArticles();
+  const helpRoutes: MetadataRoute.Sitemap = helpArticles.map((article) => ({
+    url: `${baseUrl}/help/${article.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...useCaseRoutes, ...helpRoutes];
 }

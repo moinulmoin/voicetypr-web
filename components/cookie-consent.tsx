@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useEffect, useState } from "react";
 
@@ -85,12 +86,12 @@ export default function CookieConsent() {
         <div className="flex items-center gap-3 px-4 py-3.5">
           <p className="text-[13px] leading-[1.5] text-editorial-ink-2">
             We use cookies to personalize content and run ads. Read our{" "}
-            <a
+            <Link
               href="/cookies"
               className="text-editorial-accent underline underline-offset-2 hover:text-editorial-accent-ink"
             >
               Cookie Policy
-            </a>
+            </Link>
             .
           </p>
           <button

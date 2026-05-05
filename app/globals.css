@@ -143,11 +143,6 @@ html {
 }
 
 /* Section backgrounds for consistent flow */
-.section-hero {
-  position: relative;
-  background: radial-gradient(ellipse at top, hsl(var(--muted) / 0.3) 0%, transparent 50%);
-}
-
 .section-features {
   position: relative;
   background: linear-gradient(to bottom, transparent 0%, hsl(var(--muted) / 0.2) 50%, transparent 100%);
@@ -354,4 +349,117 @@ html {
 /* Typewriter caret */
 @keyframes ed-caret {
   50% { opacity: 0; }
+}
+
+/* Prose editorial — help articles and blog posts */
+.prose-editorial h2 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-editorial-ink);
+}
+
+.prose-editorial h3 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(20px, 2.5vw, 24px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-editorial-ink);
+}
+
+.prose-editorial p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: var(--color-editorial-ink-2);
+}
+
+.prose-editorial a {
+  color: var(--color-editorial-accent);
+  text-decoration: none;
+}
+
+.prose-editorial a:hover {
+  text-decoration: underline;
+}
+
+.prose-editorial ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-editorial ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-editorial li {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+  color: var(--color-editorial-ink-2);
+}
+
+.prose-editorial table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 14px;
+}
+
+.prose-editorial th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-editorial-ink-3);
+  border-bottom: 1px solid var(--color-editorial-line);
+}
+
+.prose-editorial td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-editorial-line-2);
+  color: var(--color-editorial-ink-2);
+}
+
+.prose-editorial tr:hover td {
+  background: var(--color-editorial-surface-2);
+}
+
+.prose-editorial strong {
+  font-weight: 500;
+  color: var(--color-editorial-ink);
+}
+
+.prose-editorial code {
+  font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  background: var(--color-editorial-surface-2);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  color: var(--color-editorial-ink);
+}
+
+.prose-editorial pre {
+  background: var(--color-editorial-surface-2);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.prose-editorial pre code {
+  background: none;
+  padding: 0;
 }

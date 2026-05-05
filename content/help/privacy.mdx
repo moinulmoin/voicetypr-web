@@ -1,0 +1,50 @@
+---
+title: Privacy & Security
+description: How VoiceTypr keeps your voice data private. What stays local, what leaves, and why.
+category: privacy
+order: 1
+---
+
+## Your Audio Never Leaves Your Device
+
+VoiceTypr processes speech recognition **entirely on your computer**.
+
+- No audio files uploaded to any server
+- No cloud transcription service
+- No "we may use your data to improve our service"
+
+The only network requests VoiceTypr makes are for:
+- Checking for app updates
+- Validating your license (if purchased)
+
+## What's Stored Locally
+
+| Data | Where | Encrypted |
+|------|-------|-----------|
+| Speech models | Local folder | No (open-source weights) |
+| Transcription history | SQLite database | No |
+| Settings | JSON config file | No |
+| License key | Keychain (Mac) / Registry (Windows) | Yes |
+
+## AI Formatting (Optional)
+
+If you enable AI formatting presets (Default, Prompts, Email, Commit):
+
+- **Text is sent** to your chosen AI provider (Gemini, OpenAI, Groq, Ollama)
+- **Audio is never sent** — only the transcribed text
+- You can use a **local Ollama instance** to keep everything offline
+
+To use local AI only:
+1. Install [Ollama](https://ollama.com)
+2. In VoiceTypr settings, set AI Provider to "Ollama"
+3. Point to your local Ollama URL
+
+## No Analytics in the App
+
+VoiceTypr does not include telemetry, crash reporting, or usage analytics.
+
+The website (voicetypr.com) uses privacy-focused analytics (Umami and OpenPanel) with no cookies or cross-site tracking.
+
+## Open Source
+
+VoiceTypr's core transcription engine is built on OpenAI's Whisper, an open-source speech recognition model. The app itself is not open source, but we publish our privacy practices transparently because we believe you should own your software.

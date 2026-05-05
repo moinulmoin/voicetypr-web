@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Cookie Policy — VoiceTypr",
@@ -47,7 +48,7 @@ export default function CookiesPage() {
         </p>
 
         <p className={pClass}>
-          See our <a href="/privacy" className="text-editorial-accent hover:underline">Privacy Policy</a> for the full picture, and our <a href="/terms" className="text-editorial-accent hover:underline">Terms of Service</a> for license + refund terms.
+          See our <Link href="/privacy" className="text-editorial-accent hover:underline">Privacy Policy</Link> for the full picture, and our <Link href="/terms" className="text-editorial-accent hover:underline">Terms of Service</Link> for license + refund terms.
         </p>
       </div>
     </>
