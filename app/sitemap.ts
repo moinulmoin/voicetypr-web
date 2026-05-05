@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { getAllArticles } from "@/lib/help";
+import { seoPages, alternativePages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -97,6 +98,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
     priority: 0.6,
   }));
+  const bestRoutes: MetadataRoute.Sitemap = seoPages.map((page) => ({
+    url: `${baseUrl}/best/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.65,
+  }));
 
-  return [...staticRoutes, ...blogRoutes, ...useCaseRoutes, ...helpRoutes];
+  const alternativeRoutes: MetadataRoute.Sitemap = alternativePages.map((page) => ({
+    url: `${baseUrl}/alternative/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.65,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...useCaseRoutes, ...helpRoutes, ...bestRoutes, ...alternativeRoutes];
 }
