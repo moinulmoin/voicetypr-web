@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +20,6 @@ import {
 } from "lucide-react";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
-import GridBackground from "../components/GridBackground";
 
 const AFFONSO_URL = "https://voicetypr.affonso.io";
 
@@ -165,152 +161,192 @@ const faqs = [
   },
 ];
 
+function AffiliateCta({
+  href,
+  children,
+  event,
+}: {
+  href: string;
+  children: React.ReactNode;
+  event?: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-umami-event={event}
+      className="group inline-flex items-center gap-2 rounded-lg bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-colors hover:bg-black"
+    >
+      {children}
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">
+        <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+      </span>
+    </a>
+  );
+}
+
 export default function AffiliatePage() {
   return (
     <>
-      <main id="main-content" className="relative min-h-screen">
-        <GridBackground />
+      <main id="main-content" className="min-h-screen bg-white">
         <Header />
 
         {/* Hero */}
-        <section className="relative flex min-h-[70vh] items-center overflow-hidden pt-32 lg:pt-40">
-          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-            <Badge variant="outline" className="mb-6 gap-1.5">
+        <section className="flex min-h-[70vh] items-center pt-32 lg:pt-40">
+          <div className="mx-auto max-w-4xl px-4 text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-editorial-accent-wash px-3 py-1 text-xs font-medium text-editorial-accent-ink mb-6">
               <Sparkles className="h-3 w-3" />
               Earn up to 40% per sale
-            </Badge>
-            <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
-              <span className="block bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
-                Promote VoiceTypr.
-              </span>
-              <span className="block bg-gradient-to-r from-foreground/70 via-foreground to-foreground bg-clip-text text-transparent">
-                Earn real money.
-              </span>
+            </span>
+            <h1 className="font-serif text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-[-0.02em] mb-6">
+              Promote VoiceTypr.
+              <br />
+              Earn real money.
             </h1>
-            <p className="mx-auto max-w-2xl text-balance text-xl text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-balance text-[18px] leading-[1.6] text-editorial-ink-2">
               Offline AI voice-to-text for Mac and Windows. Pay-once lifetime
-              product, high-intent buyers, and an audience that&rsquo;s already
+              product, high-intent buyers, and an audience that&apos;s already
               searching for an alternative to $15/month dictation apps.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button asChild size="lg" data-umami-event="affiliate-hero-apply-click">
-                <a href={AFFONSO_URL} target="_blank" rel="noopener noreferrer">
-                  Apply on Affonso
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="#kit">See the creator kit</Link>
-              </Button>
+              <AffiliateCta
+                href={AFFONSO_URL}
+                event="affiliate-hero-apply-click"
+              >
+                Apply on Affonso
+              </AffiliateCta>
+              <Link
+                href="#kit"
+                className="inline-flex items-center gap-2 rounded-lg border border-editorial-line bg-white px-5 py-2.5 text-sm font-medium text-editorial-ink transition-colors hover:bg-editorial-surface-2"
+              >
+                See the creator kit
+              </Link>
             </div>
           </div>
         </section>
 
         {/* Why promote VoiceTypr */}
-        <section className="relative py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-5xl px-4">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">
+              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
                 Why this program is different
               </h2>
-              <p className="mt-3 text-muted-foreground sm:text-lg">
+              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
                 Most affiliate programs pay pennies on low-margin subscriptions.
                 This one pays real money on a one-time product with a real audience fit.
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              <Card className="rounded-2xl border-border/50 bg-card/50 p-6 backdrop-blur-sm">
-                <DollarSign className="mb-3 h-6 w-6 text-primary" aria-hidden />
-                <h3 className="mb-2 text-lg font-semibold">Meaningful per-sale payout</h3>
-                <p className="text-sm text-muted-foreground">
-                  $8.75 to $39.20 per conversion, depending on tier and plan. Not
-                  5% of a $10/mo subscription that churns in a month.
-                </p>
-              </Card>
-              <Card className="rounded-2xl border-border/50 bg-card/50 p-6 backdrop-blur-sm">
-                <TrendingUp className="mb-3 h-6 w-6 text-primary" aria-hidden />
-                <h3 className="mb-2 text-lg font-semibold">High-intent category</h3>
-                <p className="text-sm text-muted-foreground">
-                  People searching &ldquo;Wispr Flow alternative&rdquo; or
-                  &ldquo;offline dictation&rdquo; already know what they want. Your
-                  job is to tell them it exists.
-                </p>
-              </Card>
-              <Card className="rounded-2xl border-border/50 bg-card/50 p-6 backdrop-blur-sm">
-                <Users className="mb-3 h-6 w-6 text-primary" aria-hidden />
-                <h3 className="mb-2 text-lg font-semibold">Audience you already have</h3>
-                <p className="text-sm text-muted-foreground">
-                  Works with Cursor, Claude, ChatGPT, Slack, email, any app. If
-                  your audience uses any of these, the demo sells itself.
-                </p>
-              </Card>
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  icon: DollarSign,
+                  title: "Meaningful per-sale payout",
+                  body: "$8.75 to $39.20 per conversion, depending on tier and plan. Not 5% of a $10/mo subscription that churns in a month.",
+                },
+                {
+                  icon: TrendingUp,
+                  title: "High-intent category",
+                  body: "People searching 'Wispr Flow alternative' or 'offline dictation' already know what they want. Your job is to tell them it exists.",
+                },
+                {
+                  icon: Users,
+                  title: "Audience you already have",
+                  body: "Works with Cursor, Claude, ChatGPT, Slack, email, any app. If your audience uses any of these, the demo sells itself.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-xl bg-editorial-surface-2 p-6"
+                >
+                  <item.icon
+                    className="mb-3 h-6 w-6 text-editorial-accent-ink"
+                    aria-hidden
+                  />
+                  <h3 className="mb-2 text-[17px] font-medium text-editorial-ink">
+                    {item.title}
+                  </h3>
+                  <p className="text-[14px] leading-[1.6] text-editorial-ink-2">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Commission tiers */}
-        <section className="relative py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-5xl px-4">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">Commission tiers</h2>
-              <p className="mt-3 text-muted-foreground sm:text-lg">
+              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+                Commission tiers
+              </h2>
+              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
                 Start at 25%. Ship content, get 35%. Partner on a launch, get 40%.
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-3">
               {tiers.map((tier) => (
-                <Card
+                <div
                   key={tier.name}
-                  className={`rounded-2xl border p-6 backdrop-blur-sm ${
+                  className={`rounded-xl border p-6 ${
                     tier.highlight
-                      ? "border-primary bg-card/70 shadow-lg"
-                      : "border-border/50 bg-card/50"
+                      ? "border-editorial-accent bg-editorial-accent-wash/40"
+                      : "border-editorial-line bg-editorial-surface-2"
                   }`}
                 >
                   {tier.highlight && (
-                    <Badge className="mb-3">Most affiliates land here</Badge>
+                    <span className="mb-3 inline-block rounded-full bg-editorial-accent px-2.5 py-0.5 text-[11px] font-medium text-white">
+                      Most affiliates land here
+                    </span>
                   )}
-                  <h3 className="text-xl font-semibold">{tier.name}</h3>
+                  <h3 className="text-[17px] font-medium text-editorial-ink">
+                    {tier.name}
+                  </h3>
                   <div className="mt-2 mb-4">
-                    <span className="text-4xl font-bold">{tier.commission}</span>
-                    <span className="ml-2 text-sm text-muted-foreground">
+                    <span className="text-[40px] font-semibold tracking-[-0.02em] text-editorial-ink">
+                      {tier.commission}
+                    </span>
+                    <span className="ml-2 text-[13px] text-editorial-ink-2">
                       {tier.per100}
                     </span>
                   </div>
-                  <p className="mb-2 text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">Who: </span>
+                  <p className="mb-2 text-[14px] text-editorial-ink-2">
+                    <span className="font-medium text-editorial-ink">Who: </span>
                     {tier.who}
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">How: </span>
+                  <p className="text-[14px] text-editorial-ink-2">
+                    <span className="font-medium text-editorial-ink">How: </span>
                     {tier.how}
                   </p>
-                </Card>
+                </div>
               ))}
             </div>
 
             {/* Earnings table */}
             <div className="mt-12">
-              <h3 className="mb-4 text-center text-lg font-semibold">
+              <h3 className="mb-4 text-center text-[17px] font-medium text-editorial-ink">
                 What you earn per sale
               </h3>
-              <Card className="overflow-hidden rounded-2xl border-border/50 bg-card/50 backdrop-blur-sm">
+              <div className="overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2">
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
-                    <thead className="border-b border-border/50 bg-muted/20">
+                    <thead className="border-b border-editorial-line bg-editorial-surface-2">
                       <tr>
-                        <th className="px-4 py-3 text-left font-semibold">
+                        <th className="px-4 py-3 text-left text-[13px] font-medium text-editorial-ink">
                           Plan sold
                         </th>
-                        <th className="px-4 py-3 text-right font-semibold">
+                        <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
                           At 25%
                         </th>
-                        <th className="px-4 py-3 text-right font-semibold">
+                        <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
                           At 35%
                         </th>
-                        <th className="px-4 py-3 text-right font-semibold">
+                        <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
                           At 40%
                         </th>
                       </tr>
@@ -321,18 +357,20 @@ export default function AffiliatePage() {
                           key={row.tier}
                           className={
                             idx !== exampleEarnings.length - 1
-                              ? "border-b border-border/30"
+                              ? "border-b border-editorial-line/60"
                               : ""
                           }
                         >
-                          <td className="px-4 py-3 font-medium">{row.tier}</td>
-                          <td className="px-4 py-3 text-right tabular-nums">
+                          <td className="px-4 py-3 text-[14px] font-medium text-editorial-ink">
+                            {row.tier}
+                          </td>
+                          <td className="px-4 py-3 text-right tabular-nums text-[14px] text-editorial-ink-2">
                             {row.commission25}
                           </td>
-                          <td className="px-4 py-3 text-right tabular-nums">
+                          <td className="px-4 py-3 text-right tabular-nums text-[14px] text-editorial-ink-2">
                             {row.commission35}
                           </td>
-                          <td className="px-4 py-3 text-right font-semibold tabular-nums text-primary">
+                          <td className="px-4 py-3 text-right text-[14px] font-medium tabular-nums text-editorial-accent-ink">
                             {row.commission40}
                           </td>
                         </tr>
@@ -340,8 +378,8 @@ export default function AffiliatePage() {
                     </tbody>
                   </table>
                 </div>
-              </Card>
-              <p className="mt-3 text-center text-xs text-muted-foreground">
+              </div>
+              <p className="mt-3 text-center text-[12px] text-editorial-ink-3">
                 Prices shown reflect current promotional pricing. Base prices:
                 Pro $50, Plus $80, Max $140.
               </p>
@@ -350,90 +388,100 @@ export default function AffiliatePage() {
         </section>
 
         {/* Angles that convert */}
-        <section className="relative py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-5xl px-4">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">
+              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
                 Angles that actually convert
               </h2>
-              <p className="mt-3 text-muted-foreground sm:text-lg">
+              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
                 Steal these. Adapt them to your voice.
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2">
               {angles.map((angle) => (
-                <Card
+                <div
                   key={angle.title}
-                  className="rounded-2xl border-border/50 bg-card/50 p-6 backdrop-blur-sm"
+                  className="rounded-xl bg-editorial-surface-2 p-6"
                 >
-                  <h3 className="mb-2 text-lg font-semibold">{angle.title}</h3>
-                  <p className="text-sm text-muted-foreground">{angle.body}</p>
-                </Card>
+                  <h3 className="mb-2 text-[17px] font-medium text-editorial-ink">
+                    {angle.title}
+                  </h3>
+                  <p className="text-[14px] leading-[1.6] text-editorial-ink-2">
+                    {angle.body}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Who's a good fit */}
-        <section className="relative py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-4xl px-4">
             <div className="mb-10 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">
-                Who&rsquo;s a good fit
+              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+                Who&apos;s a good fit
               </h2>
-              <p className="mt-3 text-muted-foreground sm:text-lg">
-                If you match any of these, you&rsquo;ll do well.
+              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
+                If you match any of these, you&apos;ll do well.
               </p>
             </div>
-            <Card className="rounded-2xl border-border/50 bg-card/50 p-8 backdrop-blur-sm">
+            <div className="rounded-xl bg-editorial-surface-2 p-8">
               <ul className="grid gap-3 sm:grid-cols-2">
                 {fits.map((fit) => (
                   <li
                     key={fit}
-                    className="flex items-start gap-2 text-sm text-muted-foreground"
+                    className="flex items-start gap-2 text-[14px] text-editorial-ink-2"
                   >
                     <Check
-                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
+                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-accent-ink"
                       aria-hidden
                     />
                     <span>{fit}</span>
                   </li>
                 ))}
               </ul>
-            </Card>
+            </div>
           </div>
         </section>
 
         {/* Creator kit */}
-        <section className="relative py-24" id="kit">
+        <section className="py-24" id="kit">
           <div className="mx-auto max-w-5xl px-4">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">Creator kit</h2>
-              <p className="mt-3 text-muted-foreground sm:text-lg">
-                Delivered to approved affiliates on day one. You don&rsquo;t produce
+              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+                Creator kit
+              </h2>
+              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
+                Delivered to approved affiliates on day one. You don&apos;t produce
                 anything from scratch.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2">
               {kit.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <Card
+                  <div
                     key={item.title}
-                    className="rounded-2xl border-border/50 bg-card/50 p-6 backdrop-blur-sm"
+                    className="rounded-xl bg-editorial-surface-2 p-6"
                   >
                     <div className="mb-3 flex items-center gap-3">
-                      <div className="rounded-lg bg-primary/10 p-2">
+                      <div className="rounded-lg bg-editorial-accent-wash p-2">
                         <Icon
-                          className="h-5 w-5 text-primary"
+                          className="h-5 w-5 text-editorial-accent-ink"
                           aria-hidden
                         />
                       </div>
-                      <h3 className="text-lg font-semibold">{item.title}</h3>
+                      <h3 className="text-[17px] font-medium text-editorial-ink">
+                        {item.title}
+                      </h3>
                     </div>
-                    <p className="text-sm text-muted-foreground">{item.body}</p>
-                  </Card>
+                    <p className="text-[14px] leading-[1.6] text-editorial-ink-2">
+                      {item.body}
+                    </p>
+                  </div>
                 );
               })}
             </div>
@@ -441,10 +489,10 @@ export default function AffiliatePage() {
         </section>
 
         {/* FAQ */}
-        <section className="relative py-24" id="affiliate-faq">
+        <section className="py-24" id="affiliate-faq">
           <div className="mx-auto max-w-3xl px-4">
             <div className="mb-8 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">
+              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
                 Frequently asked questions
               </h2>
             </div>
@@ -453,12 +501,12 @@ export default function AffiliatePage() {
                 <AccordionItem
                   key={faq.q}
                   value={`faq-${idx}`}
-                  className="border-border/50"
+                  className="border-b border-editorial-line"
                 >
-                  <AccordionTrigger className="text-left text-base font-medium">
+                  <AccordionTrigger className="text-left text-[15px] font-medium text-editorial-ink">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
+                  <AccordionContent className="text-[14px] leading-[1.6] text-editorial-ink-2">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -468,32 +516,32 @@ export default function AffiliatePage() {
         </section>
 
         {/* Final CTA */}
-        <section className="relative py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-3xl px-4 text-center">
-            <Card className="rounded-2xl border-border/50 bg-card/50 p-10 backdrop-blur-sm">
-              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+            <div className="rounded-xl bg-editorial-surface-2 p-10">
+              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em] mb-4">
                 Ready to promote?
               </h2>
-              <p className="mx-auto mb-8 max-w-xl text-muted-foreground sm:text-lg">
+              <p className="mx-auto mb-8 max-w-xl text-[16px] text-editorial-ink-2 sm:text-[17px]">
                 Sign up on Affonso in 60 seconds. Get your link, grab the kit,
                 ship something real, unlock 35%.
               </p>
-              <Button asChild size="lg" data-umami-event="affiliate-final-apply-click">
-                <a href={AFFONSO_URL} target="_blank" rel="noopener noreferrer">
-                  Apply on Affonso
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <p className="mt-6 text-xs text-muted-foreground">
+              <AffiliateCta
+                href={AFFONSO_URL}
+                event="affiliate-final-apply-click"
+              >
+                Apply on Affonso
+              </AffiliateCta>
+              <p className="mt-6 text-[13px] text-editorial-ink-3">
                 Questions?{" "}
                 <a
                   href="mailto:support@voicetypr.com?subject=Affiliate%20program"
-                  className="underline underline-offset-2 hover:text-foreground"
+                  className="text-editorial-accent hover:underline"
                 >
                   support@voicetypr.com
                 </a>
               </p>
-            </Card>
+            </div>
           </div>
         </section>
 

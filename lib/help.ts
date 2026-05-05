@@ -33,6 +33,17 @@ export const HELP_CATEGORY_LABELS: Record<HelpCategory, string> = {
   billing: "Billing & Licenses",
   privacy: "Privacy & Security",
 };
+export function searchArticles<T extends HelpArticleMeta>(
+  query: string,
+  articles: T[],
+): T[] {
+  const q = query.toLowerCase().trim();
+  if (!q) return articles;
+  return articles.filter((a) => {
+    const haystack = `${a.title} ${a.description} ${HELP_CATEGORY_LABELS[a.category]}`.toLowerCase();
+    return haystack.includes(q);
+  });
+}
 
 async function readArticleFile(slug: string): Promise<HelpArticle | null> {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
