@@ -69,9 +69,9 @@ export default function Header() {
           <Link
             href="/download"
             className="rounded-lg bg-editorial-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black"
-            data-umami-event="header-try-for-free-click"
+            data-umami-event="header-download-click"
           >
-            Try free
+            Download
           </Link>
         </div>
       </div>
