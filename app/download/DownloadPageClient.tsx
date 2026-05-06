@@ -172,7 +172,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       </section>
 
       {/* Platform Selection — surface-2 bg for visual variety */}
-      <section className="ed-section bg-editorial-surface-2">
+      <section className="ed-section">
         <div className="ed-container max-w-[840px]">
           <div className={`grid gap-4 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
             {options.map((option) => {
@@ -194,7 +194,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                       className={`mb-5 p-3 rounded-xl [transition:transform_300ms] ${
                         isSelected
                           ? 'bg-editorial-accent-wash text-editorial-accent'
-                          : 'bg-editorial-surface-2 text-editorial-ink group-hover:scale-105'
+                          : 'bg-white text-editorial-ink group-hover:scale-105'
                       }`}
                     >
                       <option.icon />
@@ -260,7 +260,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       )}
 
       {/* Pricing — surface-2 bg for visual variety */}
-      <section className="ed-section bg-editorial-surface-2">
+      <section className="ed-section">
         <div className="ed-container">
           <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
         </div>
