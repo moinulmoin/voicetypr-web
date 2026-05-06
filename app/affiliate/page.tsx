@@ -189,11 +189,11 @@ function AffiliateCta({
 export default function AffiliatePage() {
   return (
     <>
-      <main id="main-content" className="min-h-screen bg-white">
+      <main id="main-content" className="landing-editorial min-h-screen">
         <Header />
 
         {/* Hero */}
-        <section className="flex min-h-[70vh] items-center pt-32 lg:pt-40">
+        <section className="ed-section ed-section-hero flex min-h-[70vh] items-center pt-32 lg:pt-40">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-editorial-accent-wash px-3 py-1 text-xs font-medium text-editorial-accent-ink mb-6">
               <Sparkles className="h-3 w-3" />

@@ -76,7 +76,7 @@ export default async function BlogIndexPage() {
       >
         <Header />
 
-        <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
+        <section className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-0">
           <div className="ed-container">
             <div className="max-w-[820px]">
               <h1 className="text-[clamp(40px,6vw,72px)] font-semibold !font-sans leading-[0.95] tracking-[-0.03em] mb-4">

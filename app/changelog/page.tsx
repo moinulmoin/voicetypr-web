@@ -138,7 +138,7 @@ export default function ChangelogPage() {
       >
         <Header />
 
-        <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
+        <section className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-0">
           <div className="ed-container">
             <div className="max-w-[820px]">
               <div className="ed-eyebrow">what shipped, what got fixed</div>
