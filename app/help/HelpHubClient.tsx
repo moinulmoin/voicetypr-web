@@ -54,7 +54,7 @@ export default function HelpHubClient({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search help articles…"
-          className="rounded-lg border border-editorial-line bg-white pl-10 pr-4 py-3 text-sm text-editorial-ink placeholder:text-editorial-ink-3 focus:border-editorial-accent focus:outline-none w-full"
+          className="rounded-lg border border-editorial-line bg-white pl-10 pr-4 py-3 text-sm text-editorial-ink placeholder:text-editorial-ink-3 focus:border-editorial-accent focus:ring-2 focus:ring-editorial-accent/20 focus:outline-none w-full"
         />
       </div>
 

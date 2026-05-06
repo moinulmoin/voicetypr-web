@@ -166,7 +166,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   <div className="font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
                     {String(i + 1).padStart(2, "0")} · the bottleneck
                   </div>
-                  <h3 className="font-serif text-[20px] leading-[1.2]">
+                  <h3 className="font-sans text-[20px] leading-[1.2]">
                     {pain.title}
                   </h3>
                   <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
@@ -196,7 +196,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                     <div className="font-serif text-[44px] leading-none text-editorial-accent">
                       {outcome.marker}
                     </div>
-                    <h3 className="font-serif text-[22px] leading-[1.15]">
+                    <h3 className="font-sans text-[22px] leading-[1.15]">
                       {outcome.title}
                     </h3>
                     <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
@@ -230,7 +230,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <h3 className="font-serif text-[22px] leading-[1.2] mb-1.5">
+                      <h3 className="font-sans text-[22px] leading-[1.2] mb-1.5">
                         {workflow.title}
                       </h3>
                       <p className="text-editorial-ink-2 text-[15px] leading-[1.6]">

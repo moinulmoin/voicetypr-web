@@ -104,7 +104,7 @@ function Release({ entry }: { entry: ChangelogEntry }) {
               {entry.highlights.map((item, i) => (
                 <li
                   key={`hl-${entry.version}-${i}`}
-                  className="grid grid-cols-[auto_1fr] gap-3 font-serif text-[18px] md:text-[20px] leading-[1.35] text-editorial-ink"
+                  className="grid grid-cols-[auto_1fr] gap-3 font-sans text-[18px] md:text-[20px] leading-[1.35] text-editorial-ink"
                 >
                   <span
                     aria-hidden

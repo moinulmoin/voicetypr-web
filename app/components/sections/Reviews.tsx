@@ -79,7 +79,7 @@ export default function Reviews() {
                     "m-0 text-editorial-ink",
                     mini
                       ? "font-sans text-[15px] leading-[1.5] text-editorial-ink-2"
-                      : "font-serif text-[22px] leading-[1.3]",
+                      : "font-sans text-[22px] leading-[1.3]",
                   ].join(" ")}
                 >
                   &ldquo;{t.content}&rdquo;

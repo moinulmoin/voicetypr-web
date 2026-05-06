@@ -366,10 +366,10 @@ export default function WisprFlowAlternativePage() {
                       <th className="px-5 py-4 text-left font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3 w-[35%]">
                         Criterion
                       </th>
-                      <th className="px-5 py-4 text-left font-serif text-[18px] text-editorial-ink">
+                      <th className="px-5 py-4 text-left font-sans text-[18px] text-editorial-ink">
                         VoiceTypr
                       </th>
-                      <th className="px-5 py-4 text-left font-serif text-[18px] text-editorial-ink-2">
+                      <th className="px-5 py-4 text-left font-sans text-[18px] text-editorial-ink-2">
                         Wispr Flow
                       </th>
                     </tr>
