@@ -148,23 +148,31 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
     <main className="landing-editorial relative min-h-screen">
       <Header />
 
-      {/* Hero */}
-      <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
+      {/* Hero — matches homepage: no eyebrow, big serif, generous padding */}
+      <section className="ed-section !pt-[160px] md:!pt-[200px] pb-0">
         <div className="ed-container text-center">
-          <div className="mb-5 flex justify-center">
-            <span className="ed-eyebrow">download · mac & windows</span>
-          </div>
-          <h1 className="font-serif text-[clamp(48px,6vw,86px)] leading-[0.98] tracking-[-0.025em] mb-5">
+          <h1 className="font-serif text-[clamp(48px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
             Download VoiceTypr
           </h1>
-          <p className="text-[18px] md:text-[19px] leading-[1.55] text-editorial-ink-2 max-w-[560px] mx-auto">
-            Choose your platform. Three-day trial, no credit card.
+
+          <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
+            <strong className="font-medium text-editorial-ink">
+              Choose your platform.
+            </strong>{" "}
+            Three-day trial, no credit card.
           </p>
+
+          {/* Trust signals */}
+          <div className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-2 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
+            <span className="text-editorial-accent-ink">&bull; macOS 13+</span>
+            <span>Windows 10+</span>
+            <span>100% offline</span>
+          </div>
         </div>
       </section>
 
-      {/* Platform Selection */}
-      <section className="ed-section pt-0">
+      {/* Platform Selection — surface-2 bg for visual variety */}
+      <section className="ed-section bg-editorial-surface-2">
         <div className="ed-container max-w-[840px]">
           <div className={`grid gap-4 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
             {options.map((option) => {
@@ -175,7 +183,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                   onClick={() => setSelectedPlatform(option.id)}
                   className={`relative group text-left p-6 rounded-xl border [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] active:scale-[0.99] ${
                     isSelected
-                      ? 'bg-editorial-surface border-editorial-accent'
+                      ? 'bg-white border-editorial-accent'
                       : 'bg-editorial-surface border-editorial-line hover:border-editorial-ink-3'
                   }`}
                   data-track="download-platform-select"
@@ -219,47 +227,46 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
               </button>
             </div>
           )}
-
-          {/* Installation Steps */}
-          {selectedPlatform && (
-            <div className="mt-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="mb-8 flex justify-center">
-                <span className="ed-eyebrow">install · three steps</span>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                {installationSteps.map((step, index) => (
-                  <div key={step.step} className="relative">
-                    <div className="text-center">
-                      <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-editorial-ink text-white font-semibold text-[15px] mb-4">
-                        {step.step}
-                      </div>
-                      <h3 className="text-[16px] font-semibold mb-1">
-                        {step.title}
-                      </h3>
-                      <p className="text-[14px] text-editorial-ink-2">
-                        {step.description}
-                      </p>
-                    </div>
-
-                    {index < installationSteps.length - 1 && (
-                      <ArrowRight className="hidden md:block absolute top-5 -right-3 w-5 h-5 text-editorial-ink-3" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="ed-section">
+      {/* Installation Steps — white bg, clean */}
+      {selectedPlatform && (
+        <section className="ed-section pt-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="ed-container max-w-[840px]">
+            <div className="grid md:grid-cols-3 gap-6">
+              {installationSteps.map((step, index) => (
+                <div key={step.step} className="relative">
+                  <div className="text-center">
+                    <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-editorial-ink text-white font-semibold text-[15px] mb-4">
+                      {step.step}
+                    </div>
+                    <h3 className="text-[16px] font-semibold mb-1">
+                      {step.title}
+                    </h3>
+                    <p className="text-[14px] text-editorial-ink-2">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {index < installationSteps.length - 1 && (
+                    <ArrowRight className="hidden md:block absolute top-5 -right-3 w-5 h-5 text-editorial-ink-3" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Pricing — surface-2 bg for visual variety */}
+      <section className="ed-section bg-editorial-surface-2">
         <div className="ed-container">
           <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ — white bg */}
       <section className="ed-section pt-0">
         <div className="ed-container">
           <FAQ />
