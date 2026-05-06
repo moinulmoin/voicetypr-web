@@ -40,41 +40,6 @@ function PostMeta({ post }: { post: BlogPostMeta }) {
   );
 }
 
-function FeaturedPost({ post }: { post: BlogPostMeta }) {
-  return (
-    <Link
-      href={`/blog/${post.slug}`}
-      className="group block bg-editorial-surface border border-editorial-line rounded-2xl p-8 md:p-10 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] hover:border-editorial-ink-3 active:scale-[0.99]"
-      data-track="blog-featured-click"
-      data-track-slug={post.slug}
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 lg:gap-10">
-        <div className="lg:max-w-[160px]">
-          <div className="text-[11px] font-medium uppercase tracking-[0.06em] text-editorial-accent mb-2">
-            Latest
-          </div>
-          <PostMeta post={post} />
-        </div>
-
-        <div>
-          <h2 className="text-[clamp(26px,3.5vw,40px)] font-semibold !font-sans leading-[1.1] tracking-[-0.02em] mb-3">
-            {post.title}
-          </h2>
-          <p className="text-editorial-ink-2 text-[16px] leading-[1.6] max-w-[640px] mb-4">
-            {post.description}
-          </p>
-          <div className="inline-flex items-center gap-1 text-[14px] text-editorial-ink group-hover:text-editorial-ink-2 [transition:color_200ms]">
-            Read
-            <span aria-hidden className="[transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
-              →
-            </span>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
 function PostCard({ post }: { post: BlogPostMeta }) {
   return (
     <Link
@@ -84,9 +49,9 @@ function PostCard({ post }: { post: BlogPostMeta }) {
       data-track-slug={post.slug}
     >
       <PostMeta post={post} />
-      <h3 className="text-[18px] md:text-[20px] font-semibold !font-sans leading-[1.25] tracking-[-0.01em] mt-3 mb-2">
+      <h2 className="text-[18px] md:text-[20px] font-semibold !font-sans leading-[1.25] tracking-[-0.01em] mt-3 mb-2">
         {post.title}
-      </h3>
+      </h2>
       <p className="text-editorial-ink-2 text-[15px] leading-[1.6] mb-4 flex-1">
         {post.description}
       </p>
@@ -102,7 +67,6 @@ function PostCard({ post }: { post: BlogPostMeta }) {
 
 export default async function BlogIndexPage() {
   const posts = await getAllPosts();
-  const [featured, ...rest] = posts;
 
   return (
     <>
@@ -127,29 +91,18 @@ export default async function BlogIndexPage() {
 
         <section className="ed-section">
           <div className="ed-container">
-            {!featured ? (
+            {posts.length === 0 ? (
               <p className="text-[14px] text-editorial-ink-3 py-12">
                 No posts yet. Check back soon.
               </p>
             ) : (
-              <div className="space-y-10 md:space-y-12">
-                <FeaturedPost post={featured} />
-
-                {rest.length > 0 ? (
-                  <div>
-                    <div className="text-[11px] font-medium uppercase tracking-[0.06em] text-editorial-ink-3 mb-5">
-                      All posts
-                    </div>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      {rest.map((post) => (
-                        <li key={post.slug}>
-                          <PostCard post={post} />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-              </div>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {posts.map((post) => (
+                  <li key={post.slug}>
+                    <PostCard post={post} />
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         </section>

@@ -26,7 +26,6 @@ export default function EmailCaptureModal({
 }: EmailCaptureModalProps) {
   const [state, formAction, isPending] = useActionState(saveDownloadEmail, null);
 
-  // Handle form action completion
   useEffect(() => {
     if (state?.success && onDownload) {
       onDownload();
@@ -34,23 +33,19 @@ export default function EmailCaptureModal({
     }
   }, [state, onDownload, onClose]);
 
-  const handleClose = () => {
-    onClose();
-  };
-
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-xl">Get VoiceTypr</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-[18px] font-semibold">Get VoiceTypr</DialogTitle>
+          <DialogDescription className="text-editorial-ink-2">
             You may receive emails for updates and feature releases.
           </DialogDescription>
         </DialogHeader>
 
         <form action={formAction} className="space-y-4" data-umami-event="email-capture-form">
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-editorial-ink-3" />
             <Input
               id="email"
               name="email"
@@ -62,7 +57,7 @@ export default function EmailCaptureModal({
           </div>
 
           {state?.error && (
-            <p className="text-sm text-destructive">{state.error}</p>
+            <p className="text-sm text-red-600">{state.error}</p>
           )}
 
           <Button

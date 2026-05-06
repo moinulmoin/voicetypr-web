@@ -4,7 +4,6 @@ const productLinks = [
   { label: "Download", href: "/download", internal: true },
   { label: "Pricing", href: "/#pricing", internal: true },
   { label: "Use cases", href: "/use-cases", internal: true },
-  { label: "Blog", href: "/blog", internal: true },
   { label: "Changelog", href: "/changelog", internal: true },
   {
     label: "Releases",
@@ -77,7 +76,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 px-10 pb-10 md:grid-cols-3 max-md:px-5">
 
         <div>
-          <h5 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+          <h5 className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-editorial-ink-3">
             Product
           </h5>
           <ul className="m-0 list-none p-0 text-sm">
@@ -110,7 +109,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h5 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+          <h5 className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-editorial-ink-3">
             Company
           </h5>
           <ul className="m-0 list-none p-0 text-sm">
@@ -132,7 +131,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h5 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+          <h5 className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-editorial-ink-3">
             Trust
           </h5>
           <ul className="m-0 list-none p-0 text-sm">
@@ -166,9 +165,9 @@ export default function Footer() {
       </div>
 
       {/* Bottom line */}
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between border-t border-editorial-line px-10 py-6 font-mono text-[11px] uppercase tracking-[0.14em] text-editorial-ink-3 max-md:flex-col max-md:gap-2 max-md:px-5">
-        <span>&copy; 2026 VoiceTypr &middot; Ideaplexa</span>
-        <span>made without a keyboard</span>
+      <div className="mx-auto flex max-w-[1240px] items-center justify-between border-t border-editorial-line px-10 py-6 text-[12px] text-editorial-ink-3 max-md:flex-col max-md:gap-2 max-md:px-5">
+        <span>© 2026 VoiceTypr</span>
+        <span>Offline voice-to-text for macOS & Windows</span>
       </div>
     </footer>
   );
