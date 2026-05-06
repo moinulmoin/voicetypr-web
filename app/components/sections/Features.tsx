@@ -45,7 +45,7 @@ export default function Features() {
   ];
 
   return (
-    <section className="ed-section" id="features">
+    <section className="ed-section ed-section-wash" id="features">
       <div className="ed-container">
         <div className="ed-eyebrow">built around how you actually work</div>
         <h2 className="font-serif text-[clamp(42px,4.4vw,68px)] leading-[1] max-w-[760px] mt-2 mb-10">

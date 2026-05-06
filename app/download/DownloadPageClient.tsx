@@ -12,14 +12,14 @@ import EmailCaptureModal from "../components/EmailCaptureModal";
 
 // Apple icon component
 const AppleIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
   </svg>
 );
 
 // Windows icon component
 const WindowsIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 88 88" fill="currentColor">
+  <svg className="w-6 h-6" viewBox="0 0 88 88" fill="currentColor">
     <path d="m0 12.402 35.687-4.86.016 34.423-35.67.203zm35.67 33.529.028 34.453L.028 75.48.026 45.7zm4.326-39.025L87.314 0v41.527l-47.318.376zm47.329 39.349-.011 41.34-47.318-6.678-.066-34.739z" />
   </svg>
 );
@@ -148,8 +148,8 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
     <main className="landing-editorial relative min-h-screen">
       <Header />
 
-      {/* Hero — matches homepage: no eyebrow, big serif, generous padding */}
-      <section className="ed-section !pt-[160px] md:!pt-[200px] pb-0">
+      {/* Hero */}
+      <section className="ed-section ed-section-hero !pt-[160px] md:!pt-[200px] pb-0">
         <div className="ed-container text-center">
           <h1 className="font-serif text-[clamp(48px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
             Download VoiceTypr
@@ -171,9 +171,9 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
         </div>
       </section>
 
-      {/* Platform Selection — surface-2 bg for visual variety */}
+      {/* Platform Selection */}
       <section className="ed-section">
-        <div className="ed-container max-w-[840px]">
+        <div className="ed-container max-w-[720px]">
           <div className={`grid gap-4 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
             {options.map((option) => {
               const isSelected = selectedPlatform === option.id;
@@ -181,22 +181,16 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                 <button
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
-                  className={`relative group text-left p-6 rounded-xl border [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] active:scale-[0.99] ${
+                  className={`relative group text-left p-6 rounded-2xl border-2 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] active:scale-[0.99] ${
                     isSelected
                       ? 'bg-white border-editorial-accent'
-                      : 'bg-editorial-surface border-editorial-line hover:border-editorial-ink-3'
+                      : 'bg-editorial-surface-2 border-editorial-line hover:border-editorial-ink-3'
                   }`}
                   data-track="download-platform-select"
                   data-track-platform={option.platform}
                 >
                   <div className="flex flex-col items-center text-center">
-                    <div
-                      className={`mb-5 p-3 rounded-xl [transition:transform_300ms] ${
-                        isSelected
-                          ? 'bg-editorial-accent-wash text-editorial-accent'
-                          : 'bg-white text-editorial-ink group-hover:scale-105'
-                      }`}
-                    >
+                    <div className="mb-5 p-3.5 rounded-2xl bg-white text-editorial-ink">
                       <option.icon />
                     </div>
 
@@ -218,7 +212,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             <div className="mt-10 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
               <button
                 onClick={handleDownloadClick}
-                className="group inline-flex items-center gap-2 rounded-lg bg-editorial-ink text-white px-6 py-3 text-[15px] font-medium [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+                className="group inline-flex items-center gap-2 rounded-xl bg-editorial-ink text-white px-8 py-3.5 text-[15px] font-medium [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
                 data-track="download-click"
                 data-track-platform={selectedOption?.platform}
               >
@@ -230,43 +224,48 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
         </div>
       </section>
 
-      {/* Installation Steps — white bg, clean */}
+      {/* Installation Steps — dark island like Compare */}
       {selectedPlatform && (
-        <section className="ed-section pt-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="ed-container max-w-[840px]">
-            <div className="grid md:grid-cols-3 gap-6">
-              {installationSteps.map((step, index) => (
-                <div key={step.step} className="relative">
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-editorial-ink text-white font-semibold text-[15px] mb-4">
-                      {step.step}
+        <section className="ed-section pt-0">
+          <div className="ed-container max-w-[900px]">
+            <div className="bg-editorial-ink rounded-[28px] p-8 sm:p-12 md:p-14">
+              <h2 className="font-serif text-[clamp(28px,3vw,40px)] leading-[1.1] text-white text-center mb-10">
+                Install in three steps
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {installationSteps.map((step, index) => (
+                  <div key={step.step} className="relative">
+                    <div className="text-center">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white font-semibold text-[16px] mb-4">
+                        {step.step}
+                      </div>
+                      <h3 className="text-[16px] font-semibold text-white mb-1">
+                        {step.title}
+                      </h3>
+                      <p className="text-[14px] text-white/65">
+                        {step.description}
+                      </p>
                     </div>
-                    <h3 className="text-[16px] font-semibold mb-1">
-                      {step.title}
-                    </h3>
-                    <p className="text-[14px] text-editorial-ink-2">
-                      {step.description}
-                    </p>
-                  </div>
 
-                  {index < installationSteps.length - 1 && (
-                    <ArrowRight className="hidden md:block absolute top-5 -right-3 w-5 h-5 text-editorial-ink-3" />
-                  )}
-                </div>
-              ))}
+                    {index < installationSteps.length - 1 && (
+                      <ArrowRight className="hidden md:block absolute top-6 -right-4 w-5 h-5 text-white/30" />
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Pricing — surface-2 bg for visual variety */}
+      {/* Pricing */}
       <section className="ed-section">
         <div className="ed-container">
           <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
         </div>
       </section>
 
-      {/* FAQ — white bg */}
+      {/* FAQ */}
       <section className="ed-section pt-0">
         <div className="ed-container">
           <FAQ />

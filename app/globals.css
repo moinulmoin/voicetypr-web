@@ -255,6 +255,17 @@ html {
   .landing-editorial .ed-container { padding: 0 20px; }
 }
 
+/* Subtle section atmospheres */
+.landing-editorial .ed-section-hero {
+  background: radial-gradient(ellipse 120% 600px at 50% 0%, var(--color-editorial-surface-2) 0%, transparent 70%);
+}
+.landing-editorial .ed-section-wash {
+  background: linear-gradient(to bottom, transparent 0%, var(--color-editorial-surface-2) 40%, var(--color-editorial-surface-2) 60%, transparent 100%);
+}
+.landing-editorial .ed-section-glow {
+  background: radial-gradient(ellipse 100% 400px at 50% 100%, var(--color-editorial-accent-wash) 0%, transparent 60%);
+}
+
 /* Editorial eyebrow — small-caps tracked label with accent dot. Sits as plain
    text now (no pill chrome) so the section header reads as part of the
    typographic stack rather than a UI badge. */

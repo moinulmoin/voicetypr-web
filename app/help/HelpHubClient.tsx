@@ -7,8 +7,8 @@ import {
   groupByCategory,
   searchArticles,
   HELP_CATEGORY_LABELS,
-} from "@/lib/help";
-import type { HelpCategory, HelpArticleMeta } from "@/lib/help";
+} from "@/lib/help-shared";
+import type { HelpCategory, HelpArticleMeta } from "@/lib/help-shared";
 
 const CATEGORY_ORDER: HelpCategory[] = [
   "setup",

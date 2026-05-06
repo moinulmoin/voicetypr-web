@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section className="ed-section">
+    <section className="ed-section ed-section-glow">
       <div className="ed-container">
         <div className="relative overflow-hidden rounded-[32px] border border-editorial-line bg-editorial-surface py-20 md:py-28 px-8 text-center">
           {/* Decorative accent glow — stronger */}
