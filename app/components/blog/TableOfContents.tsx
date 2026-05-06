@@ -50,23 +50,23 @@ export function TableOfContents({ items }: TableOfContentsProps) {
       aria-label="Table of contents"
       className="sticky top-28 max-h-[calc(100vh-9rem)] overflow-y-auto pr-4"
     >
-      <div className="font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3 mb-4">
+      <div className="text-[11px] font-medium uppercase tracking-[0.06em] text-editorial-ink-3 mb-3">
         On this page
       </div>
-      <ul className="space-y-2">
+      <ul className="space-y-1.5">
         {items.map((item) => {
           const active = item.slug === activeSlug;
           return (
             <li
               key={item.slug}
-              className={item.level === 3 ? "pl-4" : ""}
+              className={item.level === 3 ? "pl-3" : ""}
             >
               <a
                 href={`#${item.slug}`}
-                className={`block text-[13px] leading-[1.4] [transition:color_180ms,border-color_180ms] border-l-2 pl-3 -ml-[2px] ${
+                className={`block text-[13px] leading-[1.4] [transition:color_180ms] ${
                   active
-                    ? "text-editorial-ink border-editorial-accent"
-                    : "text-editorial-ink-3 border-transparent hover:text-editorial-ink-2"
+                    ? "text-editorial-ink font-medium"
+                    : "text-editorial-ink-3 hover:text-editorial-ink-2"
                 }`}
               >
                 {item.text}

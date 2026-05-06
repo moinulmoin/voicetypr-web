@@ -1,14 +1,13 @@
 /**
- * Author byline. Mirrors the visual treatment of FounderNote so readers
- * recognize the same person across the homepage and the blog.
+ * Minimal author byline. Single line, no card, no border.
  */
 export function AuthorBlock() {
   return (
-    <div className="flex items-center gap-3 mt-12 pt-8 border-t border-editorial-line">
-      <div className="w-11 h-11 rounded-full bg-editorial-accent text-white grid place-items-center font-serif text-[22px]">
+    <div className="flex items-center gap-3 mt-12">
+      <div className="w-9 h-9 rounded-full bg-editorial-accent text-white grid place-items-center text-[14px] font-medium">
         M
       </div>
-      <div className="leading-tight">
+      <div className="text-[14px] leading-tight">
         <a
           href="https://twitter.com/immoinulmoin"
           target="_blank"
@@ -18,18 +17,9 @@ export function AuthorBlock() {
         >
           Moinul Moin
         </a>
-        <div className="text-xs text-editorial-ink-3">
-          Solo founder · VoiceTypr ·{" "}
-          <a
-            href="https://ideaplexa.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-            data-track="blog-author-ideaplexa-click"
-          >
-            @Ideaplexa
-          </a>
-        </div>
+        <span className="text-editorial-ink-3">
+          {" "}· Founder, VoiceTypr
+        </span>
       </div>
     </div>
   );

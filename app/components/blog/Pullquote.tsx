@@ -6,24 +6,16 @@ type PullquoteProps = {
 };
 
 /**
- * Inline pull-quote. Use sparingly — once or twice per article — to mark a
- * line worth reading slowly. Picks up the same italic-em treatment as the
- * homepage editorial layer.
+ * Minimal pull-quote. Sans-serif, restrained sizing, subtle background.
  */
 export function Pullquote({ children, attribution }: PullquoteProps) {
   return (
-    <figure className="my-12 max-w-[760px] mx-auto">
-      <blockquote className="font-serif text-[clamp(26px,3.2vw,38px)] leading-[1.18] tracking-[-0.005em] text-editorial-ink italic relative">
-        <span
-          aria-hidden
-          className="absolute -left-3 -top-2 font-serif text-[60px] leading-none text-editorial-accent select-none not-italic"
-        >
-          &ldquo;
-        </span>
-        <span className="block pl-4">{children}</span>
+    <figure className="my-10 max-w-[680px]">
+      <blockquote className="text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] text-editorial-ink italic bg-editorial-surface-2 rounded-lg px-6 py-5">
+        {children}
       </blockquote>
       {attribution ? (
-        <figcaption className="mt-4 pl-4 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
+        <figcaption className="mt-3 text-[13px] text-editorial-ink-3">
           {attribution}
         </figcaption>
       ) : null}
