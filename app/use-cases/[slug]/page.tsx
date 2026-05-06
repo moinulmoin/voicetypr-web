@@ -101,7 +101,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
             <div className="mx-auto max-w-4xl text-center">
               <Link
                 href="/use-cases"
-                className="inline-flex items-center gap-1.5 mb-7 font-mono uppercase tracking-[0.14em] text-[11px] text-editorial-ink-3 hover:text-editorial-ink-2 [transition:color_200ms]"
+                className="inline-flex items-center gap-1.5 mb-7 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3 hover:text-editorial-ink-2 [transition:color_200ms]"
               >
                 <span aria-hidden>←</span>
                 All use cases
@@ -163,7 +163,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   key={i}
                   className="bg-editorial-surface border border-editorial-line rounded-2xl p-7 flex flex-col gap-3 min-h-[200px]"
                 >
-                  <div className="font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
+                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                     {String(i + 1).padStart(2, "0")} · the bottleneck
                   </div>
                   <h3 className="font-sans text-[20px] leading-[1.2]">
@@ -202,7 +202,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                     <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
                       {outcome.body}
                     </p>
-                    <div className="mt-auto pt-4 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
+                    <div className="mt-auto pt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                       {outcome.meta}
                     </div>
                   </article>

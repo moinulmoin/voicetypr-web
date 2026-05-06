@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         <h1 className="font-serif text-[clamp(40px,4.5vw,60px)] leading-[1.05] tracking-[-0.025em] mt-2 mb-3">
           Privacy Policy
         </h1>
-        <p className="font-mono uppercase tracking-[0.14em] text-[11px] text-editorial-ink-3">
+        <p className="font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
           Last Updated: October 23, 2025
         </p>
       </header>

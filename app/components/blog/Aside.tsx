@@ -24,7 +24,7 @@ export function Aside({
     <aside
       className={`my-7 max-w-[760px] rounded-r-2xl border-l-4 ${accent} bg-editorial-surface-2 px-5 py-4`}
     >
-      <div className="font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3 mb-1.5">
+      <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 mb-1.5">
         {label}
       </div>
       <div className="text-[15.5px] leading-[1.65] text-editorial-ink-2 [&>p]:my-0 [&>p+p]:mt-3">

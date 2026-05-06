@@ -59,7 +59,7 @@ export default function Compare() {
                     className={
                       i === 2
                         ? "px-5 py-5 bg-editorial-accent text-white font-sans italic text-[17px] normal-case tracking-normal font-normal flex items-center"
-                        : "px-5 py-5 uppercase tracking-[0.14em] text-[11px] font-mono font-medium text-white/55 bg-white/[0.025] flex items-center"
+                        : "px-5 py-5 uppercase tracking-[0.12em] text-[12.5px] font-sans font-medium text-white/55 bg-white/[0.025] flex items-center"
                     }
                   >
                     {h}

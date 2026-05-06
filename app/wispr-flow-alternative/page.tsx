@@ -285,7 +285,7 @@ export default function WisprFlowAlternativePage() {
                 VoiceTypr is the offline, lifetime-priced alternative to Wispr Flow. Transcription runs locally on your device — your voice never touches a cloud server.
               </p>
 
-              <p className="mt-4 font-mono uppercase tracking-[0.14em] text-[11px] text-editorial-ink-3">
+              <p className="mt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
                 $35 once · not $15 every month
               </p>
 
@@ -335,7 +335,7 @@ export default function WisprFlowAlternativePage() {
                     <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
                       {reason.body}
                     </p>
-                    <div className="mt-auto pt-4 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
+                    <div className="mt-auto pt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                       {reason.meta}
                     </div>
                   </article>
@@ -363,7 +363,7 @@ export default function WisprFlowAlternativePage() {
                 <table className="w-full text-[14.5px]">
                   <thead className="border-b border-editorial-line bg-editorial-surface-2">
                     <tr>
-                      <th className="px-5 py-4 text-left font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3 w-[35%]">
+                      <th className="px-5 py-4 text-left font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 w-[35%]">
                         Criterion
                       </th>
                       <th className="px-5 py-4 text-left font-sans text-[18px] text-editorial-ink">
@@ -383,7 +383,7 @@ export default function WisprFlowAlternativePage() {
                         >
                           <th
                             colSpan={3}
-                            className="px-5 py-2.5 text-left font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3"
+                            className="px-5 py-2.5 text-left font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3"
                           >
                             {section.category}
                           </th>
@@ -442,7 +442,7 @@ export default function WisprFlowAlternativePage() {
               </div>
             </div>
 
-            <p className="mt-4 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3">
+            <p className="mt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
               Sources · wisprflow.ai/pricing · wisprflow.ai/post/technical-challenges (Sep 2025)
             </p>
           </div>

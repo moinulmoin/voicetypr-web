@@ -19,7 +19,7 @@ export default function Outcomes() {
                 <div className="font-serif text-[clamp(72px,8vw,128px)] leading-none text-editorial-accent">
                   5×
                 </div>
-                <div className="font-mono uppercase tracking-[0.14em] text-[10.5px] text-editorial-ink-3 pb-2">
+                <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 pb-2">
                   faster than typing
                 </div>
               </div>
@@ -37,7 +37,7 @@ export default function Outcomes() {
                   <div className="font-serif text-[26px] leading-none text-editorial-ink mb-1.5">
                     150
                   </div>
-                  <div className="font-mono uppercase tracking-[0.12em] text-[10px] text-editorial-ink-3">
+                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                     wpm dictating
                   </div>
                 </div>
@@ -45,7 +45,7 @@ export default function Outcomes() {
                   <div className="font-serif text-[26px] leading-none text-editorial-ink mb-1.5">
                     &lt;2s
                   </div>
-                  <div className="font-mono uppercase tracking-[0.12em] text-[10px] text-editorial-ink-3">
+                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                     capture latency
                   </div>
                 </div>
@@ -53,7 +53,7 @@ export default function Outcomes() {
                   <div className="font-serif text-[26px] leading-none text-editorial-ink mb-1.5">
                     1
                   </div>
-                  <div className="font-mono uppercase tracking-[0.12em] text-[10px] text-editorial-ink-3">
+                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                     hotkey
                   </div>
                 </div>
@@ -68,7 +68,7 @@ export default function Outcomes() {
                   <div className="font-serif text-[44px] leading-none text-editorial-accent">
                     0
                   </div>
-                  <span className="font-mono uppercase tracking-[0.12em] text-[10px] text-editorial-ink-3">
+                  <span className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                     100% offline
                   </span>
                 </div>
@@ -87,7 +87,7 @@ export default function Outcomes() {
                   <div className="font-serif text-[44px] leading-none text-editorial-accent">
                     ∞
                   </div>
-                  <span className="font-mono uppercase tracking-[0.12em] text-[10px] text-editorial-ink-3">
+                  <span className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
                     any text field
                   </span>
                 </div>

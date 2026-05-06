@@ -40,7 +40,7 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
       <p className="text-editorial-ink-2 text-[15px] leading-[1.55] flex-1">
         {useCase.hero.lede.split(".")[0]}.
       </p>
-      <div className="mt-2 inline-flex items-center gap-1.5 font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3 group-hover:text-editorial-ink-2 [transition:color_200ms]">
+      <div className="mt-2 inline-flex items-center gap-1.5 font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 group-hover:text-editorial-ink-2 [transition:color_200ms]">
         See the workflow
         <span aria-hidden className="[transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
           →

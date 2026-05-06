@@ -52,7 +52,7 @@ function ReleaseSection({
 
   return (
     <div className="mt-7">
-      <div className="font-mono uppercase tracking-[0.18em] text-[10px] text-editorial-ink-3 mb-3">
+      <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 mb-3">
         {label}
       </div>
       <ul className="space-y-2.5">
@@ -87,7 +87,7 @@ function Release({ entry }: { entry: ChangelogEntry }) {
           ) : null}
           <time
             dateTime={entry.date}
-            className="font-mono uppercase tracking-[0.14em] text-[10px] text-editorial-ink-3"
+            className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3"
           >
             {formatDate(entry.date)}
           </time>
@@ -97,7 +97,7 @@ function Release({ entry }: { entry: ChangelogEntry }) {
       <div>
         {entry.highlights && entry.highlights.length > 0 ? (
           <div className="bg-editorial-surface-2 rounded-2xl p-6 md:p-7">
-            <div className="font-mono uppercase tracking-[0.18em] text-[10px] text-editorial-ink-3 mb-3">
+            <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 mb-3">
               Highlights
             </div>
             <ul className="space-y-2.5">
@@ -171,7 +171,7 @@ export default function ChangelogPage() {
             </div>
 
             <div className="mt-16 max-w-[1080px] flex flex-wrap items-center justify-between gap-4 pt-10 border-t border-editorial-line">
-              <p className="font-mono uppercase tracking-[0.14em] text-[11px] text-editorial-ink-3">
+              <p className="font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
                 Earlier releases live on GitHub, including the unedited commit history.
               </p>
               <a
