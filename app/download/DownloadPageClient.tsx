@@ -49,10 +49,10 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
   return (
     <div id="pricing">
       <div className="text-center mb-10">
-        <h2 className="text-[clamp(28px,3.5vw,40px)] font-semibold leading-[1.1] tracking-[-0.02em] mb-3">
+        <h2 className="font-serif text-[clamp(36px,4vw,56px)] leading-[1.05] tracking-[-0.02em] mb-3">
           Pay once. Yours forever.
         </h2>
-        <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
+        <p className="text-editorial-ink-2 text-[18px] leading-[1.55] max-w-[560px] mx-auto">
           No subscriptions. No update locks. Real lifetime access.
         </p>
       </div>
@@ -151,10 +151,13 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       {/* Hero */}
       <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
         <div className="ed-container text-center">
-          <h1 className="text-[clamp(40px,6vw,72px)] font-semibold !font-sans leading-[0.95] tracking-[-0.03em] mb-4">
+          <div className="mb-5 flex justify-center">
+            <span className="ed-eyebrow">download · mac & windows</span>
+          </div>
+          <h1 className="font-serif text-[clamp(48px,6vw,86px)] leading-[0.98] tracking-[-0.025em] mb-5">
             Download VoiceTypr
           </h1>
-          <p className="text-[17px] md:text-[18px] leading-[1.55] text-editorial-ink-2 max-w-[560px] mx-auto">
+          <p className="text-[18px] md:text-[19px] leading-[1.55] text-editorial-ink-2 max-w-[560px] mx-auto">
             Choose your platform. Three-day trial, no credit card.
           </p>
         </div>
@@ -170,10 +173,10 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                 <button
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
-                  className={`relative group text-left p-7 rounded-2xl border-2 [transition:border-color_300ms,box-shadow_300ms,transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.99] ${
+                  className={`relative group text-left p-6 rounded-xl border [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] active:scale-[0.99] ${
                     isSelected
-                      ? 'bg-white border-editorial-accent'
-                      : 'bg-editorial-surface-2 border-editorial-line hover:border-editorial-line-2'
+                      ? 'bg-editorial-surface border-editorial-accent'
+                      : 'bg-editorial-surface border-editorial-line hover:border-editorial-ink-3'
                   }`}
                   data-track="download-platform-select"
                   data-track-platform={option.platform}
@@ -220,9 +223,9 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
           {/* Installation Steps */}
           {selectedPlatform && (
             <div className="mt-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="text-[clamp(22px,2.5vw,30px)] font-semibold leading-[1.15] mb-8 text-center">
-                Installation
-              </h2>
+              <div className="mb-8 flex justify-center">
+                <span className="ed-eyebrow">install · three steps</span>
+              </div>
               <div className="grid md:grid-cols-3 gap-6">
                 {installationSteps.map((step, index) => (
                   <div key={step.step} className="relative">
