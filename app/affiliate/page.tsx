@@ -239,7 +239,7 @@ export default function AffiliatePage() {
               </p>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="max-w-[720px] mx-auto">
               {[
                 {
                   icon: DollarSign,
@@ -259,18 +259,20 @@ export default function AffiliatePage() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-xl bg-editorial-surface-2 p-6"
+                  className="flex gap-5 py-6 border-b border-editorial-line last:border-b-0"
                 >
                   <item.icon
-                    className="mb-3 h-6 w-6 text-editorial-accent-ink"
+                    className="mt-0.5 h-5 w-5 text-editorial-accent-ink shrink-0"
                     aria-hidden
                   />
-                  <h3 className="mb-2 text-[17px] font-medium text-editorial-ink">
-                    {item.title}
-                  </h3>
-                  <p className="text-[14px] leading-[1.6] text-editorial-ink-2">
-                    {item.body}
-                  </p>
+                  <div>
+                    <h3 className="text-[17px] font-medium text-editorial-ink mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-[15px] leading-[1.6] text-editorial-ink-2">
+                      {item.body}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -289,40 +291,35 @@ export default function AffiliatePage() {
               </p>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="max-w-[720px] mx-auto mb-12">
               {tiers.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`rounded-xl border p-6 ${
-                    tier.highlight
-                      ? "border-editorial-accent bg-editorial-accent-wash/40"
-                      : "border-editorial-line bg-editorial-surface-2"
-                  }`}
+                  className={`flex items-baseline justify-between gap-4 py-5 border-b border-editorial-line ${tier.highlight ? "" : ""}`}
                 >
-                  {tier.highlight && (
-                    <span className="mb-3 inline-block rounded-full bg-editorial-accent px-2.5 py-0.5 text-[11px] font-medium text-white">
-                      Most affiliates land here
-                    </span>
-                  )}
-                  <h3 className="text-[17px] font-medium text-editorial-ink">
-                    {tier.name}
-                  </h3>
-                  <div className="mt-2 mb-4">
-                    <span className="text-[40px] font-semibold tracking-[-0.02em] text-editorial-ink">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-[17px] font-medium text-editorial-ink">
+                        {tier.name}
+                      </h3>
+                      {tier.highlight && (
+                        <span className="inline-block rounded-full bg-editorial-accent px-2 py-0.5 text-[10px] font-medium text-white">
+                          Most common
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[14px] text-editorial-ink-2">
+                      {tier.who} · {tier.how}
+                    </p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <span className="text-[28px] font-semibold tracking-[-0.02em] text-editorial-ink">
                       {tier.commission}
                     </span>
-                    <span className="ml-2 text-[13px] text-editorial-ink-2">
+                    <span className="ml-1 text-[13px] text-editorial-ink-2">
                       {tier.per100}
                     </span>
                   </div>
-                  <p className="mb-2 text-[14px] text-editorial-ink-2">
-                    <span className="font-medium text-editorial-ink">Who: </span>
-                    {tier.who}
-                  </p>
-                  <p className="text-[14px] text-editorial-ink-2">
-                    <span className="font-medium text-editorial-ink">How: </span>
-                    {tier.how}
-                  </p>
                 </div>
               ))}
             </div>
@@ -399,16 +396,17 @@ export default function AffiliatePage() {
               </p>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="max-w-[720px] mx-auto">
               {angles.map((angle) => (
                 <div
                   key={angle.title}
-                  className="rounded-xl bg-editorial-surface-2 p-6"
+                  className="py-6 border-b border-editorial-line last:border-b-0"
                 >
-                  <h3 className="mb-2 text-[17px] font-medium text-editorial-ink">
+
+                  <h3 className="text-[17px] font-medium text-editorial-ink mb-2">
                     {angle.title}
                   </h3>
-                  <p className="text-[14px] leading-[1.6] text-editorial-ink-2">
+                  <p className="text-[15px] leading-[1.6] text-editorial-ink-2">
                     {angle.body}
                   </p>
                 </div>
@@ -428,22 +426,20 @@ export default function AffiliatePage() {
                 If you match any of these, you&apos;ll do well.
               </p>
             </div>
-            <div className="rounded-xl bg-editorial-surface-2 p-8">
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {fits.map((fit) => (
-                  <li
-                    key={fit}
-                    className="flex items-start gap-2 text-[14px] text-editorial-ink-2"
-                  >
-                    <Check
-                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-accent-ink"
-                      aria-hidden
-                    />
-                    <span>{fit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="max-w-[640px] mx-auto space-y-3">
+              {fits.map((fit) => (
+                <li
+                  key={fit}
+                  className="flex items-start gap-3 text-[15px] text-editorial-ink-2"
+                >
+                  <Check
+                    className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-accent-ink"
+                    aria-hidden
+                  />
+                  <span>{fit}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -459,28 +455,26 @@ export default function AffiliatePage() {
                 anything from scratch.
               </p>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="max-w-[720px] mx-auto">
               {kit.map((item) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={item.title}
-                    className="rounded-xl bg-editorial-surface-2 p-6"
+                    className="flex gap-4 py-5 border-b border-editorial-line last:border-b-0"
                   >
-                    <div className="mb-3 flex items-center gap-3">
-                      <div className="rounded-lg bg-editorial-accent-wash p-2">
-                        <Icon
-                          className="h-5 w-5 text-editorial-accent-ink"
-                          aria-hidden
-                        />
-                      </div>
-                      <h3 className="text-[17px] font-medium text-editorial-ink">
+                    <Icon
+                      className="mt-0.5 h-5 w-5 text-editorial-accent-ink shrink-0"
+                      aria-hidden
+                    />
+                    <div>
+                      <h3 className="text-[17px] font-medium text-editorial-ink mb-1">
                         {item.title}
                       </h3>
+                      <p className="text-[15px] leading-[1.6] text-editorial-ink-2">
+                        {item.body}
+                      </p>
                     </div>
-                    <p className="text-[14px] leading-[1.6] text-editorial-ink-2">
-                      {item.body}
-                    </p>
                   </div>
                 );
               })}
@@ -516,32 +510,30 @@ export default function AffiliatePage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-24">
-          <div className="mx-auto max-w-3xl px-4 text-center">
-            <div className="rounded-xl bg-editorial-surface-2 p-10">
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em] mb-4">
-                Ready to promote?
-              </h2>
-              <p className="mx-auto mb-8 max-w-xl text-[16px] text-editorial-ink-2 sm:text-[17px]">
-                Sign up on Affonso in 60 seconds. Get your link, grab the kit,
-                ship something real, unlock 35%.
-              </p>
-              <AffiliateCta
-                href={AFFONSO_URL}
-                event="affiliate-final-apply-click"
+        <section className="py-24 text-center">
+          <div className="mx-auto max-w-2xl px-4">
+            <h2 className="font-serif text-[clamp(32px,4vw,48px)] leading-[1.05] tracking-[-0.02em] mb-4">
+              Ready to promote?
+            </h2>
+            <p className="mx-auto mb-8 text-[17px] text-editorial-ink-2 leading-[1.6]">
+              Sign up on Affonso in 60 seconds. Get your link, grab the kit,
+              ship something real, unlock 35%.
+            </p>
+            <AffiliateCta
+              href={AFFONSO_URL}
+              event="affiliate-final-apply-click"
+            >
+              Apply on Affonso
+            </AffiliateCta>
+            <p className="mt-6 text-[13px] text-editorial-ink-3">
+              Questions?{" "}
+              <a
+                href="mailto:support@voicetypr.com?subject=Affiliate%20program"
+                className="text-editorial-accent hover:underline"
               >
-                Apply on Affonso
-              </AffiliateCta>
-              <p className="mt-6 text-[13px] text-editorial-ink-3">
-                Questions?{" "}
-                <a
-                  href="mailto:support@voicetypr.com?subject=Affiliate%20program"
-                  className="text-editorial-accent hover:underline"
-                >
-                  support@voicetypr.com
-                </a>
-              </p>
-            </div>
+                support@voicetypr.com
+              </a>
+            </p>
           </div>
         </section>
 

@@ -143,9 +143,8 @@ export default async function BestPage({
             </ul>
           </section>
 
-          {/* CTA */}
-          <section className="rounded-xl bg-editorial-surface-2 p-8 md:p-10">
-            <h2 className="font-serif text-[28px] leading-[1.2] tracking-[-0.01em] mb-3">
+          <section className="py-10 border-t border-editorial-line">
+            <h2 className="font-serif text-[clamp(24px,3vw,32px)] leading-[1.1] tracking-[-0.01em] mb-3">
               {page.ctaText}
             </h2>
             <p className="text-[15px] text-editorial-ink-2 mb-6 max-w-[480px]">

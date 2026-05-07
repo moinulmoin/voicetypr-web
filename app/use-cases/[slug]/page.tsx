@@ -157,19 +157,19 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                 The friction is real, and specific.
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="max-w-[760px]">
               {useCase.pains.map((pain, i) => (
                 <article
                   key={i}
-                  className="bg-editorial-surface border border-editorial-line rounded-2xl p-7 flex flex-col gap-3 min-h-[200px]"
+                  className="py-6 border-b border-editorial-line last:border-b-0"
                 >
-                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
-                    {String(i + 1).padStart(2, "0")} · the bottleneck
+                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 mb-2">
+                    {String(i + 1).padStart(2, "0")}
                   </div>
-                  <h3 className="font-sans text-[20px] leading-[1.2]">
+                  <h3 className="font-sans text-[20px] leading-[1.2] mb-2">
                     {pain.title}
                   </h3>
-                  <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
+                  <p className="text-editorial-ink-2 text-[15px] leading-[1.6]">
                     {pain.body}
                   </p>
                 </article>

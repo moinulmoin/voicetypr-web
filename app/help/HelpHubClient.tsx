@@ -63,26 +63,26 @@ export default function HelpHubClient({
           No articles found for &ldquo;{query}&rdquo;.
         </p>
       ) : (
-        <div className="grid gap-8">
+        <div className="grid gap-10">
           {CATEGORY_ORDER.map((cat) => {
             const items = grouped[cat];
             if (!items?.length) return null;
             return (
               <section key={cat}>
-                <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-editorial-ink-3 mb-4">
+                <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-editorial-ink-3 mb-3">
                   {HELP_CATEGORY_LABELS[cat]}
                 </h2>
-                <div className="grid sm:grid-cols-2 gap-3">
+                <div className="max-w-[640px]">
                   {items.map((article) => (
                     <Link
                       key={article.slug}
                       href={`/help/${article.slug}`}
-                      className="group block rounded-lg border border-editorial-line p-5 hover:border-editorial-accent/30 hover:bg-editorial-surface-2/50 transition-all"
+                      className="group block py-4 border-b border-editorial-line last:border-b-0 [transition:opacity_200ms] hover:opacity-70"
                     >
-                      <h3 className="text-[15px] font-medium text-editorial-ink group-hover:text-editorial-accent-ink transition-colors mb-1">
+                      <h3 className="text-[15px] font-medium text-editorial-ink group-hover:text-editorial-accent-ink [transition:color_200ms]">
                         {article.title}
                       </h3>
-                      <p className="text-[13px] leading-[1.5] text-editorial-ink-3">
+                      <p className="text-[13px] leading-[1.5] text-editorial-ink-3 mt-0.5">
                         {article.description}
                       </p>
                     </Link>
