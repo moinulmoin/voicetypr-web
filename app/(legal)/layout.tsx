@@ -9,7 +9,7 @@ export default function LegalLayout({ children }: { children: ReactNode }) {
       className="landing-editorial relative min-h-screen"
     >
       <Header />
-      <article className="ed-section pt-[120px] md:pt-[140px] pb-12">
+      <article className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-12">
         <div className="ed-container max-w-[760px]">{children}</div>
       </article>
       <Footer />

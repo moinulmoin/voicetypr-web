@@ -43,7 +43,7 @@ export default async function HelpArticlePage({
   const { prev, next } = getAdjacentArticles(slug, allArticles);
 
   return (
-    <article>
+    <article className="ed-section ed-section-hero">
       <header className="mb-10">
         <h1 className="font-serif text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] mb-3">
           {article.title}

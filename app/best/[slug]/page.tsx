@@ -32,8 +32,9 @@ export default async function BestPage({
   if (!page) return notFound();
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="ed-container py-12 md:py-20">
+    <div className="landing-editorial min-h-screen">
+      <section className="ed-section ed-section-hero">
+        <div className="ed-container py-12 md:py-20">
         <div className="mx-auto max-w-3xl">
           {/* Breadcrumb */}
           <div className="mb-8">
@@ -161,7 +162,8 @@ export default async function BestPage({
             </Link>
           </section>
         </div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

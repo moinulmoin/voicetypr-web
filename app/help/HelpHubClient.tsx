@@ -29,7 +29,7 @@ export default function HelpHubClient({
   const grouped = groupByCategory(filtered);
 
   return (
-    <div>
+    <div className="ed-section ed-section-hero">
       <div className="mb-10">
         <h1 className="font-serif text-[clamp(36px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-4">
           Help Center

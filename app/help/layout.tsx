@@ -22,7 +22,7 @@ export default async function HelpLayout({
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="landing-editorial min-h-screen">
       <div className="ed-container py-12 md:py-16">
         <div className="flex gap-12 lg:gap-16">
           {/* Sidebar */}

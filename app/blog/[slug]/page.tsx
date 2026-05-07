@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       >
         <Header />
 
-        <article className="ed-section pt-[120px] md:pt-[140px] pb-0">
+        <article className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-0">
           <div className="ed-container">
             <div className="max-w-[760px]">
               <Link

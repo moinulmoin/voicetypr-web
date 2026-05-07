@@ -96,7 +96,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         <Header />
 
         {/* Hero */}
-        <section className="ed-section pt-[120px] md:pt-[140px] pb-0">
+        <section className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-0">
           <div className="ed-container">
             <div className="mx-auto max-w-4xl text-center">
               <Link
@@ -294,7 +294,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         </section>
 
         {/* Final CTA */}
-        <section className="ed-section">
+        <section className="ed-section ed-section-glow">
           <div className="ed-container">
             <div className="relative overflow-hidden rounded-[32px] border border-editorial-line bg-editorial-surface py-20 md:py-24 px-8 text-center">
               <div className="mb-6 flex justify-center">
