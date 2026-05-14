@@ -127,38 +127,22 @@ async function persistLicensePlan(data: Record<string, unknown>) {
   try {
     const licenseKey = extractLicenseKey(data);
     const productId = extractProductId(data);
-    const customerId = typeof data.customerId === 'string' ? data.customerId : null;
 
-    if (!licenseKey && !customerId) return;
+    if (!licenseKey) return;
 
     // Try to resolve plan via productId first, then license key prefix
-    const planKey: PlanKey | null = licenseKey
-      ? resolvePlan(productId, licenseKey)
-      : resolvePlan(productId, '');
-
+    const planKey: PlanKey | null = resolvePlan(productId, licenseKey);
     if (!planKey) return;
 
     const planMeta = PLANS[planKey];
 
-    if (licenseKey) {
-      // Direct update by license key
-      await prisma.license.updateMany({
-        where: { licenseKey },
-        data: {
-          plan: planKey,
-          maxDevices: planMeta.maxDevices,
-        },
-      });
-    } else if (customerId) {
-      // Fallback: update all licenses for this customer
-      await prisma.license.updateMany({
-        where: { customerId },
-        data: {
-          plan: planKey,
-          maxDevices: planMeta.maxDevices,
-        },
-      });
-    }
+    await prisma.license.updateMany({
+      where: { licenseKey },
+      data: {
+        plan: planKey,
+        maxDevices: planMeta.maxDevices,
+      },
+    });
   } catch (err) {
     // Plan persistence must never break the webhook pipeline
     console.error("[Webhook] Failed to persist license plan:", err);

@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Do I need an API key for the AI formatting presets?',
-    a: 'Only if you want them. Raw transcription works locally with no key. The optional presets use your own API key from Gemini, OpenAI, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
+    a: 'Only if you want them. Raw transcription works locally with no key. The optional presets use your own API key from OpenAI, Anthropic, Google Gemini, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
   },
   {
     q: 'What are the system requirements?',

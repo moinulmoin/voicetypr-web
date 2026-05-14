@@ -1,17 +1,25 @@
 import { NextRequest } from 'next/server';
 
-import { estimateMarkdownTokens, htmlToMarkdown } from '@/lib/markdown-negotiation';
+import { estimateMarkdownTokens, htmlToMarkdown, isMarkdownEligiblePath } from '@/lib/markdown-negotiation';
 
 const BYPASS_HEADER = 'x-markdown-bypass';
 
 export async function GET(request: NextRequest) {
   const targetPath = request.nextUrl.searchParams.get('path') ?? '/';
 
-  if (!targetPath.startsWith('/')) {
+  if (
+    !targetPath.startsWith('/') ||
+    targetPath.startsWith('//') ||
+    !isMarkdownEligiblePath(new URL(targetPath, request.nextUrl.origin).pathname)
+  ) {
     return new Response('Invalid markdown target', { status: 400 });
   }
 
   const targetUrl = new URL(targetPath, request.nextUrl.origin);
+  if (targetUrl.origin !== request.nextUrl.origin) {
+    return new Response('Invalid markdown target', { status: 400 });
+  }
+
   const response = await fetch(targetUrl, {
     headers: {
       accept: 'text/html',

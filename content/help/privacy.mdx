@@ -5,17 +5,19 @@ category: privacy
 order: 1
 ---
 
-## Your Audio Never Leaves Your Device
+## Audio is local by default
 
-VoiceTypr processes speech recognition **entirely on your computer**.
+VoiceTypr runs transcription on your computer by default.
 
-- No audio files uploaded to any server
-- No cloud transcription service
-- No "we may use your data to improve our service"
+- No audio is uploaded during normal local transcription
+- No training-on-your-data language
+- No account required for the core offline workflow
 
-The only network requests VoiceTypr makes are for:
+Network activity can happen when you choose it:
 - Checking for app updates
 - Validating your license (if purchased)
+- Sending text to an optional AI formatting provider you configured
+- Sending audio only if you explicitly use a cloud or network transcription mode
 
 ## What's Stored Locally
 
@@ -26,25 +28,24 @@ The only network requests VoiceTypr makes are for:
 | Settings | JSON config file | No |
 | License key | Keychain (Mac) / Registry (Windows) | Yes |
 
-## AI Formatting (Optional)
+## AI Formatting and optional network paths
 
 If you enable AI formatting presets (Default, Prompts, Email, Commit):
 
-- **Text is sent** to your chosen AI provider (Gemini, OpenAI, Groq, Ollama)
-- **Audio is never sent** — only the transcribed text
-- You can use a **local Ollama instance** to keep everything offline
+- **Text may be sent** to your chosen AI provider (OpenAI, Anthropic, Google Gemini, or a custom OpenAI-compatible endpoint)
+- **Audio is not sent** for formatting — only the transcribed text
+- You control the provider, the key, and whether formatting is enabled
 
-To use local AI only:
-1. Install [Ollama](https://ollama.com)
-2. In VoiceTypr settings, set AI Provider to "Ollama"
-3. Point to your local Ollama URL
+VoiceTypr may also offer optional non-local transcription modes, such as cloud STT or local-network sharing. Those are opt-in paths, not the default offline workflow.
 
-## No Analytics in the App
+## No background telemetry
 
-VoiceTypr does not include telemetry, crash reporting, or usage analytics.
+VoiceTypr does not run background usage analytics.
+
+If you manually submit a support, bug, or crash report, the app can send the details you choose to share, including redacted logs and system information needed to debug the issue.
 
 The website (voicetypr.com) uses privacy-focused analytics (Umami and OpenPanel) with no cookies or cross-site tracking.
 
 ## Open Source
 
-VoiceTypr's core transcription engine is built on OpenAI's Whisper, an open-source speech recognition model. The app itself is not open source, but we publish our privacy practices transparently because we believe you should own your software.
+VoiceTypr is an open-source app built on open-source local transcription models, including Whisper. You can inspect the public desktop repository on GitHub and still keep the normal offline workflow local by default.

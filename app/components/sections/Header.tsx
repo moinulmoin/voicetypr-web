@@ -75,7 +75,7 @@ export default function Header() {
   };
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
+    <header data-markdown-skip className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="px-4 pt-4 md:px-6">
         <div
           className={`mx-auto flex items-center justify-between gap-6 transition-all duration-200 ${

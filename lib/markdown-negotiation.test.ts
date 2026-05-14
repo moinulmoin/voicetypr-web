@@ -36,22 +36,26 @@ describe('markdown negotiation', () => {
           <script type="application/ld+json">{"@type":"SoftwareApplication"}</script>
         </head>
         <body>
-          <header>Navigation that should not be exposed</header>
+          <header data-markdown-skip>Navigation that should not be exposed</header>
           <main>
-            <h1>Type by talking</h1>
+            <header>
+              <h1>Type by talking</h1>
+              <p>Offline AI voice-to-text for builders.</p>
+            </header>
             <p>Works in <strong>Cursor</strong> and <a href="/download">downloads fast</a>.</p>
             <ul><li>Offline first</li><li>No subscription</li></ul>
           </main>
-          <footer>Footer links</footer>
+          <footer data-markdown-skip>Footer links</footer>
         </body>
       </html>`,
       'https://voicetypr.com/'
     );
 
-    expect(markdown).toContain('title: "VoiceTypr"');
+    expect(markdown).toContain('title: "Fallback title"');
     expect(markdown).toContain('description: "Private & local dictation"');
     expect(markdown).toContain('image: "/og.png"');
     expect(markdown).toContain('# Type by talking');
+    expect(markdown).toContain('Offline AI voice-to-text for builders.');
     expect(markdown).toContain('[downloads fast](https://voicetypr.com/download)');
     expect(markdown).toContain('- Offline first');
     expect(markdown).toContain('```json\n{"@type":"SoftwareApplication"}\n```');

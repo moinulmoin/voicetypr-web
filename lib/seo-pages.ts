@@ -190,7 +190,7 @@ export const alternativePages: SeoPage[] = [
       {
         name: "Wispr Flow",
         price: "$15/mo",
-        platforms: "macOS only",
+        platforms: "Verify current release",
         offline: "No",
         subscription: true,
       },

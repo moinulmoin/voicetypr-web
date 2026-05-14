@@ -13,6 +13,25 @@ export const metadata: Metadata = {
   title: "Use Cases — VoiceTypr",
   description:
     "How people use VoiceTypr. ADHD, dyslexia, RSI, developers, writers, founders — concrete workflows, not generic productivity claims.",
+  alternates: {
+    canonical: "https://voicetypr.com/use-cases",
+  },
+  openGraph: {
+    title: "Use Cases — VoiceTypr",
+    description:
+      "How people use VoiceTypr. ADHD, dyslexia, RSI, developers, writers, founders — concrete workflows, not generic productivity claims.",
+    url: "https://voicetypr.com/use-cases",
+    siteName: "VoiceTypr",
+    images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Use Cases — VoiceTypr",
+    description:
+      "How people use VoiceTypr. ADHD, dyslexia, RSI, developers, writers, founders — concrete workflows, not generic productivity claims.",
+    images: ["/voicetypr-og.png"],
+  },
 };
 
 function UseCaseRow({ useCase }: { useCase: UseCase }) {

@@ -79,7 +79,7 @@ export default function CookieConsent() {
   };
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-50 sm:left-auto sm:right-5 sm:w-[25rem]">
+    <div data-markdown-skip className="fixed bottom-4 left-4 right-4 z-50 sm:left-auto sm:right-5 sm:w-[25rem]">
       <div className="rounded-2xl border border-editorial-line bg-editorial-surface px-4 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">

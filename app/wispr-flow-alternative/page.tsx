@@ -119,7 +119,7 @@ const comparison: Array<{
       {
         label: "Windows support",
         voicetypr: check("Windows 10+"),
-        wispr: check("Yes"),
+        wispr: neutral("Verify current release"),
       },
       {
         label: "One license, both platforms",
@@ -177,7 +177,7 @@ const switchReasons: Array<{
 const faqs = [
   {
     q: "Is VoiceTypr really offline?",
-    a: "Yes. Transcription runs locally using Whisper (macOS + Windows) or Parakeet (macOS Apple Silicon). Your audio never leaves your device. The only time an internet connection is used is for optional AI enhancement features (polishing transcripts via Groq or Gemini), which are off by default and can be disabled entirely.",
+    a: "Yes. Transcription runs locally using Whisper (macOS + Windows) or Parakeet (macOS Apple Silicon). Your audio never leaves your device. The only time an internet connection is used is for optional AI enhancement features that send text, not audio, to your configured provider. They are off by default and can be disabled entirely.",
   },
   {
     q: "How does transcription accuracy compare?",
@@ -201,7 +201,7 @@ const faqs = [
   },
   {
     q: "What's the catch with 'lifetime'?",
-    a: "No catch. You get free updates forever for the major version line you bought. If we ever ship a fundamentally different product, existing customers get a substantial discount on the new version. We're not playing the rug-pull game.",
+    a: "No catch. Updates stay included. If we ever ship a fundamentally different product, existing customers get a substantial discount on the new version. We're not playing the rug-pull game.",
   },
 ];
 
@@ -218,7 +218,7 @@ const steps: Array<{ n: string; title: string; body: React.ReactNode }> = [
         >
           /download
         </Link>
-        . No signup.
+        . No account required.
       </>
     ),
   },

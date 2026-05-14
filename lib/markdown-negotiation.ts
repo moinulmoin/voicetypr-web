@@ -88,7 +88,8 @@ export function htmlToMarkdown(html: string, sourceUrl: string): string {
     .replace(/<script\b(?![^>]*type=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
     .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, '')
-    .replace(/<(header|footer|nav|svg|canvas|form)\b[^>]*>[\s\S]*?<\/\1>/gi, '')
+    .replace(/<([a-z0-9]+)\b[^>]*data-markdown-skip[^>]*>[\s\S]*?<\/\1>/gi, '')
+    .replace(/<(nav|svg|canvas|form)\b[^>]*>[\s\S]*?<\/\1>/gi, '')
     .replace(/<img\b([^>]*)>/gi, (_, attrs: string) => {
       const alt = decodeEntities(readAttribute(attrs, 'alt') ?? '').trim();
       const src = readAttribute(attrs, 'src');
@@ -165,7 +166,7 @@ function extractBody(html: string): string {
 }
 
 function extractMetadata(html: string): PageMetadata {
-  const title = readMeta(html, 'name', 'title') ?? readMeta(html, 'property', 'og:title') ?? readTitle(html);
+  const title = readTitle(html) ?? readMeta(html, 'name', 'title') ?? readMeta(html, 'property', 'og:title');
   const description = readMeta(html, 'name', 'description') ?? readMeta(html, 'property', 'og:description');
   const image = readMeta(html, 'property', 'og:image');
 

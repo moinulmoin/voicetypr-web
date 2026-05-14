@@ -66,7 +66,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for ADHD — Voice typing that bypasses the friction",
     ogTitle: "VoiceTypr for ADHD",
     description:
-      "Type at the speed you think. Voice typing for people with ADHD: capture ideas before they vanish, write at speaking speed, no medication required.",
+      "Type at the speed you think. Voice typing for people with ADHD: capture ideas before they vanish, write at speaking speed, and reduce typing friction.",
     navLabel: "ADHD",
     category: "accessibility",
     order: 1,
@@ -156,9 +156,9 @@ const USE_CASE_ENTRIES: UseCase[] = [
           "Default is ⌘+Shift+Space on macOS or Ctrl+Shift+Space on Windows. There's also a push-to-talk option on Option/Alt+Space. Most people internalize one in a week.",
       },
       {
-        q: "Will it work if I haven't taken my meds today?",
+        q: "Will it still help on low-focus days?",
         a:
-          "Yes. The cognitive load of pressing one hotkey and talking is genuinely lower than the load of typing — that's the whole point. People with ADHD report dictating works better on days when typing feels impossible.",
+          "Yes. The cognitive load of pressing one hotkey and talking is lower than the load of typing from scratch. People with ADHD often find dictation easier on days when typing feels impossible.",
       },
     ],
     finalCta: {
