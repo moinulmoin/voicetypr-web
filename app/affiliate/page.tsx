@@ -23,16 +23,16 @@ import Footer from "../components/sections/Footer";
 const AFFONSO_URL = "https://voicetypr.affonso.io";
 
 export const metadata: Metadata = {
-  title: "VoiceTypr Affiliate Program — Earn up to 30% per sale",
+  title: "VoiceTypr Affiliate Program — 20% standard, 30% for selected partners",
   description:
-    "Promote VoiceTypr, the offline AI voice-to-text app for Mac and Windows. Earn 20–30% commission on every lifetime sale. One-time product, high-intent buyers, Cursor/Claude/ChatGPT audience.",
+    "Promote VoiceTypr, the offline AI voice-to-text app for Mac and Windows. Earn 20% per sale by default, or 30% as a selected partner.",
   alternates: {
     canonical: "https://voicetypr.com/affiliate",
   },
   openGraph: {
-    title: "Become a VoiceTypr Affiliate — Earn up to 30% per sale",
+    title: "Become a VoiceTypr Affiliate — 20% standard, 30% for selected partners",
     description:
-      "Promote an offline AI voice-to-text app your audience actually wants. Lifetime product, 20–30% commission.",
+      "Promote an offline AI voice-to-text app your audience actually wants. 20% commission by default, 30% for selected partners.",
     url: "https://voicetypr.com/affiliate",
     type: "website",
   },
@@ -145,7 +145,11 @@ const faqs = [
   },
   {
     q: "Can I offer my audience a discount?",
-    a: "Yes. Approved creators get a custom Polar coupon code (typically 10–20% off) they can share. Your commission is calculated on the discounted price.",
+    a: "Yes. Approved creators can get a custom Polar coupon code, usually 10–20% off, to share with their audience. Your commission is calculated on the discounted checkout total.",
+  },
+  {
+    q: "What if someone asks me for a custom discount directly?",
+    a: "If the sale ends up being closed manually through support, a one-off invoice, or an untracked discount outside your approved affiliate link or coupon, that referral can be excluded from commission. To keep attribution clean, send people through your tracked link or your assigned code.",
   },
   {
     q: "What if someone refunds?",
@@ -187,8 +191,8 @@ export default function AffiliatePage() {
         {/* Hero */}
         <section className="ed-section ed-section-hero pt-32 lg:pt-40">
           <div className="ed-container max-w-4xl text-center">
-            <p className="ed-eyebrow justify-center">Earn up to 30% per sale</p>
-            <h1 className="mt-4 text-[clamp(42px,6vw,68px)] leading-[0.98] tracking-[-0.045em]">
+            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">20% standard · 30% selected partners</p>
+            <h1 className="mt-4 text-[clamp(42px,6vw,68px)] font-semibold leading-[0.98] tracking-[-0.04em]">
               Promote VoiceTypr.
               <br />
               Earn real money.
@@ -251,7 +255,7 @@ export default function AffiliatePage() {
                   className="flex gap-5 py-6 border-b border-editorial-line last:border-b-0"
                 >
                   <item.icon
-                    className="mt-0.5 h-5 w-5 text-editorial-accent-ink shrink-0"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-editorial-ink"
                     aria-hidden
                   />
                   <div>
@@ -292,7 +296,7 @@ export default function AffiliatePage() {
                         {tier.name}
                       </h3>
                       {tier.highlight && (
-                        <span className="inline-block rounded-full bg-editorial-accent px-2 py-0.5 text-[10px] font-medium text-white">
+                        <span className="inline-block rounded-full bg-editorial-ink px-2 py-0.5 text-[10px] font-medium text-white">
                           Most common
                         </span>
                       )}
@@ -350,7 +354,7 @@ export default function AffiliatePage() {
                           <td className="px-4 py-3 text-right tabular-nums text-[14px] text-editorial-ink-2">
                             {row.commission20}
                           </td>
-                          <td className="px-4 py-3 text-right text-[14px] font-medium tabular-nums text-editorial-accent-ink">
+                          <td className="px-4 py-3 text-right text-[14px] font-medium tabular-nums text-editorial-ink">
                             {row.commission30}
                           </td>
                         </tr>
@@ -415,7 +419,7 @@ export default function AffiliatePage() {
                   className="flex items-start gap-3 text-[15px] text-editorial-ink-2"
                 >
                   <Check
-                    className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-accent-ink"
+                    className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink"
                     aria-hidden
                   />
                   <span>{fit}</span>
@@ -446,7 +450,7 @@ export default function AffiliatePage() {
                     className="flex gap-4 py-5 border-b border-editorial-line last:border-b-0"
                   >
                     <Icon
-                      className="mt-0.5 h-5 w-5 text-editorial-accent-ink shrink-0"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-editorial-ink"
                       aria-hidden
                     />
                     <div>
@@ -511,7 +515,7 @@ export default function AffiliatePage() {
               Questions?{" "}
               <a
                 href="mailto:support@voicetypr.com?subject=Affiliate%20program"
-                className="text-editorial-accent hover:underline"
+                className="text-editorial-ink hover:underline"
               >
                 support@voicetypr.com
               </a>

@@ -29,7 +29,7 @@ export default function PrivacyPage() {
   return (
     <>
       <header className="mb-10 border-b border-editorial-line pb-7">
-        <span className="ed-eyebrow">policy &middot; privacy</span>
+        <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · privacy</span>
         <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Privacy Policy
         </h1>
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
 
         <h3 className={h3Class}>2.4 Cookies and online identifiers</h3>
         <p className={pClass}>
-          See our <Link href="/cookies" className="text-editorial-accent hover:underline">Cookie Policy</Link> for details on cookie categories and purposes. Non&#8209;essential cookies load only with your consent.
+          See our <Link href="/cookies" className="text-editorial-ink underline-offset-4 hover:underline">Cookie Policy</Link> for details on cookie categories and purposes. Non&#8209;essential cookies load only with your consent.
         </p>
       </section>
 
@@ -166,7 +166,7 @@ export default function PrivacyPage() {
           Depending on your location, you may have the right to access, rectify, erase, restrict, object to processing, or request portability of your personal data. You can also withdraw consent at any time for consent&#8209;based processing.
         </p>
         <p className={`${pClass} mt-3`}>
-          To exercise rights, contact: <a href="mailto:privacy@voicetypr.com" className="text-editorial-accent hover:underline">privacy@voicetypr.com</a>. You may also lodge a complaint with your local supervisory authority in the EU/EEA.
+          To exercise rights, contact: <a href="mailto:privacy@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">privacy@voicetypr.com</a>. You may also lodge a complaint with your local supervisory authority in the EU/EEA.
         </p>
       </section>
 
@@ -201,14 +201,14 @@ export default function PrivacyPage() {
           30 N Gould St Ste N<br />
           Sheridan, WY 82801<br />
           United States<br />
-          Email: <a href="mailto:privacy@voicetypr.com" className="text-editorial-accent hover:underline">privacy@voicetypr.com</a>
+          Email: <a href="mailto:privacy@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">privacy@voicetypr.com</a>
         </p>
       </section>
 
       <section className={sectionClass}>
         <h2 className={h2Class}>14. California (CCPA/CPRA)</h2>
         <p className={pClass}>
-          We disclose categories such as identifiers (license/account), commercial information (purchase), and device data for operational purposes. We do not sell personal information. To exercise California rights or send a &ldquo;Do Not Sell/Share&rdquo; request, contact <a href="mailto:privacy@voicetypr.com" className="text-editorial-accent hover:underline">privacy@voicetypr.com</a>.
+          We disclose categories such as identifiers (license/account), commercial information (purchase), and device data for operational purposes. We do not sell personal information. To exercise California rights or send a &ldquo;Do Not Sell/Share&rdquo; request, contact <a href="mailto:privacy@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">privacy@voicetypr.com</a>.
         </p>
       </section>
     </>

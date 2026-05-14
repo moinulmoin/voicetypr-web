@@ -1,44 +1,116 @@
 ---
-title: Install VoiceTypr on Windows
-description: Download and install VoiceTypr on Windows 10 or 11. Step-by-step installation guide.
+title: Install VoiceTypr on Windows 10 and 11
+description: Step-by-step install guide for VoiceTypr on Windows 10 or Windows 11, including SmartScreen, microphone access, and first-launch setup.
 category: setup
 order: 2
 ---
 
-## Download
+## Before you start
+
+VoiceTypr supports:
+
+- Windows 10
+- Windows 11
+- built-in or external microphones
+- CPU-only and GPU-accelerated transcription
+
+You do not need a Microsoft account to install VoiceTypr.
+
+## Download the installer
 
 1. Go to [voicetypr.com/download](/download)
-2. Click **Download for Windows**
-3. The `.exe` installer downloads to your Downloads folder
+2. Click **Windows**
+3. Wait for the `.exe` installer to download into **Downloads**
 
-## Install
+If your browser warns you about the file, keep the download and run it manually from your Downloads folder.
 
-1. Run the `.exe` installer
-2. Follow the setup wizard
-3. VoiceTypr installs to `C:\Program Files\VoiceTypr`
+## Run the installer
 
-## First Launch
+1. Double-click the `.exe` installer
+2. If Windows SmartScreen appears, click **More info**
+3. Click **Run anyway**
+4. Follow the setup steps
+5. Finish the install and launch VoiceTypr
 
-Windows Defender may show a warning about an unrecognized app.
+If SmartScreen keeps blocking the install, see [Windows Defender SmartScreen install warning →](/help/windows-defender-smartscreen-install)
 
-1. Click **More info**
-2. Click **Run anyway**
+## Windows 10 setup
 
-## Grant Permissions
+### Microphone permissions on Windows 10
 
-### Microphone Access
+1. Open **Settings → Privacy → Microphone**
+2. Turn on **Allow apps to access your microphone**
+3. If shown, turn on desktop app microphone access too
+4. Launch VoiceTypr and test a recording
 
-1. Open **Settings > Privacy & Security > Microphone**
-2. Toggle **Microphone access** and **Let apps access your microphone** to On
-3. Find VoiceTypr in the list and toggle it On
+### If the hotkey does not fire everywhere
 
-### Keyboard Hook (Optional)
+Some protected or elevated apps may ignore global hooks unless VoiceTypr is also elevated.
 
-For global hotkeys to work across all apps, VoiceTypr may need to run with elevated permissions. If your hotkey doesn't work in some apps:
+1. Close VoiceTypr
+2. Right-click the VoiceTypr shortcut
+3. Choose **Run as administrator**
+4. Test the hotkey again in the app that was failing
 
-1. Right-click the VoiceTypr shortcut
-2. Select **Run as administrator**
+## Windows 11 setup
 
-## Next Steps
+### Microphone permissions on Windows 11
 
-[Getting started with your first dictation →](/help/getting-started)
+1. Open **Settings → Privacy & security → Microphone**
+2. Turn on **Microphone access**
+3. Turn on **Let apps access your microphone**
+4. Turn on **Let desktop apps access your microphone**
+5. Launch VoiceTypr and test a recording
+
+### Extra Windows 11 note
+
+On some Windows 11 machines, security prompts appear under **Privacy & security** instead of the older Windows 10 layout. The labels are similar, but the menu path is slightly different.
+
+## First launch checklist
+
+After install, confirm:
+
+- the app opens without SmartScreen blocking it
+- microphone access is enabled
+- the hotkey opens the dictation HUD
+- text pastes into a normal app like Notepad, Gmail, or Cursor
+
+## If VoiceTypr opens but does not transcribe
+
+Check these in order:
+
+1. Is the correct microphone selected?
+2. Is Windows microphone access enabled?
+3. Is another app exclusively holding the microphone?
+4. Did you deny permission the first time and forget to re-enable it?
+
+## If VoiceTypr transcribes but does not paste
+
+This usually means one of these:
+
+- the target app is blocking input hooks
+- the target app is running elevated while VoiceTypr is not
+- the chosen hotkey conflicts with another shortcut
+
+Try:
+
+1. testing in Notepad first
+2. switching the hotkey
+3. running VoiceTypr as administrator once to compare behavior
+
+## Windows 10 vs Windows 11 differences
+
+The install flow is almost identical. The main differences are:
+
+- **Settings path** for microphone permissions
+- how **SmartScreen** text is worded
+- visual layout of the Settings panels
+
+If you follow the correct permission path for your Windows version, the rest is the same.
+
+## Next steps
+
+- [Getting started with your first dictation →](/help/getting-started)
+- [Choose the right model →](/help/models)
+- [Set up hotkeys →](/help/hotkeys)
+- [Troubleshooting common issues →](/help/troubleshooting)

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight } from "lucide-react";
 import Header from "@/app/components/sections/Header";
 import Footer from "@/app/components/sections/Footer";
 import {
@@ -108,7 +107,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
               </Link>
 
               <div className="mb-5 flex justify-center">
-                <span className="ed-eyebrow">{useCase.hero.eyebrow}</span>
+                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">{useCase.hero.eyebrow}</span>
               </div>
 
               <h1 className="mb-5 text-balance text-[clamp(42px,5.2vw,68px)] font-bold leading-[1.03] tracking-[-0.02em]">
@@ -130,12 +129,9 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   href="/download"
                   data-track="use-case-hero-download-click"
                   data-track-slug={useCase.slug}
-                  className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+                  className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 >
                   Start 3-day free trial
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                    <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-                  </span>
                 </Link>
                 <Link
                   href="/wispr-flow-alternative"
@@ -152,9 +148,9 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         <section className="ed-section">
           <div className="ed-container">
             <div className="mb-10 max-w-[760px]">
-              <div className="ed-eyebrow">what hurts today</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">what hurts today</div>
               <h2 className="mt-2 mb-3 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-                The friction is real, and specific.
+                The friction is real, and specific
               </h2>
             </div>
             <div className="max-w-[760px]">
@@ -182,9 +178,9 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         <section className="ed-section">
           <div className="ed-container">
             <div className="rounded-[24px] bg-editorial-surface-2 p-8 md:p-12">
-              <div className="ed-eyebrow">what changes day-one</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">what changes day one</div>
               <h2 className="mt-2 mb-10 max-w-[760px] text-[clamp(36px,3.6vw,52px)] font-semibold leading-[1.08] tracking-[-0.01em]">
-                The shape of the day, different.
+                The shape of the day, different
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -193,7 +189,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                     key={i}
                     className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6"
                   >
-                    <div className="text-[38px] font-semibold leading-none text-editorial-accent">
+                    <div className="text-[38px] font-semibold leading-none text-editorial-ink">
                       {outcome.marker}
                     </div>
                     <h3 className="text-[21px] font-semibold leading-[1.2]">
@@ -216,9 +212,9 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         <section className="ed-section">
           <div className="ed-container">
             <div className="mb-10 max-w-[760px]">
-              <div className="ed-eyebrow">in your day, concretely</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">in your day, concretely</div>
               <h2 className="mt-2 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-                Three workflows where it shows up.
+                Three workflows where it shows up
               </h2>
             </div>
 
@@ -226,7 +222,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
               <ol className="space-y-9">
                 {useCase.workflows.map((workflow, i) => (
                   <li key={i} className="grid grid-cols-[auto_1fr] gap-6">
-                    <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-accent">
+                    <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>
@@ -249,9 +245,9 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
           <div className="ed-container">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
               <div>
-                <div className="ed-eyebrow">questions before you switch</div>
-                <h2 className="mb-4 text-[clamp(32px,3.3vw,44px)] font-semibold leading-[1.1] tracking-[-0.01em]">
-                  The honest <em>{useCase.navLabel}</em> FAQ.
+                <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">questions before you switch</div>
+                <h2 className="mb-4 mt-2 text-[clamp(32px,3.3vw,44px)] font-semibold leading-[1.1] tracking-[-0.01em]">
+                  The honest <em>{useCase.navLabel}</em> FAQ
                 </h2>
                 <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
                   Pulled from real conversations with people who use VoiceTypr for this exact reason.
@@ -281,7 +277,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   Not answered here?{" "}
                   <a
                     href="mailto:support@voicetypr.com"
-                    className="text-editorial-accent underline-offset-4 hover:underline"
+                    className="text-editorial-ink underline-offset-4 hover:underline"
                     data-track="use-case-faq-contact-click"
                     data-track-slug={useCase.slug}
                   >
@@ -298,7 +294,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
           <div className="ed-container">
             <div className="bg-editorial-surface-2 px-6 py-10 text-center md:px-10 md:py-12">
               <div className="mb-4 flex justify-center">
-                <span className="ed-eyebrow">{useCase.finalCta.eyebrow}</span>
+                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">{useCase.finalCta.eyebrow}</span>
               </div>
               <h2 className="mx-auto mb-5 max-w-4xl text-[clamp(42px,5.8vw,72px)] font-bold leading-[1.02] tracking-[-0.02em]">
                 <HeadlineWithAccent text={useCase.finalCta.headline} />
@@ -311,12 +307,9 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   href="/download"
                   data-track="use-case-final-cta-click"
                   data-track-slug={useCase.slug}
-                  className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+                  className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 >
                   Download VoiceTypr
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                    <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-                  </span>
                 </Link>
                 <Link
                   href="/#pricing"

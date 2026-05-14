@@ -45,7 +45,7 @@ function ReleaseSection({
 
   const dotColor =
     tone === "feature"
-      ? "bg-editorial-accent"
+      ? "bg-editorial-ink"
       : tone === "fix"
         ? "bg-editorial-ink-3"
         : "bg-[#a25c2a]";
@@ -82,7 +82,7 @@ function Release({ entry, isFirst = false }: { entry: ChangelogEntry; isFirst?: 
             {entry.version}
           </div>
           {entry.latest ? (
-            <span className="ed-eyebrow">latest</span>
+            <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">latest</span>
           ) : null}
           <time
             dateTime={entry.date}
@@ -107,7 +107,7 @@ function Release({ entry, isFirst = false }: { entry: ChangelogEntry; isFirst?: 
                 >
                   <span
                     aria-hidden
-                    className={`mt-2.5 h-1.5 w-1.5 rounded-full ${isFirst ? "bg-editorial-accent" : "bg-editorial-accent"}`}
+                    className="mt-2.5 h-1.5 w-1.5 rounded-full bg-editorial-ink"
                   />
                   <span>{item}</span>
                 </li>
@@ -140,17 +140,17 @@ export default function ChangelogPage() {
         <section className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-0">
           <div className="ed-container">
             <div className="max-w-[820px]">
-              <div className="ed-eyebrow">what shipped, what got fixed</div>
-              <h1 className="mt-3 mb-5 text-[clamp(46px,7vw,92px)] leading-[0.95] tracking-[-0.05em]">
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">what shipped, what got fixed</div>
+              <h1 className="mt-3 mb-5 text-[clamp(46px,7vw,92px)] font-semibold leading-[0.95] tracking-[-0.05em]">
                 Changelog
               </h1>
-              <p className="text-[18px] md:text-[20px] leading-[1.55] text-editorial-ink-2 max-w-[640px]">
+              <p className="max-w-[640px] text-[18px] leading-[1.55] text-editorial-ink-2 md:text-[20px]">
                 Every release, latest first. Curated from the desktop app&rsquo;s{" "}
                 <a
                   href={FULL_CHANGELOG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-editorial-accent underline-offset-2 hover:underline"
+                  className="text-editorial-ink underline-offset-2 hover:underline"
                   data-track="changelog-source-click"
                 >
                   CHANGELOG.md
@@ -177,7 +177,7 @@ export default function ChangelogPage() {
                 href={RELEASES_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[13px] font-mono uppercase tracking-[0.14em] text-editorial-ink hover:text-editorial-accent [transition:color_180ms]"
+                className="inline-flex items-center gap-1.5 text-[13px] font-mono uppercase tracking-[0.14em] text-editorial-ink transition-colors hover:text-editorial-ink-2"
                 data-track="changelog-releases-click"
               >
                 View on GitHub

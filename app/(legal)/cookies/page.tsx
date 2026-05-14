@@ -23,7 +23,7 @@ export default function CookiesPage() {
   return (
     <>
       <header className="mb-10 border-b border-editorial-line pb-7">
-        <span className="ed-eyebrow">policy &middot; cookies</span>
+        <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · cookies</span>
         <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Cookie Policy
         </h1>
@@ -50,7 +50,7 @@ export default function CookiesPage() {
         </p>
 
         <p className={pClass}>
-          See our <Link href="/privacy" className="text-editorial-accent hover:underline">Privacy Policy</Link> for the full picture, and our <Link href="/terms" className="text-editorial-accent hover:underline">Terms of Service</Link> for license + refund terms.
+          See our <Link href="/privacy" className="text-editorial-ink underline-offset-4 hover:underline">Privacy Policy</Link> for the full picture, and our <Link href="/terms" className="text-editorial-ink underline-offset-4 hover:underline">Terms of Service</Link> for license + refund terms.
         </p>
       </div>
     </>

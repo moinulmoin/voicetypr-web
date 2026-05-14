@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
@@ -57,8 +57,8 @@ export default function VoiceInputForCursorPage() {
       <Header />
       <section className="ed-section ed-section-hero pt-32 lg:pt-40">
         <div className="ed-container max-w-4xl">
-          <p className="ed-eyebrow">voice input for cursor</p>
-          <h1 className="text-[clamp(40px,6vw,70px)] font-extrabold leading-[1.02] tracking-tight">
+          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">voice input for cursor</p>
+          <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
             Speak the context Cursor needs before your fingers compress it.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
@@ -67,12 +67,9 @@ export default function VoiceInputForCursorPage() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/download"
-              className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
               Download for free
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-              </span>
             </Link>
             <Link
               href="/#pricing"
@@ -86,7 +83,7 @@ export default function VoiceInputForCursorPage() {
 
       <section className="ed-section">
         <div className="ed-container max-w-5xl">
-          <p className="ed-eyebrow">developer workflows</p>
+          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">developer workflows</p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {useCases.map(([title, body]) => (
               <article key={title} className="rounded-xl bg-editorial-surface-2 p-6">
@@ -101,7 +98,7 @@ export default function VoiceInputForCursorPage() {
       <section className="ed-section">
         <div className="ed-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="ed-eyebrow">why it works</p>
+            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">why it works</p>
             <h2 className="mt-2 text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
               Cursor rewards context. Voice makes context cheap.
             </h2>
@@ -109,7 +106,7 @@ export default function VoiceInputForCursorPage() {
           <ul className="space-y-4">
             {checklist.map((item) => (
               <li key={item} className="flex gap-3 text-[16px] leading-[1.6] text-editorial-ink-2">
-                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-accent-ink" aria-hidden />
+                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" aria-hidden />
                 <span>{item}</span>
               </li>
             ))}

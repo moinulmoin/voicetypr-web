@@ -48,7 +48,7 @@ export default async function HelpLayout({
                         <li key={article.slug}>
                           <Link
                             href={`/help/${article.slug}`}
-                            className="block text-[14px] leading-[1.5] text-editorial-ink-2 hover:text-editorial-accent transition-colors py-0.5"
+                            className="block py-0.5 text-[14px] leading-[1.5] text-editorial-ink-2 transition-colors hover:text-editorial-ink"
                           >
                             {article.title}
                           </Link>

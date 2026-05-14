@@ -21,19 +21,19 @@ const steps = [
     title: 'Pick a model',
     body: 'Choose speed, accuracy, or Apple Silicon performance. You can switch per session.',
     artifact: (
-      <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
+      <div className="rounded-xl bg-white p-4 text-xs">
         {[
-          ['Base', 'fast', 'w-1/3'],
-          ['Large v3', 'accurate', 'w-full'],
-          ['Turbo', 'balanced', 'w-2/3'],
+          ['Base', 'fast', 34],
+          ['Large v3', 'accurate', 100],
+          ['Turbo', 'balanced', 66],
         ].map(([name, meta, width]) => (
-          <div key={name} className="mb-3 last:mb-0">
+          <div key={String(name)} className="mb-3 last:mb-0">
             <div className="mb-1 flex justify-between text-editorial-ink-2">
               <span>{name}</span>
               <span>{meta}</span>
             </div>
             <div className="h-1.5 overflow-hidden rounded-full bg-editorial-surface-2">
-              <div className={`${width} h-full rounded-full bg-editorial-ink`} />
+              <div className="h-full rounded-full bg-editorial-ink" style={{ width: `${width}%` }} />
             </div>
           </div>
         ))}
@@ -45,7 +45,7 @@ const steps = [
     title: 'Set a hotkey',
     body: 'Toggle or push-to-talk. It works globally in any app, any text field, any time.',
     artifact: (
-      <div className="rounded-xl bg-white p-4 shadow-sm">
+      <div className="rounded-xl bg-white p-4">
         <div className="mb-3 text-xs uppercase tracking-widest text-editorial-ink-3">global shortcut</div>
         <div className="flex gap-2">
           {['⌘', '⇧', 'Space'].map((key) => (
@@ -62,7 +62,7 @@ const steps = [
     title: 'Speak and paste',
     body: 'Hold the key, talk, release. Clean text lands wherever your cursor already is.',
     artifact: (
-      <div className="rounded-xl bg-white p-4 shadow-sm">
+      <div className="rounded-xl bg-white p-4">
         <div className="mb-2 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Raw voice</div>
         <div className="rounded-lg bg-editorial-surface-2 px-3 py-2 text-sm text-editorial-ink-2">
           Let&apos;s ship Tuesday and iterate from there.
@@ -78,7 +78,7 @@ export default function HowItWorks() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Install. Pick a model. Set a key. Talk
+            Install. Pick a model. Set a key. <em>Talk</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
             No cloud account. No onboarding maze. Download, choose the local model you want, and start talking.
@@ -87,8 +87,8 @@ export default function HowItWorks() {
 
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
-            <article key={step.label} className="flex min-h-96 flex-col rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm">
-              <div className="mb-5 inline-flex h-8 w-12 items-center justify-center rounded-full border border-editorial-line bg-white text-sm font-medium text-editorial-ink-3 shadow-sm">
+            <article key={step.label} className="flex min-h-96 flex-col rounded-3xl bg-editorial-surface-2 p-6">
+              <div className="mb-5 inline-flex h-8 w-12 items-center justify-center rounded-full bg-white text-sm font-medium text-editorial-ink-3">
                 {step.label}
               </div>
               <h3 className="text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">

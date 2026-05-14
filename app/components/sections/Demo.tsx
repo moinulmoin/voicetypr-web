@@ -23,7 +23,7 @@ export default function Demo() {
           </div>
 
           <p className="mt-5 text-center text-sm text-editorial-ink-3">
-            want the full walkthrough?{" "}
+            Want the full walkthrough?{" "}
             <a
               href="https://youtu.be/L_yU879QbE4"
               target="_blank"
@@ -31,7 +31,7 @@ export default function Demo() {
               data-umami-event="demo-full-walkthrough-click"
               className="text-editorial-ink underline underline-offset-4 transition-colors hover:text-editorial-ink-2"
             >
-              watch on youtube &rarr;
+              Watch on YouTube &rarr;
             </a>
           </p>
         </div>

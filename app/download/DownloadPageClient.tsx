@@ -149,22 +149,22 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       <Header />
 
       {/* Hero */}
-      <section className="ed-section ed-section-hero !pt-[160px] md:!pt-[200px] pb-0">
+      <section className="ed-section ed-section-hero !pt-[160px] pb-0 md:!pt-[200px]">
         <div className="ed-container text-center">
-          <h1 className="text-[clamp(44px,8vw,84px)] leading-[0.95] tracking-[-0.05em] font-semibold">
+          <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+            Download
+          </div>
+          <h1 className="text-[clamp(44px,8vw,84px)] font-semibold leading-[0.95] tracking-[-0.05em]">
             Download VoiceTypr
           </h1>
-
           <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
             <strong className="font-medium text-editorial-ink">
               Choose your platform.
             </strong>{" "}
             Three-day trial, no credit card.
           </p>
-
-          {/* Trust signals */}
-          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
-            <span className="text-editorial-accent-ink">&bull; macOS 13+</span>
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
+            <span>• macOS 13+</span>
             <span>Windows 10+</span>
             <span>100% offline</span>
           </div>
@@ -212,14 +212,11 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             <div className="mt-10 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
               <button
                 onClick={handleDownloadClick}
-                className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+                className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 data-track="download-click"
                 data-track-platform={selectedOption?.platform}
               >
                 Download for {selectedOption?.name ?? "macOS"}
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                  <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-                </span>
               </button>
             </div>
           )}

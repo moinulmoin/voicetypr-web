@@ -202,7 +202,6 @@ export default async function BlogPostPage({ params }: PageProps) {
                     data-track-slug={post.slug}
                   >
                     Download for free
-                    <span aria-hidden>→</span>
                   </Link>
                 </div>
 

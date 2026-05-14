@@ -52,9 +52,9 @@ html {
   --color-editorial-ink-3: #8a8a87;
   --color-editorial-line: #e8e7e3;
   --color-editorial-line-2: #dad8d3;
-  --color-editorial-accent: #3a7a4f;
-  --color-editorial-accent-ink: #265636;
-  --color-editorial-accent-wash: #dceadf;
+  --color-editorial-accent: #18181a;
+  --color-editorial-accent-ink: #18181a;
+  --color-editorial-accent-wash: #f0efec;
 }
 
 :root {
@@ -293,9 +293,9 @@ html {
 }
 .ed-eyebrow::before {
   content: "";
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
   background: var(--color-editorial-ink);
   flex-shrink: 0;
 }

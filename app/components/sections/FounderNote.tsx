@@ -40,7 +40,7 @@ export default function FounderNote() {
                   className="hover:underline"
                   data-umami-event="founder-ideaplexa-click"
                 >
-                  @Ideaplexa
+                  Ideaplexa
                 </a>
               </div>
             </div>

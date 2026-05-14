@@ -45,7 +45,7 @@ export default async function HelpArticlePage({
   return (
     <article className="ed-section ed-section-hero">
       <header className="mb-10 border-b border-editorial-line pb-7">
-        <span className="ed-eyebrow">support &middot; article</span>
+        <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Support · article</span>
         <h1 className="mt-3 mb-3 font-sans text-[clamp(32px,4vw,46px)] font-semibold leading-[1.1] tracking-[-0.02em] text-editorial-ink">
           {article.title}
         </h1>
@@ -63,12 +63,12 @@ export default async function HelpArticlePage({
         {prev ? (
           <Link
             href={`/help/${prev.slug}`}
-            className="group rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-left transition hover:bg-white"
+            className="group bg-editorial-surface-2 p-4 text-left transition hover:bg-editorial-surface"
           >
             <span className="mb-1 block text-xs uppercase tracking-[0.1em] text-editorial-ink-3">
               &larr; Previous
             </span>
-            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-accent">
+            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-ink">
               {prev.title}
             </span>
           </Link>
@@ -78,12 +78,12 @@ export default async function HelpArticlePage({
         {next ? (
           <Link
             href={`/help/${next.slug}`}
-            className="group rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-left transition hover:bg-white md:text-right"
+            className="group bg-editorial-surface-2 p-4 text-left transition hover:bg-editorial-surface md:text-right"
           >
             <span className="mb-1 block text-xs uppercase tracking-[0.1em] text-editorial-ink-3">
               Next &rarr;
             </span>
-            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-accent">
+            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-ink">
               {next.title}
             </span>
           </Link>

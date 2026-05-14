@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Fragment, Suspense } from "react";
-import { ArrowRight, Check, Minus } from "lucide-react";
+import { Check, Minus } from "lucide-react";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 import Pricing from "../components/sections/Pricing";
@@ -212,9 +212,10 @@ const steps: Array<{ n: string; title: string; body: React.ReactNode }> = [
     body: (
       <>
         Mac .dmg or Windows .exe from{" "}
+        Mac .dmg or Windows .exe from{" "}
         <Link
           href="/download"
-          className="text-editorial-accent underline-offset-2 hover:underline"
+          className="text-editorial-ink underline-offset-2 hover:underline"
         >
           /download
         </Link>
@@ -244,7 +245,7 @@ function CellIcon({ value }: { value: ComparisonValue }) {
   if (value.type === "check") {
     return (
       <Check
-        className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-accent"
+        className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink"
         aria-hidden
       />
     );
@@ -274,7 +275,7 @@ export default function WisprFlowAlternativePage() {
           <div className="ed-container">
             <div className="mx-auto max-w-4xl text-center">
               <div className="mb-6 flex justify-center">
-                <span className="ed-eyebrow">wispr flow alternative</span>
+                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">wispr flow alternative</span>
               </div>
 
               <h1 className="mb-6 text-balance text-[clamp(42px,6vw,72px)] font-extrabold leading-[1.02] tracking-tight">
@@ -293,12 +294,9 @@ export default function WisprFlowAlternativePage() {
                 <Link
                   href="/download"
                   data-track="wispr-alt-hero-download-click"
-                  className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+                  className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 >
                   Download for free
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
                 </Link>
                 <Link
                   href="#comparison"
@@ -315,9 +313,9 @@ export default function WisprFlowAlternativePage() {
         <section className="ed-section">
           <div className="ed-container">
             <div className="rounded-xl bg-editorial-surface-2/80 p-8 md:p-10">
-              <div className="ed-eyebrow">three differences that matter day-to-day</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">three differences that matter day to day</div>
               <h2 className="mt-2 mb-9 max-w-[760px] text-[clamp(32px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
-                Why people switch from Wispr.
+                Why people switch from Wispr
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -326,7 +324,7 @@ export default function WisprFlowAlternativePage() {
                     key={reason.title}
                     className="flex min-h-[220px] flex-col gap-3 rounded-xl bg-white p-6"
                   >
-                    <div className="text-[34px] font-semibold leading-none text-editorial-accent">
+                    <div className="text-[34px] font-semibold leading-none text-editorial-ink">
                       {reason.marker}
                     </div>
                     <h3 className="text-[20px] font-semibold leading-[1.2] tracking-tight">
@@ -349,9 +347,9 @@ export default function WisprFlowAlternativePage() {
         <section className="ed-section" id="comparison">
           <div className="ed-container">
             <div className="mb-10 max-w-[760px]">
-              <div className="ed-eyebrow">the side-by-side</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">the side by side</div>
               <h2 className="mt-2 mb-3 text-[clamp(32px,4.2vw,50px)] font-semibold leading-[1.08] tracking-tight">
-                VoiceTypr vs Wispr Flow, plainly.
+                VoiceTypr vs Wispr Flow, plainly
               </h2>
               <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
                 Last verified April 2026. Where we&rsquo;re uncertain we said so rather than guessing.
@@ -457,9 +455,9 @@ export default function WisprFlowAlternativePage() {
         <section className="ed-section">
           <div className="ed-container">
             <div className="mb-10 max-w-[760px]">
-              <div className="ed-eyebrow">no migration · no account transfer</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">no migration · no account transfer</div>
               <h2 className="mt-2 text-[clamp(32px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
-                How to switch in under five minutes.
+                How to switch in under five minutes
               </h2>
             </div>
 
@@ -467,7 +465,7 @@ export default function WisprFlowAlternativePage() {
               <ol className="space-y-9">
                 {steps.map((step) => (
                   <li key={step.n} className="grid grid-cols-[auto_1fr] gap-6">
-                    <span className="pt-0.5 text-[30px] font-semibold leading-none text-editorial-accent">
+                    <span className="pt-0.5 text-[30px] font-semibold leading-none text-editorial-ink">
                       {step.n}
                     </span>
                     <div>
@@ -490,9 +488,9 @@ export default function WisprFlowAlternativePage() {
           <div className="ed-container">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
               <div>
-                <div className="ed-eyebrow">questions people ask before switching</div>
-                <h2 className="mb-4 text-[clamp(32px,3.6vw,44px)] font-semibold leading-[1.08] tracking-tight">
-                  The honest switch FAQ.
+                <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">questions people ask before switching</div>
+                <h2 className="mb-4 mt-2 text-[clamp(32px,3.6vw,44px)] font-semibold leading-[1.08] tracking-tight">
+                  The honest switch FAQ
                 </h2>
                 <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
                   Pulled from real conversations with people who actually made the move.
@@ -522,7 +520,7 @@ export default function WisprFlowAlternativePage() {
                   Not answered here?{" "}
                   <a
                     href="mailto:support@voicetypr.com"
-                    className="text-editorial-accent hover:underline"
+                    className="text-editorial-ink hover:underline"
                     data-track="wispr-alt-faq-contact-click"
                   >
                     Email support
@@ -538,7 +536,7 @@ export default function WisprFlowAlternativePage() {
           <div className="ed-container">
             <div className="overflow-hidden rounded-xl bg-editorial-surface-2 px-8 py-16 text-center md:py-20">
               <div className="mb-6 flex justify-center">
-                <span className="ed-eyebrow">try it for three days</span>
+                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">try it for three days</span>
               </div>
               <h2 className="mx-auto mb-5 max-w-[760px] text-[clamp(40px,6vw,64px)] font-extrabold leading-[1.02] tracking-tight">
                 Speak. Paste. <em>Keep your voice yours.</em>
@@ -550,12 +548,9 @@ export default function WisprFlowAlternativePage() {
                 <Link
                   href="/download"
                   data-track="wispr-alt-final-cta-click"
-                  className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+                  className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 >
                   Download for free
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
                 </Link>
                 <Link
                   href="/#pricing"

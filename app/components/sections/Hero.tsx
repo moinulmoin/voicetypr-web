@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const trustPeople = ["CE", "AB", "MV", "SK", "PL"];
@@ -9,7 +8,7 @@ export default function HeroSection() {
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-5xl text-5xl font-extrabold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-            Type by talking
+            Type by <em>talking</em>
             <br />
             in every app you use
           </h1>
@@ -25,12 +24,9 @@ export default function HeroSection() {
             <Link
               href="/download"
               data-umami-event="hero-download-click"
-              className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
               Download for free
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-              </span>
             </Link>
             <Link
               href="/#pricing"

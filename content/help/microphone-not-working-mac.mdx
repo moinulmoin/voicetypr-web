@@ -1,0 +1,71 @@
+---
+title: VoiceTypr microphone not working on Mac
+description: Fix microphone permission, input-device, and app-conflict issues when VoiceTypr is not hearing you on macOS.
+category: troubleshooting
+order: 3
+---
+
+## What this usually means
+
+If VoiceTypr opens but does not react to your voice, the problem is usually one of these:
+
+- microphone permission was denied
+- the wrong input device is selected
+- another app is holding the microphone
+- VoiceTypr needs a restart after permission changes
+
+## Step 1: Check microphone permission
+
+1. Open **System Settings → Privacy & Security → Microphone**
+2. Make sure **VoiceTypr** is turned on
+3. If you just enabled it, quit and reopen VoiceTypr
+
+If VoiceTypr is missing from the list, launch it once and try to start dictation first.
+
+## Step 2: Check the input device
+
+1. Open **System Settings → Sound → Input**
+2. Select the microphone you actually want to use
+3. Speak and confirm the input meter moves
+4. Return to VoiceTypr and test again
+
+For most people, the built-in MacBook microphone works best as the first test.
+
+## Step 3: Close conflicting apps
+
+Apps that may interfere with microphone access include:
+
+- Zoom
+- Google Meet in a browser tab
+- Riverside
+- OBS
+- other dictation or recording tools
+
+Close them fully, then test VoiceTypr again.
+
+## Step 4: Restart VoiceTypr
+
+If permissions were changed while the app was open:
+
+1. Quit VoiceTypr completely
+2. Reopen it from **Applications**
+3. Start a fresh dictation test
+
+## Step 5: Try a simple test target
+
+Before testing in Cursor, Slack, or a browser tab, try this:
+
+1. Open a plain text app like Notes or TextEdit
+2. Trigger the VoiceTypr hotkey
+3. Speak a short sentence
+4. Release and check whether anything appears
+
+If transcription works there but not elsewhere, your problem is likely pasting or hotkey permissions, not the microphone.
+
+## If it still does not work
+
+Next pages:
+
+- [Install VoiceTypr on macOS →](/help/install-mac)
+- [VoiceTypr not pasting text →](/help/voicetypr-not-pasting-text)
+- [Troubleshooting common issues →](/help/troubleshooting)

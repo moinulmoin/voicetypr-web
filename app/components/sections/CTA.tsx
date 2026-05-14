@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const proofItems = ['Mac + Windows', 'Local models', '3-day free trial'];
@@ -12,8 +11,8 @@ export default function CTA() {
             Ready when you are
           </p>
           <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight md:text-7xl">
-            <span className="block">Stop typing.</span>
-            <span className="block">Start talking.</span>
+            <span className="block">Stop typing</span>
+            <span className="block">Start <em>talking</em></span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
             Turn rambling voice notes into clean prompts, replies, specs, and docs in the apps you already use.
@@ -23,12 +22,9 @@ export default function CTA() {
             <Link
               href="/download"
               data-umami-event="cta-download-click"
-              className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition hover:bg-black active:scale-95"
+              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95"
             >
               Download for free
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
-                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-              </span>
             </Link>
             <Link
               href="/#pricing"

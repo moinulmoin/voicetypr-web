@@ -27,7 +27,7 @@ export default function TermsPage() {
   return (
     <>
       <header className="mb-10 border-b border-editorial-line pb-7">
-        <span className="ed-eyebrow">policy &middot; terms</span>
+        <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · terms</span>
         <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Terms and Conditions
         </h1>
@@ -99,7 +99,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>6. Privacy and Data</h2>
         <p className={pClass}>
-          VoiceTypr processes all voice data locally on your device. The Software only connects to our servers for license validation, activation, and trial verification. Please review our <Link href="/privacy" className="text-editorial-accent hover:underline">Privacy Policy</Link> for detailed information.
+          VoiceTypr processes all voice data locally on your device. The Software only connects to our servers for license validation, activation, and trial verification. Please review our <Link href="/privacy" className="text-editorial-ink underline-offset-4 hover:underline">Privacy Policy</Link> for detailed information.
         </p>
       </section>
 
@@ -151,7 +151,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>11. Venue and Dispute Resolution</h2>
         <p className={pClass}>
-          Courts located in Sheridan County, Wyoming shall have exclusive jurisdiction. You agree to first attempt informal resolution by contacting <a href="mailto:support@voicetypr.com" className="text-editorial-accent hover:underline">support@voicetypr.com</a>.
+          Courts located in Sheridan County, Wyoming shall have exclusive jurisdiction. You agree to first attempt informal resolution by contacting <a href="mailto:support@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">support@voicetypr.com</a>.
         </p>
       </section>
 
@@ -176,7 +176,7 @@ export default function TermsPage() {
           30 N Gould St Ste N<br />
           Sheridan, WY 82801<br />
           United States<br />
-          Email: <a href="mailto:support@voicetypr.com" className="text-editorial-accent hover:underline">support@voicetypr.com</a>
+          Email: <a href="mailto:support@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">support@voicetypr.com</a>
         </p>
       </section>
     </>

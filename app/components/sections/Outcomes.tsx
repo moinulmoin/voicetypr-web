@@ -13,7 +13,7 @@ export default function Outcomes() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Talk. Get clean text where your cursor is
+            Get clean text where your cursor is
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-editorial-ink-2">
             Stop rewriting the same thought by hand. VoiceTypr turns speech into usable text in the apps you already use.
@@ -21,7 +21,7 @@ export default function Outcomes() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
-          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm lg:col-span-2">
+          <article className="rounded-3xl bg-editorial-surface-2 p-6 lg:col-span-2">
             <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
               Prompt at speaking speed
             </h3>
@@ -29,7 +29,7 @@ export default function Outcomes() {
               Your brain runs faster than your fingers. Capture the thought, clean it up, and paste it without switching tools.
             </p>
 
-            <div className="mt-8 rounded-2xl bg-white p-5 shadow-sm">
+            <div className="mt-8 rounded-2xl bg-white p-5">
               <div className="grid grid-cols-3 overflow-hidden rounded-xl border border-editorial-line text-sm">
                 <div className="bg-editorial-ink p-4 text-white">
                   <div className="text-3xl font-semibold">150</div>
@@ -59,14 +59,14 @@ export default function Outcomes() {
             </div>
           </article>
 
-          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm">
+          <article className="rounded-3xl bg-editorial-surface-2 p-6">
             <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
               Every text field works
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
               ChatGPT, Claude, Cursor, Slack, Notion, Gmail, or a legacy Jira textarea.
             </p>
-            <div className="mt-8 rounded-2xl bg-white p-5 shadow-sm">
+            <div className="mt-8 rounded-2xl bg-white p-5">
               <div className="mb-4 rounded-xl bg-editorial-ink px-4 py-3 text-sm font-medium text-white">
                 Draft this reply in my voice.
               </div>
@@ -76,14 +76,14 @@ export default function Outcomes() {
             </div>
           </article>
 
-          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm">
+          <article className="rounded-3xl bg-editorial-surface-2 p-6">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
               Fully offline
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
               Audio transcription runs locally. Zero voice data leaves your machine.
             </p>
-            <div className="mt-6 rounded-xl bg-white p-4 text-sm shadow-sm">
+            <div className="mt-6 rounded-xl bg-white p-4 text-sm">
               <div className="flex justify-between border-b border-editorial-line pb-3">
                 <span>Audio uploaded</span>
                 <strong>0 bytes</strong>
@@ -95,7 +95,7 @@ export default function Outcomes() {
             </div>
           </article>
 
-          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm lg:col-span-2">
+          <article className="rounded-3xl bg-editorial-surface-2 p-6 lg:col-span-2">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
               Fewer half-written thoughts
             </h3>
@@ -104,7 +104,7 @@ export default function Outcomes() {
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {workflowChips.map((chip) => (
-                <span key={chip} className="rounded-full border border-editorial-line bg-white px-3 py-1.5 text-sm font-medium text-editorial-ink-2 shadow-sm">
+                <span key={chip} className="rounded-full bg-white px-3 py-1.5 text-sm font-medium text-editorial-ink-2">
                   {chip}
                 </span>
               ))}

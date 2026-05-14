@@ -19,19 +19,19 @@ function UseCaseRow({ useCase }: { useCase: UseCase }) {
   return (
     <Link
       href={`/use-cases/${useCase.slug}`}
-      className="group flex flex-col gap-2 py-5 [transition:background-color_200ms] hover:bg-editorial-surface-2/60 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
+      className="group flex flex-col gap-2 py-5 transition-colors hover:bg-editorial-surface-2/60 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
       data-track="use-case-card-click"
       data-track-slug={useCase.slug}
     >
       <div className="flex-1">
-        <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink [transition:color_200ms] group-hover:text-editorial-accent-ink md:text-[30px]">
+        <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink transition-colors group-hover:text-editorial-ink md:text-[30px]">
           {useCase.navLabel}
         </h3>
         <p className="mt-1 max-w-[560px] text-[15px] leading-[1.6] text-editorial-ink-2">
           {useCase.hero.lede.split(".")[0]}.
         </p>
       </div>
-      <span className="shrink-0 pt-1 text-[13px] font-medium text-editorial-ink-2 [transition:color_200ms] group-hover:text-editorial-ink">
+      <span className="shrink-0 pt-1 text-[13px] font-medium text-editorial-ink-2 transition-colors group-hover:text-editorial-ink">
         View workflow →
       </span>
     </Link>
@@ -57,14 +57,16 @@ export default function UseCasesHubPage() {
         <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
           <div className="ed-container">
             <div className="max-w-[820px]">
-              <div className="ed-eyebrow">use cases · the people we built it for</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                Use cases · the people we built it for
+              </div>
               <h1 className="mt-3 mb-5 text-[clamp(44px,6.4vw,76px)] font-bold leading-[1.02] tracking-[-0.02em]">
-                Voice for the way you actually work.
+                Voice for the way you actually work
               </h1>
               <p className="max-w-[640px] text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
                 When typing is the bottleneck — physical, cognitive, or just
                 because the English-side of your job grew faster than your
-                fingers — voice routes around it. Here&rsquo;s how that looks
+                fingers — voice routes around it. Here&apos;s how that looks
                 across the people we built VoiceTypr for first.
               </p>
             </div>
@@ -79,7 +81,9 @@ export default function UseCasesHubPage() {
             <section key={category} className="ed-section">
               <div className="ed-container">
                 <div className="mb-2 max-w-[760px]">
-                  <div className="ed-eyebrow">{meta.eyebrow}</div>
+                  <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                    {meta.eyebrow}
+                  </div>
                   <h2 className="mt-2 mb-3 text-[clamp(30px,3.1vw,42px)] font-semibold leading-[1.12] tracking-[-0.01em]">
                     {meta.label}
                   </h2>
@@ -104,7 +108,7 @@ export default function UseCasesHubPage() {
                 Don&apos;t see your use case?{" "}
                 <a
                   href="mailto:support@voicetypr.com"
-                  className="text-editorial-accent underline-offset-4 hover:underline"
+                  className="text-editorial-ink underline-offset-4 hover:underline"
                   data-track="use-cases-contact-click"
                 >
                   Tell me what you need
