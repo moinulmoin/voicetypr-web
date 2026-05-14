@@ -43,18 +43,18 @@ html {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* RankPill-inspired neutral landing palette — white, black, thin lines */
-  --color-editorial-bg: #fcfcfc;
+  /* Warm paper landing palette — off-white, off-black, thin ash lines */
+  --color-editorial-bg: #fbfaf7;
   --color-editorial-surface: #ffffff;
-  --color-editorial-surface-2: #f5f5f5;
+  --color-editorial-surface-2: #f2f0ea;
   --color-editorial-ink: #0a0a0a;
   --color-editorial-ink-2: #3f3f3f;
   --color-editorial-ink-3: #737373;
-  --color-editorial-line: #e6e6e6;
-  --color-editorial-line-2: #d4d4d4;
+  --color-editorial-line: #e6e0d8;
+  --color-editorial-line-2: #d8d0c6;
   --color-editorial-accent: #0a0a0a;
   --color-editorial-accent-ink: #0a0a0a;
-  --color-editorial-accent-wash: #f1f1f1;
+  --color-editorial-accent-wash: #eeeae2;
 }
 
 :root {
