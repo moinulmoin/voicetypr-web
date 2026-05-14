@@ -58,39 +58,47 @@ export default function SuperwhisperAlternativePage() {
       <section className="ed-section ed-section-hero pt-32 lg:pt-40">
         <div className="ed-container max-w-4xl">
           <p className="ed-eyebrow">superwhisper alternative</p>
-          <h1 className="font-serif text-[clamp(44px,6vw,76px)] leading-[1.02] tracking-[-0.03em]">
+          <h1 className="text-[clamp(40px,6vw,70px)] font-extrabold leading-[1.02] tracking-tight">
             Offline dictation for builders who work across Mac and Windows.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
             VoiceTypr is the pay-once Superwhisper alternative for people who dictate into Cursor, Claude, ChatGPT, email, and docs — without renting another subscription.
           </p>
-          <Link
-            href="/download"
-            className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-colors hover:bg-black"
-          >
-            Try VoiceTypr free
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-            </span>
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link
+              href="/download"
+              className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+            >
+              Download for free
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+              </span>
+            </Link>
+            <Link
+              href="/#pricing"
+              className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
+            >
+              Buy lifetime license
+            </Link>
+          </div>
         </div>
       </section>
 
       <section className="ed-section">
         <div className="ed-container max-w-4xl">
           <p className="ed-eyebrow">side by side</p>
-          <div className="mt-6 overflow-hidden rounded-2xl border border-editorial-line bg-editorial-surface">
+          <div className="mt-6 overflow-hidden rounded-xl bg-editorial-surface-2 p-1.5">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-editorial-line bg-editorial-surface-2">
+              <thead className="border-b border-editorial-line/60 bg-white">
                 <tr>
                   <th className="px-5 py-4 font-medium text-editorial-ink">Criterion</th>
                   <th className="px-5 py-4 font-medium text-editorial-ink">VoiceTypr</th>
                   <th className="px-5 py-4 font-medium text-editorial-ink-2">Superwhisper</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-white">
                 {rows.map(([criterion, voicetypr, competitor]) => (
-                  <tr key={criterion} className="border-b border-editorial-line/70 last:border-b-0">
+                  <tr key={criterion} className="border-b border-editorial-line/50 last:border-b-0">
                     <td className="px-5 py-4 font-medium text-editorial-ink">{criterion}</td>
                     <td className="px-5 py-4 text-editorial-accent-ink">{voicetypr}</td>
                     <td className="px-5 py-4 text-editorial-ink-2">{competitor}</td>
@@ -105,7 +113,7 @@ export default function SuperwhisperAlternativePage() {
       <section className="ed-section">
         <div className="ed-container max-w-3xl">
           <p className="ed-eyebrow">quick-win buyer intent</p>
-          <h2 className="font-serif text-[clamp(36px,4vw,56px)] leading-[1.05] tracking-[-0.02em]">
+          <h2 className="mt-2 text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
             Switch when the subscription stops matching the workflow.
           </h2>
           <ul className="mt-8 space-y-4">

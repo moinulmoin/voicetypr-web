@@ -4,7 +4,7 @@ import { ReleaseAssets } from "@/app/lib/github";
 import FAQ from "@/app/components/sections/FAQ";
 import PricingCards from "@/components/PricingCards";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useMemo, useState, type ReactElement } from "react";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
@@ -49,10 +49,10 @@ function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: strin
   return (
     <div id="pricing">
       <div className="text-center mb-10">
-        <h2 className="font-serif text-[clamp(36px,4vw,56px)] leading-[1.05] tracking-[-0.02em] mb-3">
+        <h2 className="text-[clamp(32px,4vw,52px)] leading-[1.04] tracking-[-0.04em] font-semibold mb-3">
           Pay once. Yours forever.
         </h2>
-        <p className="text-editorial-ink-2 text-[18px] leading-[1.55] max-w-[560px] mx-auto">
+        <p className="text-editorial-ink-2 text-[17px] leading-[1.55] max-w-[560px] mx-auto">
           No subscriptions. No update locks. Real lifetime access.
         </p>
       </div>
@@ -151,7 +151,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       {/* Hero */}
       <section className="ed-section ed-section-hero !pt-[160px] md:!pt-[200px] pb-0">
         <div className="ed-container text-center">
-          <h1 className="font-serif text-[clamp(48px,9vw,96px)] leading-[0.98] tracking-[-0.02em]">
+          <h1 className="text-[clamp(44px,8vw,84px)] leading-[0.95] tracking-[-0.05em] font-semibold">
             Download VoiceTypr
           </h1>
 
@@ -163,7 +163,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
           </p>
 
           {/* Trust signals */}
-          <div className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-2 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
             <span className="text-editorial-accent-ink">&bull; macOS 13+</span>
             <span>Windows 10+</span>
             <span>100% offline</span>
@@ -181,24 +181,24 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                 <button
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
-                  className={`relative group text-left p-6 rounded-2xl border-2 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1),border-color_300ms] active:scale-[0.99] ${
+                  className={`relative text-left rounded-xl border p-5 [transition:border-color_180ms,background-color_180ms] ${
                     isSelected
-                      ? 'bg-white border-editorial-accent'
-                      : 'bg-editorial-surface-2 border-editorial-line hover:border-editorial-ink-3'
+                      ? 'bg-white border-editorial-ink'
+                      : 'bg-editorial-surface border-editorial-line hover:border-editorial-ink-3'
                   }`}
                   data-track="download-platform-select"
                   data-track-platform={option.platform}
                 >
                   <div className="flex flex-col items-center text-center">
-                    <div className="mb-5 p-3.5 rounded-2xl bg-white text-editorial-ink">
+                    <div className="mb-4 grid h-11 w-11 place-items-center rounded-lg bg-editorial-surface-2 text-editorial-ink">
                       <option.icon />
                     </div>
 
-                    <h3 className="text-[16px] font-semibold mb-1.5">
+                    <h3 className="text-[15px] font-semibold mb-1.5">
                       {option.name}
                     </h3>
 
-                    <p className="text-[13px] text-editorial-ink-3">
+                    <p className="text-[12.5px] text-editorial-ink-3">
                       {option.description}
                     </p>
                   </div>
@@ -212,43 +212,45 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             <div className="mt-10 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
               <button
                 onClick={handleDownloadClick}
-                className="group inline-flex items-center gap-2 rounded-xl bg-editorial-ink text-white px-8 py-3.5 text-[15px] font-medium [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+                className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 data-track="download-click"
                 data-track-platform={selectedOption?.platform}
               >
-                <Download className="w-4 h-4 [transition:transform_300ms] group-hover:translate-y-0.5" />
                 Download for {selectedOption?.name ?? "macOS"}
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+                  <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+                </span>
               </button>
             </div>
           )}
         </div>
       </section>
 
-      {/* Installation Steps — dark island like Compare */}
+      {/* Installation Steps */}
       {selectedPlatform && (
         <section className="ed-section pt-0">
           <div className="ed-container max-w-[900px]">
-            <div className="bg-editorial-ink rounded-[28px] p-8 sm:p-12 md:p-14">
-              <h2 className="font-serif text-[clamp(28px,3vw,40px)] leading-[1.1] text-white text-center mb-10">
+            <div className="rounded-2xl border border-editorial-line bg-editorial-surface px-6 py-8 sm:px-8 sm:py-10">
+              <h2 className="text-[clamp(28px,3vw,38px)] leading-[1.06] tracking-[-0.03em] text-center">
                 Install in three steps
               </h2>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="mt-8 grid md:grid-cols-3 gap-6">
                 {installationSteps.map((step, index) => (
                   <div key={step.step} className="relative">
                     <div className="text-center">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white font-semibold text-[16px] mb-4">
+                      <div className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full bg-editorial-ink text-sm font-semibold text-white">
                         {step.step}
                       </div>
-                      <h3 className="text-[16px] font-semibold text-white mb-1">
+                      <h3 className="text-[15px] font-semibold text-editorial-ink mb-1">
                         {step.title}
                       </h3>
-                      <p className="text-[14px] text-white/65">
+                      <p className="text-[14px] text-editorial-ink-2">
                         {step.description}
                       </p>
                     </div>
 
                     {index < installationSteps.length - 1 && (
-                      <ArrowRight className="hidden md:block absolute top-6 -right-4 w-5 h-5 text-white/30" />
+                      <ArrowRight className="hidden md:block absolute top-5 -right-3 h-4 w-4 text-editorial-ink-3" />
                     )}
                   </div>
                 ))}

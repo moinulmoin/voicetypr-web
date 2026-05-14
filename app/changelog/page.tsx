@@ -75,10 +75,10 @@ function ReleaseSection({
 
 function Release({ entry, isFirst = false }: { entry: ChangelogEntry; isFirst?: boolean }) {
   return (
-    <article className={`grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-14 py-12 first:pt-0 border-t first:border-t-0 border-editorial-line ${isFirst ? "pb-16" : ""}`}>
+    <article className={`grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-12 py-10 first:pt-0 border-t first:border-t-0 border-editorial-line ${isFirst ? "pb-14" : ""}`}>
       <header className="lg:sticky lg:top-28 lg:self-start">
         <div className="flex flex-wrap items-baseline gap-3 lg:flex-col lg:items-start lg:gap-2">
-          <div className={`font-serif leading-none tracking-[-0.015em] text-editorial-ink ${isFirst ? "text-[clamp(48px,5vw,72px)]" : "text-[clamp(32px,3vw,48px)]"}`}>
+          <div className={`leading-none tracking-[-0.04em] text-editorial-ink font-semibold ${isFirst ? "text-[clamp(42px,5vw,62px)]" : "text-[clamp(30px,3vw,42px)]"}`}>
             {entry.version}
           </div>
           {entry.latest ? (
@@ -95,7 +95,7 @@ function Release({ entry, isFirst = false }: { entry: ChangelogEntry; isFirst?: 
 
       <div>
         {entry.highlights && entry.highlights.length > 0 ? (
-          <div className={`rounded-2xl p-6 md:p-7 ${isFirst ? "bg-editorial-accent-wash/30 border border-editorial-accent/20" : "bg-editorial-surface-2"}`}>
+          <div className="rounded-xl border border-editorial-line bg-editorial-surface px-5 py-5 md:px-6 md:py-6">
             <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 mb-3">
               Highlights
             </div>
@@ -103,7 +103,7 @@ function Release({ entry, isFirst = false }: { entry: ChangelogEntry; isFirst?: 
               {entry.highlights.map((item, i) => (
                 <li
                   key={`hl-${entry.version}-${i}`}
-                  className={`grid grid-cols-[auto_1fr] gap-3 leading-[1.35] ${isFirst ? "font-sans text-[20px] md:text-[22px] text-editorial-ink" : "font-sans text-[18px] md:text-[20px] text-editorial-ink"}`}
+                  className={`grid grid-cols-[auto_1fr] gap-3 leading-[1.4] ${isFirst ? "font-sans text-[19px] md:text-[21px] text-editorial-ink" : "font-sans text-[17px] md:text-[19px] text-editorial-ink"}`}
                 >
                   <span
                     aria-hidden
@@ -141,8 +141,8 @@ export default function ChangelogPage() {
           <div className="ed-container">
             <div className="max-w-[820px]">
               <div className="ed-eyebrow">what shipped, what got fixed</div>
-              <h1 className="font-serif text-[clamp(56px,7vw,108px)] leading-[0.96] tracking-[-0.025em] mt-3 mb-5">
-                The <em>changelog.</em>
+              <h1 className="mt-3 mb-5 text-[clamp(46px,7vw,92px)] leading-[0.95] tracking-[-0.05em]">
+                Changelog
               </h1>
               <p className="text-[18px] md:text-[20px] leading-[1.55] text-editorial-ink-2 max-w-[640px]">
                 Every release, latest first. Curated from the desktop app&rsquo;s{" "}

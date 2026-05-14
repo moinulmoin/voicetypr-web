@@ -19,20 +19,20 @@ function UseCaseRow({ useCase }: { useCase: UseCase }) {
   return (
     <Link
       href={`/use-cases/${useCase.slug}`}
-      className="group flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 py-6 border-b border-editorial-line [transition:opacity_200ms] hover:opacity-70"
+      className="group flex flex-col gap-2 py-5 [transition:background-color_200ms] hover:bg-editorial-surface-2/60 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
       data-track="use-case-card-click"
       data-track-slug={useCase.slug}
     >
       <div className="flex-1">
-        <h3 className="font-serif text-[clamp(22px,2.5vw,32px)] leading-[1.15] tracking-[-0.01em] text-editorial-ink group-hover:text-editorial-accent-ink [transition:color_200ms]">
+        <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink [transition:color_200ms] group-hover:text-editorial-accent-ink md:text-[30px]">
           {useCase.navLabel}
         </h3>
-        <p className="text-editorial-ink-2 text-[15px] leading-[1.55] mt-1 max-w-[520px]">
+        <p className="mt-1 max-w-[560px] text-[15px] leading-[1.6] text-editorial-ink-2">
           {useCase.hero.lede.split(".")[0]}.
         </p>
       </div>
-      <span className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 group-hover:text-editorial-ink-2 [transition:color_200ms] shrink-0">
-        See the workflow →
+      <span className="shrink-0 pt-1 text-[13px] font-medium text-editorial-ink-2 [transition:color_200ms] group-hover:text-editorial-ink">
+        View workflow →
       </span>
     </Link>
   );
@@ -54,14 +54,14 @@ export default function UseCasesHubPage() {
       >
         <Header />
 
-        <section className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-0">
+        <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
           <div className="ed-container">
             <div className="max-w-[820px]">
               <div className="ed-eyebrow">use cases · the people we built it for</div>
-              <h1 className="font-serif text-[clamp(56px,7vw,108px)] leading-[0.96] tracking-[-0.025em] mt-3 mb-5">
-                Voice for the way <em>you actually work.</em>
+              <h1 className="mt-3 mb-5 text-[clamp(44px,6.4vw,76px)] font-bold leading-[1.02] tracking-[-0.02em]">
+                Voice for the way you actually work.
               </h1>
-              <p className="text-[18px] md:text-[20px] leading-[1.55] text-editorial-ink-2 max-w-[640px]">
+              <p className="max-w-[640px] text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
                 When typing is the bottleneck — physical, cognitive, or just
                 because the English-side of your job grew faster than your
                 fingers — voice routes around it. Here&rsquo;s how that looks
@@ -80,14 +80,14 @@ export default function UseCasesHubPage() {
               <div className="ed-container">
                 <div className="mb-2 max-w-[760px]">
                   <div className="ed-eyebrow">{meta.eyebrow}</div>
-                  <h2 className="font-serif text-[clamp(32px,3.4vw,48px)] leading-[1.05] tracking-[-0.01em] mt-2 mb-3">
+                  <h2 className="mt-2 mb-3 text-[clamp(30px,3.1vw,42px)] font-semibold leading-[1.12] tracking-[-0.01em]">
                     {meta.label}
                   </h2>
-                  <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
+                  <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
                     {meta.description}
                   </p>
                 </div>
-                <div className="max-w-[720px] mt-6">
+                <div className="mt-5 max-w-[760px] divide-y divide-editorial-line/70">
                   {cases.map((useCase) => (
                     <UseCaseRow key={useCase.slug} useCase={useCase} />
                   ))}
@@ -99,12 +99,12 @@ export default function UseCasesHubPage() {
 
         <section className="ed-section">
           <div className="ed-container">
-            <div className="max-w-[720px] py-8 border-t border-editorial-line">
-              <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
+            <div className="max-w-[720px] py-7">
+              <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
                 Don&apos;t see your use case?{" "}
                 <a
                   href="mailto:support@voicetypr.com"
-                  className="text-editorial-accent hover:underline"
+                  className="text-editorial-accent underline-offset-4 hover:underline"
                   data-track="use-cases-contact-click"
                 >
                   Tell me what you need

@@ -44,11 +44,12 @@ export default async function HelpArticlePage({
 
   return (
     <article className="ed-section ed-section-hero">
-      <header className="mb-10">
-        <h1 className="font-serif text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] mb-3">
+      <header className="mb-10 border-b border-editorial-line pb-7">
+        <span className="ed-eyebrow">support &middot; article</span>
+        <h1 className="mt-3 mb-3 font-sans text-[clamp(32px,4vw,46px)] font-semibold leading-[1.1] tracking-[-0.02em] text-editorial-ink">
           {article.title}
         </h1>
-        <p className="text-[17px] leading-[1.6] text-editorial-ink-2 max-w-[640px]">
+        <p className="max-w-[640px] text-[16px] leading-[1.65] text-editorial-ink-2">
           {article.description}
         </p>
       </header>
@@ -58,16 +59,16 @@ export default async function HelpArticlePage({
       </div>
 
       {/* Prev/Next */}
-      <nav className="mt-16 pt-8 border-t border-editorial-line flex justify-between gap-4">
+      <nav className="mt-16 grid gap-4 border-t border-editorial-line pt-8 md:grid-cols-2">
         {prev ? (
           <Link
             href={`/help/${prev.slug}`}
-            className="group text-left"
+            className="group rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-left transition hover:bg-white"
           >
-            <span className="block text-xs uppercase tracking-[0.1em] text-editorial-ink-3 mb-1">
+            <span className="mb-1 block text-xs uppercase tracking-[0.1em] text-editorial-ink-3">
               &larr; Previous
             </span>
-            <span className="text-[15px] font-medium text-editorial-ink group-hover:text-editorial-accent transition-colors">
+            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-accent">
               {prev.title}
             </span>
           </Link>
@@ -77,12 +78,12 @@ export default async function HelpArticlePage({
         {next ? (
           <Link
             href={`/help/${next.slug}`}
-            className="group text-right"
+            className="group rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-left transition hover:bg-white md:text-right"
           >
-            <span className="block text-xs uppercase tracking-[0.1em] text-editorial-ink-3 mb-1">
+            <span className="mb-1 block text-xs uppercase tracking-[0.1em] text-editorial-ink-3">
               Next &rarr;
             </span>
-            <span className="text-[15px] font-medium text-editorial-ink group-hover:text-editorial-accent transition-colors">
+            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-accent">
               {next.title}
             </span>
           </Link>

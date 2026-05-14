@@ -58,21 +58,29 @@ export default function VoiceInputForCursorPage() {
       <section className="ed-section ed-section-hero pt-32 lg:pt-40">
         <div className="ed-container max-w-4xl">
           <p className="ed-eyebrow">voice input for cursor</p>
-          <h1 className="font-serif text-[clamp(44px,6vw,76px)] leading-[1.02] tracking-[-0.03em]">
+          <h1 className="text-[clamp(40px,6vw,70px)] font-extrabold leading-[1.02] tracking-tight">
             Speak the context Cursor needs before your fingers compress it.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
             VoiceTypr turns spoken prompts, implementation notes, and bug reports into clean text in Cursor. Hold a hotkey, talk, release, paste.
           </p>
-          <Link
-            href="/download"
-            className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-colors hover:bg-black"
-          >
-            Try with Cursor
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-            </span>
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link
+              href="/download"
+              className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+            >
+              Download for free
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+              </span>
+            </Link>
+            <Link
+              href="/#pricing"
+              className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
+            >
+              Buy lifetime license
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -81,7 +89,7 @@ export default function VoiceInputForCursorPage() {
           <p className="ed-eyebrow">developer workflows</p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {useCases.map(([title, body]) => (
-              <article key={title} className="rounded-2xl border border-editorial-line bg-editorial-surface p-6">
+              <article key={title} className="rounded-xl bg-editorial-surface-2 p-6">
                 <h3 className="text-[18px] font-medium text-editorial-ink">{title}</h3>
                 <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">{body}</p>
               </article>
@@ -94,7 +102,7 @@ export default function VoiceInputForCursorPage() {
         <div className="ed-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="ed-eyebrow">why it works</p>
-            <h2 className="font-serif text-[clamp(36px,4vw,56px)] leading-[1.05] tracking-[-0.02em]">
+            <h2 className="mt-2 text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
               Cursor rewards context. Voice makes context cheap.
             </h2>
           </div>

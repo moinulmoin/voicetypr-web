@@ -14,7 +14,6 @@ import {
   Film,
   Mail,
   MessageSquare,
-  Sparkles,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -169,10 +168,10 @@ function AffiliateCta({
       target="_blank"
       rel="noopener noreferrer"
       data-umami-event={event}
-      className="group inline-flex items-center gap-2 rounded-lg bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-colors hover:bg-black"
+      className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
     >
       {children}
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
         <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
       </span>
     </a>
@@ -186,23 +185,20 @@ export default function AffiliatePage() {
         <Header />
 
         {/* Hero */}
-        <section className="ed-section ed-section-hero flex min-h-[70vh] items-center pt-32 lg:pt-40">
-          <div className="mx-auto max-w-4xl px-4 text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-editorial-accent-wash px-3 py-1 text-xs font-medium text-editorial-accent-ink mb-6">
-              <Sparkles className="h-3 w-3" />
-              Earn up to 30% per sale
-            </span>
-            <h1 className="font-serif text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-[-0.02em] mb-6">
+        <section className="ed-section ed-section-hero pt-32 lg:pt-40">
+          <div className="ed-container max-w-4xl text-center">
+            <p className="ed-eyebrow justify-center">Earn up to 30% per sale</p>
+            <h1 className="mt-4 text-[clamp(42px,6vw,68px)] leading-[0.98] tracking-[-0.045em]">
               Promote VoiceTypr.
               <br />
               Earn real money.
             </h1>
-            <p className="mx-auto max-w-2xl text-balance text-[18px] leading-[1.6] text-editorial-ink-2">
+            <p className="mx-auto mt-6 max-w-2xl text-balance text-[18px] leading-[1.6] text-editorial-ink-2">
               Offline AI voice-to-text for Mac and Windows. Pay-once lifetime
               product, high-intent buyers, and an audience that&apos;s already
               searching for an alternative to $15/month dictation apps.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <AffiliateCta
                 href={AFFONSO_URL}
                 event="affiliate-hero-apply-click"
@@ -211,7 +207,7 @@ export default function AffiliatePage() {
               </AffiliateCta>
               <Link
                 href="#kit"
-                className="inline-flex items-center gap-2 rounded-lg border border-editorial-line bg-white px-5 py-2.5 text-sm font-medium text-editorial-ink transition-colors hover:bg-editorial-surface-2"
+                className="inline-flex h-12 items-center rounded-md border border-editorial-line bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
               >
                 See the creator kit
               </Link>
@@ -220,10 +216,10 @@ export default function AffiliatePage() {
         </section>
 
         {/* Why promote VoiceTypr */}
-        <section className="py-24">
-          <div className="mx-auto max-w-5xl px-4">
+        <section className="ed-section">
+          <div className="ed-container max-w-5xl">
             <div className="mb-12 text-center">
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
                 Why this program is different
               </h2>
               <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
@@ -273,10 +269,10 @@ export default function AffiliatePage() {
         </section>
 
         {/* Commission tiers */}
-        <section className="py-24">
-          <div className="mx-auto max-w-5xl px-4">
+        <section className="ed-section">
+          <div className="ed-container max-w-5xl">
             <div className="mb-12 text-center">
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
                 Commission tiers
               </h2>
               <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
@@ -371,10 +367,10 @@ export default function AffiliatePage() {
         </section>
 
         {/* Angles that convert */}
-        <section className="py-24">
-          <div className="mx-auto max-w-5xl px-4">
+        <section className="ed-section">
+          <div className="ed-container max-w-5xl">
             <div className="mb-12 text-center">
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
                 Angles that actually convert
               </h2>
               <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
@@ -402,10 +398,10 @@ export default function AffiliatePage() {
         </section>
 
         {/* Who's a good fit */}
-        <section className="py-24">
-          <div className="mx-auto max-w-4xl px-4">
+        <section className="ed-section">
+          <div className="ed-container max-w-4xl">
             <div className="mb-10 text-center">
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
                 Who&apos;s a good fit
               </h2>
               <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
@@ -430,10 +426,10 @@ export default function AffiliatePage() {
         </section>
 
         {/* Creator kit */}
-        <section className="py-24" id="kit">
-          <div className="mx-auto max-w-5xl px-4">
+        <section className="ed-section" id="kit">
+          <div className="ed-container max-w-5xl">
             <div className="mb-12 text-center">
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
                 Creator kit
               </h2>
               <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
@@ -469,10 +465,10 @@ export default function AffiliatePage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-24" id="affiliate-faq">
-          <div className="mx-auto max-w-3xl px-4">
+        <section className="ed-section" id="affiliate-faq">
+          <div className="ed-container max-w-3xl">
             <div className="mb-8 text-center">
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.01em]">
+              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
                 Frequently asked questions
               </h2>
             </div>
@@ -496,9 +492,9 @@ export default function AffiliatePage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-24 text-center">
-          <div className="mx-auto max-w-2xl px-4">
-            <h2 className="font-serif text-[clamp(32px,4vw,48px)] leading-[1.05] tracking-[-0.02em] mb-4">
+        <section className="ed-section text-center">
+          <div className="ed-container max-w-2xl">
+            <h2 className="text-[clamp(34px,4vw,48px)] leading-[1.03] tracking-[-0.04em] mb-4">
               Ready to promote?
             </h2>
             <p className="mx-auto mb-8 text-[17px] text-editorial-ink-2 leading-[1.6]">

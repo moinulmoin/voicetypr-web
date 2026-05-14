@@ -30,11 +30,12 @@ export default function HelpHubClient({
 
   return (
     <div className="ed-section ed-section-hero">
-      <div className="mb-10">
-        <h1 className="font-serif text-[clamp(36px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-4">
+      <div className="mb-10 border-b border-editorial-line pb-7">
+        <span className="ed-eyebrow">support &middot; docs</span>
+        <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Help Center
         </h1>
-        <p className="text-[17px] leading-[1.6] text-editorial-ink-2 max-w-[560px]">
+        <p className="max-w-[600px] text-[16px] leading-[1.65] text-editorial-ink-2">
           Everything you need to get VoiceTypr working. If you can&apos;t find
           what you&apos;re looking for, email{" "}
           <a
@@ -47,42 +48,44 @@ export default function HelpHubClient({
         </p>
       </div>
 
-      <div className="relative mb-8 max-w-md">
-        <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-editorial-ink-3" />
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search help articles…"
-          className="rounded-lg border border-editorial-line bg-white pl-10 pr-4 py-3 text-sm text-editorial-ink placeholder:text-editorial-ink-3 focus:border-editorial-accent focus:ring-2 focus:ring-editorial-accent/20 focus:outline-none w-full"
-        />
+      <div className="mb-8 max-w-xl rounded-2xl border border-editorial-line bg-editorial-surface-2 p-3">
+        <div className="relative">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-editorial-ink-3" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search help articles…"
+            className="w-full rounded-xl border border-editorial-line bg-white py-3 pl-10 pr-4 text-sm text-editorial-ink placeholder:text-editorial-ink-3 focus:border-editorial-accent focus:outline-none focus:ring-2 focus:ring-editorial-accent/20"
+          />
+        </div>
       </div>
 
       {filtered.length === 0 ? (
-        <p className="text-sm text-editorial-ink-3">
+        <p className="rounded-xl border border-editorial-line bg-editorial-surface-2 px-4 py-3 text-sm text-editorial-ink-3">
           No articles found for &ldquo;{query}&rdquo;.
         </p>
       ) : (
-        <div className="grid gap-10">
+        <div className="grid gap-8">
           {CATEGORY_ORDER.map((cat) => {
             const items = grouped[cat];
             if (!items?.length) return null;
             return (
               <section key={cat}>
-                <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-editorial-ink-3 mb-3">
+                <h2 className="mb-3 text-xs font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
                   {HELP_CATEGORY_LABELS[cat]}
                 </h2>
-                <div className="max-w-[640px]">
+                <div className="max-w-[680px] rounded-2xl border border-editorial-line bg-editorial-surface-2 p-2">
                   {items.map((article) => (
                     <Link
                       key={article.slug}
                       href={`/help/${article.slug}`}
-                      className="group block py-4 border-b border-editorial-line last:border-b-0 [transition:opacity_200ms] hover:opacity-70"
+                      className="group block rounded-xl border border-transparent px-3 py-3 transition hover:border-editorial-line hover:bg-white"
                     >
-                      <h3 className="text-[15px] font-medium text-editorial-ink group-hover:text-editorial-accent-ink [transition:color_200ms]">
+                      <h3 className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-accent-ink">
                         {article.title}
                       </h3>
-                      <p className="text-[13px] leading-[1.5] text-editorial-ink-3 mt-0.5">
+                      <p className="mt-1 text-[13px] leading-[1.55] text-editorial-ink-3">
                         {article.description}
                       </p>
                     </Link>

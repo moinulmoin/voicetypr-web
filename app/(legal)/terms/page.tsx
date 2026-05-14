@@ -17,21 +17,21 @@ export const metadata: Metadata = {
   },
 };
 
-const sectionClass = "mt-10";
+const sectionClass = "mt-10 border-t border-editorial-line pt-8";
 const h2Class =
-  "font-serif text-[clamp(22px,2.2vw,30px)] leading-[1.15] tracking-[-0.015em] mb-4";
-const pClass = "text-editorial-ink-2 text-[15.5px] leading-[1.65]";
-const ulClass = "list-disc pl-6 mt-2 space-y-1.5 text-editorial-ink-2 text-[15.5px] leading-[1.65]";
+  "font-sans text-[clamp(21px,2vw,28px)] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink mb-4";
+const pClass = "text-editorial-ink-2 text-[15px] leading-[1.7]";
+const ulClass = "list-disc pl-5 mt-2 space-y-1.5 text-editorial-ink-2 text-[15px] leading-[1.7]";
 
 export default function TermsPage() {
   return (
     <>
-      <header className="mb-10">
+      <header className="mb-10 border-b border-editorial-line pb-7">
         <span className="ed-eyebrow">policy &middot; terms</span>
-        <h1 className="font-serif text-[clamp(40px,4.5vw,60px)] leading-[1.05] tracking-[-0.025em] mt-2 mb-3">
+        <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Terms and Conditions
         </h1>
-        <p className="font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
+        <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
           Last Updated: October 23, 2025
         </p>
       </header>
@@ -171,7 +171,7 @@ export default function TermsPage() {
 
       <section className={sectionClass}>
         <h2 className={h2Class}>14. Contact Information</h2>
-        <p className={`${pClass} font-mono text-[14px]`}>
+        <p className={`${pClass} rounded-xl border border-editorial-line bg-editorial-surface-2 p-4 font-mono text-[14px]`}>
           Ideaplexa LLC<br />
           30 N Gould St Ste N<br />
           Sheridan, WY 82801<br />

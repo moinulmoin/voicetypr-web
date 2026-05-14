@@ -277,7 +277,7 @@ export default function WisprFlowAlternativePage() {
                 <span className="ed-eyebrow">wispr flow alternative</span>
               </div>
 
-              <h1 className="font-serif text-[clamp(48px,6vw,86px)] leading-[0.98] tracking-[-0.025em] mb-6 text-balance">
+              <h1 className="mb-6 text-balance text-[clamp(42px,6vw,72px)] font-extrabold leading-[1.02] tracking-tight">
                 Pay once. Run offline. Keep your voice <em>yours.</em>
               </h1>
 
@@ -293,10 +293,10 @@ export default function WisprFlowAlternativePage() {
                 <Link
                   href="/download"
                   data-track="wispr-alt-hero-download-click"
-                  className="group inline-flex items-center gap-2 rounded-full bg-editorial-ink text-white pl-6 pr-1.5 py-1.5 text-[15px] font-medium [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+                  className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 >
-                  Start 3-day free trial
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+                  Download for free
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </Link>
@@ -314,9 +314,9 @@ export default function WisprFlowAlternativePage() {
         {/* Why people switch — 3 reasons in surface-2 box */}
         <section className="ed-section">
           <div className="ed-container">
-            <div className="bg-editorial-surface-2 rounded-[28px] p-10 md:p-14">
+            <div className="rounded-xl bg-editorial-surface-2/80 p-8 md:p-10">
               <div className="ed-eyebrow">three differences that matter day-to-day</div>
-              <h2 className="font-serif text-[clamp(40px,4vw,60px)] leading-[1] max-w-[760px] mt-2 mb-10">
+              <h2 className="mt-2 mb-9 max-w-[760px] text-[clamp(32px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
                 Why people switch from Wispr.
               </h2>
 
@@ -324,12 +324,12 @@ export default function WisprFlowAlternativePage() {
                 {switchReasons.map((reason) => (
                   <article
                     key={reason.title}
-                    className="bg-editorial-surface rounded-2xl border border-editorial-line p-7 flex flex-col gap-3.5 min-h-[240px]"
+                    className="flex min-h-[220px] flex-col gap-3 rounded-xl bg-white p-6"
                   >
-                    <div className="font-serif text-[44px] leading-none text-editorial-accent">
+                    <div className="text-[34px] font-semibold leading-none text-editorial-accent">
                       {reason.marker}
                     </div>
-                    <h3 className="font-serif text-[22px] leading-[1.15]">
+                    <h3 className="text-[20px] font-semibold leading-[1.2] tracking-tight">
                       {reason.title}
                     </h3>
                     <p className="text-editorial-ink-2 text-[14.5px] leading-[1.55]">
@@ -350,7 +350,7 @@ export default function WisprFlowAlternativePage() {
           <div className="ed-container">
             <div className="mb-10 max-w-[760px]">
               <div className="ed-eyebrow">the side-by-side</div>
-              <h2 className="font-serif text-[clamp(40px,4.2vw,62px)] leading-[1] mt-2 mb-3">
+              <h2 className="mt-2 mb-3 text-[clamp(32px,4.2vw,50px)] font-semibold leading-[1.08] tracking-tight">
                 VoiceTypr vs Wispr Flow, plainly.
               </h2>
               <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
@@ -358,10 +358,10 @@ export default function WisprFlowAlternativePage() {
               </p>
             </div>
 
-            <div className="bg-editorial-surface border border-editorial-line rounded-2xl overflow-hidden">
+            <div className="overflow-hidden rounded-xl bg-editorial-surface-2 p-1.5">
               <div className="overflow-x-auto">
                 <table className="w-full text-[14.5px]">
-                  <thead className="border-b border-editorial-line bg-editorial-surface-2">
+                  <thead className="border-b border-editorial-line/60 bg-white">
                     <tr>
                       <th className="px-5 py-4 text-left font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 w-[35%]">
                         Criterion
@@ -379,7 +379,7 @@ export default function WisprFlowAlternativePage() {
                       <Fragment key={section.category}>
                         <tr
                           key={`header-${section.category}`}
-                          className="border-t border-editorial-line bg-editorial-bg"
+                          className="border-t border-editorial-line/60 bg-editorial-surface-2/60"
                         >
                           <th
                             colSpan={3}
@@ -458,20 +458,20 @@ export default function WisprFlowAlternativePage() {
           <div className="ed-container">
             <div className="mb-10 max-w-[760px]">
               <div className="ed-eyebrow">no migration · no account transfer</div>
-              <h2 className="font-serif text-[clamp(40px,4vw,60px)] leading-[1] mt-2">
+              <h2 className="mt-2 text-[clamp(32px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
                 How to switch in under five minutes.
               </h2>
             </div>
 
-            <div className="bg-editorial-surface border border-editorial-line rounded-2xl p-8 md:p-11 max-w-[820px]">
+            <div className="max-w-[820px] rounded-xl bg-editorial-surface-2 p-8 md:p-10">
               <ol className="space-y-9">
                 {steps.map((step) => (
                   <li key={step.n} className="grid grid-cols-[auto_1fr] gap-6">
-                    <span className="font-serif text-[40px] leading-none text-editorial-accent pt-0.5">
+                    <span className="pt-0.5 text-[30px] font-semibold leading-none text-editorial-accent">
                       {step.n}
                     </span>
                     <div>
-                      <h3 className="font-serif text-[22px] leading-[1.2] mb-1.5">
+                      <h3 className="mb-1.5 text-[20px] font-semibold leading-[1.25] tracking-tight">
                         {step.title}
                       </h3>
                       <p className="text-editorial-ink-2 text-[15px] leading-[1.6]">
@@ -491,8 +491,8 @@ export default function WisprFlowAlternativePage() {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
               <div>
                 <div className="ed-eyebrow">questions people ask before switching</div>
-                <h2 className="font-serif text-[clamp(36px,3.6vw,54px)] leading-[1] mb-4 tracking-[-0.01em]">
-                The honest switch FAQ.
+                <h2 className="mb-4 text-[clamp(32px,3.6vw,44px)] font-semibold leading-[1.08] tracking-tight">
+                  The honest switch FAQ.
                 </h2>
                 <p className="text-editorial-ink-2 text-[16px] leading-[1.6]">
                   Pulled from real conversations with people who actually made the move.
@@ -536,26 +536,34 @@ export default function WisprFlowAlternativePage() {
         {/* Final CTA */}
         <section className="ed-section">
           <div className="ed-container">
-            <div className="relative overflow-hidden rounded-[32px] border border-editorial-line bg-editorial-surface py-20 md:py-24 px-8 text-center">
+            <div className="overflow-hidden rounded-xl bg-editorial-surface-2 px-8 py-16 text-center md:py-20">
               <div className="mb-6 flex justify-center">
                 <span className="ed-eyebrow">try it for three days</span>
               </div>
-              <h2 className="font-serif text-[clamp(48px,6vw,92px)] leading-[0.96] tracking-[-0.025em] mb-6 max-w-[820px] mx-auto">
+              <h2 className="mx-auto mb-5 max-w-[760px] text-[clamp(40px,6vw,64px)] font-extrabold leading-[1.02] tracking-tight">
                 Speak. Paste. <em>Keep your voice yours.</em>
               </h2>
               <p className="mx-auto mb-10 max-w-xl text-editorial-ink-2 text-[16px] leading-[1.55]">
                 No credit card. No cloud. No subscription.
               </p>
-              <Link
-                href="/download"
-                data-track="wispr-alt-final-cta-click"
-                className="group inline-flex items-center gap-2 rounded-full bg-editorial-ink text-white pl-7 pr-1.5 py-1.5 text-[16px] font-medium [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-              >
-                Download VoiceTypr
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-white/15 [transition:transform_300ms_cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/download"
+                  data-track="wispr-alt-final-cta-click"
+                  className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+                >
+                  Download for free
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+                <Link
+                  href="/#pricing"
+                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-bg active:scale-95"
+                >
+                  Buy lifetime license
+                </Link>
+              </div>
             </div>
           </div>
         </section>

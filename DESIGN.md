@@ -47,6 +47,13 @@ This file is the shorter feedback log for active landing-page decisions.
   - Avoid double-border treatment.
   - Keep it simple and calm.
 
+ - Display headings:
+   - No trailing punctuation on hero or section display titles.
+   - Internal punctuation is fine only when it improves cadence, not decoration.
+ - Visuals and icons:
+   - Use icons when they improve scanning or recognition, not as filler.
+   - Best use: app targets, source markers, utility actions, workflow steps.
+   - Avoid decorative icon spam in hero, compare, FAQ, and footer nav.
 ## Review checklist before shipping design changes
 
 - Is any border present only because it was easy to add?
