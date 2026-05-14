@@ -31,10 +31,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 max-md:px-5">
         <div className="flex items-center gap-2.5">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="grid h-5 w-5 place-items-center rounded-sm bg-editorial-ink text-xs font-semibold leading-none text-white">
-              V
-            </span>
+          <Link href="/" className="flex items-center">
             <span className="text-sm font-semibold tracking-tight text-editorial-ink">
               VoiceTypr
             </span>
