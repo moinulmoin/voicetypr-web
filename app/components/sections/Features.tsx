@@ -1,18 +1,41 @@
+import type { ReactNode } from 'react';
+import { ClaudeAI, Cursor, Gmail, Notion, OpenAI, Slack } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
-const featureCards = [
+const appTargets = [
+  { label: 'Cursor', Icon: Cursor },
+  { label: 'ChatGPT', Icon: OpenAI },
+  { label: 'Claude', Icon: ClaudeAI },
+  { label: 'Gmail', Icon: Gmail },
+  { label: 'Notion', Icon: Notion },
+  { label: 'Slack', Icon: Slack },
+] as const;
+
+type FeatureCard = {
+  label: string;
+  title: string;
+  body: string;
+  demo: ReactNode;
+  wide?: boolean;
+};
+
+const featureCards: FeatureCard[] = [
   {
     label: 'Everywhere',
     title: 'Every app that takes a cursor',
-    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, VS Code, and old textareas without changing your workflow.',
+    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, and other text fields without changing your workflow.',
     wide: true,
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="mb-3 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Paste where cursor is</div>
         <div className="grid gap-2 sm:grid-cols-3">
-          {['Cursor', 'Claude', 'Gmail', 'Notion', 'Slack', 'VS Code'].map((app) => (
-            <span key={app} className="rounded-md border border-editorial-line bg-editorial-surface-2 px-3 py-2 text-xs font-medium text-editorial-ink-2">
-              {app}
+          {appTargets.map(({ label, Icon }) => (
+            <span
+              key={label}
+              className="flex items-center gap-2 rounded-md border border-editorial-line bg-editorial-surface-2 px-3 py-2 text-xs font-medium text-editorial-ink-2"
+            >
+              <Icon className="h-3.5 w-3.5 shrink-0" />
+              <span>{label}</span>
             </span>
           ))}
         </div>
@@ -138,7 +161,7 @@ const featureCards = [
       </div>
     ),
   },
-];
+] as const;
 
 export default function Features() {
   return (
