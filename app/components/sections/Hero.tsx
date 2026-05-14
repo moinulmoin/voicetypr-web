@@ -9,9 +9,9 @@ export default function HeroSection() {
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-5xl text-5xl font-extrabold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-            Type by talking,
+            Type by talking
             <br />
-            in every app you use.
+            in every app you use
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-editorial-ink-2 md:text-lg">

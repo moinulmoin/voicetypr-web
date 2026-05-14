@@ -13,7 +13,7 @@ export default function Compare() {
       <div className="ed-container">
         <div className="mb-12 max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Pay once. Keep your money.
+            Pay once. Keep your money
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
             The point is not only cheaper pricing. It is owning a local workflow that keeps working everywhere you type.

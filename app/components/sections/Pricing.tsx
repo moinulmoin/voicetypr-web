@@ -11,7 +11,7 @@ export default async function Pricing() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Pay once. Yours forever.
+            Pay once. Yours forever
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
             No subscription. No update locks. One payment, lifetime license, all future updates included.

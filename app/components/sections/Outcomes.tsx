@@ -13,7 +13,7 @@ export default function Outcomes() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Talk. Get clean text where your cursor is.
+            Talk. Get clean text where your cursor is
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-editorial-ink-2">
             Stop rewriting the same thought by hand. VoiceTypr turns speech into usable text in the apps you already use.
