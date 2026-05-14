@@ -23,11 +23,11 @@ export default function FounderNote() {
             </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="mx-auto mt-8 flex max-w-2xl items-center gap-3 text-left">
             <div className="grid h-10 w-10 place-items-center rounded-full bg-editorial-surface-2 text-sm font-medium text-editorial-ink">
               M
             </div>
-            <div>
+            <div className="min-w-0">
               <a
                 href="https://twitter.com/immoinulmoin"
                 target="_blank"
