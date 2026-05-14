@@ -50,7 +50,7 @@ function PostCard({ post, featured = false }: { post: BlogPostMeta; featured?: b
       <p className="text-editorial-ink-2 text-[16px] leading-[1.6] max-w-[640px]">
         {post.description}
       </p>
-      <div className="mt-4 inline-flex items-center gap-1 text-[14px] font-medium text-editorial-ink group-hover:text-editorial-accent-ink [transition:color_200ms]">
+      <div className="mt-4 inline-flex items-center gap-1 text-[14px] font-medium text-editorial-ink transition-colors group-hover:text-editorial-ink-2">
         Read
         <span
           aria-hidden

@@ -4,7 +4,7 @@
 export function AuthorBlock() {
   return (
     <div className="flex items-center gap-3 mt-12">
-      <div className="w-9 h-9 rounded-full bg-editorial-accent text-white grid place-items-center text-[14px] font-medium">
+      <div className="grid h-9 w-9 place-items-center rounded-full bg-editorial-surface-2 text-[14px] font-medium text-editorial-ink">
         M
       </div>
       <div className="text-[14px] leading-tight">

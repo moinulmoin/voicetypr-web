@@ -164,9 +164,9 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             Three-day trial, no credit card.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
-            <span>• macOS 13+</span>
+            <span>macOS 13+</span>
             <span>Windows 10+</span>
-            <span>100% offline</span>
+            <span>Local transcription</span>
           </div>
         </div>
       </section>
@@ -265,11 +265,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       </section>
 
       {/* FAQ */}
-      <section className="ed-section pt-0">
-        <div className="ed-container">
-          <FAQ />
-        </div>
-      </section>
+      <FAQ />
 
       <Footer />
 

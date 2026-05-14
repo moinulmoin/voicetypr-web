@@ -22,7 +22,7 @@ const pClass = "text-editorial-ink-2 text-[15px] leading-[1.7]";
 export default function CookiesPage() {
   return (
     <>
-      <header className="mb-10 border-b border-editorial-line pb-7">
+      <header className="mb-12 pb-2">
         <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · cookies</span>
         <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Cookie Policy

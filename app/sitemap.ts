@@ -129,12 +129,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.65,
   }));
 
-  const alternativeRoutes: MetadataRoute.Sitemap = alternativePages.map((page) => ({
-    url: `${baseUrl}/alternative/${page.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.65,
-  }));
+  const alternativeRoutes: MetadataRoute.Sitemap = alternativePages
+    .filter((page) => page.slug !== "wispr-flow" && page.slug !== "superwhisper")
+    .map((page) => ({
+      url: `${baseUrl}/alternative/${page.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.65,
+    }));
 
   return [...staticRoutes, ...blogRoutes, ...useCaseRoutes, ...helpRoutes, ...bestRoutes, ...alternativeRoutes];
 }

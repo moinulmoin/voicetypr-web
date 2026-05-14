@@ -18,7 +18,10 @@ async function readArticleFile(slug: string): Promise<HelpArticle | null> {
       order: data.order,
       content,
     };
-  } catch {
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
+      console.warn(`[help] Failed to read help article "${slug}"`, error);
+    }
     return null;
   }
 }

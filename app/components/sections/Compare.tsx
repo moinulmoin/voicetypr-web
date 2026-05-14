@@ -1,7 +1,7 @@
 const comparisons = [
   ['Price', '$80–$180 / year', 'from $39 once'],
-  ['Platforms', 'Mac or Windows, rarely both', 'macOS + Windows'],
-  ['Works offline', 'cloud-first, partial at best', 'always local'],
+  ['Platforms', 'many tools are single-OS or subscription-first', 'macOS + Windows'],
+  ['Works offline', 'offline support varies by tool and plan', 'local transcription by default'],
   ['Audio privacy', 'uploaded or synced to cloud', 'never leaves device'],
   ['Lifetime updates', 'subscription or paid upgrades', 'included'],
   ['Model footprint', 'cloud-hosted or 1–4 GB', '~140 MB–3 GB'],

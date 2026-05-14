@@ -18,8 +18,8 @@ export function Aside({
 }: AsideProps) {
   const accent =
     variant === "warn"
-      ? "border-l-[#a25c2a]"
-      : "border-l-editorial-accent";
+      ? "border-l-editorial-line-2"
+      : "border-l-editorial-ink";
   return (
     <aside
       className={`my-7 max-w-[760px] rounded-r-2xl border-l-4 ${accent} bg-editorial-surface-2 px-5 py-4`}

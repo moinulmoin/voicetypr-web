@@ -5,7 +5,7 @@ import { getLatestReleaseAssets } from "@/app/lib/github";
 
 export const metadata: Metadata = {
   title: "Download VoiceTypr - AI Voice to Text Software for Mac & Windows",
-  description: "Download VoiceTypr voice to text software. Works with ChatGPT, Claude, Cursor. 100% private, offline processing. One-time purchase, no subscription.",
+  description: "Download VoiceTypr voice to text software. Works with ChatGPT, Claude, Cursor. Local audio transcription. One-time purchase, no subscription.",
   keywords: [
     "download voice to text",
     "VoiceTypr download", 
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Download VoiceTypr - AI Voice to Text Software",
-    description: "Download VoiceTypr voice to text software. Works with ChatGPT, Claude, Cursor. 100% private, offline processing.",
+    description: "Download VoiceTypr voice to text software. Works with ChatGPT, Claude, Cursor. Local audio transcription.",
     type: "website",
     url: "https://voicetypr.com/download",
   },
   twitter: {
     card: "summary_large_image",
     title: "Download VoiceTypr - AI Voice to Text Software",
-    description: "Download VoiceTypr voice to text software. Works with ChatGPT, Claude, Cursor. 100% private, offline.",
+    description: "Download VoiceTypr voice to text software. Works with ChatGPT, Claude, Cursor. Local audio transcription.",
   },
   alternates: {
     canonical: "https://voicetypr.com/download",

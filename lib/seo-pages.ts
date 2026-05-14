@@ -219,7 +219,7 @@ export const alternativePages: SeoPage[] = [
     whySwitch: [
       "Works on Windows too — not just Mac",
       "Pay once instead of $144/year",
-      "Fully offline — no partial cloud dependency",
+      "Local transcription — no cloud dictation dependency",
       "Same Whisper models underneath",
     ],
     ctaText: "Switch from Superwhisper",

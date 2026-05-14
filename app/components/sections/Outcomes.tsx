@@ -78,10 +78,10 @@ export default function Outcomes() {
 
           <article className="rounded-3xl bg-editorial-surface-2 p-6">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
-              Fully offline
+              Offline by default
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-              Audio transcription runs locally. Zero voice data leaves your machine.
+              Audio transcription runs locally. Voice data stays on your machine.
             </p>
             <div className="mt-6 rounded-xl bg-white p-4 text-sm">
               <div className="flex justify-between border-b border-editorial-line pb-3">

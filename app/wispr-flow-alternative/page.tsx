@@ -73,11 +73,11 @@ const comparison: Array<{
       },
       {
         label: "Entry price",
-        voicetypr: check("$39 lifetime (Pro)"),
+        voicetypr: check("$39 once"),
         wispr: neutral("$15/mo or $12/mo annual"),
       },
       {
-        label: "2-year cost (Pro / annual plan)",
+        label: "2-year cost (VoiceTypr / annual plan)",
         voicetypr: check("$39 once"),
         wispr: neutral("$288 ongoing"),
       },
@@ -123,7 +123,7 @@ const comparison: Array<{
       },
       {
         label: "One license, both platforms",
-        voicetypr: check("Yes (Plus covers 2, Max covers 4 devices)"),
+        voicetypr: check("Yes (device-count options cover 1, 2, 4, or 10 machines)"),
         wispr: neutral("Per-user license"),
       },
     ],
@@ -212,7 +212,6 @@ const steps: Array<{ n: string; title: string; body: React.ReactNode }> = [
     body: (
       <>
         Mac .dmg or Windows .exe from{" "}
-        Mac .dmg or Windows .exe from{" "}
         <Link
           href="/download"
           className="text-editorial-ink underline-offset-2 hover:underline"
@@ -237,7 +236,7 @@ const steps: Array<{ n: string; title: string; body: React.ReactNode }> = [
     n: "03",
     title: "Run both side-by-side for a week",
     body:
-      "The 3-day trial covers a working week. Keep using Wispr in parallel so you can compare real output. When your Wispr sub is up for renewal, decide with data instead of a gut feel.",
+      "Use the 3-day trial to test your real daily workflow before buying. Keep using Wispr in parallel so you can compare real output. When your Wispr sub is up for renewal, decide with data instead of a gut feel.",
   },
 ];
 

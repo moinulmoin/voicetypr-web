@@ -7,7 +7,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  ArrowRight,
   Check,
   Copy,
   DollarSign,
@@ -59,10 +58,10 @@ const tiers = [
 ];
 
 const exampleEarnings = [
-  { tier: "Pro ($39)", commission20: "$7.80", commission30: "$11.70" },
-  { tier: "Plus ($59)", commission20: "$11.80", commission30: "$17.70" },
-  { tier: "Max ($99)", commission20: "$19.80", commission30: "$29.70" },
-  { tier: "Team ($199)", commission20: "$39.80", commission30: "$59.70" },
+  { tier: "1 device ($39)", commission20: "$7.80", commission30: "$11.70" },
+  { tier: "2 devices ($59)", commission20: "$11.80", commission30: "$17.70" },
+  { tier: "4 devices ($99)", commission20: "$19.80", commission30: "$29.70" },
+  { tier: "10 devices ($199)", commission20: "$39.80", commission30: "$59.70" },
 ];
 
 const angles = [
@@ -125,7 +124,7 @@ const faqs = [
   },
   {
     q: "When do I get paid?",
-    a: "Affonso processes payouts monthly after the 30-day refund window closes on each sale. Minimum payout threshold and supported methods (PayPal, Wise, bank transfer) are set inside your Affonso dashboard.",
+    a: "Affonso processes payouts monthly after the refund window closes on each sale. Minimum payout threshold and supported methods (PayPal, Wise, bank transfer) are set inside your Affonso dashboard.",
   },
   {
     q: "What's the cookie window?",
@@ -153,7 +152,7 @@ const faqs = [
   },
   {
     q: "What if someone refunds?",
-    a: "Commission is clawed back on refunded orders. Refund rate on VoiceTypr is low (<5%) since buyers trial the app 3 days before purchasing.",
+    a: "Commission is clawed back on refunded orders. Buyers can trial the app before purchasing, and refunds follow the VoiceTypr refund policy.",
   },
 ];
 
@@ -172,12 +171,9 @@ function AffiliateCta({
       target="_blank"
       rel="noopener noreferrer"
       data-umami-event={event}
-      className="group inline-flex h-12 items-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+      className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
     >
       {children}
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-        <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-      </span>
     </a>
   );
 }

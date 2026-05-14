@@ -38,7 +38,7 @@ export const mdxComponents = {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="text-editorial-accent underline-offset-2 hover:underline"
+          className="text-editorial-ink underline-offset-2 hover:underline"
           {...rest}
         />
       );
@@ -46,7 +46,7 @@ export const mdxComponents = {
     return (
       <Link
         href={href}
-        className="text-editorial-accent underline-offset-2 hover:underline"
+        className="text-editorial-ink underline-offset-2 hover:underline"
         {...rest}
       />
     );

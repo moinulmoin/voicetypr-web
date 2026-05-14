@@ -48,7 +48,7 @@ function ReleaseSection({
       ? "bg-editorial-ink"
       : tone === "fix"
         ? "bg-editorial-ink-3"
-        : "bg-[#a25c2a]";
+        : "bg-editorial-line-2";
 
   return (
     <div className="mt-7">

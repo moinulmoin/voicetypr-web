@@ -78,9 +78,9 @@ Three decisions defined what VoiceTypr would become. None of them were obvious a
 
 **Tauri instead of Electron.** I like Electron. I have shipped Electron apps. For VoiceTypr I needed memory headroom for the model, which meant the chrome had to stay tiny. Tauri uses the OS&rsquo;s native webview and a Rust backend; the resulting app is around 30&ndash;40 MB on disk and idles at a few hundred MB of RAM, most of which is the Whisper weights. The same app in Electron would be a 200 MB Chromium tax that competes with the model for the user&rsquo;s actual work.
 
-**Pay once, lifetime updates.** This is the contrarian one. Every founder Twitter thread I read said *recurring revenue, recurring revenue, recurring revenue.* I get it. I would also rather have $35 from someone today and an opt-in upgrade conversation in two years than a subscription receipt that turns my product into background guilt for the buyer. People who pay once and use a tool for five years do not write angry tweets about pricing. They tell their friends. Subscription customers, particularly for a tool they use *constantly*, eventually start to notice the subscription. Then they start to notice it more. Then they cancel.
+**Pay once, lifetime updates.** This is the contrarian one. Every founder Twitter thread I read said *recurring revenue, recurring revenue, recurring revenue.* I get it. I would also rather have someone pay once and have an opt-in upgrade conversation later than a subscription receipt that turns my product into background guilt for the buyer. People who pay once and use a tool for five years do not write angry tweets about pricing. They tell their friends. Subscription customers, particularly for a tool they use *constantly*, eventually start to notice the subscription. Then they start to notice it more. Then they cancel.
 
-If you want the math: I sell Pro for $35 once, Plus for $50, Max for $98 across four devices. I assume an average lifetime usage of three years. The annualized revenue is small, but the customer relationship is honest. They didn&rsquo;t buy a subscription. They bought a tool. The next time they upgrade their machine they don&rsquo;t check whether their dictation app still works. They just install it. That&rsquo;s the product I wanted to be on the buying side of, so it&rsquo;s the product I built.
+If you want the math: VoiceTypr starts at $39 once for one device, with higher device counts for people who use multiple machines. I assume an average lifetime usage of three years. The annualized revenue is small, but the customer relationship is honest. They didn&rsquo;t buy a subscription. They bought a tool. The next time they upgrade their machine they don&rsquo;t check whether their dictation app still works. They just install it. That&rsquo;s the product I wanted to be on the buying side of, so it&rsquo;s the product I built.
 
 ## The parts that humbled me
 
@@ -101,8 +101,8 @@ VoiceTypr ships on macOS 13+ (Apple Silicon and Intel) and Windows 10+. It runs 
 I&rsquo;m currently working on:
 
 - Better automatic model recommendations based on detected hardware.
-- A team plan, because the inbox keeps asking and Max-covers-four-devices is not the right shape for an actual team.
 - Faster startup on cold launch, especially on Windows.
+- Sharper setup flows for people moving between multiple machines.
 
 I&rsquo;m not winning. I&rsquo;m not pretending to. I&rsquo;m a solo founder shipping a desktop app against companies with seed rounds. Some weeks I write code. Some weeks I write support replies. Some weeks I write blog posts like this one, in dictation, because the irony is too good to pass up.
 

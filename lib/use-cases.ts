@@ -75,7 +75,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "The thought just left. <em>Catch it before it does.</em>",
       lede:
         "If your brain runs faster than your fingers — and the idea is gone by the time you finish typing the first sentence — voice closes that gap. VoiceTypr captures the thought at speaking speed, locally, and pastes it wherever your cursor is.",
-      metaStrip: ["~5× faster than typing", "100% offline", "no setup ritual"],
+      metaStrip: ["~5× faster than typing", "local transcription", "no setup ritual"],
     },
     pains: [
       {
@@ -164,7 +164,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the thought <em>before it leaves.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it for a working week.",
+      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for adhd",
@@ -179,7 +179,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Dyslexia — Bypass spelling friction, write at speaking speed",
     ogTitle: "VoiceTypr for Dyslexia",
     description:
-      "Voice typing for dyslexia. Write what you mean without fighting spelling, autocorrect, or the slow-down of constantly re-reading. 100% offline.",
+      "Voice typing for dyslexia. Write what you mean without fighting spelling, autocorrect, or the slow-down of constantly re-reading. Local transcription, pay-once.",
     navLabel: "Dyslexia",
     category: "accessibility",
     order: 2,
@@ -188,7 +188,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "Say what you mean. <em>Skip the spelling fight.</em>",
       lede:
         "If reading what you've typed is slower than typing it in the first place — and autocorrect keeps swapping the wrong word for the wrong reason — voice bypasses the loop entirely. You speak, the text appears, you keep moving.",
-      metaStrip: ["~5× faster than typing", "100% offline", "no autocorrect wars"],
+      metaStrip: ["~5× faster than typing", "local transcription", "no autocorrect wars"],
     },
     pains: [
       {
@@ -277,7 +277,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Write at the speed <em>you talk.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it for a working week.",
+      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for dyslexia",
@@ -301,7 +301,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "When typing hurts. <em>Talk instead.</em>",
       lede:
         "Wrist pain, repetitive strain, post-tendonitis recovery — when your hands are the bottleneck, voice is the relief valve. VoiceTypr runs offline and works in every app you already use, so you don't have to give up your tools to give your hands a break.",
-      metaStrip: ["fewer keystrokes", "100% offline", "works in every text field"],
+      metaStrip: ["fewer keystrokes", "local transcription", "works in every text field"],
     },
     pains: [
       {
@@ -390,7 +390,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Give your <em>hands a break.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it for a working week.",
+      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for rsi",
@@ -421,7 +421,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       metaStrip: [
         "cursor · claude · chatgpt",
         "slack · linear · notion",
-        "100% offline",
+        "local transcription",
       ],
     },
     pains: [
@@ -511,7 +511,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Stop typing the <em>English-side</em> of the job.",
-      body: "VoiceTypr is offline, lifetime, no account. Try it for a working week.",
+      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for developers",
@@ -526,7 +526,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Writers — Draft at speaking speed, edit later",
     ogTitle: "VoiceTypr for Writers",
     description:
-      "Voice typing for writers, novelists, and content creators. Draft at 150 wpm, edit later. 100% offline, pay-once, works in every writing app.",
+      "Voice typing for writers, novelists, and content creators. Draft at 150 wpm, edit later. Local transcription, pay-once, works in every writing app.",
     navLabel: "Writers",
     category: "profession",
     order: 2,
@@ -535,7 +535,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "Draft fast. <em>Edit slow.</em>",
       lede:
         "Drafting and editing are two different cognitive modes. Voice lets you separate them. Talk the first draft at speaking speed, then come back to edit when your brain is in the right gear for it.",
-      metaStrip: ["~150 wpm dictating", "100% offline", "any writing app"],
+      metaStrip: ["~150 wpm dictating", "local transcription", "any writing app"],
     },
     pains: [
       {
@@ -624,7 +624,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Get the draft out <em>at the speed you think.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it for a working week.",
+      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for writers",
@@ -639,7 +639,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Founders — Talk to your AI tools at the speed of thought",
     ogTitle: "VoiceTypr for Founders",
     description:
-      "Built by a solo founder, for solo founders. Dictate prompts, support replies, specs, and Slack updates. 100% offline, pay-once, no subscription.",
+      "Built by a solo founder, for solo founders. Dictate prompts, support replies, specs, and Slack updates. Local transcription, pay-once, no subscription.",
     navLabel: "Founders & solopreneurs",
     category: "profession",
     order: 3,
@@ -648,7 +648,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "You're the bottleneck. <em>Voice unbottlenecks you.</em>",
       lede:
         "When you're the only one shipping product, support, marketing, and ops, every minute typing is a minute not building. VoiceTypr is the dictation tool a solo founder built because he was tired of paying $180 a year for one.",
-      metaStrip: ["12+ hr/day workflows", "100% offline", "pay once · lifetime"],
+      metaStrip: ["12+ hr/day workflows", "local transcription", "pay once · lifetime"],
     },
     pains: [
       {
@@ -729,15 +729,15 @@ const USE_CASE_ENTRIES: UseCase[] = [
           "Seven days, no questions. Email support@voicetypr.com.",
       },
       {
-        q: "Will there be a team plan when I'm ready to hire?",
+        q: "What if I need more than one device?",
         a:
-          "Yes — a multi-seat plan is in active development. The Max plan covers 4 devices on a single license today, which works for very small teams.",
+          "Pick the device count you need at checkout: 1, 2, 4, or 10 devices. If you need more than 10, email support and we can help.",
       },
     ],
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Built by a founder. <em>For founders.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it for a working week.",
+      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for founders",

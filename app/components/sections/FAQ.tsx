@@ -17,11 +17,11 @@ const faqs = [
   },
   {
     q: 'Is my voice data private?',
-    a: 'Yes. Audio transcription runs 100% locally with on-device models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs) — your audio never leaves your computer. The optional AI formatting presets send only the final text, never audio, to your chosen provider. Turn AI off to stay fully offline.',
+    a: 'Yes. Raw transcription runs locally with on-device models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs) — your audio never leaves your computer. Optional AI formatting sends only the final text, never audio, to your chosen provider. Turn AI formatting off to keep the workflow fully local.',
   },
   {
     q: 'Do I need an API key for the AI formatting presets?',
-    a: 'Only if you want them. Raw transcription works 100% offline with no key. The optional presets use your own API key from Gemini, OpenAI, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
+    a: 'Only if you want them. Raw transcription works locally with no key. The optional presets use your own API key from Gemini, OpenAI, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
   },
   {
     q: 'What are the system requirements?',

@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-const trustPeople = ["CE", "AB", "MV", "SK", "PL"];
 
 export default function HeroSection() {
   return (
@@ -37,22 +36,8 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-sm text-editorial-ink-2">
-            <div className="flex -space-x-2">
-              {trustPeople.map((person, index) => (
-                <span
-                  key={person}
-                  className="grid h-7 w-7 place-items-center rounded-full border border-white bg-editorial-surface-2 text-xs font-medium text-editorial-ink shadow-sm"
-                  style={{ zIndex: trustPeople.length - index }}
-                >
-                  {person}
-                </span>
-              ))}
-            </div>
-            <span className="hidden h-1 w-1 rounded-full bg-editorial-line-2 sm:block" aria-hidden />
-            <div>
-              <span className="font-semibold text-editorial-ink">Loved by people switching from Wispr Flow</span>
-            </div>
+          <div className="mt-7 text-sm text-editorial-ink-2">
+            <span className="font-semibold text-editorial-ink">Built for people switching from subscription dictation apps</span>
           </div>
         </div>
       </div>

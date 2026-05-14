@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-const sectionClass = "mt-10 border-t border-editorial-line pt-8";
+const sectionClass = "mt-12";
 const h2Class =
   "font-sans text-[clamp(21px,2vw,28px)] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink mb-4";
 const pClass = "text-editorial-ink-2 text-[15px] leading-[1.7]";
@@ -26,7 +26,7 @@ const ulClass = "list-disc pl-5 mt-2 space-y-1.5 text-editorial-ink-2 text-[15px
 export default function TermsPage() {
   return (
     <>
-      <header className="mb-10 border-b border-editorial-line pb-7">
+      <header className="mb-12 pb-2">
         <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · terms</span>
         <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Terms and Conditions
@@ -46,12 +46,13 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>2. License Grant</h2>
         <p className={pClass}>
-          Ideaplexa LLC grants you a non-exclusive, non-transferable license to use VoiceTypr. The number of devices you can activate depends on your license tier:
+          Ideaplexa LLC grants you a non-exclusive, non-transferable license to use VoiceTypr. The number of devices you can activate depends on the device count purchased:
         </p>
         <ul className={ulClass}>
-          <li><strong className="text-editorial-ink">Pro License:</strong> Activation on one (1) device at a time</li>
-          <li><strong className="text-editorial-ink">Plus License:</strong> Activation on two (2) devices simultaneously</li>
-          <li><strong className="text-editorial-ink">Max License:</strong> Activation on four (4) devices simultaneously</li>
+          <li><strong className="text-editorial-ink">1 device:</strong> Activation on one (1) device at a time</li>
+          <li><strong className="text-editorial-ink">2 devices:</strong> Activation on two (2) devices simultaneously</li>
+          <li><strong className="text-editorial-ink">4 devices:</strong> Activation on four (4) devices simultaneously</li>
+          <li><strong className="text-editorial-ink">10 devices:</strong> Activation on ten (10) devices simultaneously</li>
         </ul>
         <p className={`${pClass} mt-3`}>
           You may deactivate and reactivate your license on different devices as needed within your license limits.
@@ -171,7 +172,7 @@ export default function TermsPage() {
 
       <section className={sectionClass}>
         <h2 className={h2Class}>14. Contact Information</h2>
-        <p className={`${pClass} rounded-xl border border-editorial-line bg-editorial-surface-2 p-4 font-mono text-[14px]`}>
+        <p className={`${pClass} bg-editorial-surface-2 p-4 font-mono text-[14px]`}>
           Ideaplexa LLC<br />
           30 N Gould St Ste N<br />
           Sheridan, WY 82801<br />

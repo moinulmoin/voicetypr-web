@@ -10,6 +10,11 @@ export async function generateStaticParams() {
   return alternativePages.map((p) => ({ slug: p.slug }));
 }
 
+const duplicateCanonicalBySlug: Record<string, string> = {
+  "superwhisper": "https://voicetypr.com/superwhisper-alternative",
+  "wispr-flow": "https://voicetypr.com/wispr-flow-alternative",
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -18,9 +23,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const page = getAlternativePageBySlug(slug);
   if (!page) return {};
+  const duplicateCanonical = duplicateCanonicalBySlug[slug];
   return {
     title: `${page.h1} — VoiceTypr`,
     description: page.lede,
+    alternates: {
+      canonical: duplicateCanonical ?? `https://voicetypr.com/alternative/${slug}`,
+    },
+    ...(duplicateCanonical ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

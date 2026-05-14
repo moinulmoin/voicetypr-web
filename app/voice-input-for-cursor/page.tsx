@@ -48,7 +48,7 @@ const checklist = [
   "Works in Cursor because it pastes text into the focused input, not a special integration.",
   "Runs locally, so private code context and dictated notes stay on your machine.",
   "Uses the same hotkey pattern across Claude, ChatGPT, VS Code, Slack, and docs.",
-  "Starts at $39 once; the 2-device Plus plan is $59 for laptop + desktop.",
+  "Starts at $39 once; the 2-device option is $59 for laptop + desktop.",
 ] as const;
 
 export default function VoiceInputForCursorPage() {

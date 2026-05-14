@@ -105,7 +105,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Formatting',
     title: 'Cleaner text when you want it',
-    body: 'Use your own API key for prompt, email, commit, and default cleanup presets. Turn it off to stay fully offline.',
+    body: 'Use your own API key for prompt, email, commit, and default cleanup presets. Turn AI formatting off to keep the workflow fully local.',
     demo: (
       <div className="space-y-3 rounded-xl bg-white p-4 shadow-sm">
         <div className="flex flex-wrap gap-2">

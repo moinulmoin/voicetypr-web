@@ -92,18 +92,28 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    // 4. Update device with license and OS info
-    await prisma.device.update({
+    // 4. Upsert device with license and OS info. Some activation paths may not
+    // have created a trial/device row before the user enters a license key.
+    await prisma.device.upsert({
       where: { deviceHash },
-      data: {
+      create: {
+        deviceHash,
+        licenseKey,
+        activationId: activation.id,
+        osType,
+        osVersion,
+        appVersion,
+        lastChecked: new Date(),
+      },
+      update: {
         licenseKey,
         activationId: activation.id,
         // Don't set customerId - use License table as source of truth
         osType,
         osVersion,
         appVersion,
-        lastChecked: new Date()
-      }
+        lastChecked: new Date(),
+      },
     });
 
     after(async () => {

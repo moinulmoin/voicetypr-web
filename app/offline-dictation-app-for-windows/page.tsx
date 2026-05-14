@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 const benefits = [
   "Runs transcription locally instead of depending on a browser tab or cloud service.",
   "Works in Cursor, VS Code, Claude, ChatGPT, Slack, Gmail, Notion, Linear, and any normal text field.",
-  "Pay once from $39; Plus covers 2 devices, Max covers 4, Team covers 10.",
+  "Pay once from $39; device-count options cover 1, 2, 4, or 10 machines.",
   "Designed for the Windows users most Mac-first dictation tools ignore.",
 ] as const;
 

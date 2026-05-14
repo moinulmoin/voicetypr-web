@@ -104,7 +104,7 @@ export async function GET() {
             VoiceTypr
           </div>
 
-          {/* Main headline with gradient like landing page */}
+          {/* Main headline */}
           <div
             style={{
               fontSize: '82px',
@@ -118,7 +118,7 @@ export async function GET() {
               letterSpacing: '-2px',
             }}
           >
-            Ship 3x faster
+            Type by talking
           </div>
           <div
             style={{
@@ -133,7 +133,7 @@ export async function GET() {
               letterSpacing: '-2px',
             }}
           >
-            with voice
+            in every app
           </div>
 
           {/* Simple description */}
@@ -145,7 +145,7 @@ export async function GET() {
               fontFamily: 'system-ui, -apple-system, sans-serif',
             }}
           >
-            Voice to text for solo founders & AI power users
+            Offline voice to text for founders and builders
           </p>
 
           {/* Removed launch offer badge */}
@@ -165,7 +165,7 @@ export async function GET() {
             <span>•</span>
             <span>No subscription</span>
             <span>•</span>
-            <span>100% Private</span>
+            <span>Local audio transcription</span>
           </div>
         </div>
       </div>

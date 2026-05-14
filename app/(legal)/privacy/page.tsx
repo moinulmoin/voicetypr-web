@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-const sectionClass = "mt-10 border-t border-editorial-line pt-8";
+const sectionClass = "mt-12";
 const h2Class =
   "font-sans text-[clamp(21px,2vw,28px)] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink mb-4";
 const h3Class =
@@ -28,7 +28,7 @@ const ulClass = "list-disc pl-5 mt-2 space-y-1.5 text-editorial-ink-2 text-[15px
 export default function PrivacyPage() {
   return (
     <>
-      <header className="mb-10 border-b border-editorial-line pb-7">
+      <header className="mb-12 pb-2">
         <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · privacy</span>
         <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
           Privacy Policy
@@ -196,7 +196,7 @@ export default function PrivacyPage() {
         <p className={pClass}>
           For privacy-related questions or concerns:
         </p>
-        <p className={`${pClass} mt-3 rounded-xl border border-editorial-line bg-editorial-surface-2 p-4 font-mono text-[14px]`}>
+        <p className={`${pClass} mt-3 bg-editorial-surface-2 p-4 font-mono text-[14px]`}>
           Ideaplexa LLC<br />
           30 N Gould St Ste N<br />
           Sheridan, WY 82801<br />

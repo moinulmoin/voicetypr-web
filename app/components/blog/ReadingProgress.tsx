@@ -36,7 +36,7 @@ export function ReadingProgress() {
       className="fixed left-0 top-0 z-30 h-[2px] w-full bg-transparent pointer-events-none"
     >
       <div
-        className="h-full bg-editorial-accent origin-left"
+        className="h-full bg-editorial-ink origin-left"
         style={{
           transform: `scaleX(${progress})`,
           transition: "transform 80ms linear",
