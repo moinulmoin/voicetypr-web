@@ -194,9 +194,9 @@ export default function AffiliatePage() {
               Earn real money.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-balance text-[18px] leading-[1.6] text-editorial-ink-2">
-              Offline AI voice-to-text for Mac and Windows. Pay-once lifetime
-              product, high-intent buyers, and an audience that&apos;s already
-              searching for an alternative to $15/month dictation apps.
+              Offline AI voice-to-text for Mac and Windows. Pay-once software,
+              high-intent buyers, and an audience that&apos;s already searching
+              for an alternative to $15/month dictation apps.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <AffiliateCta

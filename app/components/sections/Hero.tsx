@@ -14,9 +14,9 @@ export default function HeroSection() {
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-editorial-ink-2 md:text-lg">
             <strong className="font-semibold text-editorial-ink">
-              Offline voice-to-text for Mac and Windows.
+              Offline AI voice-to-text for Mac and Windows.
             </strong>{" "}
-            ~150 words a minute. Pay once, yours forever.
+            Speak naturally. Type faster. Pay once, use it forever.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -37,7 +37,7 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-7 text-sm text-editorial-ink-2">
-            <span className="font-semibold text-editorial-ink">Built for people switching from subscription dictation apps</span>
+            <span className="font-semibold text-editorial-ink">Built for founders, builders, and AI power users who type all day</span>
           </div>
         </div>
       </div>

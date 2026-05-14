@@ -26,10 +26,12 @@ const deviceOptions: DeviceOption[] = [
 
 const features = [
   'Local/offline transcription models',
-  'AI formatting with your own API key',
+  'Faster, smoother local performance',
   'Works anywhere you type',
+  'AI formatting with your own API key',
   'macOS 13+ and Windows 10+',
   'Lifetime updates included',
+  'Direct support from the founder',
 ];
 
 export default function PricingCards({
@@ -107,7 +109,7 @@ export default function PricingCards({
             data-umami-event-plan={selected.key}
             data-track={`${eventPrefix}-plan-click`}
             data-track-plan={selected.key}
-            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95 lg:hidden"
+            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95 sm:w-auto"
           >
             Get VoiceTypr for lifetime
           </button>
@@ -115,8 +117,8 @@ export default function PricingCards({
 
         </div>
 
-        <div className="flex items-center p-2 md:p-4">
-          <div className="w-full">
+        <div className="flex h-full items-center p-2 md:p-4">
+          <div className="w-full max-w-sm">
             <div className="mb-5 flex items-center gap-2 text-sm font-medium text-editorial-ink">
               <Check className="h-4 w-4" />
               Everything included
@@ -129,17 +131,6 @@ export default function PricingCards({
                 </li>
               ))}
             </ul>
-
-            <button
-              onClick={() => handleCheckout(selected.productId)}
-              data-umami-event={`${eventPrefix}-plan-click`}
-              data-umami-event-plan={selected.key}
-              data-track={`${eventPrefix}-plan-click`}
-              data-track-plan={selected.key}
-              className="mt-8 hidden h-12 items-center justify-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95 lg:inline-flex"
-            >
-              Get VoiceTypr for lifetime
-            </button>
           </div>
         </div>
       </div>

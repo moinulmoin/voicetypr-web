@@ -1,5 +1,4 @@
-import { Mail } from 'lucide-react';
-import { XformerlyTwitter, GitHub } from '@/components/icons';
+import { Gmail, XformerlyTwitter, GitHub } from '@/components/icons';
 
 const testimonials = [
   {
@@ -54,14 +53,26 @@ const testimonials = [
 type Source = 'twitter' | 'email' | 'github';
 
 function SourceIcon({ source }: { source: Source }) {
-  const cls = 'h-4 w-4 text-editorial-ink-3';
+  const badge = 'grid h-8 w-8 place-items-center rounded-full';
   switch (source) {
     case 'github':
-      return <GitHub className={cls} />;
+      return (
+        <span className={`${badge} bg-[#f3f1ff] text-[#181717]`}>
+          <GitHub className="h-4 w-4" />
+        </span>
+      );
     case 'twitter':
-      return <XformerlyTwitter className={cls} />;
+      return (
+        <span className={`${badge} bg-[#eef6ff] text-[#111111]`}>
+          <XformerlyTwitter className="h-4 w-4" />
+        </span>
+      );
     case 'email':
-      return <Mail className={cls} />;
+      return (
+        <span className={`${badge} bg-white shadow-sm ring-1 ring-editorial-line/60`}>
+          <Gmail className="h-4 w-4" />
+        </span>
+      );
   }
 }
 
