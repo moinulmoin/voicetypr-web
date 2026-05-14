@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function FounderNote() {
   return (
     <section className="ed-section" id="founder">
@@ -18,9 +20,13 @@ export default function FounderNote() {
           </div>
 
           <div className="mx-auto mt-8 flex w-fit items-center gap-3 text-left">
-            <div className="grid h-10 w-10 place-items-center rounded-full bg-editorial-surface-2 text-sm font-medium text-editorial-ink">
-              M
-            </div>
+            <Image
+              src="https://github.com/moinulmoin.png"
+              alt="Moinul Moin"
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-full bg-editorial-surface-2 object-cover"
+            />
             <div className="min-w-0">
               <a
                 href="https://twitter.com/immoinulmoin"

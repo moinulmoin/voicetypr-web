@@ -5,7 +5,7 @@ import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Offline Dictation App for Windows — VoiceTypr",
+  title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
   description:
     "VoiceTypr is an offline dictation app for Windows. Speak into Cursor, ChatGPT, email, docs, and any text field with local transcription from $39 once.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/offline-dictation-app-for-windows",
   },
   openGraph: {
-    title: "Offline Dictation App for Windows — VoiceTypr",
+    title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
     description:
       "Local voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
     url: "https://voicetypr.com/offline-dictation-app-for-windows",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Offline Dictation App for Windows — VoiceTypr",
+    title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
     description:
       "Local voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
     images: ["/voicetypr-og.png"],

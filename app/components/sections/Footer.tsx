@@ -8,7 +8,7 @@ const columns = [
       { label: 'Download', href: '/download', internal: true },
       { label: 'Pricing', href: '/#pricing', internal: true },
       { label: 'Use cases', href: '/use-cases', internal: true },
-      { label: 'Blog', href: '/blog', internal: true },
+      { label: 'Voice typing', href: '/voice-typing', internal: true },
       { label: 'Changelog', href: '/changelog', internal: true },
     ],
   },

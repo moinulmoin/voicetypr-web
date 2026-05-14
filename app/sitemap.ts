@@ -1,5 +1,4 @@
 import { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
 import { getAllArticles } from "@/lib/help";
 import { seoPages, alternativePages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
@@ -25,12 +24,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/wispr-flow-alternative`,
@@ -61,6 +54,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.78,
+    },
+    {
+      url: `${baseUrl}/voice-typing`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
+    },
+    {
+      url: `${baseUrl}/voicetyper`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.72,
     },
     {
       url: `${baseUrl}/changelog`,
@@ -100,13 +105,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const posts = await getAllPosts();
-  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedAt ?? post.publishedAt),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
 
   const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().map((useCase) => ({
     url: `${baseUrl}/use-cases/${useCase.slug}`,
@@ -138,5 +136,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65,
     }));
 
-  return [...staticRoutes, ...blogRoutes, ...useCaseRoutes, ...helpRoutes, ...bestRoutes, ...alternativeRoutes];
+  return [...staticRoutes, ...useCaseRoutes, ...helpRoutes, ...bestRoutes, ...alternativeRoutes];
 }

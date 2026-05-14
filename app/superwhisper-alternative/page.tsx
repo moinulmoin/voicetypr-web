@@ -5,7 +5,7 @@ import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Superwhisper Alternative — VoiceTypr (Offline, Mac + Windows, Pay-once)",
+  title: "Superwhisper Alternative in 2026 — VoiceTypr",
   description:
     "Looking for a Superwhisper alternative? VoiceTypr is offline, works on Mac and Windows, and starts at $39 once. No monthly dictation subscription.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/superwhisper-alternative",
   },
   openGraph: {
-    title: "Superwhisper Alternative — VoiceTypr",
+    title: "Superwhisper Alternative in 2026 — VoiceTypr",
     description:
       "Offline voice-to-text for Mac and Windows. Pay once, use it anywhere you type.",
     url: "https://voicetypr.com/superwhisper-alternative",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Superwhisper Alternative — VoiceTypr",
+    title: "Superwhisper Alternative in 2026 — VoiceTypr",
     description:
       "Offline voice-to-text for Mac and Windows. Pay once, use it anywhere you type.",
     images: ["/voicetypr-og.png"],

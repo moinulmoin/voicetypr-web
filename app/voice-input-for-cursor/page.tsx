@@ -5,7 +5,7 @@ import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Voice Input for Cursor — VoiceTypr",
+  title: "Voice Input for Cursor in 2026 — VoiceTypr",
   description:
     "Use voice input in Cursor with VoiceTypr. Dictate prompts, bug reports, PR notes, and refactor plans locally, then paste into Cursor with a hotkey.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/voice-input-for-cursor",
   },
   openGraph: {
-    title: "Voice Input for Cursor — VoiceTypr",
+    title: "Voice Input for Cursor in 2026 — VoiceTypr",
     description:
       "Dictate prompts, specs, bug reports, and PR notes into Cursor with local voice-to-text.",
     url: "https://voicetypr.com/voice-input-for-cursor",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voice Input for Cursor — VoiceTypr",
+    title: "Voice Input for Cursor in 2026 — VoiceTypr",
     description:
       "Dictate prompts, specs, bug reports, and PR notes into Cursor with local voice-to-text.",
     images: ["/voicetypr-og.png"],

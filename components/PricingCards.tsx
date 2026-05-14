@@ -2,7 +2,7 @@
 
 import { BASE_PRICES, formatPrice, type PlanKey } from '@/lib/pricing';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useState } from 'react';
 
 interface PricingCardsProps {
@@ -65,7 +65,7 @@ export default function PricingCards({
   return (
     <div className="rounded-3xl bg-editorial-surface-2 p-4">
       <div className="grid gap-4 rounded-3xl lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="rounded-2xl bg-white p-6 md:p-8">
+        <div className="flex flex-col rounded-2xl bg-white p-6 md:p-8">
           <div className="mb-5 text-sm text-editorial-ink-2">
             {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
           </div>
@@ -75,7 +75,7 @@ export default function PricingCards({
             <span className="ml-3 text-base font-normal text-editorial-ink-3">/ once</span>
           </div>
 
-          <div className="mb-6 overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
+          <div className="mt-auto overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
             <div className="grid grid-cols-4 gap-1">
               {deviceOptions.map((option) => {
                 const active = option.key === selected.key;
@@ -101,25 +101,22 @@ export default function PricingCards({
               })}
             </div>
           </div>
-
           <button
             onClick={() => handleCheckout(selected.productId)}
             data-umami-event={`${eventPrefix}-plan-click`}
             data-umami-event-plan={selected.key}
             data-track={`${eventPrefix}-plan-click`}
             data-track-plan={selected.key}
-            className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition hover:bg-black active:scale-95 sm:w-auto"
+            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95 lg:hidden"
           >
             Get VoiceTypr for lifetime
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-            </span>
           </button>
+
 
         </div>
 
         <div className="flex items-center p-2 md:p-4">
-          <div>
+          <div className="w-full">
             <div className="mb-5 flex items-center gap-2 text-sm font-medium text-editorial-ink">
               <Check className="h-4 w-4" />
               Everything included
@@ -132,6 +129,17 @@ export default function PricingCards({
                 </li>
               ))}
             </ul>
+
+            <button
+              onClick={() => handleCheckout(selected.productId)}
+              data-umami-event={`${eventPrefix}-plan-click`}
+              data-umami-event-plan={selected.key}
+              data-track={`${eventPrefix}-plan-click`}
+              data-track-plan={selected.key}
+              className="mt-8 hidden h-12 items-center justify-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95 lg:inline-flex"
+            >
+              Get VoiceTypr for lifetime
+            </button>
           </div>
         </div>
       </div>

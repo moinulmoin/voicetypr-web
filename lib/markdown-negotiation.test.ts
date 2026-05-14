@@ -18,7 +18,7 @@ describe('markdown negotiation', () => {
 
   it('keeps markdown negotiation on page paths only', () => {
     expect(isMarkdownEligiblePath('/')).toBe(true);
-    expect(isMarkdownEligiblePath('/blog/offline-dictation')).toBe(true);
+    expect(isMarkdownEligiblePath('/use-cases/developers')).toBe(true);
     expect(isMarkdownEligiblePath('/api/v1/license/validate')).toBe(false);
     expect(isMarkdownEligiblePath('/_next/static/chunk.js')).toBe(false);
     expect(isMarkdownEligiblePath('/voicetypr-og.png')).toBe(false);

@@ -5,7 +5,7 @@ import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Aqua Voice Alternative — VoiceTypr (Offline, Cross-platform, Pay-once)",
+  title: "Aqua Voice Alternative in 2026 — VoiceTypr",
   description:
     "Looking for an Aqua Voice alternative? VoiceTypr works on Mac and Windows, runs locally, and starts at $39 once. No cloud dictation dependency.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/aqua-voice-alternative",
   },
   openGraph: {
-    title: "Aqua Voice Alternative — VoiceTypr",
+    title: "Aqua Voice Alternative in 2026 — VoiceTypr",
     description:
       "Offline voice-to-text for Mac and Windows. One payment, lifetime access.",
     url: "https://voicetypr.com/aqua-voice-alternative",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aqua Voice Alternative — VoiceTypr",
+    title: "Aqua Voice Alternative in 2026 — VoiceTypr",
     description:
       "Offline voice-to-text for Mac and Windows. One payment, lifetime access.",
     images: ["/voicetypr-og.png"],
