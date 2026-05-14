@@ -38,7 +38,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-editorial-line bg-editorial-bg py-14">
+    <footer className="bg-editorial-bg py-14">
       <div className="ed-container">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
@@ -103,7 +103,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col justify-between gap-2 border-t border-editorial-line pt-5 text-xs text-editorial-ink-3 md:flex-row">
+        <div className="mt-12 flex flex-col justify-between gap-2 text-xs text-editorial-ink-3 md:flex-row">
           <span>© 2026 VoiceTypr</span>
           <span>Offline voice-to-text for macOS & Windows</span>
         </div>

@@ -65,9 +65,9 @@ export default function FAQ() {
             </div>
           </div>
 
-          <div className="border-t border-editorial-line">
+          <div className="space-y-8">
             {faqs.map((faq, index) => (
-              <article key={faq.q} className="grid gap-4 border-b border-editorial-line py-6 md:grid-cols-[4rem_1fr] md:py-7">
+              <article key={faq.q} className="grid gap-4 md:grid-cols-[4rem_1fr]">
                 <div className="font-mono text-xs text-editorial-ink-3">
                   {String(index + 1).padStart(2, '0')}
                 </div>
