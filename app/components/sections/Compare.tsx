@@ -1,114 +1,44 @@
+const comparisons = [
+  ['Price', '$80–$180 / year', 'from $39 once'],
+  ['Platforms', 'Mac or Windows, rarely both', 'macOS + Windows'],
+  ['Works offline', 'cloud-first, partial at best', 'always local'],
+  ['Audio privacy', 'uploaded or synced to cloud', 'never leaves device'],
+  ['Lifetime updates', 'subscription or paid upgrades', 'included'],
+  ['Model footprint', 'cloud-hosted or 1–4 GB', '~140 MB–3 GB'],
+];
+
 export default function Compare() {
-  const headers = ["Criterion", "Typical dictation app", "VoiceTypr"];
-
-  const rows: { c: string; v: [string, string] }[] = [
-    {
-      c: "Price",
-      v: ["$80\u2013$180 / yr (subscription)", "from $50 \u00B7 once"],
-    },
-    {
-      c: "Platforms",
-      v: ["Mac or Windows, rarely both", "macOS + Windows"],
-    },
-    {
-      c: "Works offline",
-      v: ["cloud-first, partial at best", "always \u00B7 100%"],
-    },
-    {
-      c: "Audio privacy",
-      v: ["uploaded or synced to cloud", "never leaves device"],
-    },
-    {
-      c: "Lifetime updates",
-      v: ["subscription, or paid upgrades", "free, forever"],
-    },
-    {
-      c: "Model footprint",
-      v: ["cloud-hosted or 1\u20134 GB", "~140 MB \u2013 3 GB"],
-    },
-  ];
-
-  const footer: { c: string; v: [string, string] } = {
-    c: "2-year cost vs VoiceTypr",
-    v: ["+$160 to +$360", "baseline \u00B7 from $50"],
-  };
-
   return (
     <section className="ed-section">
       <div className="ed-container">
-        <div className="bg-editorial-ink text-white rounded-[28px] p-6 sm:p-10 md:p-14">
-          <span className="ed-eyebrow ed-eyebrow-dark">
-            the math, plainly
-          </span>
-          <h2 className="font-serif text-[clamp(40px,4.2vw,62px)] leading-[1] mb-7 max-w-[760px] text-white">
+        <div className="mb-12 max-w-3xl">
+          <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
             Pay once. Keep your money.
           </h2>
-          <p className="text-white/65 text-[17px] max-w-[540px] mb-10 leading-[1.5]">
-            Most dictation apps charge you every month, forever.
-            Here&apos;s the gap, plainly.
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
+            The point is not only cheaper pricing. It is owning a local workflow that keeps working everywhere you type.
           </p>
+        </div>
 
-          {/* VS table */}
-          <div className="overflow-x-auto -mx-4 sm:mx-0">
-            <div className="min-w-[520px] rounded-[18px] overflow-hidden border border-white/10 bg-white/[0.03] text-[14.5px] grid grid-cols-[1.1fr_1.4fr_1.2fr] mx-4 sm:mx-0">
-              {/* Header row — uses display:contents so grid children align */}
-              <div className="contents">
-                {headers.map((h, i) => (
-                  <div
-                    key={h}
-                    className={
-                      i === 2
-                        ? "px-5 py-5 bg-editorial-accent text-white font-sans italic text-[17px] normal-case tracking-normal font-normal flex items-center"
-                        : "px-5 py-5 uppercase tracking-[0.12em] text-[12.5px] font-sans font-medium text-white/55 bg-white/[0.025] flex items-center"
-                    }
-                  >
-                    {h}
-                  </div>
-                ))}
+        <div className="overflow-hidden rounded-2xl border border-editorial-line bg-white shadow-sm">
+          <div className="grid grid-cols-[0.9fr_1fr_1fr] border-b border-editorial-line text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+            <div className="bg-editorial-surface-2 px-5 py-4">Criterion</div>
+            <div className="border-l border-editorial-line px-5 py-4">Typical dictation app</div>
+            <div className="border-l border-editorial-line bg-editorial-ink px-5 py-4 text-white/70">VoiceTypr</div>
+          </div>
+          {comparisons.map(([label, oldWay, voiceTypr]) => (
+            <div key={label} className="grid grid-cols-[0.9fr_1fr_1fr] border-b border-editorial-line last:border-b-0">
+              <div className="bg-editorial-surface-2 px-5 py-4 text-sm font-medium text-editorial-ink">
+                {label}
               </div>
-
-              {/* Body rows */}
-              {rows.map((r) => (
-                <div key={r.c} className="contents">
-                  <div className="px-5 py-4 flex items-center leading-[1.45] border-t border-white/[0.07] text-white/90 font-medium">
-                    {r.c}
-                  </div>
-                  <div className="px-5 py-4 flex items-center leading-[1.45] border-t border-white/[0.07] text-white/[0.78]">
-                    {r.v[0]}
-                  </div>
-                  <div className="px-5 py-4 flex items-center leading-[1.45] border-t border-white/[0.07] bg-editorial-accent text-white font-medium">
-                    {r.v[1]}
-                  </div>
-                </div>
-              ))}
-
-              {/* Footer row */}
-              <div className="contents">
-                <div className="px-5 py-5 flex items-center leading-[1.45] bg-white/[0.04] font-medium text-white/90">
-                  {footer.c}
-                </div>
-                <div className="px-5 py-5 flex items-center leading-[1.45] bg-white/[0.04] font-medium text-white/[0.78]">
-                  {footer.v[0]}
-                </div>
-                <div
-                  className="px-5 py-5 flex items-center leading-[1.45] font-medium text-white"
-                  style={{
-                    background:
-                      "color-mix(in_oklch, var(--color-editorial-accent) 85%, #000)",
-                  }}
-                >
-                  {footer.v[1]}
-                </div>
+              <div className="border-l border-editorial-line px-5 py-4 text-sm leading-relaxed text-editorial-ink-2">
+                {oldWay}
+              </div>
+              <div className="border-l border-editorial-line bg-editorial-ink px-5 py-4 text-sm font-medium leading-relaxed text-white">
+                {voiceTypr}
               </div>
             </div>
-          </div>
-
-          {/* Savings summary */}
-          <p className="text-center mt-6 text-sm text-white/70">
-            After 2 years:{" "}
-            <strong className="text-[#9dd6af]">save $110&ndash;$310</strong>
-            &nbsp;&middot;&nbsp; Pay once, keep using it forever.
-          </p>
+          ))}
         </div>
       </div>
     </section>

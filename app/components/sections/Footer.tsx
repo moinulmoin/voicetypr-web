@@ -1,174 +1,112 @@
-import Link from "next/link";
+import Link from 'next/link';
+import { GitHub, Gmail, XformerlyTwitter } from '@/components/icons';
 
-const productLinks = [
-  { label: "Download", href: "/download", internal: true },
-  { label: "Pricing", href: "/#pricing", internal: true },
-  { label: "Use cases", href: "/use-cases", internal: true },
-  { label: "Blog", href: "/blog", internal: true },
-  { label: "Changelog", href: "/changelog", internal: true },
+const columns = [
   {
-    label: "Releases",
-    href: "https://github.com/moinulmoin/voicetypr/releases",
-    internal: false,
-  },
-  { label: "Affiliates", href: "/affiliate", internal: true },
-] as const;
-
-const companyLinks = [
-  {
-    label: "Founder · Moinul Moin",
-    href: "https://twitter.com/immoinulmoin",
-    internal: false,
-    page: "founder",
+    title: 'Product',
+    links: [
+      { label: 'Download', href: '/download', internal: true },
+      { label: 'Pricing', href: '/#pricing', internal: true },
+      { label: 'Use cases', href: '/use-cases', internal: true },
+      { label: 'Blog', href: '/blog', internal: true },
+      { label: 'Changelog', href: '/changelog', internal: true },
+    ],
   },
   {
-    label: "@Ideaplexa",
-    href: "https://ideaplexa.com",
-    internal: false,
-    page: "ideaplexa",
+    title: 'Company',
+    links: [
+      { label: 'Ideaplexa', href: 'https://ideaplexa.com' },
+      { label: 'Support', href: 'mailto:support@voicetypr.com' },
+      { label: 'GitHub', href: 'https://github.com/moinulmoin/voicetypr' },
+    ],
   },
   {
-    label: "Support",
-    href: "mailto:support@voicetypr.com",
-    internal: false,
-    page: "support",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/moinulmoin/voicetypr",
-    internal: false,
-    page: "github",
+    title: 'Trust',
+    links: [
+      { label: 'Privacy', href: '/privacy', internal: true },
+      { label: 'Terms', href: '/terms', internal: true },
+      { label: 'Cookies', href: '/cookies', internal: true },
+    ],
   },
 ] as const;
 
-const trustLinks = [
-  { label: "Privacy", href: "/privacy", internal: true, page: "privacy" },
-  { label: "Terms", href: "/terms", internal: true, page: "terms" },
-  { label: "Cookies", href: "/cookies", internal: true, page: "cookies" },
-  {
-    label: "Open source · GitHub",
-    href: "https://github.com/moinulmoin/voicetypr",
-    internal: false,
-    page: "github",
-  },
+const socialLinks = [
+  { label: 'Twitter/X', href: 'https://twitter.com/immoinulmoin', Icon: XformerlyTwitter },
+  { label: 'GitHub', href: 'https://github.com/moinulmoin/voicetypr', Icon: GitHub },
+  { label: 'Email', href: 'mailto:support@voicetypr.com', Icon: Gmail },
 ] as const;
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-editorial-line bg-editorial-bg">
-      {/* Giant editorial wordmark — anchors the page close */}
-      <div className="mx-auto max-w-[1240px] px-10 pt-16 pb-12 max-md:px-5 max-md:pt-10">
-        <div className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start max-md:gap-4">
-          <Link
-            href="/"
-            className="font-serif text-[clamp(60px,10vw,180px)] leading-[0.85] tracking-[-0.04em] text-editorial-ink transition-colors hover:text-editorial-accent"
-          >
-            VoiceTypr
-          </Link>
-          <p className="max-w-[280px] text-right text-sm leading-[1.5] text-editorial-ink-2 max-md:text-left">
-            The offline AI voice-to-text app for founders and builders.
-            <br />
-            Mac &amp; Windows, pay once.
-          </p>
-        </div>
-      </div>
-
-      {/* Columns */}
-      <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 px-10 pb-10 md:grid-cols-3 max-md:px-5">
-
-        <div>
-          <h5 className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-editorial-ink-3">
-            Product
-          </h5>
-          <ul className="m-0 list-none p-0 text-sm">
-            {productLinks.map((link) => (
-              <li key={link.label} className="py-1.5 text-editorial-ink-2">
-                {link.internal ? (
-                  <Link
-                    href={link.href}
-                    className="transition-colors hover:text-editorial-ink"
-                    data-umami-event="footer-link-click"
-                    data-umami-event-page={link.label.toLowerCase()}
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-editorial-ink"
-                    data-umami-event="footer-link-click"
-                    data-umami-event-page={link.label.toLowerCase()}
-                  >
-                    {link.label}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h5 className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-editorial-ink-3">
-            Company
-          </h5>
-          <ul className="m-0 list-none p-0 text-sm">
-            {companyLinks.map((link) => (
-              <li key={link.label} className="py-1.5 text-editorial-ink-2">
+    <footer className="border-t border-editorial-line bg-editorial-bg py-14">
+      <div className="ed-container">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="text-2xl font-semibold tracking-tight text-editorial-ink">
+              VoiceTypr
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-editorial-ink-2">
+              Offline AI voice-to-text for founders and builders. Local models, every-app input, Mac and Windows.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {socialLinks.map(({ label, href, Icon }) => (
                 <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-editorial-ink"
-                  data-umami-event="footer-link-click"
-                  data-umami-event-page={link.page}
+                  key={label}
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-flex h-8 items-center gap-2 rounded-md border border-editorial-line bg-white px-3 text-xs font-medium text-editorial-ink-2 shadow-sm transition-colors hover:text-editorial-ink"
+                  data-umami-event="footer-social-click"
+                  data-umami-event-page={label.toLowerCase()}
+                  aria-label={label}
                 >
-                  {link.label}
+                  <Icon className="h-3.5 w-3.5" />
+                  <span>{label}</span>
                 </a>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+          </div>
+
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h5 className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+                {column.title}
+              </h5>
+              <ul className="space-y-2 text-sm text-editorial-ink-2">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    {'internal' in link && link.internal ? (
+                      <Link
+                        href={link.href}
+                        className="transition-colors hover:text-editorial-ink"
+                        data-umami-event="footer-link-click"
+                        data-umami-event-page={link.label.toLowerCase()}
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('http') ? '_blank' : undefined}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="transition-colors hover:text-editorial-ink"
+                        data-umami-event="footer-link-click"
+                        data-umami-event-page={link.label.toLowerCase()}
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div>
-          <h5 className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-editorial-ink-3">
-            Trust
-          </h5>
-          <ul className="m-0 list-none p-0 text-sm">
-            {trustLinks.map((link) => (
-              <li key={link.label} className="py-1.5 text-editorial-ink-2">
-                {link.internal ? (
-                  <Link
-                    href={link.href}
-                    className="transition-colors hover:text-editorial-ink"
-                    data-umami-event="footer-link-click"
-                    data-umami-event-page={link.page}
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-editorial-ink"
-                    data-umami-event="footer-link-click"
-                    data-umami-event-page={link.page}
-                  >
-                    {link.label}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-12 flex flex-col justify-between gap-2 border-t border-editorial-line pt-5 text-xs text-editorial-ink-3 md:flex-row">
+          <span>© 2026 VoiceTypr</span>
+          <span>Offline voice-to-text for macOS & Windows</span>
         </div>
-      </div>
-
-      {/* Bottom line */}
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between border-t border-editorial-line px-10 py-6 text-[12px] text-editorial-ink-3 max-md:flex-col max-md:gap-2 max-md:px-5">
-        <span>© 2026 VoiceTypr</span>
-        <span>Offline voice-to-text for macOS & Windows</span>
       </div>
     </footer>
   );

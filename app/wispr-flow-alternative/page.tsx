@@ -10,7 +10,7 @@ import { SuccessModal } from "../components/SuccessModal";
 export const metadata: Metadata = {
   title: "Wispr Flow Alternative — VoiceTypr (Offline, Pay-once)",
   description:
-    "Looking for a Wispr Flow alternative? VoiceTypr is offline, lifetime-priced, and cross-platform. $35 one-time vs $144+/yr. Transcription runs locally — your voice never leaves your device.",
+    "Looking for a Wispr Flow alternative? VoiceTypr is offline, lifetime-priced, and cross-platform. $39 one-time vs $144+/yr. Transcription runs locally — your voice never leaves your device.",
   keywords: [
     "wispr flow alternative",
     "wispr flow alternative mac",
@@ -73,12 +73,12 @@ const comparison: Array<{
       },
       {
         label: "Entry price",
-        voicetypr: check("$35 lifetime (Pro)"),
+        voicetypr: check("$39 lifetime (Pro)"),
         wispr: neutral("$15/mo or $12/mo annual"),
       },
       {
         label: "2-year cost (Pro / annual plan)",
-        voicetypr: check("$35 once"),
+        voicetypr: check("$39 once"),
         wispr: neutral("$288 ongoing"),
       },
       {
@@ -152,10 +152,10 @@ const switchReasons: Array<{
   meta: string;
 }> = [
   {
-    marker: "$35",
+    marker: "$39",
     title: "Pay once, not every month",
     body:
-      "Wispr Flow runs $12–15/mo, ongoing. VoiceTypr Pro is $35 once. Max is $98 once for 4 devices. The day you buy is the day you stop paying.",
+      "Wispr Flow runs $12–15/mo, ongoing. VoiceTypr Pro is $39 once. Max is $99 once for 4 devices. Team is $199 once for 10 devices. The day you buy is the day you stop paying.",
     meta: "Outcome · cost",
   },
   {
@@ -193,7 +193,7 @@ const faqs = [
   },
   {
     q: "Does VoiceTypr have a team plan?",
-    a: "A dedicated Team plan for multi-seat deployments is in active development and launching soon. For now, Max covers 4 devices on a single license, which handles small teams. If you need more seats today, email support@voicetypr.com and we'll sort it out manually.",
+    a: "Yes. The Team plan covers 10 devices for $199 — one license for your whole crew. For larger deployments, email support@voicetypr.com.",
   },
   {
     q: "What if I already paid for a year of Wispr Flow?",
@@ -286,7 +286,7 @@ export default function WisprFlowAlternativePage() {
               </p>
 
               <p className="mt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
-                $35 once · not $15 every month
+                $39 once · not $15 every month
               </p>
 
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">

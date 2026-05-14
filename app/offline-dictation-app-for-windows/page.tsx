@@ -1,0 +1,112 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import Header from "../components/sections/Header";
+import Footer from "../components/sections/Footer";
+
+export const metadata: Metadata = {
+  title: "Offline Dictation App for Windows — VoiceTypr",
+  description:
+    "VoiceTypr is an offline dictation app for Windows. Speak into Cursor, ChatGPT, email, docs, and any text field with local transcription from $39 once.",
+  keywords: [
+    "offline dictation app for windows",
+    "windows offline voice typing",
+    "windows dictation app",
+    "voice to text windows offline",
+    "private dictation windows",
+  ],
+  alternates: {
+    canonical: "https://voicetypr.com/offline-dictation-app-for-windows",
+  },
+  openGraph: {
+    title: "Offline Dictation App for Windows — VoiceTypr",
+    description:
+      "Local voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
+    url: "https://voicetypr.com/offline-dictation-app-for-windows",
+    siteName: "VoiceTypr",
+    images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Offline Dictation App for Windows — VoiceTypr",
+    description:
+      "Local voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
+    images: ["/voicetypr-og.png"],
+  },
+};
+
+const benefits = [
+  "Runs transcription locally instead of depending on a browser tab or cloud service.",
+  "Works in Cursor, VS Code, Claude, ChatGPT, Slack, Gmail, Notion, Linear, and any normal text field.",
+  "Pay once from $39; Plus covers 2 devices, Max covers 4, Team covers 10.",
+  "Designed for the Windows users most Mac-first dictation tools ignore.",
+] as const;
+
+const workflows = [
+  ["Cursor and VS Code", "Dictate prompts, bug notes, PR descriptions, commit context, and code comments without leaving the editor."],
+  ["Email and support replies", "Talk through the answer, paste clean text, then edit the final 10%."],
+  ["Docs and specs", "Capture the long-form draft while the idea is still fresh instead of fighting the keyboard."],
+] as const;
+
+export default function OfflineDictationForWindowsPage() {
+  return (
+    <main id="main-content" className="landing-editorial min-h-screen">
+      <Header />
+      <section className="ed-section ed-section-hero pt-32 lg:pt-40">
+        <div className="ed-container max-w-4xl">
+          <p className="ed-eyebrow">offline dictation for windows</p>
+          <h1 className="font-serif text-[clamp(44px,6vw,76px)] leading-[1.02] tracking-[-0.03em]">
+            Private Windows voice typing for every app you already use.
+          </h1>
+          <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
+            VoiceTypr gives Windows users local AI dictation with a simple hotkey. Speak, release, and the text appears where your cursor already is.
+          </p>
+          <Link
+            href="/download"
+            className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition-colors hover:bg-black"
+          >
+            Download for Windows
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
+              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="ed-section">
+        <div className="ed-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="ed-eyebrow">why it ranks</p>
+            <h2 className="font-serif text-[clamp(36px,4vw,56px)] leading-[1.05] tracking-[-0.02em]">
+              Windows dictation is still underserved.
+            </h2>
+          </div>
+          <ul className="space-y-4">
+            {benefits.map((benefit) => (
+              <li key={benefit} className="flex gap-3 text-[16px] leading-[1.6] text-editorial-ink-2">
+                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-accent-ink" aria-hidden />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="ed-section">
+        <div className="ed-container max-w-5xl">
+          <p className="ed-eyebrow">common workflows</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {workflows.map(([title, body]) => (
+              <article key={title} className="rounded-2xl border border-editorial-line bg-editorial-surface p-6">
+                <h3 className="text-[18px] font-medium text-editorial-ink">{title}</h3>
+                <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </main>
+  );
+}

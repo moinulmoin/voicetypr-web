@@ -33,11 +33,11 @@ function WPMCompare() {
   return (
     <div
       ref={ref}
-      className="bg-editorial-surface border border-editorial-line rounded-[20px] p-8 md:p-9"
+      className="bg-editorial-surface border border-editorial-line rounded-2xl p-8 md:p-9"
     >
       <div className="ed-label mb-5">Benchmark &middot; words per minute</div>
       <h3
-        className="font-serif text-[26px] leading-[1.1] mb-6"
+        className="font-serif text-3xl leading-tight mb-6"
       >
         Your mouth is faster than your fingers.
       </h3>
@@ -48,12 +48,12 @@ function WPMCompare() {
             key={i}
             className="flex items-center gap-3.5 mb-4 last:mb-0"
           >
-            <div className="w-[110px] text-sm text-editorial-ink-2 font-medium">
+            <div className="w-28 text-sm text-editorial-ink-2 font-medium">
               {r.lab}
             </div>
-            <div className="flex-1 h-[30px] bg-editorial-surface-2 rounded-lg relative overflow-hidden">
+            <div className="flex-1 h-8 bg-editorial-surface-2 rounded-lg relative overflow-hidden">
               <div
-                className={`h-full rounded-lg flex items-center justify-end px-2.5 font-mono font-medium text-[11px] transition-[width] duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+                className={`h-full rounded-lg flex items-center justify-end px-2.5 font-mono font-medium text-xs transition-all duration-1000 ease-out ${
                   r.hl
                     ? "bg-editorial-accent text-white"
                     : "bg-editorial-line-2 text-editorial-ink"
@@ -66,7 +66,7 @@ function WPMCompare() {
                 {r.hl && visible && "fastest"}
               </div>
             </div>
-            <div className="w-[90px] text-right font-mono font-medium text-sm text-editorial-ink">
+            <div className="w-24 text-right font-mono font-medium text-sm text-editorial-ink">
               {r.wpm} wpm
             </div>
           </div>
@@ -114,11 +114,11 @@ function FlowDiagram() {
   ];
 
   return (
-    <div className="bg-editorial-surface border border-editorial-line rounded-[20px] p-8 md:p-9">
+    <div className="bg-editorial-surface border border-editorial-line rounded-2xl p-8 md:p-9">
       <div className="ed-label mb-2">
         Architecture &middot; how the sausage is made
       </div>
-      <h3 className="font-serif text-[26px] mb-1">Sound in. Text out. No detours.</h3>
+      <h3 className="font-serif text-3xl mb-1">Sound in. Text out. No detours.</h3>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3.5 mt-5 items-stretch">
         {nodes.map((n, i) => (
@@ -126,23 +126,23 @@ function FlowDiagram() {
             key={i}
             className="bg-editorial-surface-2 border border-editorial-line rounded-xl p-4 relative"
           >
-            <div className="absolute top-2.5 right-2.5 font-mono text-[9.5px] font-medium uppercase tracking-[0.14em] text-editorial-accent bg-editorial-accent-wash px-1.5 py-1 rounded">
+            <div className="absolute top-2.5 right-2.5 font-mono text-xs font-medium uppercase tracking-widest text-editorial-accent bg-editorial-accent-wash px-1.5 py-1 rounded">
               {n.badge}
             </div>
             <div className="w-9 h-9 rounded-lg bg-editorial-surface border border-editorial-line grid place-items-center mb-3 text-editorial-ink">
               <n.Icon size={16} strokeWidth={1.75} />
             </div>
-            <h5 className="font-sans font-semibold text-[13px] leading-[1.2] mb-1.5 text-editorial-ink">
+            <h5 className="font-sans font-semibold text-sm leading-tight mb-1.5 text-editorial-ink">
               {n.title}
             </h5>
-            <p className="text-[12px] leading-[1.5] text-editorial-ink-2">
+            <p className="text-xs leading-relaxed text-editorial-ink-2">
               {n.body}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="mt-4 flex justify-between font-mono text-[11px] uppercase tracking-[0.1em] text-editorial-ink-3">
+      <div className="mt-4 flex justify-between font-mono text-xs uppercase tracking-widest text-editorial-ink-3">
         <span>&rarr; runs 100% offline</span>
         <span>&rarr; zero bytes leave device</span>
         <span>&rarr; mac + windows native</span>
@@ -162,7 +162,7 @@ export default function Infographics() {
       <div className="ed-container">
         <p className="ed-eyebrow">the receipts &middot; two ways to see the gap</p>
         <h2
-          className="font-serif text-[clamp(38px,4vw,60px)] leading-[1] mb-9 max-w-[720px]"
+          className="font-serif text-4xl md:text-5xl lg:text-6xl leading-none mb-9 max-w-3xl"
         >
           Different charts, same conclusion.
         </h2>

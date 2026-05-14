@@ -22,7 +22,7 @@ const fontSans = Geist({
 // Instrument Serif — modern editorial serif with REAL italic. Reserved for the
 // rare <em> punctuation accent inside hero / brand-moment H2 / final CTA only.
 // Headings themselves use Geist (sans) with heavier weight. Loaded with both
-// styles so editorial numerals (5×, 150, $50) that opt into Tailwind's
+// styles so editorial numerals (5×, 150, $39) that opt into Tailwind's
 // font-serif utility still render in upright serif.
 const fontSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -147,7 +147,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Pro Plan",
-                    price: "50.00",
+                    price: "39.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
@@ -159,7 +159,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Plus Plan",
-                    price: "80.00",
+                    price: "59.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
@@ -171,11 +171,23 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Max Plan",
-                    price: "140.00",
+                    price: "99.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
                       "Includes 4 device activations, lifetime license, free updates.",
+                    seller: {
+                      "@id": "https://voicetypr.com/#organization",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Team Plan",
+                    price: "199.00",
+                    priceCurrency: "USD",
+                    availability: "https://schema.org/InStock",
+                    description:
+                      "Includes 10 device activations, lifetime license, free updates.",
                     seller: {
                       "@id": "https://voicetypr.com/#organization",
                     },

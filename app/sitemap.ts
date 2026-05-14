@@ -39,6 +39,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/superwhisper-alternative`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
+    },
+    {
+      url: `${baseUrl}/aqua-voice-alternative`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.76,
+    },
+    {
+      url: `${baseUrl}/offline-dictation-app-for-windows`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
+    },
+    {
+      url: `${baseUrl}/voice-input-for-cursor`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
+    },
+    {
       url: `${baseUrl}/changelog`,
       lastModified: new Date(),
       changeFrequency: "weekly",

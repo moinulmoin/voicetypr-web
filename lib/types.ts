@@ -112,6 +112,8 @@ export interface LicenseValidateResponse {
   valid: boolean;
   reason?: string;
   offlineMode?: boolean;
+  plan?: string;
+  maxDevices?: number;
 }
 
 export interface LicenseDeactivateResponse {

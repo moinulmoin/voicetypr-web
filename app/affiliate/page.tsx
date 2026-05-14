@@ -24,16 +24,16 @@ import Footer from "../components/sections/Footer";
 const AFFONSO_URL = "https://voicetypr.affonso.io";
 
 export const metadata: Metadata = {
-  title: "VoiceTypr Affiliate Program — Earn up to 40% per sale",
+  title: "VoiceTypr Affiliate Program — Earn up to 30% per sale",
   description:
-    "Promote VoiceTypr, the offline AI voice-to-text app for Mac and Windows. Earn 25–40% commission on every lifetime sale. One-time product, high-intent buyers, Cursor/Claude/ChatGPT audience.",
+    "Promote VoiceTypr, the offline AI voice-to-text app for Mac and Windows. Earn 20–30% commission on every lifetime sale. One-time product, high-intent buyers, Cursor/Claude/ChatGPT audience.",
   alternates: {
     canonical: "https://voicetypr.com/affiliate",
   },
   openGraph: {
-    title: "Become a VoiceTypr Affiliate — Earn up to 40% per sale",
+    title: "Become a VoiceTypr Affiliate — Earn up to 30% per sale",
     description:
-      "Promote an offline AI voice-to-text app your audience actually wants. Lifetime product, 25–40% commission.",
+      "Promote an offline AI voice-to-text app your audience actually wants. Lifetime product, 20–30% commission.",
     url: "https://voicetypr.com/affiliate",
     type: "website",
   },
@@ -42,35 +42,28 @@ export const metadata: Metadata = {
 
 const tiers = [
   {
-    name: "Starter",
-    commission: "25%",
-    per100: "$13+ per sale",
+    name: "Standard",
+    commission: "20%",
+    per100: "$7.80+ per sale",
     who: "Any approved affiliate",
     how: "Sign up, get your link, start promoting.",
-    highlight: false,
-  },
-  {
-    name: "Creator",
-    commission: "35%",
-    per100: "$19+ per sale",
-    who: "Approved creators with an engaged audience",
-    how: "Ship one demo video or long-form post; we upgrade your tier for 60 days.",
     highlight: true,
   },
   {
-    name: "Launch Partner",
-    commission: "40%",
-    per100: "$22+ per sale",
-    who: "Top partners during a product launch week",
-    how: "Coordinate a launch week with us. Capped to a small cohort per quarter.",
+    name: "Creator",
+    commission: "30%",
+    per100: "$11.70+ per sale",
+    who: "Selected creators and partners with an engaged audience",
+    how: "Ship one demo video or long-form post; we upgrade your tier for 60 days.",
     highlight: false,
   },
 ];
 
 const exampleEarnings = [
-  { tier: "Pro ($35)", commission25: "$8.75", commission35: "$12.25", commission40: "$14.00" },
-  { tier: "Plus ($56)", commission25: "$14.00", commission35: "$19.60", commission40: "$22.40" },
-  { tier: "Max ($98)", commission25: "$24.50", commission35: "$34.30", commission40: "$39.20" },
+  { tier: "Pro ($39)", commission20: "$7.80", commission30: "$11.70" },
+  { tier: "Plus ($59)", commission20: "$11.80", commission30: "$17.70" },
+  { tier: "Max ($99)", commission20: "$19.80", commission30: "$29.70" },
+  { tier: "Team ($199)", commission20: "$39.80", commission30: "$59.70" },
 ];
 
 const angles = [
@@ -144,12 +137,12 @@ const faqs = [
     a: "Yes, with constraints. No bidding on 'VoiceTypr' branded keywords, no misleading creatives (e.g. fake '90% off' claims), no impersonation. Everything else — content, SEO, newsletters, organic social, review sites — is fair game.",
   },
   {
-    q: "How do I get upgraded to 35%?",
-    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing VoiceTypr in actual use. Reply to your approval email with the link and we bump your tier for 60 days. Renewable on your next piece of content.",
+    q: "How do I get upgraded to 30%?",
+    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing VoiceTypr in actual use. Reply to your approval email with the link and we bump your commission for 60 days. Renewable on your next piece of content.",
   },
   {
-    q: "What about 40%?",
-    a: "Launch Partner slots open around product launches (major releases, Product Hunt, platform expansions). Coordinate directly with us — it's a small cohort per quarter, application-based.",
+    q: "Are there higher tiers beyond 30%?",
+    a: "Not currently. 20% is the standard rate for all approved affiliates, and 30% is available for selected creators and partners who ship real content.",
   },
   {
     q: "Can I offer my audience a discount?",
@@ -197,7 +190,7 @@ export default function AffiliatePage() {
           <div className="mx-auto max-w-4xl px-4 text-center">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-editorial-accent-wash px-3 py-1 text-xs font-medium text-editorial-accent-ink mb-6">
               <Sparkles className="h-3 w-3" />
-              Earn up to 40% per sale
+              Earn up to 30% per sale
             </span>
             <h1 className="font-serif text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-[-0.02em] mb-6">
               Promote VoiceTypr.
@@ -244,7 +237,7 @@ export default function AffiliatePage() {
                 {
                   icon: DollarSign,
                   title: "Meaningful per-sale payout",
-                  body: "$8.75 to $39.20 per conversion, depending on tier and plan. Not 5% of a $10/mo subscription that churns in a month.",
+                  body: "$7.80 to $59.70 per conversion, depending on tier and plan. Not 5% of a $10/mo subscription that churns in a month.",
                 },
                 {
                   icon: TrendingUp,
@@ -287,7 +280,7 @@ export default function AffiliatePage() {
                 Commission tiers
               </h2>
               <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
-                Start at 25%. Ship content, get 35%. Partner on a launch, get 40%.
+                Start at 20%. Ship content as a selected creator, earn 30%.
               </p>
             </div>
 
@@ -338,13 +331,10 @@ export default function AffiliatePage() {
                           Plan sold
                         </th>
                         <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
-                          At 25%
+                          At 20%
                         </th>
                         <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
-                          At 35%
-                        </th>
-                        <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
-                          At 40%
+                          At 30%
                         </th>
                       </tr>
                     </thead>
@@ -362,13 +352,10 @@ export default function AffiliatePage() {
                             {row.tier}
                           </td>
                           <td className="px-4 py-3 text-right tabular-nums text-[14px] text-editorial-ink-2">
-                            {row.commission25}
-                          </td>
-                          <td className="px-4 py-3 text-right tabular-nums text-[14px] text-editorial-ink-2">
-                            {row.commission35}
+                            {row.commission20}
                           </td>
                           <td className="px-4 py-3 text-right text-[14px] font-medium tabular-nums text-editorial-accent-ink">
-                            {row.commission40}
+                            {row.commission30}
                           </td>
                         </tr>
                       ))}
@@ -377,8 +364,7 @@ export default function AffiliatePage() {
                 </div>
               </div>
               <p className="mt-3 text-center text-[12px] text-editorial-ink-3">
-                Prices shown reflect current promotional pricing. Base prices:
-                Pro $50, Plus $80, Max $140.
+                All plans are one-time purchases · lifetime license.
               </p>
             </div>
           </div>
@@ -517,7 +503,7 @@ export default function AffiliatePage() {
             </h2>
             <p className="mx-auto mb-8 text-[17px] text-editorial-ink-2 leading-[1.6]">
               Sign up on Affonso in 60 seconds. Get your link, grab the kit,
-              ship something real, unlock 35%.
+              start earning 20% on every sale.
             </p>
             <AffiliateCta
               href={AFFONSO_URL}

@@ -22,8 +22,8 @@ export default function HomePage() {
         <Hero />
         <Demo />
         <Outcomes />
-        <Features />
         <HowItWorks />
+        <Features />
         <Compare />
         <Pricing />
         <Testimonials />

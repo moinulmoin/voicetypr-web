@@ -25,15 +25,17 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed left-0 right-0 z-50 border-b border-editorial-line bg-editorial-bg/85 backdrop-blur-md transition-[padding] duration-200 ${
-        isScrolled ? "py-2.5" : "py-[22px]"
+      className={`fixed left-0 right-0 z-50 border-b border-editorial-line bg-editorial-bg/95 backdrop-blur-sm transition duration-200 ${
+        isScrolled ? "py-2 shadow-sm" : "py-3.5"
       }`}
     >
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between px-10 max-md:px-5">
-        {/* Left: Logo + Ideaplexa */}
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 max-md:px-5">
         <div className="flex items-center gap-2.5">
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="font-serif text-[24px] tracking-[-0.01em] text-editorial-ink">
+            <span className="grid h-5 w-5 place-items-center rounded-sm bg-editorial-ink text-xs font-semibold leading-none text-white">
+              V
+            </span>
+            <span className="text-sm font-semibold tracking-tight text-editorial-ink">
               VoiceTypr
             </span>
           </Link>
@@ -41,15 +43,14 @@ export default function Header() {
             href="https://ideaplexa.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden font-mono text-[11px] tracking-[0.08em] text-editorial-ink-3 sm:inline-block"
+            className="hidden text-sm text-editorial-ink-3 sm:inline-block"
             data-umami-event="header-parent-company-click"
           >
             by Ideaplexa
           </a>
         </div>
 
-        {/* Center: Nav */}
-        <nav className="hidden gap-8 text-sm text-editorial-ink-2 md:flex">
+        <nav className="hidden gap-7 text-sm text-editorial-ink-2 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.section}
@@ -63,11 +64,10 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right: Try free */}
         <div className="flex items-center">
           <Link
             href="/download"
-            className="rounded-lg bg-editorial-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black"
+            className="rounded-md border border-editorial-line bg-white px-4 py-2 text-sm font-medium text-editorial-ink shadow-sm transition-colors hover:bg-editorial-surface-2"
             data-umami-event="header-download-click"
           >
             Download

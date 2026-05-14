@@ -1,106 +1,116 @@
+const workflowChips = [
+  'Prompt faster',
+  'Reply cleaner',
+  'Capture specs',
+  'Dictate notes',
+  'Ship thoughts',
+  'Stop rewriting',
+];
+
 export default function Outcomes() {
   return (
     <section className="ed-section">
       <div className="ed-container">
-          <div className="ed-eyebrow">what changes day one</div>
-          <h2 className="font-serif text-[clamp(40px,4vw,64px)] leading-[1] max-w-[780px] mt-2 mb-10">
+        <div className="max-w-3xl">
+          <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
             Talk. Get clean text where your cursor is.
           </h2>
+          <p className="mt-4 text-lg leading-relaxed text-editorial-ink-2">
+            Stop rewriting the same thought by hand. VoiceTypr turns speech into usable text in the apps you already use.
+          </p>
+        </div>
 
-          {/*
-            Bento layout: one tall feature card (left, 7 cols) + two smaller
-            cards stacked on the right (5 cols). Avoids the 3-equal-card grid
-            that was making the section feel templated.
-          */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6">
-            {/* Featured — throughput. Bigger numeral, more breathing room. */}
-            <article className="lg:col-span-7 bg-editorial-surface rounded-2xl border border-editorial-line p-8 md:p-10 flex flex-col gap-5 min-h-[320px] md:min-h-[360px]">
-              <div className="flex items-baseline gap-3">
-                <div className="font-serif text-[clamp(72px,8vw,128px)] leading-none text-editorial-accent">
-                  5×
+        <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
+          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm lg:col-span-2">
+            <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
+              Prompt at speaking speed
+            </h3>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-editorial-ink-2">
+              Your brain runs faster than your fingers. Capture the thought, clean it up, and paste it without switching tools.
+            </p>
+
+            <div className="mt-8 rounded-2xl bg-white p-5 shadow-sm">
+              <div className="grid grid-cols-3 overflow-hidden rounded-xl border border-editorial-line text-sm">
+                <div className="bg-editorial-ink p-4 text-white">
+                  <div className="text-3xl font-semibold">150</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-white/70">dictating</div>
                 </div>
-                <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 pb-2">
-                  faster than typing
+                <div className="border-l border-editorial-line bg-editorial-surface-2 p-4">
+                  <div className="text-3xl font-semibold">5×</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-editorial-ink-3">faster</div>
+                </div>
+                <div className="border-l border-editorial-line bg-editorial-surface-2 p-4">
+                  <div className="text-3xl font-semibold">1</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-editorial-ink-3">hotkey</div>
                 </div>
               </div>
-              <h3 className="font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.12] max-w-[520px]">
-                Prompt at speaking speed.
-              </h3>
-              <p className="text-editorial-ink-2 text-[15.5px] leading-[1.6] max-w-[540px]">
-                Your brain runs at ~400 wpm. Your fingers manage 60–80. Voice
-                closes that gap. ChatGPT, Claude, Cursor, the spec you keep
-                putting off, the Slack reply you keep rewriting — at the speed
-                you actually think.
-              </p>
-              <div className="mt-auto grid grid-cols-3 gap-4 pt-6">
-                <div>
-                  <div className="font-serif text-[26px] leading-none text-editorial-ink mb-1.5">
-                    150
-                  </div>
-                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
-                    wpm dictating
-                  </div>
+
+              <div className="mt-6 space-y-4">
+                <div className="h-2 overflow-hidden rounded-full bg-editorial-surface-2">
+                  <div className="h-full w-1/3 rounded-full bg-editorial-line-2" />
                 </div>
-                <div>
-                  <div className="font-serif text-[26px] leading-none text-editorial-ink mb-1.5">
-                    &lt;2s
-                  </div>
-                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
-                    capture latency
-                  </div>
+                <div className="h-2 overflow-hidden rounded-full bg-editorial-surface-2">
+                  <div className="h-full w-2/3 rounded-full bg-editorial-line-2" />
                 </div>
-                <div>
-                  <div className="font-serif text-[26px] leading-none text-editorial-ink mb-1.5">
-                    1
-                  </div>
-                  <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
-                    hotkey
-                  </div>
+                <div className="h-2 overflow-hidden rounded-full bg-editorial-surface-2">
+                  <div className="h-full w-full rounded-full bg-editorial-ink" />
                 </div>
               </div>
-            </article>
-
-            {/* Right column: two stacked smaller cards */}
-            <div className="lg:col-span-5 grid grid-cols-1 gap-5 md:gap-6">
-              {/* Privacy */}
-              <article className="bg-editorial-surface rounded-2xl border border-editorial-line p-7 flex flex-col gap-3 min-h-[160px]">
-                <div className="flex items-center justify-between">
-                  <div className="font-serif text-[44px] leading-none text-editorial-accent">
-                    0
-                  </div>
-                  <span className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
-                    100% offline
-                  </span>
-                </div>
-                <h3 className="font-serif text-[20px] leading-[1.15]">
-                  Audio never leaves your machine.
-                </h3>
-                <p className="text-editorial-ink-2 text-[14px] leading-[1.55]">
-                  Local models do the work on-device. No cloud, no logs, no
-                  &ldquo;we may use your data to improve the service.&rdquo;
-                </p>
-              </article>
-
-              {/* Reach */}
-              <article className="bg-editorial-surface rounded-2xl border border-editorial-line p-7 flex flex-col gap-3 min-h-[160px]">
-                <div className="flex items-center justify-between">
-                  <div className="font-serif text-[44px] leading-none text-editorial-accent">
-                    ∞
-                  </div>
-                  <span className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3">
-                    any text field
-                  </span>
-                </div>
-                <h3 className="font-serif text-[20px] leading-[1.15]">
-                  Works where your cursor is.
-                </h3>
-                <p className="text-editorial-ink-2 text-[14px] leading-[1.55]">
-                  Cursor, Notion, Slack, VS Code, Linear, Gmail, Discord, Figma
-                  comments, even that legacy Jira textarea.
-                </p>
-              </article>
             </div>
-          </div>
+          </article>
+
+          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm">
+            <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
+              Every text field works
+            </h3>
+            <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+              ChatGPT, Claude, Cursor, Slack, Notion, Gmail, or a legacy Jira textarea.
+            </p>
+            <div className="mt-8 rounded-2xl bg-white p-5 shadow-sm">
+              <div className="mb-4 rounded-xl bg-editorial-ink px-4 py-3 text-sm font-medium text-white">
+                Draft this reply in my voice.
+              </div>
+              <div className="rounded-xl bg-editorial-surface-2 px-4 py-3 text-sm leading-relaxed text-editorial-ink-2">
+                Sure — here&apos;s a clean version ready to paste where your cursor is.
+              </div>
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm">
+            <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
+              Fully offline
+            </h3>
+            <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+              Audio transcription runs locally. Zero voice data leaves your machine.
+            </p>
+            <div className="mt-6 rounded-xl bg-white p-4 text-sm shadow-sm">
+              <div className="flex justify-between border-b border-editorial-line pb-3">
+                <span>Audio uploaded</span>
+                <strong>0 bytes</strong>
+              </div>
+              <div className="flex justify-between pt-3">
+                <span>Mode</span>
+                <strong>Local</strong>
+              </div>
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm lg:col-span-2">
+            <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
+              Fewer half-written thoughts
+            </h3>
+            <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+              Less typing friction, fewer abandoned drafts, and cleaner output while the idea is still fresh.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {workflowChips.map((chip) => (
+                <span key={chip} className="rounded-full border border-editorial-line bg-white px-3 py-1.5 text-sm font-medium text-editorial-ink-2 shadow-sm">
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   );

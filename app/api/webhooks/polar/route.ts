@@ -2,7 +2,39 @@ import { redis } from "@/lib/redis";
 import { Webhooks } from "@polar-sh/nextjs";
 import type { WebhookOrderPaidPayload } from "@polar-sh/sdk/models/components/webhookorderpaidpayload.js";
 import { opServer } from "@/lib/openpanel-server";
+import { prisma } from "@/lib/db";
+import { PLANS, resolvePlan } from "@/lib/pricing";
+import type { PlanKey } from "@/lib/pricing";
 import { after } from "next/server";
+
+// ── Defensive payload extraction helpers ──────────────────────────────────
+// The exact payload shape may vary; these never throw.
+
+/** Try to pull a license key string out of an arbitrary webhook payload. */
+function extractLicenseKey(data: Record<string, unknown>): string | null {
+  // Common locations across different Polar webhook events
+  const candidates = [
+    data.license_key,
+    data.licenseKey,
+    (data.metadata as Record<string, unknown> | undefined)?.license_key,
+    (data.metadata as Record<string, unknown> | undefined)?.licenseKey,
+  ];
+
+  for (const c of candidates) {
+    if (typeof c === 'string' && c.length > 0) return c;
+  }
+  return null;
+}
+
+/** Try to pull a product ID string out of an arbitrary webhook payload. */
+function extractProductId(data: Record<string, unknown>): string | null {
+  if (typeof data.productId === 'string' && data.productId.length > 0) {
+    return data.productId;
+  }
+  return null;
+}
+
+// ── Deduplication ─────────────────────────────────────────────────────────
 
 /**
  * Redis-based deduplication: prevents the same webhook event from being
@@ -36,6 +68,8 @@ async function deduplicated<T extends { type: string; data: { id?: string | numb
     await redis.del(lockKey);
   }
 }
+
+// ── Webhook handler ───────────────────────────────────────────────────────
 
 export const POST = Webhooks({
   webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
@@ -75,8 +109,58 @@ async function handleOrderPaid(data: WebhookOrderPaidPayload["data"]) {
     });
 
     console.log(`[Webhook] Revenue queued: $${(amount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ""}`);
+
+    // Persist plan/maxDevices on the License record when the payload contains
+    // enough information. This is best-effort and must never throw.
+    await persistLicensePlan(data as unknown as Record<string, unknown>);
   } catch (error) {
     console.error("[Webhook] Revenue tracking failed:", error);
     // Don't throw - revenue tracking failure shouldn't break the webhook
+  }
+}
+
+/**
+ * Best-effort: resolve the plan from productId / license key prefix and
+ * update the matching License row. Silently no-ops when data is incomplete.
+ */
+async function persistLicensePlan(data: Record<string, unknown>) {
+  try {
+    const licenseKey = extractLicenseKey(data);
+    const productId = extractProductId(data);
+    const customerId = typeof data.customerId === 'string' ? data.customerId : null;
+
+    if (!licenseKey && !customerId) return;
+
+    // Try to resolve plan via productId first, then license key prefix
+    const planKey: PlanKey | null = licenseKey
+      ? resolvePlan(productId, licenseKey)
+      : resolvePlan(productId, '');
+
+    if (!planKey) return;
+
+    const planMeta = PLANS[planKey];
+
+    if (licenseKey) {
+      // Direct update by license key
+      await prisma.license.updateMany({
+        where: { licenseKey },
+        data: {
+          plan: planKey,
+          maxDevices: planMeta.maxDevices,
+        },
+      });
+    } else if (customerId) {
+      // Fallback: update all licenses for this customer
+      await prisma.license.updateMany({
+        where: { customerId },
+        data: {
+          plan: planKey,
+          maxDevices: planMeta.maxDevices,
+        },
+      });
+    }
+  } catch (err) {
+    // Plan persistence must never break the webhook pipeline
+    console.error("[Webhook] Failed to persist license plan:", err);
   }
 }

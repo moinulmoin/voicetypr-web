@@ -45,7 +45,7 @@ export const seoPages: SeoPage[] = [
       },
       {
         name: "VoiceTypr",
-        price: "From $50 once",
+        price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — 100%",
         subscription: false,
@@ -89,7 +89,7 @@ export const seoPages: SeoPage[] = [
       },
       {
         name: "VoiceTypr",
-        price: "From $50 once",
+        price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — 100%",
         subscription: false,
@@ -133,7 +133,7 @@ export const seoPages: SeoPage[] = [
       },
       {
         name: "VoiceTypr",
-        price: "From $50 once",
+        price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — 100%",
         subscription: false,
@@ -177,7 +177,7 @@ export const seoPages: SeoPage[] = [
       },
       {
         name: "VoiceTypr",
-        price: "From $50 once",
+        price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — 100%",
         subscription: false,
@@ -210,7 +210,7 @@ export const alternativePages: SeoPage[] = [
       },
       {
         name: "VoiceTypr",
-        price: "From $50 once",
+        price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — 100%",
         subscription: false,
@@ -240,7 +240,7 @@ export const alternativePages: SeoPage[] = [
       },
       {
         name: "VoiceTypr",
-        price: "From $50 once",
+        price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — 100%",
         subscription: false,
@@ -270,7 +270,7 @@ export const alternativePages: SeoPage[] = [
       },
       {
         name: "VoiceTypr",
-        price: "From $50 once",
+        price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — 100%",
         subscription: false,

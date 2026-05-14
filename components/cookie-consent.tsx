@@ -81,10 +81,10 @@ export default function CookieConsent() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 w-[calc(100vw-40px)] max-w-[400px]">
-      <div className="rounded-lg border border-editorial-line bg-editorial-surface shadow-[0_20px_40px_-20px_rgba(0,0,0,0.18),0_2px_8px_-2px_rgba(0,0,0,0.06)]">
+    <div className="fixed bottom-5 left-5 right-5 z-50 sm:left-auto sm:w-96">
+      <div className="rounded-lg border border-editorial-line bg-editorial-surface shadow-xl">
         <div className="flex items-center gap-3 px-4 py-3.5">
-          <p className="text-[13px] leading-[1.5] text-editorial-ink-2">
+          <p className="text-sm leading-relaxed text-editorial-ink-2">
             We use cookies to personalize content and run ads. Read our{" "}
             <Link
               href="/cookies"
@@ -97,7 +97,7 @@ export default function CookieConsent() {
           <button
             type="button"
             onClick={accept}
-            className="ml-auto inline-flex shrink-0 items-center justify-center rounded-md bg-editorial-ink px-3 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-black active:scale-[0.98]"
+            className="ml-auto inline-flex shrink-0 items-center justify-center rounded-md bg-editorial-ink px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-black active:scale-95"
           >
             Okay
           </button>
