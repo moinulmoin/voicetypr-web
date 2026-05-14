@@ -155,7 +155,7 @@ export default function PrivacyPage() {
           <li><strong className="text-editorial-ink">Polar.sh:</strong> Payment processing and license key generation</li>
           <li><strong className="text-editorial-ink">Database hosting:</strong> Secure infrastructure for license validation</li>
           <li><strong className="text-editorial-ink">Umami:</strong> Cookieless analytics (no cookies; aggregated usage)</li>
-          <li><strong className="text-editorial-ink">Google Tag Manager &amp; Affonso:</strong> Marketing/attribution (only loaded with consent)</li>
+          <li><strong className="text-editorial-ink">Google Tag Manager &amp; Affonso:</strong> Marketing/attribution and metrics; Affonso runs in consent mode and marketing cookies are only enabled with consent</li>
         </ul>
         <p className={`${pClass} mt-3`}>These services have their own privacy policies and data practices.</p>
       </section>

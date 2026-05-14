@@ -8,8 +8,6 @@ import "@/app/globals.css";
 import { OpenPanel } from "@/components/openpanel";
 import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
-// Removed client-gated marketing scripts; noscript renders unconditionally
-import MarketingNoscript from "@/app/components/MarketingNoscript";
 import { Providers } from "@/components/providers";
 import Script from "next/script";
 
@@ -302,8 +300,6 @@ export default function RootLayout({
       {/* End JSON-LD Structured Data */}
 
       <body className={`${fontSans.variable} ${fontSerif.variable} font-sans antialiased`}>
-        {/* Google Tag Manager (noscript) rendered unconditionally */}
-        <MarketingNoscript />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1000] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"

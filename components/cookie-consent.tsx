@@ -85,7 +85,7 @@ export default function CookieConsent() {
       <div className="rounded-lg border border-editorial-line bg-editorial-surface shadow-xl">
         <div className="flex items-center gap-3 px-4 py-3.5">
           <p className="text-sm leading-relaxed text-editorial-ink-2">
-            We use cookies to personalize content and run ads. Read our{" "}
+            We use cookies to personalize content and metrics. Read our{" "}
             <Link
               href="/cookies"
               className="text-editorial-accent underline underline-offset-2 hover:text-editorial-accent-ink"
