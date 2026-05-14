@@ -10,7 +10,7 @@ export default function Demo() {
                 muted
                 playsInline
                 preload="none"
-                poster="/voicetypr-demo-poster.jpg"
+                poster="/voicetypr-og.png"
                 aria-label="VoiceTypr demo — press hotkey, speak, text pastes at the cursor"
                 className="h-full w-full object-cover"
               >

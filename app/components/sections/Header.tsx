@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -83,7 +84,8 @@ export default function Header() {
               : "pointer-events-auto max-w-6xl px-2 py-3"
           }`}
         >
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image src="/favicon-32x32.png" alt="VoiceTypr logo" width={18} height={18} className="h-[18px] w-[18px] rounded-sm" />
             <span className="text-sm font-semibold tracking-tight text-editorial-ink">
               VoiceTypr
             </span>
@@ -140,7 +142,7 @@ export default function Header() {
                       </div>
                     ))}
                   </div>
-                  <DropdownMenuItem asChild className="rounded-xl px-2 py-2.5 text-editorial-ink data-[highlighted]:bg-editorial-surface-2">
+                  <DropdownMenuItem asChild className="mt-2 rounded-xl px-2 py-2.5 text-editorial-ink data-[highlighted]:bg-editorial-surface-2">
                     <Link href="/use-cases" data-umami-event="nav-use-cases-hub-click">
                       See all use cases
                     </Link>
@@ -165,8 +167,10 @@ export default function Header() {
           <div className="flex items-center">
             <Link
               href="/download"
-              className={`rounded-md text-sm font-medium text-editorial-ink transition-colors hover:bg-editorial-surface-2 ${
-                isScrolled ? "border border-editorial-line bg-white px-4 py-2 shadow-sm" : "border border-transparent bg-white/80 px-4 py-2"
+              className={`rounded-md border text-sm font-medium text-editorial-ink transition-colors hover:bg-editorial-surface-2 ${
+                isScrolled
+                  ? "border-editorial-line bg-white px-4 py-2 shadow-sm"
+                  : "border-editorial-line bg-white px-4 py-2 shadow-sm"
               }`}
               data-umami-event="header-download-click"
             >

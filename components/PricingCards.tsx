@@ -26,10 +26,9 @@ const deviceOptions: DeviceOption[] = [
 
 const features = [
   'Local/offline transcription models',
-  'Optional AI enhancement with your own API key',
+  'AI formatting with your own API key',
   'Works anywhere you type',
   'macOS 13+ and Windows 10+',
-  'Hotkey, push-to-talk, and audio upload',
   'Lifetime updates included',
 ];
 
@@ -65,18 +64,18 @@ export default function PricingCards({
 
   return (
     <div className="rounded-3xl bg-editorial-surface-2 p-4">
-      <div className="grid gap-0 overflow-hidden rounded-2xl bg-white lg:grid-cols-2">
-        <div className="p-6 md:p-8">
+      <div className="grid gap-4 rounded-3xl lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="rounded-2xl bg-white p-6 md:p-8">
           <div className="mb-5 text-sm text-editorial-ink-2">
             {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
           </div>
 
           <div className="mb-6 text-6xl font-semibold tracking-tight text-editorial-ink md:text-7xl">
             {formatPrice(BASE_PRICES[selected.key])}
-            <span className="ml-2 text-base font-normal text-editorial-ink-3">once</span>
+            <span className="ml-3 text-base font-normal text-editorial-ink-3">/ once</span>
           </div>
 
-          <div className="mb-6 rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
+          <div className="mb-6 overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
             <div className="grid grid-cols-4 gap-1">
               {deviceOptions.map((option) => {
                 const active = option.key === selected.key;
@@ -111,30 +110,29 @@ export default function PricingCards({
             data-track-plan={selected.key}
             className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-editorial-ink py-2 pl-5 pr-2 text-sm font-medium text-white transition hover:bg-black active:scale-95 sm:w-auto"
           >
-            Get VoiceTypr
+            Get VoiceTypr for lifetime
             <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
               <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </span>
           </button>
 
-          <p className="mt-5 text-sm leading-relaxed text-editorial-ink-3">
-            Try the full workflow free: local models, formatting presets, audio upload, and every-app paste.
-          </p>
         </div>
 
-        <div className="border-t border-editorial-line bg-editorial-surface-2 p-6 md:p-8 lg:border-l lg:border-t-0">
-          <div className="mb-5 flex items-center gap-2 text-sm font-medium text-editorial-ink">
-            <Check className="h-4 w-4" />
-            Everything included
+        <div className="flex items-center p-2 md:p-4">
+          <div>
+            <div className="mb-5 flex items-center gap-2 text-sm font-medium text-editorial-ink">
+              <Check className="h-4 w-4" />
+              Everything included
+            </div>
+            <ul className="space-y-3 text-sm leading-relaxed text-editorial-ink-2">
+              {features.map((feature) => (
+                <li key={feature} className="flex gap-3">
+                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="border-t border-editorial-line text-sm leading-relaxed text-editorial-ink-2">
-            {features.map((feature) => (
-              <li key={feature} className="flex gap-3 border-b border-editorial-line py-3.5">
-                <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink" />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>

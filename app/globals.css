@@ -43,18 +43,18 @@ html {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Warm paper landing palette — off-white, off-black, thin ash lines */
-  --color-editorial-bg: #fbfaf7;
+  /* Light neutral landing palette — mostly white, with only a slight warmth */
+  --color-editorial-bg: #fbfbfa;
   --color-editorial-surface: #ffffff;
-  --color-editorial-surface-2: #f2f0ea;
-  --color-editorial-ink: #0a0a0a;
-  --color-editorial-ink-2: #3f3f3f;
-  --color-editorial-ink-3: #737373;
-  --color-editorial-line: #e6e0d8;
-  --color-editorial-line-2: #d8d0c6;
-  --color-editorial-accent: #0a0a0a;
-  --color-editorial-accent-ink: #0a0a0a;
-  --color-editorial-accent-wash: #eeeae2;
+  --color-editorial-surface-2: #f6f6f4;
+  --color-editorial-ink: #18181a;
+  --color-editorial-ink-2: #525250;
+  --color-editorial-ink-3: #8a8a87;
+  --color-editorial-line: #e8e7e3;
+  --color-editorial-line-2: #dad8d3;
+  --color-editorial-accent: #3a7a4f;
+  --color-editorial-accent-ink: #265636;
+  --color-editorial-accent-wash: #dceadf;
 }
 
 :root {

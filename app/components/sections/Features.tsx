@@ -144,14 +144,12 @@ export default function Features() {
   return (
     <section className="ed-section ed-section-wash" id="features">
       <div className="ed-container">
-        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
-          <div>
-            <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-              The daily tools, without the daily rental.
-            </h2>
-          </div>
-          <p className="max-w-2xl text-lg leading-relaxed text-editorial-ink-2 lg:justify-self-end">
-            Local transcription, model choice, formatting presets, file upload, and every-app paste in one calm desktop utility.
+        <div className="max-w-3xl">
+          <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
+            The tools inside VoiceTypr.
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
+            Choose a model. Set a hotkey. Drop in a file. Paste anywhere.
           </p>
         </div>
 

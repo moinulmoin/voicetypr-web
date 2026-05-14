@@ -26,9 +26,6 @@ export default async function Pricing() {
           />
         </div>
 
-        <p className="mt-8 text-center text-xs uppercase tracking-widest text-editorial-ink-3">
-          local transcription · model choice · every-app input · lifetime updates
-        </p>
       </div>
     </section>
   );
