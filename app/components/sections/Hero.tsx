@@ -1,18 +1,14 @@
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const trustPeople = ["CE", "AB", "MV", "SK", "PL"];
 
 export default function HeroSection() {
   return (
-    <section className="ed-section ed-section-hero !pt-36 md:!pt-48 !pb-10 relative overflow-hidden">
+    <section className="ed-section ed-section-hero relative overflow-hidden !pt-32 !pb-10 md:!pt-44">
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
-          <div className="inline-flex items-center justify-center">
-            <div className="ed-eyebrow">offline dictation app</div>
-          </div>
-
-          <h1 className="mx-auto max-w-5xl text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-tighter">
+          <h1 className="mx-auto max-w-5xl text-5xl font-extrabold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
             Type by talking,
             <br />
             in every app you use.
@@ -57,11 +53,7 @@ export default function HeroSection() {
                 </span>
               ))}
             </div>
-            <div className="flex items-center gap-1.5 text-yellow-400">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-3.5 w-3.5 fill-current stroke-0" />
-              ))}
-            </div>
+            <span className="hidden h-1 w-1 rounded-full bg-editorial-line-2 sm:block" aria-hidden />
             <div>
               <span className="font-semibold text-editorial-ink">Loved by people switching from Wispr Flow</span>
             </div>

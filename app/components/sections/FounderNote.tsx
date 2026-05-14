@@ -3,13 +3,7 @@ export default function FounderNote() {
     <section className="ed-section" id="founder">
       <div className="ed-container">
         <div className="mx-auto max-w-4xl text-center">
-          <div>
-            <h2 className="text-3xl font-semibold tracking-tight text-editorial-ink md:text-4xl">
-              A note from the founder.
-            </h2>
-          </div>
-
-          <div className="mt-10">
+          <div className="mt-2">
             <blockquote className="text-3xl font-semibold leading-tight tracking-tight text-editorial-ink md:text-5xl">
               “I built VoiceTypr because paying a monthly fee for basic dictation didn’t feel right.”
             </blockquote>
@@ -23,7 +17,7 @@ export default function FounderNote() {
             </div>
           </div>
 
-          <div className="mx-auto mt-8 flex max-w-2xl items-center gap-3 text-left">
+          <div className="mx-auto mt-8 flex w-fit items-center gap-3 text-left">
             <div className="grid h-10 w-10 place-items-center rounded-full bg-editorial-surface-2 text-sm font-medium text-editorial-ink">
               M
             </div>
