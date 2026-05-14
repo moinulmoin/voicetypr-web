@@ -155,16 +155,16 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 divide-editorial-line overflow-hidden rounded-3xl border border-editorial-line md:grid-cols-2 md:divide-x lg:grid-cols-3">
           {featureCards.map((feature) => (
             <article
               key={feature.title}
               className={cn(
-                'flex min-h-80 flex-col rounded-2xl border border-editorial-line bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md',
+                'flex min-h-80 flex-col border-b border-editorial-line bg-white p-6 transition hover:bg-editorial-surface-2',
                 feature.wide && 'lg:col-span-2',
               )}
             >
-              <div className="mb-8 inline-flex self-start rounded-md border border-editorial-line bg-editorial-surface-2 px-2.5 py-1 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+              <div className="mb-8 inline-flex self-start rounded-md bg-editorial-surface-2 px-2.5 py-1 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
                 {feature.label}
               </div>
               <div>

@@ -64,8 +64,8 @@ export default function PricingCards({
   };
 
   return (
-    <div className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6 shadow-sm">
-      <div className="grid gap-0 overflow-hidden rounded-2xl border border-editorial-line bg-white shadow-sm lg:grid-cols-2">
+    <div className="rounded-3xl bg-editorial-surface-2 p-4">
+      <div className="grid gap-0 overflow-hidden rounded-2xl bg-white lg:grid-cols-2">
         <div className="p-6 md:p-8">
           <div className="mb-5 text-sm text-editorial-ink-2">
             {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
