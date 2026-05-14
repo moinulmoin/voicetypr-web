@@ -74,6 +74,7 @@ export default function Header() {
     }, 120);
   };
 
+
   return (
     <header data-markdown-skip className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="px-4 pt-4 md:px-6">
@@ -84,24 +85,27 @@ export default function Header() {
               : "pointer-events-auto max-w-6xl px-2 py-3"
           }`}
         >
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image src="/favicon-32x32.png" alt="VoiceTypr logo" width={18} height={18} className="h-[18px] w-[18px] rounded-sm" />
+          <Link href="/" className="flex items-center gap-3">
+            <Image src="/favicon-32x32.png" alt="VoiceTypr logo" width={22} height={22} className="h-[22px] w-[22px] rounded-sm" />
             <span className="text-sm font-semibold tracking-tight text-editorial-ink">
               VoiceTypr
+            </span>
+            <span className="hidden text-xs text-editorial-ink-3 md:inline">
+              by Ideaplexa
             </span>
           </Link>
 
           <nav className="hidden items-center gap-7 text-sm text-editorial-ink-2 md:flex">
             {navLinks.slice(0, 2).map((link) => (
-              <Link
+              <a
                 key={link.section}
-                href={link.href}
+                href={`/#${link.section}`}
                 className="transition-colors hover:text-editorial-ink"
                 data-umami-event="nav-click"
                 data-umami-event-section={link.section}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
 
             <DropdownMenu open={useCasesOpen} onOpenChange={setUseCasesOpen} modal={false}>
@@ -152,15 +156,15 @@ export default function Header() {
             </DropdownMenu>
 
             {navLinks.slice(2).map((link) => (
-              <Link
+              <a
                 key={link.section}
-                href={link.href}
+                href={`/#${link.section}`}
                 className="transition-colors hover:text-editorial-ink"
                 data-umami-event="nav-click"
                 data-umami-event-section={link.section}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
 

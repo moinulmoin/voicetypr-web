@@ -15,9 +15,10 @@ const columns = [
   {
     title: 'Company',
     links: [
-      { label: 'Ideaplexa', href: 'https://ideaplexa.com' },
       { label: 'Support', href: 'mailto:support@voicetypr.com' },
+      { label: 'Ideaplexa', href: 'https://ideaplexa.com' },
       { label: 'GitHub', href: 'https://github.com/moinulmoin/voicetypr' },
+      { label: 'Affiliate', href: '/affiliate', internal: true },
     ],
   },
   {

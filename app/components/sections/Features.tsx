@@ -105,11 +105,11 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Formatting',
     title: 'Cleaner text when you want it',
-    body: 'Use your own API key for prompt, email, commit, and default cleanup presets. Turn AI formatting off to keep the workflow fully local.',
+    body: 'Use your own API key for prompt, email, and default cleanup presets. Turn AI formatting off to keep the workflow fully local.',
     demo: (
       <div className="space-y-3 rounded-xl bg-white p-4 shadow-sm">
         <div className="flex flex-wrap gap-2">
-          {['Default', 'Prompts', 'Email', 'Commit'].map((mode, index) => (
+          {['Default', 'Prompts', 'Email'].map((mode, index) => (
             <span
               key={mode}
               className={cn(
@@ -148,8 +148,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'History',
     title: 'Search, copy, export',
-    body: 'Keep previous transcripts on your machine, find them later, copy again, or export when you need a record.',
-    wide: true,
+    body: 'Keep transcripts on your machine, find them later, copy again, or export what you need.',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
         {['search history', 'copy last transcript', 'export local JSON'].map((item) => (
@@ -158,6 +157,28 @@ const featureCards: FeatureCard[] = [
             <span>local</span>
           </div>
         ))}
+      </div>
+    ),
+  },
+  {
+    label: 'Languages',
+    title: 'Work across 99+ languages',
+    body: 'Use the same workflow in English and other common languages without switching tools.',
+    demo: (
+      <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+          Popular languages
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {['English', 'Spanish', 'French', 'German', 'Italian', 'Dutch'].map((language) => (
+            <span
+              key={language}
+              className="rounded-md border border-editorial-line bg-editorial-surface-2 px-3 py-1.5 text-xs font-medium text-editorial-ink-2"
+            >
+              {language}
+            </span>
+          ))}
+        </div>
       </div>
     ),
   },
@@ -181,7 +202,7 @@ export default function Features() {
             <article
               key={feature.title}
               className={cn(
-                'flex min-h-80 flex-col border-b border-editorial-line bg-white p-6 transition hover:bg-editorial-surface-2',
+                'flex min-h-80 flex-col border-b border-editorial-line bg-white p-6',
                 feature.wide && 'lg:col-span-2',
               )}
             >

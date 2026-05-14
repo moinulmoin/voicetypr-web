@@ -53,26 +53,13 @@ const testimonials = [
 type Source = 'twitter' | 'email' | 'github';
 
 function SourceIcon({ source }: { source: Source }) {
-  const badge = 'grid h-8 w-8 place-items-center rounded-full';
   switch (source) {
     case 'github':
-      return (
-        <span className={`${badge} bg-[#f3f1ff] text-[#181717]`}>
-          <GitHub className="h-4 w-4" />
-        </span>
-      );
+      return <GitHub className="h-4 w-4 text-[#181717]" />;
     case 'twitter':
-      return (
-        <span className={`${badge} bg-[#eef6ff] text-[#111111]`}>
-          <XformerlyTwitter className="h-4 w-4" />
-        </span>
-      );
+      return <XformerlyTwitter className="h-4 w-4 text-[#111111]" />;
     case 'email':
-      return (
-        <span className={`${badge} bg-white shadow-sm ring-1 ring-editorial-line/60`}>
-          <Gmail className="h-4 w-4" />
-        </span>
-      );
+      return <Gmail className="h-4 w-4" />;
   }
 }
 

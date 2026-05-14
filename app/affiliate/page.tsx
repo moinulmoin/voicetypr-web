@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
@@ -8,13 +7,6 @@ import {
 } from "@/components/ui/accordion";
 import {
   Check,
-  Copy,
-  DollarSign,
-  Film,
-  Mail,
-  MessageSquare,
-  TrendingUp,
-  Users,
 } from "lucide-react";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
@@ -52,7 +44,7 @@ const tiers = [
     commission: "30%",
     per100: "$11.70+ per sale",
     who: "Selected creators and partners with an engaged audience",
-    how: "Ship one demo video or long-form post; we upgrade your tier for 60 days.",
+    how: "Ship one demo video or long-form post; we move you to the 30% tier.",
     highlight: false,
   },
 ];
@@ -64,24 +56,6 @@ const exampleEarnings = [
   { tier: "10 devices ($199)", commission20: "$39.80", commission30: "$59.70" },
 ];
 
-const angles = [
-  {
-    title: "Stop paying monthly for dictation",
-    body: "Wispr Flow is $12–15/mo. Aqua is $8/mo. Neither offers lifetime. VoiceTypr is pay-once, offline, cross-platform. That's the pitch.",
-  },
-  {
-    title: "Voice input for Cursor, Claude, ChatGPT",
-    body: "Hold a hotkey, speak your prompt, paste clean text anywhere. Developers and AI builders eat this demo up.",
-  },
-  {
-    title: "Offline and private by default",
-    body: "Transcription runs locally on Metal (Mac) or CPU/GPU (Windows). No audio ever leaves the machine. Resonates with privacy-first audiences.",
-  },
-  {
-    title: "Mac + Windows, same license",
-    body: "Max tier covers 4 devices across both platforms. Most competitors are Mac-only or force a separate plan per OS.",
-  },
-];
 
 const fits = [
   "AI workflow creators (Cursor, Claude, ChatGPT audiences)",
@@ -94,28 +68,6 @@ const fits = [
   "'Tools I use' content curators",
 ];
 
-const kit = [
-  {
-    icon: Film,
-    title: "Demo videos",
-    body: "30-second hero clip + 90-second walkthrough, vertical and landscape cuts, ready for YouTube Shorts, TikTok, Twitter, LinkedIn.",
-  },
-  {
-    icon: Copy,
-    title: "Screenshot + GIF pack",
-    body: "Hotkey-to-paste GIFs in Cursor, Claude, ChatGPT, Slack, and email — no production work on your end.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Tweet & thread templates",
-    body: "5 tweet hooks and 3 thread starters pre-written with your link slot. Customize voice, keep structure.",
-  },
-  {
-    icon: Mail,
-    title: "Email swipes",
-    body: "3 newsletter-ready drafts: announcement, comparison, deep-dive. Plug and send.",
-  },
-];
 
 const faqs = [
   {
@@ -128,7 +80,7 @@ const faqs = [
   },
   {
     q: "What's the cookie window?",
-    a: "60 days. If a user clicks your link and purchases within 60 days, you get credit — even if they return later through another channel.",
+    a: "14 days. If a user clicks your link and purchases within 14 days, you get credit — even if they return later through another channel.",
   },
   {
     q: "Can I use paid ads?",
@@ -136,7 +88,7 @@ const faqs = [
   },
   {
     q: "How do I get upgraded to 30%?",
-    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing VoiceTypr in actual use. Reply to your approval email with the link and we bump your commission for 60 days. Renewable on your next piece of content.",
+    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing VoiceTypr in actual use. Reply to your approval email with the link and we move you to the 30% tier.",
   },
   {
     q: "Are there higher tiers beyond 30%?",
@@ -185,7 +137,7 @@ export default function AffiliatePage() {
         <Header />
 
         {/* Hero */}
-        <section className="ed-section ed-section-hero pt-32 lg:pt-40">
+        <section className="ed-section ed-section-hero !pt-52 md:!pt-60 lg:!pt-64">
           <div className="ed-container max-w-4xl text-center">
             <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">20% standard · 30% selected partners</p>
             <h1 className="mt-4 text-[clamp(42px,6vw,68px)] font-semibold leading-[0.98] tracking-[-0.04em]">
@@ -203,70 +155,13 @@ export default function AffiliatePage() {
                 href={AFFONSO_URL}
                 event="affiliate-hero-apply-click"
               >
-                Apply on Affonso
+                Apply
               </AffiliateCta>
-              <Link
-                href="#kit"
-                className="inline-flex h-12 items-center rounded-md border border-editorial-line bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
-              >
-                See the creator kit
-              </Link>
+              {/* TODO: Restore creator-kit CTA when real kit assets exist. */}
             </div>
           </div>
         </section>
 
-        {/* Why promote VoiceTypr */}
-        <section className="ed-section">
-          <div className="ed-container max-w-5xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
-                Why this program is different
-              </h2>
-              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
-                Most affiliate programs pay pennies on low-margin subscriptions.
-                This one pays real money on a one-time product with a real audience fit.
-              </p>
-            </div>
-
-            <div className="max-w-[720px] mx-auto">
-              {[
-                {
-                  icon: DollarSign,
-                  title: "Meaningful per-sale payout",
-                  body: "$7.80 to $59.70 per conversion, depending on tier and plan. Not 5% of a $10/mo subscription that churns in a month.",
-                },
-                {
-                  icon: TrendingUp,
-                  title: "High-intent category",
-                  body: "People searching 'Wispr Flow alternative' or 'offline dictation' already know what they want. Your job is to tell them it exists.",
-                },
-                {
-                  icon: Users,
-                  title: "Audience you already have",
-                  body: "Works with Cursor, Claude, ChatGPT, Slack, email, any app. If your audience uses any of these, the demo sells itself.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="flex gap-5 py-6 border-b border-editorial-line last:border-b-0"
-                >
-                  <item.icon
-                    className="mt-0.5 h-5 w-5 shrink-0 text-editorial-ink"
-                    aria-hidden
-                  />
-                  <div>
-                    <h3 className="text-[17px] font-medium text-editorial-ink mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-[15px] leading-[1.6] text-editorial-ink-2">
-                      {item.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Commission tiers */}
         <section className="ed-section">
@@ -366,36 +261,6 @@ export default function AffiliatePage() {
           </div>
         </section>
 
-        {/* Angles that convert */}
-        <section className="ed-section">
-          <div className="ed-container max-w-5xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
-                Angles that actually convert
-              </h2>
-              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
-                Steal these. Adapt them to your voice.
-              </p>
-            </div>
-
-            <div className="max-w-[720px] mx-auto">
-              {angles.map((angle) => (
-                <div
-                  key={angle.title}
-                  className="py-6 border-b border-editorial-line last:border-b-0"
-                >
-
-                  <h3 className="text-[17px] font-medium text-editorial-ink mb-2">
-                    {angle.title}
-                  </h3>
-                  <p className="text-[15px] leading-[1.6] text-editorial-ink-2">
-                    {angle.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Who's a good fit */}
         <section className="ed-section">
@@ -425,44 +290,6 @@ export default function AffiliatePage() {
           </div>
         </section>
 
-        {/* Creator kit */}
-        <section className="ed-section" id="kit">
-          <div className="ed-container max-w-5xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
-                Creator kit
-              </h2>
-              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
-                Delivered to approved affiliates on day one. You don&apos;t produce
-                anything from scratch.
-              </p>
-            </div>
-            <div className="max-w-[720px] mx-auto">
-              {kit.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.title}
-                    className="flex gap-4 py-5 border-b border-editorial-line last:border-b-0"
-                  >
-                    <Icon
-                      className="mt-0.5 h-5 w-5 shrink-0 text-editorial-ink"
-                      aria-hidden
-                    />
-                    <div>
-                      <h3 className="text-[17px] font-medium text-editorial-ink mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-[15px] leading-[1.6] text-editorial-ink-2">
-                        {item.body}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
 
         {/* FAQ */}
         <section className="ed-section" id="affiliate-faq">
@@ -498,14 +325,14 @@ export default function AffiliatePage() {
               Ready to promote?
             </h2>
             <p className="mx-auto mb-8 text-[17px] text-editorial-ink-2 leading-[1.6]">
-              Sign up on Affonso in 60 seconds. Get your link, grab the kit,
-              start earning 20% on every sale.
+              Sign up in 60 seconds. Get your link and start earning 20% on
+              every sale.
             </p>
             <AffiliateCta
               href={AFFONSO_URL}
               event="affiliate-final-apply-click"
             >
-              Apply on Affonso
+              Apply
             </AffiliateCta>
             <p className="mt-6 text-[13px] text-editorial-ink-3">
               Questions?{" "}
