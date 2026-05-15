@@ -9,7 +9,7 @@ import { CONFIG } from "@/lib/constants";
 import { prisma } from "@/lib/db";
 import { trialCheckRequestSchema } from "@/lib/types";
 import { NextRequest } from "next/server";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/generated/prisma/client";
 
 export async function POST(request: NextRequest) {
   try {
