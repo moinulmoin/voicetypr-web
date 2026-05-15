@@ -322,31 +322,35 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         {/* Final CTA */}
         <section className="ed-section">
           <div className="ed-container">
-            <div className="bg-editorial-surface-2 px-6 py-10 text-center md:px-10 md:py-12">
-              <div className="mb-4 flex justify-center">
-                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">{useCase.finalCta.eyebrow}</span>
-              </div>
-              <h2 className="mx-auto mb-5 max-w-4xl text-[clamp(42px,5.8vw,72px)] font-bold leading-[1.02] tracking-[-0.02em]">
-                <HeadlineWithAccent text={useCase.finalCta.headline} />
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-editorial-ink-2">
-                {useCase.finalCta.body}
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href="/download"
-                  data-track="use-case-final-cta-click"
-                  data-track-slug={useCase.slug}
-                  className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-                >
-                  Download VoiceTypr
-                </Link>
-                <Link
-                  href="/#pricing"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface active:scale-95"
-                >
-                  Buy lifetime license
-                </Link>
+            <div className="relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+              <div className="relative">
+                <div className="mb-4 flex justify-center">
+                  <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-white/55">{useCase.finalCta.eyebrow}</span>
+                </div>
+                <h2 className="mx-auto mb-5 max-w-4xl text-[clamp(42px,5.8vw,72px)] font-bold leading-[1.02] tracking-[-0.02em] !text-white">
+                  <HeadlineWithAccent text={useCase.finalCta.headline} />
+                </h2>
+                <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
+                  {useCase.finalCta.body}
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    data-track="use-case-final-cta-click"
+                    data-track-slug={useCase.slug}
+                    className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  >
+                    Download VoiceTypr
+                  </Link>
+                  <Link
+                    href="/#pricing"
+                    className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
