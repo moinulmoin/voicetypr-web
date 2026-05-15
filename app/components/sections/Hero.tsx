@@ -30,8 +30,7 @@ export default function HeroSection() {
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-5xl text-5xl font-extrabold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-            Type by{" "}
-            <em>talking</em>
+            Type <em>by talking</em>
             <br />
             in every app you use
           </h1>

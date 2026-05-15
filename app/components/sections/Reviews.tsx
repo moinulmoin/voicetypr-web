@@ -1,3 +1,4 @@
+import Avatar from 'boring-avatars';
 import { Gmail, XformerlyTwitter, GitHub } from '@/components/icons';
 
 const testimonials = [
@@ -68,6 +69,8 @@ function sourceLabel(source: Source) {
   if (source === 'github') return 'GitHub';
   return 'Email';
 }
+const avatarColors = ['#E8DFD2', '#D8CDBD', '#D4965D', '#8B857B', '#18181A'] as const;
+
 
 export default function Reviews() {
   return (
@@ -86,7 +89,7 @@ export default function Reviews() {
           {testimonials.map((t) => (
             <article
               key={t.id}
-              className="relative mb-4 break-inside-avoid border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur"
+              className="relative mb-4 break-inside-avoid rounded-2xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur"
             >
               <div className="absolute right-5 top-5" aria-label={sourceLabel(t.source)} title={sourceLabel(t.source)}>
                 <SourceIcon source={t.source} />
@@ -96,8 +99,13 @@ export default function Reviews() {
               </blockquote>
 
               <div className="mt-8 flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-full bg-white text-xs font-medium text-editorial-ink-2">
-                  {t.author.avatar}
+                <div className="overflow-hidden rounded-full ring-1 ring-editorial-line">
+                  <Avatar
+                    size={40}
+                    name={`${t.author.name}-${t.author.handle}`}
+                    variant="beam"
+                    colors={[...avatarColors]}
+                  />
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-editorial-ink">{t.author.name}</div>
