@@ -2,6 +2,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { GitHub, Gmail, XformerlyTwitter } from '@/components/icons';
 
+const resourceLinks = [
+  { label: 'Windows voice typing', href: '/best/windows-voice-typing' },
+  { label: 'Offline dictation for Windows', href: '/offline-dictation-app-for-windows' },
+  { label: 'Accessible dictation', href: '/best/accessible-dictation' },
+  { label: 'Carpal tunnel voice typing', href: '/use-cases/carpal-tunnel' },
+  { label: 'RSI voice typing', href: '/use-cases/rsi' },
+] as const;
+
 const columns = [
   {
     title: 'Product',
@@ -9,11 +17,13 @@ const columns = [
       { label: 'Download', href: '/download', internal: true },
       { label: 'Pricing', href: '/#pricing', internal: true },
       { label: 'Use cases', href: '/use-cases', internal: true },
-      { label: 'Windows dictation', href: '/offline-dictation-app-for-windows', internal: true },
-      { label: 'Accessible dictation', href: '/best/accessible-dictation', internal: true },
       { label: 'Voice typing', href: '/voice-typing', internal: true },
       { label: 'Changelog', href: '/changelog', internal: true },
     ],
+  },
+  {
+    title: 'Guides',
+    links: resourceLinks.map((link) => ({ ...link, internal: true })),
   },
   {
     title: 'Company',
@@ -44,7 +54,7 @@ export default function Footer() {
   return (
     <footer data-markdown-skip className="bg-editorial-bg py-14">
       <div className="ed-container">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
           <div>
             <Link href="/" className="text-2xl font-semibold tracking-tight text-editorial-ink">
               VoiceTypr
@@ -85,6 +95,7 @@ export default function Footer() {
             </a>
           </div>
 
+
           {columns.map((column) => (
             <div key={column.title}>
               <h5 className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
@@ -121,7 +132,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col justify-between gap-2 text-xs text-editorial-ink-3 md:flex-row">
+        <div className="mt-10 flex flex-col justify-between gap-2 border-t border-editorial-line pt-5 text-xs text-editorial-ink-3 md:flex-row md:items-center">
           <span>© 2026 VoiceTypr</span>
           <span>Offline voice-to-text for macOS & Windows</span>
         </div>

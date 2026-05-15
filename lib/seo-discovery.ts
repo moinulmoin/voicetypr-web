@@ -6,84 +6,6 @@ export type DiscoveryLink = {
   ctaLabel: string;
 };
 
-export type ProofTrack = {
-  eyebrow: string;
-  title: string;
-  body: string;
-  bullets: string[];
-  href: string;
-  linkLabel: string;
-  quote?: string;
-  quoteAttribution?: string;
-};
-
-export const homepageDiscoveryLinks: DiscoveryLink[] = [
-  {
-    href: '/best/windows-voice-typing',
-    eyebrow: 'windows',
-    title: 'Windows voice typing',
-    description:
-      'The straight answer for people comparing built-in Windows dictation, Dragon, and newer local tools.',
-    ctaLabel: 'See the Windows guide',
-  },
-  {
-    href: '/offline-dictation-app-for-windows',
-    eyebrow: 'private by default',
-    title: 'Offline dictation for Windows',
-    description:
-      'For people who want raw audio to stay on their own machine during transcription.',
-    ctaLabel: 'See the offline page',
-  },
-  {
-    href: '/best/accessible-dictation',
-    eyebrow: 'type less',
-    title: 'Accessible dictation',
-    description:
-      'A cleaner path for people dealing with typing pain, fatigue, dyslexia, ADHD, or motor friction.',
-    ctaLabel: 'See the accessibility guide',
-  },
-  {
-    href: '/use-cases/carpal-tunnel',
-    eyebrow: 'typing load',
-    title: 'Carpal tunnel and hand pain',
-    description:
-      'For people who need to reduce typing load because hands, wrists, or energy are the bottleneck.',
-    ctaLabel: 'See the use case',
-  },
-];
-
-export const homepageProofTracks: ProofTrack[] = [
-  {
-    eyebrow: 'for Windows',
-    title: 'Windows support should feel real, not bolted on',
-    body:
-      'VoiceTypr is built for Windows users who need dictation in real desktop work: Word, Outlook, browsers, coding tools, support queues, and normal text fields.',
-    bullets: [
-      'Windows 10+ support is first-class, not a side note',
-      'Works in Cursor, VS Code, Word, Gmail, Slack, and normal text fields',
-      'Local transcription matters when prompts, work notes, and customer replies are private',
-    ],
-    href: '/best/windows-voice-typing',
-    linkLabel: 'Read the Windows guide',
-    quote:
-      'I needed something that works on both Mac and Windows. One payment, no ongoing costs, exactly what I was looking for.',
-    quoteAttribution: 'Catherine E. · switched from Wispr Flow',
-  },
-  {
-    eyebrow: 'for typing pain',
-    title: 'When typing is the problem, the promise is simpler: type less',
-    body:
-      'People dealing with RSI, carpal tunnel, dyslexia, ADHD, fatigue, or motor challenges need fewer keystrokes, less friction, and a tool that works in the apps they already use.',
-    bullets: [
-      'VoiceTypr is for turning speech into text, not forcing a new writing app',
-      'The cursor is the integration, which matters more than a fancy editor',
-      'Pay-once pricing makes the tool easier to keep around',
-    ],
-    href: '/best/accessible-dictation',
-    linkLabel: 'Read the accessibility guide',
-  },
-];
-
 const relatedGuidesBySlug: Record<string, DiscoveryLink[]> = {
   'mac-dictation': [
     {
@@ -289,24 +211,8 @@ const relatedGuidesBySlug: Record<string, DiscoveryLink[]> = {
   ],
 };
 
-const proofTracksBySlug: Record<string, ProofTrack[]> = {
-  'windows-dictation': [homepageProofTracks[0]!],
-  'windows-voice-typing': [homepageProofTracks[0]!],
-  'windows-speech-to-text': [homepageProofTracks[0]!, homepageProofTracks[1]!],
-  'accessible-dictation': [homepageProofTracks[1]!],
-  'offline-dictation': [homepageProofTracks[0]!, homepageProofTracks[1]!],
-  dragon: [homepageProofTracks[0]!],
-  'windows-speech-recognition': [homepageProofTracks[0]!],
-  superwhisper: [homepageProofTracks[0]!],
-  'wispr-flow': [homepageProofTracks[0]!],
-};
-
 export function getRelatedGuidesForSeoSlug(slug: string): DiscoveryLink[] {
   return relatedGuidesBySlug[slug] ?? [];
-}
-
-export function getProofTracksForSeoSlug(slug: string): ProofTrack[] {
-  return proofTracksBySlug[slug] ?? [];
 }
 
 const relatedGuidesByUseCaseSlug: Record<string, DiscoveryLink[]> = {
@@ -472,8 +378,6 @@ export const downloadDiscoveryLinks: DiscoveryLink[] = [
     ctaLabel: 'See the use case',
   },
 ];
-
-export const downloadProofTracks: ProofTrack[] = homepageProofTracks;
 
 export const offlineWindowsRelatedGuides: DiscoveryLink[] = [
   {

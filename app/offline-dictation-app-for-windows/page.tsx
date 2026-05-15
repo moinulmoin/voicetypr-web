@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import ProofTracksSection from "@/app/components/ProofTracksSection";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
-import { homepageProofTracks, offlineWindowsRelatedGuides } from "@/lib/seo-discovery";
+import { offlineWindowsRelatedGuides } from "@/lib/seo-discovery";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
@@ -123,13 +122,6 @@ export default function OfflineDictationForWindowsPage() {
         dataTrackPrefix="offline-windows-related-guides"
       />
 
-      <ProofTracksSection
-        eyebrow="what reassures this buyer"
-        title="Windows trust and accessibility trust are different jobs"
-        description="One buyer wants proof that the desktop workflow is real. The other wants proof that the tool will reduce typing load without trapping them in a new editor."
-        tracks={homepageProofTracks}
-        dataTrackPrefix="offline-windows-proof"
-      />
       <Footer />
     </main>
   );

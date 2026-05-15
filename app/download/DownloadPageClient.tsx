@@ -4,13 +4,12 @@ import { ReleaseAssets } from "@/app/lib/github";
 import FAQ from "@/app/components/sections/FAQ";
 import PricingCards from "@/components/PricingCards";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { downloadDiscoveryLinks, downloadProofTracks } from "@/lib/seo-discovery";
+import { downloadDiscoveryLinks } from "@/lib/seo-discovery";
 import { ArrowRight } from "lucide-react";
 import { useMemo, useState, type ReactElement } from "react";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
 import EmailCaptureModal from "../components/EmailCaptureModal";
-import ProofTracksSection from "../components/ProofTracksSection";
 import RelatedGuidesSection from "../components/RelatedGuidesSection";
 
 // Apple icon component
@@ -266,14 +265,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
         description="Windows buyers, privacy buyers, and accessibility buyers usually want different proof before they install. These pages meet them where they already are."
         links={downloadDiscoveryLinks}
         dataTrackPrefix="download-related-guides"
-      />
-
-      <ProofTracksSection
-        eyebrow="before they click install"
-        title="The trust copy that closes the Windows and accessibility gap"
-        description="This is the stuff buyers look for when they are deciding whether to give the app a real try or bounce back to built-in tools."
-        tracks={downloadProofTracks}
-        dataTrackPrefix="download-proof"
       />
 
       {/* Pricing */}

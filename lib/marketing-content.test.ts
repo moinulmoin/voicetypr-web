@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { homepageDiscoveryLinks, homepageProofTracks } from './seo-discovery';
+import { downloadDiscoveryLinks, offlineWindowsRelatedGuides, voiceTypingRelatedGuides } from './seo-discovery';
 import { seoPages } from './seo-pages';
 import { getAllUseCases } from './use-cases';
 
@@ -9,8 +9,9 @@ const repoRoot = process.cwd();
 
 function flattenMarketingCopy(): string {
   return JSON.stringify({
-    homepageDiscoveryLinks,
-    homepageProofTracks,
+    downloadDiscoveryLinks,
+    offlineWindowsRelatedGuides,
+    voiceTypingRelatedGuides,
     seoPages,
     useCases: getAllUseCases(),
   });
