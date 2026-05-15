@@ -89,14 +89,16 @@ export default function OfflineDictationForWindowsPage() {
               Windows dictation is still underserved.
             </h2>
           </div>
-          <ul className="space-y-4">
-            {benefits.map((benefit) => (
-              <li key={benefit} className="flex gap-3 text-[16px] leading-[1.6] text-editorial-ink-2">
-                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" aria-hidden />
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="rounded-2xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
+            <ul className="space-y-4">
+              {benefits.map((benefit) => (
+                <li key={benefit} className="flex gap-3 text-[16px] leading-[1.6] text-editorial-ink-2">
+                  <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" aria-hidden />
+                  <span>{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -105,7 +107,7 @@ export default function OfflineDictationForWindowsPage() {
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">common workflows</p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {workflows.map(([title, body]) => (
-              <article key={title} className="rounded-xl bg-editorial-surface-2 p-6">
+              <article key={title} className="rounded-2xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
                 <h3 className="text-[18px] font-medium text-editorial-ink">{title}</h3>
                 <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">{body}</p>
               </article>

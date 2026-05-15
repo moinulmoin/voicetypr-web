@@ -151,7 +151,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       <Header />
 
       {/* Hero */}
-      <section className="ed-section ed-section-hero !pt-[160px] pb-0 md:!pt-[200px]">
+      <section className="ed-section ed-section-hero !pt-[120px] pb-0 md:!pt-[140px]">
         <div className="ed-container text-center">
           <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
             Download
@@ -168,14 +168,14 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
             <span>macOS 13+</span>
             <span>Windows 10+</span>
-            <span>Local transcription</span>
+            <span>Local transcription by default</span>
           </div>
         </div>
       </section>
 
       {/* Platform Selection */}
       <section className="ed-section">
-        <div className="ed-container max-w-[720px]">
+        <div className="ed-container max-w-[860px]">
           <div className={`grid gap-4 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
             {options.map((option) => {
               const isSelected = selectedPlatform === option.id;
@@ -183,33 +183,35 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                 <button
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
-                  className={`relative text-left rounded-xl border p-5 [transition:border-color_180ms,background-color_180ms] ${
+                  className={`relative rounded-2xl border p-6 text-left [transition:border-color_180ms,background-color_180ms,transform_180ms] ${
                     isSelected
-                      ? 'bg-white border-editorial-ink'
-                      : 'bg-editorial-surface border-editorial-line hover:border-editorial-ink-3'
+                      ? 'border-editorial-ink bg-white/90 shadow-sm backdrop-blur'
+                      : 'border-editorial-line bg-white/72 backdrop-blur hover:-translate-y-0.5 hover:border-editorial-ink-3'
                   }`}
                   data-track="download-platform-select"
                   data-track-platform={option.platform}
                 >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="mb-4 grid h-11 w-11 place-items-center rounded-lg bg-editorial-surface-2 text-editorial-ink">
+                  <div className="flex flex-col gap-5">
+                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-editorial-surface-2 text-editorial-ink">
                       <option.icon />
                     </div>
-
-                    <h3 className="text-[15px] font-semibold mb-1.5">
-                      {option.name}
-                    </h3>
-
-                    <p className="text-[12.5px] text-editorial-ink-3">
-                      {option.description}
-                    </p>
+                    <div>
+                      <h3 className="text-[16px] font-semibold text-editorial-ink">
+                        {option.name}
+                      </h3>
+                      <p className="mt-1 text-[13px] text-editorial-ink-3">
+                        {option.description}
+                      </p>
+                    </div>
+                    <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
+                      {isSelected ? 'selected' : 'available'}
+                    </div>
                   </div>
                 </button>
               );
             })}
           </div>
 
-          {/* Download Button */}
           {selectedPlatform && (
             <div className="mt-10 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
               <button
@@ -229,18 +231,23 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       {selectedPlatform && (
         <section className="ed-section pt-0">
           <div className="ed-container max-w-[900px]">
-            <div className="rounded-2xl border border-editorial-line bg-editorial-surface px-6 py-8 sm:px-8 sm:py-10">
-              <h2 className="text-[clamp(28px,3vw,38px)] leading-[1.06] tracking-[-0.03em] text-center">
-                Install in three steps
-              </h2>
-              <div className="mt-8 grid md:grid-cols-3 gap-6">
+            <div className="rounded-[28px] border border-editorial-line bg-white/80 px-6 py-8 shadow-sm backdrop-blur sm:px-8 sm:py-10">
+              <div className="mx-auto max-w-xl text-center">
+                <h2 className="text-[clamp(28px,3vw,38px)] leading-[1.06] tracking-[-0.03em]">
+                  Install in three steps
+                </h2>
+                <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">
+                  Pick the build, run the installer, and start dictating in the app you already use.
+                </p>
+              </div>
+              <div className="mt-8 grid gap-4 md:grid-cols-3">
                 {installationSteps.map((step, index) => (
-                  <div key={step.step} className="relative">
+                  <div key={step.step} className="relative rounded-2xl bg-editorial-surface-2 p-5">
                     <div className="text-center">
                       <div className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full bg-editorial-ink text-sm font-semibold text-white">
                         {step.step}
                       </div>
-                      <h3 className="text-[15px] font-semibold text-editorial-ink mb-1">
+                      <h3 className="mb-1 text-[15px] font-semibold text-editorial-ink">
                         {step.title}
                       </h3>
                       <p className="text-[14px] text-editorial-ink-2">

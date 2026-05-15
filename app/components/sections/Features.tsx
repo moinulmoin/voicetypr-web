@@ -44,8 +44,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Privacy',
-    title: 'Audio stays local',
-    body: 'Whisper and Parakeet models run on your machine. Optional AI cleanup sends text only when you choose it.',
+    title: 'Local transcription by default',
+    body: 'Whisper and Parakeet run on your machine by default. Optional AI cleanup sends text only when you choose it.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[

@@ -20,7 +20,7 @@ export default function Outcomes() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 items-start gap-4 lg:grid-cols-3">
           <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur lg:col-span-2">
             <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
               Prompt at speaking speed
@@ -57,8 +57,8 @@ export default function Outcomes() {
                 </div>
               </div>
             </div>
-          </article>
 
+          </article>
           <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
             <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
               Every text field works
@@ -78,35 +78,43 @@ export default function Outcomes() {
 
           <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
-              Offline by default
+              Local by default
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-              Audio transcription runs locally. Voice data stays on your machine.
+              Raw transcription runs on your machine by default. Optional AI cleanup uses text only when you enable it.
             </p>
-            <div className="mt-6 rounded-xl bg-white p-4 text-sm">
-              <div className="flex justify-between border-b border-editorial-line pb-3">
-                <span>Audio uploaded</span>
-                <strong>0 bytes</strong>
+            <div className="mt-6 rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-sm">
+              <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                privacy check
               </div>
-              <div className="flex justify-between pt-3">
-                <span>Mode</span>
-                <strong>Local</strong>
+              <div className="rounded-xl bg-white px-4 py-1">
+                <div className="flex justify-between border-b border-editorial-line py-3">
+                  <span>Audio uploaded</span>
+                  <strong>0 bytes</strong>
+                </div>
+                <div className="flex justify-between py-3">
+                  <span>Mode</span>
+                  <strong>Local</strong>
+                </div>
               </div>
             </div>
           </article>
 
-          <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur lg:col-span-2">
+          <article className="rounded-3xl border border-editorial-line bg-white/80 px-6 py-5 shadow-sm backdrop-blur lg:col-span-2">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
               Fewer half-written thoughts
             </h3>
-            <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-editorial-ink-2">
               Less typing friction, fewer abandoned drafts, and cleaner output while the idea is still fresh.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-5 flex flex-wrap gap-2.5">
               {workflowChips.map((chip) => (
-                <span key={chip} className="rounded-full bg-white px-3 py-1.5 text-sm font-medium text-editorial-ink-2">
+                <div
+                  key={chip}
+                  className="rounded-full border border-editorial-line bg-editorial-surface-2 px-4 py-2 text-sm font-medium text-editorial-ink-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]"
+                >
                   {chip}
-                </span>
+                </div>
               ))}
             </div>
           </article>

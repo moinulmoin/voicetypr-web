@@ -74,7 +74,7 @@ export default async function AlternativePage({
 
               <section className="mb-12">
                 <div className="mb-5 text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                  The comparison
+                  The replacement path
                 </div>
                 <div className="overflow-hidden rounded-2xl border border-editorial-line bg-white/82 shadow-sm backdrop-blur">
                   <div className="overflow-x-auto p-1.5">
@@ -134,7 +134,7 @@ export default async function AlternativePage({
 
               <section className="mb-12">
                 <div className="mb-5 text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                  Why users switch
+                  What gets better after you switch
                 </div>
                 <ul className="space-y-3.5">
                   {page.whySwitch.map((reason, i) => (

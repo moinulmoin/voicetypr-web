@@ -107,22 +107,30 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step) => (
-            <article key={step.label} className="flex min-h-96 flex-col rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
-              <div className="mb-5 inline-flex h-9 items-center gap-2 self-start rounded-full bg-white px-3 text-sm font-medium text-editorial-ink-3 shadow-sm">
-                <span className="text-editorial-ink">{step.icon}</span>
-                {step.label}
-              </div>
-              <h3 className="text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-                {step.body}
-              </p>
-              <div className="mt-auto pt-8">{step.artifact}</div>
-            </article>
-          ))}
+        <div className="relative mt-12">
+          <div className="absolute left-10 right-10 top-4 hidden h-px bg-editorial-line lg:block" />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+            {steps.map((step, index) => (
+              <article
+                key={step.label}
+                className={`flex min-h-96 flex-col rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur lg:relative ${
+                  index % 2 === 0 ? 'lg:translate-y-4' : 'lg:-translate-y-4'
+                }`}
+              >
+                <div className="relative z-10 mb-5 inline-flex h-9 items-center gap-2 self-start rounded-full bg-white px-3 text-sm font-medium text-editorial-ink-3 shadow-sm">
+                  <span className="text-editorial-ink">{step.icon}</span>
+                  {step.label}
+                </div>
+                <h3 className="text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+                  {step.body}
+                </p>
+                <div className="mt-auto pt-8">{step.artifact}</div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
