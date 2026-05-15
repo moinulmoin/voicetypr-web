@@ -21,7 +21,7 @@ export default function Outcomes() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
-          <article className="rounded-3xl bg-editorial-surface-2 p-6 lg:col-span-2">
+          <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur lg:col-span-2">
             <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
               Prompt at speaking speed
             </h3>
@@ -59,7 +59,7 @@ export default function Outcomes() {
             </div>
           </article>
 
-          <article className="rounded-3xl bg-editorial-surface-2 p-6">
+          <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
             <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
               Every text field works
             </h3>
@@ -76,7 +76,7 @@ export default function Outcomes() {
             </div>
           </article>
 
-          <article className="rounded-3xl bg-editorial-surface-2 p-6">
+          <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
               Offline by default
             </h3>
@@ -95,7 +95,7 @@ export default function Outcomes() {
             </div>
           </article>
 
-          <article className="rounded-3xl bg-editorial-surface-2 p-6 lg:col-span-2">
+          <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur lg:col-span-2">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
               Fewer half-written thoughts
             </h3>

@@ -1,6 +1,6 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/help";
-import { seoPages, alternativePages } from "@/lib/seo-pages";
+import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -105,6 +105,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  const aiReadableRoutes: MetadataRoute.Sitemap = [
+    "/llms.txt",
+    "/pricing.md",
+    "/accessibility.md",
+    "/windows-dictation.md",
+  ].map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.65,
+  }));
 
   const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().map((useCase) => ({
     url: `${baseUrl}/use-cases/${useCase.slug}`,
@@ -120,6 +131,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
     priority: 0.6,
   }));
+
   const bestRoutes: MetadataRoute.Sitemap = seoPages.map((page) => ({
     url: `${baseUrl}/best/${page.slug}`,
     lastModified: new Date(),
@@ -136,5 +148,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65,
     }));
 
-  return [...staticRoutes, ...useCaseRoutes, ...helpRoutes, ...bestRoutes, ...alternativeRoutes];
+  return [
+    ...staticRoutes,
+    ...aiReadableRoutes,
+    ...useCaseRoutes,
+    ...helpRoutes,
+    ...bestRoutes,
+    ...alternativeRoutes,
+  ];
 }

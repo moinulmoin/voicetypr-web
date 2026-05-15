@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProofTracksSection from "@/app/components/ProofTracksSection";
+import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
+import { getProofTracksForSeoSlug, getRelatedGuidesForSeoSlug } from "@/lib/seo-discovery";
 import { getSeoPageBySlug, seoPages } from "@/lib/seo-pages";
 
 export async function generateStaticParams() {
@@ -48,6 +51,8 @@ export default async function BestPage({
   const { slug } = await params;
   const page = getSeoPageBySlug(slug);
   if (!page) return notFound();
+  const relatedGuides = getRelatedGuidesForSeoSlug(slug);
+  const proofTracks = getProofTracksForSeoSlug(slug);
 
   return (
     <div className="landing-editorial min-h-screen">
@@ -142,6 +147,32 @@ export default async function BestPage({
                 ))}
               </ul>
             </section>
+
+            {proofTracks.length > 0 ? (
+              <div className="mb-12">
+                <ProofTracksSection
+                  eyebrow="before they switch"
+                  title="The proof this buyer usually needs"
+                  description="Some buyers are comparing features. Others are really checking for platform support, privacy, or whether this will reduce typing friction in real work."
+                  tracks={proofTracks}
+                  dataTrackPrefix="best-proof"
+                  embedded
+                />
+              </div>
+            ) : null}
+
+            {relatedGuides.length > 0 ? (
+              <div className="mb-12">
+                <RelatedGuidesSection
+                  eyebrow="keep going"
+                  title="Related guides worth opening next"
+                  description="These pages catch the adjacent searches people usually make before they decide what to download."
+                  links={relatedGuides}
+                  dataTrackPrefix="best-related-guides"
+                  embedded
+                />
+              </div>
+            ) : null}
 
             <section className="rounded-xl bg-editorial-surface-2 px-6 py-8 md:px-8">
               <h2 className="max-w-2xl text-[30px] font-semibold leading-[1.1] tracking-[-0.03em] md:text-[36px]">

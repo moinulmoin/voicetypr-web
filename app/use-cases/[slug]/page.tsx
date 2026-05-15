@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Header from "@/app/components/sections/Header";
 import Footer from "@/app/components/sections/Footer";
+import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
+import Header from "@/app/components/sections/Header";
+import { getRelatedGuidesForUseCase } from "@/lib/seo-discovery";
 import {
   getAllUseCaseSlugs,
   getUseCase,
@@ -86,6 +88,8 @@ export default async function UseCasePage({ params }: PageProps) {
 }
 
 function UseCaseView({ useCase }: { useCase: UseCase }) {
+  const relatedGuides = getRelatedGuidesForUseCase(useCase.slug);
+
   return (
     <>
       <main
@@ -288,6 +292,32 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
             </div>
           </div>
         </section>
+
+        {useCase.category === "accessibility" ? (
+          <section className="ed-section !py-0">
+            <div className="ed-container">
+              <div className="max-w-3xl rounded-2xl border border-editorial-line bg-white p-5 text-sm leading-relaxed text-editorial-ink-2">
+                VoiceTypr is productivity software, not medical software. It can help reduce typing load, but it does not diagnose, treat, or prevent any condition. Follow medical and ergonomic guidance for your own situation.
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {/* Related guides */}
+        {relatedGuides.length > 0 ? (
+          <section className="ed-section">
+            <div className="ed-container">
+              <RelatedGuidesSection
+                eyebrow="related pages"
+                title="If this is your problem, these pages usually matter too"
+                description="You might be comparing Windows tools, looking for a Dragon alternative, or trying to reduce typing load for a specific reason. These pages keep the path clear."
+                links={relatedGuides}
+                dataTrackPrefix="use-case-related-guides"
+                embedded
+              />
+            </div>
+          </section>
+        ) : null}
 
         {/* Final CTA */}
         <section className="ed-section">

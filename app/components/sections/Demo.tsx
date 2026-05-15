@@ -1,9 +1,10 @@
 export default function Demo() {
   return (
-    <section className="ed-section !pt-0 !pb-16">
+    <section className="ed-section relative z-10 !pt-2 !pb-16 md:!-mt-2">
       <div className="ed-container">
-        <div className="mx-auto max-w-5xl">
-          <div className="relative overflow-hidden rounded-3xl border border-editorial-line bg-white p-3 shadow-xl md:p-4">
+        <div className="relative mx-auto max-w-5xl">
+          <div className="pointer-events-none absolute -inset-x-8 -inset-y-6 rounded-[2.5rem] bg-[radial-gradient(ellipse_at_center,rgba(212,150,93,0.18),transparent_68%)] blur-2xl" />
+          <div className="relative overflow-hidden rounded-3xl border border-editorial-line bg-white/86 p-3 shadow-[0_30px_90px_rgba(78,61,41,0.18)] backdrop-blur md:p-4">
             <div className="relative aspect-video overflow-hidden rounded-2xl bg-editorial-surface-2">
               <video
                 controls
@@ -21,7 +22,6 @@ export default function Demo() {
               </video>
             </div>
           </div>
-
           <p className="mt-5 text-center text-sm text-editorial-ink-3">
             Want the full walkthrough?{" "}
             <a

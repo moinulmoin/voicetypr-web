@@ -1,6 +1,13 @@
+const iconClass = 'h-4 w-4';
+
 const steps = [
   {
     label: '01',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass}>
+        <path fill="currentColor" d="M11 3h2v9.17l3.59-3.58L18 10l-6 6-6-6 1.41-1.41L11 12.17V3Zm-6 14h2v2h10v-2h2v4H5v-4Z" />
+      </svg>
+    ),
     title: 'Install VoiceTypr',
     body: 'Download the Mac or Windows app. Apple Silicon, Intel, and Windows 10+ are supported.',
     artifact: (
@@ -18,6 +25,11 @@ const steps = [
   },
   {
     label: '02',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass}>
+        <path fill="currentColor" d="M9 3h6v2h2a2 2 0 0 1 2 2v2h2v2h-2v2h2v2h-2v2a2 2 0 0 1-2 2h-2v2h-2v-2h-2v2H9v-2H7a2 2 0 0 1-2-2v-2H3v-2h2v-2H3V9h2V7a2 2 0 0 1 2-2h2V3Zm-2 4v10h10V7H7Zm3 3h4v4h-4v-4Z" />
+      </svg>
+    ),
     title: 'Pick a model',
     body: 'Choose speed, accuracy, or Apple Silicon performance. You can switch per session.',
     artifact: (
@@ -42,6 +54,11 @@ const steps = [
   },
   {
     label: '03',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass}>
+        <path fill="currentColor" d="M5 6h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2v8h14V8H5Zm2 2h2v2H7v-2Zm3 0h2v2h-2v-2Zm3 0h2v2h-2v-2Zm3 0h1v2h-1v-2Zm-9 4h10v1H7v-1Z" />
+      </svg>
+    ),
     title: 'Set a hotkey',
     body: 'Toggle or push-to-talk. It works globally in any app, any text field, any time.',
     artifact: (
@@ -59,6 +76,11 @@ const steps = [
   },
   {
     label: '04',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass}>
+        <path fill="currentColor" d="M5 4h14v2H5V4Zm0 4h9v2H5V8Zm0 4h7v2H5v-2Zm10.3 1.1 4.95 2.28-2.2 1.08 2.03 3.02-1.66 1.12-2.03-3.02-1.75 1.7.66-6.18Z" />
+      </svg>
+    ),
     title: 'Speak and paste',
     body: 'Hold the key, talk, release. Clean text lands wherever your cursor already is.',
     artifact: (
@@ -87,8 +109,9 @@ export default function HowItWorks() {
 
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
-            <article key={step.label} className="flex min-h-96 flex-col rounded-3xl bg-editorial-surface-2 p-6">
-              <div className="mb-5 inline-flex h-8 w-12 items-center justify-center rounded-full bg-white text-sm font-medium text-editorial-ink-3">
+            <article key={step.label} className="flex min-h-96 flex-col rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
+              <div className="mb-5 inline-flex h-9 items-center gap-2 self-start rounded-full bg-white px-3 text-sm font-medium text-editorial-ink-3 shadow-sm">
+                <span className="text-editorial-ink">{step.icon}</span>
                 {step.label}
               </div>
               <h3 className="text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">

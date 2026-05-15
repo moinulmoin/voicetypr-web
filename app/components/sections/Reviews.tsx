@@ -86,7 +86,7 @@ export default function Reviews() {
           {testimonials.map((t) => (
             <article
               key={t.id}
-              className="relative mb-4 break-inside-avoid bg-editorial-surface-2 p-6"
+              className="relative mb-4 break-inside-avoid border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur"
             >
               <div className="absolute right-5 top-5" aria-label={sourceLabel(t.source)} title={sourceLabel(t.source)}>
                 <SourceIcon source={t.source} />

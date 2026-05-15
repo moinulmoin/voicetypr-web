@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import ProofTracksSection from "@/app/components/ProofTracksSection";
+import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
+import { homepageProofTracks, offlineWindowsRelatedGuides } from "@/lib/seo-discovery";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
@@ -37,16 +40,16 @@ export const metadata: Metadata = {
 };
 
 const benefits = [
-  "Runs transcription locally instead of depending on a browser tab or cloud service.",
-  "Works in Cursor, VS Code, Claude, ChatGPT, Slack, Gmail, Notion, Linear, and any normal text field.",
+  "Runs raw transcription locally after setup/model download instead of depending on a browser tab or cloud transcription service.",
+  "Works in Word, Outlook, Edge, Chrome, Gmail, Google Docs, Cursor, VS Code, Claude, ChatGPT, Slack, Notion, and normal text fields.",
   "Pay once from $39; device-count options cover 1, 2, 4, or 10 machines.",
-  "Designed for the Windows users most Mac-first dictation tools ignore.",
+  "Designed for Windows users who need a real desktop workflow, not a Mac-first tool with Windows as an afterthought.",
 ] as const;
 
 const workflows = [
+  ["Word, Outlook, and browser forms", "Dictate long replies, reports, forms, and everyday office writing without moving everything into a separate dictation editor."],
   ["Cursor and VS Code", "Dictate prompts, bug notes, PR descriptions, commit context, and code comments without leaving the editor."],
-  ["Email and support replies", "Talk through the answer, paste clean text, then edit the final 10%."],
-  ["Docs and specs", "Capture the long-form draft while the idea is still fresh instead of fighting the keyboard."],
+  ["Docs and support replies", "Talk through the answer, paste clean text, then edit the final 10%."],
 ] as const;
 
 export default function OfflineDictationForWindowsPage() {
@@ -111,6 +114,22 @@ export default function OfflineDictationForWindowsPage() {
           </div>
         </div>
       </section>
+
+      <RelatedGuidesSection
+        eyebrow="keep the Windows cluster tight"
+        title="These are the next pages Windows buyers usually open"
+        description="Offline is one angle. Replacement path, broader Windows comparison, and typing-load use cases usually come right after it."
+        links={offlineWindowsRelatedGuides}
+        dataTrackPrefix="offline-windows-related-guides"
+      />
+
+      <ProofTracksSection
+        eyebrow="what reassures this buyer"
+        title="Windows trust and accessibility trust are different jobs"
+        description="One buyer wants proof that the desktop workflow is real. The other wants proof that the tool will reduce typing load without trapping them in a new editor."
+        tracks={homepageProofTracks}
+        dataTrackPrefix="offline-windows-proof"
+      />
       <Footer />
     </main>
   );

@@ -43,20 +43,20 @@ html {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Light neutral landing palette — mostly white, with only a slight warmth */
-  --color-editorial-bg: #fbfbfa;
-  --color-editorial-surface: #ffffff;
-  --color-editorial-surface-2: #f6f6f4;
+  /* Warm editorial landing palette — parchment depth with disciplined ink */
+  --color-editorial-bg: #fbfaf6;
+  --color-editorial-surface: #fffefb;
+  --color-editorial-surface-2: #f4efe7;
   --color-editorial-ink: #18181a;
-  --color-editorial-ink-2: #525250;
-  --color-editorial-ink-3: #8a8a87;
-  --color-editorial-line: #e8e7e3;
-  --color-editorial-line-2: #dad8d3;
+  --color-editorial-ink-2: #54514c;
+  --color-editorial-ink-3: #8b857b;
+  --color-editorial-line: #e8dfd2;
+  --color-editorial-line-2: #d8cdbd;
   --color-editorial-accent: #18181a;
   --color-editorial-accent-ink: #18181a;
-  --color-editorial-accent-wash: #f0efec;
-}
+  --color-editorial-accent-wash: #efe6da;
 
+}
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -210,11 +210,51 @@ html {
    Scoped to .landing-editorial wrapper on the homepage only.
    ============================================================ */
 .landing-editorial {
-  background: var(--color-editorial-bg);
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background:
+    linear-gradient(180deg, #fbfaf6 0%, #fffefb 42%, #f8f2e9 100%);
   color: var(--color-editorial-ink);
   font-family: var(--font-sans), -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+.landing-editorial::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(920px 520px at 78% 8%, rgba(212, 150, 93, 0.18), transparent 62%),
+    radial-gradient(760px 460px at 14% 28%, rgba(137, 119, 92, 0.13), transparent 64%),
+    radial-gradient(900px 620px at 50% 98%, rgba(24, 24, 26, 0.07), transparent 70%),
+    linear-gradient(rgba(24, 24, 26, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 24, 26, 0.03) 1px, transparent 1px);
+  background-size: auto, auto, auto, 56px 56px, 56px 56px;
+  background-position: center, center, center, -1px -1px, -1px -1px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.72) 58%, rgba(0, 0, 0, 0.48));
+}
+
+.landing-editorial::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.26;
+  background-image: radial-gradient(circle at 1px 1px, rgba(24, 24, 26, 0.18) 1px, transparent 0);
+  background-size: 18px 18px;
+  mix-blend-mode: multiply;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.18) 45%, transparent 88%);
+}
+
+.landing-editorial > section,
+.landing-editorial > footer {
+  position: relative;
+  z-index: 1;
 }
 
 :where(
@@ -268,13 +308,17 @@ html {
 
 /* Subtle section atmospheres */
 .landing-editorial .ed-section-hero {
-  background: var(--color-editorial-bg);
+  background:
+    radial-gradient(760px 380px at 78% 18%, rgba(212, 150, 93, 0.22), transparent 66%),
+    radial-gradient(620px 340px at 16% 46%, rgba(216, 203, 189, 0.5), transparent 72%);
 }
 .landing-editorial .ed-section-wash {
-  background: var(--color-editorial-bg);
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(244, 239, 231, 0.74) 46%, transparent 100%);
 }
 .landing-editorial .ed-section-glow {
-  background: var(--color-editorial-bg);
+  background:
+    radial-gradient(760px 420px at 50% 30%, rgba(212, 150, 93, 0.12), transparent 70%);
 }
 
 /* Editorial eyebrow — small-caps tracked label with accent dot. Sits as plain

@@ -75,13 +75,13 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "The thought just left. <em>Catch it before it does.</em>",
       lede:
         "If your brain runs faster than your fingers — and the idea is gone by the time you finish typing the first sentence — voice closes that gap. VoiceTypr captures the thought at speaking speed, locally, and pastes it wherever your cursor is.",
-      metaStrip: ["~5× faster than typing", "local transcription", "no setup ritual"],
+      metaStrip: ["speaking-speed capture", "local transcription", "no setup ritual"],
     },
     pains: [
       {
         title: "The idea was there. Now it isn't.",
         body:
-          "By the time you've opened the right app, found the right doc, and typed the first sentence, the thought has moved. ADHD working memory is a leaky bucket; typing leaks the most.",
+          "By the time you have opened the right app, found the right doc, and typed the first sentence, the thought can move on. For many people with ADHD, voice input helps capture the thread before it disappears.",
       },
       {
         title: "Starting is the hardest part.",
@@ -113,7 +113,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "∞",
         title: "Sessions",
         body:
-          "Pay once. Use it forever. No login. No streak to maintain. No app you have to remember to open.",
+          "Pay once and keep the workflow around. No streak to maintain. No new writing app you have to remember to open.",
         meta: "Outcome · permanence",
       },
     ],
@@ -143,7 +143,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for journaling without anything getting sent to a server?",
         a:
-          "Yes — that's the design. Audio transcription runs 100% locally on your machine. Nothing leaves your computer unless you explicitly turn on AI formatting (and even then it only sends the final text, never the audio).",
+          "Yes. Raw audio transcription runs locally on your machine. Nothing leaves your computer unless you explicitly turn on AI formatting, and that sends text only, never the audio.",
       },
       {
         q: "Does it work with Things / Apple Notes / Obsidian / Notion?",
@@ -164,7 +164,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the thought <em>before it leaves.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for adhd",
@@ -188,7 +188,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "Say what you mean. <em>Skip the spelling fight.</em>",
       lede:
         "If reading what you've typed is slower than typing it in the first place — and autocorrect keeps swapping the wrong word for the wrong reason — voice bypasses the loop entirely. You speak, the text appears, you keep moving.",
-      metaStrip: ["~5× faster than typing", "local transcription", "no autocorrect wars"],
+      metaStrip: ["speaking-speed capture", "local transcription", "no autocorrect wars"],
     },
     pains: [
       {
@@ -216,10 +216,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
         meta: "Outcome · friction",
       },
       {
-        marker: "100%",
+        marker: "local",
         title: "Local",
         body:
-          "Audio never leaves your machine. No cloud accidentally training on private writing. Your drafts are yours.",
+          "Raw audio stays on your machine during transcription. Your drafts stay yours.",
         meta: "Outcome · privacy",
       },
       {
@@ -277,7 +277,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Write at the speed <em>you talk.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for dyslexia",
@@ -307,7 +307,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Keystroke counts add up faster than you'd think.",
         body:
-          "An average knowledge worker types 20-40k keystrokes a day. Past a certain volume, your hands keep score. Voice cuts that count by 60-80% without changing what you produce.",
+          "Keystrokes add up across emails, forms, prompts, and documents. Past a certain volume, your hands keep score. Voice input can move the bulk of drafting away from the keyboard while keeping the keyboard for edits.",
       },
       {
         title: "Voice tools that exist either lock you in or send your audio away.",
@@ -322,10 +322,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     ],
     outcomes: [
       {
-        marker: "−70%",
-        title: "Keystrokes for the same output",
+        marker: "less",
+        title: "Keyboard load for the same output",
         body:
-          "Talk for ninety seconds; press the hotkey once. The keystrokes that used to come out of your hand now come out of your throat.",
+          "Talk through the draft, then use the keyboard for corrections and structure. The keyboard stops carrying every word.",
         meta: "Outcome · load",
       },
       {
@@ -364,7 +364,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it really reduce keystrokes that much?",
         a:
-          "On a typical voice-typing workflow, you press one hotkey to start, speak, and release. For a 200-word email that's 1-3 keystrokes vs about 1,200 if you typed it. Across a day with mostly long-form writing, 60-80% reduction is realistic.",
+          "For a typical voice-typing workflow, you press a hotkey, speak, and release. For long emails and documents, that can remove most of the drafting keystrokes while still leaving room for manual edits.",
       },
       {
         q: "Can I use it with one hand if my other hand is in a brace?",
@@ -390,7 +390,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Give your <em>hands a break.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for rsi",
@@ -401,7 +401,235 @@ const USE_CASE_ENTRIES: UseCase[] = [
     ],
   },
 
-  // ──────────────────────────────────────────────────────────────────────
+
+  {
+    slug: "carpal-tunnel",
+    title: "VoiceTypr for Carpal Tunnel — Voice typing when your hands need a break",
+    ogTitle: "VoiceTypr for Carpal Tunnel",
+    description:
+      "Voice typing for carpal tunnel and hand pain. Dictate emails, docs, prompts, and replies locally in any app. Pay once, lifetime.",
+    navLabel: "Carpal tunnel",
+    category: "accessibility",
+    order: 4,
+    hero: {
+      eyebrow: "voicetypr for carpal tunnel",
+      headline: "Your hands are asking for less. <em>Give them voice.</em>",
+      lede:
+        "Carpal tunnel turns ordinary typing into a negotiation with pain. VoiceTypr lets you keep writing emails, prompts, docs, and replies while your hands do less of the work. Hold a hotkey, talk, release. The text lands where your cursor already is.",
+      metaStrip: ["fewer keystrokes", "local transcription", "works in every app"],
+    },
+    pains: [
+      {
+        title: "Short replies are fine. Long ones are the problem.",
+        body:
+          "A two-line message may be manageable. A support reply, a project update, or a long doc can push your hands past the line. Dictation moves the heavy text from your fingers to your voice.",
+      },
+      {
+        title: "Most dictation tools add a new place to work.",
+        body:
+          "Browser dictation and document-only tools force you into their editor first. That creates extra copy-paste work and more mouse use, which is exactly what you were trying to reduce.",
+      },
+      {
+        title: "Privacy matters more when health is involved.",
+        body:
+          "If you are dictating medical notes, work accommodations, or private emails, cloud transcription can feel wrong. VoiceTypr keeps audio on your machine by default.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "1",
+        title: "Hotkey instead of hundreds of keystrokes",
+        body:
+          "Press once, speak a paragraph, release. You still edit, but the bulk of the typing is gone.",
+        meta: "Outcome · hand load",
+      },
+      {
+        marker: "any",
+        title: "App, any text field",
+        body:
+          "Word, Gmail, Slack, Notion, Cursor, Google Docs, support inboxes. If you can paste into it, VoiceTypr can put text there.",
+        meta: "Outcome · reach",
+      },
+      {
+        marker: "$0/mo",
+        title: "No accommodation subscription",
+        body:
+          "Pay once and keep it. The tool you rely on should not become another monthly bill to justify.",
+        meta: "Outcome · permanence",
+      },
+    ],
+    workflows: [
+      {
+        title: "Email and message batches with fewer hand movements",
+        body:
+          "Open the inbox, place the cursor, dictate the answer, skim once, send. The mouse and keyboard still exist, but they stop carrying the whole workload.",
+      },
+      {
+        title: "Long documents without the pain spike",
+        body:
+          "Talk through the first draft in blocks. Use the keyboard only for edits and structure. That keeps your hand use closer to editing load than drafting load.",
+      },
+      {
+        title: "AI prompts and work notes on Windows",
+        body:
+          "Prompt boxes get long fast. Dictate the context into ChatGPT, Claude, Cursor, or your notes app instead of typing through discomfort.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do I have to hold a key the whole time?",
+        a:
+          "The default workflow uses a hold-to-talk hotkey because it is predictable and avoids accidental capture. If holding a key is difficult, set the easiest reachable shortcut and use short dictation bursts. A fuller hands-free mode is a natural roadmap item for people with hand pain.",
+      },
+      {
+        q: "Does this replace medical advice or ergonomics?",
+        a:
+          "No. VoiceTypr is a writing tool, not treatment. It can reduce typing load, but you should still follow medical and ergonomic guidance for your specific condition.",
+      },
+      {
+        q: "Will it work on Windows?",
+        a:
+          "Yes. VoiceTypr works on Windows and macOS. It pastes text into normal Windows apps, including Word, Gmail, Slack, Cursor, VS Code, and browser text fields.",
+      },
+      {
+        q: "Is the audio sent to a cloud transcription service?",
+        a:
+          "No. Transcription runs locally. Optional AI formatting can send final text to an AI provider if you enable it, but your raw audio stays on the computer.",
+      },
+      {
+        q: "Is it good for short or long dictation?",
+        a:
+          "Both. Short bursts are easiest during recovery days. Longer sessions work when you want to draft an email, note, prompt, or document without typing the whole thing.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Keep writing. <em>Use your hands less.</em>",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for carpal tunnel",
+      "dictation software carpal tunnel",
+      "hands free typing carpal tunnel",
+      "carpal tunnel typing alternative",
+      "windows dictation carpal tunnel",
+    ],
+  },
+  {
+    slug: "motor-impairments",
+    title: "VoiceTypr for Motor Impairments — Accessible voice typing in every app",
+    ogTitle: "VoiceTypr for Motor Impairments",
+    description:
+      "Accessible voice typing for people with motor impairments. Dictate into Windows or Mac apps with local transcription and lifetime pricing.",
+    navLabel: "Motor impairments",
+    category: "accessibility",
+    order: 5,
+    hero: {
+      eyebrow: "accessible voice typing",
+      headline: "Typing should not decide <em>how much you get to say.</em>",
+      lede:
+        "For many people who rely on assistive input, the hard part is not having something to say. It is getting words through a keyboard often enough, long enough, and with low enough friction. VoiceTypr turns speech into text in the apps you already use, with local raw transcription.",
+      metaStrip: ["windows + mac", "local transcription", "works in every text field"],
+    },
+    pains: [
+      {
+        title: "Accessibility tools often split control and writing.",
+        body:
+          "Voice control helps you move around the computer. Dictation helps you create text. VoiceTypr focuses on the writing side so emails, forms, docs, prompts, and messages do not depend entirely on typing.",
+      },
+      {
+        title: "Per-app dictation breaks the flow.",
+        body:
+          "A tool that only works in one editor is not enough when your day moves between forms, chat, email, documents, and browser apps. The cursor should be the integration.",
+      },
+      {
+        title: "Recurring pricing makes assistive software fragile.",
+        body:
+          "If a tool becomes part of how you communicate, losing it because a subscription renews badly is not acceptable. Lifetime pricing makes the setup easier to keep.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "any",
+        title: "Text field",
+        body:
+          "VoiceTypr pastes into standard text inputs across Windows and Mac. No special plugin per app.",
+        meta: "Outcome · access",
+      },
+      {
+        marker: "local",
+        title: "Local audio",
+        body:
+          "Private messages, accommodation requests, medical context, school work, and job applications stay on your machine during transcription.",
+        meta: "Outcome · privacy",
+      },
+      {
+        marker: "3 days",
+        title: "Trial without a card",
+        body:
+          "Test the hotkey, your microphone, your apps, and your workflow before paying.",
+        meta: "Outcome · fit",
+      },
+    ],
+    workflows: [
+      {
+        title: "Forms and job applications",
+        body:
+          "Long web forms punish slow or painful typing. Dictate the answer directly into the field, then edit the final text before submitting.",
+      },
+      {
+        title: "School and workplace writing",
+        body:
+          "Use voice for paragraphs, reflections, emails, reports, and discussion posts. Keep the keyboard for corrections instead of making it the main path for every word.",
+      },
+      {
+        title: "Daily communication without saving every word for later",
+        body:
+          "Messages pile up when each one costs physical effort. Voice lets you answer while the thought is fresh instead of waiting for a better hand day.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is VoiceTypr a full computer control tool?",
+        a:
+          "No. It is a dictation tool. Windows Voice Access and Apple Voice Control are better for navigating the computer by voice. VoiceTypr is for turning speech into text inside the apps where you write.",
+      },
+      {
+        q: "Can I try it before paying?",
+        a:
+          "Yes. The trial is 3 days and does not require a card. That gives you time to test your microphone, shortcut, apps, and comfort level.",
+      },
+      {
+        q: "Does it work with accessibility hardware?",
+        a:
+          "Yes. VoiceTypr only needs a microphone and a shortcut it can listen for. It works alongside split keyboards, vertical mice, adaptive keyboards, and other input hardware.",
+      },
+      {
+        q: "Does it support Windows users?",
+        a:
+          "Yes. Windows support is a first-class part of the product, not an afterthought. The app is built for both Windows and macOS workflows.",
+      },
+      {
+        q: "What if my speech is not perfectly clear?",
+        a:
+          "Whisper handles many accents, pauses, and restarts well, but no dictation system is perfect. Use the trial with your real voice and real microphone before buying.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Say it once. <em>Put it where it belongs.</em>",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "accessible voice typing",
+      "dictation software for accessibility",
+      "voice typing motor impairment",
+      "assistive dictation software",
+      "windows accessibility dictation",
+    ],
+  },
+
+    // ──────────────────────────────────────────────────────────────────────
   // PROFESSION
   // ──────────────────────────────────────────────────────────────────────
   {
@@ -511,7 +739,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Stop typing the <em>English-side</em> of the job.",
-      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for developers",
@@ -563,7 +791,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         meta: "Outcome · pace",
       },
       {
-        marker: "100%",
+        marker: "local",
         title: "Pre-publication privacy",
         body:
           "Audio stays on your machine. Drafts, plot notes, character backstory — none of it touches a third-party server.",
@@ -624,7 +852,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Get the draft out <em>at the speed you think.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for writers",
@@ -683,7 +911,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         meta: "Outcome · throughput",
       },
       {
-        marker: "100%",
+        marker: "local",
         title: "Local",
         body:
           "Pre-public feature notes, customer details, pricing experiments — nothing leaves your laptop. Founders should not be sending half-formed thoughts to anyone else's server.",
@@ -737,7 +965,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Built by a founder. <em>For founders.</em>",
-      body: "VoiceTypr is offline, lifetime, no account. Try it free for 3 days.",
+      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for founders",

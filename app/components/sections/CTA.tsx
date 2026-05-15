@@ -4,41 +4,45 @@ const proofItems = ['Mac + Windows', 'Local models', '3-day free trial'];
 
 export default function CTA() {
   return (
-    <section className="ed-section !pb-10">
+    <section className="ed-section ed-section-glow !pb-10">
       <div className="ed-container">
-        <div className="bg-editorial-surface-2 px-6 py-10 text-center md:px-10 md:py-12">
-          <p className="mb-4 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
-            Ready when you are
-          </p>
-          <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight md:text-7xl">
-            <span className="block">Stop typing</span>
-            <span className="block">Start <em>talking</em></span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-editorial-ink-2">
-            Turn voice notes into clean prompts, replies, and docs in the apps you already use.
-          </p>
+        <div className="relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-12 text-center text-white shadow-[0_32px_100px_rgba(24,24,26,0.22)] md:px-10 md:py-14">
+          <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+          <div className="relative">
+            <p className="mb-4 text-xs font-medium uppercase tracking-widest text-white/55">
+              Ready when you are
+            </p>
+            <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight !text-white md:text-7xl">
+              <span className="block">Stop typing</span>
+              <span className="block">Start <em className="!text-white">talking</em></span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/70">
+              Turn voice notes into clean prompts, replies, and docs in the apps you already use.
+            </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/download"
-              data-umami-event="cta-download-click"
-              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95"
-            >
-              Download for free
-            </Link>
-            <Link
-              href="/#pricing"
-              data-umami-event="cta-pricing-click"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-bg active:scale-95"
-            >
-              Buy lifetime license
-            </Link>
-          </div>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/download"
+                data-umami-event="cta-download-click"
+                className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface active:scale-95"
+              >
+                Download for free
+              </Link>
+              <Link
+                href="/#pricing"
+                data-umami-event="cta-pricing-click"
+                className="inline-flex h-12 items-center justify-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+              >
+                Buy lifetime license
+              </Link>
+            </div>
 
-          <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs uppercase tracking-widest text-editorial-ink-3">
-            {proofItems.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
+            <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs uppercase tracking-widest text-white/50">
+              {proofItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

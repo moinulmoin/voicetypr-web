@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
+import RelatedGuidesSection from '@/app/components/RelatedGuidesSection';
 import Header from '@/app/components/sections/Header';
 import Footer from '@/app/components/sections/Footer';
+import { voiceTypingRelatedGuides } from '@/lib/seo-discovery';
 
 export const metadata: Metadata = {
   title: 'Voice Typing Software in 2026 — VoiceTypr',
@@ -129,6 +131,14 @@ export default function VoiceTypingPage() {
           </div>
         </div>
       </section>
+
+      <RelatedGuidesSection
+        eyebrow="more specific paths"
+        title="If voice typing is the starting point, these are the next pages people usually need"
+        description="The general page catches the broad search. These pages catch the real reason someone is still shopping."
+        links={voiceTypingRelatedGuides}
+        dataTrackPrefix="voice-typing-related-guides"
+      />
 
       <Footer />
     </main>

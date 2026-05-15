@@ -81,7 +81,7 @@ export default function Header() {
         <div
           className={`mx-auto flex items-center justify-between gap-6 transition-all duration-200 ${
             isScrolled
-              ? "pointer-events-auto max-w-5xl rounded-2xl border border-editorial-line bg-editorial-bg/96 px-5 py-3 shadow-sm backdrop-blur-sm"
+              ? "pointer-events-auto max-w-[1088px] rounded-2xl border border-editorial-line bg-editorial-bg/96 px-5 py-3 shadow-sm backdrop-blur-sm"
               : "pointer-events-auto max-w-6xl px-2 py-3"
           }`}
         >
