@@ -4,13 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cookie Policy — VoiceTypr",
   description:
-    "We keep cookies simple. One necessary cookie remembers your banner choice; optional marketing tags load only with consent.",
+    "We keep cookies simple. One necessary cookie remembers your banner choice; optional marketing tags (including Affonso attribution cookies for 14 days) load only with consent.",
   alternates: { canonical: "https://voicetypr.com/cookies" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Cookie Policy — VoiceTypr",
     description:
-      "One necessary cookie. Optional marketing tags only with consent.",
+      "One necessary cookie. Optional marketing tags, including Affonso attribution cookies for 14 days, only with consent.",
     url: "https://voicetypr.com/cookies",
     siteName: "VoiceTypr",
     type: "article",
@@ -38,7 +38,7 @@ export default function CookiesPage() {
           <span className="rounded-md border border-editorial-line bg-white px-1.5 py-0.5 font-mono text-[13px]">
             vt_consent
           </span>
-          ) to remember your choice on the banner. If you accept, third&#8209;party marketing tags (via Google Tag Manager) may set their own cookies for attribution. If you don&rsquo;t accept, they won&rsquo;t load.
+          ) to remember your choice on the banner. If you accept, third&#8209;party marketing tags (via Google Tag Manager) and the Affonso direct attribution script may set their own attribution cookies (Affonso cookie window: 14 days). If you don&rsquo;t accept, they won&rsquo;t load.
         </p>
 
         <p className={pClass}>

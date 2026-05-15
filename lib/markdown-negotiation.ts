@@ -53,7 +53,8 @@ export function acceptsMarkdown(acceptHeader: string | null): boolean {
   }
 
   return acceptHeader.split(',').some((entry) => {
-    const [type, ...params] = entry.trim().toLowerCase().split(';');
+    const [rawType = '', ...params] = entry.trim().toLowerCase().split(';');
+    const type = rawType.trim();
 
     if (type !== MARKDOWN_MIME_TYPE) {
       return false;

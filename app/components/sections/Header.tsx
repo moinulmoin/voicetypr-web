@@ -113,7 +113,7 @@ export default function Header() {
                 <DropdownMenuTrigger asChild>
                   <button
                     type="button"
-                    className="border-0 bg-transparent p-0 text-sm text-editorial-ink-2 outline-none transition-colors hover:text-editorial-ink"
+                    className="rounded-sm border-0 bg-transparent p-0 text-sm text-editorial-ink-2 outline-none transition-colors hover:text-editorial-ink focus-visible:ring-2 focus-visible:ring-editorial-ink/35 focus-visible:ring-offset-2 focus-visible:ring-offset-editorial-bg"
                     data-umami-event="nav-use-cases-open"
                   >
                     Use cases

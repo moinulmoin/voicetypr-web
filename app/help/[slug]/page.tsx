@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import {
   getAllArticles,
   getAllSlugs,
@@ -74,7 +75,11 @@ export default async function HelpArticlePage({
       </header>
 
       <div className="prose-editorial max-w-[680px]">
-        <MDXRemote source={article.content} components={mdxComponents} />
+        <MDXRemote
+          source={article.content}
+          components={mdxComponents}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </div>
 
       {/* Prev/Next */}

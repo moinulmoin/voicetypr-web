@@ -84,7 +84,7 @@ export default function CookieConsent() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
             <p className="text-sm leading-relaxed text-editorial-ink-2">
-              We use cookies for basic analytics and consent state. Read our{' '}
+              We use cookies for attribution, marketing measurement, and consent state. Read our{' '}
               <Link
                 href="/cookies"
                 className="text-editorial-ink underline underline-offset-2 hover:text-editorial-ink-2"

@@ -217,11 +217,13 @@ html {
   text-rendering: optimizeLegibility;
 }
 
-.landing-editorial h1,
-.landing-editorial h2,
-.landing-editorial h3,
-.landing-editorial h4,
-.landing-editorial h5 {
+:where(
+  .landing-editorial h1,
+  .landing-editorial h2,
+  .landing-editorial h3,
+  .landing-editorial h4,
+  .landing-editorial h5
+) {
   font-family: var(--font-sans), -apple-system, system-ui, sans-serif;
   font-weight: 750;
   letter-spacing: -0.055em;

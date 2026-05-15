@@ -24,7 +24,16 @@ export default async function HelpLayout({
   return (
     <div className="landing-editorial min-h-screen">
       <div className="ed-container py-12 md:py-16">
-        <div className="flex gap-12 lg:gap-16">
+        <div className="lg:hidden mb-8">
+          <Link
+            href="/help"
+            className="inline-flex items-center gap-2 text-sm text-editorial-ink-3 hover:text-editorial-ink transition-colors"
+          >
+            <span>&larr;</span> Help Center
+          </Link>
+        </div>
+
+        <div className="lg:flex lg:gap-16">
           {/* Sidebar */}
           <aside className="hidden lg:block w-64 flex-shrink-0">
             <nav className="sticky top-24">
@@ -60,16 +69,6 @@ export default async function HelpLayout({
               })}
             </nav>
           </aside>
-
-          {/* Mobile nav */}
-          <div className="lg:hidden mb-8">
-            <Link
-              href="/help"
-              className="inline-flex items-center gap-2 text-sm text-editorial-ink-3 hover:text-editorial-ink transition-colors"
-            >
-              <span>&larr;</span> Help Center
-            </Link>
-          </div>
 
           {/* Main content */}
           <main className="flex-1 min-w-0">{children}</main>

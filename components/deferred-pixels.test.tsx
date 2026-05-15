@@ -58,42 +58,54 @@ describe('DeferredPixels', () => {
     vi.restoreAllMocks();
   });
 
-  it('loads Affonso and GTM with consent denied before marketing consent', () => {
+  it('does not load marketing scripts before consent', () => {
     root = renderDeferredPixels();
 
-    const affonsoScript = document.querySelector<HTMLScriptElement>(
-      'script[data-voicetypr-affonso="true"]'
-    );
-    const gtmScript = document.querySelector<HTMLScriptElement>(
-      'script[data-voicetypr-gtm="true"]'
-    );
-
-    expect(affonsoScript?.src).toBe('https://cdn.affonso.io/js/pixel.min.js');
-    expect(affonsoScript?.dataset.affonso).toBe('cmfl3j0cw001ogn7r874fqlxq');
-    expect(affonsoScript?.dataset.cookie_duration).toBe('30');
-    expect(affonsoScript?.dataset.requiresConsent).toBe('true');
-    expect(gtmScript?.src).toBe('https://www.googletagmanager.com/gtm.js?id=GTM-WT5KZRJM');
-    expect(window.dataLayer[0]).toEqual([
-      'consent',
-      'default',
-      {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-      },
-    ]);
+    expect(document.querySelector('script[data-voicetypr-affonso="true"]')).toBeNull();
+    expect(document.querySelector('script[data-voicetypr-gtm="true"]')).toBeNull();
+    expect(window.dataLayer).toEqual([]);
+    expect(window.gtag).toBeUndefined();
     expect(window.affonsoConsentGranted).not.toHaveBeenCalled();
   });
 
-  it('grants Google and Affonso consent when marketing consent exists', () => {
+  it('loads and grants consent when existing marketing consent exists', () => {
     setMarketingConsent();
 
     root = renderDeferredPixels();
 
     expect(document.querySelector('script[data-voicetypr-affonso="true"]')).not.toBeNull();
     expect(document.querySelector('script[data-voicetypr-gtm="true"]')).not.toBeNull();
+    expect(
+      document.querySelector<HTMLScriptElement>('script[data-voicetypr-affonso="true"]')
+        ?.dataset.cookie_duration
+    ).toBe('14');
     expect(window.dataLayer[1]).toEqual([
+      'consent',
+      'update',
+      {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted',
+      },
+    ]);
+    expect(window.affonsoConsentGranted).toHaveBeenCalledTimes(1);
+  });
+
+  it('loads and grants consent after consent-changed marketing event', () => {
+    root = renderDeferredPixels();
+
+    act(() => {
+      window.dispatchEvent(
+        new CustomEvent('voicetypr:consent-changed', {
+          detail: { necessary: true, marketing: true, timestamp: Date.now() },
+        })
+      );
+    });
+
+    expect(document.querySelector('script[data-voicetypr-affonso="true"]')).not.toBeNull();
+    expect(document.querySelector('script[data-voicetypr-gtm="true"]')).not.toBeNull();
+    expect(window.dataLayer).toContainEqual([
       'consent',
       'update',
       {

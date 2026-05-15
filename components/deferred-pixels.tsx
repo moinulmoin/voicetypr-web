@@ -52,9 +52,12 @@ export function DeferredPixels() {
       void window.affonsoConsentGranted?.();
     };
 
+    let marketingAllowed = Boolean(getConsent()?.marketing);
+    let idleHandle: number | null = null;
+
     const loadAffonso = () => {
       if (document.querySelector('script[data-voicetypr-affonso="true"]')) {
-        if (getConsent()?.marketing) grantAffonsoConsent();
+        if (marketingAllowed) grantAffonsoConsent();
         return;
       }
 
@@ -63,13 +66,13 @@ export function DeferredPixels() {
       affonsoScript.defer = true;
       affonsoScript.src = AFFONSO_SRC;
       affonsoScript.dataset.affonso = AFFONSO_PROGRAM_ID;
-      affonsoScript.dataset.cookie_duration = "30";
+      affonsoScript.dataset.cookie_duration = "14";
       affonsoScript.dataset.requiresConsent = "true";
       affonsoScript.dataset.voicetyprAffonso = "true";
       affonsoScript.addEventListener(
         "load",
         () => {
-          if (getConsent()?.marketing) grantAffonsoConsent();
+          if (marketingAllowed) grantAffonsoConsent();
         },
         { once: true }
       );
@@ -77,12 +80,10 @@ export function DeferredPixels() {
     };
 
     const loadGtm = () => {
-      const hasMarketingConsent = Boolean(getConsent()?.marketing);
-
       ensureGoogleTag();
 
       if (document.querySelector('script[data-voicetypr-gtm="true"]')) {
-        if (hasMarketingConsent) updateGoogleConsent(true);
+        if (marketingAllowed) updateGoogleConsent(true);
         return;
       }
 
@@ -93,7 +94,7 @@ export function DeferredPixels() {
         ad_personalization: "denied",
         analytics_storage: "denied",
       });
-      if (hasMarketingConsent) updateGoogleConsent(true);
+      if (marketingAllowed) updateGoogleConsent(true);
 
       window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
 
@@ -108,25 +109,31 @@ export function DeferredPixels() {
       loadAffonso();
       loadGtm();
 
-      if (getConsent()?.marketing) {
+      if (marketingAllowed) {
         grantAffonsoConsent();
       }
     };
 
-    let idleHandle = idleCallback(loadConsentAwarePixels) as number;
+    const scheduleLoad = () => {
+      if (!marketingAllowed) return;
+      if (idleHandle !== null) cancelIdle(idleHandle);
+      idleHandle = idleCallback(loadConsentAwarePixels) as number;
+    };
+
+    scheduleLoad();
 
     const handleConsentChange = (event: Event) => {
       const customEvent = event as CustomEvent;
       if (customEvent.detail?.marketing) {
-        updateGoogleConsent(true);
-        idleHandle = idleCallback(loadConsentAwarePixels) as number;
+        marketingAllowed = true;
+        scheduleLoad();
       }
     };
 
     window.addEventListener("voicetypr:consent-changed", handleConsentChange);
 
     return () => {
-      cancelIdle(idleHandle);
+      if (idleHandle !== null) cancelIdle(idleHandle);
       window.removeEventListener("voicetypr:consent-changed", handleConsentChange);
     };
   }, []);
