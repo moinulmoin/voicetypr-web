@@ -1,0 +1,51 @@
+---
+title: Privacy & Security
+description: How VoiceTypr keeps your voice data private. What stays local, what leaves, and why.
+category: privacy
+order: 1
+---
+
+## Audio is local by default
+
+VoiceTypr runs transcription on your computer by default.
+
+- No audio is uploaded during normal local transcription
+- No training-on-your-data language
+- No account required for the core offline workflow
+
+Network activity can happen when you choose it:
+- Checking for app updates
+- Validating your license (if purchased)
+- Sending text to an optional AI formatting provider you configured
+- Sending audio only if you explicitly use a cloud or network transcription mode
+
+## What's Stored Locally
+
+| Data | Where | Encrypted |
+|------|-------|-----------|
+| Speech models | Local folder | No (open-source weights) |
+| Transcription history | SQLite database | No |
+| Settings | JSON config file | No |
+| License key | Keychain (Mac) / Registry (Windows) | Yes |
+
+## AI Formatting and optional network paths
+
+If you enable AI formatting presets (Default, Prompts, Email, Commit):
+
+- **Text may be sent** to your chosen AI provider (OpenAI, Anthropic, Google Gemini, or a custom OpenAI-compatible endpoint)
+- **Audio is not sent** for formatting — only the transcribed text
+- You control the provider, the key, and whether formatting is enabled
+
+VoiceTypr may also offer optional non-local transcription modes, such as cloud STT or local-network sharing. Those are opt-in paths, not the default offline workflow.
+
+## No background telemetry
+
+VoiceTypr does not run background usage analytics.
+
+If you manually submit a support, bug, or crash report, the app can send the details you choose to share, including redacted logs and system information needed to debug the issue.
+
+The website (voicetypr.com) uses privacy-focused analytics (Umami and OpenPanel) with no cookies or cross-site tracking.
+
+## Open Source
+
+VoiceTypr is an open-source app built on open-source local transcription models, including Whisper. You can inspect the public desktop repository on GitHub and still keep the normal offline workflow local by default.

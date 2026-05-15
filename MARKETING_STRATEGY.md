@@ -1,3 +1,5 @@
+> **⚠️ SUPERSEDED 2026-04-18** by [`SALES_SPRINT_PLAN.md`](./SALES_SPRINT_PLAN.md). Kept for historical reference. Nothing in this doc was fully implemented. The sprint plan commits to dependency-correct sequencing and weekly milestones to hit $100k in 6 months.
+
 # VoiceTypr Marketing & SEO Strategy
 
 ## 🎯 Target Audience

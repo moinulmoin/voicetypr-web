@@ -1,217 +1,139 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  BASE_PRICES,
-  FLASH_DISCOUNTED_PRICES,
-  FLASH_DISCOUNT_CODE,
-  FLASH_DISCOUNT_RATE,
-  formatPrice,
-  type PlanKey,
-} from "@/lib/pricing";
-import { useFlashOfferStable } from "@/components/flash-offer/FlashOfferContext";
-import { ArrowRight, Check } from "lucide-react";
+import { BASE_PRICES, formatPrice, type PlanKey } from '@/lib/pricing';
+import { cn } from '@/lib/utils';
+import { Check } from 'lucide-react';
+import { useState } from 'react';
 
 interface PricingCardsProps {
   affonsoReferral: string;
   referrer: string;
-  /** Event prefix for analytics (e.g., "pricing" or "download-page") */
   eventPrefix?: string;
 }
 
-const plans: Array<{
+interface DeviceOption {
   key: PlanKey;
-  name: string;
-  devices: string;
+  devices: number;
   productId: string | undefined;
-}> = [
-  {
-    key: "pro",
-    name: "Pro",
-    devices: "1 device",
-    productId: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID,
-  },
-  {
-    key: "plus",
-    name: "Plus",
-    devices: "Up to 2 devices",
-    productId: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
-  },
-  {
-    key: "max",
-    name: "Max",
-    devices: "Up to 4 devices",
-    productId: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID,
-  },
+}
+
+const deviceOptions: DeviceOption[] = [
+  { key: 'pro', devices: 1, productId: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID },
+  { key: 'plus', devices: 2, productId: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID },
+  { key: 'max', devices: 4, productId: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID },
+  { key: 'team', devices: 10, productId: process.env.NEXT_PUBLIC_TEAM_PRODUCT_ID },
+];
+
+const features = [
+  'Local/offline transcription models',
+  'Faster, smoother local performance',
+  'Works anywhere you type',
+  'AI formatting with your own API key',
+  'macOS 13+ and Windows 10+',
+  'Lifetime updates included',
+  'Direct support from the founder',
 ];
 
 export default function PricingCards({
   affonsoReferral,
   referrer,
-  eventPrefix = "pricing",
+  eventPrefix = 'pricing',
 }: PricingCardsProps) {
-  const { isActive: flashOfferActive } = useFlashOfferStable();
+  const [selectedKey, setSelectedKey] = useState<PlanKey>('plus');
+  const fallbackOption = deviceOptions[1] as DeviceOption;
+  const selected = deviceOptions.find((option) => option.key === selectedKey) ?? fallbackOption;
 
   const handleCheckout = (productId: string | undefined) => {
+    if (!productId) return;
+
     const metadata: Record<string, string> = {};
 
-    // Get OpenPanel device ID for revenue attribution
-    if (typeof window !== "undefined" && window.openpanel?.getDeviceId) {
+    if (typeof window !== 'undefined' && window.openpanel?.getDeviceId) {
       const deviceId = window.openpanel.getDeviceId();
-      if (deviceId) {
-        metadata.deviceId = deviceId;
-      }
+      if (deviceId) metadata.deviceId = deviceId;
     }
 
-    if (affonsoReferral) {
-      metadata.affonso_referral = affonsoReferral;
-    }
-    if (referrer) {
-      metadata.referrer = referrer;
-    }
+    if (affonsoReferral) metadata.affonso_referral = affonsoReferral;
+    if (referrer) metadata.referrer = referrer;
 
-    const discount =
-      flashOfferActive && FLASH_DISCOUNT_CODE
-        ? `&discountId=${FLASH_DISCOUNT_CODE}`
-        : "";
+    const metadataParam =
+      Object.keys(metadata).length > 0
+        ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
+        : '';
 
-    const metadataParam = Object.keys(metadata).length > 0
-      ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
-      : "";
-
-    window.location.assign(
-      "/api/checkout?products=" +
-      productId +
-      discount +
-      metadataParam
-    );
+    window.location.assign(`/api/checkout?products=${productId}${metadataParam}`);
   };
 
   return (
-    <>
-      <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        {plans.map((plan) => {
-          const isPopular = plan.key === "plus";
-          const basePrice = BASE_PRICES[plan.key];
-          const discountedPrice = FLASH_DISCOUNTED_PRICES[plan.key];
-          // FLASH_DISCOUNT_RATE is a compile-time constant; the > 0 guard is a
-          // safety net so strikethrough prices aren't shown with identical values
-          // if the rate is ever set to 0 to soft-disable discounts.
-          const showDiscount = flashOfferActive && FLASH_DISCOUNT_RATE > 0;
+    <div className="rounded-3xl bg-editorial-surface-2 p-4">
+      <div className="grid gap-4 rounded-3xl lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="flex flex-col rounded-2xl bg-white p-6 md:p-8">
+          <div className="mb-5 text-sm text-editorial-ink-2">
+            {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
+          </div>
 
-          return (
-            <Card
-              key={plan.key}
-              className={`bg-card/50 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-none relative ${
-                isPopular
-                  ? "border-primary/50 scale-[1.03] ring-2 ring-primary/20"
-                  : "border-border/50 hover:border-border/70"
-              }`}
-            >
-              {/* Most popular badge */}
-              {isPopular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-3 py-1">
-                    <span className="text-xs font-medium text-white">
-                      Most Popular
-                    </span>
-                  </div>
-                </div>
-              )}
+          <div className="mb-6 text-6xl font-semibold tracking-tight text-editorial-ink md:text-7xl">
+            {formatPrice(BASE_PRICES[selected.key])}
+            <span className="ml-3 text-base font-normal text-editorial-ink-3">/ once</span>
+          </div>
 
-              <CardHeader className="text-center pb-1 px-6 pt-6">
-                <CardTitle className="text-2xl font-bold">
-                  {plan.name}
-                </CardTitle>
-                <div className="mt-3">
-                  <div className="flex items-baseline justify-center gap-2">
-                    {showDiscount ? (
-                      <>
-                        <span className="text-xl text-muted-foreground line-through">
-                          {formatPrice(basePrice)}
-                        </span>
-                        <span className="text-4xl font-bold">
-                          {formatPrice(discountedPrice)}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="text-4xl font-bold">
-                        {formatPrice(basePrice)}
-                      </span>
+          <div className="mt-auto overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
+            <div className="grid grid-cols-4 gap-1">
+              {deviceOptions.map((option) => {
+                const active = option.key === selected.key;
+                return (
+                  <button
+                    key={option.key}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => setSelectedKey(option.key)}
+                    className={cn(
+                      'rounded-lg px-3 py-3 text-center transition active:scale-95',
+                      active
+                        ? 'bg-editorial-ink text-white'
+                        : 'text-editorial-ink-2 hover:bg-white hover:text-editorial-ink',
                     )}
-                  </div>
-                  {showDiscount && (
-                    <p className="text-xs mt-1 font-semibold">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                        {`Save ${formatPrice(basePrice - discountedPrice).replace("$", "$$")}`}
-                      </span>
-                    </p>
-                  )}
-                </div>
-              </CardHeader>
+                  >
+                    <span className="block text-3xl font-semibold leading-none">{option.devices}</span>
+                    <span className="mt-1 block text-xs font-medium uppercase tracking-widest">
+                      {option.devices === 1 ? 'device' : 'devices'}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <button
+            onClick={() => handleCheckout(selected.productId)}
+            data-umami-event={`${eventPrefix}-plan-click`}
+            data-umami-event-plan={selected.key}
+            data-track={`${eventPrefix}-plan-click`}
+            data-track-plan={selected.key}
+            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95 sm:w-auto"
+          >
+            Get VoiceTypr for lifetime
+          </button>
 
-              <CardContent className="px-6 py-3">
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">
-                      {plan.devices}
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">
-                      All features included
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm font-medium text-foreground">
-                      Lifetime access (all future updates)
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">
-                      No subscription ever
-                    </span>
-                  </li>
-                </ul>
-              </CardContent>
 
-              <CardFooter className="px-6 pb-5 pt-2">
-                <Button
-                  className={`w-full group ${
-                    isPopular
-                      ? "bg-primary hover:bg-primary/90"
-                      : "bg-card hover:bg-muted"
-                  }`}
-                  variant={isPopular ? "default" : "outline"}
-                  onClick={() => handleCheckout(plan.productId)}
-                  data-umami-event={`${eventPrefix}-plan-click`}
-                  data-umami-event-plan={plan.key}
-                  data-track={`${eventPrefix}-plan-click`}
-                  data-track-plan={plan.key}
-                >
-                  Get {plan.name}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </CardFooter>
-            </Card>
-          );
-        })}
+        </div>
+
+        <div className="flex h-full items-center p-2 md:p-4">
+          <div className="w-full max-w-sm">
+            <div className="mb-5 flex items-center gap-2 text-sm font-medium text-editorial-ink">
+              <Check className="h-4 w-4" />
+              Everything included
+            </div>
+            <ul className="space-y-3 text-sm leading-relaxed text-editorial-ink-2">
+              {features.map((feature) => (
+                <li key={feature} className="flex gap-3">
+                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-
-      <p className="text-center text-sm text-muted-foreground mt-6">
-        One-time payment • Future updates included • 7-day money-back guarantee
-      </p>
-    </>
+    </div>
   );
 }

@@ -1,47 +1,28 @@
 /**
- * License utility functions for device limit enforcement
+ * License utility functions for device limit enforcement.
+ * Delegates plan definitions to lib/pricing.ts.
  */
+
+import { PLANS, getPlanByLicensePrefix, getMaxDevices as getMaxDevicesForPlan } from './pricing';
 
 /**
- * Get maximum devices allowed for a license based on its prefix
+ * Get maximum devices allowed for a license based on its prefix.
  * @param licenseKey - The Polar license key
- * @returns Maximum number of devices allowed
+ * @returns Maximum number of devices allowed, or NaN for unknown formats
  */
 export function getMaxDevicesForLicense(licenseKey: string): number {
-  // Pro plan - 1 device
-  if (licenseKey.startsWith('VTP')) {
-    return 1;
-  }
-
-  // Plus plan - 2 devices
-  if (licenseKey.startsWith('VTS')) {
-    return 2;
-  }
-
-  // Future plans (ready when you add them)
-  if (licenseKey.startsWith('VTM')) {
-    return 4;
-  }
-
-  // Team Business - up to 20 devices
-  if (licenseKey.startsWith('VTT')) {
-    return 20;
-  }
-
-  // Default 0
-  return NaN;
+  const plan = getPlanByLicensePrefix(licenseKey);
+  if (!plan) return NaN;
+  return getMaxDevicesForPlan(plan);
 }
 
 /**
- * Get license type from license key prefix
+ * Get license type (plan label) from license key prefix.
  * @param licenseKey - The Polar license key
  * @returns License type name
  */
 export function getLicenseType(licenseKey: string): string {
-  if (licenseKey.startsWith('VTP')) return 'Pro';
-  if (licenseKey.startsWith('VTS')) return 'Plus';
-  if (licenseKey.startsWith('VTM')) return 'Team';
-  if (licenseKey.startsWith('VTT')) return 'Business';
-
-  return 'Unknown';
+  const planKey = getPlanByLicensePrefix(licenseKey);
+  if (!planKey) return 'Unknown';
+  return PLANS[planKey].label;
 }

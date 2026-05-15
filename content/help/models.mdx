@@ -1,0 +1,53 @@
+---
+title: Speech Models
+description: Compare VoiceTypr's speech recognition models. Size, speed, accuracy, and language support.
+category: usage
+order: 2
+---
+
+VoiceTypr runs speech recognition entirely on your device using open-source Whisper models.
+
+## Model Comparison
+
+| Model | Size | Speed | Accuracy | Best For |
+|-------|------|-------|----------|----------|
+| **Whisper Base** | ~140 MB | Fastest | Good | Clear speech, fast workflows |
+| **Whisper Large v3** | ~2.9 GB | Slower | Best | Noisy environments, accents |
+| **Whisper Large v3 Turbo** | ~1.5 GB | Fast | Very good | Balance of speed and accuracy |
+| **Parakeet** (Apple Silicon) | ~0.6 GB | Fast | Very good | Mac users, real-time use |
+
+## RAM Requirements
+
+| Model | Minimum RAM | Recommended |
+|-------|------------|-------------|
+| Whisper Base | 4 GB | 8 GB |
+| Whisper Large v3 Turbo | 8 GB | 16 GB |
+| Whisper Large v3 | 16 GB | 32 GB |
+| Parakeet | 4 GB | 8 GB |
+
+## Language Support
+
+All Whisper models support 99+ languages including:
+
+English, Spanish, French, German, Italian, Portuguese, Dutch, Swedish, Polish, Japanese, Mandarin, Hindi, Arabic, Korean, Turkish, Russian, and 85 more.
+
+Parakeet is optimized for English but supports other languages with varying accuracy.
+
+## Switching Models
+
+1. Open VoiceTypr settings
+2. Go to **Model**
+3. Select a different model
+4. Download if needed (one-time)
+5. Restart VoiceTypr
+
+## AI Formatting
+
+VoiceTypr can reformat your dictation with AI presets:
+
+- **Default** — Clean punctuation and spacing
+- **Prompts** — Optimized for AI chat (ChatGPT, Claude)
+- **Email** — Professional email formatting
+- **Commit** — Git commit message style
+
+These run using your chosen AI provider (OpenAI, Anthropic, Google Gemini, or a custom OpenAI-compatible endpoint).

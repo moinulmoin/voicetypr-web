@@ -1,16 +1,11 @@
 "use client";
 
 import { ReleaseAssets } from "@/app/lib/github";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import FAQ from "@/app/components/sections/FAQ";
 import PricingCards from "@/components/PricingCards";
-import { useFlashOfferContext } from "@/components/flash-offer/FlashOfferContext";
-import { FLASH_DISCOUNT_PCT } from "@/lib/pricing";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { ArrowRight, CheckCircle, Clock, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useMemo, useState, type ReactElement } from "react";
-import GridBackground from "../components/GridBackground";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
 import EmailCaptureModal from "../components/EmailCaptureModal";
@@ -39,68 +34,29 @@ interface DownloadOption {
 }
 
 const macosInstallationSteps = [
-  {
-    step: "1",
-    title: "Download VoiceTypr",
-    description: "Download the .dmg file for your Mac",
-  },
-  {
-    step: "2",
-    title: "Open the Installer",
-    description:
-      "Double-click the .dmg file and drag VoiceTypr to Applications",
-  },
-  {
-    step: "3",
-    title: "Launch & Use",
-    description: "Open Voicetypr from Applications",
-  },
+  { step: "1", title: "Download", description: "Get the .dmg for your Mac" },
+  { step: "2", title: "Install", description: "Open the .dmg and drag to Applications" },
+  { step: "3", title: "Launch", description: "Open VoiceTypr and start dictating" },
 ];
 
 const windowsInstallationSteps = [
-  {
-    step: "1",
-    title: "Download VoiceTypr",
-    description: "Download the .exe installer for Windows",
-  },
-  {
-    step: "2",
-    title: "Run the Installer",
-    description:
-      "Double-click the .exe file and follow the installation wizard",
-  },
-  {
-    step: "3",
-    title: "Launch & Use",
-    description: "Open VoiceTypr from Start Menu/Desktop",
-  },
+  { step: "1", title: "Download", description: "Get the .exe for Windows" },
+  { step: "2", title: "Install", description: "Run the installer and follow the steps" },
+  { step: "3", title: "Launch", description: "Open VoiceTypr and start dictating" },
 ];
 
 function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: string; referrer: string }) {
-  const { isActive, formattedTime, pricingRef } = useFlashOfferContext();
-
   return (
-    <div id="pricing" ref={pricingRef}>
+    <div id="pricing">
       <div className="text-center mb-10">
-        <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
+        <h2 className="text-[clamp(32px,4vw,52px)] leading-[1.04] tracking-[-0.04em] font-semibold mb-3">
           Pay once. Yours forever.
         </h2>
-        <p className="text-muted-foreground mb-1">
+        <p className="text-editorial-ink-2 text-[17px] leading-[1.55] max-w-[560px] mx-auto">
           No subscriptions. No update locks. Real lifetime access.
         </p>
-        {isActive && (
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 py-1 text-sm">
-            <Clock className="h-3.5 w-3.5" />
-            <span>
-              {FLASH_DISCOUNT_PCT}% off — expires in{" "}
-              <span className="font-mono font-semibold tabular-nums">
-                {formattedTime}
-              </span>
-            </span>
-          </div>
-        )}
       </div>
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto">
         <PricingCards affonsoReferral={affonsoReferral} referrer={referrer} eventPrefix="download-page" />
       </div>
     </div>
@@ -112,7 +68,7 @@ const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => {
     {
       id: "macos-silicon",
       name: "macOS (Apple Silicon)",
-      description: "For M1, M2, M3+ Macs",
+      description: "M1, M2, M3+",
       icon: AppleIcon,
       url: assets.silicon,
       platform: "macos",
@@ -120,7 +76,7 @@ const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => {
     {
       id: "macos-intel",
       name: "macOS (Intel)",
-      description: "For Intel-based Macs",
+      description: "Intel-based Macs",
       icon: AppleIcon,
       url: assets.intel,
       platform: "macos",
@@ -128,7 +84,7 @@ const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => {
     {
       id: "windows",
       name: "Windows",
-      description: "Windows 10 or later",
+      description: "Windows 10+",
       icon: WindowsIcon,
       url: assets.windows,
       platform: "windows",
@@ -145,7 +101,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
 }) {
   const options = useMemo(() => getDownloadOptions(assets), [assets]);
 
-  // Validate defaultSelected against available options
   const validatedDefault = defaultSelected && options.some(opt => opt.id === defaultSelected)
     ? defaultSelected
     : null;
@@ -156,13 +111,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
   const selectedOption = options.find((opt) => opt.id === selectedPlatform);
 
   const handleDownloadClick = () => {
-    // Umami disabled in favor of OpenPanel
-    // if (typeof window !== 'undefined' && window.umami) {
-    //   window.umami.track('email-modal-open', {
-    //     platform: selectedOption?.platform
-    //   });
-    // }
-    // Track modal open (OpenPanel)
     if (typeof window !== 'undefined' && window.openpanel) {
       window.openpanel.track('email-modal-open', {
         platform: selectedOption?.platform
@@ -172,7 +120,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
   };
 
   const handleActualDownload = () => {
-    // Use the URL if available, or fallback to any available URL
     const downloadUrl =
       selectedOption?.url ||
       assets.silicon ||
@@ -182,14 +129,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
 
     if (downloadUrl) {
       trackTwitterConversion("download");
-      // Umami disabled in favor of OpenPanel
-      // if (typeof window !== 'undefined' && window.umami) {
-      //   window.umami.track('download-success', {
-      //     platform: selectedOption?.platform,
-      //     url: downloadUrl
-      //   });
-      // }
-      // Track successful download with OpenPanel
       if (typeof window !== 'undefined' && window.openpanel) {
         window.openpanel.track('download-success', {
           platform: selectedOption?.platform,
@@ -199,140 +138,142 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       window.open(downloadUrl, "_blank");
     }
   };
+
   const installationSteps =
     selectedOption?.platform === "windows"
       ? windowsInstallationSteps
       : macosInstallationSteps;
 
   return (
-    <>
-      <div className="relative">
-        <GridBackground />
-        <Header />
+    <main className="landing-editorial relative min-h-screen">
+      <Header />
 
-        {/* Main Download Section */}
-        <section className="relative pt-32">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            {/* Header */}
-            <div className="mb-12">
-              <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-tight mb-6">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground">
-                  Download VoiceTypr
-                </span>
-              </h1>
+      {/* Hero */}
+      <section className="ed-section ed-section-hero !pt-[160px] pb-0 md:!pt-[200px]">
+        <div className="ed-container text-center">
+          <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+            Download
+          </div>
+          <h1 className="text-[clamp(44px,8vw,84px)] font-semibold leading-[0.95] tracking-[-0.05em]">
+            Download VoiceTypr
+          </h1>
+          <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
+            <strong className="font-medium text-editorial-ink">
+              Choose your platform.
+            </strong>{" "}
+            Three-day trial, no credit card.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
+            <span>macOS 13+</span>
+            <span>Windows 10+</span>
+            <span>Local transcription</span>
+          </div>
+        </div>
+      </section>
 
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Choose your platform and get started.
-              </p>
-            </div>
-
-            {/* Platform Selection */}
-            <div className={`grid gap-6 mb-12 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 max-w-2xl mx-auto'}`}>
-              {options.map((option) => (
-                <Card
+      {/* Platform Selection */}
+      <section className="ed-section">
+        <div className="ed-container max-w-[720px]">
+          <div className={`grid gap-4 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+            {options.map((option) => {
+              const isSelected = selectedPlatform === option.id;
+              return (
+                <button
                   key={option.id}
                   onClick={() => setSelectedPlatform(option.id)}
-                  className={`relative group p-6 cursor-pointer transition-all duration-300 ${"${"}
-                    selectedPlatform === option.id
-                      ? 'bg-card/80 border-primary shadow-lg scale-105'
-                      : 'bg-card/50 border-border/50 hover:bg-card/70 hover:border-border/70'
-                  ${"}"}`}
+                  className={`relative text-left rounded-xl border p-5 [transition:border-color_180ms,background-color_180ms] ${
+                    isSelected
+                      ? 'bg-white border-editorial-ink'
+                      : 'bg-editorial-surface border-editorial-line hover:border-editorial-ink-3'
+                  }`}
+                  data-track="download-platform-select"
+                  data-track-platform={option.platform}
                 >
                   <div className="flex flex-col items-center text-center">
-                    <div
-                      className={`mb-4 p-3 rounded-xl transition-all ${"${"}
-                      selectedPlatform === option.id
-                        ? 'bg-primary/20 text-primary scale-110'
-                        : 'bg-primary/10 text-primary group-hover:scale-110'
-                    ${"}"}`}
-                    >
+                    <div className="mb-4 grid h-11 w-11 place-items-center rounded-lg bg-editorial-surface-2 text-editorial-ink">
                       <option.icon />
                     </div>
 
-                    <h3 className="text-lg font-semibold mb-2">
+                    <h3 className="text-[15px] font-semibold mb-1.5">
                       {option.name}
                     </h3>
 
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-[12.5px] text-editorial-ink-3">
                       {option.description}
                     </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
-                    {selectedPlatform === option.id && (
-                      <CheckCircle className="absolute top-4 right-4 w-5 h-5 text-primary" />
+          {/* Download Button */}
+          {selectedPlatform && (
+            <div className="mt-10 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <button
+                onClick={handleDownloadClick}
+                className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+                data-track="download-click"
+                data-track-platform={selectedOption?.platform}
+              >
+                Download for {selectedOption?.name ?? "macOS"}
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Installation Steps */}
+      {selectedPlatform && (
+        <section className="ed-section pt-0">
+          <div className="ed-container max-w-[900px]">
+            <div className="rounded-2xl border border-editorial-line bg-editorial-surface px-6 py-8 sm:px-8 sm:py-10">
+              <h2 className="text-[clamp(28px,3vw,38px)] leading-[1.06] tracking-[-0.03em] text-center">
+                Install in three steps
+              </h2>
+              <div className="mt-8 grid md:grid-cols-3 gap-6">
+                {installationSteps.map((step, index) => (
+                  <div key={step.step} className="relative">
+                    <div className="text-center">
+                      <div className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full bg-editorial-ink text-sm font-semibold text-white">
+                        {step.step}
+                      </div>
+                      <h3 className="text-[15px] font-semibold text-editorial-ink mb-1">
+                        {step.title}
+                      </h3>
+                      <p className="text-[14px] text-editorial-ink-2">
+                        {step.description}
+                      </p>
+                    </div>
+
+                    {index < installationSteps.length - 1 && (
+                      <ArrowRight className="hidden md:block absolute top-5 -right-3 h-4 w-4 text-editorial-ink-3" />
                     )}
                   </div>
-                </Card>
-              ))}
+                ))}
+              </div>
             </div>
-
-            {/* Download Button - Only shows when platform is selected */}
-            {selectedPlatform && (
-              <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <Button
-                  onClick={handleDownloadClick}
-                  className="group/btn"
-                  size="lg"
-                  data-umami-event="download-click"
-                  data-umami-event-platform={selectedOption?.platform}
-                  data-track="download-click"
-                  data-track-platform={selectedOption?.platform}
-                >
-                  <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
-                  Download for{" "}
-                  {selectedOption?.name ?? "macOS"}
-                </Button>
-              </div>
-            )}
-
-            {/* Dynamic Installation Steps */}
-            {selectedPlatform && (
-              <div className="my-20 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h2 className="text-2xl font-semibold mb-8">
-                  Installation Guide
-                </h2>
-                <div className="grid md:grid-cols-3 gap-6">
-                  {installationSteps.map((step, index) => (
-                    <div key={step.step} className="relative">
-                      <div className="text-center">
-                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4">
-                          {step.step}
-                        </div>
-                        <h3 className="text-lg font-semibold mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-muted-foreground">
-                          {step.description}
-                        </p>
-                      </div>
-
-                      {/* Arrow for desktop */}
-                      {index < installationSteps.length - 1 && (
-                        <ArrowRight className="hidden md:block absolute top-6 -right-3 w-6 h-6 text-muted-foreground" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Pricing Section */}
-            <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
-
-            {/* FAQ Section */}
-            <FAQ />
-
           </div>
         </section>
+      )}
 
-        <Footer />
+      {/* Pricing */}
+      <section className="ed-section">
+        <div className="ed-container">
+          <DownloadPricing affonsoReferral={affonsoReferral} referrer={referrer} />
+        </div>
+      </section>
 
-        {/* Email Capture Modal */}
-        <EmailCaptureModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onDownload={handleActualDownload}
-        />
-      </div>
-    </>
+      {/* FAQ */}
+      <FAQ />
+
+      <Footer />
+
+      <EmailCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onDownload={handleActualDownload}
+      />
+    </main>
   );
 }

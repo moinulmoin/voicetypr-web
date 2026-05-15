@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -8,16 +8,30 @@ import "@/app/globals.css";
 import { OpenPanel } from "@/components/openpanel";
 import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
-// Removed client-gated marketing scripts; noscript renders unconditionally
-import MarketingNoscript from "@/app/components/MarketingNoscript";
 import { Providers } from "@/components/providers";
 import Script from "next/script";
 
 const fontSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
+// Instrument Serif — modern editorial serif with REAL italic. Reserved for the
+// rare <em> punctuation accent inside hero / brand-moment H2 / final CTA only.
+// Headings themselves use Geist (sans) with heavier weight. Loaded with both
+// styles so editorial numerals (5×, 150, $39) that opt into Tailwind's
+// font-serif utility still render in upright serif.
+const fontSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+// Mono falls back to the system stack via Tailwind's default `font-mono`.
+// No web font download for mono.
 export const metadata: Metadata = {
   title: "VoiceTypr — Offline AI voice to text app for founders and builders",
   description:
@@ -110,6 +124,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://assets.voicetypr.com" />
         <link rel="dns-prefetch" href="https://assets.voicetypr.com" />
       </head>
+      <body className={`${fontSans.variable} ${fontSerif.variable} font-sans antialiased`}>
       {/* JSON-LD Structured Data */}
       <Script
         id="json-ld-structured-data"
@@ -123,7 +138,7 @@ export default function RootLayout({
                 "@id": "https://voicetypr.com/#software",
                 name: "VoiceTypr",
                 description:
-                  "Offline voice dictation for founders and makers. Ship 3x faster with ChatGPT, Claude & Cursor while keeping data private.",
+                  "Offline voice dictation for founders and builders. Type by talking in ChatGPT, Claude, Cursor, docs, email, and chat while keeping audio local.",
                 applicationCategory: "ProductivityApplication",
                 operatingSystem: ["macOS 13.0+", "Windows 10+"],
                 downloadUrl: "https://voicetypr.com/download",
@@ -131,7 +146,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Pro Plan",
-                    price: "50.00",
+                    price: "39.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
@@ -143,7 +158,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Plus Plan",
-                    price: "80.00",
+                    price: "59.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
@@ -155,11 +170,23 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Max Plan",
-                    price: "140.00",
+                    price: "99.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:
                       "Includes 4 device activations, lifetime license, free updates.",
+                    seller: {
+                      "@id": "https://voicetypr.com/#organization",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Team Plan",
+                    price: "199.00",
+                    priceCurrency: "USD",
+                    availability: "https://schema.org/InStock",
+                    description:
+                      "Includes 10 device activations, lifetime license, free updates.",
                     seller: {
                       "@id": "https://voicetypr.com/#organization",
                     },
@@ -210,7 +237,7 @@ export default function RootLayout({
                 url: "https://voicetypr.com",
                 name: "VoiceTypr",
                 description:
-                  "AI Powered Voice to Text tool for Busy Founders and AI Power Users",
+                  "Offline voice to text for founders, builders, and AI power users.",
                 publisher: {
                   "@id": "https://voicetypr.com/#organization",
                 },
@@ -219,7 +246,7 @@ export default function RootLayout({
                 "@type": "WebPage",
                 "@id": "https://voicetypr.com/#webpage",
                 url: "https://voicetypr.com",
-                name: "VoiceTypr - AI Voice to Text tool for Founders and AI Users",
+                name: "VoiceTypr — Offline AI voice to text app",
                 isPartOf: {
                   "@id": "https://voicetypr.com/#website",
                 },
@@ -227,7 +254,7 @@ export default function RootLayout({
                   "@id": "https://voicetypr.com/#software",
                 },
                 description:
-                  "Offline AI voice dictation for busy founders and AI power users.",
+                  "Offline AI voice dictation for founders, builders, and AI power users.",
               },
               {
                 "@type": "FAQPage",
@@ -238,7 +265,7 @@ export default function RootLayout({
                     name: "Can I try VoiceTypr for free?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Yes! VoiceTypr offers a 3-day free trial with unlimited transcription. Test all features before buying. No credit card required.",
+                      text: "Yes. VoiceTypr offers a 3-day free trial with unlimited transcription and no credit card required.",
                     },
                   },
                   {
@@ -246,7 +273,7 @@ export default function RootLayout({
                     name: "Does it work with ChatGPT, Claude, and Cursor?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Yes! Works anywhere you can type - ChatGPT, Claude, Cursor, VS Code, Slack, X, emails. Just position your cursor and start voice typing. Perfect for long prompts without typing fatigue.",
+                      text: "Yes. VoiceTypr works anywhere you can type, including ChatGPT, Claude, Cursor, VS Code, Slack, X, email, and docs. Place your cursor, use the hotkey, and paste clean text.",
                     },
                   },
                   {
@@ -254,7 +281,7 @@ export default function RootLayout({
                     name: "Is my voice data private?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Absolutely! VoiceTypr uses local AI models that run entirely on your device. Your voice never leaves your computer. No cloud, no servers, 100% offline.",
+                      text: "Yes. Raw transcription runs on local models on your device, so audio never leaves your computer. Optional AI formatting sends only the final text, never audio, to your chosen provider.",
                     },
                   },
                   {
@@ -262,7 +289,7 @@ export default function RootLayout({
                     name: "Will it work on Windows/Intel Mac?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Windows version just launched! Works on both Intel and Apple Silicon Macs. Apple Silicon is more optimized for AI processing but Intel works great too.",
+                      text: "Yes. VoiceTypr works on Windows 10 and later, Intel Macs, and Apple Silicon Macs. Apple Silicon is recommended for the fastest local transcription.",
                     },
                   },
                 ],
@@ -273,11 +300,9 @@ export default function RootLayout({
       />
       {/* End JSON-LD Structured Data */}
 
-      <body className={`${fontSans.variable} font-sans antialiased `}>
-        {/* Google Tag Manager (noscript) rendered unconditionally */}
-        <MarketingNoscript />
         <a
           href="#main-content"
+          data-markdown-skip
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1000] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
         >
           Skip to main content

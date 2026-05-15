@@ -1,82 +1,87 @@
-import { Card } from "@/components/ui/card";
-
 const faqs = [
   {
-    question: "Does VoiceTypr work on Windows?",
-    answer:
-      "Yes! VoiceTypr supports Windows 10 and later. Download the .exe installer, run it, and you're set.",
+    q: 'Does VoiceTypr work on Windows?',
+    a: "Yes — Windows 10 and later. Download the .exe installer, run it, and you're set. We ship Mac and Windows as first-class platforms.",
   },
   {
-    question: "Windows says 'Unknown Publisher'. What should I do?",
-    answer:
-      "SmartScreen shows this because we don’t use a Microsoft code‑signing certificate yet. Even the basic option is roughly $200–$300/year, so as a solo founder I’m keeping costs lean for now. The app is safe: click More info → Run anyway. As more users launch the app, SmartScreen warnings fade automatically.",
+    q: "Windows says 'Unknown Publisher' — is it safe?",
+    a: "Yes. SmartScreen shows that because I don't have a Microsoft code-signing cert yet (they cost $200-$300/year and I'm keeping solo-founder costs lean). Click More info → Run anyway. The warning fades as more people install it.",
   },
   {
-    question: "Can I try VoiceTypr for free?",
-    answer:
-      "Yes, VoiceTypr includes a 3-day free trial with unlimited transcription. No card required: download, activate the trial, and start talking.",
+    q: 'Can I try VoiceTypr for free?',
+    a: 'Yes — 3-day free trial, unlimited transcription, no card required. Download, activate the trial, start talking.',
   },
   {
-    question: "Does it work with ChatGPT, Claude, and Cursor?",
-    answer:
-      "Absolutely. Place your cursor anywhere, hold the hotkey, and VoiceTypr pastes formatted text into ChatGPT, Claude, Cursor, VS Code, email, and any other app.",
+    q: 'Does it work with ChatGPT, Claude, and Cursor?',
+    a: 'Yes. Place your cursor anywhere, hold the hotkey, and VoiceTypr pastes formatted text into ChatGPT, Claude, Cursor, VS Code, email, Slack — any app that takes a text cursor.',
   },
   {
-    question: "Is my voice data private?",
-    answer:
-      "Yes. VoiceTypr runs locally using modern offline models; your audio never leaves your machine.",
+    q: 'Is my voice data private?',
+    a: 'Yes. Raw transcription runs locally with on-device models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs) — your audio never leaves your computer. Optional AI formatting sends only the final text, never audio, to your chosen provider. Turn AI formatting off to keep the workflow fully local.',
   },
   {
-    question: "What are the system requirements?",
-    answer:
-      "macOS Ventura 13+ (Apple Silicon recommended) or Windows 10+. Minimum 4 GB RAM.",
+    q: 'Do I need an API key for the AI formatting presets?',
+    a: 'Only if you want them. Raw transcription works locally with no key. The optional presets use your own API key from OpenAI, Anthropic, Google Gemini, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
   },
   {
-    question: "Does VoiceTypr work on Intel Macs?",
-    answer:
-      "Yes! We provide a dedicated Intel build for older Macs. Just select \"macOS (Intel)\" on the download page to get the right version for your machine.",
+    q: 'What are the system requirements?',
+    a: 'macOS Ventura 13+ with Apple Silicon recommended, Intel supported, or Windows 10+. Minimum 4 GB RAM.',
+  },
+  {
+    q: 'Does VoiceTypr work on Intel Macs?',
+    a: "Yes. We ship a dedicated Intel build. Select 'macOS (Intel)' on the download page.",
+  },
+  {
+    q: 'Does it use my GPU on Windows?',
+    a: 'Yes — VoiceTypr auto-detects NVIDIA, AMD, and Intel GPUs for faster transcription. If no GPU is available it falls back to CPU automatically; it still works.',
+  },
+  {
+    q: 'How do I cancel a recording I don’t want?',
+    a: 'Double-press Esc while recording to cancel — nothing gets transcribed and nothing gets pasted. Or release the hotkey in push-to-talk mode.',
   },
 ];
 
 export default function FAQ() {
   return (
-    <section className="relative py-24" id="faq">
-      <div className="mx-auto max-w-3xl px-4">
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            Frequently asked questions
-          </h2>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Everything you need to know before switching your typing workflow to
-            VoiceTypr.
-          </p>
-        </div>
+    <section className="ed-section" id="faq">
+      <div className="ed-container">
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+          <div className="lg:sticky lg:top-28">
+            <h2 className="text-4xl leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+              The honest FAQ
+            </h2>
+            <p className="mt-4 max-w-sm text-base leading-relaxed text-editorial-ink-2">
+              Real questions from buyers, Windows users, privacy-conscious teams, and people switching from subscription dictation apps.
+            </p>
+            <div className="mt-8 text-sm text-editorial-ink-3">
+              Any other questions?{' '}
+              <a
+                href="mailto:support@voicetypr.com"
+                className="text-editorial-ink underline underline-offset-4 hover:text-editorial-ink-2"
+                data-umami-event="faq-contact-click"
+              >
+                Contact us
+              </a>
+            </div>
+          </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq) => (
-            <Card
-              key={faq.question}
-              className="rounded-2xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm"
-            >
-              <h3 className="text-base font-semibold text-foreground sm:text-lg">
-                {faq.question}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {faq.answer}
-              </p>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-8 text-center text-sm text-muted-foreground">
-          Any other questions?{" "}
-          <a
-            href="mailto:support@voicetypr.com"
-            className="text-primary hover:underline"
-            data-umami-event="faq-contact-click"
-          >
-            Contact us
-          </a>
+          <div className="space-y-8">
+            {faqs.map((faq, index) => (
+              <article key={faq.q} className="grid gap-4 md:grid-cols-[4rem_1fr]">
+                <div className="font-mono text-xs text-editorial-ink-3">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold leading-snug tracking-tight text-editorial-ink">
+                    {faq.q}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+                    {faq.a}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

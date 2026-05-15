@@ -10,6 +10,7 @@ import {
 import { ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
 import { getMaxDevicesForLicense } from "@/lib/license-utils";
+import { PLANS, resolvePlan } from "@/lib/pricing";
 import { activateLicenseKey } from "@/lib/polar";
 import { licenseActivateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
@@ -69,29 +70,50 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. Create or update License record (source of truth for customer data)
+    // Resolve plan from license key prefix (productId unavailable at activation)
+    const planKey = resolvePlan(null, licenseKey);
     await prisma.license.upsert({
       where: { licenseKey },
       create: {
         licenseKey,
-        customerId: activation.licenseKey.customerId
+        customerId: activation.licenseKey.customerId,
+        ...(planKey && {
+          plan: planKey,
+          maxDevices: PLANS[planKey].maxDevices,
+        }),
       },
       update: {
-        customerId: activation.licenseKey.customerId
+        customerId: activation.licenseKey.customerId,
+        // Fill plan/maxDevices on first activation if still null
+        ...(!planKey ? {} : {
+          plan: planKey,
+          maxDevices: PLANS[planKey].maxDevices,
+        }),
       }
     });
 
-    // 4. Update device with license and OS info
-    await prisma.device.update({
+    // 4. Upsert device with license and OS info. Some activation paths may not
+    // have created a trial/device row before the user enters a license key.
+    await prisma.device.upsert({
       where: { deviceHash },
-      data: {
+      create: {
+        deviceHash,
+        licenseKey,
+        activationId: activation.id,
+        osType,
+        osVersion,
+        appVersion,
+        lastChecked: new Date(),
+      },
+      update: {
         licenseKey,
         activationId: activation.id,
         // Don't set customerId - use License table as source of truth
         osType,
         osVersion,
         appVersion,
-        lastChecked: new Date()
-      }
+        lastChecked: new Date(),
+      },
     });
 
     after(async () => {

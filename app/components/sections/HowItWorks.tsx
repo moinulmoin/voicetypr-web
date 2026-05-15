@@ -1,127 +1,105 @@
-import { Button } from "@/components/ui/button";
-import { Cpu, Download, Keyboard, Sparkles } from "lucide-react";
-import Link from "next/link";
-
 const steps = [
   {
-    id: 1,
-    title: "Install VoiceTypr",
-    description: "Download for your OS and launch the app.",
-    icon: Download,
-    gradient: "from-blue-600 to-purple-600",
+    label: '01',
+    title: 'Install VoiceTypr',
+    body: 'Download the Mac or Windows app. Apple Silicon, Intel, and Windows 10+ are supported.',
+    artifact: (
+      <div className="space-y-2 rounded-xl bg-white p-4 text-sm shadow-sm">
+        <div className="flex items-center justify-between border-b border-editorial-line pb-2">
+          <span>macOS</span>
+          <span className="rounded-full bg-editorial-surface-2 px-2 py-1 text-xs">ready</span>
+        </div>
+        <div className="flex items-center justify-between pt-1">
+          <span>Windows</span>
+          <span className="rounded-full bg-editorial-surface-2 px-2 py-1 text-xs">ready</span>
+        </div>
+      </div>
+    ),
   },
   {
-    id: 2,
-    title: "Download model",
-    description: "Download and select a model for your language and speed.",
-    icon: Cpu,
-    gradient: "from-indigo-600 to-purple-600",
+    label: '02',
+    title: 'Pick a model',
+    body: 'Choose speed, accuracy, or Apple Silicon performance. You can switch per session.',
+    artifact: (
+      <div className="rounded-xl bg-white p-4 text-xs">
+        {[
+          ['Base', 'fast', 34],
+          ['Large v3', 'accurate', 100],
+          ['Turbo', 'balanced', 66],
+        ].map(([name, meta, width]) => (
+          <div key={String(name)} className="mb-3 last:mb-0">
+            <div className="mb-1 flex justify-between text-editorial-ink-2">
+              <span>{name}</span>
+              <span>{meta}</span>
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-editorial-surface-2">
+              <div className="h-full rounded-full bg-editorial-ink" style={{ width: `${width}%` }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    ),
   },
   {
-    id: 3,
-    title: "Set your hotkey",
-    description: "Pick a global shortcut to toggle/push to dictation anywhere.",
-    icon: Keyboard,
-    gradient: "from-purple-600 to-pink-600",
+    label: '03',
+    title: 'Set a hotkey',
+    body: 'Toggle or push-to-talk. It works globally in any app, any text field, any time.',
+    artifact: (
+      <div className="rounded-xl bg-white p-4">
+        <div className="mb-3 text-xs uppercase tracking-widest text-editorial-ink-3">global shortcut</div>
+        <div className="flex gap-2">
+          {['⌘', '⇧', 'Space'].map((key) => (
+            <span key={key} className="rounded-lg border border-b-2 border-editorial-line bg-editorial-surface-2 px-4 py-3 font-mono text-sm">
+              {key}
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
   },
   {
-    id: 4,
-    title: "Speak & ship",
-    description: "Hold the hotkey and talk; now polished text anywhere.",
-    icon: Sparkles,
-    gradient: "from-pink-600 to-indigo-600",
+    label: '04',
+    title: 'Speak and paste',
+    body: 'Hold the key, talk, release. Clean text lands wherever your cursor already is.',
+    artifact: (
+      <div className="rounded-xl bg-white p-4">
+        <div className="mb-2 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Raw voice</div>
+        <div className="rounded-lg bg-editorial-surface-2 px-3 py-2 text-sm text-editorial-ink-2">
+          Let&apos;s ship Tuesday and iterate from there.
+        </div>
+      </div>
+    ),
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-24">
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-4">
-            How It Works
+    <section className="ed-section" id="how-it-works">
+      <div className="ed-container">
+        <div className="max-w-3xl">
+          <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
+            Install. Pick a model. Set a key. <em>Talk</em>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Four quick steps to start writing 3x faster.
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
+            No cloud account. No onboarding maze. Download, choose the local model you want, and start talking.
           </p>
         </div>
 
-        {/* Timeline - Desktop */}
-        <div className="hidden lg:block relative">
-          <div className="absolute top-[32px] left-0 right-0 h-[2px]">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted-foreground/30 to-transparent" />
-          </div>
-          <div className="relative flex justify-between items-start">
-            {steps.map((step) => (
-              <div
-                key={step.id}
-                className="group relative flex flex-col items-center text-center"
-                style={{ flex: "1 1 0" }}
-              >
-                <div className="relative mb-6">
-                  <div
-                    className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`}
-                  />
-                  <div
-                    className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-foreground" />
-                    </div>
-                  </div>
-                </div>
-                <h3 className="font-semibold text-base mb-2 px-2">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-muted-foreground max-w-[220px] leading-relaxed">
-                  {step.description}
-                </p>
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step) => (
+            <article key={step.label} className="flex min-h-96 flex-col rounded-3xl bg-editorial-surface-2 p-6">
+              <div className="mb-5 inline-flex h-8 w-12 items-center justify-center rounded-full bg-white text-sm font-medium text-editorial-ink-3">
+                {step.label}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Timeline - Mobile */}
-        <div className="lg:hidden relative">
-          <div className="space-y-8">
-            {steps.map((step, index) => (
-              <div
-                key={step.id}
-                className="group relative flex flex-col items-center text-center"
-              >
-                <div className="relative mb-4">
-                  <div
-                    className={`absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} opacity-20 blur-lg group-hover:opacity-30 transition-opacity`}
-                  />
-                  <div
-                    className={`relative w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-[1px] group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-foreground" />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[2px] h-8 bg-gradient-to-b from-muted-foreground/40 to-transparent" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-20 text-center">
-          <Button
-            size="lg"
-            className="group"
-            data-umami-event="how-it-works-cta-click"
-            asChild
-          >
-            <Link href="/download">Start in 2 minutes</Link>
-          </Button>
+              <h3 className="text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+                {step.body}
+              </p>
+              <div className="mt-auto pt-8">{step.artifact}</div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

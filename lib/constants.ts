@@ -4,12 +4,12 @@ export const CONFIG = {
   trialsPerDevice: 1, // One trial per device forever
 
   // License
-  devicesPerLicense: 1, // One device at a time
-  devicesPerMaxLicense: 4, // Up to 4 devices for Max plan
+  devicesPerLicense: 1, // Default single-device license
+  devicesPerMaxLicense: 10, // Largest public device-count option
 
   // Validation
   validationIntervalInHours: 6, // Check license status every 6 hours
-  offlineGracePeriodDays: 7, // Work offline for 3 days
+  offlineGracePeriodDays: 7, // Work offline for 7 days
 
   // Versions
   minSupportedVersion: '1.0.0',

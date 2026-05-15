@@ -1,0 +1,111 @@
+---
+title: Install VoiceTypr on macOS
+description: Step-by-step install guide for VoiceTypr on macOS 13+ for Apple Silicon and Intel Macs, including Open Anyway, microphone, and accessibility setup.
+category: setup
+order: 1
+---
+
+## Before you start
+
+VoiceTypr supports:
+
+- macOS Ventura 13 or newer
+- Apple Silicon Macs (recommended)
+- Intel Macs (supported with the Intel build)
+
+Before downloading, close any app that may be actively using your microphone permissions screen.
+
+## Download the correct build
+
+1. Go to [voicetypr.com/download](/download)
+2. Pick **macOS (Apple Silicon)** for M1, M2, M3, or newer Macs
+3. Pick **macOS (Intel)** if your Mac uses an Intel chip
+4. Wait for the `.dmg` file to finish downloading into **Downloads**
+
+If Safari or Chrome asks whether you want to keep the file, choose **Keep**.
+
+## Install the app
+
+1. Open the downloaded `.dmg`
+2. Drag **VoiceTypr** into **Applications**
+3. Wait for the copy to finish
+4. Eject the disk image from Finder
+5. Open **Applications** and launch VoiceTypr
+
+## If macOS says the app is from an unidentified developer
+
+This is the most common install blocker on macOS.
+
+1. Try opening VoiceTypr once from **Applications**
+2. When macOS blocks it, close the warning
+3. Open **System Settings → Privacy & Security**
+4. Scroll to the bottom of the Security section
+5. Click **Open Anyway** next to VoiceTypr
+6. Confirm with your password or Touch ID
+7. Launch VoiceTypr again and click **Open**
+
+If you want the detailed version, see [macOS says “unidentified developer” →](/help/macos-unidentified-developer-open-anyway)
+
+## Grant microphone access
+
+VoiceTypr cannot transcribe until microphone access is enabled.
+
+1. Open **System Settings → Privacy & Security → Microphone**
+2. Turn **VoiceTypr** on
+3. Quit and reopen VoiceTypr if it was already running
+
+If VoiceTypr does not appear in the list yet, launch it once and trigger a recording attempt first.
+
+## Grant accessibility access
+
+Accessibility access is what lets VoiceTypr paste into Cursor, ChatGPT, email, docs, and other apps.
+
+1. Open **System Settings → Privacy & Security → Accessibility**
+2. Click the **+** button
+3. Choose **Applications → VoiceTypr**
+4. Click **Open**
+5. Turn **VoiceTypr** on in the list
+6. Restart VoiceTypr
+
+## First launch checklist
+
+After install, confirm these three things:
+
+- the microphone permission is enabled
+- accessibility permission is enabled
+- your hotkey opens the dictation HUD
+
+If the app opens but text does not paste, the issue is almost always Accessibility permission.
+
+## Apple Silicon vs Intel notes
+
+### Apple Silicon
+
+- best performance
+- fastest local models
+- recommended for heavy dictation
+
+### Intel
+
+- fully supported
+- slower than Apple Silicon on large models
+- still works fine for lighter or medium dictation workloads
+
+If performance feels slow on Intel, switch to a smaller or faster model first.
+
+## If the app still will not open
+
+Check these in order:
+
+1. Did you move the app into **Applications** instead of launching from the disk image?
+2. Did you click **Open Anyway** in Privacy & Security?
+3. Did you relaunch the app after granting permissions?
+4. Are you running a supported macOS version?
+
+If you still get stuck, use [Troubleshooting common issues →](/help/troubleshooting)
+
+## Next steps
+
+- [Getting started with your first dictation →](/help/getting-started)
+- [Choose the right model →](/help/models)
+- [Set up hotkeys →](/help/hotkeys)

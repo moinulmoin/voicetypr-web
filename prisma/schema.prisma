@@ -17,6 +17,8 @@ datasource db {
 model License {
   licenseKey String   @id @map("license_key")
   customerId String?  @map("customer_id") // Nullable for migration safety - can be populated later
+  plan       String?  // Plan key: pro, plus, max, team — nullable for migration safety
+  maxDevices Int?     @map("max_devices") // Cached device limit — nullable for migration safety
   createdAt  DateTime @default(now()) @map("created_at")
   devices    Device[]
 

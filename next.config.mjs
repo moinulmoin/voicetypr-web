@@ -17,6 +17,7 @@ const nextConfig = {
         hostname: "api.dicebear.com",
       },
     ],
+    minimumCacheTTL: 31536000,
   },
 }
 

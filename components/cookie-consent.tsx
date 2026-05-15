@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useEffect, useState } from "react";
 
@@ -16,7 +17,6 @@ function readCookie(name: string) {
     const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
     return match && match[2] ? decodeURIComponent(match[2]) : null;
   } catch {
-    // Cookie access can throw in incognito/disabled cookies
     return null;
   }
 }
@@ -27,7 +27,6 @@ function writeCookie(name: string, value: string, days: number) {
     const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
     document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
   } catch {
-    // Cookie write can throw (quota exceeded, disabled cookies)
   }
 }
 
@@ -80,16 +79,25 @@ export default function CookieConsent() {
   };
 
   return (
-    <div className="fixed bottom-8 right-4 z-50 w-[80vw] max-w-sm">
-      <div className="rounded-xl border bg-background shadow-xl">
-        <div className="flex items-center gap-4 p-4">
-          <p className="text-sm text-muted-foreground">
-            We use cookies to personalize content and run ads. Read our {" "}
-            <a href="/cookies" className="underline underline-offset-2 hover:text-foreground">Cookie Policy</a>.
-          </p>
+    <div data-markdown-skip className="fixed bottom-4 left-4 right-4 z-50 sm:left-auto sm:right-5 sm:w-[25rem]">
+      <div className="rounded-2xl border border-editorial-line bg-editorial-surface px-4 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
+            <p className="text-sm leading-relaxed text-editorial-ink-2">
+              We use cookies for attribution, marketing measurement, and consent state. Read our{' '}
+              <Link
+                href="/cookies"
+                className="text-editorial-ink underline underline-offset-2 hover:text-editorial-ink-2"
+              >
+                Cookie Policy
+              </Link>
+              .
+            </p>
+          </div>
           <button
+            type="button"
             onClick={accept}
-            className="ml-auto inline-flex shrink-0 items-center justify-center rounded-md border px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition-colors hover:bg-black active:scale-95"
           >
             Okay
           </button>

@@ -1,0 +1,77 @@
+---
+title: VoiceTypr microphone not working on Windows
+description: Fix microphone permission, input-device, and privacy-setting issues when VoiceTypr is not hearing you on Windows 10 or 11.
+category: troubleshooting
+order: 4
+---
+
+## What this usually means
+
+If VoiceTypr launches but does not hear you, the issue is usually one of these:
+
+- Windows microphone permission is off
+- the wrong input device is selected
+- another app is using the microphone
+- desktop app microphone access is disabled
+
+## Step 1: Check Windows microphone permissions
+
+### Windows 11
+
+1. Open **Settings → Privacy & security → Microphone**
+2. Turn on **Microphone access**
+3. Turn on **Let apps access your microphone**
+4. Turn on **Let desktop apps access your microphone**
+
+### Windows 10
+
+1. Open **Settings → Privacy → Microphone**
+2. Turn on **Allow apps to access your microphone**
+3. Turn on desktop app microphone access if shown
+
+## Step 2: Check the selected input device
+
+1. Right-click the speaker icon in the taskbar
+2. Open **Sound settings**
+3. Confirm the correct microphone is selected
+4. Speak and verify the input level moves
+
+## Step 3: Close conflicting apps
+
+Common conflicts:
+
+- Zoom
+- Teams
+- OBS
+- browser tabs using Meet or voice recording
+- other dictation or transcription apps
+
+Close them fully, then test VoiceTypr again.
+
+## Step 4: Relaunch VoiceTypr
+
+If you changed privacy settings while VoiceTypr was open:
+
+1. Quit VoiceTypr
+2. Reopen it
+3. Trigger a short dictation test
+
+## Step 5: Test in a simple app first
+
+Before testing in Cursor or a browser:
+
+1. Open Notepad
+2. Start VoiceTypr
+3. Speak one short sentence
+4. Release and see if the app responds
+
+If it works there but not elsewhere, the real issue is likely hotkeys or paste permissions, not the microphone itself.
+
+## If it still does not work
+
+Next pages:
+
+- [Install VoiceTypr on Windows 10 and 11 →](/help/install-windows)
+- [Install VoiceTypr on Windows 11 →](/help/install-windows-11)
+- [Install VoiceTypr on Windows 10 →](/help/install-windows-10)
+- [Troubleshooting common issues →](/help/troubleshooting)

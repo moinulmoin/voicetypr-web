@@ -1,3 +1,5 @@
+> **⚠️ SUPERSEDED 2026-04-18** by [`SALES_SPRINT_PLAN.md`](./SALES_SPRINT_PLAN.md). Kept for historical reference. The single-offer simplification proposed here is explicitly rejected; the tier ladder (Pro/Plus/Max + Team) stays. The 'Ship 3x faster with voice' positioning overlaps with the new 'voice input for AI builders' framing but is not identical — new framing wins.
+
 # Landing Page Optimization Plan - VoiceTypr
 
 ## 🎯 Core Positioning Fix

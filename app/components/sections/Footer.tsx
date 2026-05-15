@@ -1,115 +1,112 @@
-import { GitHub, XformerlyTwitter } from "@/components/icons";
-import { Mail } from "lucide-react";
-import Link from "next/link";
+import Link from 'next/link';
+import { GitHub, Gmail, XformerlyTwitter } from '@/components/icons';
+
+const columns = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Download', href: '/download', internal: true },
+      { label: 'Pricing', href: '/#pricing', internal: true },
+      { label: 'Use cases', href: '/use-cases', internal: true },
+      { label: 'Voice typing', href: '/voice-typing', internal: true },
+      { label: 'Changelog', href: '/changelog', internal: true },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'Support', href: 'mailto:support@voicetypr.com' },
+      { label: 'Ideaplexa', href: 'https://ideaplexa.com' },
+      { label: 'GitHub', href: 'https://github.com/moinulmoin/voicetypr' },
+      { label: 'Affiliate', href: '/affiliate', internal: true },
+    ],
+  },
+  {
+    title: 'Trust',
+    links: [
+      { label: 'Privacy', href: '/privacy', internal: true },
+      { label: 'Terms', href: '/terms', internal: true },
+      { label: 'Cookies', href: '/cookies', internal: true },
+    ],
+  },
+] as const;
+
+const socialLinks = [
+  { label: 'Twitter/X', href: 'https://twitter.com/immoinulmoin', Icon: XformerlyTwitter },
+  { label: 'GitHub', href: 'https://github.com/moinulmoin/voicetypr', Icon: GitHub },
+  { label: 'Email', href: 'mailto:support@voicetypr.com', Icon: Gmail },
+] as const;
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-border/50">
-      <div className="max-w-5xl mx-auto px-4 py-20">
-        {/* Main content */}
-        <div className="flex flex-col items-center text-center">
-          <h3 className="text-2xl font-bold mb-2">VoiceTypr</h3>
-          <p className="text-muted-foreground mb-4 max-w-md text-balance">
-            Offline AI voice to text app for founders and builders.
-          </p>
-          <p className="text-sm text-muted-foreground mb-8">
-            Available for macOS (13+) and Windows (10+)
-          </p>
-
-          {/* Social links */}
-          <div className="flex items-center gap-6 mb-12">
-            <a
-              href="https://github.com/moinulmoin/voicetypr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="GitHub"
-              data-umami-event="social-link-click"
-              data-umami-event-platform="github"
-            >
-              <GitHub className="w-5 h-5 fill-current" />
-            </a>
-            <a
-              href="https://x.com/voicetypr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Twitter"
-              data-umami-event="social-link-click"
-              data-umami-event-platform="twitter"
-            >
-              <XformerlyTwitter className="w-5 h-5 fill-current" />
-            </a>
-            <a
-              href="mailto:support@voicetypr.com"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Support"
-              data-umami-event="social-link-click"
-              data-umami-event-platform="email"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
+    <footer data-markdown-skip className="bg-editorial-bg py-14">
+      <div className="ed-container">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="text-2xl font-semibold tracking-tight text-editorial-ink">
+              VoiceTypr
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-editorial-ink-2">
+              Offline AI voice-to-text for founders and builders. Local models, every-app input, Mac and Windows.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {socialLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-flex h-8 items-center gap-2 rounded-md border border-editorial-line bg-white px-3 text-xs font-medium text-editorial-ink-2 shadow-sm transition-colors hover:text-editorial-ink"
+                  data-umami-event="footer-social-click"
+                  data-umami-event-page={label.toLowerCase()}
+                  aria-label={label}
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                  <span>{label}</span>
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
-            <Link
-              href="/download"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="download"
-            >
-              Download
-            </Link>
-            <Link
-              href="/cookies"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="cookies"
-            >
-              Cookies
-            </Link>
-            {/* <a href="/changelog" className="text-muted-foreground hover:text-foreground transition-colors" data-track="footer-link-click" data-track-page="changelog">
-              Changelog
-            </a> */}
-            <Link
-              href="/privacy"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="privacy"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="terms"
-            >
-              Terms & Conditions
-            </Link>
-            <a
-              href="mailto:support@voicetypr.com"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="support"
-            >
-              Support
-            </a>
-            <a
-              href="https://voicetypr.affonso.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              data-umami-event="footer-link-click"
-              data-umami-event-page="referral"
-            >
-              Affiliates
-            </a>
-          </div>
-          <div className="mt-8 text-xs text-muted-foreground">
-            © 2025 VoiceTypr. All rights reserved.
-          </div>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h5 className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+                {column.title}
+              </h5>
+              <ul className="space-y-2 text-sm text-editorial-ink-2">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    {'internal' in link && link.internal ? (
+                      <Link
+                        href={link.href}
+                        className="transition-colors hover:text-editorial-ink"
+                        data-umami-event="footer-link-click"
+                        data-umami-event-page={link.label.toLowerCase()}
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('http') ? '_blank' : undefined}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="transition-colors hover:text-editorial-ink"
+                        data-umami-event="footer-link-click"
+                        data-umami-event-page={link.label.toLowerCase()}
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 flex flex-col justify-between gap-2 text-xs text-editorial-ink-3 md:flex-row">
+          <span>© 2026 VoiceTypr</span>
+          <span>Offline voice-to-text for macOS & Windows</span>
         </div>
       </div>
     </footer>

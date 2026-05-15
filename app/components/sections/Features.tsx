@@ -1,199 +1,230 @@
-import {
-  ClaudeAI,
-  Cursor,
-  Discord,
-  Gemini,
-  Gmail,
-  Linear,
-  Notion,
-  OpenAI,
-  Slack,
-  XformerlyTwitter
-} from "@/components/icons";
-import { Card } from "@/components/ui/card";
-import {
-  Shield,
-  Mic,
-  Keyboard,
-  Zap,
-  Sparkles,
-  History,
-  Layers,
-  Upload,
-  Globe,
-  Gauge,
-  TrendingUp
-} from "lucide-react";
+import type { ReactNode } from 'react';
+import { ClaudeAI, Cursor, Gmail, Notion, OpenAI, Slack } from '@/components/icons';
+import { cn } from '@/lib/utils';
 
-// App icons grid
-const appIcons = [
-  { icon: XformerlyTwitter, name: "X" },
-  { icon: Slack, name: "Slack" },
-  { icon: Linear, name: "Linear" },
-  { icon: Notion, name: "Notion" },
-  { icon: Cursor, name: "Cursor" },
-  { icon: Discord, name: "Discord" },
-  { icon: Gemini, name: "Gemini" },
-  { icon: OpenAI, name: "Open AI" },
-  { icon: ClaudeAI, name: "Claude AI" },
-  { icon: Gmail, name: "Gmail" }
-];
+const appTargets = [
+  { label: 'Cursor', Icon: Cursor },
+  { label: 'ChatGPT', Icon: OpenAI },
+  { label: 'Claude', Icon: ClaudeAI },
+  { label: 'Gmail', Icon: Gmail },
+  { label: 'Notion', Icon: Notion },
+  { label: 'Slack', Icon: Slack },
+] as const;
+
+type FeatureCard = {
+  label: string;
+  title: string;
+  body: string;
+  demo: ReactNode;
+  wide?: boolean;
+};
+
+const featureCards: FeatureCard[] = [
+  {
+    label: 'Everywhere',
+    title: 'Every app that takes a cursor',
+    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, and other text fields without changing your workflow.',
+    wide: true,
+    demo: (
+      <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="mb-3 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Paste where cursor is</div>
+        <div className="grid gap-2 sm:grid-cols-3">
+          {appTargets.map(({ label, Icon }) => (
+            <span
+              key={label}
+              className="flex items-center gap-2 rounded-md border border-editorial-line bg-editorial-surface-2 px-3 py-2 text-xs font-medium text-editorial-ink-2"
+            >
+              <Icon className="h-3.5 w-3.5 shrink-0" />
+              <span>{label}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Privacy',
+    title: 'Audio stays local',
+    body: 'Whisper and Parakeet models run on your machine. Optional AI cleanup sends text only when you choose it.',
+    demo: (
+      <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
+        {[
+          ['Audio uploaded', '0 bytes'],
+          ['Account required', 'No'],
+          ['Transcription', 'Local'],
+        ].map(([name, value]) => (
+          <div key={name} className="flex justify-between border-b border-editorial-line py-3 first:pt-0 last:border-0 last:pb-0">
+            <span>{name}</span>
+            <strong>{value}</strong>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    label: 'Models',
+    title: 'Pick speed or accuracy',
+    body: 'Switch between small fast models and larger accurate models per session, not per subscription tier.',
+    demo: (
+      <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
+        <div className="mb-4 flex items-center justify-between">
+          <span className="font-medium">Model picker</span>
+          <span className="rounded-md bg-editorial-ink px-2 py-1 text-white">Turbo</span>
+        </div>
+        {[
+          ['Whisper Base', '142 MB'],
+          ['Whisper Large v3', '2.9 GB'],
+          ['Whisper Turbo', '1.5 GB'],
+          ['Parakeet', '0.6 GB'],
+        ].map(([name, size], index) => (
+          <div key={name} className="flex justify-between border-b border-editorial-line py-2 last:border-0">
+            <span className={cn(index === 2 && 'font-semibold text-editorial-ink')}>{name}</span>
+            <span className="font-mono text-editorial-ink-3">{size}</span>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    label: 'Hotkeys',
+    title: 'Push, toggle, or remap',
+    body: 'Hold to record, tap to toggle, or bind dictation to the shortcut your fingers already know.',
+    demo: (
+      <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="mb-4 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">Current shortcut</div>
+        <div className="flex items-center gap-2">
+          {['⌘', '⇧', 'Space'].map((key) => (
+            <kbd key={key} className="rounded-lg border border-b-2 border-editorial-line bg-editorial-surface-2 px-4 py-3 font-mono text-sm text-editorial-ink shadow-sm">
+              {key}
+            </kbd>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Formatting',
+    title: 'Cleaner text when you want it',
+    body: 'Use your own API key for prompt, email, and default cleanup presets. Turn AI formatting off to keep the workflow fully local.',
+    demo: (
+      <div className="space-y-3 rounded-xl bg-white p-4 shadow-sm">
+        <div className="flex flex-wrap gap-2">
+          {['Default', 'Prompts', 'Email'].map((mode, index) => (
+            <span
+              key={mode}
+              className={cn(
+                'rounded-md border px-3 py-1.5 text-xs font-medium',
+                index === 1
+                  ? 'border-editorial-ink bg-editorial-ink text-white'
+                  : 'border-editorial-line bg-editorial-surface-2 text-editorial-ink-2',
+              )}
+            >
+              {mode}
+            </span>
+          ))}
+        </div>
+        <div className="rounded-lg bg-editorial-surface-2 p-3 text-sm leading-relaxed text-editorial-ink-2">
+          “Turn this rough thought into a clean Cursor prompt.”
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Files',
+    title: 'Drop in audio or video',
+    body: 'Transcribe recordings locally from common audio and video formats without uploading them to a cloud service.',
+    demo: (
+      <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="rounded-xl border border-dashed border-editorial-line bg-editorial-surface-2 p-4 font-mono text-xs text-editorial-ink-2">
+          wav · mp3 · m4a · flac · mp4 · webm
+        </div>
+        <div className="mt-3 flex items-center justify-between text-xs text-editorial-ink-3">
+          <span>Processing locally</span>
+          <span className="font-mono">00:18</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'History',
+    title: 'Search, copy, export',
+    body: 'Keep transcripts on your machine, find them later, copy again, or export what you need.',
+    demo: (
+      <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
+        {['search history', 'copy last transcript', 'export local JSON'].map((item) => (
+          <div key={item} className="flex justify-between border-b border-editorial-line py-2 last:border-0">
+            <span>→ {item}</span>
+            <span>local</span>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    label: 'Languages',
+    title: 'Work across 99+ languages',
+    body: 'Use the same workflow in English and other common languages without switching tools.',
+    demo: (
+      <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+          Popular languages
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {['English', 'Spanish', 'French', 'German', 'Italian', 'Dutch'].map((language) => (
+            <span
+              key={language}
+              className="rounded-md border border-editorial-line bg-editorial-surface-2 px-3 py-1.5 text-xs font-medium text-editorial-ink-2"
+            >
+              {language}
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+] as const;
 
 export default function Features() {
   return (
-    <section className="relative py-24" id="features">
-      {/* Simple, focused intro */}
-      <div className="text-center mb-16 max-w-3xl mx-auto px-4">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4">Turn your voice into text</h2>
-        <p className="text-muted-foreground text-xl">
-          Speak naturally. Type anywhere. Stay private.
-        </p>
-      </div>
+    <section className="ed-section ed-section-wash" id="features">
+      <div className="ed-container">
+        <div className="max-w-3xl">
+          <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
+            The tools inside VoiceTypr
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
+            Choose a model. Set a hotkey. Drop in a file. Paste anywhere.
+          </p>
+        </div>
 
-      {/* Unified grid - 6 columns with enhanced card styles */}
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-min">
-
-          {/* Hero Feature 1: Universal Language Support - spans 3 columns */}
-          <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-blue-500/10 via-card to-card/60 backdrop-blur-sm border-blue-500/20 rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-3xl"></div>
-
-            <div className="relative z-10">
-              <Globe className="w-14 h-14 text-blue-500 mb-6" />
-
-              {/* Language grid - USA & European languages only */}
-              <div className="grid grid-cols-5 gap-2 mb-6">
-                {["EN", "ES", "FR", "DE", "IT", "PT", "NL", "SV", "NO", "PL"].map((lang, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center h-10 rounded-lg bg-muted/30 text-sm font-medium text-muted-foreground/80 transition-all duration-300 hover:bg-blue-500/20 hover:text-blue-500"
-                  >
-                    {lang}
-                  </div>
-                ))}
+        <div className="mt-12 grid grid-cols-1 divide-editorial-line overflow-hidden rounded-3xl border border-editorial-line md:grid-cols-2 md:divide-x lg:grid-cols-3">
+          {featureCards.map((feature) => (
+            <article
+              key={feature.title}
+              className={cn(
+                'flex min-h-80 flex-col border-b border-editorial-line bg-white p-6',
+                feature.wide && 'lg:col-span-2',
+              )}
+            >
+              <div className="mb-8 inline-flex self-start rounded-md bg-editorial-surface-2 px-2.5 py-1 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+                {feature.label}
+              </div>
+              <div>
+                <h3 className="max-w-md text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 max-w-xl text-base leading-relaxed text-editorial-ink-2">
+                  {feature.body}
+                </p>
               </div>
 
-              <h3 className="text-2xl lg:text-3xl font-bold mb-3">99+ Languages</h3>
-              <p className="text-muted-foreground">Speak in any language. It just works.</p>
-            </div>
-          </Card>
-
-          {/* Hero Feature 2: Works Everywhere - spans 3 columns */}
-          <Card className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-yellow-500/10 via-card to-card/60 backdrop-blur-sm border-yellow-500/20 rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/10 hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-yellow-500/20 to-transparent rounded-full blur-3xl"></div>
-
-            <div className="relative z-10">
-              <Zap className="w-14 h-14 text-yellow-500 mb-6" />
-
-              <h3 className="text-2xl lg:text-3xl font-bold mb-3">Works Everywhere</h3>
-              <p className="text-muted-foreground mb-6">
-                Type in any app using your voice. Email, chat, code - anywhere.
-              </p>
-
-              {/* App icons */}
-              <div className="grid grid-cols-5 gap-3">
-                {appIcons.map(({ icon: Icon }, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center p-3 rounded-lg bg-muted/20 transition-all duration-300 hover:bg-yellow-500/20"
-                  >
-                    <Icon className="w-6 h-6 text-muted-foreground hover:text-yellow-500 transition-colors" />
-                  </div>
-                ))}
+              <div className="mt-auto pt-8">
+                <div className="rounded-2xl bg-editorial-surface-2 p-5">
+                  {feature.demo}
+                </div>
               </div>
-            </div>
-          </Card>
-
-          {/* Core Features - Medium sized cards */}
-
-          {/* AI Enhancement */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-purple-500/10 via-card to-card/60 backdrop-blur-sm border-purple-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-3xl gap-0"></div>
-            <div className="relative z-10">
-              <Sparkles className="w-10 h-10 text-purple-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Smart Formatting</h3>
-              <p className="text-sm text-muted-foreground">
-                5 modes to polish your text. From casual chat to formal documents.
-              </p>
-            </div>
-          </Card>
-
-          {/* Accurate Transcription */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-blue-500/5 via-card to-card/60 backdrop-blur-sm border-blue-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Mic className="w-10 h-10 text-blue-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">99% Accurate</h3>
-            <p className="text-sm text-muted-foreground">
-              Advanced AI that understands what you say.
-            </p>
-          </Card>
-
-          {/* Private & Secure */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-green-500/5 via-card to-card/60 backdrop-blur-sm border-green-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Shield className="w-10 h-10 text-green-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">100% Private</h3>
-            <p className="text-sm text-muted-foreground">
-              Runs locally. Your voice never leaves your computer.
-            </p>
-          </Card>
-
-          {/* NEW v1.8 Features - Matching existing medium card style */}
-
-          {/* Push-to-Talk & Hotkeys */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-purple-500/5 via-card to-card/60 backdrop-blur-sm border-purple-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Keyboard className="w-10 h-10 text-purple-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Toggle or Push-to-Talk</h3>
-            <p className="text-sm text-muted-foreground">
-              Hold or toggle your hotkey to record and transcribe.
-            </p>
-          </Card>
-
-          {/* Audio & Video File Upload */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-blue-500/5 via-card to-card/60 backdrop-blur-sm border-blue-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Upload className="w-10 h-10 text-blue-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Upload Audio & Video Files</h3>
-            <p className="text-sm text-muted-foreground">
-              Transcribe MP3, WAV, M4A, MP4, MOV. Drag, drop, done.
-            </p>
-          </Card>
-
-          {/* Smart History */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-green-500/5 via-card to-card/60 backdrop-blur-sm border-green-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <History className="w-10 h-10 text-green-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Smart History</h3>
-            <p className="text-sm text-muted-foreground">
-              Search, export to JSON, copy anything you&apos;ve said.
-            </p>
-          </Card>
-
-          {/* Productivity Stats */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-orange-500/5 via-card to-card/60 backdrop-blur-sm border-orange-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <TrendingUp className="w-10 h-10 text-orange-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Track Progress</h3>
-            <p className="text-sm text-muted-foreground">
-              Build streaks, track stats, share your productivity.
-            </p>
-          </Card>
-
-          {/* Additional Features - Bottom Row */}
-
-          {/* Lightning Fast */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-yellow-500/5 via-card to-card/60 backdrop-blur-sm border-yellow-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Gauge className="w-10 h-10 text-yellow-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
-            <p className="text-sm text-muted-foreground">
-              Native app, instant response. No cloud latency.
-            </p>
-          </Card>
-
-          {/* Multiple Models */}
-          <Card className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-indigo-500/5 via-card to-card/60 backdrop-blur-sm border-indigo-500/20 rounded-3xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 hover:scale-[1.02] cursor-pointer group gap-0">
-            <Layers className="w-10 h-10 text-indigo-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Multiple Models</h3>
-            <p className="text-sm text-muted-foreground">
-              Choose speed or accuracy. Download what you need.
-            </p>
-          </Card>
-
+            </article>
+          ))}
         </div>
       </div>
     </section>

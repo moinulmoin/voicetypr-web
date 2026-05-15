@@ -8,6 +8,7 @@ import {
 } from "@/lib/api-utils";
 import { ERROR_MESSAGES, ErrorCode } from "@/lib/constants";
 import { prisma } from "@/lib/db";
+import { PLANS, getPlanByLicensePrefix } from "@/lib/pricing";
 import { validateLicenseKey } from "@/lib/polar";
 import { licenseValidateRequestSchema } from "@/lib/types";
 import { after, NextRequest } from "next/server";
@@ -34,7 +35,10 @@ export async function POST(request: NextRequest) {
         activationId: true,
         deviceHash: true,
         licenseKey: true,
-        lastChecked: true
+        lastChecked: true,
+        license: {
+          select: { plan: true, maxDevices: true },
+        },
       }
     });
 
@@ -164,8 +168,17 @@ export async function POST(request: NextRequest) {
       });
     });
 
+    // Resolve plan/maxDevices: prefer stored License data, fall back to prefix
+    const storedPlan = device.license?.plan;
+    const storedMaxDevices = device.license?.maxDevices;
+    const fallbackPlanKey = getPlanByLicensePrefix(licenseKey);
+    const plan = storedPlan ?? fallbackPlanKey ?? undefined;
+    const maxDevices = storedMaxDevices ?? (fallbackPlanKey ? PLANS[fallbackPlanKey].maxDevices : undefined);
+
     const data = {
-      valid: true
+      valid: true,
+      ...(plan && { plan }),
+      ...(maxDevices != null && { maxDevices }),
     };
     return withCorsHeaders(createSuccessResponse(data));
   } catch (error) {

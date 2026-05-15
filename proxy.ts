@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { acceptsMarkdown, isMarkdownEligiblePath } from '@/lib/markdown-negotiation';
+
 // EU (27 countries) + EEA (3) + UK + Switzerland + Brazil = 33 total
 const GDPR_COUNTRIES = [
   // EU member states
@@ -16,16 +18,35 @@ const GDPR_COUNTRIES = [
   'BR',
 ];
 
+const BYPASS_HEADER = 'x-markdown-bypass';
+
 export function proxy(request: NextRequest) {
+  if (
+    request.headers.get(BYPASS_HEADER) === '1' ||
+    !acceptsMarkdown(request.headers.get('accept')) ||
+    !isMarkdownEligiblePath(request.nextUrl.pathname)
+  ) {
+    return createBaseResponse(request);
+  }
+
+  const rewriteUrl = request.nextUrl.clone();
+  rewriteUrl.pathname = '/api/markdown';
+  rewriteUrl.search = '';
+  rewriteUrl.searchParams.set('path', `${request.nextUrl.pathname}${request.nextUrl.search}`);
+
+  return createBaseResponse(request, rewriteUrl);
+}
+
+function createBaseResponse(request: NextRequest, rewriteUrl?: URL) {
   // Read country from Vercel geo header
   const country = request.headers.get('x-vercel-ip-country');
-  
+
   // Determine if user needs consent (default to true if unknown)
   const requiresConsent = !country || GDPR_COUNTRIES.includes(country);
-  
+
   // Create response with geo cookie
-  const response = NextResponse.next();
-  
+  const response = rewriteUrl ? NextResponse.rewrite(rewriteUrl) : NextResponse.next();
+
   // Set session-only cookie (no explicit expiration = session cookie)
   response.cookies.set('vt_geo_requires_consent', String(requiresConsent), {
     path: '/',
@@ -48,16 +69,6 @@ export function proxy(request: NextRequest) {
   return response;
 }
 
-// Run middleware on all routes EXCEPT static assets
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization)
-     * - favicon.ico (favicon file)
-     * - public files (svg, png, jpg, etc.)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
-  ],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)'],
 };
