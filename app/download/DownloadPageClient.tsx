@@ -4,13 +4,10 @@ import { ReleaseAssets } from "@/app/lib/github";
 import FAQ from "@/app/components/sections/FAQ";
 import PricingCards from "@/components/PricingCards";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
-import { downloadDiscoveryLinks } from "@/lib/seo-discovery";
-import { ArrowRight } from "lucide-react";
 import { useMemo, useState, useSyncExternalStore, type ReactElement } from "react";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
 import EmailCaptureModal from "../components/EmailCaptureModal";
-import RelatedGuidesSection from "../components/RelatedGuidesSection";
 
 // Apple icon component
 const AppleIcon = () => (
@@ -232,9 +229,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                         {option.description}
                       </p>
                     </div>
-                    <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
-                      {isSelected ? 'selected' : 'available'}
-                    </div>
                   </div>
                 </button>
               );
@@ -270,8 +264,8 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                 </p>
               </div>
               <div className="mt-8 grid gap-4 md:grid-cols-3">
-                {installationSteps.map((step, index) => (
-                  <div key={step.step} className="relative rounded-2xl bg-editorial-surface-2 p-5">
+                {installationSteps.map((step) => (
+                  <div key={step.step} className="rounded-2xl bg-editorial-surface-2 p-5">
                     <div className="text-center">
                       <div className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full bg-editorial-ink text-sm font-semibold text-white">
                         {step.step}
@@ -283,10 +277,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                         {step.description}
                       </p>
                     </div>
-
-                    {index < installationSteps.length - 1 && (
-                      <ArrowRight className="hidden md:block absolute top-5 -right-3 h-4 w-4 text-editorial-ink-3" />
-                    )}
                   </div>
                 ))}
               </div>
@@ -295,13 +285,6 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
         </section>
       )}
 
-      <RelatedGuidesSection
-        eyebrow="not all downloads start from the same problem"
-        title="If you are still deciding, use the sharper page"
-        description="Windows buyers, privacy buyers, and accessibility buyers usually want different proof before they install. These pages meet them where they already are."
-        links={downloadDiscoveryLinks}
-        dataTrackPrefix="download-related-guides"
-      />
 
       {/* Pricing */}
       <section className="ed-section">
