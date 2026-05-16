@@ -4,7 +4,7 @@ Owner: Moin
 Sprint start: 2026-04-18
 Revenue target: $100k in 6 months = **$16.7k/month average**
 
-This doc **supersedes** `MARKETING_STRATEGY.md` (8mo old) and `LANDING_PAGE_OPTIMIZATION.md` (7mo old). Those docs were aspirational, not implemented — no SEO pages shipped, no single-offer pricing change made, no repositioning done. This plan takes what's directionally right from both and commits to a dependency-correct execution order.
+This doc superseded the older marketing and landing-page planning docs that were removed from the repo. Those docs were aspirational, not implemented — no SEO pages shipped, no single-offer pricing change made, no repositioning done. This plan takes what's directionally right from both and commits to a dependency-correct execution order.
 
 ## Diagnosis (verified against primary sources)
 
@@ -102,7 +102,7 @@ Everything below is a single vertical slice that must ship together:
 
 ## Decisions already made
 
-1. **Keep the tier ladder (Pro/Plus/Max), add Team packs.** Not going to the single-offer simplification from `LANDING_PAGE_OPTIMIZATION.md`. The ladder is already shipping, customers are buying it, retrofitting to a single offer would alienate existing Plus/Max buyers.
+1. **Keep the tier ladder (Pro/Plus/Max), add Team packs.** Not going to the old single-offer simplification idea. The ladder is already shipping, customers are buying it, retrofitting to a single offer would alienate existing Plus/Max buyers.
 2. **Kill the "flash sale" dark pattern by Week 3.** Either make sales real and time-bounded, or make current sale price the list price. A permanent 30% "sale" is a trust cost, not a conversion lever.
 3. **Free-download + license activation for Microsoft Store.** Not Store-paid. Keeps own-commerce (100% revenue), preserves one-license-across-Mac-Windows story.
 4. **Deprioritize Setapp.** A Setapp user is a lost $98–140 lifetime sale. Revisit only when direct-Mac channel is saturating.
