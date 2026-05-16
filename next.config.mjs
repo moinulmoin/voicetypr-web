@@ -31,7 +31,7 @@ const nextConfig = {
           {
             key: "Link",
             value:
-              '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </llms.txt>; rel="describedby"; type="text/markdown", </pricing.md>; rel="describedby"; type="text/markdown", </accessibility.md>; rel="describedby"; type="text/markdown", </windows-dictation.md>; rel="describedby"; type="text/markdown"',
+              '</help>; rel="service-doc"; type="text/html", </llms.txt>; rel="describedby"; type="text/markdown", </pricing.md>; rel="describedby"; type="text/markdown", </accessibility.md>; rel="describedby"; type="text/markdown", </windows-dictation.md>; rel="describedby"; type="text/markdown"',
           },
         ],
       },
