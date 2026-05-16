@@ -113,7 +113,7 @@ export default function PricingCards({
           >
             Get VoiceTypr for lifetime
           </button>
-          <p className="mt-3 text-[13px] text-editorial-ink-3">
+          <p className="mt-3 text-center text-[13px] text-editorial-ink-3">
             Secure checkout · 7-day money-back guarantee
           </p>
 

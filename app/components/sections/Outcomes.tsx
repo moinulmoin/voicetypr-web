@@ -78,10 +78,10 @@ export default function Outcomes() {
 
           <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
             <h3 className="text-xl font-semibold tracking-tight text-editorial-ink">
-              Local transcription by default
+              Privacy by default
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-              Your voice is transcribed on your machine by default. Optional AI cleanup uses text only when you enable it.
+              Your voice is transcribed on your machine by default.
             </p>
             <div className="mt-6 rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-sm">
               <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
@@ -91,10 +91,6 @@ export default function Outcomes() {
                 <div className="flex justify-between border-b border-editorial-line py-3">
                   <span>Voice transcription</span>
                   <strong>On-device by default</strong>
-                </div>
-                <div className="flex justify-between border-b border-editorial-line py-3">
-                  <span>AI cleanup</span>
-                  <strong>Off unless enabled</strong>
                 </div>
                 <div className="flex justify-between py-3">
                   <span>Mode</span>

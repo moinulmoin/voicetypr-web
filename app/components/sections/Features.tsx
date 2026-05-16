@@ -44,13 +44,12 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Privacy',
-    title: 'Local transcription by default',
-    body: 'Your voice is transcribed on your machine by default. Optional AI cleanup sends text only when you choose it.',
+    title: 'Privacy by default',
+    body: 'Your voice is transcribed on your machine by default.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
           ['Voice transcription', 'On-device by default'],
-          ['AI cleanup', 'Off unless enabled'],
           ['Transcription', 'Local'],
         ].map(([name, value]) => (
           <div key={name} className="flex justify-between border-b border-editorial-line py-3 first:pt-0 last:border-0 last:pb-0">
