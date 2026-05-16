@@ -58,7 +58,7 @@ const relatedGuidesBySlug: Record<string, DiscoveryLink[]> = {
       href: '/offline-dictation-app-for-windows',
       eyebrow: 'windows workflow',
       title: 'Offline dictation for Windows',
-      description: 'A direct page for Windows users who want local raw transcription.',
+      description: 'A direct page for Windows users who want local transcription by default.',
       ctaLabel: 'See the Windows page',
     },
     {
@@ -331,6 +331,22 @@ const relatedGuidesByUseCaseSlug: Record<string, DiscoveryLink[]> = {
       title: 'Windows voice typing',
       description: 'A better fit for Windows-heavy builder workflows.',
       ctaLabel: 'See the Windows guide',
+    },
+  ],
+  writers: [
+    {
+      href: '/voice-typing',
+      eyebrow: 'general writing workflow',
+      title: 'Voice typing in every app',
+      description: 'A broader page for writers comparing whether voice belongs in their drafting workflow.',
+      ctaLabel: 'See the general guide',
+    },
+    {
+      href: '/best/accessible-dictation',
+      eyebrow: 'lower typing load',
+      title: 'Accessible dictation',
+      description: 'Useful when writing volume, fatigue, or typing pain is part of the reason to switch.',
+      ctaLabel: 'See the accessibility guide',
     },
   ],
   founders: [

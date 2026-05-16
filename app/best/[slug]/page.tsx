@@ -53,6 +53,7 @@ export default async function BestPage({
   const page = getSeoPageBySlug(slug);
   if (!page) return notFound();
   const relatedGuides = getRelatedGuidesForSeoSlug(slug);
+  const support = page.decisionSupport;
 
   return (
     <>
@@ -151,6 +152,104 @@ export default async function BestPage({
                   ))}
                 </ul>
               </section>
+
+              {support ? (
+                <section className="mb-12 space-y-8">
+                  <div>
+                    <div className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                      How to choose
+                    </div>
+                    <p className="max-w-2xl text-[16px] leading-[1.65] text-editorial-ink-2">
+                      {support.searchIntent}
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 shadow-sm backdrop-blur">
+                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
+                        Best for
+                      </h2>
+                      <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
+                        {support.bestFor.map((item) => (
+                          <li key={item} className="flex gap-3">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-ink" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="rounded-2xl border border-editorial-line bg-white/72 p-5 shadow-sm backdrop-blur">
+                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
+                        Not for
+                      </h2>
+                      <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
+                        {support.notFor.map((item) => (
+                          <li key={item} className="flex gap-3">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-line-2" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {support.decisionCriteria.map((criterion) => (
+                      <article key={criterion.title} className="rounded-2xl border border-editorial-line bg-white/80 p-5 shadow-sm backdrop-blur">
+                        <h2 className="text-[16px] font-semibold tracking-tight text-editorial-ink">
+                          {criterion.title}
+                        </h2>
+                        <p className="mt-3 text-[14px] leading-relaxed text-editorial-ink-2">
+                          {criterion.body}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+
+                  <div className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-5">
+                    <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
+                      Competitor notes
+                    </h2>
+                    <div className="mt-4 grid gap-4 md:grid-cols-3">
+                      {support.competitorNotes.map((note) => (
+                        <article key={note.title}>
+                          <h3 className="text-[15px] font-semibold text-editorial-ink">
+                            {note.title}
+                          </h3>
+                          <p className="mt-2 text-[14px] leading-relaxed text-editorial-ink-2">
+                            {note.body}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+
+                  {support.offlineCaveat ? (
+                    <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 text-[14px] leading-relaxed text-editorial-ink-2 shadow-sm backdrop-blur">
+                      <strong className="font-semibold text-editorial-ink">Offline caveat: </strong>
+                      {support.offlineCaveat}
+                    </div>
+                  ) : null}
+
+                  <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 shadow-sm backdrop-blur">
+                    <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
+                      Buyer questions
+                    </h2>
+                    <div className="mt-4 divide-y divide-editorial-line">
+                      {support.faq.map((item) => (
+                        <div key={item.q} className="py-4 first:pt-0 last:pb-0">
+                          <h3 className="text-[15px] font-semibold text-editorial-ink">
+                            {item.q}
+                          </h3>
+                          <p className="mt-2 text-[14px] leading-relaxed text-editorial-ink-2">
+                            {item.a}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              ) : null}
 
               {relatedGuides.length > 0 ? (
                 <div className="mb-12">

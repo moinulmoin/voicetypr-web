@@ -10,7 +10,7 @@ import { SuccessModal } from "../components/SuccessModal";
 export const metadata: Metadata = {
   title: "Wispr Flow Alternative — VoiceTypr (Offline, Pay-once)",
   description:
-    "Looking for a Wispr Flow alternative? VoiceTypr is offline, lifetime-priced, and cross-platform. $39 one-time vs $144+/yr. Transcription runs locally — your voice never leaves your device.",
+    "Looking for a Wispr Flow alternative? VoiceTypr is lifetime-priced and cross-platform. $39 one-time vs $144+/yr. Local transcription runs on your machine by default.",
   keywords: [
     "wispr flow alternative",
     "wispr flow alternative mac",
@@ -97,14 +97,14 @@ const comparison: Array<{
         wispr: cross("Cloud (Wispr's servers)"),
       },
       {
-        label: "Requires internet connection",
-        voicetypr: check("Optional (only for AI enhancement)"),
+        label: "Internet connection for transcription",
+        voicetypr: check("No, after setup"),
         wispr: cross("Yes — real-time cloud dictation"),
       },
       {
-        label: "Audio leaves your machine",
-        voicetypr: check("Never"),
-        wispr: cross("Yes, to cloud processing"),
+        label: "Voice transcribed on device",
+        voicetypr: check("Yes, by default"),
+        wispr: cross("No — cloud processing"),
       },
     ],
   },
@@ -160,24 +160,24 @@ const switchReasons: Array<{
   },
   {
     marker: "0",
-    title: "Your voice stays on your device",
+    title: "Your voice is transcribed on your device by default",
     body:
-      "Wispr ships your audio to its cloud for transcription. VoiceTypr runs Whisper and Parakeet locally. No cloud, no logs, nothing to leak.",
+      "Wispr sends audio to its cloud for transcription. VoiceTypr transcribes on your device by default; optional AI enhancement sends text only when you enable it.",
     meta: "Outcome · privacy",
   },
   {
     marker: "∞",
     title: "Works offline, anywhere",
     body:
-      "On a plane. In a co-working space with bad WiFi. On an airgapped machine. Transcription does not require an internet connection.",
+      "On a plane. In a co-working space with bad WiFi. On a locked-down machine after setup. Local transcription does not require an internet connection.",
     meta: "Outcome · reach",
   },
 ];
 
 const faqs = [
   {
-    q: "Is VoiceTypr really offline?",
-    a: "Yes. Transcription runs locally using Whisper (macOS + Windows) or Parakeet (macOS Apple Silicon). Your audio never leaves your device. The only time an internet connection is used is for optional AI enhancement features that send text, not audio, to your configured provider. They are off by default and can be disabled entirely.",
+    q: "What does local transcription mean in VoiceTypr?",
+    a: "VoiceTypr transcribes your voice on your machine using Whisper (macOS + Windows) or Parakeet (macOS Apple Silicon) after setup. Optional AI enhancement can send text, never audio, to your configured provider when enabled. It is off by default and can be disabled entirely.",
   },
   {
     q: "How does transcription accuracy compare?",
@@ -282,7 +282,7 @@ export default function WisprFlowAlternativePage() {
               </h1>
 
               <p className="mx-auto max-w-2xl text-[18px] md:text-[19px] leading-[1.55] text-editorial-ink-2">
-                VoiceTypr is the offline, lifetime-priced alternative to Wispr Flow. Transcription runs locally on your device — your voice never touches a cloud server.
+                VoiceTypr is the lifetime-priced alternative to Wispr Flow. Your voice is transcribed on your device by default, with optional text-only AI enhancement when enabled.
               </p>
 
               <p className="mt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
@@ -541,7 +541,7 @@ export default function WisprFlowAlternativePage() {
                 Speak. Paste. <em>Keep your voice yours.</em>
               </h2>
               <p className="mx-auto mb-10 max-w-xl text-editorial-ink-2 text-[16px] leading-[1.55]">
-                No credit card. No cloud. No subscription.
+                No credit card. Local transcription by default. No subscription.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link

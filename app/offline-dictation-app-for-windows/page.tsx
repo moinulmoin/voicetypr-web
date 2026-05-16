@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 const benefits = [
-  "Runs raw transcription locally after setup/model download instead of depending on a browser tab or cloud transcription service.",
+  "Transcribes your voice on your Windows machine after setup/model download instead of depending on a browser tab or cloud transcription service.",
   "Works in Word, Outlook, Edge, Chrome, Gmail, Google Docs, Cursor, VS Code, Claude, ChatGPT, Slack, Notion, and normal text fields.",
   "Pay once from $39; device-count options cover 1, 2, 4, or 10 machines.",
   "Designed for Windows users who need a real desktop workflow, not a Mac-first tool with Windows as an afterthought.",

@@ -3,103 +3,106 @@ import { getAllArticles } from "@/lib/help";
 import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
 
+const siteUrl = "https://voicetypr.com";
+const lastModified = new Date("2026-05-15");
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://voicetypr.com";
+  const baseUrl = siteUrl;
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: `${baseUrl}/download`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/use-cases`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${baseUrl}/wispr-flow-alternative`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/superwhisper-alternative`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.78,
     },
     {
       url: `${baseUrl}/aqua-voice-alternative`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.76,
     },
     {
       url: `${baseUrl}/offline-dictation-app-for-windows`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.78,
     },
     {
       url: `${baseUrl}/voice-input-for-cursor`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.78,
     },
     {
       url: `${baseUrl}/voice-typing`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.78,
     },
     {
       url: `${baseUrl}/voicetyper`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.72,
     },
     {
       url: `${baseUrl}/changelog`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.75,
     },
     {
       url: `${baseUrl}/help`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.75,
     },
     {
       url: `${baseUrl}/affiliate`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/cookies`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "monthly",
       priority: 0.4,
     },
@@ -112,14 +115,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/windows-dictation.md",
   ].map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: lastModified,
     changeFrequency: "weekly",
     priority: 0.65,
   }));
 
   const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().map((useCase) => ({
     url: `${baseUrl}/use-cases/${useCase.slug}`,
-    lastModified: new Date(),
+    lastModified: lastModified,
     changeFrequency: "monthly",
     priority: 0.75,
   }));
@@ -127,14 +130,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const helpArticles = await getAllArticles();
   const helpRoutes: MetadataRoute.Sitemap = helpArticles.map((article) => ({
     url: `${baseUrl}/help/${article.slug}`,
-    lastModified: new Date(),
+    lastModified: lastModified,
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
   const bestRoutes: MetadataRoute.Sitemap = seoPages.map((page) => ({
     url: `${baseUrl}/best/${page.slug}`,
-    lastModified: new Date(),
+    lastModified: lastModified,
     changeFrequency: "monthly",
     priority: 0.65,
   }));
@@ -143,7 +146,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .filter((page) => page.slug !== "wispr-flow" && page.slug !== "superwhisper")
     .map((page) => ({
       url: `${baseUrl}/alternative/${page.slug}`,
-      lastModified: new Date(),
+      lastModified: lastModified,
       changeFrequency: "monthly",
       priority: 0.65,
     }));

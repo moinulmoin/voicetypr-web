@@ -9,11 +9,23 @@ VoiceTypr uses pay-once lifetime pricing instead of a subscription. A 3-day free
 - Max: $99 once. Includes 4 device activations, lifetime license, and free updates.
 - Team: $199 once. Includes 10 device activations, lifetime license, and free updates.
 
+## Purchase reassurance
+
+- Secure checkout.
+- 7-day money-back guarantee.
+- No monthly subscription.
+- The selected license tier defines the number of device activations.
+- Optional AI formatting may require the user to provide their own API key depending on configuration.
+
 ## What pricing means
 
 A VoiceTypr license is meant for people who want a durable desktop utility rather than another monthly AI tool. The product is useful for dictating prompts, replies, notes, documents, support messages, and code-adjacent writing in existing apps.
 
-The license covers the app and updates. Optional AI formatting may require the user to provide their own API key depending on configuration. Raw audio transcription is local by default, so everyday dictation does not depend on a cloud transcription service.
+The license covers the app and updates. Local transcription is the default, so everyday dictation does not depend on a cloud transcription service. Optional AI formatting can send text only when the user enables it.
+
+## Buyer fit
+
+VoiceTypr is a good fit for users who want a simple dictation workflow, predictable ownership cost, and privacy-forward local transcription. It is not a meeting transcription platform, shared transcript workspace, or full voice-control accessibility suite.
 
 ## Relevant links
 

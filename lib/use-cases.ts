@@ -141,9 +141,9 @@ const USE_CASE_ENTRIES: UseCase[] = [
           "Yes. The medium Whisper model handles filler words, restarts, and \"um\" / \"uh\" reasonably well. The optional Default formatting preset cleans those up further when you don't want them in the final output. Keep AI formatting off if you'd rather see exactly what you said.",
       },
       {
-        q: "Can I use it for journaling without anything getting sent to a server?",
+        q: "Can I use it for journaling with local transcription?",
         a:
-          "Yes. Raw audio transcription runs locally on your machine. Nothing leaves your computer unless you explicitly turn on AI formatting, and that sends text only, never the audio.",
+          "Yes. VoiceTypr transcribes your voice on your machine by default. Optional AI formatting sends text only when you explicitly turn it on, never the audio.",
       },
       {
         q: "Does it work with Things / Apple Notes / Obsidian / Notion?",
@@ -164,7 +164,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the thought <em>before it leaves.</em>",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for adhd",
@@ -219,7 +219,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "local",
         title: "Local",
         body:
-          "Raw audio stays on your machine during transcription. Your drafts stay yours.",
+          "Your voice is transcribed on your machine. Your drafts stay yours.",
         meta: "Outcome · privacy",
       },
       {
@@ -266,7 +266,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Is my voice data used to train models?",
         a:
-          "No. Audio is processed locally on your machine using Whisper. It never leaves the device. There is no cloud account, no training pipeline, no \"we may use your data to improve our service.\"",
+          "No. VoiceTypr transcribes your voice on your machine using Whisper by default. Optional AI formatting sends text only when enabled; your audio is not sent for model training.",
       },
       {
         q: "Does it work for someone whose first language isn't English?",
@@ -277,7 +277,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Write at the speed <em>you talk.</em>",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for dyslexia",
@@ -390,7 +390,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Give your <em>hands a break.</em>",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for rsi",
@@ -494,7 +494,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Is the audio sent to a cloud transcription service?",
         a:
-          "No. Transcription runs locally. Optional AI formatting can send final text to an AI provider if you enable it, but your raw audio stays on the computer.",
+          "No. VoiceTypr transcribes your voice on your machine by default. Optional AI formatting can send final text to an AI provider if you enable it, but not the original audio.",
       },
       {
         q: "Is it good for short or long dictation?",
@@ -505,7 +505,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Keep writing. <em>Use your hands less.</em>",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for carpal tunnel",
@@ -528,7 +528,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "accessible voice typing",
       headline: "Typing should not decide <em>how much you get to say.</em>",
       lede:
-        "For many people who rely on assistive input, the hard part is not having something to say. It is getting words through a keyboard often enough, long enough, and with low enough friction. VoiceTypr turns speech into text in the apps you already use, with local raw transcription.",
+        "For many people who rely on assistive input, the hard part is not having something to say. It is getting words through a keyboard often enough, long enough, and with low enough friction. VoiceTypr turns speech into text in the apps you already use, with local transcription by default.",
       metaStrip: ["windows + mac", "local transcription", "works in every text field"],
     },
     pains: [
@@ -618,7 +618,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Say it once. <em>Put it where it belongs.</em>",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "accessible voice typing",
@@ -671,10 +671,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     ],
     outcomes: [
       {
-        marker: "5×",
-        title: "Faster on the English-side of the job",
+        marker: "voice",
+        title: "Faster for prompt-heavy work",
         body:
-          "Speaking is ~150 wpm. Typing is ~80. Across a day of prompts, replies, and descriptions, that delta compounds.",
+          "Speaking can be faster than typing for long prompts, replies, and descriptions. Across a day of text fields, that lower keyboard load compounds.",
         meta: "Outcome · throughput",
       },
       {
@@ -739,7 +739,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Stop typing the <em>English-side</em> of the job.",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for developers",
@@ -751,10 +751,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "writers",
-    title: "VoiceTypr for Writers — Draft at speaking speed, edit later",
+    title: "VoiceTypr for Writers — Draft by speaking, edit later",
     ogTitle: "VoiceTypr for Writers",
     description:
-      "Voice typing for writers, novelists, and content creators. Draft at 150 wpm, edit later. Local transcription, pay-once, works in every writing app.",
+      "Voice typing for writers, novelists, and content creators. Draft by speaking, edit later. Local transcription, pay-once, works in every writing app.",
     navLabel: "Writers",
     category: "profession",
     order: 2,
@@ -763,7 +763,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       headline: "Draft fast. <em>Edit slow.</em>",
       lede:
         "Drafting and editing are two different cognitive modes. Voice lets you separate them. Talk the first draft at speaking speed, then come back to edit when your brain is in the right gear for it.",
-      metaStrip: ["~150 wpm dictating", "local transcription", "any writing app"],
+      metaStrip: ["speaking-speed drafting", "local transcription", "any writing app"],
     },
     pains: [
       {
@@ -852,7 +852,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Get the draft out <em>at the speed you think.</em>",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for writers",
@@ -904,17 +904,17 @@ const USE_CASE_ENTRIES: UseCase[] = [
         meta: "Outcome · cost",
       },
       {
-        marker: "5×",
+        marker: "voice",
         title: "Faster on prompts and replies",
         body:
-          "The longest text fields in your day — agent prompts, support replies, drafts — drop from typed to spoken.",
+          "The longest text fields in your day — agent prompts, support replies, drafts — move from typed to spoken.",
         meta: "Outcome · throughput",
       },
       {
         marker: "local",
-        title: "Local",
+        title: "Local by default",
         body:
-          "Pre-public feature notes, customer details, pricing experiments — nothing leaves your laptop. Founders should not be sending half-formed thoughts to anyone else's server.",
+          "Pre-public feature notes, customer details, pricing experiments — your voice is transcribed on your laptop by default. Optional AI formatting sends text only if you enable it.",
         meta: "Outcome · privacy",
       },
     ],
@@ -965,7 +965,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Built by a founder. <em>For founders.</em>",
-      body: "VoiceTypr runs raw transcription locally and is sold as a lifetime license. Try it free for 3 days.",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
     },
     keywords: [
       "voice typing for founders",

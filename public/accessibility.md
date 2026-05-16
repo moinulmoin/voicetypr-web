@@ -6,13 +6,30 @@ VoiceTypr can help users reduce typing load by replacing many keystrokes with sp
 
 VoiceTypr is a dictation tool, not a medical device and not a complete assistive technology suite. It does not diagnose, treat, cure, or prevent any condition. It also does not provide full voice control of the computer. The product is focused on one job: turn speech into text and place that text where the cursor already is.
 
+## Best for
+
+- Drafting emails, prompts, notes, support replies, and documents with less keyboard load.
+- People who can speak more comfortably than they can type for long sessions.
+- Users who want a simple hotkey workflow instead of a new writing editor.
+- Accessibility-minded buyers who prefer pay-once ownership for a daily support tool.
+
+## Not for
+
+- Full hands-free computer navigation, clicking, and command vocabularies.
+- Clinical diagnosis, treatment, or formal medical accommodation assessment.
+- Meeting transcription, shared notes, or speaker-labeled transcript workflows.
+
 ## Practical benefits
 
 - Works in existing apps rather than forcing a new writing editor.
 - Uses a global hotkey workflow so users can dictate into docs, email, chat, prompts, browser fields, and project tools.
 - Can reduce the number of typed characters needed for long-form writing, replies, notes, and prompts.
-- Runs raw audio transcription locally by default, which matters for sensitive personal, health, work, or school writing.
+- Uses local transcription by default, which matters for sensitive personal, health, work, or school writing.
 - Pay-once pricing makes it easier to keep as a long-term accommodation support tool.
+
+## Privacy boundary
+
+VoiceTypr transcribes voice on the user's machine by default after setup. Optional AI formatting can send text only if enabled by the user. VoiceTypr is privacy-forward for dictation, but it is not a claim that every surrounding setup, update, checkout, license, or optional enhancement flow is offline.
 
 ## Relevant pages
 

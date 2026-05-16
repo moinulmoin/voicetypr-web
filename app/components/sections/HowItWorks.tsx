@@ -103,7 +103,7 @@ export default function HowItWorks() {
             Install. Pick a model. Set a key. <em>Talk</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            No cloud account. No onboarding maze. Download, choose the local model you want, and start talking.
+            No dictation account. No onboarding maze. Download, choose the local model you want, and start talking.
           </p>
         </div>
 

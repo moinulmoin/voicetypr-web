@@ -45,12 +45,12 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Privacy',
     title: 'Local transcription by default',
-    body: 'Whisper and Parakeet run on your machine by default. Optional AI cleanup sends text only when you choose it.',
+    body: 'Your voice is transcribed on your machine by default. Optional AI cleanup sends text only when you choose it.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
-          ['Audio uploaded', '0 bytes'],
-          ['Account required', 'No'],
+          ['Voice transcription', 'On-device by default'],
+          ['AI cleanup', 'Off unless enabled'],
           ['Transcription', 'Local'],
         ].map(([name, value]) => (
           <div key={name} className="flex justify-between border-b border-editorial-line py-3 first:pt-0 last:border-0 last:pb-0">
@@ -105,7 +105,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Formatting',
     title: 'Cleaner text when you want it',
-    body: 'Use your own API key for prompt, email, and default cleanup presets. Turn AI formatting off to keep the workflow fully local.',
+    body: 'Use your own API key for prompt, email, and default cleanup presets. Turn AI formatting off to keep transcription fully local.',
     demo: (
       <div className="space-y-3 rounded-xl bg-white p-4 shadow-sm">
         <div className="flex flex-wrap gap-2">

@@ -7,7 +7,7 @@ import Footer from "../components/sections/Footer";
 export const metadata: Metadata = {
   title: "Aqua Voice Alternative in 2026 — VoiceTypr",
   description:
-    "Looking for an Aqua Voice alternative? VoiceTypr works on Mac and Windows, runs locally, and starts at $39 once. No cloud dictation dependency.",
+    "Looking for an Aqua Voice alternative? VoiceTypr works on Mac and Windows, uses local transcription by default, and starts at $39 once.",
   keywords: [
     "aqua voice alternative",
     "aqua dictation alternative",
@@ -41,7 +41,7 @@ const rows = [
   ["Pricing model", "Pay once", "Subscription"],
   ["Entry price", "$39 lifetime", "Monthly subscription"],
   ["Windows support", "Yes", "Mac-focused"],
-  ["Offline processing", "Local models on your machine", "Cloud-first workflow"],
+  ["Local transcription", "On your machine by default", "Cloud-first workflow"],
   ["Where it works", "Any app with a text field", "Any app with a text field"],
 ] as const;
 
@@ -60,10 +60,10 @@ export default function AquaVoiceAlternativePage() {
         <div className="ed-container max-w-4xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">aqua voice alternative</p>
           <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Voice typing without sending every thought to the cloud.
+            Voice typing with local transcription by default.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            VoiceTypr runs transcription locally, works on Mac and Windows, and starts at $39 once. It is built for prompts, docs, messages, and notes you would rather keep private.
+            VoiceTypr transcribes your voice on your machine by default, works on Mac and Windows, and starts at $39 once. It is built for prompts, docs, messages, and notes you would rather keep private.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link

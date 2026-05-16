@@ -20,7 +20,7 @@ const fontSans = Geist({
 // Instrument Serif — modern editorial serif with REAL italic. Reserved for the
 // rare <em> punctuation accent inside hero / brand-moment H2 / final CTA only.
 // Headings themselves use Geist (sans) with heavier weight. Loaded with both
-// styles so editorial numerals (5×, 150, $39) that opt into Tailwind's
+// styles so editorial numerals and prices that opt into Tailwind's
 // font-serif utility still render in upright serif.
 const fontSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -35,7 +35,7 @@ const fontSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "VoiceTypr — Offline AI voice to text app for founders and builders",
   description:
-    "Offline AI voice to text app that runs locally. Private by default. Pay once, use forever.",
+    "Local transcription by default. Private voice-to-text for Mac and Windows. Pay once, use forever.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VoiceTypr — Offline AI voice to text app for founders and builders",
     description:
-      "Offline AI voice to text app that runs locally. Private by default. Pay once, use forever.",
+      "Local transcription by default. Private voice-to-text for Mac and Windows. Pay once, use forever.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VoiceTypr — Offline AI voice to text app for founders and builders",
     description:
-      "Offline AI voice to text app that runs locally. Private by default. Pay once, use forever.",
+      "Local transcription by default. Private voice-to-text for Mac and Windows. Pay once, use forever.",
     images: ["/voicetypr-og.png"],
     creator: "@moinulmoin",
   },
@@ -138,7 +138,7 @@ export default function RootLayout({
                 "@id": "https://voicetypr.com/#software",
                 name: "VoiceTypr",
                 description:
-                  "Offline voice dictation for founders and builders. Type by talking in ChatGPT, Claude, Cursor, docs, email, and chat while keeping audio local.",
+                  "Local transcription by default for founders and builders. Type by talking in ChatGPT, Claude, Cursor, docs, email, and chat while keeping voice transcription on your machine.",
                 applicationCategory: "ProductivityApplication",
                 operatingSystem: ["macOS 13.0+", "Windows 10+"],
                 downloadUrl: "https://voicetypr.com/download",
@@ -196,7 +196,7 @@ export default function RootLayout({
                   "100+ language support",
                   "High-accuracy transcription",
                   "Works with any application (ChatGPT, Claude, Cursor, VS Code)",
-                  "Offline processing for full privacy",
+                  "Local transcription by default for privacy",
                   "Global hotkey support",
                   "Smart formatting modes",
                   "Audio file transcription",
@@ -237,62 +237,10 @@ export default function RootLayout({
                 url: "https://voicetypr.com",
                 name: "VoiceTypr",
                 description:
-                  "Offline voice to text for founders, builders, and AI power users.",
+                  "Local transcription by default for founders, builders, and AI power users.",
                 publisher: {
                   "@id": "https://voicetypr.com/#organization",
                 },
-              },
-              {
-                "@type": "WebPage",
-                "@id": "https://voicetypr.com/#webpage",
-                url: "https://voicetypr.com",
-                name: "VoiceTypr — Offline AI voice to text app",
-                isPartOf: {
-                  "@id": "https://voicetypr.com/#website",
-                },
-                about: {
-                  "@id": "https://voicetypr.com/#software",
-                },
-                description:
-                  "Offline AI voice dictation for founders, builders, and AI power users.",
-              },
-              {
-                "@type": "FAQPage",
-                "@id": "https://voicetypr.com/#faq",
-                mainEntity: [
-                  {
-                    "@type": "Question",
-                    name: "Can I try VoiceTypr for free?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Yes. VoiceTypr offers a 3-day free trial with unlimited transcription and no credit card required.",
-                    },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "Does it work with ChatGPT, Claude, and Cursor?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Yes. VoiceTypr works anywhere you can type, including ChatGPT, Claude, Cursor, VS Code, Slack, X, email, and docs. Place your cursor, use the hotkey, and paste clean text.",
-                    },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "Is my voice data private?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Yes. Raw transcription runs on local models on your device, so audio never leaves your computer. Optional AI formatting sends only the final text, never audio, to your chosen provider.",
-                    },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "Will it work on Windows/Intel Mac?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Yes. VoiceTypr works on Windows 10 and later, Intel Macs, and Apple Silicon Macs. Apple Silicon is recommended for the fastest local transcription.",
-                    },
-                  },
-                ],
               },
             ],
           }),

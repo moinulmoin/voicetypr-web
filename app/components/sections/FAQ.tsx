@@ -17,11 +17,11 @@ const faqs = [
   },
   {
     q: 'Is my voice data private?',
-    a: 'Yes. Raw transcription runs locally with on-device models by default (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs), so your audio stays on your computer during transcription. Optional AI formatting sends only the final text, never audio, to your chosen provider. Turn AI formatting off to keep the full workflow local.',
+    a: 'Yes. VoiceTypr transcribes your voice on your machine by default using local models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs). Optional AI formatting sends only the final text, never audio, to your chosen provider. Turn AI formatting off to keep the full workflow local.',
   },
   {
     q: 'Do I need an API key for the AI formatting presets?',
-    a: 'Only if you want them. Raw transcription runs locally by default with no key. The optional presets use your own API key from OpenAI, Anthropic, Google Gemini, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
+    a: 'Only if you want them. Local transcription works by default with no key. The optional presets use your own API key from OpenAI, Anthropic, Google Gemini, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
   },
   {
     q: 'What are the system requirements?',

@@ -6,7 +6,7 @@ import PricingCards from "@/components/PricingCards";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
 import { downloadDiscoveryLinks } from "@/lib/seo-discovery";
 import { ArrowRight } from "lucide-react";
-import { useMemo, useState, type ReactElement } from "react";
+import { useMemo, useState, useSyncExternalStore, type ReactElement } from "react";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
 import EmailCaptureModal from "../components/EmailCaptureModal";
@@ -95,6 +95,25 @@ const getDownloadOptions = (assets: ReleaseAssets): DownloadOption[] => {
   return all.filter(opt => opt.url);
 };
 
+const subscribeToUserAgent = () => () => {};
+const getClientUserAgent = () =>
+  typeof navigator === 'undefined' ? '' : navigator.userAgent.toLowerCase();
+const getServerUserAgent = () => '';
+
+export function getDetectedDownloadOptionId(
+  options: ReadonlyArray<{ id: string }>,
+  userAgent: string,
+): string | null {
+  const normalizedUserAgent = userAgent.toLowerCase();
+  if (normalizedUserAgent.includes('windows')) {
+    return options.find(opt => opt.id === 'windows')?.id ?? null;
+  }
+  if (normalizedUserAgent.includes('mac')) {
+    return options.find(opt => opt.id === 'macos-silicon')?.id ?? null;
+  }
+  return null;
+}
+
 export default function DownloadPageClient({ assets, defaultSelected, affonsoReferral, referrer }: {
   assets: ReleaseAssets;
   defaultSelected?: string | null;
@@ -107,10 +126,20 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
     ? defaultSelected
     : null;
 
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(validatedDefault);
+  const clientUserAgent = useSyncExternalStore(
+    subscribeToUserAgent,
+    getClientUserAgent,
+    getServerUserAgent,
+  );
+  const detectedDefault = useMemo(() => {
+    if (validatedDefault) return validatedDefault;
+    return getDetectedDownloadOptionId(options, clientUserAgent);
+  }, [clientUserAgent, options, validatedDefault]);
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
+  const activePlatform = selectedPlatform ?? detectedDefault;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const selectedOption = options.find((opt) => opt.id === selectedPlatform);
+  const selectedOption = options.find((opt) => opt.id === activePlatform);
 
   const handleDownloadClick = () => {
     if (typeof window !== 'undefined' && window.openpanel) {
@@ -178,7 +207,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
         <div className="ed-container max-w-[860px]">
           <div className={`grid gap-4 ${options.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
             {options.map((option) => {
-              const isSelected = selectedPlatform === option.id;
+              const isSelected = activePlatform === option.id;
               return (
                 <button
                   key={option.id}
@@ -212,7 +241,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             })}
           </div>
 
-          {selectedPlatform && (
+          {activePlatform && (
             <div className="mt-10 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
               <button
                 onClick={handleDownloadClick}
@@ -228,7 +257,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       </section>
 
       {/* Installation Steps */}
-      {selectedPlatform && (
+      {activePlatform && (
         <section className="ed-section pt-0">
           <div className="ed-container max-w-[900px]">
             <div className="rounded-[28px] border border-editorial-line bg-white/80 px-6 py-8 shadow-sm backdrop-blur sm:px-8 sm:py-10">

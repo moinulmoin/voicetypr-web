@@ -28,11 +28,27 @@ export async function generateMetadata({
   const page = getAlternativePageBySlug(slug);
   if (!page) return {};
   const duplicateCanonical = duplicateCanonicalBySlug[slug];
+  const canonical = duplicateCanonical ?? `https://voicetypr.com/alternative/${slug}`;
+  const title = `${page.h1} — VoiceTypr`;
   return {
-    title: `${page.h1} — VoiceTypr`,
+    title,
     description: page.lede,
     alternates: {
-      canonical: duplicateCanonical ?? `https://voicetypr.com/alternative/${slug}`,
+      canonical,
+    },
+    openGraph: {
+      title,
+      description: page.lede,
+      url: canonical,
+      siteName: "VoiceTypr",
+      images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: page.lede,
+      images: ["/voicetypr-og.png"],
     },
     ...(duplicateCanonical ? { robots: { index: false, follow: true } } : {}),
   };

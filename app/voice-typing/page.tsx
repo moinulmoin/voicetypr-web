@@ -46,7 +46,7 @@ const workflows = [
 
 const reasons = [
   'Works anywhere a cursor accepts text — not just Google Docs or a browser extension.',
-  'Local transcription keeps raw audio on your machine by default.',
+  'Your voice is transcribed on your machine by default.',
   'Built for macOS 13+ and Windows 10+.',
   'One-time purchase from $39, with device-count options for multiple machines.',
 ] as const;
