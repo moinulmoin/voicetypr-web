@@ -100,7 +100,7 @@ export default function HowItWorks() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Install. Pick a model. Set a key. <em>Talk</em>
+            Start in <em>minutes</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
             No dictation account. No onboarding maze. Download, choose the local model you want, and start talking.
