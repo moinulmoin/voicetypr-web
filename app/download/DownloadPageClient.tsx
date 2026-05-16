@@ -208,10 +208,12 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
               return (
                 <button
                   key={option.id}
+                  type="button"
+                  aria-pressed={isSelected}
                   onClick={() => setSelectedPlatform(option.id)}
-                  className={`relative rounded-2xl border p-6 text-left [transition:border-color_180ms,background-color_180ms,transform_180ms] ${
+                  className={`relative rounded-2xl border p-6 text-left [transition:border-color_180ms,background-color_180ms,box-shadow_180ms,transform_180ms] ${
                     isSelected
-                      ? 'border-editorial-ink bg-white/90 shadow-sm backdrop-blur'
+                      ? 'border-editorial-ink bg-white shadow-[0_0_0_3px_rgba(24,24,26,0.08)] backdrop-blur'
                       : 'border-editorial-line bg-white/72 backdrop-blur hover:-translate-y-0.5 hover:border-editorial-ink-3'
                   }`}
                   data-track="download-platform-select"
@@ -221,6 +223,13 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
                     <div className="grid h-11 w-11 place-items-center rounded-xl bg-editorial-surface-2 text-editorial-ink">
                       <option.icon />
                     </div>
+                    {isSelected && (
+                      <div className="absolute right-5 top-5 grid h-6 w-6 place-items-center rounded-full bg-editorial-ink text-white" aria-hidden="true">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none">
+                          <path d="M3.5 8.25 6.5 11l6-6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    )}
                     <div>
                       <h3 className="text-[16px] font-semibold text-editorial-ink">
                         {option.name}
