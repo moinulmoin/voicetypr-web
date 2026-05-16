@@ -45,12 +45,12 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Privacy',
     title: 'Privacy by default',
-    body: 'Your voice is transcribed on your machine by default.',
+    body: 'Your voice is transcribed on your machine.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
-          ['Voice transcription', 'On-device by default'],
-          ['Transcription', 'Local'],
+          ['Processing', 'On-device'],
+          ['Model', 'Local'],
         ].map(([name, value]) => (
           <div key={name} className="flex justify-between border-b border-editorial-line py-3 first:pt-0 last:border-0 last:pb-0">
             <span>{name}</span>

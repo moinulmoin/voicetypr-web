@@ -81,7 +81,7 @@ export default function Outcomes() {
               Privacy by default
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-              Your voice is transcribed on your machine by default.
+              Your voice is transcribed on your machine.
             </p>
             <div className="mt-6 rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-sm">
               <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
@@ -89,11 +89,11 @@ export default function Outcomes() {
               </div>
               <div className="rounded-xl bg-white px-4 py-1">
                 <div className="flex justify-between border-b border-editorial-line py-3">
-                  <span>Voice transcription</span>
-                  <strong>On-device by default</strong>
+                  <span>Processing</span>
+                  <strong>On-device</strong>
                 </div>
                 <div className="flex justify-between py-3">
-                  <span>Mode</span>
+                  <span>Model</span>
                   <strong>Local</strong>
                 </div>
               </div>
