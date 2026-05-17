@@ -11,6 +11,14 @@ const testimonials = [
     source: 'email' as const,
   },
   {
+    id: 9,
+    title: 'Lightweight on Windows',
+    content:
+      "I've really fallen in love with your app. Real privacy on Windows and the lightweight feel of the software is just great.",
+    author: { name: 'Mathieu B.', handle: 'mathieu.b', avatar: 'MB' },
+    source: 'email' as const,
+  },
+  {
     id: 4,
     title: 'Local models, real privacy',
     content:
@@ -27,6 +35,14 @@ const testimonials = [
     source: 'email' as const,
   },
   {
+    id: 10,
+    title: 'Bought because it is not SaaS',
+    content:
+      'This is an amazing product. I purchased the max plan to show my appreciation for you not being a SaaS. Thanks again for a great product.',
+    author: { name: 'James H.', handle: 'james.h', avatar: 'JH' },
+    source: 'email' as const,
+  },
+  {
     id: 7,
     title: 'Fast while fully offline',
     content:
@@ -35,12 +51,28 @@ const testimonials = [
     source: 'github' as const,
   },
   {
+    id: 11,
+    title: 'Game-changer workflow',
+    content:
+      "I'm really impressed with VoiceTypr on Windows. It's a game-changer for my workflow, and I'd happily purchase a license soon.",
+    author: { name: 'Andreas K.', handle: 'andreas.k', avatar: 'AK' },
+    source: 'email' as const,
+  },
+  {
     id: 1,
     title: 'Mac and Windows',
     content:
       "Great software for local voice transcription. So you can accelerate your speed at working / coding. It's available for Windows and Mac.",
     author: { name: 'Alaska', handle: '@alaska12345_', avatar: 'A' },
     source: 'twitter' as const,
+  },
+  {
+    id: 12,
+    title: 'Reasonable price',
+    content:
+      'It works quite well. I went ahead and bought the license because I want to support you. The price is reasonable and I want to thank you.',
+    author: { name: 'Wtin J.', handle: 'wtin.j', avatar: 'WJ' },
+    source: 'email' as const,
   },
   {
     id: 2,
