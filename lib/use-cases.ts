@@ -959,7 +959,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "What if I need more than one device?",
         a:
-          "Pick the device count you need at checkout: 1, 2, 4, or 10 devices. If you need more than 10, email support and we can help.",
+          "Pick the device count you need at checkout: 1, 2, or 4 devices. If you need more, email support and we can help.",
       },
     ],
     finalCta: {

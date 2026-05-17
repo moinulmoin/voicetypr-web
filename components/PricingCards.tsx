@@ -1,6 +1,6 @@
 'use client';
 
-import { BASE_PRICES, formatPrice, type PlanKey } from '@/lib/pricing';
+import { BASE_PRICES, PLANS, PUBLIC_PLAN_KEYS, formatPrice, type PublicPlanKey } from '@/lib/pricing';
 import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 import { useState } from 'react';
@@ -12,17 +12,22 @@ interface PricingCardsProps {
 }
 
 interface DeviceOption {
-  key: PlanKey;
+  key: PublicPlanKey;
   devices: number;
   productId: string | undefined;
 }
 
-const deviceOptions: DeviceOption[] = [
-  { key: 'pro', devices: 1, productId: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID },
-  { key: 'plus', devices: 2, productId: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID },
-  { key: 'max', devices: 4, productId: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID },
-  { key: 'team', devices: 10, productId: process.env.NEXT_PUBLIC_TEAM_PRODUCT_ID },
-];
+const productIds: Record<PublicPlanKey, string | undefined> = {
+  pro: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID,
+  plus: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
+  max: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID,
+};
+
+const deviceOptions: DeviceOption[] = PUBLIC_PLAN_KEYS.map((key) => ({
+  key,
+  devices: PLANS[key].maxDevices,
+  productId: productIds[key],
+}));
 
 const features = [
   'Local/offline transcription models',
@@ -39,7 +44,7 @@ export default function PricingCards({
   referrer,
   eventPrefix = 'pricing',
 }: PricingCardsProps) {
-  const [selectedKey, setSelectedKey] = useState<PlanKey>('plus');
+  const [selectedKey, setSelectedKey] = useState<PublicPlanKey>('plus');
   const fallbackOption = deviceOptions[1] as DeviceOption;
   const selected = deviceOptions.find((option) => option.key === selectedKey) ?? fallbackOption;
 
@@ -78,7 +83,7 @@ export default function PricingCards({
           </div>
 
           <div className="mt-auto overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
-            <div className="grid grid-cols-4 gap-1">
+            <div className="grid grid-cols-3 gap-1">
               {deviceOptions.map((option) => {
                 const active = option.key === selected.key;
                 return (
@@ -103,6 +108,16 @@ export default function PricingCards({
               })}
             </div>
           </div>
+          <p className="mt-2 text-[13px] leading-relaxed text-editorial-ink-3">
+            Need more devices or buying for your team?{' '}
+            <a
+              href="mailto:support@voicetypr.com?subject=Team%20licensing"
+              className="font-medium text-editorial-ink underline decoration-editorial-ink/25 underline-offset-4 transition hover:decoration-editorial-ink"
+            >
+              Contact us
+            </a>
+            .
+          </p>
           <button
             onClick={() => handleCheckout(selected.productId)}
             data-umami-event={`${eventPrefix}-plan-click`}

@@ -52,7 +52,7 @@ export default function TermsPage() {
           <li><strong className="text-editorial-ink">1 device:</strong> Activation on one (1) device at a time</li>
           <li><strong className="text-editorial-ink">2 devices:</strong> Activation on two (2) devices simultaneously</li>
           <li><strong className="text-editorial-ink">4 devices:</strong> Activation on four (4) devices simultaneously</li>
-          <li><strong className="text-editorial-ink">10 devices:</strong> Activation on ten (10) devices simultaneously</li>
+          <li><strong className="text-editorial-ink">Additional devices/team licenses:</strong> Activation limit stated at purchase</li>
         </ul>
         <p className={`${pClass} mt-3`}>
           You may deactivate and reactivate your license on different devices as needed within your license limits.

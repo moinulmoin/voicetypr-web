@@ -179,18 +179,6 @@ export default function RootLayout({
                       "@id": "https://voicetypr.com/#organization",
                     },
                   },
-                  {
-                    "@type": "Offer",
-                    name: "Team Plan",
-                    price: "199.00",
-                    priceCurrency: "USD",
-                    availability: "https://schema.org/InStock",
-                    description:
-                      "Includes 10 device activations, lifetime license, free updates.",
-                    seller: {
-                      "@id": "https://voicetypr.com/#organization",
-                    },
-                  },
                 ],
                 featureList: [
                   "100+ language support",

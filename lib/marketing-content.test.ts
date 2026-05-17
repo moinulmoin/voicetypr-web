@@ -37,6 +37,8 @@ const bannedFragments = [
   '10x cheaper than Dragon',
   'raw audio local by default',
   'Raw audio',
+  '10 devices',
+  '10 machines',
 ];
 
 const bannedPatterns = [

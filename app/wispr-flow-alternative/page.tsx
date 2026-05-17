@@ -123,7 +123,7 @@ const comparison: Array<{
       },
       {
         label: "One license, both platforms",
-        voicetypr: check("Yes (device-count options cover 1, 2, 4, or 10 machines)"),
+        voicetypr: check("Yes (public device-count options cover 1, 2, or 4 machines)"),
         wispr: neutral("Per-user license"),
       },
     ],
@@ -155,7 +155,7 @@ const switchReasons: Array<{
     marker: "$39",
     title: "Pay once, not every month",
     body:
-      "Wispr Flow runs $12–15/mo, ongoing. VoiceTypr Pro is $39 once. Max is $99 once for 4 devices. Team is $199 once for 10 devices. The day you buy is the day you stop paying.",
+      "Wispr Flow runs $12–15/mo, ongoing. VoiceTypr Pro is $39 once. Plus is $59 once for 2 devices. Max is $99 once for 4 devices. The day you buy is the day you stop paying.",
     meta: "Outcome · cost",
   },
   {
@@ -192,8 +192,8 @@ const faqs = [
     a: "Dictation apps store settings locally per app, so there's nothing to migrate. Most users are up and running in under 5 minutes: install VoiceTypr, pick a hotkey, download a model, start talking. Your Wispr install keeps working in parallel while you evaluate.",
   },
   {
-    q: "Does VoiceTypr have a team plan?",
-    a: "Yes. The Team plan covers 10 devices for $199 — one license for your whole crew. For larger deployments, email support@voicetypr.com.",
+    q: "What if I need more than 4 devices?",
+    a: "Contact support@voicetypr.com and we'll help you get set up.",
   },
   {
     q: "What if I already paid for a year of Wispr Flow?",

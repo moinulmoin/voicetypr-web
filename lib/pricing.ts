@@ -23,6 +23,10 @@ export const PLANS: Record<PlanKey, PlanMeta> = {
   team: { key: 'team', label: 'Team', maxDevices: 10, price: 199, keyPrefix: 'VTT' },
 };
 
+/** Public self-serve plans shown in the pricing UI. Keep `team` for existing/custom licenses. */
+export const PUBLIC_PLAN_KEYS = ['pro', 'plus', 'max'] as const;
+export type PublicPlanKey = (typeof PUBLIC_PLAN_KEYS)[number];
+
 /** Legacy shape kept for PricingCards – maps plan key to price */
 export const BASE_PRICES: Record<PlanKey, number> = {
   pro:  PLANS.pro.price,
