@@ -336,7 +336,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11",
         offline: "No",
-        limitation: "Free, but online-first and weak for long daily writing.",
+        limitation: "Free, but missing the useful parts: local transcription, long drafts, and a real daily workflow.",
         subscription: false,
       },
       {
@@ -344,7 +344,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11 22H2+",
         offline: "Partial",
-        limitation: "Free, but built more for PC control than fast text entry.",
+        limitation: "Free, but built for PC control. Dictation is only one piece of a much heavier tool.",
         subscription: false,
       },
       {
@@ -360,7 +360,7 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
-        limitation: "Paid, but made for everyday private dictation across apps.",
+        limitation: "Has the pieces the free tools miss: local transcription, long drafts, and every-app writing.",
         subscription: false,
       },
     ],
@@ -538,7 +538,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11",
         offline: "Partial",
-        limitation: "Free, but control-heavy when you only need clean text.",
+        limitation: "Free, but control-heavy. Great for navigation, clunky when you just need clean text.",
         subscription: false,
       },
       {
@@ -546,7 +546,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "macOS",
         offline: "Partial",
-        limitation: "Free, but Mac-only and command-first.",
+        limitation: "Free, but Mac-only and command-first. Not a focused writing workflow.",
         subscription: false,
       },
       {
@@ -562,7 +562,7 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
-        limitation: "Not full computer control. It focuses on dictation.",
+        limitation: "Has the missing writing pieces: local transcription, cross-platform support, and fast text entry.",
         subscription: false,
       },
     ],
