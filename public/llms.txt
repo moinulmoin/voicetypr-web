@@ -15,7 +15,7 @@ VoiceTypr is a desktop voice-to-text app for macOS and Windows. Users hold a glo
 
 - People who want to type less without moving writing into a new editor.
 - Windows users who want a modern dictation workflow beyond built-in short-session tools.
-- Developers, founders, support teams, and AI power users who dictate prompts, replies, notes, and docs.
+- People who write for work all day: developers, writers, journalists, product managers, support teams, students, recruiters, sales reps, marketers, consultants, founders, and AI power users.
 - Privacy-sensitive users who want voice transcribed on-device by default.
 - Accessibility-minded users reducing keyboard load from RSI, carpal tunnel, dyslexia, ADHD, fatigue, or motor friction.
 

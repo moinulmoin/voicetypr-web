@@ -12,14 +12,14 @@ import {
 export const metadata: Metadata = {
   title: "Use Cases — VoiceTypr",
   description:
-    "How people use VoiceTypr. ADHD, dyslexia, RSI, carpal tunnel, motor impairments, developers, writers, founders — concrete workflows.",
+    "How people use VoiceTypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
   alternates: {
     canonical: "https://voicetypr.com/use-cases",
   },
   openGraph: {
     title: "Use Cases — VoiceTypr",
     description:
-      "How people use VoiceTypr. ADHD, dyslexia, RSI, carpal tunnel, motor impairments, developers, writers, founders — concrete workflows.",
+      "How people use VoiceTypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
     url: "https://voicetypr.com/use-cases",
     siteName: "VoiceTypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Use Cases — VoiceTypr",
     description:
-      "How people use VoiceTypr. ADHD, dyslexia, RSI, carpal tunnel, motor impairments, developers, writers, founders — concrete workflows.",
+      "How people use VoiceTypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
     images: ["/voicetypr-og.png"],
   },
 };

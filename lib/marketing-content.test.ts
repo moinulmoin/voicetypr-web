@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { downloadDiscoveryLinks, getRelatedGuidesForUseCase, offlineWindowsRelatedGuides, voiceTypingRelatedGuides } from './seo-discovery';
+import { downloadDiscoveryLinks, getContextualUseCaseLinks, getRelatedGuidesForUseCase, offlineWindowsRelatedGuides, voiceTypingRelatedGuides } from './seo-discovery';
 import { alternativePages, seoPages } from './seo-pages';
 import { getAllUseCases } from './use-cases';
 
@@ -93,6 +93,18 @@ describe('marketing content guardrails', () => {
   it('maps every use case page to related guides', () => {
     for (const useCase of getAllUseCases()) {
       expect(getRelatedGuidesForUseCase(useCase.slug).length, `${useCase.slug} should have related guides`).toBeGreaterThan(0);
+    }
+  });
+
+  it('gives every use case page contextual in-body links', () => {
+    for (const useCase of getAllUseCases()) {
+      const links = getContextualUseCaseLinks(useCase.slug);
+
+      expect(links.length, `${useCase.slug} should have contextual links`).toBeGreaterThan(0);
+      for (const link of links) {
+        expect(link.href, `${useCase.slug} contextual link should point to a use case`).toMatch(/^\/use-cases\//);
+        expect(link.context.trim().length, `${useCase.slug} contextual link should explain the fit`).toBeGreaterThan(10);
+      }
     }
   });
 
