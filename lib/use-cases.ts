@@ -7,6 +7,8 @@
 
 export type UseCaseCategory = "accessibility" | "profession" | "workflow";
 
+export const USE_CASE_PAGES_LAST_UPDATED = "2026-05-18";
+
 export type UseCase = {
   slug: string;
   title: string; // metadata title
@@ -973,6 +975,1136 @@ const USE_CASE_ENTRIES: UseCase[] = [
       "ai voice typing solopreneur",
       "indie hacker voice typing",
       "voicetypr founders",
+    ],
+  },
+  {
+    slug: "journalists",
+    title: "VoiceTypr for Journalists — Capture the story before the trail goes cold",
+    ogTitle: "VoiceTypr for Journalists",
+    description:
+      "Voice typing for journalists and reporters. Summarize interviews, draft intros, and write faster in your usual apps with local transcription.",
+    navLabel: "Journalists",
+    category: "profession",
+    order: 4,
+    hero: {
+      eyebrow: "voicetypr for journalists",
+      headline: "The interview happened. <em>Write while it's still alive.</em>",
+      lede:
+        "Reporting moves faster than typing. Right after an interview or press event, the shape of the story is clear for about fifteen minutes. VoiceTypr helps you dump that structure, angle, and first draft into the app you already use before the signal fades.",
+      metaStrip: ["fresh-context drafting", "local transcription", "works in every editor"],
+    },
+    pains: [
+      {
+        title: "The best lines arrive when you're away from the keyboard.",
+        body:
+          "A clean intro, a sharper framing, the actual nut graf — they often land on the walk back from the interview, not when you sit down to type. If you wait, you lose detail.",
+      },
+      {
+        title: "Interview notes turn into backlog fast.",
+        body:
+          "Quotes, scene details, follow-up questions, and side observations pile up. Typing everything from scratch slows the jump from reporting to writing.",
+      },
+      {
+        title: "Built-in dictation is fine for snippets, not newsroom rhythm.",
+        body:
+          "Short browser or OS dictation can handle a line. It usually feels worse when you need a full summary, a rough opener, or a 600-word draft in one run.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "fast",
+        title: "Post-interview capture",
+        body:
+          "Speak the angle, best quotes, and next questions while they're still fresh. The working doc exists before the formal write-up begins.",
+        meta: "Outcome · recall",
+      },
+      {
+        marker: "any",
+        title: "Editor, any tool",
+        body:
+          "Google Docs, Word, Notes, Notion, CMS draft boxes, email. If the story takes shape in a normal text field, VoiceTypr fits there.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "local",
+        title: "Source-sensitive drafting",
+        body:
+          "Your voice is transcribed on your machine by default, which matters when your notes involve unpublished reporting or sensitive context.",
+        meta: "Outcome · privacy",
+      },
+    ],
+    workflows: [
+      {
+        title: "Interview to story skeleton",
+        body:
+          "Right after the call, hold the hotkey and talk through what happened: the lede, the strongest quote, the tension, the missing hole. By the time you sit down, the skeleton is already in the doc.",
+      },
+      {
+        title: "Draft the intro by speaking it like you'd pitch it",
+        body:
+          "If you can explain the story to your editor out loud, you can usually draft the top five paragraphs the same way. Speaking often finds the cleaner sentence before typing does.",
+      },
+      {
+        title: "Field notes that don't rot in your phone",
+        body:
+          "After an event, dump details into a notes app or doc immediately: names, gestures, contradictions, scene texture. Voice is faster than pecking all of that into a phone keyboard.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is this for transcribing full interviews?",
+        a:
+          "Not primarily. VoiceTypr is strongest for your own first-person drafting and summaries. For multi-speaker audio transcription, a dedicated transcription workflow is usually a better fit.",
+      },
+      {
+        q: "Can I use it inside Google Docs or my CMS draft box?",
+        a:
+          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser-based editors and CMS forms.",
+      },
+      {
+        q: "What if I quote names or places the model might miss?",
+        a:
+          "You should still do an editorial pass. VoiceTypr is for getting the draft out fast, not for skipping fact-checking or proper-name cleanup.",
+      },
+      {
+        q: "Does local transcription mean every surrounding service is offline?",
+        a:
+          "No. It means normal dictation is transcribed on your machine after setup. Downloads, updates, licensing, and optional text-only AI formatting can still use network services.",
+      },
+      {
+        q: "Can I draft in non-English languages?",
+        a:
+          "Yes. VoiceTypr supports 99+ languages, so multilingual reporting workflows are fine as long as you pick the right language in settings.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Catch the angle <em>before typing flattens it.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for journalists",
+      "dictation software for journalists",
+      "voice typing for reporters",
+      "journalist dictation software",
+      "voice to text for journalists",
+    ],
+  },
+  {
+    slug: "product-managers",
+    title: "VoiceTypr for Product Managers — PRDs, specs, and updates at speaking speed",
+    ogTitle: "VoiceTypr for Product Managers",
+    description:
+      "Voice typing for product managers. Dictate PRDs, user stories, sprint updates, and decision docs in Notion, Jira, Slack, and docs.",
+    navLabel: "Product managers",
+    category: "profession",
+    order: 5,
+    hero: {
+      eyebrow: "voicetypr for product managers",
+      headline: "Product work happens in meetings. <em>The writing happens after.</em>",
+      lede:
+        "Most PM work starts as spoken reasoning — in standups, user calls, design reviews, and stakeholder chaos. VoiceTypr helps you turn that reasoning into PRDs, updates, and decision docs without spending the next hour retyping what you already know.",
+      metaStrip: ["prds · docs · jira", "local transcription", "cross-app workflow"],
+    },
+    pains: [
+      {
+        title: "The product decision is clear in your head, fuzzy on the page.",
+        body:
+          "You can explain the tradeoff out loud in thirty seconds, but typing the same thing into a spec takes twenty minutes because typing forces unnecessary compression too early.",
+      },
+      {
+        title: "PM writing is scattered across too many tools.",
+        body:
+          "PRD in Notion, ticket in Jira, update in Slack, recap in email, notes in Docs. A good dictation workflow needs to follow your cursor, not trap you in one editor.",
+      },
+      {
+        title: "Meeting context decays before the documentation happens.",
+        body:
+          "By the time you finally type the notes, the nuance is gone. Voice is the fastest way to capture the actual reasoning while it still feels obvious.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "3×",
+        title: "Faster first-pass documentation",
+        body:
+          "PRDs, user stories, decision logs, and sprint updates get drafted at speaking speed instead of at keyboard speed.",
+        meta: "Outcome · throughput",
+      },
+      {
+        marker: "any",
+        title: "Works in the stack you already have",
+        body:
+          "Notion, Jira, Linear, Slack, email, docs, browser forms. Product writing usually lives in text fields across six tools. VoiceTypr meets you there.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "local",
+        title: "Safer for pre-launch product context",
+        body:
+          "Roadmap notes, customer quotes, and unreleased feature details are transcribed on your machine by default.",
+        meta: "Outcome · privacy",
+      },
+    ],
+    workflows: [
+      {
+        title: "Talk the PRD before you polish it",
+        body:
+          "Open the doc and dictate the problem, users, edge cases, and non-goals exactly as you would explain them to engineering. Then edit. The blank-page tax disappears.",
+      },
+      {
+        title: "Turn calls into decision logs immediately",
+        body:
+          "Right after a review or customer call, dump the decision, rationale, open questions, and follow-ups into Notion or Linear by voice before another meeting wipes the cache.",
+      },
+      {
+        title: "Jira and Slack without the micro-fatigue",
+        body:
+          "User story details, acceptance criteria, stakeholder updates, and async clarifications are annoying mostly because of the typing. Voice cuts that friction.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it in Notion, Jira, or Linear?",
+        a:
+          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser-based product tools.",
+      },
+      {
+        q: "Is this meant to replace meeting notes software?",
+        a:
+          "No. VoiceTypr is strongest for your own drafting and synthesis after the meeting, not as a bot that joins and records group calls.",
+      },
+      {
+        q: "What about product terms and internal jargon?",
+        a:
+          "Modern Whisper-based dictation usually handles product and technical language well, but you should still do a quick pass for company-specific names.",
+      },
+      {
+        q: "Does it help with AI-heavy PM workflows too?",
+        a:
+          "Yes. PMs now spend a surprising amount of time prompting AI tools for specs, summaries, rewrites, and analysis. Voice is often the fastest input method there.",
+      },
+      {
+        q: "Can I use it on Windows and Mac?",
+        a:
+          "Yes. VoiceTypr supports Windows 10+ and macOS 13+.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Document the decision <em>while it still makes sense.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for product managers",
+      "dictation software for product managers",
+      "dictate product specs",
+      "voice typing for prds",
+      "voice to text for product managers",
+    ],
+  },
+  {
+    slug: "customer-support",
+    title: "VoiceTypr for Customer Support — Reply faster without torching your hands",
+    ogTitle: "VoiceTypr for Customer Support",
+    description:
+      "Voice typing for customer support reps. Dictate ticket replies, CRM notes, and escalation context faster in help desks, chat, and email.",
+    navLabel: "Customer support",
+    category: "profession",
+    order: 6,
+    hero: {
+      eyebrow: "voicetypr for customer support",
+      headline: "The replies are repetitive. <em>The typing doesn't have to be.</em>",
+      lede:
+        "Support work means typing all day: replies, summaries, follow-ups, internal notes, and escalation context. VoiceTypr moves the long-form parts to speech so your fingers are not carrying every customer conversation alone.",
+      metaStrip: ["tickets · crm · email", "local transcription", "every-app input"],
+    },
+    pains: [
+      {
+        title: "Support is a typing job disguised as a people job.",
+        body:
+          "Even when you know the answer, you still have to type the answer, type the note, type the handoff, and type the follow-up. The work multiplies through text fields.",
+      },
+      {
+        title: "Empathy takes more words than macros give you.",
+        body:
+          "The best support replies sound human, not like a copied snippet. But writing human-sounding context repeatedly is expensive when every sentence costs keystrokes.",
+      },
+      {
+        title: "Case notes are where fatigue becomes visible.",
+        body:
+          "The customer-facing reply gets written. The internal context often gets skipped because no one wants to type another paragraph after the ticket is done.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "faster",
+        title: "Longer replies without slower queues",
+        body:
+          "Speaking out a thoughtful response is usually faster than typing it, especially when the answer needs nuance rather than a canned macro.",
+        meta: "Outcome · speed",
+      },
+      {
+        marker: "any",
+        title: "Help desk, any tool",
+        body:
+          "Zendesk, Intercom, Help Scout, Gmail, Slack, CRMs, browser-based support tools. If there is a cursor, VoiceTypr can work there.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "less",
+        title: "Keyboard load across the whole queue",
+        body:
+          "Voice works for customer replies and for the internal note you usually postpone. That compounds across dozens of tickets.",
+        meta: "Outcome · strain",
+      },
+    ],
+    workflows: [
+      {
+        title: "Reply first, refine second",
+        body:
+          "Hold the hotkey and explain the fix the way you would explain it to a customer on a call. Then tighten the phrasing. The response stays warm without taking forever.",
+      },
+      {
+        title: "Case notes right after the ticket",
+        body:
+          "Once the reply is out, dictate the internal summary immediately: what happened, what changed, what to watch for. The note actually gets written because it no longer costs another typing block.",
+      },
+      {
+        title: "Escalation context that engineers can actually use",
+        body:
+          "Instead of a vague one-line handoff, talk through the reproduction steps, customer environment, and business impact. Voice makes it easier to include the context you would otherwise skip.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it in my help desk or CRM?",
+        a:
+          "Usually yes. VoiceTypr works in normal text fields across browser tools, desktop apps, and email clients.",
+      },
+      {
+        q: "Is this just for canned replies?",
+        a:
+          "No. It is most useful when the reply needs context, empathy, or explanation that a macro does not cover well.",
+      },
+      {
+        q: "What about sensitive customer data?",
+        a:
+          "Normal dictation is transcribed on your machine by default after setup. Optional text-only AI formatting can be enabled separately if you want it.",
+      },
+      {
+        q: "Will this slow me down if I still need to edit?",
+        a:
+          "Usually not. The time win comes from getting a strong first pass into the box quickly, then making a short edit instead of writing from zero.",
+      },
+      {
+        q: "Does it replace help desk automation?",
+        a:
+          "No. VoiceTypr is an input tool, not a workflow automation platform. It helps you write the response faster inside the tools you already use.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Get through the queue <em>with fewer keystrokes.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for customer support",
+      "dictation software for customer support reps",
+      "voice typing for customer service reps",
+      "dictation for support teams",
+      "voice to text for support tickets",
+    ],
+  },
+  {
+    slug: "lawyers",
+    title: "VoiceTypr for Lawyers — Legal writing without paying Dragon prices",
+    ogTitle: "VoiceTypr for Lawyers",
+    description:
+      "Voice typing for lawyers. Dictate client emails, case notes, drafts, and time-entry context faster with local transcription by default.",
+    navLabel: "Lawyers",
+    category: "profession",
+    order: 7,
+    hero: {
+      eyebrow: "voicetypr for lawyers",
+      headline: "The thinking is legal. <em>The bottleneck is still typing.</em>",
+      lede:
+        "Legal work involves a ridiculous amount of text: client emails, case notes, summaries, draft arguments, internal memos, and time-entry detail. VoiceTypr helps solo and small-firm lawyers move that drafting load to voice without buying into heavier legacy dictation stacks.",
+      metaStrip: ["drafts · notes · email", "local transcription", "pay once · lifetime"],
+    },
+    pains: [
+      {
+        title: "Legal writing is never just one paragraph.",
+        body:
+          "Even a simple client update turns into context, caveats, and next steps. The cost is not one sentence; it is the constant accumulation of precise text.",
+      },
+      {
+        title: "Older legal dictation options feel heavy and expensive.",
+        body:
+          "A lot of legal buyers still assume they need a large Dragon-style investment to dictate seriously. That pricing and setup burden is hard to justify for many modern small-practice workflows.",
+      },
+      {
+        title: "The private stuff is exactly what you least want floating around.",
+        body:
+          "Client details, case facts, negotiation notes, and internal strategy drafts are the moments where local-first transcription matters most.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "voice",
+        title: "Faster first drafts of routine legal writing",
+        body:
+          "Client updates, internal summaries, rough argument structure, and detailed time-entry notes get out of your head faster.",
+        meta: "Outcome · drafting",
+      },
+      {
+        marker: "local",
+        title: "Local by default for normal dictation",
+        body:
+          "Your spoken draft is transcribed on your machine after setup, which is a better starting point than cloud-first consumer dictation.",
+        meta: "Outcome · privacy",
+      },
+      {
+        marker: "$39",
+        title: "Lower entry price than legacy legal dictation",
+        body:
+          "For lawyers who mainly need faster everyday writing, VoiceTypr is a much smaller commitment than high-ticket legacy software.",
+        meta: "Outcome · cost",
+      },
+    ],
+    workflows: [
+      {
+        title: "Client emails that sound like you wrote them",
+        body:
+          "Dictate the explanation the way you would say it to the client, then edit for precision. It is faster than building every paragraph one keystroke at a time.",
+      },
+      {
+        title: "Case notes right after the event",
+        body:
+          "After a call, meeting, or filing, dump the facts, next steps, and risks into your notes immediately. Voice reduces the chance that key detail gets shortened or skipped.",
+      },
+      {
+        title: "Argument structure before formal drafting",
+        body:
+          "Talk through the outline, the weak point, the counterargument, and the supporting facts before you start polishing language. Voice is strong at structure-first drafting.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is this a replacement for Dragon Legal in every scenario?",
+        a:
+          "Not in every scenario. Firms with deep custom legal vocabulary or highly specialized legacy workflows may still prefer Dragon-style tooling. VoiceTypr is the cleaner fit for many modern solo and small-team dictation workflows.",
+      },
+      {
+        q: "Can I use it in Word and browser-based tools?",
+        a:
+          "Yes. VoiceTypr works in normal text fields across Word, browser apps, email, docs, and notes.",
+      },
+      {
+        q: "Are you making legal compliance guarantees here?",
+        a:
+          "No. VoiceTypr is a dictation tool with local transcription by default. It is not presented as a legal compliance certification layer.",
+      },
+      {
+        q: "Will it handle names and legal terms perfectly?",
+        a:
+          "You should still do an edit pass, especially for names, citations, and jurisdiction-specific language. VoiceTypr helps you draft faster; it does not remove the lawyer's review step.",
+      },
+      {
+        q: "Why would a lawyer care about pay-once pricing?",
+        a:
+          "Because dictation is infrastructure. If it becomes part of your daily writing routine, recurring subscription cost adds up fast for a tool that should simply keep working.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Move the first draft to voice. <em>Keep the review in your hands.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "dictation software for lawyers",
+      "voice typing for legal writing",
+      "legal dictation software",
+      "voice to text for lawyers",
+      "dictate client emails lawyer",
+    ],
+  },
+  {
+    slug: "students",
+    title: "VoiceTypr for Students — Get the draft out before perfection kills it",
+    ogTitle: "VoiceTypr for Students",
+    description:
+      "Voice typing for students. Dictate essays, notes, outlines, and study prompts faster in Docs, Word, Notion, and browser tools.",
+    navLabel: "Students",
+    category: "profession",
+    order: 8,
+    hero: {
+      eyebrow: "voicetypr for students",
+      headline: "You know what to say. <em>Typing is what slows it down.</em>",
+      lede:
+        "A lot of schoolwork is not thinking, it is transferring thought into text. Essays, notes, outlines, application answers, discussion posts, study prompts. VoiceTypr helps students get the first pass out faster, especially when typing is tiring, slow, or mentally sticky.",
+      metaStrip: ["essays · notes · prompts", "local transcription", "works in school tools"],
+    },
+    pains: [
+      {
+        title: "Students spend the whole day in text fields.",
+        body:
+          "Google Docs, Word, Canvas, Notion, browser forms, AI tools, email. The work is spread across apps, but the bottleneck is the same: too much typing.",
+      },
+      {
+        title: "The first paragraph costs the most energy.",
+        body:
+          "A lot of students know the answer out loud before they can get themselves to type it. Voice helps bypass the blank-page stall and gets the rough version on-screen.",
+      },
+      {
+        title: "Typing fatigue compounds across a whole week.",
+        body:
+          "One essay is manageable. Add lecture notes, reading reflections, emails, and applications, and the keyboard becomes the actual workload.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "first",
+        title: "Drafts appear sooner",
+        body:
+          "Talking through the answer gets you from blank page to workable draft faster, which makes editing and improving it much easier.",
+        meta: "Outcome · momentum",
+      },
+      {
+        marker: "any",
+        title: "School tools, any text field",
+        body:
+          "Google Docs, Word, Notion, browser assignments, chat, email, prompt boxes. VoiceTypr works where the coursework already happens.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "helpful",
+        title: "Useful beyond accessibility labels",
+        body:
+          "Some students use voice because of ADHD, dyslexia, or fatigue. Others just use it because speaking the first draft is faster than typing it.",
+        meta: "Outcome · flexibility",
+      },
+    ],
+    workflows: [
+      {
+        title: "Talk the ugly first draft",
+        body:
+          "Open the essay doc, dictate the rough answer in full sentences, then come back to structure and citations. Voice is strongest at getting the raw material out.",
+      },
+      {
+        title: "Notes and summaries after class",
+        body:
+          "Right after a lecture, explain the concepts back into your notes in your own words. That gives you both recall and a usable study sheet.",
+      },
+      {
+        title: "Applications, emails, and discussion posts",
+        body:
+          "The long-tail writing load is bigger than the big essay. Voice helps with the constant smaller pieces that still consume real time and energy.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it in Google Docs or Word?",
+        a:
+          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including Docs, Word, browser forms, and notes apps.",
+      },
+      {
+        q: "Is this only for students with ADHD or dyslexia?",
+        a:
+          "No. It can help for those cases, but plenty of students use voice simply because speaking the first draft is faster than typing it.",
+      },
+      {
+        q: "Does it write the essay for me?",
+        a:
+          "No. VoiceTypr turns your speech into text. It is an input tool, not a ghostwriter.",
+      },
+      {
+        q: "Can I use it for study prompts and AI tools too?",
+        a:
+          "Yes. Prompt boxes in ChatGPT, Claude, and similar tools are normal text fields, so VoiceTypr works there as well.",
+      },
+      {
+        q: "What if I need to edit heavily afterward?",
+        a:
+          "That is normal. The win is getting from zero to first draft faster. Editing a rough draft is usually much easier than typing from nothing.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Say the first draft. <em>Edit the smarter one.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for students",
+      "dictation software for students",
+      "speech to text for students",
+      "voice to text for essays",
+      "dictation for university students",
+    ],
+  },
+  {
+    slug: "researchers",
+    title: "VoiceTypr for Researchers — Capture the idea before the paper version shows up",
+    ogTitle: "VoiceTypr for Researchers",
+    description:
+      "Voice typing for researchers. Dictate notes, literature summaries, memos, and draft sections faster in Docs, Word, Notion, and email.",
+    navLabel: "Researchers",
+    category: "profession",
+    order: 9,
+    hero: {
+      eyebrow: "voicetypr for researchers",
+      headline: "The thought is clear now. <em>It won't stay that way forever.</em>",
+      lede:
+        "Research work produces a constant stream of half-finished thinking: paper notes, literature reactions, method caveats, draft paragraphs, and synthesis after meetings. VoiceTypr helps you capture those before they flatten into vague bullet points or disappear completely.",
+      metaStrip: ["notes · memos · drafts", "local transcription", "works in every editor"],
+    },
+    pains: [
+      {
+        title: "Most research writing starts as spoken reasoning.",
+        body:
+          "You usually know how to explain the limitation or the result out loud before you can force it into tidy academic prose. Typing too early can make the thinking smaller than it was.",
+      },
+      {
+        title: "The notes pile up faster than the synthesis.",
+        body:
+          "Papers, annotations, lab notes, meeting recaps, side ideas. Researchers accumulate text fragments all week, then lose time trying to stitch them back together later.",
+      },
+      {
+        title: "You do not always want rough work in a cloud tool first.",
+        body:
+          "Early-stage interpretations, unpublished findings, and collaborator context can be sensitive. Local-first dictation is simply a better default for that kind of material.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "faster",
+        title: "More synthesis while context is fresh",
+        body:
+          "Instead of saving your real thinking for later, you can dictate the interpretation now and clean it up afterward.",
+        meta: "Outcome · synthesis",
+      },
+      {
+        marker: "any",
+        title: "Works in the tools research already uses",
+        body:
+          "Word, Google Docs, Notion, email, browser forms, note apps, and AI tools. Research writing rarely lives in one place.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "local",
+        title: "Safer default for unpublished work",
+        body:
+          "Voice dictation runs on your machine after setup, which is a cleaner starting point for rough notes and pre-publication drafts.",
+        meta: "Outcome · privacy",
+      },
+    ],
+    workflows: [
+      {
+        title: "Literature reaction before it goes stale",
+        body:
+          "Right after reading a paper, dictate what matters, what feels weak, and where it connects to your work. Those reactions are hard to reconstruct later from highlights alone.",
+      },
+      {
+        title: "Method caveats and result interpretation",
+        body:
+          "Open the draft or notes doc and talk through what the result probably means, what it definitely does not mean, and what you still need to check. Then edit that into formal prose.",
+      },
+      {
+        title: "Meeting recap into a real memo",
+        body:
+          "After advisor meetings, research standups, or collaborator calls, dump the important decisions and next steps by voice before the nuance disappears.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it for academic writing in Word or Google Docs?",
+        a:
+          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including Word, Docs, note apps, and email.",
+      },
+      {
+        q: "Is it good for writing final publishable prose in one pass?",
+        a:
+          "Usually it is best for getting the first pass out. Most researchers will still do a serious edit for clarity, citations, and tone.",
+      },
+      {
+        q: "What about technical terms and citations?",
+        a:
+          "It handles a lot surprisingly well, but you should still expect a cleanup pass for specific names, jargon, and reference formatting.",
+      },
+      {
+        q: "Can I use it for AI prompts and literature-synthesis tools too?",
+        a:
+          "Yes. Prompt boxes are normal text fields, so VoiceTypr works there the same way it does in docs or notes.",
+      },
+      {
+        q: "Is this a meeting transcription platform?",
+        a:
+          "No. VoiceTypr is strongest for your own dictation and synthesis, not as a multi-speaker recording or collaboration system.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Capture the real thought. <em>Polish the paper later.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for researchers",
+      "dictation software for researchers",
+      "voice to text for research notes",
+      "dictation for literature review notes",
+      "research writing by voice",
+    ],
+  },
+  {
+    slug: "recruiters",
+    title: "VoiceTypr for Recruiters — Candidate notes before the next call starts",
+    ogTitle: "VoiceTypr for Recruiters",
+    description:
+      "Voice typing for recruiters. Dictate candidate notes, outreach drafts, interview summaries, and CRM updates faster in your usual tools.",
+    navLabel: "Recruiters",
+    category: "profession",
+    order: 10,
+    hero: {
+      eyebrow: "voicetypr for recruiters",
+      headline: "The call ended. <em>The notes still need to exist.</em>",
+      lede:
+        "Recruiting is full of short windows between conversations. Candidate notes, outreach follow-ups, scorecards, and CRM updates all need to be written while the person is still fresh in your head. VoiceTypr helps you get that context down before the next meeting wipes it out.",
+      metaStrip: ["notes · outreach · crm", "local transcription", "every-app input"],
+    },
+    pains: [
+      {
+        title: "Recruiting creates text faster than typing keeps up.",
+        body:
+          "Every interview produces notes. Every promising lead needs outreach. Every pipeline change wants CRM context. The writing overhead is constant.",
+      },
+      {
+        title: "Good candidate detail decays quickly.",
+        body:
+          "The useful nuance is often in how someone explained a project or hesitated on a tradeoff. If you wait too long to write it, the memory gets flatter.",
+      },
+      {
+        title: "Template outreach still needs a human pass.",
+        body:
+          "The best recruiter messages do not sound pasted. They still need real context, and that means typing more than you want to type.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "fast",
+        title: "Candidate notes captured before the next call",
+        body:
+          "Voice makes it easier to record the actual signal from the conversation while it is still sharp.",
+        meta: "Outcome · recall",
+      },
+      {
+        marker: "any",
+        title: "Works in ATS, CRM, docs, and email",
+        body:
+          "Recruiting workflows jump across browser tools, notes, spreadsheets, and inboxes. VoiceTypr follows the cursor instead of forcing a new workflow.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "human",
+        title: "Outreach that still sounds personal",
+        body:
+          "Talking through why a candidate is a fit often sounds more natural than typing a stiff message from scratch.",
+        meta: "Outcome · tone",
+      },
+    ],
+    workflows: [
+      {
+        title: "Post-screen call recap",
+        body:
+          "Right after the call, dictate strengths, gaps, risks, and a recommendation into the ATS or notes doc. The whole recap takes a minute instead of becoming another task.",
+      },
+      {
+        title: "Candidate outreach with real context",
+        body:
+          "Open the email or LinkedIn draft and speak why the role fits, what stood out in the profile, and what you want them to know. Then tighten it.",
+      },
+      {
+        title: "Hiring manager handoff notes",
+        body:
+          "Dictate the part that matters: what the person has really done, what to probe next, and what felt unusually strong or weak.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it inside my ATS or browser-based recruiting tools?",
+        a:
+          "Usually yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser apps.",
+      },
+      {
+        q: "Is it only useful for candidate notes?",
+        a:
+          "No. Recruiters also use it for outreach drafts, internal summaries, follow-ups, and hiring-manager notes.",
+      },
+      {
+        q: "What if I still need to clean up the note after dictating?",
+        a:
+          "That is normal. The win is getting a strong first pass into the system fast while the conversation is still clear.",
+      },
+      {
+        q: "Can it help with AI sourcing or outreach prompts too?",
+        a:
+          "Yes. Prompt boxes and search fields are normal text inputs, so VoiceTypr works there as well.",
+      },
+      {
+        q: "Is this a recruiting automation platform?",
+        a:
+          "No. VoiceTypr is an input tool. It helps you write inside the recruiting stack you already use.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Keep the signal. <em>Lose some of the typing.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for recruiters",
+      "dictation software for recruiters",
+      "dictate candidate notes",
+      "voice to text for recruiting outreach",
+      "recruiter notes by voice",
+    ],
+  },
+  {
+    slug: "sales",
+    title: "VoiceTypr for Sales — Follow up while the call still has heat",
+    ogTitle: "VoiceTypr for Sales",
+    description:
+      "Voice typing for sales reps. Dictate follow-ups, CRM notes, call recaps, and proposal drafts faster across your sales workflow.",
+    navLabel: "Sales",
+    category: "profession",
+    order: 11,
+    hero: {
+      eyebrow: "voicetypr for sales",
+      headline: "The deal moves on speed. <em>The admin still wants paragraphs.</em>",
+      lede:
+        "Sales work is full of writing that matters but never feels like the main event: follow-up emails, CRM updates, discovery notes, proposal context, and internal handoffs. VoiceTypr cuts the typing tax so you can get the words into the system before momentum drops.",
+      metaStrip: ["follow-ups · crm · proposals", "local transcription", "works in every tool"],
+    },
+    pains: [
+      {
+        title: "Every call creates a second job.",
+        body:
+          "You finish the meeting, then have to write the recap, update the CRM, send the follow-up, and note the next steps. The sales conversation is over; the typing just started.",
+      },
+      {
+        title: "The best follow-ups usually do not get written instantly.",
+        body:
+          "When energy is high, you know exactly what to say. Ten calls later, the email gets shorter, flatter, and less persuasive.",
+      },
+      {
+        title: "CRM hygiene dies when typing feels expensive.",
+        body:
+          "Reps know they should leave better notes. They often skip it because nobody wants to type another detailed summary between calls.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "faster",
+        title: "Follow-ups out while the call is still fresh",
+        body:
+          "Voice makes it easier to send the useful recap now instead of telling yourself you will do it later.",
+        meta: "Outcome · timing",
+      },
+      {
+        marker: "better",
+        title: "Richer CRM notes",
+        body:
+          "Because dictating a paragraph is cheap, you keep more detail about objections, timing, and political context.",
+        meta: "Outcome · context",
+      },
+      {
+        marker: "any",
+        title: "Email, CRM, docs, proposal tools",
+        body:
+          "Sales work jumps across Gmail, HubSpot, Salesforce, notes, docs, and browser forms. VoiceTypr fits that reality.",
+        meta: "Outcome · scope",
+      },
+    ],
+    workflows: [
+      {
+        title: "Discovery call to follow-up email",
+        body:
+          "Open the draft and talk through what you heard, what matters, and what happens next. Then edit. The email lands faster and sounds closer to the actual conversation.",
+      },
+      {
+        title: "CRM updates between calls",
+        body:
+          "Dictate objections, budget reality, decision-maker dynamics, and next steps right after the call instead of leaving vague one-liners.",
+      },
+      {
+        title: "Proposal framing and internal handoff",
+        body:
+          "Before the formal proposal gets polished, use voice to dump the business context and win strategy into a working doc the team can use.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it in my CRM?",
+        a:
+          "Usually yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser-based CRM tools.",
+      },
+      {
+        q: "Is this just for follow-up emails?",
+        a:
+          "No. Reps also use it for call notes, CRM updates, proposal outlines, handoffs, and internal summaries.",
+      },
+      {
+        q: "Will dictated sales writing sound too rough?",
+        a:
+          "The first pass may be rough, but it is usually easier to edit a spoken draft than to type one from zero when you are moving fast.",
+      },
+      {
+        q: "Can I use it for sales prompts in AI tools too?",
+        a:
+          "Yes. Prompt boxes and browser forms are normal text fields, so VoiceTypr works there too.",
+      },
+      {
+        q: "Does it replace CRM automation or sequencing tools?",
+        a:
+          "No. VoiceTypr is an input layer. It helps you create the text faster inside the tools you already run.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Send the follow-up. <em>Do less typing to get there.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for sales reps",
+      "dictation software for sales",
+      "dictate CRM notes",
+      "voice to text for sales follow up emails",
+      "sales notes by voice",
+    ],
+  },
+  {
+    slug: "marketers",
+    title: "VoiceTypr for Marketers — Talk the draft before the campaign gets flattened",
+    ogTitle: "VoiceTypr for Marketers",
+    description:
+      "Voice typing for marketers. Dictate campaign briefs, copy drafts, content outlines, and strategy notes faster in the tools you already use.",
+    navLabel: "Marketers",
+    category: "profession",
+    order: 12,
+    hero: {
+      eyebrow: "voicetypr for marketers",
+      headline: "The campaign starts as talk. <em>The draft still needs words.</em>",
+      lede:
+        "Marketing work produces a huge amount of text before anything ships: briefs, hooks, ad copy, landing page structure, emails, angle tests, and internal notes. VoiceTypr helps you get those first passes out quickly so the good idea arrives before over-editing kills it.",
+      metaStrip: ["copy · briefs · outlines", "local transcription", "works in every app"],
+    },
+    pains: [
+      {
+        title: "Marketing is more writing than it looks from the outside.",
+        body:
+          "A campaign means docs, pages, ads, emails, prompts, and notes. The final asset is visible; the typing workload behind it usually is not.",
+      },
+      {
+        title: "The first strong angle often sounds obvious out loud.",
+        body:
+          "You can hear the hook in your head or explain it to a teammate, but typing it cleanly from scratch slows down the part that was already there.",
+      },
+      {
+        title: "Prompt-heavy marketing work still creates keyboard fatigue.",
+        body:
+          "A lot of modern marketing includes feeding context into AI tools. That can mean as much typing as the final copy itself.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "faster",
+        title: "More first drafts on the page",
+        body:
+          "Briefs, hooks, emails, and outlines appear faster when you speak them first and edit second.",
+        meta: "Outcome · velocity",
+      },
+      {
+        marker: "any",
+        title: "Works across docs, CMS, prompts, and chat",
+        body:
+          "Notion, Docs, ads managers, CMS fields, Slack, email, AI prompt boxes. Marketing writing is fragmented, so the input tool has to be flexible.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "natural",
+        title: "Voice can sound more like actual language",
+        body:
+          "Spoken first drafts often feel more human than copy assembled word-by-word under keyboard pressure.",
+        meta: "Outcome · tone",
+      },
+    ],
+    workflows: [
+      {
+        title: "Campaign brief from spoken thinking",
+        body:
+          "Dictate the audience, problem, message, objections, and CTA into the brief before you start formatting it into something tidy.",
+      },
+      {
+        title: "Landing page and email draft passes",
+        body:
+          "Open the doc or page builder note field and talk through the headline, story, proof, and offer. Then trim it. The structure comes out faster this way.",
+      },
+      {
+        title: "AI prompting without the keyboard tax",
+        body:
+          "If half the work now is context-setting for AI tools, voice is often the fastest way to feed them the nuance they need.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it in Notion, Google Docs, and CMS fields?",
+        a:
+          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser tools and docs.",
+      },
+      {
+        q: "Is this only for long-form copy?",
+        a:
+          "No. Marketers use it for briefs, outlines, prompt inputs, internal notes, ad concepts, emails, and landing page drafts.",
+      },
+      {
+        q: "Will spoken copy need editing?",
+        a:
+          "Of course. The point is not perfect final copy in one pass. The point is getting a stronger first draft on the page faster.",
+      },
+      {
+        q: "Can voice really help with marketing angles?",
+        a:
+          "Often yes. Speaking can surface a more natural hook or objection-handling line than typing under pressure.",
+      },
+      {
+        q: "Does it replace copy tools or AI writing apps?",
+        a:
+          "No. VoiceTypr is an input layer. It helps you feed better raw material into the rest of your writing stack.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Talk the first angle. <em>Edit the sharper version.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "voice typing for marketers",
+      "dictation software for marketers",
+      "voice to text for marketing copy",
+      "dictate campaign briefs",
+      "marketing copy by voice",
+    ],
+  },
+  {
+    slug: "consultants",
+    title: "VoiceTypr for Consultants — The meeting ends, the memo still needs to happen",
+    ogTitle: "VoiceTypr for Consultants",
+    description:
+      "Voice typing for consultants. Dictate client recaps, internal notes, proposal drafts, and memos faster without changing your workflow.",
+    navLabel: "Consultants",
+    category: "profession",
+    order: 13,
+    hero: {
+      eyebrow: "voicetypr for consultants",
+      headline: "The client call is over. <em>The write-up still isn't.</em>",
+      lede:
+        "Consulting work creates constant translation pressure: meeting to memo, discussion to proposal, insight to recommendation, notes to email. VoiceTypr helps you move that text-heavy follow-through faster so the useful thinking survives the handoff into written form.",
+      metaStrip: ["memos · proposals · recap notes", "local transcription", "every-app workflow"],
+    },
+    pains: [
+      {
+        title: "Consulting work turns every conversation into paperwork.",
+        body:
+          "Even a good call creates a trail of notes, summaries, emails, and next-step docs. The real cost is not the meeting, it is the writing after it.",
+      },
+      {
+        title: "Strong recommendations arrive before the polished memo does.",
+        body:
+          "You often know the answer while speaking with the team, then lose force when you sit down to type the same logic into careful consultant prose.",
+      },
+      {
+        title: "Travel days and packed calendars kill detail.",
+        body:
+          "Between calls, transit, and workshops, there is rarely a calm hour for writing. Voice helps capture context in the small gaps that actually exist.",
+      },
+    ],
+    outcomes: [
+      {
+        marker: "faster",
+        title: "Meeting-to-memo turnaround",
+        body:
+          "Speaking the recap right after the call gets the useful version into text before your day moves on.",
+        meta: "Outcome · speed",
+      },
+      {
+        marker: "any",
+        title: "Docs, email, notes, proposal tools",
+        body:
+          "Consulting writing happens across docs, browser tools, chat, email, and prompts. VoiceTypr works across the whole spread.",
+        meta: "Outcome · scope",
+      },
+      {
+        marker: "clearer",
+        title: "Recommendations that still sound like thinking",
+        body:
+          "Voice often preserves the logic and cadence of a recommendation better than typing it out under deadline pressure.",
+        meta: "Outcome · clarity",
+      },
+    ],
+    workflows: [
+      {
+        title: "Client call to recap email",
+        body:
+          "Open the draft and speak the situation, decisions, next steps, and unresolved questions immediately. Then tighten it into client-ready text.",
+      },
+      {
+        title: "Working memos and synthesis docs",
+        body:
+          "Instead of waiting for the perfect block of writing time, dictate the interpretation, recommendation, and open risks while the reasoning is still alive.",
+      },
+      {
+        title: "Proposal framing from spoken logic",
+        body:
+          "Use voice to dump the real shape of the problem, what you would do, and why it matters. Formal proposal language can come later.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use it for client emails and internal docs?",
+        a:
+          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including docs, email, and browser tools.",
+      },
+      {
+        q: "Is this mainly for consultants who write long memos?",
+        a:
+          "It helps there, but it is just as useful for recaps, proposals, workshop notes, and AI prompt-heavy client work.",
+      },
+      {
+        q: "Will it still need editing?",
+        a:
+          "Yes. VoiceTypr is best at getting the first pass out fast. Most consultants will still refine tone, structure, and wording afterward.",
+      },
+      {
+        q: "Can I use it with prompt-based consulting workflows too?",
+        a:
+          "Yes. Prompt boxes in AI tools are normal text fields, so VoiceTypr fits there naturally.",
+      },
+      {
+        q: "Does it replace note-taking or project-management software?",
+        a:
+          "No. It is an input tool that helps you generate the text inside the systems you already use.",
+      },
+    ],
+    finalCta: {
+      eyebrow: "three days, no card",
+      headline: "Get the memo started. <em>Keep the thinking intact.</em>",
+      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+    },
+    keywords: [
+      "dictation software for consultants",
+      "voice typing for consultants",
+      "voice to text for consulting notes",
+      "dictate client recap emails",
+      "consulting memos by voice",
     ],
   },
 ];

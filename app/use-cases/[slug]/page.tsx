@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import Footer from "@/app/components/sections/Footer";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import Header from "@/app/components/sections/Header";
-import { getRelatedGuidesForUseCase } from "@/lib/seo-discovery";
+import { getContextualUseCaseLinks, getRelatedGuidesForUseCase } from "@/lib/seo-discovery";
 import {
+  USE_CASE_PAGES_LAST_UPDATED,
   getAllUseCaseSlugs,
   getUseCase,
   type UseCase,
@@ -57,6 +58,10 @@ export async function generateMetadata({
       creator: "@moinulmoin",
     },
     robots: { index: true, follow: true },
+    other: {
+      "article:modified_time": `${USE_CASE_PAGES_LAST_UPDATED}T00:00:00.000Z`,
+      "og:updated_time": `${USE_CASE_PAGES_LAST_UPDATED}T00:00:00.000Z`,
+    },
   };
 }
 
@@ -79,6 +84,56 @@ function HeadlineWithAccent({ text }: { text: string }) {
   );
 }
 
+function stripAccentMarkers(text: string): string {
+  return text.replace(/<\/?em>/g, "");
+}
+
+function formatLastUpdated(isoDate: string): string {
+  return new Intl.DateTimeFormat("en", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+    year: "numeric",
+  }).format(new Date(`${isoDate}T00:00:00.000Z`));
+}
+
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
+function buildUseCaseJsonLd(useCase: UseCase) {
+  const url = `https://voicetypr.com/use-cases/${useCase.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: stripAccentMarkers(useCase.hero.headline),
+        description: useCase.description,
+        dateModified: USE_CASE_PAGES_LAST_UPDATED,
+        isPartOf: { "@id": "https://voicetypr.com/#website" },
+        about: { "@id": "https://voicetypr.com/#product" },
+        mainEntity: { "@id": `${url}#faq` },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        mainEntity: useCase.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.a,
+          },
+        })),
+      },
+    ],
+  };
+}
+
 export default async function UseCasePage({ params }: PageProps) {
   const { slug } = await params;
   const useCase = getUseCase(slug);
@@ -89,9 +144,16 @@ export default async function UseCasePage({ params }: PageProps) {
 
 function UseCaseView({ useCase }: { useCase: UseCase }) {
   const relatedGuides = getRelatedGuidesForUseCase(useCase.slug);
+  const contextualLinks = getContextualUseCaseLinks(useCase.slug);
+  const lastUpdatedLabel = formatLastUpdated(USE_CASE_PAGES_LAST_UPDATED);
+  const jsonLd = buildUseCaseJsonLd(useCase);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
+      />
       <main
         id="main-content"
         className="landing-editorial relative min-h-screen"
@@ -126,6 +188,11 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                 {useCase.hero.metaStrip.map((item, i) => (
                   <span key={i}>{item}</span>
                 ))}
+              </div>
+
+              <div className="mt-4 text-[12px] leading-relaxed text-editorial-ink-3">
+                Last updated{" "}
+                <time dateTime={USE_CASE_PAGES_LAST_UPDATED}>{lastUpdatedLabel}</time>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -240,6 +307,27 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   </li>
                 ))}
               </ol>
+
+              {contextualLinks.length > 0 ? (
+                <div className="mt-9 border-t border-editorial-line/70 pt-6 text-[14px] leading-[1.65] text-editorial-ink-2">
+                  <span className="font-medium text-editorial-ink">Nearby workflows:</span>{" "}
+                  {contextualLinks.map((link, i) => (
+                    <span key={link.href}>
+                      {i > 0 ? " and " : ""}
+                      <Link
+                        href={link.href}
+                        className="font-medium text-editorial-ink underline-offset-4 hover:underline"
+                        data-track="use-case-contextual-link-click"
+                        data-track-slug={useCase.slug}
+                      >
+                        {link.label}
+                      </Link>
+                      {" "}for {link.context}
+                    </span>
+                  ))}
+                  .
+                </div>
+              ) : null}
             </div>
           </div>
         </section>

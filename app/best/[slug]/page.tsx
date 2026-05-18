@@ -54,6 +54,7 @@ export default async function BestPage({
   if (!page) return notFound();
   const relatedGuides = getRelatedGuidesForSeoSlug(slug);
   const support = page.decisionSupport;
+  const showLimitations = page.competitors.some((comp) => comp.limitation);
 
   return (
     <>
@@ -100,6 +101,11 @@ export default async function BestPage({
                           <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Offline
                           </th>
+                          {showLimitations ? (
+                            <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                              Reality check
+                            </th>
+                          ) : null}
                         </tr>
                       </thead>
                       <tbody>
@@ -131,6 +137,11 @@ export default async function BestPage({
                                 {comp.offline}
                               </span>
                             </td>
+                            {showLimitations ? (
+                              <td className="min-w-[180px] px-3 py-3 text-[13px] leading-relaxed text-editorial-ink-2">
+                                {comp.limitation}
+                              </td>
+                            ) : null}
                           </tr>
                         ))}
                       </tbody>

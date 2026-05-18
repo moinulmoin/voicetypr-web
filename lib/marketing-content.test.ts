@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { downloadDiscoveryLinks, getRelatedGuidesForUseCase, offlineWindowsRelatedGuides, voiceTypingRelatedGuides } from './seo-discovery';
+import { downloadDiscoveryLinks, getContextualUseCaseLinks, getRelatedGuidesForUseCase, offlineWindowsRelatedGuides, voiceTypingRelatedGuides } from './seo-discovery';
 import { alternativePages, seoPages } from './seo-pages';
 import { getAllUseCases } from './use-cases';
 
@@ -14,6 +14,7 @@ const marketingSourceFiles = [
   'app/layout.tsx',
   'app/wispr-flow-alternative/page.tsx',
   'app/aqua-voice-alternative/page.tsx',
+  'app/voicetyper/page.tsx',
   'components/PricingCards.tsx',
   'public/llms.txt',
   'public/pricing.md',
@@ -94,6 +95,27 @@ describe('marketing content guardrails', () => {
     for (const useCase of getAllUseCases()) {
       expect(getRelatedGuidesForUseCase(useCase.slug).length, `${useCase.slug} should have related guides`).toBeGreaterThan(0);
     }
+  });
+
+  it('gives every use case page contextual in-body links', () => {
+    for (const useCase of getAllUseCases()) {
+      const links = getContextualUseCaseLinks(useCase.slug);
+
+      expect(links.length, `${useCase.slug} should have contextual links`).toBeGreaterThan(0);
+      for (const link of links) {
+        expect(link.href, `${useCase.slug} contextual link should point to a use case`).toMatch(/^\/use-cases\//);
+        expect(link.context.trim().length, `${useCase.slug} contextual link should explain the fit`).toBeGreaterThan(10);
+      }
+    }
+  });
+
+  it('keeps the VoiceTyper capture page aligned with GSC queries', () => {
+    const page = readFileSync(join(repoRoot, 'app/voicetyper/page.tsx'), 'utf8');
+
+    expect(page).toContain('voice typer app');
+    expect(page).toContain('voicetyper pricing');
+    expect(page).toContain('voicetyper cost');
+    expect(page).toContain('FAQPage');
   });
 
   it('publishes AI-readable product context files', () => {

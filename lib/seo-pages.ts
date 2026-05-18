@@ -8,6 +8,7 @@ export type SeoPage = {
     price: string;
     platforms: string;
     offline: string;
+    limitation?: string;
     subscription: boolean;
   }>;
   whySwitch: string[];
@@ -335,6 +336,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11",
         offline: "No",
+        limitation: "Free, but bare-bones: online-first, weak for long drafts, and no real workflow control.",
         subscription: false,
       },
       {
@@ -342,6 +344,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11 22H2+",
         offline: "Partial",
+        limitation: "Free, but built for PC control first. Dictation is only one part of a heavier tool.",
         subscription: false,
       },
       {
@@ -349,6 +352,7 @@ export const seoPages: SeoPage[] = [
         price: "$500+",
         platforms: "Windows",
         offline: "Yes",
+        limitation: "Offline, but expensive and still feels like legacy software.",
         subscription: false,
       },
       {
@@ -356,13 +360,14 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
+        limitation: "Better daily UX: dashboard controls, optional AI polish, local transcription, and every-app writing.",
         subscription: false,
       },
     ],
     whySwitch: [
       "Works in normal Windows apps without a browser dictation box",
       "Local transcription for private prompts, emails, and docs",
-      "Modern Whisper models without Dragon's training ritual",
+      "Dashboard controls, presets, and optional AI polish for cleaner text",
       "Pay once instead of adding another monthly AI tool",
     ],
     decisionSupport: {
@@ -533,6 +538,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11",
         offline: "Partial",
+        limitation: "Free, but control-heavy. Great for navigation, clunky when you just need clean text.",
         subscription: false,
       },
       {
@@ -540,6 +546,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "macOS",
         offline: "Partial",
+        limitation: "Free, but Mac-only and command-first. Not a focused writing workflow.",
         subscription: false,
       },
       {
@@ -547,6 +554,7 @@ export const seoPages: SeoPage[] = [
         price: "$500+",
         platforms: "Windows",
         offline: "Yes",
+        limitation: "Strong history, but the price is hard for basic text entry.",
         subscription: false,
       },
       {
@@ -554,13 +562,14 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
+        limitation: "Better daily UX: dashboard controls, optional AI polish, local transcription, and cross-platform text entry.",
         subscription: false,
       },
     ],
     whySwitch: [
       "Works for RSI, carpal tunnel, dyslexia, ADHD, and low-energy typing days",
       "No browser-only workflow or per-app plugin setup",
-      "Hotkey-based dictation keeps the interface simple",
+      "Dashboard controls and optional AI polish keep the workflow easier to tune",
       "Lifetime pricing makes the accommodation tool easier to keep",
     ],
     decisionSupport: {

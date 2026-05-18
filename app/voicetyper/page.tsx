@@ -5,22 +5,24 @@ import Header from '@/app/components/sections/Header';
 import Footer from '@/app/components/sections/Footer';
 
 export const metadata: Metadata = {
-  title: 'VoiceTyper Alternative in 2026 — VoiceTypr',
+  title: 'VoiceTyper App & Pricing — VoiceTypr for Mac and Windows',
   description:
-    'Looking for VoiceTyper or a voice typer app? VoiceTypr is offline voice-to-text for Mac and Windows. Speak, release, and paste clean text anywhere.',
+    'Looking for VoiceTyper, a voice typer app, or VoiceTyper pricing? VoiceTypr is pay-once voice-to-text for Mac and Windows, from $39.',
   keywords: [
     'voicetyper',
     'voice typer',
     'voice typer app',
+    'voicetyper pricing',
+    'voicetyper cost',
     'voice typing app',
     'voice to text app',
     'VoiceTypr',
   ],
   alternates: { canonical: 'https://voicetypr.com/voicetyper' },
   openGraph: {
-    title: 'VoiceTyper Alternative in 2026 — VoiceTypr',
+    title: 'VoiceTyper App & Pricing — VoiceTypr',
     description:
-      'Offline voice-to-text for Mac and Windows. Built for people searching for a private voice typer app.',
+      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Local transcription by default, pricing from $39.',
     url: 'https://voicetypr.com/voicetyper',
     siteName: 'VoiceTypr',
     images: [{ url: '/voicetypr-og.png', width: 1200, height: 630 }],
@@ -28,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VoiceTyper Alternative in 2026 — VoiceTypr',
+    title: 'VoiceTyper App & Pricing — VoiceTypr',
     description:
-      'Offline voice-to-text for Mac and Windows. Built for people searching for a private voice typer app.',
+      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Local transcription by default, pricing from $39.',
     images: ['/voicetypr-og.png'],
   },
 };
@@ -46,12 +48,63 @@ const comparisons = [
   ['Search term', 'VoiceTyper / voice typer', 'VoiceTypr'],
   ['What it means', 'A generic phrase people use for voice-to-text apps', 'The actual app name'],
   ['Best fit', 'Finding a tool that types what you say', 'Offline voice typing in every app'],
-  ['Pricing', 'Usually unclear until signup', 'From $39 once'],
+  ['Pricing', 'Varies by the app you choose', 'From $39 once'],
 ] as const;
+
+const faqs = [
+  {
+    q: 'Is it VoiceTyper or VoiceTypr?',
+    a: 'The product name is VoiceTypr. People often search VoiceTyper or voice typer app because they are looking for an app that types what they say. Same intent, different spelling.',
+  },
+  {
+    q: 'How much does VoiceTypr cost?',
+    a: 'VoiceTypr starts at $39 for a lifetime license. There is also a 3-day free trial with no card required, so you can test the app before paying.',
+  },
+  {
+    q: 'Is VoiceTypr a voice typer app for Windows and Mac?',
+    a: 'Yes. VoiceTypr works on Windows 10+ and macOS 13+. Hold the hotkey, speak, release, and the text appears where your cursor already is.',
+  },
+] as const;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://voicetypr.com/voicetyper#webpage',
+      url: 'https://voicetypr.com/voicetyper',
+      name: 'VoiceTyper App & Pricing — VoiceTypr',
+      description: metadata.description,
+      isPartOf: { '@id': 'https://voicetypr.com/#website' },
+      about: { '@id': 'https://voicetypr.com/#product' },
+      mainEntity: { '@id': 'https://voicetypr.com/voicetyper#faq' },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://voicetypr.com/voicetyper#faq',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    },
+  ],
+};
+
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, '\\u003c');
+}
 
 export default function VoiceTyperPage() {
   return (
     <main id="main-content" className="landing-editorial min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
+      />
       <Header />
       <section className="ed-section ed-section-hero pt-32 lg:pt-40">
         <div className="ed-container max-w-4xl">
@@ -60,14 +113,14 @@ export default function VoiceTyperPage() {
             Looking for VoiceTyper? The app is VoiceTypr.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            People search for VoiceTyper, voice typer, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built for that.
+            People search for VoiceTyper, voice typer, voice typer app, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built for that.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/download"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
-              Download for free
+              Start free trial
             </Link>
             <Link
               href="/#pricing"
@@ -127,6 +180,29 @@ export default function VoiceTyperPage() {
                 <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" />
                 <span>{reason}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="ed-section">
+        <div className="ed-container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div>
+            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">pricing and spelling</p>
+            <h2 className="mt-3 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
+              The common VoiceTyper questions.
+            </h2>
+          </div>
+          <div className="space-y-6">
+            {faqs.map((faq) => (
+              <article key={faq.q} className="border-b border-editorial-line/70 pb-6 last:border-b-0 last:pb-0">
+                <h3 className="text-[19px] font-semibold leading-snug text-editorial-ink">
+                  {faq.q}
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.65] text-editorial-ink-2">
+                  {faq.a}
+                </p>
+              </article>
             ))}
           </div>
         </div>

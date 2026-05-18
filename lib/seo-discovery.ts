@@ -6,6 +6,91 @@ export type DiscoveryLink = {
   ctaLabel: string;
 };
 
+export type ContextualUseCaseLink = {
+  href: string;
+  label: string;
+  context: string;
+};
+
+const contextualUseCaseLinksBySlug: Record<string, ContextualUseCaseLink[]> = {
+  adhd: [
+    { href: '/use-cases/dyslexia', label: 'dyslexia', context: 'spelling friction and slower editing loops' },
+    { href: '/use-cases/students', label: 'students', context: 'essay drafts, notes, and study writing' },
+  ],
+  dyslexia: [
+    { href: '/use-cases/adhd', label: 'ADHD', context: 'capturing ideas before they disappear' },
+    { href: '/use-cases/students', label: 'students', context: 'schoolwork that starts easier by voice' },
+  ],
+  rsi: [
+    { href: '/use-cases/carpal-tunnel', label: 'carpal tunnel', context: 'hand and wrist strain from repetitive typing' },
+    { href: '/use-cases/motor-impairments', label: 'motor impairments', context: 'assistive dictation across everyday text fields' },
+  ],
+  'carpal-tunnel': [
+    { href: '/use-cases/rsi', label: 'RSI', context: 'broader repetitive strain and typing load' },
+    { href: '/use-cases/motor-impairments', label: 'motor impairments', context: 'hands-light writing across normal apps' },
+  ],
+  'motor-impairments': [
+    { href: '/use-cases/carpal-tunnel', label: 'carpal tunnel', context: 'specific wrist and hand pain workflows' },
+    { href: '/use-cases/rsi', label: 'RSI', context: 'reducing repetitive keyboard load' },
+  ],
+  developers: [
+    { href: '/use-cases/founders', label: 'founders', context: 'AI prompting, support replies, and product writing' },
+    { href: '/use-cases/product-managers', label: 'product managers', context: 'specs, decisions, and issue context' },
+  ],
+  writers: [
+    { href: '/use-cases/journalists', label: 'journalists', context: 'story notes, outlines, and first drafts' },
+    { href: '/use-cases/marketers', label: 'marketers', context: 'campaign copy and fast draft work' },
+  ],
+  founders: [
+    { href: '/use-cases/product-managers', label: 'product managers', context: 'product docs and decisions' },
+    { href: '/use-cases/sales', label: 'sales', context: 'follow-ups, pipeline notes, and proposals' },
+  ],
+  journalists: [
+    { href: '/use-cases/writers', label: 'writers', context: 'long-form drafting and editing' },
+    { href: '/use-cases/researchers', label: 'researchers', context: 'notes, summaries, and synthesis work' },
+  ],
+  'product-managers': [
+    { href: '/use-cases/founders', label: 'founders', context: 'operator writing across product, sales, and support' },
+    { href: '/use-cases/consultants', label: 'consultants', context: 'recaps, recommendations, and client docs' },
+  ],
+  'customer-support': [
+    { href: '/use-cases/sales', label: 'sales', context: 'follow-up writing and CRM notes' },
+    { href: '/use-cases/recruiters', label: 'recruiters', context: 'candidate notes and outreach drafts' },
+  ],
+  lawyers: [
+    { href: '/use-cases/consultants', label: 'consultants', context: 'client notes, memos, and recap emails' },
+    { href: '/use-cases/writers', label: 'writers', context: 'long-form drafts that still need careful editing' },
+  ],
+  students: [
+    { href: '/use-cases/researchers', label: 'researchers', context: 'notes, summaries, and longer academic writing' },
+    { href: '/use-cases/adhd', label: 'ADHD', context: 'lower-friction idea capture' },
+  ],
+  researchers: [
+    { href: '/use-cases/students', label: 'students', context: 'study notes, essays, and reading-to-draft workflows' },
+    { href: '/use-cases/product-managers', label: 'product managers', context: 'synthesis, decisions, and structured docs' },
+  ],
+  recruiters: [
+    { href: '/use-cases/sales', label: 'sales', context: 'outreach, follow-ups, and CRM-style notes' },
+    { href: '/use-cases/customer-support', label: 'customer support', context: 'high-volume replies and fast summaries' },
+  ],
+  sales: [
+    { href: '/use-cases/recruiters', label: 'recruiters', context: 'candidate notes and outreach loops' },
+    { href: '/use-cases/customer-support', label: 'customer support', context: 'reply-heavy work and internal notes' },
+  ],
+  marketers: [
+    { href: '/use-cases/writers', label: 'writers', context: 'first drafts and long-form copy' },
+    { href: '/use-cases/sales', label: 'sales', context: 'follow-up copy, pitch framing, and proposals' },
+  ],
+  consultants: [
+    { href: '/use-cases/product-managers', label: 'product managers', context: 'decision docs and stakeholder summaries' },
+    { href: '/use-cases/lawyers', label: 'lawyers', context: 'careful client writing and note-heavy work' },
+  ],
+};
+
+export function getContextualUseCaseLinks(slug: string): ContextualUseCaseLink[] {
+  return contextualUseCaseLinksBySlug[slug] ?? [];
+}
+
 const relatedGuidesBySlug: Record<string, DiscoveryLink[]> = {
   'mac-dictation': [
     {
@@ -363,6 +448,166 @@ const relatedGuidesByUseCaseSlug: Record<string, DiscoveryLink[]> = {
       title: 'Windows voice typing',
       description: 'Useful for founders running mixed-device teams or Windows-first setups.',
       ctaLabel: 'See the Windows guide',
+    },
+  ],
+  journalists: [
+    {
+      href: '/use-cases/writers',
+      eyebrow: 'same craft, broader writing',
+      title: 'Writers use case',
+      description: 'A closer page for people using dictation for long-form drafting, intros, and article flow.',
+      ctaLabel: 'See the writers page',
+    },
+    {
+      href: '/voice-typing',
+      eyebrow: 'general workflow',
+      title: 'Voice typing in every app',
+      description: 'A broader page for journalists deciding whether system-wide dictation belongs in their workflow at all.',
+      ctaLabel: 'See the general guide',
+    },
+  ],
+  'product-managers': [
+    {
+      href: '/use-cases/founders',
+      eyebrow: 'adjacent workflow',
+      title: 'Founders use case',
+      description: 'Useful when the PM workload overlaps with product, support, and AI-heavy solo operation.',
+      ctaLabel: 'See the founders page',
+    },
+    {
+      href: '/voice-input-for-cursor',
+      eyebrow: 'ai drafting path',
+      title: 'Voice input for Cursor',
+      description: 'A tighter page for PMs who now spend a chunk of the day drafting context into AI tools.',
+      ctaLabel: 'See the Cursor page',
+    },
+  ],
+  'customer-support': [
+    {
+      href: '/best/accessible-dictation',
+      eyebrow: 'lower typing load',
+      title: 'Accessible dictation',
+      description: 'A stronger page for support reps evaluating dictation mainly to reduce keyboard strain and fatigue.',
+      ctaLabel: 'See the accessibility guide',
+    },
+    {
+      href: '/best/windows-speech-to-text',
+      eyebrow: 'windows support desks',
+      title: 'Windows speech-to-text',
+      description: 'A direct route for support teams doing long-form replies and notes across Windows apps.',
+      ctaLabel: 'See the Windows guide',
+    },
+  ],
+  lawyers: [
+    {
+      href: '/alternative/dragon',
+      eyebrow: 'legacy comparison',
+      title: 'Dragon alternative',
+      description: 'Relevant for legal buyers comparing VoiceTypr against the old premium dictation default.',
+      ctaLabel: 'See the Dragon comparison',
+    },
+    {
+      href: '/best/accessible-dictation',
+      eyebrow: 'typing load problem',
+      title: 'Accessible dictation',
+      description: 'A broader route for lawyers mainly using dictation to reduce drafting strain and repetitive typing.',
+      ctaLabel: 'See the accessibility guide',
+    },
+  ],
+  students: [
+    {
+      href: '/use-cases/adhd',
+      eyebrow: 'attention friction',
+      title: 'ADHD use case',
+      description: 'A closer page for students who lose the thread between having the idea and typing the first sentence.',
+      ctaLabel: 'See the ADHD page',
+    },
+    {
+      href: '/use-cases/dyslexia',
+      eyebrow: 'writing friction',
+      title: 'Dyslexia use case',
+      description: 'Useful when the student needs a lower-friction way to move ideas into text and edit after.',
+      ctaLabel: 'See the dyslexia page',
+    },
+  ],
+  researchers: [
+    {
+      href: '/use-cases/students',
+      eyebrow: 'study-to-research bridge',
+      title: 'Students use case',
+      description: 'A nearby page for people using voice to turn dense reading and rough thinking into usable written notes.',
+      ctaLabel: 'See the students page',
+    },
+    {
+      href: '/use-cases/product-managers',
+      eyebrow: 'synthesis workflow',
+      title: 'Product managers use case',
+      description: 'Useful when the work is heavy on synthesis, decisions, and writing across multiple apps.',
+      ctaLabel: 'See the product managers page',
+    },
+  ],
+  recruiters: [
+    {
+      href: '/use-cases/customer-support',
+      eyebrow: 'high-volume writing',
+      title: 'Customer support use case',
+      description: 'A close cousin for people writing fast recaps, follow-ups, and operational notes all day.',
+      ctaLabel: 'See the support page',
+    },
+    {
+      href: '/use-cases/founders',
+      eyebrow: 'hiring from the founder seat',
+      title: 'Founders use case',
+      description: 'Relevant when the same person is recruiting, selling, and running the rest of the company at once.',
+      ctaLabel: 'See the founders page',
+    },
+  ],
+  sales: [
+    {
+      href: '/use-cases/customer-support',
+      eyebrow: 'reply-heavy workflow',
+      title: 'Customer support use case',
+      description: 'A nearby page for teams who live in follow-ups, notes, and long-form replies inside browser tools.',
+      ctaLabel: 'See the support page',
+    },
+    {
+      href: '/use-cases/founders',
+      eyebrow: 'same hustle, different motion',
+      title: 'Founders use case',
+      description: 'Useful for solo operators handling sales, support, and product writing in the same day.',
+      ctaLabel: 'See the founders page',
+    },
+  ],
+  marketers: [
+    {
+      href: '/use-cases/writers',
+      eyebrow: 'copy and drafting',
+      title: 'Writers use case',
+      description: 'A closer page for people who want to speak the first draft and edit later without changing tools.',
+      ctaLabel: 'See the writers page',
+    },
+    {
+      href: '/use-cases/founders',
+      eyebrow: 'ai-heavy growth work',
+      title: 'Founders use case',
+      description: 'Relevant when marketing work also includes constant prompting, product context, and fast operational writing.',
+      ctaLabel: 'See the founders page',
+    },
+  ],
+  consultants: [
+    {
+      href: '/use-cases/product-managers',
+      eyebrow: 'decision docs and recaps',
+      title: 'Product managers use case',
+      description: 'A close match for work built around recommendations, synthesis, and turning meetings into documents.',
+      ctaLabel: 'See the product managers page',
+    },
+    {
+      href: '/use-cases/founders',
+      eyebrow: 'broad operator workflow',
+      title: 'Founders use case',
+      description: 'Useful for consultants who also spend a lot of time in AI tools, client email, and high-context writing.',
+      ctaLabel: 'See the founders page',
     },
   ],
 };

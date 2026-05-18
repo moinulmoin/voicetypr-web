@@ -6,8 +6,9 @@ const resourceLinks = [
   { label: 'Windows voice typing', href: '/best/windows-voice-typing' },
   { label: 'Offline dictation for Windows', href: '/offline-dictation-app-for-windows' },
   { label: 'Accessible dictation', href: '/best/accessible-dictation' },
-  { label: 'Carpal tunnel voice typing', href: '/use-cases/carpal-tunnel' },
-  { label: 'RSI voice typing', href: '/use-cases/rsi' },
+  { label: 'Writers', href: '/use-cases/writers' },
+  { label: 'Product managers', href: '/use-cases/product-managers' },
+  { label: 'Customer support', href: '/use-cases/customer-support' },
 ] as const;
 
 const columns = [

@@ -1,4 +1,7 @@
-const faqs = [
+import Link from 'next/link';
+import type { ReactNode } from 'react';
+
+const faqs: Array<{ q: string; a: ReactNode }> = [
   {
     q: 'Does VoiceTypr work on Windows?',
     a: "Yes — Windows 10 and later. Download the .exe installer, run it, and you're set. We ship Mac and Windows as first-class platforms.",
@@ -38,6 +41,18 @@ const faqs = [
   {
     q: 'How do I cancel a recording I don’t want?',
     a: 'Double-press Esc while recording to cancel — nothing gets transcribed and nothing gets pasted. Or release the hotkey in push-to-talk mode.',
+  },
+  {
+    q: 'Is it VoiceTypr or VoiceTyper?',
+    a: (
+      <>
+        The app is called VoiceTypr. If you searched for VoiceTyper or a voice typer app, you are in the right place. This short{' '}
+        <Link href="/voicetyper" className="text-editorial-ink underline underline-offset-4 hover:text-editorial-ink-2">
+          VoiceTyper spelling and pricing page
+        </Link>{' '}
+        explains the name, pricing, and what the app does.
+      </>
+    ),
   },
 ];
 
