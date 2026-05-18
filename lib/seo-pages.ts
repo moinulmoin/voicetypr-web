@@ -336,7 +336,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11",
         offline: "No",
-        limitation: "Free, but missing the useful parts: local transcription, long drafts, and a real daily workflow.",
+        limitation: "Free, but bare-bones: online-first, weak for long drafts, and no real workflow control.",
         subscription: false,
       },
       {
@@ -344,7 +344,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11 22H2+",
         offline: "Partial",
-        limitation: "Free, but built for PC control. Dictation is only one piece of a much heavier tool.",
+        limitation: "Free, but built for PC control first. Dictation is only one part of a heavier tool.",
         subscription: false,
       },
       {
@@ -360,14 +360,14 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
-        limitation: "Has the pieces the free tools miss: local transcription, long drafts, and every-app writing.",
+        limitation: "Better daily UX: dashboard controls, optional AI polish, local transcription, and every-app writing.",
         subscription: false,
       },
     ],
     whySwitch: [
       "Works in normal Windows apps without a browser dictation box",
       "Local transcription for private prompts, emails, and docs",
-      "Modern Whisper models without Dragon's training ritual",
+      "Dashboard controls, presets, and optional AI polish for cleaner text",
       "Pay once instead of adding another monthly AI tool",
     ],
     decisionSupport: {
@@ -562,14 +562,14 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
-        limitation: "Has the missing writing pieces: local transcription, cross-platform support, and fast text entry.",
+        limitation: "Better daily UX: dashboard controls, optional AI polish, local transcription, and cross-platform text entry.",
         subscription: false,
       },
     ],
     whySwitch: [
       "Works for RSI, carpal tunnel, dyslexia, ADHD, and low-energy typing days",
       "No browser-only workflow or per-app plugin setup",
-      "Hotkey-based dictation keeps the interface simple",
+      "Dashboard controls and optional AI polish keep the workflow easier to tune",
       "Lifetime pricing makes the accommodation tool easier to keep",
     ],
     decisionSupport: {

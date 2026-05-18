@@ -103,7 +103,7 @@ export default async function BestPage({
                           </th>
                           {showLimitations ? (
                             <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                              Weak spot
+                              Reality check
                             </th>
                           ) : null}
                         </tr>
