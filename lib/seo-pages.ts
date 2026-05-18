@@ -8,6 +8,7 @@ export type SeoPage = {
     price: string;
     platforms: string;
     offline: string;
+    limitation?: string;
     subscription: boolean;
   }>;
   whySwitch: string[];
@@ -335,6 +336,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11",
         offline: "No",
+        limitation: "Free, but online-first and weak for long daily writing.",
         subscription: false,
       },
       {
@@ -342,6 +344,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11 22H2+",
         offline: "Partial",
+        limitation: "Free, but built more for PC control than fast text entry.",
         subscription: false,
       },
       {
@@ -349,6 +352,7 @@ export const seoPages: SeoPage[] = [
         price: "$500+",
         platforms: "Windows",
         offline: "Yes",
+        limitation: "Offline, but expensive and still feels like legacy software.",
         subscription: false,
       },
       {
@@ -356,6 +360,7 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
+        limitation: "Paid, but made for everyday private dictation across apps.",
         subscription: false,
       },
     ],
@@ -533,6 +538,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "Windows 11",
         offline: "Partial",
+        limitation: "Free, but control-heavy when you only need clean text.",
         subscription: false,
       },
       {
@@ -540,6 +546,7 @@ export const seoPages: SeoPage[] = [
         price: "Free",
         platforms: "macOS",
         offline: "Partial",
+        limitation: "Free, but Mac-only and command-first.",
         subscription: false,
       },
       {
@@ -547,6 +554,7 @@ export const seoPages: SeoPage[] = [
         price: "$500+",
         platforms: "Windows",
         offline: "Yes",
+        limitation: "Strong history, but the price is hard for basic text entry.",
         subscription: false,
       },
       {
@@ -554,6 +562,7 @@ export const seoPages: SeoPage[] = [
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
+        limitation: "Not full computer control. It focuses on dictation.",
         subscription: false,
       },
     ],
