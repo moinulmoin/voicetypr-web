@@ -46,11 +46,11 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
     q: 'Is it VoiceTypr or VoiceTyper?',
     a: (
       <>
-        The app is called VoiceTypr. If you searched for VoiceTyper or a voice typer app, you are in the right place. There is also a short{' '}
+        The app is called VoiceTypr. If you searched for VoiceTyper or a voice typer app, you are in the right place. This short{' '}
         <Link href="/voicetyper" className="text-editorial-ink underline underline-offset-4 hover:text-editorial-ink-2">
           VoiceTyper spelling and pricing page
         </Link>{' '}
-        for that query.
+        explains the name, pricing, and what the app does.
       </>
     ),
   },

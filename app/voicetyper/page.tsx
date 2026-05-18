@@ -7,7 +7,7 @@ import Footer from '@/app/components/sections/Footer';
 export const metadata: Metadata = {
   title: 'VoiceTyper App & Pricing — VoiceTypr for Mac and Windows',
   description:
-    'Looking for VoiceTyper, voice typer app, or Voicetyper pricing? VoiceTypr is pay-once voice-to-text for Mac and Windows, from $39.',
+    'Looking for VoiceTyper, a voice typer app, or VoiceTyper pricing? VoiceTypr is pay-once voice-to-text for Mac and Windows, from $39.',
   keywords: [
     'voicetyper',
     'voice typer',
@@ -48,7 +48,7 @@ const comparisons = [
   ['Search term', 'VoiceTyper / voice typer', 'VoiceTypr'],
   ['What it means', 'A generic phrase people use for voice-to-text apps', 'The actual app name'],
   ['Best fit', 'Finding a tool that types what you say', 'Offline voice typing in every app'],
-  ['Pricing', 'Usually unclear until signup', 'From $39 once'],
+  ['Pricing', 'Varies by the app you choose', 'From $39 once'],
 ] as const;
 
 const faqs = [
@@ -113,14 +113,14 @@ export default function VoiceTyperPage() {
             Looking for VoiceTyper? The app is VoiceTypr.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            People search for VoiceTyper, voice typer, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built for that.
+            People search for VoiceTyper, voice typer, voice typer app, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built for that.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/download"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
-              Download for free
+              Start free trial
             </Link>
             <Link
               href="/#pricing"
