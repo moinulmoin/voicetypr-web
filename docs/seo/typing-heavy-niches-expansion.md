@@ -271,6 +271,8 @@ Use-case pages now include:
 - page-level `FAQPage` JSON-LD generated from the existing FAQ data
 - in-body contextual links between adjacent use cases inside the workflows section
 
+The GSC typo/pricing pass also strengthens `/voicetyper` for visible early queries such as `voicetyper`, `voice typer app`, `voicetyper pricing`, and `voicetyper cost`. The page now has pricing-aware metadata, visible FAQ copy, FAQ schema, and a homepage FAQ link without changing the main homepage layout.
+
 The key rule still stands: harden the existing cluster before adding another batch of pages.
 
 ## What is already good to go

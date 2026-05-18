@@ -14,6 +14,7 @@ const marketingSourceFiles = [
   'app/layout.tsx',
   'app/wispr-flow-alternative/page.tsx',
   'app/aqua-voice-alternative/page.tsx',
+  'app/voicetyper/page.tsx',
   'components/PricingCards.tsx',
   'public/llms.txt',
   'public/pricing.md',
@@ -106,6 +107,15 @@ describe('marketing content guardrails', () => {
         expect(link.context.trim().length, `${useCase.slug} contextual link should explain the fit`).toBeGreaterThan(10);
       }
     }
+  });
+
+  it('keeps the VoiceTyper capture page aligned with GSC queries', () => {
+    const page = readFileSync(join(repoRoot, 'app/voicetyper/page.tsx'), 'utf8');
+
+    expect(page).toContain('voice typer app');
+    expect(page).toContain('voicetyper pricing');
+    expect(page).toContain('voicetyper cost');
+    expect(page).toContain('FAQPage');
   });
 
   it('publishes AI-readable product context files', () => {

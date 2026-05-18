@@ -34,6 +34,7 @@ VoiceTypr is a desktop voice-to-text app for macOS and Windows. Users hold a glo
 - Homepage: https://voicetypr.com/
 - Download: https://voicetypr.com/download
 - Pricing: https://voicetypr.com/#pricing
+- VoiceTyper spelling / voice typer app page: https://voicetypr.com/voicetyper
 - Windows offline dictation: https://voicetypr.com/offline-dictation-app-for-windows
 - Windows voice typing guide: https://voicetypr.com/best/windows-voice-typing
 - Windows speech-to-text guide: https://voicetypr.com/best/windows-speech-to-text

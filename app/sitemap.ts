@@ -4,7 +4,7 @@ import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
 
 const siteUrl = "https://voicetypr.com";
-const lastModified = new Date("2026-05-15");
+const lastModified = new Date("2026-05-18");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteUrl;
