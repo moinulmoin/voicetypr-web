@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 type ConsentState = {
   necessary: true;
@@ -46,15 +46,30 @@ function setConsent(state: ConsentState) {
   }
 }
 
+function getBannerOpenSnapshot() {
+  if (getConsent()) return false;
+  return readCookie('vt_geo_requires_consent') !== 'false';
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
+function subscribeToConsentChanges(onStoreChange: () => void) {
+  window.addEventListener('voicetypr:consent-changed', onStoreChange);
+  return () => {
+    window.removeEventListener('voicetypr:consent-changed', onStoreChange);
+  };
+}
+
 export default function CookieConsent() {
-  const [open, setOpen] = useState(() => {
-    if (getConsent()) return false;
-    return readCookie("vt_geo_requires_consent") !== "false";
-  });
+  const open = useSyncExternalStore(
+    subscribeToConsentChanges,
+    getBannerOpenSnapshot,
+    getServerSnapshot
+  );
 
   useEffect(() => {
-    if (open) return;
-
     const existing = getConsent();
     if (existing) return;
 
@@ -64,18 +79,17 @@ export default function CookieConsent() {
       const state: ConsentState = {
         necessary: true,
         marketing: true,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
       setConsent(state);
     }
-  }, [open]);
+  }, []);
 
   if (!open) return null;
 
   const accept = () => {
     const state: ConsentState = { necessary: true, marketing: true, timestamp: Date.now() };
     setConsent(state);
-    setOpen(false);
   };
 
   return (
