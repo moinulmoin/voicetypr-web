@@ -15,10 +15,10 @@ export default function CTA() {
             </p>
             <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight !text-white md:text-7xl">
               <span className="block">Stop typing</span>
-              <span className="block">Start <em className="!text-white">talking</em></span>
+              <span className="block">Talk into <em className="!text-white">any app</em></span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/70">
-              Turn voice notes into clean prompts, replies, and docs in the apps you already use.
+              Write faster with local-first dictation in the apps you already use.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -27,7 +27,7 @@ export default function CTA() {
                 data-umami-event="cta-download-click"
                 className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface active:scale-95"
               >
-                Download for free
+                Start free 3-day trial
               </Link>
               <Link
                 href="/#pricing"

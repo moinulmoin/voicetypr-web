@@ -183,13 +183,13 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             Download
           </div>
           <h1 className="text-[clamp(44px,8vw,84px)] font-semibold leading-[0.95] tracking-[-0.05em]">
-            Download VoiceTypr
+            Start writing faster with VoiceTypr
           </h1>
           <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
             <strong className="font-medium text-editorial-ink">
-              Choose your platform.
+              Download the Mac or Windows app.
             </strong>{" "}
-            Three-day trial, no credit card.
+            Three-day trial, no credit card. Local transcription by default.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
             <span>macOS 13+</span>

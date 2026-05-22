@@ -16,13 +16,13 @@ Need more devices or buying for your team? Contact support@voicetypr.com and weâ
 - 7-day money-back guarantee.
 - No monthly subscription.
 - The selected license tier defines the number of device activations.
-- Optional AI formatting may require the user to provide their own API key depending on configuration.
+- Optional cleaner text features may require user configuration depending on setup.
 
 ## What pricing means
 
 A VoiceTypr license is meant for people who want a durable desktop utility rather than another monthly AI tool. The product is useful for dictating prompts, replies, notes, documents, support messages, and code-adjacent writing in existing apps.
 
-The license covers the app and updates. Local transcription is the default, so everyday dictation does not depend on a cloud transcription service. Optional AI formatting can send text only when the user enables it.
+The license covers the app and updates. Local transcription is the default, so everyday dictation does not depend on a cloud transcription service. Optional cleaner text features can process text only when the user enables them.
 
 ## Buyer fit
 

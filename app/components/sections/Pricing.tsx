@@ -14,7 +14,7 @@ export default async function Pricing() {
             Pay once. Yours <em>forever</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            No subscription. No update locks. One payment, lifetime license, all future updates included.
+            No subscription. No update locks. One payment for the desktop app, lifetime license, and future product updates.
           </p>
         </div>
 

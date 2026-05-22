@@ -12,7 +12,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'Can I try VoiceTypr for free?',
-    a: 'Yes — 3-day free trial, unlimited transcription, no card required. Download, activate the trial, start talking.',
+    a: 'Yes — 3-day free trial, no card required. Download, activate the trial, start talking.',
   },
   {
     q: 'Does it work with ChatGPT, Claude, and Cursor?',
@@ -20,11 +20,11 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'Is my voice data private?',
-    a: 'Yes. VoiceTypr transcribes your voice on your machine by default using local models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs). Optional AI formatting sends only the final text, never audio, to your chosen provider. Turn AI formatting off to keep the full workflow local.',
+    a: 'Yes. VoiceTypr transcribes your voice on your machine by default using local models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs). Optional cleaner-text features work on final text, not your voice recording, when you choose to enable them.',
   },
   {
-    q: 'Do I need an API key for the AI formatting presets?',
-    a: 'Only if you want them. Local transcription works by default with no key. The optional presets use your own API key from OpenAI, Anthropic, Google Gemini, or any OpenAI-compatible provider. You control the provider, cost, and off switch.',
+    q: 'How does cleaner text work?',
+    a: 'Local transcription works by default. When you want extra polish, VoiceTypr can polish the final text for prompts, emails, and everyday writing.',
   },
   {
     q: 'What are the system requirements?',

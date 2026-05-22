@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 const reasons = [
   'Type by talking in Cursor, Claude, ChatGPT, email, docs, Slack, and any app with a text field.',
-  'Transcription runs locally on your device; optional AI formatting is separate and controlled by you.',
+  'Transcription runs locally on your device; cleaner text features are separate and controlled by you.',
   'Works on macOS 13+ and Windows 10+ with one pay-once license.',
   'No browser tab, no account ritual, no monthly dictation subscription.',
 ] as const;
@@ -113,7 +113,7 @@ export default function VoiceTyperPage() {
             Looking for VoiceTyper? The app is VoiceTypr.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            People search for VoiceTyper, voice typer, voice typer app, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built for that.
+            People search for VoiceTyper, voice typer, voice typer app, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built to help you write 3x faster with your voice.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link

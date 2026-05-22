@@ -29,14 +29,28 @@ const deviceOptions: DeviceOption[] = PUBLIC_PLAN_KEYS.map((key) => ({
   productId: productIds[key],
 }));
 
-const features = [
-  'Local/offline transcription models',
-  'Faster, smoother local performance',
-  'Works anywhere you type',
-  'AI formatting with your own API key',
-  'macOS 13+ and Windows 10+',
-  'Lifetime updates included',
-  'Direct support from the founder',
+const V2_PRICES: Record<PublicPlanKey, number> = {
+  pro: 59,
+  plus: 99,
+  max: 149,
+};
+
+const features: Array<{ label: string; soon?: boolean }> = [
+  { label: 'Local Whisper + Parakeet transcription models' },
+  { label: 'Works in any app with a text cursor' },
+  { label: 'Global hotkey, push-to-talk, and toggle modes' },
+  { label: 'Audio and video file transcription' },
+  { label: 'Searchable local transcript history' },
+  { label: 'Cleaner prompts, emails, and everyday writing' },
+  { label: 'macOS 13+ and Windows 10+' },
+  { label: 'Voice translation', soon: true },
+  { label: 'Writing profiles', soon: true },
+  { label: 'Custom vocabulary', soon: true },
+  { label: 'Text replacements', soon: true },
+  { label: 'Reusable snippets', soon: true },
+  { label: 'Use a stronger machine on your network', soon: true },
+  { label: 'AI agent automation', soon: true },
+  { label: 'Direct support from the founder' },
 ];
 
 export default function PricingCards({
@@ -72,65 +86,84 @@ export default function PricingCards({
   return (
     <div className="rounded-3xl border border-editorial-line bg-white/82 p-4 shadow-sm backdrop-blur">
       <div className="grid gap-4 rounded-3xl lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="flex flex-col rounded-2xl bg-editorial-surface-2 p-6 md:p-8">
-          <div className="mb-5 text-sm text-editorial-ink-2">
-            {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
-          </div>
+        <div className="flex h-full flex-col justify-between gap-8 rounded-2xl bg-editorial-surface-2 p-6 md:p-8">
+          <div>
+            <div className="mb-5 text-sm text-editorial-ink-2">
+              {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
+            </div>
+            <p className="mb-5 rounded-2xl border border-[#d4965d]/25 bg-[#d4965d]/12 px-4 py-3 text-sm font-medium leading-relaxed text-editorial-ink">
+              Prices may increase after the next major release. Lock in today&apos;s lifetime price.
+            </p>
 
-          <div className="mb-6 text-6xl font-semibold tracking-tight text-editorial-ink md:text-7xl">
-            {formatPrice(BASE_PRICES[selected.key])}
-            <span className="ml-3 text-base font-normal text-editorial-ink-3">/ once</span>
-          </div>
-
-          <div className="mt-auto overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
-            <div className="grid grid-cols-3 gap-1">
-              {deviceOptions.map((option) => {
-                const active = option.key === selected.key;
-                return (
-                  <button
-                    key={option.key}
-                    type="button"
-                    aria-pressed={active}
-                    onClick={() => setSelectedKey(option.key)}
-                    className={cn(
-                      'rounded-lg px-3 py-3 text-center transition active:scale-95',
-                      active
-                        ? 'bg-editorial-ink text-white'
-                        : 'text-editorial-ink-2 hover:bg-white hover:text-editorial-ink',
-                    )}
-                  >
-                    <span className="block text-3xl font-semibold leading-none">{option.devices}</span>
-                    <span className="mt-1 block text-xs font-medium uppercase tracking-widest">
-                      {option.devices === 1 ? 'device' : 'devices'}
-                    </span>
-                  </button>
-                );
-              })}
+            <div className="relative min-h-28 text-center tracking-tight text-editorial-ink">
+              <div className="absolute left-0 top-0 origin-left scale-x-110 text-left text-8xl font-semibold leading-none text-editorial-ink-3/35 line-through decoration-editorial-ink-3/35 decoration-[5px] md:text-9xl">
+                {formatPrice(V2_PRICES[selected.key])}
+              </div>
+              <div className="relative -translate-x-4 pt-14">
+                <span className="inline-flex items-end justify-center gap-3 leading-none">
+                  <span className="text-6xl font-semibold md:text-7xl">
+                    {formatPrice(BASE_PRICES[selected.key])}
+                  </span>
+                  <span className="pb-1 text-base font-normal text-editorial-ink-3">/ once</span>
+                </span>
+              </div>
             </div>
           </div>
-          <p className="mt-2 text-[13px] leading-relaxed text-editorial-ink-3">
-            Need more devices or buying for your team?{' '}
-            <a
-              href="mailto:support@voicetypr.com?subject=Team%20licensing"
-              className="font-medium text-editorial-ink underline decoration-editorial-ink/25 underline-offset-4 transition hover:decoration-editorial-ink"
+
+          <div>
+            <div className="overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">
+              <div className="grid grid-cols-3 gap-1">
+                {deviceOptions.map((option) => {
+                  const active = option.key === selected.key;
+                  return (
+                    <button
+                      key={option.key}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => setSelectedKey(option.key)}
+                      className={cn(
+                        'rounded-lg px-3 py-3 text-center transition active:scale-95',
+                        active
+                          ? 'bg-editorial-ink text-white'
+                          : 'text-editorial-ink-2 hover:bg-white hover:text-editorial-ink',
+                      )}
+                    >
+                      <span className="block text-3xl font-semibold leading-none">{option.devices}</span>
+                      <span className="mt-1 block text-xs font-medium uppercase tracking-widest">
+                        {option.devices === 1 ? 'device' : 'devices'}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            <p className="mt-2 text-[13px] leading-relaxed text-editorial-ink-3">
+              Need more devices or buying for your team?{' '}
+              <a
+                href="mailto:support@voicetypr.com?subject=Team%20licensing"
+                className="font-medium text-editorial-ink underline decoration-editorial-ink/25 underline-offset-4 transition hover:decoration-editorial-ink"
+              >
+                Contact us
+              </a>
+              .
+            </p>
+          </div>
+
+          <div>
+            <button
+              onClick={() => handleCheckout(selected.productId)}
+              data-umami-event={`${eventPrefix}-plan-click`}
+              data-umami-event-plan={selected.key}
+              data-track={`${eventPrefix}-plan-click`}
+              data-track-plan={selected.key}
+              className="inline-flex h-14 w-full items-center justify-center rounded-xl bg-editorial-ink px-6 text-base font-semibold text-white transition hover:bg-black active:scale-95"
             >
-              Contact us
-            </a>
-            .
-          </p>
-          <button
-            onClick={() => handleCheckout(selected.productId)}
-            data-umami-event={`${eventPrefix}-plan-click`}
-            data-umami-event-plan={selected.key}
-            data-track={`${eventPrefix}-plan-click`}
-            data-track-plan={selected.key}
-            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition hover:bg-black active:scale-95 sm:w-auto"
-          >
-            Get VoiceTypr for lifetime
-          </button>
-          <p className="mt-3 text-center text-[13px] text-editorial-ink-3">
-            Secure checkout · 7-day money-back guarantee
-          </p>
+              Get VoiceTypr for lifetime
+            </button>
+            <p className="mt-3 text-center text-[13px] text-editorial-ink-3">
+              Secure checkout · 7-day money-back guarantee
+            </p>
+          </div>
 
 
         </div>
@@ -143,9 +176,16 @@ export default function PricingCards({
             </div>
             <ul className="space-y-3 text-sm leading-relaxed text-editorial-ink-2">
               {features.map((feature) => (
-                <li key={feature} className="flex gap-3">
+                <li key={feature.label} className="flex gap-3">
                   <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink" />
-                  <span>{feature}</span>
+                  <span>
+                    {feature.label}
+                    {feature.soon ? (
+                      <span className="ml-2 rounded-full bg-[#d4965d]/12 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-editorial-ink">
+                        Soon
+                      </span>
+                    ) : null}
+                  </span>
                 </li>
               ))}
             </ul>

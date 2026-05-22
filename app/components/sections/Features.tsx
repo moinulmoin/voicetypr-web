@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ClaudeAI, Cursor, Gmail, Notion, OpenAI, Slack } from '@/components/icons';
 import { cn } from '@/lib/utils';
+import FeatureIdeaForm from './FeatureIdeaForm';
 
 const appTargets = [
   { label: 'Cursor', Icon: Cursor },
@@ -17,13 +18,14 @@ type FeatureCard = {
   body: string;
   demo: ReactNode;
   wide?: boolean;
+  status?: string;
 };
 
 const featureCards: FeatureCard[] = [
   {
     label: 'Everywhere',
-    title: 'Every app that takes a cursor',
-    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, and other text fields without changing your workflow.',
+    title: 'Talk into every app',
+    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, docs, and any text field without changing your workflow.',
     wide: true,
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
@@ -44,8 +46,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Privacy',
-    title: 'Privacy by default',
-    body: 'Your voice is transcribed on your machine.',
+    title: 'Local transcription by default',
+    body: 'Your voice is transcribed on your machine with local models by default. Optional formatting is separate and controlled by you.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
@@ -104,7 +106,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Formatting',
     title: 'Cleaner text when you want it',
-    body: 'Use your own API key for prompt, email, and default cleanup presets. Turn AI formatting off to keep transcription fully local.',
+    body: 'Polish rough dictation into cleaner prompts, emails, and everyday writing when you want it.',
     demo: (
       <div className="space-y-3 rounded-xl bg-white p-4 shadow-sm">
         <div className="flex flex-wrap gap-2">
@@ -130,8 +132,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Files',
-    title: 'Drop in audio or video',
-    body: 'Transcribe recordings locally from common audio and video formats without uploading them to a cloud service.',
+    title: 'Transcribe audio and video',
+    body: 'Drop in recordings or video clips and get a local transcript from common formats without uploading them to a cloud service.',
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="rounded-xl border border-dashed border-editorial-line bg-editorial-surface-2 p-4 font-mono text-xs text-editorial-ink-2">
@@ -161,8 +163,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Languages',
-    title: 'Work across 99+ languages',
-    body: 'Use the same workflow in English and other common languages without switching tools.',
+    title: 'Work in 99+ languages',
+    body: 'Speak naturally in English, Spanish, French, German, Italian, Dutch, and many more languages without switching tools.',
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
@@ -181,6 +183,135 @@ const featureCards: FeatureCard[] = [
       </div>
     ),
   },
+  {
+    label: 'Translation',
+    title: 'Speak in your language, write in theirs',
+    body: 'Dictate in your native language and turn it into cleaner text in the language you want to send.',
+    status: 'Soon',
+    demo: (
+      <div className="space-y-3 rounded-xl bg-white p-4 text-xs shadow-sm">
+        <div className="rounded-lg bg-editorial-surface-2 px-3 py-2">
+          Speak: Spanish
+        </div>
+        <div className="text-center text-editorial-ink-3">↓</div>
+        <div className="rounded-lg bg-editorial-ink px-3 py-2 font-medium text-white">
+          Send: English
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Writing profile',
+    title: 'Write in the right style',
+    body: 'Save different writing styles for prompts, emails, notes, and everyday writing so dictated text fits the job.',
+    status: 'Soon',
+    demo: (
+      <div className="space-y-2 rounded-xl bg-white p-4 text-xs shadow-sm">
+        {['Prompt mode', 'Email mode', 'Notes mode'].map((item) => (
+          <div key={item} className="rounded-lg bg-editorial-surface-2 px-3 py-2">
+            {item}
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    label: 'Vocabulary',
+    title: 'Teach it your words',
+    body: 'Add product names, client names, acronyms, and phrases you use often so VoiceTypr handles your vocabulary better.',
+    status: 'Soon',
+    demo: (
+      <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
+        {['Voicetypr → VoiceTypr', 'MCP', 'Ideaplexa'].map((item) => (
+          <div key={item} className="border-b border-editorial-line py-2 last:border-0">
+            {item}
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    label: 'Replacements',
+    title: 'Fix repeated mistakes automatically',
+    body: 'Set simple replacements for words and phrases that voice models hear wrong, then let VoiceTypr correct them for you.',
+    status: 'Soon',
+    demo: (
+      <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
+        <div className="rounded-lg bg-editorial-surface-2 px-3 py-2">
+          wrong phrase → right phrase
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Snippets',
+    title: 'Reuse text you say often',
+    body: 'Turn repeated intros, replies, signatures, and support phrases into reusable snippets you can trigger while writing.',
+    status: 'Soon',
+    demo: (
+      <div className="space-y-2 rounded-xl bg-white p-4 text-xs shadow-sm">
+        {['Meeting follow-up', 'Support reply', 'Prompt template'].map((item) => (
+          <div key={item} className="flex justify-between rounded-lg bg-editorial-surface-2 px-3 py-2">
+            <span>{item}</span>
+            <span className="font-medium text-editorial-ink">snippet</span>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    label: 'Remote',
+    title: 'Use a stronger machine on your Wi‑Fi',
+    body: 'If your laptop is weak, send heavier transcription work to a stronger VoiceTypr computer on your network.',
+    status: 'Soon',
+    demo: (
+      <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
+        <div className="flex items-center justify-between rounded-lg bg-editorial-surface-2 px-3 py-2">
+          <span>MacBook Air</span>
+          <span>→</span>
+          <span className="font-medium text-editorial-ink">Desktop GPU</span>
+        </div>
+        <div className="mt-3 rounded-lg border border-editorial-line px-3 py-2 text-editorial-ink-2">
+          Share transcription on your Wi‑Fi
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'AI automation',
+    title: 'AI agent automation',
+    body: 'Send audio files or voice recordings into VoiceTypr from local AI agent workflows, including OpenClaw and Hermes.',
+    status: 'Soon',
+    demo: (
+      <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
+        <div>voicetypr transcribe --file audio.wav</div>
+        <div className="mt-2 text-editorial-ink-3">output: text or JSON</div>
+      </div>
+    ),
+  },
+  {
+    label: 'Mobile',
+    title: 'Capture ideas anywhere',
+    body: 'We’re exploring mobile apps for quick thoughts, drafts, and voice notes when you’re away from your computer.',
+    status: 'Exploring',
+    demo: (
+      <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
+        <div className="mx-auto max-w-28 rounded-[1.25rem] border border-editorial-line bg-editorial-surface-2 p-3">
+          <div className="mb-3 h-1.5 w-10 rounded-full bg-editorial-line mx-auto" />
+          <div className="space-y-2">
+            <div className="rounded-lg bg-white px-3 py-2">Voice note</div>
+            <div className="rounded-lg bg-editorial-ink px-3 py-2 font-medium text-white">Save the idea</div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Your ideas',
+    title: 'Want something else?',
+    body: 'Have a feature idea that would make voice writing better? Tell us what slows you down, and we’ll use real workflows to shape what comes next.',
+    demo: <FeatureIdeaForm />,
+  },
 ] as const;
 
 export default function Features() {
@@ -189,10 +320,10 @@ export default function Features() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            The tools inside VoiceTypr
+            Everything VoiceTypr can do
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Choose a model. Set a hotkey. Drop in a file. Paste anywhere.
+            Dictate anywhere today. Transcribe audio and video. Soon: translation, writing profiles, vocabulary, snippets, stronger-machine transcription, and AI automation.
           </p>
         </div>
 
@@ -205,8 +336,15 @@ export default function Features() {
                 feature.wide && 'lg:col-span-2',
               )}
             >
-              <div className="mb-8 inline-flex self-start rounded-md bg-editorial-surface-2 px-2.5 py-1 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
-                {feature.label}
+              <div className="mb-8 flex flex-wrap items-center gap-2 self-start">
+                <span className="rounded-md bg-editorial-surface-2 px-2.5 py-1 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+                  {feature.label}
+                </span>
+                {feature.status ? (
+                  <span className="rounded-full border border-[#d4965d]/30 bg-[#d4965d]/10 px-2.5 py-1 text-xs font-semibold text-editorial-ink">
+                    {feature.status}
+                  </span>
+                ) : null}
               </div>
               <div>
                 <h3 className="max-w-md text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">

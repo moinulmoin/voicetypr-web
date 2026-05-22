@@ -30,14 +30,17 @@ export default function HeroSection() {
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-5xl text-5xl font-extrabold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-            Type <em>by talking</em>
+            Write <em>3x faster</em>
             <br />
-            in every app you use
+            with your voice
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-editorial-ink-2 md:text-lg">
             <span className="block font-semibold text-editorial-ink">
-              Offline AI voice-to-text for{' '}
+              Stop typing into every app by hand.
+            </span>
+            <span className="mt-1 block">
+              VoiceTypr turns natural speech into clean text for Cursor, Claude, ChatGPT, Slack, Gmail, docs, and more. Available on{' '}
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap align-baseline">
                 <AppleIcon className="h-4 w-4" />
                 macOS
@@ -49,9 +52,6 @@ export default function HeroSection() {
               </span>
               .
             </span>
-            <span className="mt-1 block">
-              Speak naturally. Type faster. Pay once, use it forever.
-            </span>
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -60,7 +60,7 @@ export default function HeroSection() {
               data-umami-event="hero-download-click"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white shadow-[0_14px_28px_rgba(24,24,26,0.16)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-black active:translate-y-0 active:scale-95"
             >
-              Download for free
+              Start free 3-day trial
             </Link>
             <Link
               href="/#pricing"
@@ -72,7 +72,7 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-7 text-sm text-editorial-ink-2">
-            <span className="font-semibold text-editorial-ink">Built for founders, builders, and AI power users who type all day</span>
+            <span className="font-semibold text-editorial-ink">Built for founders, builders, and AI power users who write all day</span>
           </div>
         </div>
       </div>
