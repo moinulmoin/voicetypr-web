@@ -96,7 +96,7 @@ export default function PricingCards({
             </p>
 
             <div className="relative min-h-28 text-center tracking-tight text-editorial-ink">
-              <div className="absolute left-0 top-0 origin-left scale-x-110 text-left text-8xl font-semibold leading-none text-editorial-ink-3/35 line-through decoration-editorial-ink-3/35 decoration-[5px] md:text-9xl">
+              <div className="absolute -top-6 left-0 origin-left scale-x-110 text-left text-8xl font-semibold leading-none text-editorial-ink-3/35 md:-top-7 md:text-9xl">
                 {formatPrice(V2_PRICES[selected.key])}
               </div>
               <div className="relative -translate-x-4 pt-14">
