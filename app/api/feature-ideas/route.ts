@@ -42,14 +42,14 @@ export async function POST(request: NextRequest) {
 }
 
 async function sendDiscordFeatureIdea(idea: string, request: NextRequest): Promise<void> {
-  const webhookUrl = process.env.DISCORD_FEATURE_IDEAS_WEBHOOK_URL;
+  const webhookUrl = getFeatureIdeasWebhookUrl();
 
   if (!webhookUrl) {
-    throw new Error('DISCORD_FEATURE_IDEAS_WEBHOOK_URL is not configured');
+    throw new Error('DISCORD_FEATURE_IDEAS_WEBHOOK_URL or DISCORD_BUG_REPORT_WEBHOOK_URL is not configured');
   }
 
   if (!webhookUrl.startsWith('https://discord.com/api/webhooks/')) {
-    throw new Error('DISCORD_FEATURE_IDEAS_WEBHOOK_URL must be a Discord webhook URL');
+    throw new Error('Feature idea Discord webhook URL must be a Discord webhook URL');
   }
 
   const page = request.headers.get('referer') || 'Unknown page';
@@ -59,7 +59,7 @@ async function sendDiscordFeatureIdea(idea: string, request: NextRequest): Promi
     allowed_mentions: { parse: [] },
     embeds: [
       {
-        title: 'Feature idea',
+        title: 'VoiceTypr feature request',
         description: truncate(idea, 1_000),
         color: 0xd4965d,
         fields: [
@@ -80,6 +80,10 @@ async function sendDiscordFeatureIdea(idea: string, request: NextRequest): Promi
     const responseText = await response.text().catch(() => '');
     throw new Error(`Discord webhook failed with ${response.status}: ${responseText.slice(0, 500)}`);
   }
+}
+
+function getFeatureIdeasWebhookUrl(): string | undefined {
+  return process.env.DISCORD_FEATURE_IDEAS_WEBHOOK_URL || process.env.DISCORD_BUG_REPORT_WEBHOOK_URL;
 }
 
 function truncate(value: string, maxLength: number): string {

@@ -44,8 +44,22 @@ describe('POST /api/feature-ideas', () => {
     const payload = JSON.parse(String(init.body));
     expect(payload.content).toBe('New VoiceTypr feature idea');
     expect(payload.allowed_mentions).toEqual({ parse: [] });
+    expect(payload.embeds[0].title).toBe('VoiceTypr feature request');
     expect(payload.embeds[0].description).toBe('I wish VoiceTypr could save a custom prompt style.');
     expect(payload.embeds[0].fields[0].value).toBe('https://voicetypr.com/#features');
+  });
+
+  it('uses the bug report Discord webhook when no feature-specific webhook is configured', async () => {
+    delete process.env.DISCORD_FEATURE_IDEAS_WEBHOOK_URL;
+    process.env.DISCORD_BUG_REPORT_WEBHOOK_URL = 'https://discord.com/api/webhooks/bug-report/token';
+    const fetchMock = vi.fn().mockResolvedValue(new Response(null, { status: 204 }));
+    global.fetch = fetchMock;
+
+    const response = await POST(createRequest({ idea: 'I wish VoiceTypr could sync snippets.' }));
+
+    expect(response.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledOnce();
+    expect(fetchMock.mock.calls[0]?.[0]).toBe('https://discord.com/api/webhooks/bug-report/token');
   });
 
   it('rejects empty ideas before contacting Discord', async () => {
