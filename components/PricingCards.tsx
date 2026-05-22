@@ -91,7 +91,7 @@ export default function PricingCards({
             <div className="mb-5 text-sm text-editorial-ink-2">
               {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
             </div>
-            <p className="mb-5 rounded-2xl border border-[#d4965d]/25 bg-[#d4965d]/12 px-4 py-3 text-sm font-medium leading-relaxed text-editorial-ink">
+            <p className="mb-10 text-sm font-semibold leading-relaxed text-editorial-ink">
               Prices may increase after the next major release. Lock in today&apos;s lifetime price.
             </p>
 
