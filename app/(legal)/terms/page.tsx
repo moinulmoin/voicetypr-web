@@ -32,7 +32,7 @@ export default function TermsPage() {
           Terms and Conditions
         </h1>
         <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
-          Last Updated: October 23, 2025
+          Last Updated: May 22, 2026
         </p>
       </header>
 
@@ -70,7 +70,7 @@ export default function TermsPage() {
         <h2 className={h2Class}>4. Purchase and Refunds</h2>
         <ul className={ulClass}>
           <li>VoiceTypr is sold as a one-time purchase with no recurring fees</li>
-          <li>All purchases include future updates for the lifetime of the product</li>
+          <li>Purchases include access to software updates we release for the product</li>
           <li>We offer a 7-day money-back guarantee from the date of purchase</li>
           <li>Refunds will result in immediate license deactivation</li>
         </ul>
@@ -100,7 +100,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>6. Privacy and Data</h2>
         <p className={pClass}>
-          VoiceTypr processes all voice data locally on your device. The Software only connects to our servers for license validation, activation, and trial verification. Please review our <Link href="/privacy" className="text-editorial-ink underline-offset-4 hover:underline">Privacy Policy</Link> for detailed information.
+          VoiceTypr processes normal voice transcription locally on your device. The Software connects to our servers for license validation, activation, trial verification, checkout, updates, support, and related product services. Optional AI formatting or optional non-local transcription features may send text or audio only when you enable those workflows. Please review our <Link href="/privacy" className="text-editorial-ink underline-offset-4 hover:underline">Privacy Policy</Link> for detailed information.
         </p>
       </section>
 
@@ -114,7 +114,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>7. Support and Updates</h2>
         <p className={pClass}>
-          Support is provided via email. Updates are included with your purchase, and our goal is to continue improving the Software over time. That said, development cadence and priorities may change, and we do not guarantee delivery of future features or updates. If active development is paused, your license remains valid for the latest released version available at that time, which you may continue to use under these Terms. Maintenance or compatibility updates may be provided at our discretion.
+          Support is provided via email. Updates we release for the product are included with your purchase, but development cadence and priorities may change, and we do not guarantee delivery of future features or updates. If active development is paused, your license remains valid for the latest released version available at that time, which you may continue to use under these Terms. Maintenance or compatibility updates may be provided at our discretion.
         </p>
       </section>
 
