@@ -183,18 +183,18 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
             Download
           </div>
           <h1 className="text-[clamp(44px,8vw,84px)] font-semibold leading-[0.95] tracking-[-0.05em]">
-            Start writing faster with VoiceTypr
+            Best offline AI <em>dictation</em> app for Mac & Windows
           </h1>
           <p className="mx-auto mt-7 max-w-[640px] text-[19px] leading-[1.55] text-editorial-ink-2">
             <strong className="font-medium text-editorial-ink">
               Download the Mac or Windows app.
             </strong>{" "}
-            Three-day trial, no credit card. Local transcription by default.
+            Three-day trial, no credit card. Offline dictation by default.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
             <span>macOS 13+</span>
             <span>Windows 10+</span>
-            <span>Local transcription by default</span>
+            <span>Offline dictation by default</span>
           </div>
         </div>
       </section>

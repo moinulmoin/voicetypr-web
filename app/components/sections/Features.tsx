@@ -290,8 +290,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Mobile',
-    title: 'Capture ideas anywhere',
-    body: 'We’re exploring mobile apps for quick thoughts, drafts, and voice notes when you’re away from your computer.',
+    title: 'Exploring mobile ideas',
+    body: 'We\u2019re thinking about mobile apps for quick voice notes on the go. This is early-stage exploration, not a roadmap commitment.',
     status: 'Exploring',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -320,7 +320,7 @@ const roadmapLabels = [
   'Reusable snippets',
   'Stronger machine on your network',
   'AI agent automation',
-  'Mobile capture',
+  'Exploring mobile ideas',
 ] as const;
 
 
