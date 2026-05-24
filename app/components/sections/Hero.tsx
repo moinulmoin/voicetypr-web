@@ -34,7 +34,7 @@ export default function HeroSection() {
               data-umami-event="hero-pricing-click"
               className="inline-flex h-12 items-center rounded-md border border-editorial-line bg-white/85 px-5 text-sm font-medium text-editorial-ink shadow-sm backdrop-blur transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-editorial-surface active:translate-y-0 active:scale-95"
             >
-              See pricing
+              Get lifetime license
             </Link>
           </div>
 

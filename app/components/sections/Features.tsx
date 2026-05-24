@@ -202,7 +202,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Writing profile',
     title: 'Write in the right style',
-    body: 'Save different writing styles for prompts, emails, notes, and everyday writing so dictated text fits the job.',
+    body: 'Save writing presets for prompts, emails, and notes. Dictate once, get text that already sounds right for the job.',
     status: 'Soon',
     demo: (
       <div className="space-y-2 rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -217,7 +217,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Vocabulary',
     title: 'Teach it your words',
-    body: 'Add product names, client names, acronyms, and phrases you use often so VoiceTypr handles your vocabulary better.',
+    body: 'Add product names, acronyms, and phrases you use daily so the transcription gets them right every time.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
@@ -232,7 +232,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Replacements',
     title: 'Fix repeated mistakes automatically',
-    body: 'Set simple replacements for words and phrases that voice models hear wrong, then let VoiceTypr correct them for you.',
+    body: 'Set replacements for words and phrases the model always hears wrong. VoiceTypr swaps them before pasting.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -261,7 +261,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Remote',
     title: 'Use a stronger machine on your Wi‑Fi',
-    body: 'If your laptop is weak, send heavier transcription work to a stronger VoiceTypr computer on your network.',
+    body: 'Offload heavier transcription to a more powerful computer on your local network. Your laptop stays light.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -278,8 +278,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'AI automation',
-    title: 'AI agent automation',
-    body: 'Send audio files or voice recordings into VoiceTypr from local AI agent workflows, including OpenClaw and Hermes.',
+    title: 'Voice pipeline for AI agents',
+    body: 'Send audio files into VoiceTypr from local AI agent workflows. Get text or JSON back for your pipeline.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
@@ -288,23 +288,7 @@ const featureCards: FeatureCard[] = [
       </div>
     ),
   },
-  {
-    label: 'Mobile',
-    title: 'Exploring mobile ideas',
-    body: 'We\u2019re thinking about mobile apps for quick voice notes on the go. This is early-stage exploration, not a roadmap commitment.',
-    status: 'Exploring',
-    demo: (
-      <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
-        <div className="mx-auto max-w-28 rounded-[1.25rem] border border-editorial-line bg-editorial-surface-2 p-3">
-          <div className="mb-3 h-1.5 w-10 rounded-full bg-editorial-line mx-auto" />
-          <div className="space-y-2">
-            <div className="rounded-lg bg-white px-3 py-2">Voice note</div>
-            <div className="rounded-lg bg-editorial-ink px-3 py-2 font-medium text-white">Save the idea</div>
-          </div>
-        </div>
-      </div>
-    ),
-  },
+
   {
     label: 'Your ideas',
     title: 'Want something else?',
@@ -319,8 +303,7 @@ const roadmapLabels = [
   'Text replacements',
   'Reusable snippets',
   'Stronger machine on your network',
-  'AI agent automation',
-  'Exploring mobile ideas',
+  'Voice pipeline for AI agents',
 ] as const;
 
 

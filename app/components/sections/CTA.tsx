@@ -34,7 +34,7 @@ export default function CTA() {
                 data-umami-event="cta-pricing-click"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
               >
-                See pricing
+              Get lifetime license
               </Link>
             </div>
 
