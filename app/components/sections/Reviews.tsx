@@ -153,7 +153,7 @@ export default function Reviews() {
             What buyers say
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Real feedback from people who switched from Wispr Flow, Superwhisper, and built-in dictation.
+            From developers, writers, and founders who pay once and dictate into the tools they already use.
           </p>
         </div>
 
