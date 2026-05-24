@@ -132,7 +132,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Files',
     title: 'Transcribe audio and video',
-    body: 'Drop in recordings or video clips and get a local transcript from common formats with local transcription by default.',
+    body: 'Drop in recordings or video clips and get a transcript without sending anything to the cloud.',
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="rounded-xl border border-dashed border-editorial-line bg-editorial-surface-2 p-4 font-mono text-xs text-editorial-ink-2">

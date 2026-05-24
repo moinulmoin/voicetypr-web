@@ -153,7 +153,7 @@ export default function Reviews() {
             What buyers say
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            More buyers choosing one-time pricing, local transcription, Mac + Windows support, and a lighter desktop workflow.
+            Real feedback from people who switched from Wispr Flow, Superwhisper, and built-in dictation.
           </p>
         </div>
 
