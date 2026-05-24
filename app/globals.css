@@ -278,15 +278,11 @@ html {
   font-family: var(--font-sans), -apple-system, system-ui, sans-serif !important;
 }
 
-/* Hero H1 — full serif with italic accent */
+/* Hero H1 — full italic serif */
 .landing-editorial h1.font-serif-hero {
   font-family: var(--font-serif), Georgia, serif;
   font-weight: 400;
-  font-style: normal;
-}
-.landing-editorial h1.font-serif-hero em {
   font-style: italic;
-  color: var(--color-editorial-accent);
 }
 /* Italic accent — Instrument Serif italic, the rare punctuation move on hero
    headlines, brand-moment H2s, and final CTAs only. Real italic (not synthetic)
