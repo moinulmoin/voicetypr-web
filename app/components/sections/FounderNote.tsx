@@ -11,7 +11,7 @@ export default function FounderNote() {
             </blockquote>
             <div className="mx-auto mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-editorial-ink-2">
               <p>
-                I type for 12+ hours a day. Most tools locked me into a subscription or felt like legacy software. VoiceTypr is fast, local-first, and transcribes your voice on your machine by default.
+                I type for 12+ hours a day. Most tools locked me into a subscription or felt like legacy software. VoiceTypr is fast, offline by default, and runs on your machine.
               </p>
               <p>
                 Try it free for 3 days. See if it actually saves you time. (Spoiler: it does.)

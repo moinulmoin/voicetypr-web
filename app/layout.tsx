@@ -35,7 +35,7 @@ const fontSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "VoiceTypr — AI dictation for Mac & Windows",
   description:
-    "VoiceTypr lets you dictate into any app on macOS and Windows. Local transcription by default. Pay once.",
+    "VoiceTypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VoiceTypr — AI dictation for Mac & Windows",
     description:
-      "VoiceTypr lets you dictate into any app on macOS and Windows. Local transcription by default. Pay once.",
+      "VoiceTypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VoiceTypr — AI dictation for Mac & Windows",
     description:
-      "VoiceTypr lets you dictate into any app on macOS and Windows. Local transcription by default. Pay once.",
+      "VoiceTypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
     images: ["/voicetypr-og.png"],
     creator: "@moinulmoin",
   },
