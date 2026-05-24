@@ -367,14 +367,12 @@ export default function Features() {
             <p className="text-xs font-semibold uppercase tracking-widest text-white/55">
               Coming next
             </p>
-            <div className="mt-4 grid gap-4 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-              <h3 className="max-w-md text-3xl font-semibold leading-tight tracking-tight !text-white">
-                What&apos;s coming next
-              </h3>
-              <p className="max-w-2xl text-base leading-relaxed text-white/68">
-                These features are in development. Core desktop dictation is live today.
-              </p>
-            </div>
+            <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight tracking-tight !text-white">
+              What&apos;s coming next
+            </h3>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68">
+              These features are in development. Core desktop dictation is live today.
+            </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/78">
               {featureCards.map((feature) =>
                 feature.status ? (
