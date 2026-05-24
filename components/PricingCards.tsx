@@ -98,20 +98,23 @@ export default function PricingCards({
               Choose 1, 2, or 4 devices. Every plan is a one-time license with local transcription, future updates, and no usage meter.
             </p>
 
-            <div className="relative min-h-28 text-center tracking-tight text-editorial-ink">
-              <div className="absolute -top-6 left-0 origin-left scale-x-110 text-left text-8xl font-semibold leading-none text-editorial-ink-3/35 md:-top-7 md:text-9xl">
-                {formatPrice(V2_PRICES[selected.key])}
-              </div>
-              <div className="relative -translate-x-4 pt-14">
-                <span className="inline-flex items-end justify-center gap-3 leading-none">
-                  <span className="text-6xl font-semibold md:text-7xl">
-                    {formatPrice(BASE_PRICES[selected.key])}
-                  </span>
-                  <span className="pb-1 text-base font-normal text-editorial-ink-3">/ once</span>
+            <div className="text-center tracking-tight text-editorial-ink">
+              <div className="mb-3 flex items-center justify-center gap-3 text-sm font-medium text-editorial-ink-2">
+                <span className="text-[11px] uppercase tracking-widest text-editorial-ink-3">
+                  Launch price
+                </span>
+                <span className="text-editorial-ink-3 line-through">
+                  {formatPrice(V2_PRICES[selected.key])}
                 </span>
               </div>
+              <span className="inline-flex items-end justify-center gap-3 leading-none">
+                <span className="text-6xl font-semibold md:text-7xl">
+                  {formatPrice(BASE_PRICES[selected.key])}
+                </span>
+                <span className="pb-1 text-base font-normal text-editorial-ink-3">/ once</span>
+              </span>
             </div>
-          </div>
+            </div>
 
           <div>
             <div className="overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2 p-1.5">

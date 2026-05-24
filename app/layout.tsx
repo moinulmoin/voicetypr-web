@@ -33,7 +33,7 @@ const fontSerif = Instrument_Serif({
 // Mono falls back to the system stack via Tailwind's default `font-mono`.
 // No web font download for mono.
 export const metadata: Metadata = {
-  title: "VoiceTypr — Offline AI voice to text for Mac & Windows",
+  title: "VoiceTypr — Local-first AI dictation for Mac & Windows",
   description:
     "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
   keywords: [
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title: "VoiceTypr — Offline AI voice to text for Mac & Windows",
+    title: "VoiceTypr — Local-first AI dictation for Mac & Windows",
     description:
       "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
     type: "website",
@@ -80,13 +80,13 @@ export const metadata: Metadata = {
         url: "/voicetypr-og.png",
         width: 1200,
         height: 630,
-        alt: "VoiceTypr — Offline AI voice to text app for founders and builders",
+        alt: "VoiceTypr — Local-first AI dictation app for founders and builders",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceTypr — Offline AI voice to text for Mac & Windows",
+    title: "VoiceTypr — Local-first AI dictation for Mac & Windows",
     description:
       "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
     images: ["/voicetypr-og.png"],

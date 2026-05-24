@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-5xl text-5xl font-extrabold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-            Speak into <em>any app</em>
+            Speak into <em className="inline-block whitespace-nowrap">any app</em>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-editorial-ink-2 md:text-lg">
@@ -40,7 +40,7 @@ export default function HeroSection() {
 
           <p className="mt-6 text-sm font-medium text-editorial-ink-2">
             3-day free trial <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
-            Local models by default <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
+            Local transcription by default <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
             Mac + Windows <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
             Pay once
           </p>

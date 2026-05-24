@@ -60,7 +60,7 @@ export default function Footer() {
               VoiceTypr
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-editorial-ink-2">
-              Offline AI voice-to-text for founders and builders. Local models, every-app input, Mac and Windows.
+              Local-first AI dictation for founders and builders. Local models, every-app input, Mac and Windows.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {socialLinks.map(({ label, href, Icon }) => (
@@ -120,7 +120,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col justify-between gap-2 border-t border-editorial-line pt-5 text-xs text-editorial-ink-3 md:flex-row md:items-center">
           <span>© 2026 VoiceTypr</span>
-          <span>Offline voice-to-text for macOS & Windows</span>
+          <span>Local-first voice-to-text for macOS & Windows</span>
         </div>
       </div>
     </footer>

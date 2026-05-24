@@ -11,7 +11,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'Can I try VoiceTypr for free?',
-    a: 'Yes — 3-day free trial, no card required. Download, activate the trial, start talking.',
+    a: 'Yes — 3-day free trial, no card required. When the trial ends, buy a lifetime license only if it saves you time. No auto-charge, no card on file. Purchases include a 7-day money-back guarantee.',
   },
   {
     q: 'Does it work with ChatGPT, Claude, and Cursor?',
@@ -23,7 +23,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'How does cleaner text work?',
-    a: 'Local transcription works by default. When you want extra polish, VoiceTypr can polish the final text for prompts, emails, and everyday writing.',
+    a: 'Local transcription works by default. If you enable cleaner text, VoiceTypr can send the final transcript text — not your voice recording — to the AI provider you configure, then paste back a polished version for prompts, emails, and everyday writing.',
   },
   {
     q: 'What are the system requirements?',
