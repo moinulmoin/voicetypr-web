@@ -8,7 +8,7 @@ export default function HeroSection() {
 
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
-          <h1 className="mx-auto max-w-5xl text-5xl leading-tight tracking-tighter md:text-7xl lg:text-8xl font-serif-hero">
+          <h1 className="mx-auto max-w-5xl text-5xl leading-tight tracking-tighter md:text-7xl lg:text-8xl">
             <em>Speak</em> where you type
           </h1>
 
