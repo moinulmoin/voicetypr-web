@@ -11,10 +11,10 @@ export default async function Pricing() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Pay once. Yours <em>forever</em>
+            Pay once. Keep <em>writing</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            No subscription. No update locks. One payment for the desktop app, lifetime license, and future product updates.
+            Start with 1 device for $39, or pick the 2-device lifetime license for $59. Local transcription stays subscription-free.
           </p>
         </div>
 

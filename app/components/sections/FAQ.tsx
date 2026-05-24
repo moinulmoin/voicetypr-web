@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 const faqs: Array<{ q: string; a: ReactNode }> = [
@@ -28,31 +27,11 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'What are the system requirements?',
-    a: 'macOS Ventura 13+ with Apple Silicon recommended, Intel supported, or Windows 10+. Minimum 4 GB RAM.',
-  },
-  {
-    q: 'Does VoiceTypr work on Intel Macs?',
-    a: "Yes. We ship a dedicated Intel build. Select 'macOS (Intel)' on the download page.",
+    a: 'macOS Ventura 13+ with Apple Silicon recommended, Intel Mac supported, or Windows 10+. Minimum 4 GB RAM.',
   },
   {
     q: 'Does it use my GPU on Windows?',
     a: 'Yes — VoiceTypr auto-detects NVIDIA, AMD, and Intel GPUs for faster transcription. If no GPU is available it falls back to CPU automatically; it still works.',
-  },
-  {
-    q: 'How do I cancel a recording I don’t want?',
-    a: 'Double-press Esc while recording to cancel — nothing gets transcribed and nothing gets pasted. Or release the hotkey in push-to-talk mode.',
-  },
-  {
-    q: 'Is it VoiceTypr or VoiceTyper?',
-    a: (
-      <>
-        The app is called VoiceTypr. If you searched for VoiceTyper or a voice typer app, you are in the right place. This short{' '}
-        <Link href="/voicetyper" className="text-editorial-ink underline underline-offset-4 hover:text-editorial-ink-2">
-          VoiceTyper spelling and pricing page
-        </Link>{' '}
-        explains the name, pricing, and what the app does.
-      </>
-    ),
   },
 ];
 

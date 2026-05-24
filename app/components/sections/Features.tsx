@@ -320,48 +320,85 @@ export default function Features() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Everything VoiceTypr can do
+            Everything you need for everyday dictation
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Dictate anywhere today. Transcribe audio and video. Soon: translation, writing profiles, vocabulary, snippets, stronger-machine transcription, and AI automation.
+            The shipped product comes first: every-app dictation, local transcription, model choice, hotkeys, file transcription, local history, languages, and cleaner text.
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 divide-editorial-line overflow-hidden rounded-3xl border border-editorial-line md:grid-cols-2 md:divide-x lg:grid-cols-3">
-          {featureCards.map((feature) => (
-            <article
-              key={feature.title}
-              className={cn(
-                'flex min-h-80 flex-col border-b border-editorial-line bg-white p-6',
-                feature.wide && 'lg:col-span-2',
-              )}
-            >
-              <div className="mb-8 flex flex-wrap items-center gap-2 self-start">
-                <span className="rounded-md bg-editorial-surface-2 px-2.5 py-1 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
-                  {feature.label}
-                </span>
-                {feature.status ? (
-                  <span className="rounded-full border border-[#d4965d]/30 bg-[#d4965d]/10 px-2.5 py-1 text-xs font-semibold text-editorial-ink">
-                    {feature.status}
-                  </span>
-                ) : null}
-              </div>
-              <div>
-                <h3 className="max-w-md text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
-                  {feature.title}
-                </h3>
-                <p className="mt-3 max-w-xl text-base leading-relaxed text-editorial-ink-2">
-                  {feature.body}
-                </p>
-              </div>
+          {featureCards.map((feature) => {
+            if (feature.status || feature.label === 'Your ideas') return null;
 
-              <div className="mt-auto pt-8">
-                <div className="rounded-2xl bg-editorial-surface-2 p-5">
-                  {feature.demo}
+            return (
+              <article
+                key={feature.title}
+                className={cn(
+                  'flex min-h-80 flex-col border-b border-editorial-line bg-white p-6',
+                  feature.wide && 'lg:col-span-2',
+                )}
+              >
+                <div className="mb-8 flex flex-wrap items-center gap-2 self-start">
+                  <span className="rounded-md bg-editorial-surface-2 px-2.5 py-1 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
+                    {feature.label}
+                  </span>
                 </div>
-              </div>
-            </article>
-          ))}
+                <div>
+                  <h3 className="max-w-md text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-3 max-w-xl text-base leading-relaxed text-editorial-ink-2">
+                    {feature.body}
+                  </p>
+                </div>
+
+                <div className="mt-auto pt-8">
+                  <div className="rounded-2xl bg-editorial-surface-2 p-5">
+                    {feature.demo}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_0.9fr]">
+          <div className="rounded-3xl border border-editorial-ink bg-editorial-ink p-6 text-white shadow-sm md:p-8">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/55">
+              Coming next
+            </p>
+            <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-white">
+              More workflows are already queued up.
+            </h3>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68">
+              Translation, writing profiles, custom vocabulary, replacements, snippets, stronger-machine transcription, AI automation, and mobile capture are planned next. The core desktop dictation workflow is available today.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/78">
+              {featureCards.map((feature) =>
+                feature.status ? (
+                  <li key={feature.title} className="rounded-full border border-white/14 bg-white/8 px-3 py-1.5">
+                    {feature.title}
+                  </li>
+                ) : null,
+              )}
+            </ul>
+          </div>
+
+          <div className="rounded-3xl border border-editorial-line bg-white/86 p-6 shadow-sm backdrop-blur md:p-8">
+            <p className="text-xs font-semibold uppercase tracking-widest text-editorial-ink-3">
+              Help shape the roadmap
+            </p>
+            <h3 className="mt-4 text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
+              Tell us what slows down your writing.
+            </h3>
+            <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+              Have a workflow VoiceTypr does not handle yet? Send the use case and we will use real requests to decide what ships next.
+            </p>
+            <div className="mt-6">
+              <FeatureIdeaForm />
+            </div>
+          </div>
         </div>
       </div>
     </section>

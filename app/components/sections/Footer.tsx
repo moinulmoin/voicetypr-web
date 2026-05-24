@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { GitHub, Gmail, XformerlyTwitter } from '@/components/icons';
 
 const resourceLinks = [
@@ -80,20 +79,6 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <a
-              href="https://sellwithboost.com/startups/voicetypr"
-              target="_blank"
-              rel="noopener"
-              className="mt-5 inline-flex"
-            >
-              <Image
-                src="https://sellwithboost.com/badge/voicetypr.svg"
-                alt="Listed on SellWithBoost"
-                width={144}
-                height={36}
-                unoptimized
-              />
-            </a>
           </div>
 
 

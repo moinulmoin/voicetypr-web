@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const proofItems = ['Mac + Windows', 'Local models', '3-day free trial'];
+const proofItems = ['Mac + Windows', 'Local models by default', 'Pay once'];
 
 export default function CTA() {
   return (
@@ -14,11 +14,11 @@ export default function CTA() {
               Ready when you are
             </p>
             <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight !text-white md:text-7xl">
-              <span className="block">Stop typing</span>
-              <span className="block">Talk into <em className="!text-white">any app</em></span>
+              <span className="block">Stop typing.</span>
+              <span className="block">Start <em className="!text-white">shipping.</em></span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/70">
-              Write faster with local-first dictation in the apps you already use.
+              Try VoiceTypr free for 3 days. Dictate into the apps you already use, with local transcription by default and no subscription.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -27,14 +27,14 @@ export default function CTA() {
                 data-umami-event="cta-download-click"
                 className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface active:scale-95"
               >
-                Start free 3-day trial
+                Start free, no card required
               </Link>
               <Link
                 href="/#pricing"
                 data-umami-event="cta-pricing-click"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
               >
-                Buy lifetime license
+                See lifetime pricing
               </Link>
             </div>
 

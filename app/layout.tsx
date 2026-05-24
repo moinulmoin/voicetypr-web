@@ -33,9 +33,9 @@ const fontSerif = Instrument_Serif({
 // Mono falls back to the system stack via Tailwind's default `font-mono`.
 // No web font download for mono.
 export const metadata: Metadata = {
-  title: "VoiceTypr — Offline AI voice to text app for founders and builders",
+  title: "VoiceTypr — Offline AI voice to text for Mac & Windows",
   description:
-    "Local transcription by default. Private voice-to-text for Mac and Windows. Pay once, use forever.",
+    "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title: "VoiceTypr — Offline AI voice to text app for founders and builders",
+    title: "VoiceTypr — Offline AI voice to text for Mac & Windows",
     description:
-      "Local transcription by default. Private voice-to-text for Mac and Windows. Pay once, use forever.",
+      "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -86,9 +86,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceTypr — Offline AI voice to text app for founders and builders",
+    title: "VoiceTypr — Offline AI voice to text for Mac & Windows",
     description:
-      "Local transcription by default. Private voice-to-text for Mac and Windows. Pay once, use forever.",
+      "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
     images: ["/voicetypr-og.png"],
     creator: "@moinulmoin",
   },
@@ -138,7 +138,7 @@ export default function RootLayout({
                 "@id": "https://voicetypr.com/#software",
                 name: "VoiceTypr",
                 description:
-                  "Local transcription by default for founders and builders. Type by talking in ChatGPT, Claude, Cursor, docs, email, and chat while keeping voice transcription on your machine.",
+                  "Speak into Cursor, ChatGPT, Claude, Slack, Gmail, and docs with local transcription by default. Pay once for private AI voice-to-text on Mac and Windows.",
                 applicationCategory: "ProductivityApplication",
                 operatingSystem: ["macOS 13.0+", "Windows 10+"],
                 downloadUrl: "https://voicetypr.com/download",
@@ -181,7 +181,7 @@ export default function RootLayout({
                   },
                 ],
                 featureList: [
-                  "100+ language support",
+                  "99+ language support",
                   "High-accuracy transcription",
                   "Works with any application (ChatGPT, Claude, Cursor, VS Code)",
                   "Local transcription by default for privacy",
@@ -225,7 +225,7 @@ export default function RootLayout({
                 url: "https://voicetypr.com",
                 name: "VoiceTypr",
                 description:
-                  "Local transcription by default for founders, builders, and AI power users.",
+                  "Local transcription by default for founders, builders, and AI power users who write all day.",
                 publisher: {
                   "@id": "https://voicetypr.com/#organization",
                 },

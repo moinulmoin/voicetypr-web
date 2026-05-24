@@ -214,7 +214,7 @@ html {
   isolation: isolate;
   overflow-x: clip;
   background:
-    linear-gradient(180deg, #fbfaf6 0%, #fffefb 42%, #f8f2e9 100%);
+    linear-gradient(180deg, #fbfaf7 0%, #fffefb 46%, #faf6ef 100%);
   color: var(--color-editorial-ink);
   font-family: var(--font-sans), -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -228,9 +228,9 @@ html {
   z-index: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(920px 520px at 78% 8%, rgba(212, 150, 93, 0.18), transparent 62%),
-    radial-gradient(760px 460px at 14% 28%, rgba(137, 119, 92, 0.13), transparent 64%),
-    radial-gradient(900px 620px at 50% 98%, rgba(24, 24, 26, 0.07), transparent 70%),
+    radial-gradient(920px 520px at 78% 8%, rgba(212, 150, 93, 0.11), transparent 62%),
+    radial-gradient(760px 460px at 14% 28%, rgba(137, 119, 92, 0.08), transparent 64%),
+    radial-gradient(900px 620px at 50% 98%, rgba(24, 24, 26, 0.05), transparent 70%),
     linear-gradient(rgba(24, 24, 26, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(24, 24, 26, 0.03) 1px, transparent 1px);
   background-size: auto, auto, auto, 56px 56px, 56px 56px;
@@ -309,16 +309,16 @@ html {
 /* Subtle section atmospheres */
 .landing-editorial .ed-section-hero {
   background:
-    radial-gradient(760px 380px at 78% 18%, rgba(212, 150, 93, 0.22), transparent 66%),
-    radial-gradient(620px 340px at 16% 46%, rgba(216, 203, 189, 0.5), transparent 72%);
+    radial-gradient(760px 380px at 78% 18%, rgba(212, 150, 93, 0.12), transparent 66%),
+    radial-gradient(620px 340px at 16% 46%, rgba(216, 203, 189, 0.32), transparent 72%);
 }
 .landing-editorial .ed-section-wash {
   background:
-    linear-gradient(180deg, transparent 0%, rgba(244, 239, 231, 0.74) 46%, transparent 100%);
+    linear-gradient(180deg, transparent 0%, rgba(244, 239, 231, 0.54) 46%, transparent 100%);
 }
 .landing-editorial .ed-section-glow {
   background:
-    radial-gradient(760px 420px at 50% 30%, rgba(212, 150, 93, 0.12), transparent 70%);
+    radial-gradient(760px 420px at 50% 30%, rgba(212, 150, 93, 0.08), transparent 70%);
 }
 
 /* Editorial eyebrow — small-caps tracked label with accent dot. Sits as plain

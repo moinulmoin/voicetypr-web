@@ -11,7 +11,7 @@ import Header from "./components/sections/Header";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
 import Pricing from "./components/sections/Pricing";
-import Testimonials from "./components/sections/Reviews";
+import Testimonials, { FeaturedTestimonial } from "./components/sections/Reviews";
 
 export default function HomePage() {
   return (
@@ -20,8 +20,9 @@ export default function HomePage() {
         <Header />
         <Hero />
         <Demo />
-        <HowItWorks />
+        <FeaturedTestimonial />
         <Features />
+        <HowItWorks />
         <Compare />
         <Pricing />
         <Testimonials />

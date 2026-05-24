@@ -1,11 +1,11 @@
 const comparisons = [
   ['Price', '$80–$180 / year', 'from $39 once'],
-  ['Platforms', 'many tools are single-OS or subscription-first', 'macOS + Windows'],
-  ['Works offline', 'offline support varies by tool and plan', 'local transcription by default'],
+  ['Default workflow', 'new editor, cloud account, or subscription tier', 'hotkey into the app you already use'],
+  ['Platforms', 'often single-OS or subscription-first', 'macOS + Windows'],
   ['Audio privacy', 'often uploaded or synced to cloud', 'transcribed on your machine by default'],
+  ['Local transcription', 'offline support varies by tool and plan', 'local models by default'],
   ['Lifetime updates', 'subscription or paid upgrades', 'included'],
-  ['Model footprint', 'cloud-hosted or 1–4 GB', '~140 MB–3 GB'],
-];
+] as const;
 
 export default function Compare() {
   return (
@@ -13,10 +13,10 @@ export default function Compare() {
       <div className="ed-container">
         <div className="mb-12 max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Pay once. Keep your money
+            Stop renting your workflow.
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            The point is not only cheaper pricing. It is owning a local workflow that keeps working everywhere you type.
+            VoiceTypr is the alternative for people who want every-app dictation, local transcription by default, and no recurring bill for basic voice typing.
           </p>
         </div>
 

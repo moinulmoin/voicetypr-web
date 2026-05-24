@@ -35,23 +35,26 @@ const V2_PRICES: Record<PublicPlanKey, number> = {
   max: 149,
 };
 
-const features: Array<{ label: string; soon?: boolean }> = [
-  { label: 'Local Whisper + Parakeet transcription models' },
-  { label: 'Works in any app with a text cursor' },
-  { label: 'Global hotkey, push-to-talk, and toggle modes' },
-  { label: 'Audio and video file transcription' },
-  { label: 'Searchable local transcript history' },
-  { label: 'Cleaner prompts, emails, and everyday writing' },
-  { label: 'macOS 13+ and Windows 10+' },
-  { label: 'Voice translation', soon: true },
-  { label: 'Writing profiles', soon: true },
-  { label: 'Custom vocabulary', soon: true },
-  { label: 'Text replacements', soon: true },
-  { label: 'Reusable snippets', soon: true },
-  { label: 'Use a stronger machine on your network', soon: true },
-  { label: 'AI agent automation', soon: true },
-  { label: 'Direct support from the founder' },
-];
+const includedFeatures = [
+  'Local Whisper + Parakeet transcription models',
+  'Works in any app with a text cursor',
+  'Global hotkey, push-to-talk, and toggle modes',
+  'Audio and video file transcription',
+  'Searchable local transcript history',
+  'Cleaner prompts, emails, and everyday writing',
+  'macOS 13+ and Windows 10+',
+  'Direct support from the founder',
+] as const;
+
+const roadmapFeatures = [
+  'Voice translation',
+  'Writing profiles',
+  'Custom vocabulary',
+  'Text replacements',
+  'Reusable snippets',
+  'Use a stronger machine on your network',
+  'AI agent automation',
+] as const;
 
 export default function PricingCards({
   affonsoReferral,
@@ -92,7 +95,7 @@ export default function PricingCards({
               {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
             </div>
             <p className="mb-10 text-sm font-semibold leading-relaxed text-editorial-ink">
-              Prices may increase after the next major release. Lock in today&apos;s lifetime price.
+              Choose 1, 2, or 4 devices. Every plan is a one-time license with local transcription, future updates, and no usage meter.
             </p>
 
             <div className="relative min-h-28 text-center tracking-tight text-editorial-ink">
@@ -158,10 +161,10 @@ export default function PricingCards({
               data-track-plan={selected.key}
               className="inline-flex h-14 w-full items-center justify-center rounded-xl bg-editorial-ink px-6 text-base font-semibold text-white transition hover:bg-black active:scale-95"
             >
-              Get VoiceTypr for lifetime
+              Buy once — {formatPrice(BASE_PRICES[selected.key])}
             </button>
             <p className="mt-3 text-center text-[13px] text-editorial-ink-3">
-              Secure checkout · 7-day money-back guarantee
+              Secure checkout · 7-day money-back guarantee · no subscription
             </p>
           </div>
 
@@ -172,23 +175,29 @@ export default function PricingCards({
           <div className="w-full max-w-sm">
             <div className="mb-5 flex items-center gap-2 text-sm font-medium text-editorial-ink">
               <Check className="h-4 w-4" />
-              Everything included
+              Included today
             </div>
             <ul className="space-y-3 text-sm leading-relaxed text-editorial-ink-2">
-              {features.map((feature) => (
-                <li key={feature.label} className="flex gap-3">
+              {includedFeatures.map((feature) => (
+                <li key={feature} className="flex gap-3">
                   <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink" />
-                  <span>
-                    {feature.label}
-                    {feature.soon ? (
-                      <span className="ml-2 rounded-full bg-[#d4965d]/12 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-editorial-ink">
-                        Soon
-                      </span>
-                    ) : null}
-                  </span>
+                  <span>{feature}</span>
                 </li>
               ))}
             </ul>
+
+            <div className="mt-6 rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4">
+              <div className="text-xs font-semibold uppercase tracking-widest text-editorial-ink-3">
+                Coming next
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {roadmapFeatures.map((feature) => (
+                  <span key={feature} className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-editorial-ink-2 shadow-sm">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

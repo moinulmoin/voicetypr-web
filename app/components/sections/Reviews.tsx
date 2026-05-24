@@ -1,15 +1,17 @@
 import Avatar from 'boring-avatars';
 import { Gmail, XformerlyTwitter, GitHub } from '@/components/icons';
 
+const featuredTestimonial = {
+  id: 8,
+  title: 'Switched from Wispr Flow',
+  content:
+    "I switched from Wispr Flow because I didn't want another monthly subscription, and I needed something that works on both Mac and Windows. VoiceTypr ticks both boxes. One payment, no ongoing costs, exactly what I was looking for.",
+  author: { name: 'Catherine E.', handle: 'catherine.e', avatar: 'CE' },
+  source: 'email' as const,
+};
+
 const testimonials = [
-  {
-    id: 8,
-    title: 'Switched from Wispr Flow',
-    content:
-      "I switched from Wispr Flow because I didn't want another monthly subscription, and I needed something that works on both Mac and Windows. VoiceTypr ticks both boxes. One payment, no ongoing costs, exactly what I was looking for.",
-    author: { name: 'Catherine E.', handle: 'catherine.e', avatar: 'CE' },
-    source: 'email' as const,
-  },
+  featuredTestimonial,
   {
     id: 9,
     title: 'Lightweight on Windows',
@@ -102,6 +104,44 @@ function sourceLabel(source: Source) {
   return 'Email';
 }
 const avatarColors = ['#E8DFD2', '#D8CDBD', '#D4965D', '#8B857B', '#18181A'] as const;
+const supportingTestimonials = testimonials.slice(1);
+
+
+export function FeaturedTestimonial() {
+  return (
+    <section className="relative z-10 py-6 md:py-10">
+      <div className="ed-container">
+        <article className="mx-auto max-w-4xl rounded-3xl border border-editorial-line bg-white/86 p-6 text-center shadow-sm backdrop-blur md:p-9">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-editorial-ink-3">
+            Why people switch
+          </p>
+          <blockquote className="mx-auto max-w-3xl text-xl font-semibold leading-snug tracking-tight text-editorial-ink md:text-2xl">
+            &ldquo;{featuredTestimonial.content}&rdquo;
+          </blockquote>
+
+          <div className="mx-auto mt-7 flex w-fit items-center justify-center gap-3 rounded-2xl border border-editorial-line bg-editorial-surface-2 px-4 py-3 text-left">
+            <div className="overflow-hidden rounded-full ring-1 ring-editorial-line">
+              <Avatar
+                size={44}
+                name={`${featuredTestimonial.author.name}-${featuredTestimonial.author.handle}`}
+                variant="beam"
+                colors={[...avatarColors]}
+              />
+            </div>
+            <div className="min-w-0">
+              <div className="text-sm font-semibold text-editorial-ink">{featuredTestimonial.author.name}</div>
+              <div className="flex items-center gap-1.5 text-xs text-editorial-ink-3">
+                <SourceIcon source={featuredTestimonial.source} />
+                Switched from subscription dictation
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 
 
 export default function Reviews() {
@@ -110,15 +150,15 @@ export default function Reviews() {
       <div className="ed-container">
         <div className="mb-12 max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Loved by many creators
+            Why people switch to VoiceTypr
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Feedback from people switching off Wispr Flow, cloud-first dictation apps, and clunky legacy tools.
+            More buyers choosing one-time pricing, local models, Mac + Windows support, and a lighter desktop workflow.
           </p>
         </div>
 
         <div className="columns-1 gap-4 md:columns-2 xl:columns-3">
-          {testimonials.map((t) => (
+          {supportingTestimonials.map((t) => (
             <article
               key={t.id}
               className="relative mb-4 break-inside-avoid rounded-2xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur"

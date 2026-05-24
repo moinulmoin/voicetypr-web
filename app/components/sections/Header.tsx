@@ -2,14 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { href: "/#features", label: "Features", section: "features" },
@@ -18,29 +11,9 @@ const navLinks = [
   { href: "/#faq", label: "FAQ", section: "faq" },
 ] as const;
 
-const useCaseGroups = [
-  {
-    label: "Accessibility",
-    items: [
-      { href: "/use-cases/adhd", label: "ADHD" },
-      { href: "/use-cases/dyslexia", label: "Dyslexia" },
-      { href: "/use-cases/rsi", label: "RSI / wrist pain" },
-    ],
-  },
-  {
-    label: "By profession",
-    items: [
-      { href: "/use-cases/developers", label: "Developers" },
-      { href: "/use-cases/writers", label: "Writers" },
-      { href: "/use-cases/founders", label: "Founders" },
-    ],
-  },
-] as const;
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [useCasesOpen, setUseCasesOpen] = useState(false);
-  const closeTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,27 +25,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    return () => {
-      if (closeTimer.current !== null) window.clearTimeout(closeTimer.current);
-    };
-  }, []);
-
-  const openUseCases = () => {
-    if (closeTimer.current !== null) {
-      window.clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-    setUseCasesOpen(true);
-  };
-
-  const scheduleCloseUseCases = () => {
-    if (closeTimer.current !== null) window.clearTimeout(closeTimer.current);
-    closeTimer.current = window.setTimeout(() => {
-      setUseCasesOpen(false);
-      closeTimer.current = null;
-    }, 120);
-  };
 
 
   return (
@@ -108,52 +60,13 @@ export default function Header() {
               </a>
             ))}
 
-            <DropdownMenu open={useCasesOpen} onOpenChange={setUseCasesOpen} modal={false}>
-              <div onMouseEnter={openUseCases} onMouseLeave={scheduleCloseUseCases}>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    type="button"
-                    className="rounded-sm border-0 bg-transparent p-0 text-sm text-editorial-ink-2 outline-none transition-colors hover:text-editorial-ink focus-visible:ring-2 focus-visible:ring-editorial-ink/35 focus-visible:ring-offset-2 focus-visible:ring-offset-editorial-bg"
-                    data-umami-event="nav-use-cases-open"
-                  >
-                    Use cases
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="center"
-                  sideOffset={16}
-                  className="w-[26rem] rounded-2xl bg-editorial-bg p-3 shadow-sm"
-                  onMouseEnter={openUseCases}
-                  onMouseLeave={scheduleCloseUseCases}
-                >
-                  <div className="grid gap-2 md:grid-cols-2">
-                    {useCaseGroups.map((group) => (
-                      <div key={group.label} className="min-w-0">
-                        <DropdownMenuLabel className="px-2 text-[11px] uppercase tracking-widest text-editorial-ink-3">
-                          {group.label}
-                        </DropdownMenuLabel>
-                        {group.items.map((item) => (
-                          <DropdownMenuItem
-                            key={item.href}
-                            asChild
-                            className="rounded-xl px-2 py-2.5 text-editorial-ink data-[highlighted]:bg-editorial-surface-2"
-                          >
-                            <Link href={item.href} className="flex flex-col items-start">
-                              <span className="font-medium">{item.label}</span>
-                            </Link>
-                          </DropdownMenuItem>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <DropdownMenuItem asChild className="mt-2 rounded-xl px-2 py-2.5 text-editorial-ink data-[highlighted]:bg-editorial-surface-2">
-                    <Link href="/use-cases" data-umami-event="nav-use-cases-hub-click">
-                      See all use cases
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </div>
-            </DropdownMenu>
+            <Link
+              href="/use-cases"
+              className="transition-colors hover:text-editorial-ink"
+              data-umami-event="nav-use-cases-click"
+            >
+              Use cases
+            </Link>
 
             {navLinks.slice(2).map((link) => (
               <a
@@ -178,7 +91,7 @@ export default function Header() {
               }`}
               data-umami-event="header-download-click"
             >
-              Download
+              Download free trial
             </Link>
           </div>
         </div>
