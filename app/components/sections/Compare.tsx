@@ -13,10 +13,10 @@ export default function Compare() {
       <div className="ed-container">
         <div className="mb-12 max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Stop renting your workflow
+            How VoiceTypr compares
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            VoiceTypr is the alternative for people who want every-app dictation, local transcription by default, and no recurring bill for basic voice typing.
+            A side-by-side look at price, privacy, platforms, and workflow.
           </p>
         </div>
 

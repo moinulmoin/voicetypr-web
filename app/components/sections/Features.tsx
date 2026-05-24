@@ -330,10 +330,10 @@ export default function Features() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            What VoiceTypr does
+            Your dictation toolkit
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Dictate into any app, choose your model, use hotkeys, transcribe files, search history, and clean up text when you want.
+            Talk into any app, pick your model, use your own hotkey, and get clean text where your cursor is.
           </p>
         </div>
 
