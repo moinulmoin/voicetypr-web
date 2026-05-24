@@ -382,7 +382,7 @@ export default function Features() {
               What we&apos;re building next
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68">
-              Full desktop dictation is live today. These are extras on the way.
+              The core app is already live. These are extras on the way.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/78">
               {roadmapLabels.map((feature) => (
