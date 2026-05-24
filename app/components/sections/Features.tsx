@@ -379,10 +379,10 @@ export default function Features() {
               Coming next
             </p>
             <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight tracking-tight !text-white">
-              Next up
+              What we&apos;re building next
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68">
-              The roadmap is active. Core desktop dictation is live today.
+              Full desktop dictation is live today. These are extras on the way.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/78">
               {roadmapLabels.map((feature) => (
