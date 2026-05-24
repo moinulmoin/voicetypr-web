@@ -9,15 +9,15 @@ export default function HeroSection() {
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-5xl text-5xl font-extrabold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-            Speak into <em className="inline-block whitespace-nowrap">any app</em>
+            Speak where <em className="inline-block whitespace-nowrap">you type</em>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-editorial-ink-2 md:text-lg">
             <span className="block font-semibold text-editorial-ink">
-              VoiceTypr turns natural speech into polished text wherever your cursor is.
+              Replace typing with your voice in the apps you already use.
             </span>
             <span className="mt-1 block">
-              Dictate into Cursor, Claude, ChatGPT, Slack, Gmail, docs, and more. Local transcription by default. No subscription.
+              Cursor, Claude, ChatGPT, Slack, Gmail, docs, and more. Local transcription by default. No subscription.
             </span>
           </p>
 
@@ -27,14 +27,14 @@ export default function HeroSection() {
               data-umami-event="hero-download-click"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white shadow-[0_14px_28px_rgba(24,24,26,0.16)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-black active:translate-y-0 active:scale-95"
             >
-              Start free, no card required
+              Download free trial
             </Link>
             <Link
               href="/#pricing"
               data-umami-event="hero-pricing-click"
               className="inline-flex h-12 items-center rounded-md border border-editorial-line bg-white/85 px-5 text-sm font-medium text-editorial-ink shadow-sm backdrop-blur transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-editorial-surface active:translate-y-0 active:scale-95"
             >
-              See lifetime pricing
+              See pricing
             </Link>
           </div>
 

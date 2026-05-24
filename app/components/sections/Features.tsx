@@ -312,6 +312,17 @@ const featureCards: FeatureCard[] = [
     demo: <FeatureIdeaForm />,
   },
 ] as const;
+const roadmapLabels = [
+  'Voice translation',
+  'Writing profiles',
+  'Custom vocabulary',
+  'Text replacements',
+  'Reusable snippets',
+  'Stronger machine on your network',
+  'AI agent automation',
+  'Mobile capture',
+] as const;
+
 
 export default function Features() {
   return (
@@ -319,10 +330,10 @@ export default function Features() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Everything you need for everyday dictation
+            Available today
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            The shipped product comes first: every-app dictation, local transcription, model choice, hotkeys, file transcription, local history, languages, and cleaner text.
+            The desktop app covers the daily loop: hotkey, speak, paste, and keep moving.
           </p>
         </div>
 
@@ -368,19 +379,17 @@ export default function Features() {
               Coming next
             </p>
             <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight tracking-tight !text-white">
-              What&apos;s coming next
+              Next up
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68">
-              These features are in development. Core desktop dictation is live today.
+              The roadmap is active. Core desktop dictation is live today.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/78">
-              {featureCards.map((feature) =>
-                feature.status ? (
-                  <li key={feature.title} className="rounded-full border border-white/14 bg-white/8 px-3 py-1.5">
-                    {feature.title}
-                  </li>
-                ) : null,
-              )}
+              {roadmapLabels.map((feature) => (
+                <li key={feature} className="rounded-full border border-white/14 bg-white/8 px-3 py-1.5">
+                  {feature}
+                </li>
+              ))}
             </ul>
           </div>
 

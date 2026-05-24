@@ -33,9 +33,9 @@ const fontSerif = Instrument_Serif({
 // Mono falls back to the system stack via Tailwind's default `font-mono`.
 // No web font download for mono.
 export const metadata: Metadata = {
-  title: "VoiceTypr — Local-first AI dictation for Mac & Windows",
+  title: "VoiceTypr — AI dictation for Mac & Windows",
   description:
-    "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
+    "VoiceTypr lets you dictate into any app on macOS and Windows. Local transcription by default. Pay once.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title: "VoiceTypr — Local-first AI dictation for Mac & Windows",
+    title: "VoiceTypr — AI dictation for Mac & Windows",
     description:
-      "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
+      "VoiceTypr lets you dictate into any app on macOS and Windows. Local transcription by default. Pay once.",
     type: "website",
     url: "https://voicetypr.com",
     siteName: "VoiceTypr",
@@ -80,15 +80,15 @@ export const metadata: Metadata = {
         url: "/voicetypr-og.png",
         width: 1200,
         height: 630,
-        alt: "VoiceTypr — Local-first AI dictation app for founders and builders",
+        alt: "VoiceTypr — AI dictation app for Mac and Windows",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceTypr — Local-first AI dictation for Mac & Windows",
+    title: "VoiceTypr — AI dictation for Mac & Windows",
     description:
-      "Speak into any app. VoiceTypr transcribes on your machine by default, works with Cursor, ChatGPT, Slack, Gmail, and docs, and is sold as a lifetime license.",
+      "VoiceTypr lets you dictate into any app on macOS and Windows. Local transcription by default. Pay once.",
     images: ["/voicetypr-og.png"],
     creator: "@moinulmoin",
   },

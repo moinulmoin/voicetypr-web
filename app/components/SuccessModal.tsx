@@ -30,8 +30,8 @@ export function SuccessModal() {
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
-      <DialogTitle className=" sr-only">Success Modal</DialogTitle>
       <DialogContent className="sm:max-w-md text-center backdrop-blur-md bg-background/95 p-8">
+        <DialogTitle className="sr-only">Success Modal</DialogTitle>
         <p className="text-2xl font-semibold mb-2">Congrats! 🎉</p>
         <p className="text-lg text-muted-foreground mb-4">Your purchase was successful.</p>
         <p className="text-sm text-muted-foreground/60">You will receive an email with your purchase details.</p>
