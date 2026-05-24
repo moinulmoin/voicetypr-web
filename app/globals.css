@@ -257,28 +257,10 @@ html {
   z-index: 1;
 }
 
-/* All H1s site-wide use serif */
-h1 {
-  font-family: var(--font-serif), Georgia, serif;
-  font-weight: 400;
-}
-h1 em {
-  font-style: italic;
-}
-/* Pages with explicit font-sans on h1 (legal, help) keep sans */
-h1.font-sans {
-  font-family: var(--font-sans), -apple-system, system-ui, sans-serif;
-}
+
 
 :where(
-  .landing-editorial h1
-) {
-  font-family: var(--font-serif), Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  color: var(--color-editorial-ink);
-}
-:where(
+  .landing-editorial h1,
   .landing-editorial h2,
   .landing-editorial h3,
   .landing-editorial h4,
@@ -291,13 +273,18 @@ h1.font-sans {
 }
 
 
+
 .landing-editorial .font-serif {
   font-family: var(--font-sans), -apple-system, system-ui, sans-serif !important;
 }
 
-/* Hero H1 — italic accent on key words */
-.landing-editorial h1.font-serif-hero em,
-.landing-editorial h1 em {
+/* Hero H1 — full serif with italic accent */
+.landing-editorial h1.font-serif-hero {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.landing-editorial h1.font-serif-hero em {
   font-style: italic;
   color: var(--color-editorial-accent);
 }
