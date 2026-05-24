@@ -93,7 +93,7 @@ export default function HowItWorks() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Start in minutes
+            Start in <em>minutes</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
             Install the app, pick a model, set your shortcut, and start talking where your cursor already is.

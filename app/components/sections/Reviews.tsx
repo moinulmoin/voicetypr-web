@@ -150,7 +150,7 @@ export default function Reviews() {
       <div className="ed-container">
         <div className="mb-12 max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            What people are saying
+            What people are <em>saying</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
             From developers, writers, and founders who pay once and dictate into the tools they already use.
