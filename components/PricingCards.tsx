@@ -95,13 +95,13 @@ export default function PricingCards({
               {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
             </div>
             <p className="mb-10 text-sm font-semibold leading-relaxed text-editorial-ink">
-              Choose 1, 2, or 4 devices. Every plan is a one-time license with local transcription, future updates, and no usage meter.
+              Pick 1, 2, or 4 devices. Pay once, keep using it.
             </p>
 
             <div className="text-center tracking-tight text-editorial-ink">
               <div className="mb-4 flex items-center justify-center gap-4">
                 <span className="text-sm font-bold uppercase tracking-[0.18em] text-editorial-ink">
-                  Discounted price for you
+                  Discounted for you
                 </span>
                 <span className="text-2xl font-semibold text-editorial-ink-3 line-through md:text-3xl">
                   {formatPrice(V2_PRICES[selected.key])}

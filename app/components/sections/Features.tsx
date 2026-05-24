@@ -74,12 +74,11 @@ const featureCards: FeatureCard[] = [
         </div>
         {[
           ['Whisper Base', '142 MB'],
-          ['Whisper Large v3', '2.9 GB'],
           ['Whisper Turbo', '1.5 GB'],
           ['Parakeet', '0.6 GB'],
-        ].map(([name, size], index) => (
+        ].map(([name, size]) => (
           <div key={name} className="flex justify-between border-b border-editorial-line py-2 last:border-0">
-            <span className={cn(index === 2 && 'font-semibold text-editorial-ink')}>{name}</span>
+            <span className={cn(name === 'Whisper Turbo' && 'font-semibold text-editorial-ink')}>{name}</span>
             <span className="font-mono text-editorial-ink-3">{size}</span>
           </div>
         ))}
@@ -369,10 +368,10 @@ export default function Features() {
               Coming next
             </p>
             <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-white">
-              More workflows are already queued up.
+              What&apos;s coming next
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68">
-              Translation, writing profiles, custom vocabulary, replacements, snippets, stronger-machine transcription, AI automation, and mobile capture are planned next. The core desktop dictation workflow is available today.
+              These features are in development. Core desktop dictation is live today.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/78">
               {featureCards.map((feature) =>
@@ -390,7 +389,7 @@ export default function Features() {
               Help shape the roadmap
             </p>
             <h3 className="mt-4 text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
-              Tell us what slows down your writing.
+              Tell us what slows down your writing
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
               Have a workflow VoiceTypr does not handle yet? Send the use case and we will use real requests to decide what ships next.

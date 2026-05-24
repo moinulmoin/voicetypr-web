@@ -14,7 +14,7 @@ export default async function Pricing() {
             Pay once. Keep <em>writing</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Pick the license that matches your machines. The 2-device option covers Mac + Windows; every plan is pay once with local transcription, future updates, and no subscription.
+            Pick the license that matches your machines. Every plan is pay once — local transcription, updates included, no subscription.
           </p>
         </div>
 
