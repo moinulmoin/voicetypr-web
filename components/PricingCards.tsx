@@ -99,11 +99,11 @@ export default function PricingCards({
             </p>
 
             <div className="text-center tracking-tight text-editorial-ink">
-              <div className="mb-3 flex items-center justify-center gap-3 text-sm font-medium text-editorial-ink-2">
-                <span className="text-[11px] uppercase tracking-widest text-editorial-ink-3">
-                  Launch price
+              <div className="mb-4 flex items-center justify-center gap-4">
+                <span className="text-sm font-bold uppercase tracking-[0.18em] text-editorial-ink">
+                  Discounted price for you
                 </span>
-                <span className="text-editorial-ink-3 line-through">
+                <span className="text-2xl font-semibold text-editorial-ink-3 line-through md:text-3xl">
                   {formatPrice(V2_PRICES[selected.key])}
                 </span>
               </div>
@@ -136,7 +136,7 @@ export default function PricingCards({
                     >
                       <span className="block text-3xl font-semibold leading-none">{option.devices}</span>
                       <span className="mt-1 block text-xs font-medium uppercase tracking-widest">
-                        {option.devices === 1 ? 'device' : 'devices'}
+                        {option.devices === 1 ? 'Device' : 'Devices'}
                       </span>
                     </button>
                   );

@@ -14,7 +14,7 @@ export default async function Pricing() {
             Pay once. Keep <em>writing</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Most people start with the 2-device lifetime license for $59. Need one machine only? 1 device is $39. Local transcription stays subscription-free.
+            Pick the license that matches your machines. The 2-device option covers Mac + Windows; every plan is pay once with local transcription, future updates, and no subscription.
           </p>
         </div>
 

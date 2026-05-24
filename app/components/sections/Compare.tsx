@@ -9,7 +9,7 @@ const comparisons = [
 
 export default function Compare() {
   return (
-    <section className="ed-section">
+    <section className="ed-section !pt-20 !pb-28 bg-white/35">
       <div className="ed-container">
         <div className="mb-12 max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">

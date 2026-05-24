@@ -27,6 +27,28 @@ const steps = [
     label: '02',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass}>
+        <path fill="currentColor" d="M4 7h9v2H4V7Zm11-1h2v1h3v2h-3v1h-2V6ZM4 15h3v2H4v-2Zm5-1h2v1h9v2h-9v1H9v-4Z" />
+      </svg>
+    ),
+    title: 'Pick a model',
+    body: 'Use a fast model for quick notes or a larger model when accuracy matters.',
+    artifact: (
+      <div className="space-y-2 rounded-xl bg-white p-4 text-sm shadow-sm">
+        <div className="flex items-center justify-between border-b border-editorial-line pb-2">
+          <span>Fast</span>
+          <span className="rounded-full bg-editorial-ink px-2 py-1 text-xs text-white">Turbo</span>
+        </div>
+        <div className="flex items-center justify-between pt-1">
+          <span>Accurate</span>
+          <span className="rounded-full bg-editorial-surface-2 px-2 py-1 text-xs">Large</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: '03',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass}>
         <path fill="currentColor" d="M5 6h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2v8h14V8H5Zm2 2h2v2H7v-2Zm3 0h2v2h-2v-2Zm3 0h2v2h-2v-2Zm3 0h1v2h-1v-2Zm-9 4h10v1H7v-1Z" />
       </svg>
     ),
@@ -46,7 +68,7 @@ const steps = [
     ),
   },
   {
-    label: '03',
+    label: '04',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass}>
         <path fill="currentColor" d="M5 4h14v2H5V4Zm0 4h9v2H5V8Zm0 4h7v2H5v-2Zm10.3 1.1 4.95 2.28-2.2 1.08 2.03 3.02-1.66 1.12-2.03-3.02-1.75 1.7.66-6.18Z" />
@@ -67,20 +89,20 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="ed-section" id="how-it-works">
+    <section className="ed-section !pt-16 !pb-24" id="how-it-works">
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
             Start in <em>minutes</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            No onboarding maze. Install, set the shortcut, and talk into the app you were already using.
+            No onboarding maze. Install, pick a model, set the shortcut, and talk into the app you were already using.
           </p>
         </div>
 
         <div className="relative mt-12">
           <div className="absolute left-10 right-10 top-4 hidden h-px bg-editorial-line lg:block" />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {steps.map((step, index) => (
               <article
                 key={step.label}

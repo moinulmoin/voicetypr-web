@@ -132,7 +132,7 @@ export function FeaturedTestimonial() {
               <div className="text-sm font-semibold text-editorial-ink">{featuredTestimonial.author.name}</div>
               <div className="flex items-center gap-1.5 text-xs text-editorial-ink-3">
                 <SourceIcon source={featuredTestimonial.source} />
-                Switched from subscription dictation
+                Switched from Wispr Flow
               </div>
             </div>
           </div>
@@ -146,14 +146,14 @@ export function FeaturedTestimonial() {
 
 export default function Reviews() {
   return (
-    <section className="ed-section" id="testimonials">
+    <section className="ed-section !pt-20 !pb-24" id="testimonials">
       <div className="ed-container">
         <div className="mb-12 max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Why people switch to VoiceTypr
+            What buyers say
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            More buyers choosing one-time pricing, local models, Mac + Windows support, and a lighter desktop workflow.
+            More buyers choosing one-time pricing, local transcription, Mac + Windows support, and a lighter desktop workflow.
           </p>
         </div>
 
