@@ -96,7 +96,7 @@ export default function HowItWorks() {
             Start in minutes
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            No onboarding maze. Install, pick a model, set the shortcut, and talk into the app you were already using.
+            Install the app, pick a model, set your shortcut, and start talking where your cursor already is.
           </p>
         </div>
 

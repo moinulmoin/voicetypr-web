@@ -42,10 +42,10 @@ export default function FAQ() {
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
             <h2 className="text-4xl leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-              FAQ
+              The honest FAQ
             </h2>
             <p className="mt-4 max-w-sm text-base leading-relaxed text-editorial-ink-2">
-              Windows, privacy, trial, pricing, and cleaner text.
+              Real questions from buyers, Windows users, privacy-conscious teams, and people switching from subscription dictation apps.
             </p>
             <div className="mt-8 text-sm text-editorial-ink-3">
               Any other questions?{' '}
