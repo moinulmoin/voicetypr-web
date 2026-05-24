@@ -46,7 +46,7 @@ export default function Demo() {
                     unoptimized
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/12" />
-                  <span className="absolute left-4 top-4 rounded-full border border-white/18 bg-black/42 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-white/86 backdrop-blur md:left-5 md:top-5">
+                  <span className="absolute left-4 top-4 rounded-full border border-[#262626] bg-[#262626] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-white/86 backdrop-blur md:left-5 md:top-5">
                     Watch demo
                   </span>
                   <span className="absolute left-1/2 top-1/2 inline-flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-white/92 text-editorial-ink shadow-[0_18px_48px_rgba(0,0,0,0.22)] backdrop-blur transition duration-200 group-hover:scale-105 group-hover:bg-white group-active:scale-100">
