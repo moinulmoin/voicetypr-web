@@ -37,8 +37,8 @@ export default function Demo() {
                   aria-label="Play VoiceTypr demo video"
                 >
                   <Image
-                    src="/voicetypr-demo-poster.jpg"
-                    alt="VoiceTypr demo preview showing voice dictation into a desktop app"
+                    src="/Write.jpg"
+                    alt="VoiceTypr poster showing write 3x faster with your voice"
                     fill
                     priority
                     sizes="(min-width: 1024px) 960px, calc(100vw - 48px)"
