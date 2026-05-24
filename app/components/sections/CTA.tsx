@@ -13,7 +13,7 @@ export default function CTA() {
             <p className="mb-4 text-xs font-medium uppercase tracking-widest text-white/55">
               Ready when you are
             </p>
-            <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight text-white md:text-7xl">
+            <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight !text-white md:text-7xl">
               <span className="block">Stop typing,</span>{' '}
               <span className="block">Start <em>talking</em></span>
             </h2>
