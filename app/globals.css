@@ -286,7 +286,7 @@ html {
 }
 
 /* CTA dark card — em stays white */
-.landing-editorial .bg-editorial-ink h2 em {
+.landing-editorial .cta-dark-card h2 em {
   color: white;
 }
 /* Italic accent — Instrument Serif italic, the rare punctuation move on hero
