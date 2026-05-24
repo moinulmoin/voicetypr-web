@@ -9,7 +9,7 @@ import { voiceTypingRelatedGuides } from '@/lib/seo-discovery';
 export const metadata: Metadata = {
   title: 'Voice Typing Software in 2026 — VoiceTypr',
   description:
-    'Voice typing for Mac and Windows that works in every app. VoiceTypr runs transcription locally, starts at $39 once, and needs no monthly subscription.',
+    'Voice typing for Mac and Windows that works in every app. VoiceTypr runs offline by default, starts at $39 once, and needs no monthly subscription.',
   keywords: [
     'voice typing',
     'voice typing software',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Voice Typing Software in 2026 — VoiceTypr',
     description:
-      'Voice typing for every app on Mac and Windows. Local transcription, pay-once license, no monthly dictation subscription.',
+      'Voice typing for every app on Mac and Windows. Offline dictation by default, pay-once license, no monthly subscription.',
     url: 'https://voicetypr.com/voice-typing',
     siteName: 'VoiceTypr',
     images: [{ url: '/voicetypr-og.png', width: 1200, height: 630 }],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Voice Typing Software in 2026 — VoiceTypr',
     description:
-      'Voice typing for every app on Mac and Windows. Local transcription, pay-once license, no monthly dictation subscription.',
+      'Voice typing for every app on Mac and Windows. Offline dictation by default, pay-once license, no monthly subscription.',
     images: ['/voicetypr-og.png'],
   },
 };
@@ -46,7 +46,7 @@ const workflows = [
 
 const reasons = [
   'Works anywhere a cursor accepts text — not just Google Docs or a browser extension.',
-  'Your voice is transcribed on your machine by default.',
+  'Your voice is transcribed offline by default.',
   'Built for macOS 13+ and Windows 10+.',
   'One-time purchase from $39, with device-count options for multiple machines.',
 ] as const;
@@ -59,7 +59,7 @@ export default function VoiceTypingPage() {
         <div className="ed-container max-w-4xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">voice typing software</p>
           <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Write 3x faster with voice typing.
+            Write with your voice, not your keyboard.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
             VoiceTypr turns speech into clean text wherever your cursor is: Cursor, Claude, ChatGPT, Gmail, Slack, docs, notes, or a support queue. Hold a hotkey, talk, release, paste.

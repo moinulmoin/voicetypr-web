@@ -80,13 +80,12 @@ export default function UseCasesHubPage() {
                 Use cases · the people we built it for
               </div>
               <h1 className="mt-3 mb-5 text-[clamp(44px,6.4vw,76px)] font-bold leading-[1.02] tracking-[-0.02em]">
-                Voice for the way you actually work
+                Real workflows from the people we built it for
               </h1>
               <p className="max-w-[640px] text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
-                When typing is the bottleneck — physical, cognitive, or just
-                because the English-side of your job grew faster than your
-                fingers — voice routes around it. Here&apos;s how that looks
-                across the people we built VoiceTypr for first.
+                When typing is the bottleneck — physical, cognitive, or because
+                the English side of your job grew faster than your fingers —
+                voice routes around it. Here&apos;s how that looks for the people who use VoiceTypr daily.
               </p>
             </div>
           </div>
@@ -122,18 +121,31 @@ export default function UseCasesHubPage() {
 
         <section className="ed-section">
           <div className="ed-container">
-            <div className="max-w-[720px] py-7">
-              <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
-                Don&apos;t see your use case?{" "}
-                <a
-                  href="mailto:support@voicetypr.com"
-                  className="text-editorial-ink underline-offset-4 hover:underline"
-                  data-track="use-cases-contact-click"
-                >
-                  Tell me what you need
-                </a>
-                .
-              </p>
+            <div className="relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto mb-4 max-w-3xl text-[clamp(36px,5vw,64px)] font-bold leading-[1.04] tracking-[-0.02em] !text-white">
+                  Pick your workflow. Try it free.
+                </h2>
+                <p className="mx-auto mb-8 max-w-xl text-[16px] leading-[1.6] text-white/72">
+                  3-day free trial. Offline dictation by default. Works in the apps you already use.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  >
+                    Download free trial
+                  </Link>
+                  <Link
+                    href="/#pricing"
+                    className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  >
+                    Get lifetime license
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>

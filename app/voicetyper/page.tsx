@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'VoiceTyper App & Pricing — VoiceTypr',
     description:
-      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Local transcription by default, pricing from $39.',
+      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Offline dictation by default, pricing from $39.',
     url: 'https://voicetypr.com/voicetyper',
     siteName: 'VoiceTypr',
     images: [{ url: '/voicetypr-og.png', width: 1200, height: 630 }],
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'VoiceTyper App & Pricing — VoiceTypr',
     description:
-      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Local transcription by default, pricing from $39.',
+      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Offline dictation by default, pricing from $39.',
     images: ['/voicetypr-og.png'],
   },
 };
 
 const reasons = [
   'Type by talking in Cursor, Claude, ChatGPT, email, docs, Slack, and any app with a text field.',
-  'Transcription runs locally on your device; cleaner text features are separate and controlled by you.',
+  'Transcription runs offline on your device by default. AI formatting features are separate and controlled by you.',
   'Works on macOS 13+ and Windows 10+ with one pay-once license.',
   'No browser tab, no account ritual, no monthly dictation subscription.',
 ] as const;
