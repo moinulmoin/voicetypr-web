@@ -205,7 +205,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   Start 3-day free trial
                 </Link>
                 <Link
-                  href="/wispr-flow-alternative"
+                  href="/#compare"
                   className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface-2 active:scale-95"
                 >
                   How it compares

@@ -92,7 +92,7 @@ export default function PricingCards({
         <div className="flex h-full flex-col justify-between gap-8 rounded-2xl bg-editorial-surface-2 p-6 md:p-8">
           <div>
             <div className="mb-5 text-sm text-editorial-ink-2">
-              {selected.devices} {selected.devices === 1 ? 'device' : 'devices'} · lifetime license
+              {`${selected.devices} ${selected.devices === 1 ? 'device' : 'devices'} · lifetime license`}
             </div>
             <p className="mb-10 text-sm font-semibold leading-relaxed text-editorial-ink">
               Pick 1, 2, or 4 devices. Pay once, keep using it.
