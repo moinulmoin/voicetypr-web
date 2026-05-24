@@ -14,7 +14,7 @@ export default function CTA() {
               Ready when you are
             </p>
             <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight !text-white md:text-7xl">
-              <span className="block">Stop typing,</span>{' '}
+              <span className="block"><em>Stop</em> typing</span>{' '}
               <span className="block">Start <em>talking</em></span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/70">
