@@ -13,9 +13,9 @@ export default function CTA() {
             <p className="mb-4 text-xs font-medium uppercase tracking-widest text-white/55">
               Ready when you are
             </p>
-            <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight !text-white md:text-7xl">
+            <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight text-white md:text-7xl">
               <span className="block">Stop typing,</span>{' '}
-              <span className="block">start <em>talking</em></span>
+              <span className="block">Start <em>talking</em></span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/70">
               Try VoiceTypr free for 3 days. Dictate into the apps you already use, with local transcription by default and no subscription.

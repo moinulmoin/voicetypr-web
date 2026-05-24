@@ -284,6 +284,11 @@ html {
   font-weight: 400;
   font-style: italic;
 }
+
+/* CTA dark card — em stays white */
+.landing-editorial .bg-editorial-ink h2 em {
+  color: white;
+}
 /* Italic accent — Instrument Serif italic, the rare punctuation move on hero
    headlines, brand-moment H2s, and final CTAs only. Real italic (not synthetic)
    from a serif family that exists *only* to do this one thing. */
