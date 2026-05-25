@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { GitHub, Gmail, XformerlyTwitter } from '@/components/icons';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { getAllFreeTools } from '@/lib/free-tools';
 
 const resourceLinks = [
   { label: 'Windows voice typing', href: '/best/windows-voice-typing' },
@@ -25,6 +26,14 @@ const columns = [
   {
     title: 'Guides',
     links: resourceLinks.map((link) => ({ ...link, internal: true })),
+  },
+  {
+    title: 'Free tools',
+    links: getAllFreeTools().map((tool) => ({
+      label: tool.shortTitle,
+      href: `/tools/${tool.slug}`,
+      internal: true as const,
+    })),
   },
   {
     title: 'Company',
@@ -55,7 +64,7 @@ export default function Footer() {
   return (
     <footer data-markdown-skip className="py-14">
       <div className="ed-container">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_repeat(5,minmax(0,1fr))]">
           <div>
             <Link href="/" className="text-2xl font-semibold tracking-tight text-editorial-ink">
               VoiceTypr

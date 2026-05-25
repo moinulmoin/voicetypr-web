@@ -2,9 +2,10 @@ import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/help";
 import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
+import { getAllFreeTools } from "@/lib/free-tools";
 
 const siteUrl = "https://voicetypr.com";
-const lastModified = new Date("2026-05-18");
+const lastModified = new Date("2026-05-25");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteUrl;
@@ -21,6 +22,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastModified,
       changeFrequency: "daily",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools`,
+      lastModified: lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
     },
     {
       url: `${baseUrl}/use-cases`,
@@ -120,6 +127,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.65,
   }));
 
+  const toolRoutes: MetadataRoute.Sitemap = getAllFreeTools().map((tool) => ({
+    url: `${baseUrl}/tools/${tool.slug}`,
+    lastModified: lastModified,
+    changeFrequency: "weekly",
+    priority: 0.68,
+  }));
+
   const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().map((useCase) => ({
     url: `${baseUrl}/use-cases/${useCase.slug}`,
     lastModified: lastModified,
@@ -154,6 +168,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes,
     ...aiReadableRoutes,
+    ...toolRoutes,
     ...useCaseRoutes,
     ...helpRoutes,
     ...bestRoutes,

@@ -162,6 +162,55 @@ export default async function AlternativePage({
                 </ul>
               </section>
 
+              {page.switchGuide ? (
+                <section className="mb-12 space-y-8">
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 shadow-sm backdrop-blur">
+                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
+                        Choose VoiceTypr if
+                      </h2>
+                      <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
+                        {page.switchGuide.voiceTyprIf.map((item) => (
+                          <li key={item} className="flex gap-3">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-ink" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="rounded-2xl border border-editorial-line bg-white/72 p-5 shadow-sm backdrop-blur">
+                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
+                        Stay with the incumbent if
+                      </h2>
+                      <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
+                        {page.switchGuide.otherIf.map((item) => (
+                          <li key={item} className="flex gap-3">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-line-2" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {page.switchGuide.notes && page.switchGuide.notes.length > 0 ? (
+                    <div className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-5">
+                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
+                        Quick comparison notes
+                      </h2>
+                      <div className="mt-4 grid gap-4 md:grid-cols-2">
+                        {page.switchGuide.notes.map((note) => (
+                          <article key={note.title}>
+                            <h3 className="text-[15px] font-semibold text-editorial-ink">{note.title}</h3>
+                            <p className="mt-2 text-[14px] leading-relaxed text-editorial-ink-2">{note.body}</p>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </section>
+              ) : null}
+
               {relatedGuides.length > 0 ? (
                 <div className="mb-12">
                   <RelatedGuidesSection

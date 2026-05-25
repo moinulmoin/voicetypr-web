@@ -12,6 +12,11 @@ export type SeoPage = {
     subscription: boolean;
   }>;
   whySwitch: string[];
+  switchGuide?: {
+    voiceTyprIf: string[];
+    otherIf: string[];
+    notes?: Array<{ title: string; body: string }>;
+  };
   decisionSupport?: {
     searchIntent: string;
     bestFor: string[];
@@ -668,6 +673,21 @@ export const alternativePages: SeoPage[] = [
       "Local transcription by default; optional text cleanup when enabled",
       "Same Whisper models underneath",
     ],
+    switchGuide: {
+      voiceTyprIf: [
+        'You need Windows as well as Mac',
+        'You want pay-once pricing instead of another subscription',
+        'You want local transcription by default',
+      ],
+      otherIf: [
+        "You only dictate on Mac and already like Superwhisper's workflow",
+        'You want the lightest possible install with minimal setup',
+      ],
+      notes: [
+        { title: 'Superwhisper', body: 'Strong Mac capture tool with polished UX, but recurring pricing and no Windows build.' },
+        { title: 'VoiceTypr', body: 'Same Whisper family, broader platform coverage, and lifetime pricing for daily dictation.' },
+      ],
+    },
     ctaText: "Switch from Superwhisper",
   },
   {
@@ -698,6 +718,21 @@ export const alternativePages: SeoPage[] = [
       "Works on both Mac and Windows",
       "Your voice is transcribed locally by default",
     ],
+    switchGuide: {
+      voiceTyprIf: [
+        'Recurring pricing is the blocker',
+        'You want offline-first transcription on your machine',
+        'You dictate into many apps with one hotkey',
+      ],
+      otherIf: [
+        'You want the most polished cloud-first capture with minimal setup',
+        'You are fine paying monthly for convenience',
+      ],
+      notes: [
+        { title: 'Wispr Flow', body: 'Fast cloud workflow, but subscription pricing and less offline-first positioning.' },
+        { title: 'VoiceTypr', body: 'Built for founders who want local transcription, lifetime pricing, and cross-app paste.' },
+      ],
+    },
     ctaText: "Switch from Wispr Flow",
   },
   {
@@ -728,6 +763,21 @@ export const alternativePages: SeoPage[] = [
       "Works on Mac too",
       "Active development with regular updates",
     ],
+    switchGuide: {
+      voiceTyprIf: [
+        "You want modern dictation without Dragon's training workflow",
+        'You need Mac and Windows support',
+        'You want a much lower upfront price',
+      ],
+      otherIf: [
+        'You need deep medical/legal command vocabularies',
+        'You already invested in Dragon profiles and macros',
+      ],
+      notes: [
+        { title: 'Dragon', body: 'Still powerful for specialized command-and-control workflows, but heavy setup and price.' },
+        { title: 'VoiceTypr', body: 'Modern local Whisper dictation for everyday writing in any text field.' },
+      ],
+    },
     ctaText: "Replace Dragon",
   },
   {
@@ -765,6 +815,21 @@ export const alternativePages: SeoPage[] = [
       "Works in every normal text field with one hotkey",
       "A clearer upgrade path for Windows users who still need offline privacy",
     ],
+    switchGuide: {
+      voiceTyprIf: [
+        'You want dictation into normal apps, not full OS control',
+        'You need a clearer upgrade from deprecated Windows Speech Recognition',
+        'You want offline local transcription with a modern hotkey workflow',
+      ],
+      otherIf: [
+        'You need hands-free navigation and command control — Voice Access is the better fit',
+        'You only need occasional short Windows Voice Typing snippets',
+      ],
+      notes: [
+        { title: 'Windows Speech Recognition', body: 'Deprecated path on newer Windows releases; fine historically, weak as a long-term plan.' },
+        { title: 'VoiceTypr', body: 'Dictation-first writing tool for every text field with local models and one hotkey.' },
+      ],
+    },
     ctaText: "Replace Windows Speech Recognition",
   },
 ];

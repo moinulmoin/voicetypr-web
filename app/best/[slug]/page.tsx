@@ -175,10 +175,9 @@ export default async function BestPage({
                     </p>
                   </div>
 
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 shadow-sm backdrop-blur">
+                  <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 shadow-sm backdrop-blur">
                       <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
-                        Best for
+                        Good fit if
                       </h2>
                       <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
                         {support.bestFor.map((item) => (
@@ -188,20 +187,6 @@ export default async function BestPage({
                           </li>
                         ))}
                       </ul>
-                    </div>
-                    <div className="rounded-2xl border border-editorial-line bg-white/72 p-5 shadow-sm backdrop-blur">
-                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
-                        Not for
-                      </h2>
-                      <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
-                        {support.notFor.map((item) => (
-                          <li key={item} className="flex gap-3">
-                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-line-2" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-3">
