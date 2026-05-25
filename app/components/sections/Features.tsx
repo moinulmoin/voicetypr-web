@@ -357,17 +357,17 @@ export default function Features() {
         </div>
 
         <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-3xl border border-editorial-ink bg-editorial-ink p-6 text-white shadow-sm md:p-8">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/55">
+          <div className="rounded-3xl border border-editorial-ink bg-editorial-ink p-6 text-white shadow-sm md:p-8 dark:border-white/14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/62">
               Coming next
             </p>
             <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight tracking-tight !text-white">
               What we&apos;re building next
             </h3>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/68">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/76">
               The full desktop app is already live. These are extras on the way.
             </p>
-            <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/78">
+            <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/86">
               {roadmapLabels.map((feature) => (
                 <li key={feature} className="rounded-full border border-white/14 bg-white/8 px-3 py-1.5">
                   {feature}

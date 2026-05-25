@@ -10,14 +10,14 @@ export default function CTA() {
           <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
           <div className="relative">
-            <p className="mb-4 text-xs font-medium uppercase tracking-widest text-white/55">
+            <p className="mb-4 text-xs font-medium uppercase tracking-widest text-white/62">
               Ready when you are
             </p>
             <h2 className="mx-auto max-w-4xl text-5xl leading-none tracking-tight !text-white md:text-7xl">
               <span className="block">Stop <em>typing</em></span>{' '}
               <span className="block">Start <em>talking</em></span>
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/70">
+            <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/76">
               Try VoiceTypr free for 3 days. Dictate into the apps you already use, with offline dictation by default and no subscription.
             </p>
 
@@ -38,7 +38,7 @@ export default function CTA() {
               </Link>
             </div>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs uppercase tracking-widest text-white/50">
+            <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs uppercase tracking-widest text-white/58">
               {proofItems.map((item) => (
                 <span key={item}>{item}</span>
               ))}

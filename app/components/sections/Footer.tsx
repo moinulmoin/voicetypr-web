@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { GitHub, Gmail, XformerlyTwitter } from '@/components/icons';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const resourceLinks = [
   { label: 'Windows voice typing', href: '/best/windows-voice-typing' },
@@ -52,7 +53,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer data-markdown-skip className="bg-editorial-bg py-14">
+    <footer data-markdown-skip className="py-14">
       <div className="ed-container">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
           <div>
@@ -78,6 +79,9 @@ export default function Footer() {
                   <span>{label}</span>
                 </a>
               ))}
+            </div>
+            <div className="mt-4">
+              <ThemeToggle />
             </div>
           </div>
 

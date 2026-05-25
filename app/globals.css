@@ -44,17 +44,17 @@ html {
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* Editorial landing palette — clean white with subtle ink depth */
-  --color-editorial-bg: #fafaf8;
-  --color-editorial-surface: #fffefe;
-  --color-editorial-surface-2: #f7f5f2;
-  --color-editorial-ink: #18181a;
-  --color-editorial-ink-2: #54514c;
-  --color-editorial-ink-3: #8b857b;
-  --color-editorial-line: #e8e5e1;
-  --color-editorial-line-2: #d9d4cd;
-  --color-editorial-accent: #18181a;
-  --color-editorial-accent-ink: #18181a;
-  --color-editorial-accent-wash: #f5f5f4;
+  --color-editorial-bg: var(--editorial-bg);
+  --color-editorial-surface: var(--editorial-surface);
+  --color-editorial-surface-2: var(--editorial-surface-2);
+  --color-editorial-ink: var(--editorial-ink);
+  --color-editorial-ink-2: var(--editorial-ink-2);
+  --color-editorial-ink-3: var(--editorial-ink-3);
+  --color-editorial-line: var(--editorial-line);
+  --color-editorial-line-2: var(--editorial-line-2);
+  --color-editorial-accent: var(--editorial-accent);
+  --color-editorial-accent-ink: var(--editorial-accent-ink);
+  --color-editorial-accent-wash: var(--editorial-accent-wash);
 
 }
 :root {
@@ -90,6 +90,19 @@ html {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Editorial landing palette — light */
+  --editorial-bg: #fafaf8;
+  --editorial-surface: #fffefe;
+  --editorial-surface-2: #f7f5f2;
+  --editorial-ink: #18181a;
+  --editorial-ink-2: #54514c;
+  --editorial-ink-3: #8b857b;
+  --editorial-line: #e8e5e1;
+  --editorial-line-2: #d9d4cd;
+  --editorial-accent: #18181a;
+  --editorial-accent-ink: #18181a;
+  --editorial-accent-wash: #f5f5f4;
 
   /* Enhanced colors */
   --black-100: #0a0a0a;
@@ -131,6 +144,19 @@ html {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 8%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Editorial landing palette — dark */
+  --editorial-bg: #141416;
+  --editorial-surface: #1c1c1e;
+  --editorial-surface-2: #252527;
+  --editorial-ink: #fffaf2;
+  --editorial-ink-2: #e1dbd2;
+  --editorial-ink-3: #b8b0a6;
+  --editorial-line: #343432;
+  --editorial-line-2: #494945;
+  --editorial-accent: #fffaf2;
+  --editorial-accent-ink: #fffaf2;
+  --editorial-accent-wash: #252527;
 }
 
 @layer base {
@@ -541,4 +567,101 @@ html {
 .prose-editorial pre code {
   background: none;
   padding: 0;
+}
+
+/* ============================================================
+   Dark mode — editorial overrides
+   ============================================================ */
+
+/* Dark base gradient */
+.dark .landing-editorial {
+  background:
+    linear-gradient(180deg, #141416 0%, #18181a 46%, #111113 100%);
+}
+
+/* Dark fixed atmosphere — glows become subtle, grid lightens */
+.dark .landing-editorial::before {
+  background-image:
+    radial-gradient(920px 520px at 78% 8%, rgba(212, 150, 93, 0.03), transparent 62%),
+    radial-gradient(760px 460px at 14% 28%, rgba(120, 113, 108, 0.03), transparent 64%),
+    radial-gradient(900px 620px at 50% 98%, rgba(0, 0, 0, 0.15), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4) 58%, rgba(0, 0, 0, 0.15));
+}
+
+/* Dark noise — nearly invisible */
+.dark .landing-editorial::after {
+  opacity: 0.06;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.08) 45%, transparent 88%);
+}
+
+/* Dark section atmospheres */
+.dark .landing-editorial .ed-section-hero {
+  background:
+    radial-gradient(760px 380px at 78% 18%, rgba(212, 150, 93, 0.03), transparent 66%),
+    radial-gradient(620px 340px at 16% 46%, rgba(120, 113, 108, 0.04), transparent 72%);
+}
+.dark .landing-editorial .ed-section-wash {
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(30, 30, 32, 0.5) 46%, transparent 100%);
+}
+.dark .landing-editorial .ed-section-glow {
+  background:
+    radial-gradient(760px 420px at 50% 30%, rgba(120, 113, 108, 0.03), transparent 70%);
+}
+
+/* Dark: cards using bg-white become dark surfaces */
+.dark .landing-editorial .bg-white {
+  background-color: var(--color-editorial-surface);
+}
+.dark .landing-editorial .bg-white\/80 {
+  background-color: color-mix(in oklab, var(--color-editorial-surface) 80%, transparent);
+}
+.dark .landing-editorial .bg-white\/85 {
+  background-color: color-mix(in oklab, var(--color-editorial-surface) 85%, transparent);
+}
+.dark .landing-editorial .bg-white\/35 {
+  background-color: color-mix(in oklab, var(--color-editorial-surface) 35%, transparent);
+}
+.dark .landing-editorial .bg-white\/72 {
+  background-color: color-mix(in oklab, var(--color-editorial-surface) 72%, transparent);
+}
+.dark .landing-editorial .bg-white\/82 {
+  background-color: color-mix(in oklab, var(--color-editorial-surface) 82%, transparent);
+}
+.dark .landing-editorial .bg-white\/86 {
+  background-color: color-mix(in oklab, var(--color-editorial-surface) 86%, transparent);
+}
+
+.dark .bg-editorial-ink {
+  background-color: #0a0a0b;
+}
+
+/* Dark: CTA card stays dark and prominent with border */
+.dark .landing-editorial .cta-dark-card {
+  background-color: #0a0a0b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.dark .landing-editorial .cta-dark-card h2,
+.dark .landing-editorial .cta-dark-card p,
+.dark .landing-editorial .cta-dark-card span {
+  color: white;
+}
+
+/* Dark: CTA button on dark card stays white */
+.dark .landing-editorial .cta-dark-card .bg-white {
+  background-color: white;
+  color: #18181a;
+}
+
+/* Dark: hero background glow */
+.dark .landing-editorial .bg-\[radial-gradient\(ellipse_at_center\,rgba\(212\,150\,93\,0\.18\)\,transparent_68\%\)\] {
+  background: radial-gradient(ellipse at center, rgba(212, 150, 93, 0.08), transparent 68%);
+}
+
+/* Dark: eyebrow dot inverts */
+.dark .ed-eyebrow::before {
+  background: var(--color-editorial-ink);
 }

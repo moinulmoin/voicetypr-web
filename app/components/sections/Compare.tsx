@@ -36,8 +36,8 @@ export default function Compare() {
                       {oldWay}
                     </p>
                   </div>
-                  <div className="rounded-xl bg-editorial-ink p-4 text-white">
-                    <div className="text-[11px] font-medium uppercase tracking-widest text-white/55">
+                  <div className="rounded-xl bg-editorial-ink p-4 text-white dark:bg-[#0a0a0b] dark:border dark:border-white/8">
+                    <div className="text-[11px] font-medium uppercase tracking-widest text-white/62">
                       VoiceTypr
                     </div>
                     <p className="mt-2 text-sm font-medium leading-relaxed">
@@ -53,7 +53,7 @@ export default function Compare() {
             <div className="grid grid-cols-[0.9fr_1fr_1fr] border-b border-editorial-line text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
               <div className="bg-editorial-surface-2 px-5 py-4">Criterion</div>
               <div className="border-l border-editorial-line px-5 py-4">Typical dictation app</div>
-              <div className="border-l border-editorial-line bg-editorial-ink px-5 py-4 text-white/70">VoiceTypr</div>
+              <div className="border-l border-editorial-line bg-editorial-ink px-5 py-4 text-white/76 dark:bg-[#0a0a0b] dark:border-l dark:border-white/8">VoiceTypr</div>
             </div>
             {comparisons.map(([label, oldWay, voiceTypr]) => (
               <div key={label} className="grid grid-cols-[0.9fr_1fr_1fr] border-b border-editorial-line last:border-b-0">
@@ -63,7 +63,7 @@ export default function Compare() {
                 <div className="border-l border-editorial-line px-5 py-4 text-sm leading-relaxed text-editorial-ink-2">
                   {oldWay}
                 </div>
-                <div className="border-l border-editorial-line bg-editorial-ink px-5 py-4 text-sm font-medium leading-relaxed text-white">
+                <div className="border-l border-editorial-line bg-editorial-ink px-5 py-4 text-sm font-medium leading-relaxed text-white dark:bg-[#0a0a0b]">
                   {voiceTypr}
                 </div>
               </div>

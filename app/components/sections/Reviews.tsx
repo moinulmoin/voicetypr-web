@@ -90,11 +90,11 @@ type Source = 'twitter' | 'email' | 'github';
 function SourceIcon({ source }: { source: Source }) {
   switch (source) {
     case 'github':
-      return <GitHub className="h-4 w-4 text-[#181717]" />;
+      return <GitHub className="h-4 w-4 text-[#181717] dark:text-editorial-ink-2" />;
     case 'twitter':
-      return <XformerlyTwitter className="h-4 w-4 text-[#111111]" />;
+      return <XformerlyTwitter className="h-4 w-4 text-[#111111] dark:text-editorial-ink-2" />;
     case 'email':
-      return <Gmail className="h-4 w-4" />;
+      return <Gmail className="h-4 w-4 dark:text-editorial-ink-2" />;
   }
 }
 
