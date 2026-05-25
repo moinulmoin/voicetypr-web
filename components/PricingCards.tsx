@@ -178,7 +178,7 @@ export default function PricingCards({
           <div className="w-full max-w-sm">
             <div className="mb-5 flex items-center gap-2 text-sm font-medium text-editorial-ink">
               <Check className="h-4 w-4" />
-              Included today
+              Everything included
             </div>
             <ul className="space-y-3 text-sm leading-relaxed text-editorial-ink-2">
               {includedFeatures.map((feature) => (

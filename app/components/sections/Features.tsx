@@ -46,8 +46,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Privacy',
-    title: 'Local transcription by default',
-    body: 'Your voice is transcribed on your machine with local models by default. Optional formatting is separate and controlled by you.',
+    title: 'Offline-first by default',
+    body: 'VoiceTypr transcribes on your machine by default. Optional formatting is separate and controlled by you.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[

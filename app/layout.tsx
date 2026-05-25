@@ -138,7 +138,7 @@ export default function RootLayout({
                 "@id": "https://voicetypr.com/#software",
                 name: "VoiceTypr",
                 description:
-                  "Speak into Cursor, ChatGPT, Claude, Slack, Gmail, and docs with local transcription by default. Pay once for private AI voice-to-text on Mac and Windows.",
+                  "Speak into Cursor, ChatGPT, Claude, Slack, Gmail, and docs with offline-first dictation. Pay once for private AI voice-to-text on Mac and Windows.",
                 applicationCategory: "ProductivityApplication",
                 operatingSystem: ["macOS 13.0+", "Windows 10+"],
                 downloadUrl: "https://voicetypr.com/download",
@@ -184,7 +184,7 @@ export default function RootLayout({
                   "99+ language support",
                   "High-accuracy transcription",
                   "Works with any application (ChatGPT, Claude, Cursor, VS Code)",
-                  "Local transcription by default for privacy",
+                  "Offline-first dictation with local models",
                   "Global hotkey support",
                   "Smart formatting modes",
                   "Audio file transcription",
@@ -225,7 +225,7 @@ export default function RootLayout({
                 url: "https://voicetypr.com",
                 name: "VoiceTypr",
                 description:
-                  "Local transcription by default for founders, builders, and AI power users who write all day.",
+                  "Offline-first voice-to-text for founders, builders, and AI power users who write all day.",
                 publisher: {
                   "@id": "https://voicetypr.com/#organization",
                 },

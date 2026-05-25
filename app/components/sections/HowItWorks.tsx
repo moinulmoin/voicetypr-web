@@ -9,9 +9,9 @@ const steps = [
       </svg>
     ),
     title: 'Download VoiceTypr',
-    body: 'Install the Mac or Windows app. Apple Silicon, Intel Mac, and Windows 10+ are supported.',
+    body: 'Install for Mac or Windows.',
     artifact: (
-      <div className="space-y-2 rounded-xl bg-white p-4 text-sm shadow-sm">
+      <div className="space-y-2 rounded-xl border border-editorial-line bg-editorial-surface p-3 text-sm">
         <div className="flex items-center justify-between border-b border-editorial-line pb-2">
           <span>macOS</span>
           <span className="rounded-full bg-editorial-surface-2 px-2 py-1 text-xs">ready</span>
@@ -31,9 +31,9 @@ const steps = [
       </svg>
     ),
     title: 'Pick a model',
-    body: 'Use a fast model for quick notes or a larger model when accuracy matters.',
+    body: 'Choose speed or accuracy.',
     artifact: (
-      <div className="space-y-2 rounded-xl bg-white p-4 text-sm shadow-sm">
+      <div className="space-y-2 rounded-xl border border-editorial-line bg-editorial-surface p-3 text-sm">
         <div className="flex items-center justify-between border-b border-editorial-line pb-2">
           <span>Fast</span>
           <span className="rounded-full bg-editorial-ink px-2 py-1 text-xs text-white">Turbo</span>
@@ -53,13 +53,13 @@ const steps = [
       </svg>
     ),
     title: 'Set your hotkey',
-    body: 'Use push-to-talk, toggle mode, or your own shortcut. Your cursor stays the target.',
+    body: 'Pick push-to-talk, toggle, or a shortcut.',
     artifact: (
-      <div className="rounded-xl bg-white p-4">
+      <div className="rounded-xl border border-editorial-line bg-editorial-surface p-3">
         <div className="mb-3 text-xs uppercase tracking-widest text-editorial-ink-3">global shortcut</div>
         <div className="flex gap-2">
           {['⌘', '⇧', 'Space'].map((key) => (
-            <span key={key} className="rounded-lg border border-b-2 border-editorial-line bg-editorial-surface-2 px-4 py-3 font-mono text-sm">
+            <span key={key} className="rounded-lg border border-editorial-line bg-editorial-surface-2 px-3 py-2 font-mono text-sm">
               {key}
             </span>
           ))}
@@ -75,9 +75,9 @@ const steps = [
       </svg>
     ),
     title: 'Talk anywhere',
-    body: 'Speak naturally. VoiceTypr inserts polished text wherever you were already writing.',
+    body: 'Speak. Text appears at your cursor.',
     artifact: (
-      <div className="rounded-xl bg-white p-4">
+      <div className="rounded-xl border border-editorial-line bg-editorial-surface p-3">
         <div className="mb-2 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Rough voice</div>
         <div className="rounded-lg bg-editorial-surface-2 px-3 py-2 text-sm text-editorial-ink-2">
           Ship Tuesday, note the risk, and ask Sam for the final numbers.
@@ -100,27 +100,25 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="relative mt-12">
-          <div className="absolute left-10 right-10 top-4 hidden h-px bg-editorial-line lg:block" />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">
-            {steps.map((step, index) => (
+        <div className="relative mt-9">
+          <div className="absolute left-10 right-10 top-4 hidden h-px bg-editorial-line/70 lg:block" />
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step) => (
               <article
                 key={step.label}
-                className={`flex min-h-96 flex-col rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur lg:relative ${
-                  index % 2 === 0 ? 'lg:translate-y-4' : 'lg:-translate-y-4'
-                }`}
+                className="flex min-h-[21rem] flex-col rounded-2xl border border-editorial-line bg-editorial-surface/72 p-5 backdrop-blur"
               >
-                <div className="relative z-10 mb-5 inline-flex h-9 items-center gap-2 self-start rounded-full bg-white px-3 text-sm font-medium text-editorial-ink-3 shadow-sm">
+                <div className="relative z-10 mb-4 inline-flex h-8 items-center gap-2 self-start rounded-full border border-editorial-line bg-editorial-surface-2 px-2.5 text-xs font-medium text-editorial-ink-3">
                   <span className="text-editorial-ink">{step.icon}</span>
                   {step.label}
                 </div>
-                <h3 className="text-2xl font-semibold leading-tight tracking-tight text-editorial-ink">
+                <h3 className="text-[21px] font-semibold leading-tight tracking-tight text-editorial-ink">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+                <p className="mt-2 text-sm leading-relaxed text-editorial-ink-2">
                   {step.body}
                 </p>
-                <div className="mt-auto pt-8">{step.artifact}</div>
+                <div className="mt-auto pt-5">{step.artifact}</div>
               </article>
             ))}
           </div>

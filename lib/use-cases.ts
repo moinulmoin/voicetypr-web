@@ -663,7 +663,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Cloud dictation is a non-starter for sensitive prompts.",
         body:
-          "You don't want production logs, customer details, or pre-public feature work going to a third-party transcription server. Local-first or it doesn't ship.",
+          "You don't want production logs, customer details, or pre-public feature work going to a third-party transcription server. Offline-first or it doesn't ship.",
       },
       {
         title: "PR descriptions and design docs get skipped when typing is expensive.",
@@ -1346,7 +1346,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "The private stuff is exactly what you least want floating around.",
         body:
-          "Client details, case facts, negotiation notes, and internal strategy drafts are the moments where local-first transcription matters most.",
+          "Client details, case facts, negotiation notes, and internal strategy drafts are the moments where offline-first transcription matters most.",
       },
     ],
     outcomes: [
@@ -1572,7 +1572,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "You do not always want rough work in a cloud tool first.",
         body:
-          "Early-stage interpretations, unpublished findings, and collaborator context can be sensitive. Local-first dictation is simply a better default for that kind of material.",
+          "Early-stage interpretations, unpublished findings, and collaborator context can be sensitive. Offline-first dictation is simply a better default for that kind of material.",
       },
     ],
     outcomes: [

@@ -124,7 +124,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col justify-between gap-2 border-t border-editorial-line pt-5 text-xs text-editorial-ink-3 md:flex-row md:items-center">
           <span>© 2026 VoiceTypr</span>
-          <span>Local-first voice-to-text for macOS & Windows</span>
+          <span>Offline-first voice-to-text for macOS & Windows</span>
         </div>
       </div>
     </footer>

@@ -267,7 +267,7 @@ const relatedGuidesBySlug: Record<string, DiscoveryLink[]> = {
       href: '/best/windows-voice-typing',
       eyebrow: 'modern Windows option',
       title: 'Windows voice typing',
-      description: 'A cleaner roundup for buyers comparing Dragon to newer local-first tools.',
+      description: 'A cleaner roundup for buyers comparing Dragon to newer offline-first tools.',
       ctaLabel: 'See the Windows guide',
     },
     {
