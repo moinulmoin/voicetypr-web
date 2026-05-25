@@ -25,7 +25,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Everywhere',
     title: 'Talk into every app',
-    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, docs, and any text field without changing your workflow.',
+    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, docs — any text field on your screen. Nothing to install per app.',
     wide: true,
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
@@ -46,8 +46,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Privacy',
-    title: 'Offline-first by default',
-    body: 'VoiceTypr transcribes on your machine by default. Optional formatting is separate and controlled by you.',
+    title: 'Fast, private, offline-first',
+    body: 'Local models turn speech into text on your machine, so everyday dictation feels quick without routing audio through a cloud transcription service.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
@@ -65,7 +65,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Models',
     title: 'Pick speed or accuracy',
-    body: 'Switch between small fast models and larger accurate models per session, not per subscription tier.',
+    body: 'Switch between fast models for quick notes and larger models for precise transcription — any time, not just on higher tiers.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
         <div className="mb-4 flex items-center justify-between">
@@ -88,7 +88,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Hotkeys',
     title: 'Push, toggle, or remap',
-    body: 'Hold to record, tap to toggle, or bind dictation to the shortcut your fingers already know.',
+    body: 'Hold to record, tap to toggle, or bind dictation to any shortcut your fingers already know — works system-wide.',
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="mb-4 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">Current shortcut</div>
@@ -104,8 +104,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Formatting',
-    title: 'Cleaner text when you want it',
-    body: 'Polish rough dictation into cleaner prompts, emails, and everyday writing when you want it.',
+    title: 'Cleaner text when you need it',
+    body: 'Turn rough dictation into polished prompts, emails, and everyday writing when you need clean output.',
     demo: (
       <div className="space-y-3 rounded-xl bg-white p-4 shadow-sm">
         <div className="flex flex-wrap gap-2">
@@ -132,7 +132,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Files',
     title: 'Transcribe audio and video',
-    body: 'Drop in recordings or video clips and get a transcript without sending anything to the cloud.',
+    body: 'Drop in recordings or video clips and get a transcript processed on your machine — no cloud transcription service in the loop.',
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="rounded-xl border border-dashed border-editorial-line bg-editorial-surface-2 p-4 font-mono text-xs text-editorial-ink-2">
@@ -148,7 +148,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'History',
     title: 'Search, copy, export',
-    body: 'Keep transcripts on your machine, find them later, copy again, or export what you need.',
+    body: 'Every transcript stays on your machine. Search, re-copy, or export what you need.',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
         {['search history', 'copy last transcript', 'export local JSON'].map((item) => (
@@ -185,7 +185,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Translation',
     title: 'Speak in your language, write in theirs',
-    body: 'Dictate in your native language and turn it into cleaner text in the language you want to send.',
+    body: 'Dictate in your language, send in theirs — translation built into the voice pipeline.',
     status: 'Soon',
     demo: (
       <div className="space-y-3 rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -261,7 +261,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Remote',
     title: 'Use a stronger machine on your Wi‑Fi',
-    body: 'Offload heavier transcription to a more powerful computer on your local network. Your laptop stays light.',
+    body: 'Offload heavy transcription to a desktop or server on your local network. Your laptop stays fast.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -316,7 +316,7 @@ export default function Features() {
             What&apos;s <em>included</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Talk into any app, pick your model, use your own hotkey, and get clean text where your cursor is.
+            Dictate into any app, pick your model, use your own hotkey, and get clean text pasted where your cursor is.
           </p>
         </div>
 
@@ -365,7 +365,7 @@ export default function Features() {
               What we&apos;re building next
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/76">
-              The full desktop app is already live. These are extras on the way.
+              The core app is already live. These are extras arriving in upcoming releases.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/86">
               {roadmapLabels.map((feature) => (

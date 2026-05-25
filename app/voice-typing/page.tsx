@@ -59,10 +59,10 @@ export default function VoiceTypingPage() {
         <div className="ed-container max-w-4xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">voice typing software</p>
           <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Write with your voice, not your keyboard.
+            Voice typing software for <em>every app</em>
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            VoiceTypr turns speech into clean text wherever your cursor is: Cursor, Claude, ChatGPT, Gmail, Slack, docs, notes, or a support queue. Hold a hotkey, talk, release, paste.
+            Dictate into Cursor, Claude, ChatGPT, Gmail, Slack, docs, notes, or a support queue on Mac and Windows. Offline-first by default, pay once, no monthly subscription.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link

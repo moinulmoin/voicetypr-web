@@ -38,6 +38,7 @@ export const seoPages: SeoPage[] = [
         platforms: "macOS",
         offline: "No",
         subscription: false,
+        limitation: "Free and built in, but less focused on long-form cross-app workflows.",
       },
       {
         name: "Superwhisper",
@@ -45,6 +46,7 @@ export const seoPages: SeoPage[] = [
         platforms: "macOS",
         offline: "Partial",
         subscription: true,
+        limitation: "Strong Mac app, but subscription-priced and Mac-only.",
       },
       {
         name: "Wispr Flow",
@@ -52,6 +54,7 @@ export const seoPages: SeoPage[] = [
         platforms: "macOS",
         offline: "No",
         subscription: true,
+        limitation: "Polished capture, but recurring pricing and cloud-first positioning are not for every buyer.",
       },
       {
         name: "VoiceTypr",
@@ -59,13 +62,14 @@ export const seoPages: SeoPage[] = [
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
         subscription: false,
+        limitation: "Pay-once app for Mac + Windows with local transcription by default.",
       },
     ],
     whySwitch: [
       "Works in every app — not just a browser extension",
       "Transcribes your voice on your machine by default",
       "Pay once, use forever — no subscription trap",
-      "Runs Whisper locally — accurate even with accents",
+      "Runs modern local models for fast private dictation",
     ],
     decisionSupport: {
       searchIntent:
@@ -225,9 +229,9 @@ export const seoPages: SeoPage[] = [
   },
   {
     slug: "offline-dictation",
-    h1: "The best offline dictation software in 2026",
+    h1: "The best offline dictation app in 2026 — works without the internet",
     lede:
-      "If you need dictation that works without the internet, your options are surprisingly limited. Here's the practical shortlist.",
+      "VoiceTypr transcribes your voice locally after setup — no internet needed for day-to-day dictation. Here are the real offline options, and what offline actually covers.",
     angle: "category-owner",
     competitors: [
       {
@@ -236,6 +240,7 @@ export const seoPages: SeoPage[] = [
         platforms: "Windows",
         offline: "Yes",
         subscription: false,
+        limitation: "Free legacy option, but deprecated for long-term Windows workflows.",
       },
       {
         name: "Dragon",
@@ -243,6 +248,7 @@ export const seoPages: SeoPage[] = [
         platforms: "Windows",
         offline: "Yes",
         subscription: false,
+        limitation: "The legacy offline benchmark, but expensive and heavier to set up.",
       },
       {
         name: "Apple Dictation",
@@ -250,6 +256,7 @@ export const seoPages: SeoPage[] = [
         platforms: "macOS",
         offline: "No",
         subscription: false,
+        limitation: "Convenient on Mac, but not a cross-platform offline dictation app.",
       },
       {
         name: "VoiceTypr",
@@ -257,6 +264,7 @@ export const seoPages: SeoPage[] = [
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
         subscription: false,
+        limitation: "Modern local models for Mac + Windows, sold as a lifetime license.",
       },
     ],
     whySwitch: [
@@ -666,13 +674,13 @@ export const alternativePages: SeoPage[] = [
     slug: "wispr-flow",
     h1: "The best Wispr Flow alternative in 2026",
     lede:
-      "Wispr Flow is slick but expensive at $15/month. If you want the same quality dictation without the recurring bill, there's one clear choice.",
+      "Wispr Flow is slick but expensive at $15/month. If recurring pricing is the blocker, compare it against pay-once offline-first dictation for Mac and Windows.",
     angle: "comparison",
     competitors: [
       {
         name: "Wispr Flow",
         price: "$15/mo",
-        platforms: "Verify current release",
+        platforms: "macOS + Windows",
         offline: "No",
         subscription: true,
       },
@@ -696,7 +704,7 @@ export const alternativePages: SeoPage[] = [
     slug: "dragon",
     h1: "The best Dragon NaturallySpeaking alternative in 2026",
     lede:
-      "Dragon was the king of dictation for 20 years. But it's stagnated — no updates, no Mac support, and a $500 price tag. Here's the modern replacement.",
+      "Dragon remains powerful for specialized workflows, but many buyers find the upfront cost and setup heavier than everyday dictation needs. Here's the modern pay-once alternative.",
     angle: "comparison",
     competitors: [
       {
