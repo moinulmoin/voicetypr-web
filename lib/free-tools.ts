@@ -32,12 +32,12 @@ export const freeTools: readonly FreeTool[] = [
   {
     slug: "typing-speed-test",
     shortTitle: "Typing speed test",
-    title: "60-second typing speed test",
-    lede: "Measure your real typing speed in one minute, then compare it against comfortable dictation speed.",
-    description: "A simple 60-second WPM test with a restart button.",
-    metaTitle: "Typing speed test (60 seconds) | VoiceTypr",
+    title: "10-second typing speed test",
+    lede: "Measure a quick typing sample, then compare it against comfortable dictation speed.",
+    description: "A simple 10-second WPM test with a restart button.",
+    metaTitle: "Typing speed test (10 seconds) | VoiceTypr",
     metaDescription:
-      "Free 60-second typing speed test to measure WPM and see how dictation compares.",
+      "Free 10-second typing speed test to measure WPM and see how dictation compares.",
   },
 ] as const;
 

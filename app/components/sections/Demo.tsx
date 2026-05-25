@@ -59,7 +59,7 @@ export default function Demo() {
             </div>
           </div>
           <p className="mt-5 text-center text-sm text-editorial-ink-3">
-            Hold the hotkey, speak naturally, release — polished text appears where your cursor already is.{' '}
+            One hotkey turns speech into text in the app you&apos;re already using.{' '}
             <a
               href="https://youtu.be/L_yU879QbE4"
               target="_blank"
@@ -67,7 +67,7 @@ export default function Demo() {
               data-umami-event="demo-full-walkthrough-click"
               className="text-editorial-ink underline underline-offset-4 transition-colors hover:text-editorial-ink-2"
             >
-              Watch the full walkthrough &rarr;
+              Watch the full workflow &rarr;
             </a>
           </p>
         </div>

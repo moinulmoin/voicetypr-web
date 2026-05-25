@@ -11,11 +11,12 @@ import {
 const PROMPT =
   "Voice typing helps founders move faster when the cursor is already in the right place and the draft needs to ship today.";
 
-type Phase = "idle" | "running" | "done";
+const TEST_DURATION_SECONDS = 10;
 
+type Phase = "idle" | "running" | "done";
 export function TypingSpeedTest() {
   const [phase, setPhase] = useState<Phase>("idle");
-  const [secondsLeft, setSecondsLeft] = useState(60);
+  const [secondsLeft, setSecondsLeft] = useState(TEST_DURATION_SECONDS);
   const [text, setText] = useState("");
 
   const uiPhase: Phase =
@@ -29,18 +30,18 @@ export function TypingSpeedTest() {
 
   const wpm = useMemo(() => {
     if (uiPhase !== "done") return null;
-    return calculateTypingSpeedWpm(countWords(text), 60);
+    return calculateTypingSpeedWpm(countWords(text), TEST_DURATION_SECONDS);
   }, [uiPhase, text]);
 
   const start = () => {
     setText("");
-    setSecondsLeft(60);
+    setSecondsLeft(TEST_DURATION_SECONDS);
     setPhase("running");
   };
 
   const reset = () => {
     setText("");
-    setSecondsLeft(60);
+    setSecondsLeft(TEST_DURATION_SECONDS);
     setPhase("idle");
   };
 
@@ -50,7 +51,7 @@ export function TypingSpeedTest() {
         <div>
           <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Timer</div>
           <div className="text-[32px] font-semibold tracking-tight text-editorial-ink">
-            {uiPhase === "running" ? `${secondsLeft}s` : uiPhase === "done" ? "Done" : "60s"}
+            {uiPhase === "running" ? `${secondsLeft}s` : uiPhase === "done" ? "Done" : `${TEST_DURATION_SECONDS}s`}
           </div>
         </div>
         <div className="flex gap-2">
@@ -75,17 +76,18 @@ export function TypingSpeedTest() {
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        disabled={uiPhase === "idle"}
+        disabled={uiPhase !== "running"}
+        aria-label="Type the prompt here"
         placeholder={
           uiPhase === "idle"
-            ? "Press Start test, then type here for 60 seconds."
+            ? "Press Start test, then type here for 10 seconds."
             : "Type the prompt here..."
         }
         className="min-h-[180px] w-full rounded-2xl border border-editorial-line bg-white px-4 py-3 text-[15px] leading-relaxed text-editorial-ink outline-none focus-visible:border-editorial-ink disabled:cursor-not-allowed disabled:bg-editorial-surface-2"
       />
 
       {uiPhase === "done" && wpm !== null ? (
-        <div className="grid gap-4 rounded-2xl border border-editorial-line bg-white/82 p-5 sm:grid-cols-2">
+        <div role="status" aria-live="polite" className="grid gap-4 rounded-2xl border border-editorial-line bg-white/82 p-5 sm:grid-cols-2">
           <div>
             <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Your speed</div>
             <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">{wpm} WPM</div>

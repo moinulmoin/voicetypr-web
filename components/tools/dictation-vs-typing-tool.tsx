@@ -92,7 +92,7 @@ export function DictationVsTypingTool() {
               <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                 Time saved per day
               </div>
-              <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">
+              <div aria-live="polite" className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">
                 {formatMinutes(result.minutesSavedPerDay)}
               </div>
             </div>

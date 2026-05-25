@@ -8,6 +8,8 @@ import {
   calculateTypingLoad,
   calculateTypingSpeedWpm,
   countWords,
+  formatHours,
+  formatMinutes,
 } from "./free-tools-calculations";
 
 describe("free tools calculations", () => {
@@ -18,6 +20,21 @@ describe("free tools calculations", () => {
 
   it("calculates typing speed in wpm", () => {
     expect(calculateTypingSpeedWpm(50, 60)).toBe(50);
+  });
+
+  it("returns zero typing speed for invalid durations", () => {
+    expect(calculateTypingSpeedWpm(50, 0)).toBe(0);
+    expect(calculateTypingSpeedWpm(50, -10)).toBe(0);
+  });
+
+  it("formats minutes and hours for display", () => {
+    expect(formatMinutes(0)).toBe("0 min");
+    expect(formatMinutes(45)).toBe("45 min");
+    expect(formatMinutes(90)).toBe("1h 30m");
+    expect(formatMinutes(Number.NaN)).toBe("0 min");
+    expect(formatHours(0.5)).toBe("30 min");
+    expect(formatHours(2.3)).toBe("2.3 hours");
+    expect(formatHours(-1)).toBe("0 min");
   });
 
   it("compares dictation and typing time with defaults", () => {

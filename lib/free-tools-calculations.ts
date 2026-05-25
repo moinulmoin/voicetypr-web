@@ -87,8 +87,8 @@ export function countWords(text: string) {
 
 export function calculateTypingSpeedWpm(words: number, seconds: number) {
   const safeWords = nonNegative(words);
-  const safeSeconds = positiveOrDefault(seconds, 1);
-  return (safeWords / safeSeconds) * 60;
+  if (!Number.isFinite(seconds) || seconds <= 0) return 0;
+  return (safeWords / seconds) * 60;
 }
 
 export function formatMinutes(minutes: number) {

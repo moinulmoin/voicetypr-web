@@ -8,13 +8,6 @@ import { calculateTypingLoad } from "@/lib/free-tools-calculations";
 const fieldClass =
   "h-11 border-editorial-line bg-white text-editorial-ink shadow-none focus-visible:border-editorial-ink";
 
-const levelTone: Record<string, string> = {
-  light: "text-editorial-ink",
-  moderate: "text-editorial-ink",
-  heavy: "text-editorial-ink",
-  extreme: "text-editorial-ink",
-};
-
 export function TypingLoadCalculator() {
   const [hoursTypingPerDay, setHoursTypingPerDay] = useState("4");
   const [daysPerWeek, setDaysPerWeek] = useState("5");
@@ -64,7 +57,7 @@ export function TypingLoadCalculator() {
               <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                 Weekly keyboard load
               </div>
-              <div className={`mt-1 text-[30px] font-semibold tracking-tight ${levelTone[result.level]}`}>
+              <div className="mt-1 text-[30px] font-semibold tracking-tight text-editorial-ink">
                 {result.label}
               </div>
               <p className="mt-1 text-[14px] text-editorial-ink-2">{result.weeklyHours.toFixed(1)} hours / week</p>

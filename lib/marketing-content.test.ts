@@ -84,10 +84,18 @@ describe('marketing content guardrails', () => {
     for (const page of seoPages) {
       expect(page.decisionSupport?.searchIntent, `${page.slug} should define search intent`).toBeTruthy();
       expect(page.decisionSupport?.bestFor.length, `${page.slug} should define best-for buyers`).toBeGreaterThanOrEqual(3);
-      expect(page.decisionSupport?.notFor.length, `${page.slug} should define not-for buyers`).toBeGreaterThanOrEqual(2);
       expect(page.decisionSupport?.decisionCriteria.length, `${page.slug} should define decision criteria`).toBeGreaterThanOrEqual(3);
       expect(page.decisionSupport?.competitorNotes.length, `${page.slug} should define competitor notes`).toBeGreaterThanOrEqual(3);
       expect(page.decisionSupport?.faq.length, `${page.slug} should define buyer FAQs`).toBeGreaterThanOrEqual(3);
+    }
+  });
+
+  it('gives every alternative page switch guidance', () => {
+    for (const page of alternativePages) {
+      expect(page.switchGuide, `${page.slug} should define switch guidance`).toBeDefined();
+      expect(page.switchGuide?.voiceTyprIf.length, `${page.slug} should define VoiceTypr fit`).toBeGreaterThanOrEqual(2);
+      expect(page.switchGuide?.otherIf.length, `${page.slug} should define incumbent fit`).toBeGreaterThanOrEqual(1);
+      expect(page.switchGuide?.notes?.length, `${page.slug} should define comparison notes`).toBeGreaterThanOrEqual(2);
     }
   });
 

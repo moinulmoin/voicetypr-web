@@ -224,7 +224,7 @@ export default async function AlternativePage({
                 </div>
               ) : null}
 
-              <section className="relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-8 md:py-12">
+              <section className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-8 md:py-12">
                 <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#d4965d]/22 blur-3xl" />
                 <div className="relative">
                   <h2 className="max-w-2xl text-[30px] font-semibold leading-[1.06] tracking-[-0.03em] text-white md:text-[36px]">

@@ -20,7 +20,6 @@ export type SeoPage = {
   decisionSupport?: {
     searchIntent: string;
     bestFor: string[];
-    notFor: string[];
     decisionCriteria: Array<{ title: string; body: string }>;
     competitorNotes: Array<{ title: string; body: string }>;
     faq: Array<{ q: string; a: string }>;
@@ -83,10 +82,6 @@ export const seoPages: SeoPage[] = [
         "Mac users who want dictation in every app, not only in Apple text fields",
         "People who prefer a lifetime license over another monthly writing tool",
         "Privacy-sensitive drafting where voice should be transcribed on the user's machine by default",
-      ],
-      notFor: [
-        "People who need full voice control commands for navigating the entire Mac",
-        "Teams that mainly need shared meeting transcripts and collaboration notes",
       ],
       decisionCriteria: [
         {
@@ -182,10 +177,6 @@ export const seoPages: SeoPage[] = [
         "Windows users who dictate into Word, browsers, Cursor, email, and chat",
         "People replacing classic Windows Speech Recognition with a modern local model",
         "Buyers who want private daily dictation without a recurring subscription",
-      ],
-      notFor: [
-        "People who primarily need hands-free Windows navigation commands",
-        "Teams looking for meeting recording, summaries, and shared transcript archives",
       ],
       decisionCriteria: [
         {
@@ -285,10 +276,6 @@ export const seoPages: SeoPage[] = [
         "People who dictate sensitive drafts, prompts, notes, or client material",
         "Travel, low-connectivity, and locked-down environments after model setup",
         "Buyers comparing Dragon-style offline tools with modern local AI transcription",
-      ],
-      notFor: [
-        "People who need cloud meeting bots, shared transcript workspaces, or live collaboration",
-        "Buyers who need every optional enhancement, license check, update, and model download to happen without internet",
       ],
       decisionCriteria: [
         {
@@ -391,10 +378,6 @@ export const seoPages: SeoPage[] = [
         "People writing long prompts, emails, specs, and notes across many apps",
         "Privacy-conscious users who want local transcription by default",
       ],
-      notFor: [
-        "Users who only need occasional short dictation inside a Microsoft text box",
-        "People who need full desktop control commands more than text entry",
-      ],
       decisionCriteria: [
         {
           title: "Short bursts vs long drafts",
@@ -489,10 +472,6 @@ export const seoPages: SeoPage[] = [
         "People who think in speech and need text in many Windows apps",
         "Users comparing Microsoft Dictate, Windows Voice Typing, Dragon, and local AI transcription",
         "Workers who want less keyboard load without committing to a subscription",
-      ],
-      notFor: [
-        "Meeting-heavy teams that need speaker labels and collaboration transcripts",
-        "Users who only dictate inside Microsoft Office and are satisfied with built-in tooling",
       ],
       decisionCriteria: [
         {
@@ -592,10 +571,6 @@ export const seoPages: SeoPage[] = [
         "People who need less typing in the apps they already use",
         "Accessibility buyers who want a simple hotkey-first dictation workflow",
         "Users who want an accommodation tool they can keep without monthly billing",
-      ],
-      notFor: [
-        "People who need complete hands-free OS navigation and command vocabularies",
-        "Clinical, school, or workplace accommodation programs that require formal certification language on-page",
       ],
       decisionCriteria: [
         {

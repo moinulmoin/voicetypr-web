@@ -315,6 +315,20 @@ html {
 .landing-editorial .cta-dark-card h2 em {
   color: white;
 }
+
+.landing-editorial .cta-dark-card,
+.landing-editorial .cta-dark-card h2,
+.landing-editorial .cta-dark-card p,
+.landing-editorial .cta-dark-card span {
+  color: white;
+}
+
+.landing-editorial .cta-dark-card::selection,
+.landing-editorial .cta-dark-card *::selection {
+  background: rgba(255, 255, 255, 0.24);
+  color: white;
+  -webkit-text-fill-color: white;
+}
 /* Italic accent — Instrument Serif italic, the rare punctuation move on hero
    headlines, brand-moment H2s, and final CTAs only. Real italic (not synthetic)
    from a serif family that exists *only* to do this one thing. */
