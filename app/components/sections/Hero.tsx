@@ -9,9 +9,8 @@ export default function HeroSection() {
       <div className="ed-container relative">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-5xl text-5xl leading-tight tracking-tighter md:text-7xl lg:text-8xl font-serif-hero">
-            Speak where you type
+            Type with your voice
           </h1>
-
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-editorial-ink-2 md:text-lg">
             <span className="block font-semibold text-editorial-ink">
               Replace typing with your voice in the apps you already use.

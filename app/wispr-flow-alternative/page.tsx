@@ -10,7 +10,7 @@ import { SuccessModal } from "../components/SuccessModal";
 export const metadata: Metadata = {
   title: "Wispr Flow Alternative — VoiceTypr (Offline, Pay-once)",
   description:
-    "Looking for a Wispr Flow alternative? VoiceTypr is lifetime-priced and cross-platform. $39 one-time vs $144+/yr. Local transcription runs on your machine by default.",
+    "Looking for a Wispr Flow alternative? VoiceTypr is lifetime-priced and cross-platform. $39 one-time vs $144+/yr. Offline dictation by default.",
   keywords: [
     "wispr flow alternative",
     "wispr flow alternative mac",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wispr Flow Alternative — VoiceTypr (Offline, Pay-once)",
     description:
-      "Offline AI voice-to-text that runs locally. Pay once, no subscription.",
+      "Offline AI voice-to-text. Pay once, no subscription.",
     url: "https://voicetypr.com/wispr-flow-alternative",
     siteName: "VoiceTypr",
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wispr Flow Alternative — VoiceTypr (Offline, Pay-once)",
     description:
-      "Offline AI voice-to-text that runs locally. Pay once, no subscription.",
+      "Offline AI voice-to-text. Pay once, no subscription.",
     images: ["/voicetypr-og.png"],
   },
   robots: { index: true, follow: true },
@@ -295,7 +295,7 @@ export default function WisprFlowAlternativePage() {
                   data-track="wispr-alt-hero-download-click"
                   className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 >
-                  Download for free
+                  Start free trial
                 </Link>
                 <Link
                   href="#comparison"
@@ -541,7 +541,7 @@ export default function WisprFlowAlternativePage() {
                 Speak. Paste. <em>Keep your voice yours.</em>
               </h2>
               <p className="mx-auto mb-10 max-w-xl text-editorial-ink-2 text-[16px] leading-[1.55]">
-                No credit card. Local transcription by default. No subscription.
+                No credit card. Offline dictation by default. No subscription.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link
@@ -549,7 +549,7 @@ export default function WisprFlowAlternativePage() {
                   data-track="wispr-alt-final-cta-click"
                   className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
                 >
-                  Download for free
+                  Start free trial
                 </Link>
                 <Link
                   href="/#pricing"

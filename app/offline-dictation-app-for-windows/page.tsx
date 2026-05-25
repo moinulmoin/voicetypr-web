@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
     description:
-      "Local voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
+      "Offline voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
     url: "https://voicetypr.com/offline-dictation-app-for-windows",
     siteName: "VoiceTypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
     description:
-      "Local voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
+      "Offline voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
     images: ["/voicetypr-og.png"],
   },
 };
@@ -69,7 +69,7 @@ export default function OfflineDictationForWindowsPage() {
               href="/download"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
-              Download for free
+              Start free trial
             </Link>
             <Link
               href="/#pricing"

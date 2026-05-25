@@ -48,7 +48,7 @@ const reasons = [
   "You want one license that covers a Windows desktop and a Mac laptop.",
   "You dictate prompts, PR notes, docs, Slack replies, and emails into many different apps.",
   "You prefer paying once instead of adding another monthly tool to the stack.",
-  "You want your voice processed locally by default, not routed through a cloud account.",
+  "You want your voice processed offline by default, not routed through a cloud account.",
 ] as const;
 
 export default function SuperwhisperAlternativePage() {
@@ -69,7 +69,7 @@ export default function SuperwhisperAlternativePage() {
               href="/download"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
-              Download for free
+              Start free trial
             </Link>
             <Link
               href="/#pricing"

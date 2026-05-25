@@ -113,7 +113,7 @@ export default function VoiceTyperPage() {
             Looking for VoiceTyper? The app is VoiceTypr.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            People search for VoiceTyper, voice typer, voice typer app, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built to help you write 3x faster with your voice.
+            People search for VoiceTyper, voice typer, voice typer app, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built to help you write with your voice in every app.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link

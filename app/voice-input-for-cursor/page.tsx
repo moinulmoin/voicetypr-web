@@ -59,7 +59,7 @@ export default function VoiceInputForCursorPage() {
         <div className="ed-container max-w-4xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">voice input for cursor</p>
           <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Write Cursor prompts 3x faster with your voice.
+            Write Cursor prompts with your voice, not your keyboard.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
             VoiceTypr turns spoken prompts, implementation notes, and bug reports into clean text in Cursor. Hold a hotkey, talk, release, paste.

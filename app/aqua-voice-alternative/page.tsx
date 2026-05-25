@@ -7,7 +7,7 @@ import Footer from "../components/sections/Footer";
 export const metadata: Metadata = {
   title: "Aqua Voice Alternative in 2026 — VoiceTypr",
   description:
-    "Looking for an Aqua Voice alternative? VoiceTypr works on Mac and Windows, uses local transcription by default, and starts at $39 once.",
+    "Looking for an Aqua Voice alternative? VoiceTypr works on Mac and Windows, uses offline dictation by default, and starts at $39 once.",
   keywords: [
     "aqua voice alternative",
     "aqua dictation alternative",
@@ -60,17 +60,17 @@ export default function AquaVoiceAlternativePage() {
         <div className="ed-container max-w-4xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">aqua voice alternative</p>
           <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Voice typing with local transcription by default.
+            Offline voice typing that keeps your audio on your machine.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            VoiceTypr transcribes your voice on your machine by default, works on Mac and Windows, and starts at $39 once. It is built for prompts, docs, messages, and notes you would rather keep private.
+            VoiceTypr transcribes your voice offline by default, works on Mac and Windows, and starts at $39 once. Built for prompts, docs, messages, and notes you would rather keep private.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/download"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
-              Download for free
+              Start free trial
             </Link>
             <Link
               href="/#pricing"
