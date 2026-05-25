@@ -1,3 +1,5 @@
+export const FREE_TOOLS_ORIGIN = "https://voicetypr.com";
+
 export type FreeTool = {
   slug: string;
   title: string;
@@ -6,7 +8,12 @@ export type FreeTool = {
   description: string;
   metaTitle: string;
   metaDescription: string;
+  ogTitle: string;
 };
+
+export function getFreeToolCanonicalUrl(slug: string): string {
+  return `${FREE_TOOLS_ORIGIN}/tools/${slug}`;
+}
 
 export const freeTools: readonly FreeTool[] = [
   {
@@ -18,6 +25,7 @@ export const freeTools: readonly FreeTool[] = [
     metaTitle: "Dictation vs typing calculator | VoiceTypr",
     metaDescription:
       "Free calculator to compare typing vs dictation time, annual hours saved, and optional dollar value.",
+    ogTitle: "Dictation vs typing calculator — VoiceTypr",
   },
   {
     slug: "typing-load-calculator",
@@ -28,6 +36,7 @@ export const freeTools: readonly FreeTool[] = [
     metaTitle: "Typing load calculator | VoiceTypr",
     metaDescription:
       "Free typing load calculator for founders and builders who write all day and want a realistic strain estimate.",
+    ogTitle: "Typing load calculator — VoiceTypr",
   },
   {
     slug: "typing-speed-test",
@@ -38,6 +47,7 @@ export const freeTools: readonly FreeTool[] = [
     metaTitle: "Typing speed test (10 seconds) | VoiceTypr",
     metaDescription:
       "Free 10-second typing speed test to measure WPM and see how dictation compares.",
+    ogTitle: "10-second typing speed test — VoiceTypr",
   },
 ] as const;
 

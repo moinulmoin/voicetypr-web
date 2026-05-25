@@ -5,7 +5,36 @@ import Footer from "@/app/components/sections/Footer";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import Header from "@/app/components/sections/Header";
 import { getRelatedGuidesForSeoSlug } from "@/lib/seo-discovery";
-import { getSeoPageBySlug, seoPages } from "@/lib/seo-pages";
+import { getSeoPageBySlug, seoPages, type SeoPage } from "@/lib/seo-pages";
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\u003c");
+}
+
+function buildBestPageJsonLd(slug: string, page: SeoPage) {
+  const faq = page.decisionSupport?.faq;
+  if (!faq?.length) return null;
+
+  const url = `https://voicetypr.com/best/${slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        mainEntity: faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.a,
+          },
+        })),
+      },
+    ],
+  };
+}
+
+
 
 export async function generateStaticParams() {
   return seoPages.map((p) => ({ slug: p.slug }));
@@ -55,9 +84,16 @@ export default async function BestPage({
   const relatedGuides = getRelatedGuidesForSeoSlug(slug);
   const support = page.decisionSupport;
   const showLimitations = page.competitors.some((comp) => comp.limitation);
+  const jsonLd = buildBestPageJsonLd(slug, page);
 
   return (
     <>
+      {jsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
+        />
+      ) : null}
       <main id="main-content" className="landing-editorial relative min-h-screen">
         <Header />
         <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
@@ -87,22 +123,25 @@ export default async function BestPage({
                 <div className="overflow-hidden rounded-2xl border border-editorial-line bg-white/82 shadow-sm backdrop-blur">
                   <div className="overflow-x-auto p-1.5">
                     <table className="w-full text-left">
+                      <caption className="sr-only">
+                        Comparison of dictation tools in this guide
+                      </caption>
                       <thead>
                         <tr>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Tool
                           </th>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Price
                           </th>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Platforms
                           </th>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Offline
                           </th>
                           {showLimitations ? (
-                            <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                            <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                               Reality check
                             </th>
                           ) : null}
@@ -112,7 +151,11 @@ export default async function BestPage({
                         {page.competitors.map((comp) => (
                           <tr
                             key={comp.name}
-                            className={comp.name === "VoiceTypr" ? "bg-editorial-surface" : "bg-white"}
+                            className={
+                              comp.name === "VoiceTypr"
+                                ? "bg-editorial-surface dark:bg-editorial-surface-2 dark:ring-1 dark:ring-inset dark:ring-editorial-line/70"
+                                : "bg-white"
+                            }
                           >
                             <td className="px-3 py-3 pr-4 align-top">
                               <div className="flex items-center gap-2">
@@ -278,7 +321,7 @@ export default async function BestPage({
                     </Link>
                     <Link
                       href="/#pricing"
-                      className="text-sm font-medium text-white/72 transition-colors hover:text-white"
+                      className="text-sm font-medium text-white/85 transition-colors hover:text-white"
                     >
                       View lifetime pricing
                     </Link>

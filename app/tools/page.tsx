@@ -4,10 +4,33 @@ import Footer from "@/app/components/sections/Footer";
 import Header from "@/app/components/sections/Header";
 import { getAllFreeTools } from "@/lib/free-tools";
 
+const TOOLS_INDEX_URL = "https://voicetypr.com/tools";
+
+const toolsIndexTitle =
+  "Free writing tools — dictation vs typing, speed test & load calculator | VoiceTypr";
+const toolsIndexDescription =
+  "Free dictation vs typing calculator, 10-second typing speed test, and keyboard typing load calculator for founders who write all day.";
+
 export const metadata: Metadata = {
-  title: "Free writing tools | VoiceTypr",
-  description:
-    "Free calculators and typing tools for founders and builders comparing dictation vs typing.",
+  title: toolsIndexTitle,
+  description: toolsIndexDescription,
+  alternates: { canonical: TOOLS_INDEX_URL },
+  openGraph: {
+    title: "Free writing tools — VoiceTypr",
+    description: toolsIndexDescription,
+    url: TOOLS_INDEX_URL,
+    siteName: "VoiceTypr",
+    type: "website",
+    images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free writing tools — VoiceTypr",
+    description: toolsIndexDescription,
+    images: ["/voicetypr-og.png"],
+    creator: "@moinulmoin",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function ToolsIndexPage() {

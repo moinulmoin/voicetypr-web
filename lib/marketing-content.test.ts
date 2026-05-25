@@ -15,6 +15,8 @@ const marketingSourceFiles = [
   'app/wispr-flow-alternative/page.tsx',
   'app/aqua-voice-alternative/page.tsx',
   'app/voicetyper/page.tsx',
+  'app/best/[slug]/page.tsx',
+  'app/alternative/[slug]/page.tsx',
   'components/PricingCards.tsx',
   'public/llms.txt',
   'public/pricing.md',

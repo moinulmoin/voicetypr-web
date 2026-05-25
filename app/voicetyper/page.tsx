@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
+import RelatedGuidesSection from '@/app/components/RelatedGuidesSection';
+import type { DiscoveryLink } from '@/lib/seo-discovery';
 import Header from '@/app/components/sections/Header';
 import Footer from '@/app/components/sections/Footer';
 
@@ -66,6 +68,31 @@ const faqs = [
   },
 ] as const;
 
+const voicetyperRelatedGuides: DiscoveryLink[] = [
+  {
+    href: '/voice-typing',
+    eyebrow: 'general workflow',
+    title: 'Voice typing in every app',
+    description:
+      'The broader page for people who searched VoiceTyper but still need the full pay-once dictation story.',
+    ctaLabel: 'See the general guide',
+  },
+  {
+    href: '/offline-dictation-app-for-windows',
+    eyebrow: 'windows offline path',
+    title: 'Offline dictation for Windows',
+    description: 'A tighter page for Windows buyers who care most about local transcription by default.',
+    ctaLabel: 'See the Windows page',
+  },
+  {
+    href: '/best/mac-dictation',
+    eyebrow: 'mac comparison',
+    title: 'Mac dictation guide',
+    description: 'Useful when the search started on Mac and the next step is comparing realistic local options.',
+    ctaLabel: 'See the Mac guide',
+  },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -120,7 +147,7 @@ export default function VoiceTyperPage() {
               href="/download"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
-              Start free trial
+              Start 3-day free trial
             </Link>
             <Link
               href="/#pricing"
@@ -204,6 +231,45 @@ export default function VoiceTyperPage() {
                 </p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <RelatedGuidesSection
+        eyebrow="spelling and shopping paths"
+        title="People searching VoiceTyper usually still need these pages next"
+        description="The typo page catches the brand misspell. These pages catch the workflow, platform, and comparison searches that follow."
+        links={voicetyperRelatedGuides}
+        dataTrackPrefix="voicetyper-related-guides"
+      />
+
+      <section className="ed-section">
+        <div className="ed-container">
+          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
+            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+            <div className="relative">
+              <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
+                Try VoiceTypr—the app behind the VoiceTyper search.
+              </h2>
+              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
+                3-day free trial. No credit card. Pay once from $39 on Mac and Windows.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/download"
+                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                >
+                  Start 3-day free trial
+                </Link>
+                <Link
+                  href="/#pricing"
+                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                >
+                  Buy lifetime license
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { calculateTypingLoad } from "@/lib/free-tools-calculations";
@@ -66,6 +67,12 @@ export function TypingLoadCalculator() {
               Suggested breaks: about {result.breakMinutesPerHour} minutes per hour away from the keyboard.
             </p>
             <p className="text-[14px] leading-relaxed text-editorial-ink-2">{result.recommendation}</p>
+            <Link
+              href="/download"
+              className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
+            >
+              Try VoiceTypr free
+            </Link>
           </div>
         ) : (
           <p className="text-[14px] text-editorial-ink-2">Enter valid numbers to see your load estimate.</p>

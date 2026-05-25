@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
+import type { DiscoveryLink } from "@/lib/seo-discovery";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
@@ -51,6 +53,31 @@ const checklist = [
   "Starts at $39 once; the 2-device option is $59 for laptop + desktop.",
 ] as const;
 
+const cursorRelatedGuides: DiscoveryLink[] = [
+  {
+    href: "/voice-typing",
+    eyebrow: "broader workflow",
+    title: "Voice typing in every app",
+    description:
+      "For developers who want the general pay-once dictation story before narrowing to Cursor-specific workflows.",
+    ctaLabel: "See the general guide",
+  },
+  {
+    href: "/best/windows-voice-typing",
+    eyebrow: "windows developers",
+    title: "Windows voice typing",
+    description: "A better fit when the stack is Windows-heavy and the comparison starts with built-in tools.",
+    ctaLabel: "See the Windows guide",
+  },
+  {
+    href: "/use-cases/developers",
+    eyebrow: "why builders switch",
+    title: "Developers use case",
+    description: "Prompts, PR notes, and issue context—the English around the code, not just Cursor paste-ins.",
+    ctaLabel: "See the use case",
+  },
+];
+
 export default function VoiceInputForCursorPage() {
   return (
     <main id="main-content" className="landing-editorial min-h-screen">
@@ -69,7 +96,7 @@ export default function VoiceInputForCursorPage() {
               href="/download"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
             >
-              Start free 3-day trial
+              Start 3-day free trial
             </Link>
             <Link
               href="/#pricing"
@@ -113,6 +140,46 @@ export default function VoiceInputForCursorPage() {
           </ul>
         </div>
       </section>
+
+      <RelatedGuidesSection
+        eyebrow="keep the developer cluster tight"
+        title="If Cursor voice input is the fit, these are the next pages people usually open"
+        description="Developer search often jumps between the Cursor-specific page, broader typing guides, and Windows comparisons."
+        links={cursorRelatedGuides}
+        dataTrackPrefix="voice-input-for-cursor-related-guides"
+      />
+
+      <section className="ed-section">
+        <div className="ed-container">
+          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
+            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+            <div className="relative">
+              <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
+                Write your next Cursor prompt with your voice.
+              </h2>
+              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
+                3-day free trial. No credit card. Works in Cursor, Claude, VS Code, and every text field.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/download"
+                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                >
+                  Start 3-day free trial
+                </Link>
+                <Link
+                  href="/#pricing"
+                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                >
+                  Buy lifetime license
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

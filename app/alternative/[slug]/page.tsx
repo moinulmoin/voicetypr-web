@@ -95,18 +95,21 @@ export default async function AlternativePage({
                 <div className="overflow-hidden rounded-2xl border border-editorial-line bg-white/82 shadow-sm backdrop-blur">
                   <div className="overflow-x-auto p-1.5">
                     <table className="w-full text-left">
+                      <caption className="sr-only">
+                        Comparison of tools for switching from the incumbent
+                      </caption>
                       <thead>
                         <tr>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Tool
                           </th>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Price
                           </th>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Platforms
                           </th>
-                          <th className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                             Offline
                           </th>
                         </tr>
@@ -115,7 +118,11 @@ export default async function AlternativePage({
                         {page.competitors.map((comp) => (
                           <tr
                             key={comp.name}
-                            className={comp.name === "VoiceTypr" ? "bg-editorial-surface" : "bg-white"}
+                            className={
+                              comp.name === "VoiceTypr"
+                                ? "bg-editorial-surface dark:bg-editorial-surface-2 dark:ring-1 dark:ring-inset dark:ring-editorial-line/70"
+                                : "bg-white"
+                            }
                           >
                             <td className="px-3 py-3 pr-4 align-top">
                               <div className="flex items-center gap-2">
@@ -242,7 +249,7 @@ export default async function AlternativePage({
                     </Link>
                     <Link
                       href="/#pricing"
-                      className="text-sm font-medium text-white/72 transition-colors hover:text-white"
+                      className="text-sm font-medium text-white/85 transition-colors hover:text-white"
                     >
                       View lifetime pricing
                     </Link>

@@ -4,6 +4,9 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { getAllFreeTools } from '@/lib/free-tools';
 
 const resourceLinks = [
+  { label: 'Mac dictation', href: '/best/mac-dictation' },
+  { label: 'Offline dictation', href: '/best/offline-dictation' },
+  { label: 'Dragon alternative', href: '/alternative/dragon' },
   { label: 'Windows voice typing', href: '/best/windows-voice-typing' },
   { label: 'Offline dictation for Windows', href: '/offline-dictation-app-for-windows' },
   { label: 'Accessible dictation', href: '/best/accessible-dictation' },

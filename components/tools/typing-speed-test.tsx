@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   DEFAULT_DICTATION_WPM,
@@ -14,6 +15,7 @@ const PROMPT =
 const TEST_DURATION_SECONDS = 10;
 
 type Phase = "idle" | "running" | "done";
+
 export function TypingSpeedTest() {
   const [phase, setPhase] = useState<Phase>("idle");
   const [secondsLeft, setSecondsLeft] = useState(TEST_DURATION_SECONDS);
@@ -87,20 +89,32 @@ export function TypingSpeedTest() {
       />
 
       {uiPhase === "done" && wpm !== null ? (
-        <div role="status" aria-live="polite" className="grid gap-4 rounded-2xl border border-editorial-line bg-white/82 p-5 sm:grid-cols-2">
-          <div>
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Your speed</div>
-            <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">{wpm} WPM</div>
-          </div>
-          <div>
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Typical dictation</div>
-            <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">
-              ~{DEFAULT_DICTATION_WPM} WPM
+        <div
+          role="status"
+          aria-live="polite"
+          className="space-y-4 rounded-2xl border border-editorial-line bg-white/82 p-5"
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Your speed</div>
+              <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">{wpm} WPM</div>
             </div>
-            <p className="mt-2 text-[14px] text-editorial-ink-2">
-              {wpm > 0 ? `Roughly ${(DEFAULT_DICTATION_WPM / wpm).toFixed(1)}x faster when you dictate instead.` : null}
-            </p>
+            <div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Typical dictation</div>
+              <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">
+                ~{DEFAULT_DICTATION_WPM} WPM
+              </div>
+              <p className="mt-2 text-[14px] text-editorial-ink-2">
+                {wpm > 0 ? `Roughly ${(DEFAULT_DICTATION_WPM / wpm).toFixed(1)}x faster when you dictate instead.` : null}
+              </p>
+            </div>
           </div>
+          <Link
+            href="/download"
+            className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
+          >
+            Try VoiceTypr free
+          </Link>
         </div>
       ) : null}
     </div>
