@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   cacheComponents: true,
   reactCompiler: true,
   images: {
