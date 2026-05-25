@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 const emptySubscribe = () => () => {};
 const themeOptions = ["system", "light", "dark"] as const;
@@ -20,6 +20,18 @@ function labelForTheme(theme: ThemeOption) {
   if (theme === "system") return "System";
   if (theme === "light") return "Light";
   return "Dark";
+}
+
+function isEditableTarget(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) return false;
+
+  const tagName = target.tagName.toLowerCase();
+  return (
+    target.isContentEditable ||
+    tagName === "input" ||
+    tagName === "textarea" ||
+    tagName === "select"
+  );
 }
 
 function ThemeIcon({ theme }: { theme: ThemeOption }) {
@@ -46,6 +58,35 @@ function ThemeIcon({ theme }: { theme: ThemeOption }) {
       <path d="M13.5 9.7A5.8 5.8 0 016.3 2.5 5.8 5.8 0 108 14a5.77 5.77 0 005.5-4.3z" />
     </svg>
   );
+}
+
+export function ThemeHotkey() {
+  const { setTheme, resolvedTheme } = useTheme();
+  const mounted = useMounted();
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (
+        event.key !== "d" ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey ||
+        event.shiftKey ||
+        isEditableTarget(event.target)
+      ) {
+        return;
+      }
+
+      setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mounted, resolvedTheme, setTheme]);
+
+  return null;
 }
 
 export function ThemeToggle() {
