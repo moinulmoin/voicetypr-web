@@ -5,6 +5,7 @@ import { opServer } from "@/lib/openpanel-server";
 import { prisma } from "@/lib/db";
 import { PLANS, resolvePlan } from "@/lib/pricing";
 import type { PlanKey } from "@/lib/pricing";
+import { getOrderProductRevenue } from "@/lib/order-revenue";
 import { after } from "next/server";
 
 // ── Defensive payload extraction helpers ──────────────────────────────────
@@ -82,33 +83,39 @@ export const POST = Webhooks({
 
 async function handleOrderPaid(data: WebhookOrderPaidPayload["data"]) {
   try {
-    const metadata = data.metadata as Record<string, string> | undefined;
-    const amount = data.totalAmount;
-
-    if (!amount) {
-      console.log("[Webhook] No amount found in order.paid event");
+    const metadata = data.metadata;
+    const checkoutTotalAmount = data.totalAmount;
+    const productId = data.productId;
+    const productRevenue = getOrderProductRevenue(data);
+    const revenueAmount = productRevenue?.amount ?? checkoutTotalAmount;
+    if (!revenueAmount) {
+      console.log("[Webhook] No revenue amount found in order.paid event");
       return;
     }
 
-    const deviceId = metadata?.deviceId;
-    const productId = data.productId;
+    const deviceId = typeof metadata.deviceId === "string" ? metadata.deviceId : undefined;
 
     // Track revenue with OpenPanel after the webhook responds.
     // `after` keeps the serverless invocation alive on Vercel (via waitUntil)
     // so the event actually flushes without blocking the webhook response.
     after(async () => {
       try {
-        await opServer.revenue(amount, {
-          deviceId: deviceId || undefined,
-          productId: productId,
-          currency: "USD",
+        await opServer.revenue(revenueAmount, {
+          deviceId,
+          productId,
+          currency: data.currency,
+          checkoutSubtotalAmount: data.subtotalAmount,
+          checkoutDiscountAmount: data.discountAmount,
+          checkoutTaxAmount: data.taxAmount,
+          checkoutTotalAmount,
+          revenueSource: productRevenue?.source ?? "checkout_total",
         });
       } catch (err) {
         console.error("[Webhook] OpenPanel revenue flush failed:", err);
       }
     });
 
-    console.log(`[Webhook] Revenue queued: $${(amount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ""}`);
+    console.log(`[Webhook] Revenue queued: $${(revenueAmount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ""}`);
 
     // Persist plan/maxDevices on the License record when the payload contains
     // enough information. This is best-effort and must never throw.
