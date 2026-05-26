@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Fragment, Suspense } from "react";
 import { Check, Minus } from "lucide-react";
+import RelatedGuidesSection from "../components/RelatedGuidesSection";
+import type { DiscoveryLink } from "@/lib/seo-discovery";
 import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 import Pricing from "../components/sections/Pricing";
@@ -167,12 +169,40 @@ const switchReasons: Array<{
   },
   {
     marker: "∞",
-    title: "Works offline, anywhere",
+    title: "Works without Wi‑Fi after setup",
     body:
-      "On a plane. In a co-working space with bad WiFi. On a locked-down machine after setup. Local transcription does not require an internet connection.",
+      "On a plane. In a co-working space with bad WiFi. After models download, transcription runs locally by default without an internet connection. Optional AI formatting can use cloud text workflows if you enable it.",
     meta: "Outcome · reach",
   },
 ];
+
+const relatedGuides: DiscoveryLink[] = [
+  {
+    href: "/superwhisper-alternative",
+    eyebrow: "mac-native option",
+    title: "Comparing Superwhisper instead?",
+    description:
+      "See how VoiceTypr compares if you want a polished Mac workflow but also need Windows and a single lifetime license.",
+    ctaLabel: "Read the Superwhisper comparison",
+  },
+  {
+    href: "/aqua-voice-alternative",
+    eyebrow: "subscription fatigue",
+    title: "Coming from Aqua Voice?",
+    description:
+      "Same pay-once and local-transcription story, written for buyers who started with Aqua Voice.",
+    ctaLabel: "Read the Aqua Voice comparison",
+  },
+  {
+    href: "/offline-dictation-app-for-windows",
+    eyebrow: "windows-first",
+    title: "Need offline dictation on Windows?",
+    description:
+      "A focused guide for Windows buyers who want local models, lifetime pricing, and dictation in every text field.",
+    ctaLabel: "See the Windows guide",
+  },
+];
+
 
 const faqs = [
   {
@@ -278,11 +308,11 @@ export default function WisprFlowAlternativePage() {
               </div>
 
               <h1 className="mb-6 text-balance text-[clamp(42px,6vw,72px)] font-extrabold leading-[1.02] tracking-tight">
-                Pay once. Run offline. Keep your voice <em>yours.</em>
+                The Wispr Flow alternative for pay-once, offline-first dictation
               </h1>
 
               <p className="mx-auto max-w-2xl text-[18px] md:text-[19px] leading-[1.55] text-editorial-ink-2">
-                VoiceTypr is the lifetime-priced alternative to Wispr Flow. Your voice is transcribed on your device by default, with optional text-only AI enhancement when enabled.
+                The Wispr Flow alternative buyers usually want is simple: stop paying monthly, transcribe locally by default, and still paste into every app you already use. Optional AI formatting can use cloud text workflows if you enable it.
               </p>
 
               <p className="mt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
@@ -530,33 +560,47 @@ export default function WisprFlowAlternativePage() {
           </div>
         </section>
 
+        <RelatedGuidesSection
+          eyebrow="still comparing"
+          title="Other alternatives worth reading"
+          description="If Wispr Flow is not the only tool on your list, these pages lay out the same pay-once and local-transcription case for other popular options."
+          links={relatedGuides}
+          dataTrackPrefix="wispr-alt-related-guides"
+        />
+
         {/* Final CTA */}
         <section className="ed-section">
           <div className="ed-container">
-            <div className="overflow-hidden rounded-xl bg-editorial-surface-2 px-8 py-16 text-center md:py-20">
-              <div className="mb-6 flex justify-center">
-                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">try it for three days</span>
-              </div>
-              <h2 className="mx-auto mb-5 max-w-[760px] text-[clamp(40px,6vw,64px)] font-extrabold leading-[1.02] tracking-tight">
-                Speak. Paste. <em>Keep your voice yours.</em>
-              </h2>
-              <p className="mx-auto mb-10 max-w-xl text-editorial-ink-2 text-[16px] leading-[1.55]">
-                No credit card. Offline dictation by default. No subscription.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href="/download"
-                  data-track="wispr-alt-final-cta-click"
-                  className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-                >
-                  Start free trial
-                </Link>
-                <Link
-                  href="/#pricing"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-bg active:scale-95"
-                >
-                  Buy lifetime license
-                </Link>
+            <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+              <div className="relative">
+                <div className="mb-6 flex justify-center">
+                  <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-white/70">
+                    try it for three days
+                  </span>
+                </div>
+                <h2 className="mx-auto mb-5 max-w-[760px] text-[clamp(36px,5vw,56px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
+                  Try the Wispr Flow alternative with a 3-day trial
+                </h2>
+                <p className="mx-auto mb-8 max-w-xl text-[16px] leading-[1.55] text-white/72">
+                  No credit card. Transcription runs locally by default. Pay once, no subscription.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    data-track="wispr-alt-final-cta-click"
+                    className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  >
+                    Start free trial
+                  </Link>
+                  <Link
+                    href="/#pricing"
+                    className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

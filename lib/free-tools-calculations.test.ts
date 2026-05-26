@@ -7,8 +7,12 @@ import {
   calculateDictationVsTyping,
   calculateTypingLoad,
   calculateTypingSpeedWpm,
+  countLines,
+  countSentences,
   countWords,
+  estimateTokens,
   formatHours,
+  formatReadingMinutes,
   formatMinutes,
 } from "./free-tools-calculations";
 
@@ -16,6 +20,36 @@ describe("free tools calculations", () => {
   it("counts words in a prompt", () => {
     expect(countWords("one two three")).toBe(3);
     expect(countWords("  spaced   words  ")).toBe(2);
+  });
+
+  it("estimates tokens with a chars-per-4 heuristic", () => {
+    expect(estimateTokens("")).toBe(0);
+    expect(estimateTokens("abcd")).toBe(1);
+    expect(estimateTokens("abcde")).toBe(2);
+    expect(estimateTokens("a".repeat(400))).toBe(100);
+  });
+
+  it("counts sentences from punctuation boundaries", () => {
+    expect(countSentences("")).toBe(0);
+    expect(countSentences("One sentence.")).toBe(1);
+    expect(countSentences("First line. Second line! Third?")).toBe(3);
+    expect(countSentences("No ending punctuation")).toBe(1);
+  });
+
+  it("counts lines including blank trailing lines", () => {
+    expect(countLines("")).toBe(0);
+    expect(countLines("single line")).toBe(1);
+    expect(countLines("line one\nline two")).toBe(2);
+    expect(countLines("line one\nline two\n")).toBe(3);
+  });
+
+  it("formats reading time at 200 wpm by default", () => {
+    expect(formatReadingMinutes(0)).toBe("0 min read");
+    expect(formatReadingMinutes(50)).toBe("< 1 min read");
+    expect(formatReadingMinutes(200)).toBe("1 min read");
+    expect(formatReadingMinutes(400)).toBe("2 min read");
+    expect(formatReadingMinutes(12000)).toBe("1h read");
+    expect(formatReadingMinutes(100, 100)).toBe("1 min read");
   });
 
   it("calculates typing speed in wpm", () => {

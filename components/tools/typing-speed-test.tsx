@@ -109,12 +109,20 @@ export function TypingSpeedTest() {
               </p>
             </div>
           </div>
-          <Link
-            href="/download"
-            className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
-          >
-            Try VoiceTypr free
-          </Link>
+          <div className="flex flex-col items-start gap-3">
+            <Link
+              href="/download"
+              className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
+            >
+              Try VoiceTypr free
+            </Link>
+            <Link
+              href="/voice-typing"
+              className="text-[13px] text-editorial-ink-3 underline-offset-2 transition hover:text-editorial-ink-2 hover:underline"
+            >
+              Read the voice typing guide
+            </Link>
+          </div>
         </div>
       ) : null}
     </div>

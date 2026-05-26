@@ -133,9 +133,9 @@ export default function VoiceTypingPage() {
       </section>
 
       <RelatedGuidesSection
-        eyebrow="more specific paths"
-        title="If voice typing is the starting point, these are the next pages people usually need"
-        description="The general page catches the broad search. These pages catch the real reason someone is still shopping."
+        eyebrow="Related guides"
+        title="More specific voice typing guides"
+        description="If pay-once dictation in every app is the goal, these pages cover Windows offline use, Cursor workflows, and platform comparisons."
         links={voiceTypingRelatedGuides}
         dataTrackPrefix="voice-typing-related-guides"
       />

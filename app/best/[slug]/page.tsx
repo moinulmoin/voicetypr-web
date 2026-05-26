@@ -5,7 +5,7 @@ import Footer from "@/app/components/sections/Footer";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import Header from "@/app/components/sections/Header";
 import { getRelatedGuidesForSeoSlug } from "@/lib/seo-discovery";
-import { getSeoPageBySlug, seoPages, type SeoPage } from "@/lib/seo-pages";
+import { getSeoPageBySlug, getSeoPageMetaTitle, seoPages, type SeoPage } from "@/lib/seo-pages";
 function safeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\u003c");
 }
@@ -48,7 +48,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const page = getSeoPageBySlug(slug);
   if (!page) return {};
-  const title = `${page.h1} — VoiceTypr`;
+  const title = getSeoPageMetaTitle(page);
   const url = `https://voicetypr.com/best/${slug}`;
   return {
     title,

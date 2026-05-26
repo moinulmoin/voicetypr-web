@@ -59,10 +59,10 @@ export default function OfflineDictationForWindowsPage() {
         <div className="ed-container max-w-4xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">offline dictation for windows</p>
           <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Private Windows voice typing for every app you already use.
+            Offline dictation app for Windows — private voice typing in every app you already use.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            VoiceTypr gives Windows users local AI dictation with a simple hotkey. Speak, release, and the text appears where your cursor already is.
+            VoiceTypr gives Windows users private, local AI dictation with a simple hotkey. Speak, release, and the text appears where your cursor already is.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
@@ -84,7 +84,7 @@ export default function OfflineDictationForWindowsPage() {
       <section className="ed-section">
         <div className="ed-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">why it ranks</p>
+            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">why it matters</p>
             <h2 className="mt-2 text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
               Windows dictation is still underserved.
             </h2>
@@ -117,9 +117,9 @@ export default function OfflineDictationForWindowsPage() {
       </section>
 
       <RelatedGuidesSection
-        eyebrow="keep the Windows cluster tight"
-        title="These are the next pages Windows buyers usually open"
-        description="Offline is one angle. Replacement path, broader Windows comparison, and typing-load use cases usually come right after it."
+        eyebrow="Related guides"
+        title="More Windows dictation guides"
+        description="Compare built-in replacements, broader Windows options, and workflows where typing load matters."
         links={offlineWindowsRelatedGuides}
         dataTrackPrefix="offline-windows-related-guides"
       />

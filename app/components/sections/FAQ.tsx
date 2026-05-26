@@ -19,7 +19,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'Is my voice data private?',
-    a: 'Yes. VoiceTypr transcribes your voice on your machine by default using local models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs). Optional cleaner-text features work on final text, not your voice recording, when you choose to enable them.',
+    a: 'Yes. VoiceTypr uses offline dictation by default with local models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs). Optional cleaner-text features work on final text, not your voice recording, when you choose to enable them.',
   },
   {
     q: 'How does cleaner text work?',
@@ -28,6 +28,22 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   {
     q: 'What are the system requirements?',
     a: 'macOS Ventura 13+ with Apple Silicon recommended, Intel Mac supported, or Windows 10+. Minimum 4 GB RAM.',
+  },
+  {
+    q: 'How many devices can I use?',
+    a: 'Your license covers the device count you buy: 1, 2, or 4 simultaneous activations. Deactivate a machine and move the license to another within that limit. Need more seats? Email support@voicetypr.com for team licensing.',
+  },
+  {
+    q: 'Are taxes included in the price?',
+    a: 'Checkout runs through Polar. They calculate and collect sales tax or VAT where required based on your location — you see the final total before you pay.',
+  },
+  {
+    q: 'What does lifetime mean?',
+    a: 'One payment for the current VoiceTypr product, including updates we ship for it — no subscription. We do not guarantee every future feature or a fixed release schedule; if development pauses, your license stays valid for the latest version available at that time.',
+  },
+  {
+    q: 'How is VoiceTypr different from built-in dictation?',
+    a: 'macOS and Windows include system dictation, but it is often tied to the OS text field and may use cloud processing depending on settings. VoiceTypr uses local transcription by default, works with a global hotkey into ChatGPT, Cursor, Slack, and any text cursor, and is a one-time purchase with model choice and file transcription.',
   },
   {
     q: 'Does it use my GPU on Windows?',

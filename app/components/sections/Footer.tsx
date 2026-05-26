@@ -10,10 +10,33 @@ const resourceLinks = [
   { label: 'Windows voice typing', href: '/best/windows-voice-typing' },
   { label: 'Offline dictation for Windows', href: '/offline-dictation-app-for-windows' },
   { label: 'Accessible dictation', href: '/best/accessible-dictation' },
+  { label: 'Voice input for Cursor', href: '/voice-input-for-cursor' },
+  { label: 'Wispr Flow alternative', href: '/wispr-flow-alternative' },
+  { label: 'Dictation app', href: '/voice-typing' },
   { label: 'Writers', href: '/use-cases/writers' },
   { label: 'Product managers', href: '/use-cases/product-managers' },
   { label: 'Customer support', href: '/use-cases/customer-support' },
 ] as const;
+
+const promptLengthCounterLink = {
+  label: 'Prompt length counter',
+  href: '/tools/prompt-length-counter',
+  internal: true as const,
+};
+
+function getFooterFreeToolLinks() {
+  const toolLinks = getAllFreeTools().map((tool) => ({
+    label: tool.shortTitle,
+    href: `/tools/${tool.slug}`,
+    internal: true as const,
+  }));
+
+  if (toolLinks.some((link) => link.href === promptLengthCounterLink.href)) {
+    return toolLinks;
+  }
+
+  return [...toolLinks, promptLengthCounterLink];
+}
 
 const columns = [
   {
@@ -32,11 +55,7 @@ const columns = [
   },
   {
     title: 'Free tools',
-    links: getAllFreeTools().map((tool) => ({
-      label: tool.shortTitle,
-      href: `/tools/${tool.slug}`,
-      internal: true as const,
-    })),
+    links: getFooterFreeToolLinks(),
   },
   {
     title: 'Company',

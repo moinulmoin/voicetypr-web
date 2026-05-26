@@ -49,6 +49,17 @@ export const freeTools: readonly FreeTool[] = [
       "Free 10-second typing speed test to measure WPM and see how dictation compares.",
     ogTitle: "10-second typing speed test — VoiceTypr",
   },
+  {
+    slug: "prompt-length-counter",
+    shortTitle: "Prompt length counter",
+    title: "AI prompt length counter",
+    lede: "Count characters, words, lines, and a rough token estimate before you paste into ChatGPT, Cursor, or Claude.",
+    description: "Live prompt stats with a rough token estimate and reading time.",
+    metaTitle: "Prompt length counter — AI prompt character counter | VoiceTypr",
+    metaDescription:
+      "Free prompt length counter and AI prompt character counter. Count words, lines, sentences, rough tokens, and reading time as you write.",
+    ogTitle: "AI prompt length counter — VoiceTypr",
+  },
 ] as const;
 
 export function getAllFreeTools() {

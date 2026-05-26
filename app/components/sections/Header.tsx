@@ -68,6 +68,14 @@ export default function Header() {
               Use cases
             </Link>
 
+            <Link
+              href="/tools"
+              className="transition-colors hover:text-editorial-ink"
+              data-umami-event="nav-free-tools-click"
+            >
+              Free tools
+            </Link>
+
             {navLinks.slice(2).map((link) => (
               <a
                 key={link.section}

@@ -5,7 +5,7 @@
  * marketing slop).
  */
 
-export type UseCaseCategory = "accessibility" | "profession" | "workflow";
+export type UseCaseCategory = "accessibility" | "profession";
 
 export const USE_CASE_PAGES_LAST_UPDATED = "2026-05-18";
 
@@ -15,6 +15,8 @@ export type UseCase = {
   ogTitle: string; // shorter for OG
   description: string; // metadata description, 145-155 chars
   navLabel: string; // hub card / nav label
+  /** One-line hub card teaser (~120 chars). Falls back to hero lede on the hub. */
+  hubTeaser?: string;
   category: UseCaseCategory;
   /** Order within category. Lower = higher priority. */
   order: number;
@@ -51,12 +53,6 @@ export const USE_CASE_CATEGORIES: Record<UseCaseCategory, { label: string; eyebr
     description:
       "How VoiceTypr shows up day-to-day for the people who use it most. Concrete workflows, not generic productivity claims.",
   },
-  workflow: {
-    label: "By workflow",
-    eyebrow: "for the things you do every day",
-    description:
-      "Specific tasks where dictating saves more than time — drafting, prompting, replying, capturing.",
-  },
 };
 
 const USE_CASE_ENTRIES: UseCase[] = [
@@ -70,6 +66,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Type at the speed you think. Voice typing for people with ADHD: capture ideas before they vanish, write at speaking speed, and reduce typing friction.",
     navLabel: "ADHD",
+    hubTeaser:
+      "Capture fleeting ideas at speaking speed—local voice typing that pastes into Slack, Docs, or whatever app already has focus.",
     category: "accessibility",
     order: 1,
     hero: {
@@ -166,7 +164,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the thought <em>before it leaves.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Hold the hotkey, say the thought once, and paste it where you were already working—transcribed on your machine by default. Try VoiceTypr free for 3 days.",
     },
     keywords: [
       "voice typing for adhd",
@@ -181,8 +179,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Dyslexia — Bypass spelling friction, write at speaking speed",
     ogTitle: "VoiceTypr for Dyslexia",
     description:
-      "Voice typing for dyslexia. Write what you mean without fighting spelling, autocorrect, or the slow-down of constantly re-reading. Local transcription, pay-once.",
+      "Voice typing for dyslexia. Write what you mean without fighting spelling, autocorrect, or re-reading loops. Local transcription with pay-once pricing.",
     navLabel: "Dyslexia",
+    hubTeaser:
+      "Say what you mean first; let transcription carry spelling and pacing so you edit ideas—not every keystroke.",
     category: "accessibility",
     order: 2,
     hero: {
@@ -279,7 +279,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Write at the speed <em>you talk.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Get ideas onto the page at speaking speed, then edit with your eyes when you're ready. Local transcription by default; 3-day trial, lifetime license available.",
     },
     keywords: [
       "voice typing for dyslexia",
@@ -294,8 +294,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for RSI — Voice typing for wrist pain and repetitive strain",
     ogTitle: "VoiceTypr for RSI",
     description:
-      "Wrist pain or RSI keeping you from typing? VoiceTypr is offline voice-to-text that takes the load off your hands. Pay once, lifetime.",
+      "Wrist pain or RSI slowing your typing? VoiceTypr is offline voice-to-text that shifts daily writing off your hands. Pay once, lifetime license.",
     navLabel: "RSI / wrist pain",
+    hubTeaser:
+      "Route daily writing through voice so wrists and forearms get relief while replies and docs still land on time.",
     category: "accessibility",
     order: 3,
     hero: {
@@ -392,7 +394,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Give your <em>hands a break.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Shift the repetitive writing off your wrists without changing apps—offline dictation by default. Start a 3-day trial and keep it with a one-time license.",
     },
     keywords: [
       "voice typing for rsi",
@@ -409,8 +411,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Carpal Tunnel — Voice typing when your hands need a break",
     ogTitle: "VoiceTypr for Carpal Tunnel",
     description:
-      "Voice typing for carpal tunnel and hand pain. Dictate emails, docs, prompts, and replies locally in any app. Pay once, lifetime.",
+      "Voice typing for carpal tunnel and hand pain. Dictate emails, docs, prompts, and replies locally in any app on Mac or Windows. Pay once.",
     navLabel: "Carpal tunnel",
+    hubTeaser:
+      "Dictate email, tickets, and docs when gripping a keyboard hurts—local transcription in the apps you already use.",
     category: "accessibility",
     order: 4,
     hero: {
@@ -507,7 +511,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Keep writing. <em>Use your hands less.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Keep answering email and docs when typing hurts: dictate locally, paste anywhere. Three-day free trial; pay once if it becomes daily gear.",
     },
     keywords: [
       "voice typing for carpal tunnel",
@@ -524,6 +528,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Accessible voice typing for people with motor impairments. Dictate into Windows or Mac apps with local transcription and lifetime pricing.",
     navLabel: "Motor impairments",
+    hubTeaser:
+      "Hands-free input into any text field on Mac or Windows, with on-device transcription and a lifetime license option.",
     category: "accessibility",
     order: 5,
     hero: {
@@ -620,7 +626,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Say it once. <em>Put it where it belongs.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Put text where your cursor is with a hotkey—not a hunt through menus. On-device transcription by default; try free for 3 days, then buy once.",
     },
     keywords: [
       "accessible voice typing",
@@ -641,6 +647,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Dictate prompts to Cursor, commit messages, PR descriptions, and design docs. Offline voice typing built for developers who write more English than code.",
     navLabel: "Developers",
+    hubTeaser:
+      "Dictate Cursor prompts, PR descriptions, and design docs—keep sensitive context local by default.",
     category: "profession",
     order: 1,
     hero: {
@@ -663,7 +671,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Cloud dictation is a non-starter for sensitive prompts.",
         body:
-          "You don't want production logs, customer details, or pre-public feature work going to a third-party transcription server. Offline-first or it doesn't ship.",
+          "Sensitive prompts and pre-release context stay off the cloud by default. Transcribed on your machine by default. Optional AI formatting can send text only if you enable it.",
       },
       {
         title: "PR descriptions and design docs get skipped when typing is expensive.",
@@ -741,7 +749,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Stop typing the <em>English-side</em> of the job.",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Stop burning keystrokes on prompts and PR prose—dictate locally, paste into Cursor, GitHub, or Slack. Free for 3 days; lifetime license if it sticks.",
     },
     keywords: [
       "voice typing for developers",
@@ -758,6 +766,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Voice typing for writers, novelists, and content creators. Draft by speaking, edit later. Local transcription, pay-once, works in every writing app.",
     navLabel: "Writers",
+    hubTeaser:
+      "Talk the messy first draft in Scrivener, Docs, or Notion; polish on a second pass when your editor brain wakes up.",
     category: "profession",
     order: 2,
     hero: {
@@ -776,7 +786,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Cloud dictation is a hard pass for unfinished work.",
         body:
-          "Half-baked ideas, character names, plot beats — none of it should be sent to a server. You want a tool that respects pre-publication privacy.",
+          "Unfinished drafts and plot material deserve discretion. Transcribed on your machine by default. Optional AI formatting can send text only if you enable it.",
       },
       {
         title: "Built-in dictation can't handle a long block.",
@@ -786,17 +796,17 @@ const USE_CASE_ENTRIES: UseCase[] = [
     ],
     outcomes: [
       {
-        marker: "≈ 2×",
-        title: "More drafted per session",
+        marker: "draft",
+        title: "Long chapters in one session",
         body:
-          "Talking is roughly twice as fast as typing for most people. The first draft of a 3,000-word piece becomes a one-hour task, not a half-day one.",
+          "Speaking keeps drafting momentum: many writers finish a rough chapter or essay block in a single voice session, then edit on a second pass.",
         meta: "Outcome · pace",
       },
       {
         marker: "local",
         title: "Pre-publication privacy",
         body:
-          "Audio stays on your machine. Drafts, plot notes, character backstory — none of it touches a third-party server.",
+          "Transcribed on your machine by default. Optional AI formatting can send text only if you enable it.",
         meta: "Outcome · privacy",
       },
       {
@@ -854,7 +864,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Get the draft out <em>at the speed you think.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Separate drafting from editing: talk the chapter today, tighten tomorrow. Local transcription by default; 3-day trial, then a pay-once license.",
     },
     keywords: [
       "voice typing for writers",
@@ -871,6 +881,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Built by a solo founder, for solo founders. Dictate prompts, support replies, specs, and Slack updates. Local transcription, pay-once, no subscription.",
     navLabel: "Founders & solopreneurs",
+    hubTeaser:
+      "Dump specs, investor updates, and agent prompts by voice between meetings—without another subscription tab open.",
     category: "profession",
     order: 3,
     hero: {
@@ -967,7 +979,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Built by a founder. <em>For founders.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Ship the spec, reply, and investor note while the idea is still warm—voice in, paste in place. Try 3 days free; lifetime pricing when you're convinced.",
     },
     keywords: [
       "voice typing for founders",
@@ -984,6 +996,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Voice typing for journalists and reporters. Summarize interviews, draft intros, and write faster in your usual apps with local transcription.",
     navLabel: "Journalists",
+    hubTeaser:
+      "Turn interview memory into ledes, nut grafs, and summaries in your CMS or doc—while the quotes still sound fresh.",
     category: "profession",
     order: 4,
     hero: {
@@ -1080,7 +1094,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the angle <em>before typing flattens it.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "File the lede and summary while the interview is still in your head. Transcribed locally by default; 3-day trial, lifetime license option.",
     },
     keywords: [
       "voice typing for journalists",
@@ -1095,8 +1109,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Product Managers — PRDs, specs, and updates at speaking speed",
     ogTitle: "VoiceTypr for Product Managers",
     description:
-      "Voice typing for product managers. Dictate PRDs, user stories, sprint updates, and decision docs in Notion, Jira, Slack, and docs.",
+      "Voice typing for product managers. Dictate PRDs, user stories, sprint updates, and decision docs in Notion, Jira, Slack, and Google Docs.",
     navLabel: "Product managers",
+    hubTeaser:
+      "Convert standup reasoning into PRDs, decision logs, and Jira stories before the next meeting wipes the nuance.",
     category: "profession",
     order: 5,
     hero: {
@@ -1125,10 +1141,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     ],
     outcomes: [
       {
-        marker: "3×",
-        title: "Faster first-pass documentation",
+        marker: "1-pass",
+        title: "PRD draft in one sitting",
         body:
-          "PRDs, user stories, decision logs, and sprint updates get drafted at speaking speed instead of at keyboard speed.",
+          "Talk through problem, users, edge cases, and non-goals once—then edit the doc instead of fighting a blank page at keyboard speed.",
         meta: "Outcome · throughput",
       },
       {
@@ -1193,7 +1209,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Document the decision <em>while it still makes sense.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Turn the reasoning from your last standup into a PRD or decision log before the next meeting. Local by default; free trial, then pay once.",
     },
     keywords: [
       "voice typing for product managers",
@@ -1210,6 +1226,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Voice typing for customer support reps. Dictate ticket replies, CRM notes, and escalation context faster in help desks, chat, and email.",
     navLabel: "Customer support",
+    hubTeaser:
+      "Clear ticket queues by dictating empathetic replies and internal notes—fewer repetitive keystrokes per shift.",
     category: "profession",
     order: 6,
     hero: {
@@ -1306,7 +1324,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Get through the queue <em>with fewer keystrokes.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Close more tickets with less finger fatigue—dictate replies, paste into your help desk. Offline by default; 3-day trial, lifetime license.",
     },
     keywords: [
       "voice typing for customer support",
@@ -1323,6 +1341,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Voice typing for lawyers. Dictate client emails, case notes, drafts, and time-entry context faster with local transcription by default.",
     navLabel: "Lawyers",
+    hubTeaser:
+      "Draft client emails, matter notes, and time-entry context by voice—local by default for confidential material.",
     category: "profession",
     order: 7,
     hero: {
@@ -1419,7 +1439,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Move the first draft to voice. <em>Keep the review in your hands.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Move first drafts of client email and matter notes to voice; keep review in your hands. Local transcription by default; try free for 3 days.",
     },
     keywords: [
       "dictation software for lawyers",
@@ -1434,8 +1454,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Students — Get the draft out before perfection kills it",
     ogTitle: "VoiceTypr for Students",
     description:
-      "Voice typing for students. Dictate essays, notes, outlines, and study prompts faster in Docs, Word, Notion, and browser tools.",
+      "Voice typing for students. Dictate essays, lecture notes, outlines, and study prompts faster in Google Docs, Word, Notion, and browser tools.",
     navLabel: "Students",
+    hubTeaser:
+      "Outline essays, lecture notes, and study answers by speaking—paste into Docs, Word, or browser forms.",
     category: "profession",
     order: 8,
     hero: {
@@ -1532,7 +1554,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Say the first draft. <em>Edit the smarter one.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Beat blank-page paralysis on essays and notes—speak the draft, paste into Docs or Word. On-device by default; 3-day trial, pay-once license.",
     },
     keywords: [
       "voice typing for students",
@@ -1547,8 +1569,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Researchers — Capture the idea before the paper version shows up",
     ogTitle: "VoiceTypr for Researchers",
     description:
-      "Voice typing for researchers. Dictate notes, literature summaries, memos, and draft sections faster in Docs, Word, Notion, and email.",
+      "Voice typing for researchers. Dictate field notes, literature summaries, memos, and draft sections in Docs, Word, Notion, and your email client.",
     navLabel: "Researchers",
+    hubTeaser:
+      "Capture literature takeaways and draft sections after reading blocks—voice before the insight fades.",
     category: "profession",
     order: 9,
     hero: {
@@ -1645,7 +1669,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Capture the real thought. <em>Polish the paper later.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Capture the insight right after the paper block—dictate notes and draft sections locally. Free for 3 days; lifetime license when it's daily workflow.",
     },
     keywords: [
       "voice typing for researchers",
@@ -1662,6 +1686,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Voice typing for recruiters. Dictate candidate notes, outreach drafts, interview summaries, and CRM updates faster in your usual tools.",
     navLabel: "Recruiters",
+    hubTeaser:
+      "Log interview impressions and outreach drafts into your ATS or email while candidates are still top of mind.",
     category: "profession",
     order: 10,
     hero: {
@@ -1758,7 +1784,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Keep the signal. <em>Lose some of the typing.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Log candidate signal while it's fresh—voice notes into CRM or email, no retyping marathon. Local by default; 3-day trial, lifetime pricing.",
     },
     keywords: [
       "voice typing for recruiters",
@@ -1773,8 +1799,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Sales — Follow up while the call still has heat",
     ogTitle: "VoiceTypr for Sales",
     description:
-      "Voice typing for sales reps. Dictate follow-ups, CRM notes, call recaps, and proposal drafts faster across your sales workflow.",
+      "Voice typing for sales reps. Dictate follow-ups, CRM notes, call recaps, and proposal drafts across Gmail, Salesforce, HubSpot, and Slack.",
     navLabel: "Sales",
+    hubTeaser:
+      "Send follow-ups and CRM call notes right after the meeting—voice keeps tone natural and typing light.",
     category: "profession",
     order: 11,
     hero: {
@@ -1871,7 +1899,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Send the follow-up. <em>Do less typing to get there.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Send the follow-up before the prospect goes cold—dictate, paste into CRM or Gmail. Transcribed on your machine by default; try free for 3 days.",
     },
     keywords: [
       "voice typing for sales reps",
@@ -1888,6 +1916,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
     description:
       "Voice typing for marketers. Dictate campaign briefs, copy drafts, content outlines, and strategy notes faster in the tools you already use.",
     navLabel: "Marketers",
+    hubTeaser:
+      "Talk campaign briefs, ad copy angles, and content outlines into Notion or Docs before creative energy dips.",
     category: "profession",
     order: 12,
     hero: {
@@ -1984,7 +2014,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Talk the first angle. <em>Edit the sharper version.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Brief the campaign and rough the copy by voice before the energy dips. Local transcription by default; 3-day trial, then a one-time license.",
     },
     keywords: [
       "voice typing for marketers",
@@ -1999,8 +2029,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
     title: "VoiceTypr for Consultants — The meeting ends, the memo still needs to happen",
     ogTitle: "VoiceTypr for Consultants",
     description:
-      "Voice typing for consultants. Dictate client recaps, internal notes, proposal drafts, and memos faster without changing your workflow.",
+      "Voice typing for consultants. Dictate client recaps, workshop notes, proposal drafts, and internal memos in the tools you already bill through.",
     navLabel: "Consultants",
+    hubTeaser:
+      "Dictate client recaps, workshop notes, and proposal skeletons between calls—same apps, less typing tax.",
     category: "profession",
     order: 13,
     hero: {
@@ -2097,7 +2129,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Get the memo started. <em>Keep the thinking intact.</em>",
-      body: "VoiceTypr transcribes your voice on your machine by default and is sold as a lifetime license. Try it free for 3 days.",
+      body: "Get the client recap and proposal skeleton down between calls—not after midnight typing. Local by default; free trial, lifetime license available.",
     },
     keywords: [
       "dictation software for consultants",
@@ -2116,7 +2148,7 @@ const USE_CASE_BY_SLUG: Record<string, UseCase> = Object.fromEntries(
 export function getAllUseCases(): UseCase[] {
   return [...USE_CASE_ENTRIES].sort((a, b) => {
     if (a.category !== b.category) {
-      const order: UseCaseCategory[] = ["accessibility", "profession", "workflow"];
+      const order: UseCaseCategory[] = ["accessibility", "profession"];
       return order.indexOf(a.category) - order.indexOf(b.category);
     }
     return a.order - b.order;
@@ -2127,7 +2159,6 @@ export function getUseCasesByCategory(): Record<UseCaseCategory, UseCase[]> {
   const grouped: Record<UseCaseCategory, UseCase[]> = {
     accessibility: [],
     profession: [],
-    workflow: [],
   };
   for (const entry of getAllUseCases()) {
     grouped[entry.category].push(entry);

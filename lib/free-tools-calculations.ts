@@ -85,6 +85,35 @@ export function countWords(text: string) {
   return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
+export function estimateTokens(text: string) {
+  if (!text) return 0;
+  return Math.ceil(text.length / 4);
+}
+
+export function countSentences(text: string) {
+  const trimmed = text.trim();
+  if (!trimmed) return 0;
+
+  const matches = trimmed.match(/[^.!?]+[.!?]+|[^.!?]+$/g);
+  return matches ? matches.filter((part) => part.trim()).length : 1;
+}
+
+export function countLines(text: string) {
+  if (!text) return 0;
+  return text.split(/\r?\n/).length;
+}
+
+export function formatReadingMinutes(words: number, wpm = 200) {
+  const safeWords = nonNegative(words);
+  const safeWpm = positiveOrDefault(wpm, 200);
+  if (safeWords === 0) return "0 min read";
+
+  const minutes = safeWords / safeWpm;
+  if (minutes < 1) return "< 1 min read";
+
+  return `${formatMinutes(minutes)} read`;
+}
+
 export function calculateTypingSpeedWpm(words: number, seconds: number) {
   const safeWords = nonNegative(words);
   if (!Number.isFinite(seconds) || seconds <= 0) return 0;

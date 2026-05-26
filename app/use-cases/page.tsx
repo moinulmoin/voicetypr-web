@@ -47,7 +47,8 @@ function UseCaseRow({ useCase }: { useCase: UseCase }) {
           {useCase.navLabel}
         </h3>
         <p className="mt-1 max-w-[560px] text-[15px] leading-[1.6] text-editorial-ink-2">
-          {useCase.hero.lede.split(".")[0]}.
+          {useCase.hubTeaser ??
+            `${useCase.hero.lede.split(".")[0]}.`}
         </p>
       </div>
       <span className="shrink-0 pt-1 text-[13px] font-medium text-editorial-ink-2 transition-colors group-hover:text-editorial-ink">
@@ -59,11 +60,7 @@ function UseCaseRow({ useCase }: { useCase: UseCase }) {
 
 export default function UseCasesHubPage() {
   const grouped = getUseCasesByCategory();
-  const categoryOrder: UseCaseCategory[] = [
-    "accessibility",
-    "profession",
-    "workflow",
-  ];
+  const categoryOrder: UseCaseCategory[] = ["accessibility", "profession"];
 
   return (
     <>
@@ -77,16 +74,48 @@ export default function UseCasesHubPage() {
           <div className="ed-container">
             <div className="max-w-[820px]">
               <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                Use cases · the people we built it for
+                Use cases
               </div>
               <h1 className="mt-3 mb-5 text-[clamp(44px,6.4vw,76px)] font-bold leading-[1.02] tracking-[-0.02em]">
-                Real workflows from the people we built it for
+                Who uses VoiceTypr
               </h1>
               <p className="max-w-[640px] text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
                 When typing is the bottleneck — physical, cognitive, or because
                 the English side of your job grew faster than your fingers —
                 voice routes around it. Here&apos;s how that looks for the people who use VoiceTypr daily.
               </p>
+              <nav
+                aria-label="Popular starting points"
+                className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[15px] font-medium"
+              >
+                <span className="w-full text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3 sm:w-auto sm:pr-1">
+                  Popular starting points
+                </span>
+                <Link
+                  href="/voice-typing"
+                  className="text-editorial-ink-2 underline decoration-editorial-line underline-offset-4 transition-colors hover:text-editorial-ink"
+                >
+                  Voice typing
+                </Link>
+                <Link
+                  href="/offline-dictation-app-for-windows"
+                  className="text-editorial-ink-2 underline decoration-editorial-line underline-offset-4 transition-colors hover:text-editorial-ink"
+                >
+                  Offline dictation for Windows
+                </Link>
+                <Link
+                  href="/best/accessible-dictation"
+                  className="text-editorial-ink-2 underline decoration-editorial-line underline-offset-4 transition-colors hover:text-editorial-ink"
+                >
+                  Accessible dictation
+                </Link>
+                <Link
+                  href="/tools"
+                  className="text-editorial-ink-2 underline decoration-editorial-line underline-offset-4 transition-colors hover:text-editorial-ink"
+                >
+                  Tools
+                </Link>
+              </nav>
             </div>
           </div>
         </section>

@@ -39,7 +39,7 @@ export default function HeroSection() {
 
           <p className="mt-6 text-sm font-medium text-editorial-ink-2">
             3-day free trial <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
-            Runs on your machine <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
+            Local transcription by default <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
             Mac + Windows <span className="text-editorial-ink-3" aria-hidden="true"> · </span>
             Pay once
           </p>

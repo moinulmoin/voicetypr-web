@@ -46,8 +46,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Privacy',
-    title: 'Fast, private, offline-first',
-    body: 'Local models turn speech into text on your machine, so everyday dictation feels quick without routing audio through a cloud transcription service.',
+    title: 'Fast, private, offline dictation by default',
+    body: 'Local transcription on your machine turns speech into text, so everyday dictation stays quick without routing audio through a cloud transcription service.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
@@ -139,7 +139,7 @@ const featureCards: FeatureCard[] = [
           wav · mp3 · m4a · flac · mp4 · webm
         </div>
         <div className="mt-3 flex items-center justify-between text-xs text-editorial-ink-3">
-          <span>Processing locally</span>
+          <span>Local transcription</span>
           <span className="font-mono">00:18</span>
         </div>
       </div>
@@ -162,8 +162,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Languages',
-    title: 'Work in 99+ languages',
-    body: 'Speak naturally in English, Spanish, French, German, Italian, Dutch, and many more languages without switching tools.',
+    title: 'Multilingual dictation across major languages',
+    body: 'Speak naturally in English, Spanish, French, German, Italian, Dutch, and other widely used languages without switching tools.',
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">
@@ -217,7 +217,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Vocabulary',
     title: 'Teach it your words',
-    body: 'Add product names, acronyms, and phrases you use daily so the transcription gets them right every time.',
+    body: 'Add product names, acronyms, and phrases you use daily so transcription picks them up more reliably.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
@@ -232,7 +232,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Replacements',
     title: 'Fix repeated mistakes automatically',
-    body: 'Set replacements for words and phrases the model always hears wrong. VoiceTypr swaps them before pasting.',
+    body: 'Set replacements for words and phrases the model often mishears. VoiceTypr swaps them before pasting.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">

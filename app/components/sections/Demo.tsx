@@ -38,7 +38,7 @@ export default function Demo() {
                 >
                   <Image
                     src="/Write.jpg"
-                    alt="VoiceTypr poster showing write 3x faster with your voice"
+                    alt="VoiceTypr demo — hotkey, speak, text at the cursor"
                     fill
                     priority
                     sizes="(min-width: 1024px) 960px, calc(100vw - 48px)"

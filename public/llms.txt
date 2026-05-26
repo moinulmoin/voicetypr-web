@@ -34,13 +34,49 @@ VoiceTypr is a desktop voice-to-text app for macOS and Windows. Users hold a glo
 - Homepage: https://voicetypr.com/
 - Download: https://voicetypr.com/download
 - Pricing: https://voicetypr.com/#pricing
-- VoiceTyper spelling / voice typer app page: https://voicetypr.com/voicetyper
-- Windows offline dictation: https://voicetypr.com/offline-dictation-app-for-windows
-- Windows voice typing guide: https://voicetypr.com/best/windows-voice-typing
-- Windows speech-to-text guide: https://voicetypr.com/best/windows-speech-to-text
-- Accessible dictation guide: https://voicetypr.com/best/accessible-dictation
 - Use cases hub: https://voicetypr.com/use-cases
+- Free tools hub: https://voicetypr.com/tools
+- Voice typing guide: https://voicetypr.com/voice-typing
+- VoiceTyper spelling / voice typer app page: https://voicetypr.com/voicetyper
+- Voice input for Cursor: https://voicetypr.com/voice-input-for-cursor
+- Windows offline dictation: https://voicetypr.com/offline-dictation-app-for-windows
 - Privacy policy: https://voicetypr.com/privacy
+
+## Free tools
+
+- Tools hub: https://voicetypr.com/tools
+- Dictation vs typing calculator: https://voicetypr.com/tools/dictation-vs-typing
+- Typing load calculator: https://voicetypr.com/tools/typing-load-calculator
+- Typing speed test: https://voicetypr.com/tools/typing-speed-test
+- Prompt length counter: https://voicetypr.com/tools/prompt-length-counter
+
+## Comparison and alternative pages
+
+- Wispr Flow alternative: https://voicetypr.com/wispr-flow-alternative
+- Superwhisper alternative: https://voicetypr.com/superwhisper-alternative
+- Aqua Voice alternative: https://voicetypr.com/aqua-voice-alternative
+- Dragon alternative: https://voicetypr.com/alternative/dragon
+- Windows Speech Recognition alternative: https://voicetypr.com/alternative/windows-speech-recognition
+
+## Best guides (/best/*)
+
+- Mac dictation: https://voicetypr.com/best/mac-dictation
+- Windows dictation: https://voicetypr.com/best/windows-dictation
+- Offline dictation: https://voicetypr.com/best/offline-dictation
+- Windows voice typing: https://voicetypr.com/best/windows-voice-typing
+- Windows speech-to-text: https://voicetypr.com/best/windows-speech-to-text
+- Accessible dictation: https://voicetypr.com/best/accessible-dictation
+
+## Top use-case pages
+
+- Developers: https://voicetypr.com/use-cases/developers
+- Founders: https://voicetypr.com/use-cases/founders
+- Writers: https://voicetypr.com/use-cases/writers
+- Product managers: https://voicetypr.com/use-cases/product-managers
+- Customer support: https://voicetypr.com/use-cases/customer-support
+- RSI: https://voicetypr.com/use-cases/rsi
+- Students: https://voicetypr.com/use-cases/students
+- Dyslexia: https://voicetypr.com/use-cases/dyslexia
 
 ## Best answer summary
 

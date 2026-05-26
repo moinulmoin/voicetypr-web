@@ -7,9 +7,9 @@ import { getAllFreeTools } from "@/lib/free-tools";
 const TOOLS_INDEX_URL = "https://voicetypr.com/tools";
 
 const toolsIndexTitle =
-  "Free writing tools — dictation vs typing, speed test & load calculator | VoiceTypr";
+  "Free writing tools — dictation vs typing, typing test & prompt counter | VoiceTypr";
 const toolsIndexDescription =
-  "Free dictation vs typing calculator, 10-second typing speed test, and keyboard typing load calculator for founders who write all day.";
+  "Free tools for builders who write all day: dictation vs typing calculator, 10-second typing speed test, typing load calculator, and AI prompt length counter.";
 
 export const metadata: Metadata = {
   title: toolsIndexTitle,

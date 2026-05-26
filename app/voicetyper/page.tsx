@@ -74,21 +74,21 @@ const voicetyperRelatedGuides: DiscoveryLink[] = [
     eyebrow: 'general workflow',
     title: 'Voice typing in every app',
     description:
-      'The broader page for people who searched VoiceTyper but still need the full pay-once dictation story.',
+      'The full pay-once dictation guide if you want voice typing in every app, not just the VoiceTyper name.',
     ctaLabel: 'See the general guide',
   },
   {
     href: '/offline-dictation-app-for-windows',
     eyebrow: 'windows offline path',
     title: 'Offline dictation for Windows',
-    description: 'A tighter page for Windows buyers who care most about local transcription by default.',
+    description: 'Local transcription on Windows when offline privacy matters most.',
     ctaLabel: 'See the Windows page',
   },
   {
     href: '/best/mac-dictation',
     eyebrow: 'mac comparison',
     title: 'Mac dictation guide',
-    description: 'Useful when the search started on Mac and the next step is comparing realistic local options.',
+    description: 'Compare realistic local dictation options on Mac.',
     ctaLabel: 'See the Mac guide',
   },
 ];
@@ -140,7 +140,7 @@ export default function VoiceTyperPage() {
             Looking for VoiceTyper? The app is VoiceTypr.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            People search for VoiceTyper, voice typer, voice typer app, and voice typing app when they want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built to help you write with your voice in every app.
+            If you looked up VoiceTyper, voice typer, voice typer app, or voice typing app, you probably want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built to help you write with your voice in every app.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
@@ -236,9 +236,9 @@ export default function VoiceTyperPage() {
       </section>
 
       <RelatedGuidesSection
-        eyebrow="spelling and shopping paths"
-        title="People searching VoiceTyper usually still need these pages next"
-        description="The typo page catches the brand misspell. These pages catch the workflow, platform, and comparison searches that follow."
+        eyebrow="Related guides"
+        title="Guides people often read after VoiceTyper"
+        description="VoiceTyper is a common misspelling of VoiceTypr. These guides cover pricing, workflows, and platform-specific comparisons."
         links={voicetyperRelatedGuides}
         dataTrackPrefix="voicetyper-related-guides"
       />
@@ -250,7 +250,7 @@ export default function VoiceTyperPage() {
             <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
             <div className="relative">
               <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
-                Try VoiceTypr—the app behind the VoiceTyper search.
+                Try VoiceTypr—the app people mean when they look up VoiceTyper.
               </h2>
               <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
                 3-day free trial. No credit card. Pay once from $39 on Mac and Windows.

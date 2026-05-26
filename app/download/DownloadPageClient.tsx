@@ -5,9 +5,11 @@ import FAQ from "@/app/components/sections/FAQ";
 import PricingCards from "@/components/PricingCards";
 import { trackTwitterConversion } from "@/lib/twitter-pixel";
 import { useMemo, useState, useSyncExternalStore, type ReactElement } from "react";
+import RelatedGuidesSection from "../components/RelatedGuidesSection";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
 import EmailCaptureModal from "../components/EmailCaptureModal";
+import { downloadDiscoveryLinks } from "@/lib/seo-discovery";
 
 // Apple icon component
 const AppleIcon = () => (
@@ -304,6 +306,14 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
 
       {/* FAQ */}
       <FAQ />
+
+      <RelatedGuidesSection
+        eyebrow="still deciding?"
+        title="Guides people usually read before they download"
+        description="If you are comparing Windows options, accessibility needs, or typing load, these pages answer the questions that usually come up right before install."
+        links={downloadDiscoveryLinks}
+        dataTrackPrefix="download-related-guides"
+      />
 
       <Footer />
 

@@ -67,12 +67,20 @@ export function TypingLoadCalculator() {
               Suggested breaks: about {result.breakMinutesPerHour} minutes per hour away from the keyboard.
             </p>
             <p className="text-[14px] leading-relaxed text-editorial-ink-2">{result.recommendation}</p>
-            <Link
-              href="/download"
-              className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
-            >
-              Try VoiceTypr free
-            </Link>
+            <div className="flex flex-col items-start gap-3">
+              <Link
+                href="/download"
+                className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
+              >
+                Try VoiceTypr free
+              </Link>
+              <Link
+                href="/use-cases/rsi"
+                className="text-[13px] text-editorial-ink-3 underline-offset-2 transition hover:text-editorial-ink-2 hover:underline"
+              >
+                See the RSI use case
+              </Link>
+            </div>
           </div>
         ) : (
           <p className="text-[14px] text-editorial-ink-2">Enter valid numbers to see your load estimate.</p>

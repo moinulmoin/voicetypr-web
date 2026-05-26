@@ -14,76 +14,76 @@ export type ContextualUseCaseLink = {
 
 const contextualUseCaseLinksBySlug: Record<string, ContextualUseCaseLink[]> = {
   adhd: [
-    { href: '/use-cases/dyslexia', label: 'dyslexia', context: 'spelling friction and slower editing loops' },
-    { href: '/use-cases/students', label: 'students', context: 'essay drafts, notes, and study writing' },
+    { href: '/use-cases/dyslexia', label: 'Dyslexia use case', context: 'spelling friction and slower editing loops' },
+    { href: '/use-cases/students', label: 'Students use case', context: 'essay drafts, notes, and study writing' },
   ],
   dyslexia: [
-    { href: '/use-cases/adhd', label: 'ADHD', context: 'capturing ideas before they disappear' },
-    { href: '/use-cases/students', label: 'students', context: 'schoolwork that starts easier by voice' },
+    { href: '/use-cases/adhd', label: 'ADHD use case', context: 'capturing ideas before they disappear' },
+    { href: '/use-cases/students', label: 'Students use case', context: 'schoolwork that starts easier by voice' },
   ],
   rsi: [
-    { href: '/use-cases/carpal-tunnel', label: 'carpal tunnel', context: 'hand and wrist strain from repetitive typing' },
-    { href: '/use-cases/motor-impairments', label: 'motor impairments', context: 'assistive dictation across everyday text fields' },
+    { href: '/use-cases/carpal-tunnel', label: 'Carpal tunnel use case', context: 'hand and wrist strain from repetitive typing' },
+    { href: '/use-cases/motor-impairments', label: 'Motor impairments use case', context: 'assistive dictation across everyday text fields' },
   ],
   'carpal-tunnel': [
-    { href: '/use-cases/rsi', label: 'RSI', context: 'broader repetitive strain and typing load' },
-    { href: '/use-cases/motor-impairments', label: 'motor impairments', context: 'hands-light writing across normal apps' },
+    { href: '/use-cases/rsi', label: 'RSI use case', context: 'broader repetitive strain and typing load' },
+    { href: '/use-cases/motor-impairments', label: 'Motor impairments use case', context: 'hands-light writing across normal apps' },
   ],
   'motor-impairments': [
-    { href: '/use-cases/carpal-tunnel', label: 'carpal tunnel', context: 'specific wrist and hand pain workflows' },
-    { href: '/use-cases/rsi', label: 'RSI', context: 'reducing repetitive keyboard load' },
+    { href: '/use-cases/carpal-tunnel', label: 'Carpal tunnel use case', context: 'specific wrist and hand pain workflows' },
+    { href: '/use-cases/rsi', label: 'RSI use case', context: 'reducing repetitive keyboard load' },
   ],
   developers: [
-    { href: '/use-cases/founders', label: 'founders', context: 'AI prompting, support replies, and product writing' },
-    { href: '/use-cases/product-managers', label: 'product managers', context: 'specs, decisions, and issue context' },
+    { href: '/use-cases/founders', label: 'Founders use case', context: 'AI prompting, support replies, and product writing' },
+    { href: '/use-cases/product-managers', label: 'Product managers use case', context: 'specs, decisions, and issue context' },
   ],
   writers: [
-    { href: '/use-cases/journalists', label: 'journalists', context: 'story notes, outlines, and first drafts' },
-    { href: '/use-cases/marketers', label: 'marketers', context: 'campaign copy and fast draft work' },
+    { href: '/use-cases/journalists', label: 'Journalists use case', context: 'story notes, outlines, and first drafts' },
+    { href: '/use-cases/marketers', label: 'Marketers use case', context: 'campaign copy and fast draft work' },
   ],
   founders: [
-    { href: '/use-cases/product-managers', label: 'product managers', context: 'product docs and decisions' },
-    { href: '/use-cases/sales', label: 'sales', context: 'follow-ups, pipeline notes, and proposals' },
+    { href: '/use-cases/product-managers', label: 'Product managers use case', context: 'product docs and decisions' },
+    { href: '/use-cases/sales', label: 'Sales use case', context: 'follow-ups, pipeline notes, and proposals' },
   ],
   journalists: [
-    { href: '/use-cases/writers', label: 'writers', context: 'long-form drafting and editing' },
-    { href: '/use-cases/researchers', label: 'researchers', context: 'notes, summaries, and synthesis work' },
+    { href: '/use-cases/writers', label: 'Writers use case', context: 'long-form drafting and editing' },
+    { href: '/use-cases/researchers', label: 'Researchers use case', context: 'notes, summaries, and synthesis work' },
   ],
   'product-managers': [
-    { href: '/use-cases/founders', label: 'founders', context: 'operator writing across product, sales, and support' },
-    { href: '/use-cases/consultants', label: 'consultants', context: 'recaps, recommendations, and client docs' },
+    { href: '/use-cases/founders', label: 'Founders use case', context: 'operator writing across product, sales, and support' },
+    { href: '/use-cases/consultants', label: 'Consultants use case', context: 'recaps, recommendations, and client docs' },
   ],
   'customer-support': [
-    { href: '/use-cases/sales', label: 'sales', context: 'follow-up writing and CRM notes' },
-    { href: '/use-cases/recruiters', label: 'recruiters', context: 'candidate notes and outreach drafts' },
+    { href: '/use-cases/sales', label: 'Sales use case', context: 'follow-up writing and CRM notes' },
+    { href: '/use-cases/recruiters', label: 'Recruiters use case', context: 'candidate notes and outreach drafts' },
   ],
   lawyers: [
-    { href: '/use-cases/consultants', label: 'consultants', context: 'client notes, memos, and recap emails' },
-    { href: '/use-cases/writers', label: 'writers', context: 'long-form drafts that still need careful editing' },
+    { href: '/use-cases/consultants', label: 'Consultants use case', context: 'client notes, memos, and recap emails' },
+    { href: '/use-cases/writers', label: 'Writers use case', context: 'long-form drafts that still need careful editing' },
   ],
   students: [
-    { href: '/use-cases/researchers', label: 'researchers', context: 'notes, summaries, and longer academic writing' },
-    { href: '/use-cases/adhd', label: 'ADHD', context: 'lower-friction idea capture' },
+    { href: '/use-cases/researchers', label: 'Researchers use case', context: 'notes, summaries, and longer academic writing' },
+    { href: '/use-cases/adhd', label: 'ADHD use case', context: 'lower-friction idea capture' },
   ],
   researchers: [
-    { href: '/use-cases/students', label: 'students', context: 'study notes, essays, and reading-to-draft workflows' },
-    { href: '/use-cases/product-managers', label: 'product managers', context: 'synthesis, decisions, and structured docs' },
+    { href: '/use-cases/students', label: 'Students use case', context: 'study notes, essays, and reading-to-draft workflows' },
+    { href: '/use-cases/product-managers', label: 'Product managers use case', context: 'synthesis, decisions, and structured docs' },
   ],
   recruiters: [
-    { href: '/use-cases/sales', label: 'sales', context: 'outreach, follow-ups, and CRM-style notes' },
-    { href: '/use-cases/customer-support', label: 'customer support', context: 'high-volume replies and fast summaries' },
+    { href: '/use-cases/sales', label: 'Sales use case', context: 'outreach, follow-ups, and CRM-style notes' },
+    { href: '/use-cases/customer-support', label: 'Customer support use case', context: 'high-volume replies and fast summaries' },
   ],
   sales: [
-    { href: '/use-cases/recruiters', label: 'recruiters', context: 'candidate notes and outreach loops' },
-    { href: '/use-cases/customer-support', label: 'customer support', context: 'reply-heavy work and internal notes' },
+    { href: '/use-cases/recruiters', label: 'Recruiters use case', context: 'candidate notes and outreach loops' },
+    { href: '/use-cases/customer-support', label: 'Customer support use case', context: 'reply-heavy work and internal notes' },
   ],
   marketers: [
-    { href: '/use-cases/writers', label: 'writers', context: 'first drafts and long-form copy' },
-    { href: '/use-cases/sales', label: 'sales', context: 'follow-up copy, pitch framing, and proposals' },
+    { href: '/use-cases/writers', label: 'Writers use case', context: 'first drafts and long-form copy' },
+    { href: '/use-cases/sales', label: 'Sales use case', context: 'follow-up copy, pitch framing, and proposals' },
   ],
   consultants: [
-    { href: '/use-cases/product-managers', label: 'product managers', context: 'decision docs and stakeholder summaries' },
-    { href: '/use-cases/lawyers', label: 'lawyers', context: 'careful client writing and note-heavy work' },
+    { href: '/use-cases/product-managers', label: 'Product managers use case', context: 'decision docs and stakeholder summaries' },
+    { href: '/use-cases/lawyers', label: 'Lawyers use case', context: 'careful client writing and note-heavy work' },
   ],
 };
 

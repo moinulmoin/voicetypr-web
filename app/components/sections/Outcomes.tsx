@@ -1,5 +1,5 @@
 const workflowChips = [
-  'Prompt faster',
+  'Prompt by voice',
   'Reply cleaner',
   'Capture specs',
   'Dictate notes',
@@ -30,31 +30,27 @@ export default function Outcomes() {
             </p>
 
             <div className="mt-8 rounded-2xl bg-white p-5">
-              <div className="grid grid-cols-3 overflow-hidden rounded-xl border border-editorial-line text-sm">
-                <div className="bg-editorial-ink p-4 text-white">
-                  <div className="text-3xl font-semibold">150</div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-white/70">dictating</div>
-                </div>
-                <div className="border-l border-editorial-line bg-editorial-surface-2 p-4">
-                  <div className="text-3xl font-semibold">less</div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-editorial-ink-3">typing</div>
-                </div>
-                <div className="border-l border-editorial-line bg-editorial-surface-2 p-4">
-                  <div className="text-3xl font-semibold">1</div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-editorial-ink-3">hotkey</div>
-                </div>
-              </div>
-
-              <div className="mt-6 space-y-4">
-                <div className="h-2 overflow-hidden rounded-full bg-editorial-surface-2">
-                  <div className="h-full w-1/3 rounded-full bg-editorial-line-2" />
-                </div>
-                <div className="h-2 overflow-hidden rounded-full bg-editorial-surface-2">
-                  <div className="h-full w-2/3 rounded-full bg-editorial-line-2" />
-                </div>
-                <div className="h-2 overflow-hidden rounded-full bg-editorial-surface-2">
-                  <div className="h-full w-full rounded-full bg-editorial-ink" />
-                </div>
+              <div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
+                {[
+                  { step: 'Hold hotkey', detail: 'Push-to-talk or toggle' },
+                  { step: 'Speak', detail: 'Say the thought once' },
+                  { step: 'Paste', detail: 'Text lands at your cursor' },
+                ].map((item, index) => (
+                  <div key={item.step} className="contents">
+                    <div className="rounded-xl border border-editorial-line bg-editorial-surface-2 p-4 text-center sm:text-left">
+                      <div className="text-sm font-semibold text-editorial-ink">{item.step}</div>
+                      <div className="mt-1 text-xs text-editorial-ink-3">{item.detail}</div>
+                    </div>
+                    {index < 2 ? (
+                      <div
+                        aria-hidden="true"
+                        className="hidden text-center text-lg font-medium text-editorial-ink-3 sm:block"
+                      >
+                        →
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -81,7 +77,7 @@ export default function Outcomes() {
               Privacy by default
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-              Your voice is transcribed on your machine.
+              Offline dictation by default — local transcription on your machine.
             </p>
             <div className="mt-6 rounded-2xl border border-editorial-line bg-editorial-surface-2 p-4 text-sm">
               <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">

@@ -48,7 +48,7 @@ const useCases = [
 
 const checklist = [
   "Works in Cursor because it pastes text into the focused input, not a special integration.",
-  "Runs locally, so private code context and dictated notes stay on your machine.",
+  "Dictation runs locally by default; your spoken prompts aren't sent to a cloud transcription service.",
   "Uses the same hotkey pattern across Claude, ChatGPT, VS Code, Slack, and docs.",
   "Starts at $39 once; the 2-device option is $59 for laptop + desktop.",
 ] as const;
@@ -142,9 +142,9 @@ export default function VoiceInputForCursorPage() {
       </section>
 
       <RelatedGuidesSection
-        eyebrow="keep the developer cluster tight"
-        title="If Cursor voice input is the fit, these are the next pages people usually open"
-        description="Developer search often jumps between the Cursor-specific page, broader typing guides, and Windows comparisons."
+        eyebrow="Related guides"
+        title="More guides for Cursor and developer dictation"
+        description="Compare broader typing guides, Windows-specific options, and developer workflows beyond Cursor paste-ins."
         links={cursorRelatedGuides}
         dataTrackPrefix="voice-input-for-cursor-related-guides"
       />

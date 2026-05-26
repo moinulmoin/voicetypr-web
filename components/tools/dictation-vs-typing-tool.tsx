@@ -105,12 +105,20 @@ export function DictationVsTypingTool() {
                 <p>Estimated annual value: ${Math.round(result.moneySavedPerYear).toLocaleString()}</p>
               ) : null}
             </div>
-            <Link
-              href="/download"
-              className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
-            >
-              Try VoiceTypr free
-            </Link>
+            <div className="flex flex-col items-start gap-3">
+              <Link
+                href="/download"
+                className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
+              >
+                Try VoiceTypr free
+              </Link>
+              <Link
+                href="/use-cases/customer-support"
+                className="text-[13px] text-editorial-ink-3 underline-offset-2 transition hover:text-editorial-ink-2 hover:underline"
+              >
+                See the customer support use case
+              </Link>
+            </div>
           </div>
         ) : (
           <p className="text-[14px] text-editorial-ink-2">Enter valid numbers to see your estimate.</p>

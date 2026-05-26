@@ -22,7 +22,7 @@ const testimonials = [
   },
   {
     id: 7,
-    title: 'Fast while fully offline',
+    title: 'Works fully offline',
     content:
       "The app is incredible, I did not expect it to be so fast while fully offline! I don't know how you did it, but you did an amazing job!",
     author: { name: 'Stephen K. L.', handle: 'stephenkl', avatar: 'SK' },

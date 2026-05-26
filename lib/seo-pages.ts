@@ -1,6 +1,7 @@
 export type SeoPage = {
   slug: string;
   h1: string;
+  metaTitle?: string;
   lede: string;
   angle: "roundup" | "comparison" | "category-owner";
   competitors: Array<{
@@ -225,6 +226,7 @@ export const seoPages: SeoPage[] = [
   },
   {
     slug: "offline-dictation",
+    metaTitle: "Best offline dictation app (2026) | VoiceTypr",
     h1: "The best offline dictation app in 2026 — works without the internet",
     lede:
       "VoiceTypr transcribes your voice locally after setup — no internet needed for day-to-day dictation. Here are the real offline options, and what offline actually covers.",
@@ -712,6 +714,7 @@ export const alternativePages: SeoPage[] = [
   },
   {
     slug: "dragon",
+    metaTitle: "Best Dragon alternative (2026) | VoiceTypr",
     h1: "The best Dragon NaturallySpeaking alternative in 2026",
     lede:
       "Dragon remains powerful for specialized workflows, but many buyers find the upfront cost and setup heavier than everyday dictation needs. Here's the modern pay-once alternative.",
@@ -757,6 +760,7 @@ export const alternativePages: SeoPage[] = [
   },
   {
     slug: "windows-speech-recognition",
+    metaTitle: "Best Windows Speech Recognition alt (2026) | VoiceTypr",
     h1: "The best Windows Speech Recognition alternative in 2026",
     lede:
       "Classic Windows Speech Recognition is deprecated and replaced by Voice Access on newer Windows 11 releases. If you want modern offline dictation for every app, VoiceTypr is the cleaner upgrade.",
@@ -808,6 +812,12 @@ export const alternativePages: SeoPage[] = [
     ctaText: "Replace Windows Speech Recognition",
   },
 ];
+
+
+export function getSeoPageMetaTitle(page: SeoPage): string {
+  if (page.metaTitle) return page.metaTitle;
+  return `${page.h1} — VoiceTypr`;
+}
 
 export function getSeoPageBySlug(slug: string): SeoPage | undefined {
   return seoPages.find((p) => p.slug === slug);
