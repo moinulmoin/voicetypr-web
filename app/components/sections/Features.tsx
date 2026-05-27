@@ -374,6 +374,9 @@ export default function Features() {
                 </li>
               ))}
             </ul>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70">
+              AI Agents &amp; Automation will plug VoiceTypr into AI coding agents — OpenClaw, Hermes, NanoClaw, and more.
+            </p>
           </div>
 
           <div className="rounded-3xl border border-editorial-line bg-white/86 p-6 shadow-sm backdrop-blur md:p-8">
