@@ -23,7 +23,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'How does cleaner text work?',
-    a: 'Local transcription works by default. If you enable cleaner text, VoiceTypr can send the final transcript text — not your voice recording — to the AI provider you configure, then paste back a polished version for prompts, emails, and everyday writing.',
+    a: 'Local transcription works by default. If you enable cleaner text, VoiceTypr sends the final transcript text — not your voice recording — to the AI provider you configure. Use any major cloud provider, or point it at an OpenAI-compatible local endpoint for a fully offline setup.',
   },
   {
     q: 'What are the system requirements?',

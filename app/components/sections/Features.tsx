@@ -65,7 +65,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Models',
     title: 'Pick your engine',
-    body: 'On-device local models (Whisper, Parakeet) for transcription — switch between fast or precise any time. Pair with leading cloud models (OpenAI, Anthropic, Groq) for optional AI formatting on the final text.',
+    body: 'Local models (Whisper, Parakeet) for on-device transcription. Optional AI formatting works with leading cloud providers (OpenAI, Anthropic, Groq) or any OpenAI-compatible local endpoint — go fully offline if you want.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
         <div className="mb-4 flex items-center justify-between">
