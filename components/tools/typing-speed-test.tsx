@@ -10,7 +10,7 @@ import {
 } from "@/lib/free-tools-calculations";
 
 const PROMPT =
-  "Voice typing helps founders move faster when the cursor is already in the right place and the draft needs to ship today.";
+  "Voice typing helps when the cursor is already in the doc and you need a clean first draft before the idea fades.";
 
 const TEST_DURATION_SECONDS = 10;
 

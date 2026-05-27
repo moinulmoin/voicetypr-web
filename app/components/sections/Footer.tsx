@@ -92,7 +92,7 @@ export default function Footer() {
               VoiceTypr
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-editorial-ink-2">
-              Offline AI dictation for founders and builders. Available on macOS and Windows.
+              Offline AI dictation for writers, founders, and builders. Available on macOS and Windows.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {socialLinks.map(({ label, href, Icon }) => (

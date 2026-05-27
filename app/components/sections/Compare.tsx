@@ -3,7 +3,7 @@ const comparisons = [
   ['Default workflow', 'new editor, cloud account, or subscription tier', 'hotkey into the app you already use'],
   ['Platforms', 'often single-OS or subscription-first', 'macOS + Windows'],
   ['Audio privacy', 'often uploaded or synced to cloud', 'transcribed on your machine by default'],
-  ['Offline-first dictation', 'offline support varies by tool and plan', 'local models by default'],
+  ['Offline-first dictation', 'offline support varies by tool and plan', 'on-device dictation by default'],
   ['Lifetime updates', 'subscription or paid upgrades', 'included'],
 ] as const;
 

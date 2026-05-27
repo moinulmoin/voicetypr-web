@@ -4,12 +4,12 @@ import { cn } from '@/lib/utils';
 import FeatureIdeaForm from './FeatureIdeaForm';
 
 const appTargets = [
-  { label: 'Cursor', Icon: Cursor },
+  { label: 'Gmail', Icon: Gmail },
+  { label: 'Slack', Icon: Slack },
+  { label: 'Notion', Icon: Notion },
   { label: 'ChatGPT', Icon: OpenAI },
   { label: 'Claude', Icon: ClaudeAI },
-  { label: 'Gmail', Icon: Gmail },
-  { label: 'Notion', Icon: Notion },
-  { label: 'Slack', Icon: Slack },
+  { label: 'Cursor', Icon: Cursor },
 ] as const;
 
 type FeatureCard = {
@@ -23,13 +23,13 @@ type FeatureCard = {
 
 const featureCards: FeatureCard[] = [
   {
-    label: 'Everywhere',
+    label: 'Anywhere',
     title: 'Talk into every app',
-    body: 'Dictate into Cursor, ChatGPT, Claude, Slack, Gmail, Notion, docs — any text field on your screen. Nothing to install per app.',
+    body: 'Dictate into Gmail, Slack, Notion, Google Docs, and more — plus ChatGPT, Claude, and Cursor when you use them. Any box where you type. Nothing to install per app.',
     wide: true,
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
-        <div className="mb-3 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Paste where cursor is</div>
+        <div className="mb-3 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Paste where you&apos;re typing</div>
         <div className="grid gap-2 sm:grid-cols-3">
           {appTargets.map(({ label, Icon }) => (
             <span
@@ -47,7 +47,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Privacy',
     title: 'Fast, private, offline-first',
-    body: 'Local models turn speech into text on your machine, so everyday dictation feels quick without routing audio through a cloud transcription service.',
+    body: 'Speech becomes text on your Mac or PC. Your audio stays on your machine by default — not sent to the cloud.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
@@ -65,7 +65,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Models',
     title: 'Pick your engine',
-    body: 'Local models (Whisper, Parakeet) for on-device transcription. Optional AI formatting works with leading cloud providers (OpenAI, Anthropic, Groq) or any OpenAI-compatible local endpoint — go fully offline if you want.',
+    body: 'On-device models like Whisper and Parakeet handle transcription. Want polished text? Optionally connect a cloud AI you already use — or skip the cloud entirely.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
         <div className="mb-4 flex items-center justify-between">
@@ -73,12 +73,12 @@ const featureCards: FeatureCard[] = [
           <span className="rounded-md bg-editorial-ink px-2 py-1 text-white">Turbo</span>
         </div>
         {[
-          ['Whisper Base', '142 MB'],
-          ['Whisper Turbo', '1.5 GB'],
-          ['Parakeet', '0.6 GB'],
+          ['Base', '142 MB'],
+          ['Turbo', '1.5 GB'],
+          ['Compact', '0.6 GB'],
         ].map(([name, size]) => (
           <div key={name} className="flex justify-between border-b border-editorial-line py-2 last:border-0">
-            <span className={cn(name === 'Whisper Turbo' && 'font-semibold text-editorial-ink')}>{name}</span>
+            <span className={cn(name === 'Turbo' && 'font-semibold text-editorial-ink')}>{name}</span>
             <span className="font-mono text-editorial-ink-3">{size}</span>
           </div>
         ))}
@@ -185,7 +185,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Translation',
     title: 'Speak in your language, write in theirs',
-    body: 'Dictate in your language, send in theirs — translation built into the voice pipeline.',
+    body: 'Speak in your language. Paste in theirs — translation built in.',
     status: 'Soon',
     demo: (
       <div className="space-y-3 rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -221,7 +221,7 @@ const featureCards: FeatureCard[] = [
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
-        {['Voicetypr → VoiceTypr', 'MCP', 'Ideaplexa'].map((item) => (
+        {['Voicetypr → VoiceTypr', 'Newsletter', 'Ideaplexa'].map((item) => (
           <div key={item} className="border-b border-editorial-line py-2 last:border-0">
             {item}
           </div>
@@ -278,8 +278,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'AI automation',
-    title: 'Voice pipeline for AI agents',
-    body: 'Send audio files into VoiceTypr from local AI agent workflows. Get text or JSON back for your pipeline.',
+    title: 'Connect VoiceTypr to your automations.',
+    body: 'Send a recording or file from your workflow. Get plain text back — ready to paste or save.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
@@ -316,7 +316,7 @@ export default function Features() {
             What&apos;s <em>included</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            Dictate into any app, pick your model, use your own hotkey, and get clean text pasted where your cursor is.
+            Dictate into any app. Set a hotkey. Get clean text pasted where you&apos;re typing.
           </p>
         </div>
 

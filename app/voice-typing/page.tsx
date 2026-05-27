@@ -86,12 +86,12 @@ export default function VoiceTypingPage() {
           <div>
             <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">why voice typing</p>
             <h2 className="mt-3 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-              Typing is the bottleneck. Talking is the input layer.
+              When typing slows you down, talking is faster.
             </h2>
           </div>
           <div className="space-y-4 text-[16px] leading-[1.7] text-editorial-ink-2">
             <p>
-              Most work is no longer just typing words into a document. It is prompts, replies, bug reports, notes, decisions, and instructions to tools. Voice typing makes those English-heavy parts faster without forcing you into a new workspace.
+              Most work isn&apos;t one long document — it&apos;s emails, notes, replies, outlines, and forms across many apps. Voice typing gets the first draft out faster without opening another editor.
             </p>
             <p>
               VoiceTypr is designed for that workflow: stay in the app, speak naturally, and let the text land where it belongs.

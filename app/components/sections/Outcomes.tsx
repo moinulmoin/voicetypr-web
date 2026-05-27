@@ -1,9 +1,9 @@
 const workflowChips = [
   'Type faster',
   'Reply cleaner',
-  'Capture specs',
+  'Capture ideas',
   'Dictate notes',
-  'Ship thoughts',
+  'Publish faster',
   'Stop rewriting',
 ];
 
@@ -13,7 +13,7 @@ export default function Outcomes() {
       <div className="ed-container">
         <div className="max-w-3xl">
           <h2 className="text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Get clean text where your cursor is
+            Get clean text where you&apos;re typing
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-editorial-ink-2">
             Stop rewriting the same thought by hand. VoiceTypr turns speech into usable text in the apps you already use.
@@ -52,14 +52,14 @@ export default function Outcomes() {
               Every text field works
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-              ChatGPT, Claude, Cursor, Slack, Notion, Gmail, or a legacy Jira textarea.
+              Gmail, Slack, Notion, Google Docs, Word — plus ChatGPT, Claude, and Cursor when you use them.
             </p>
             <div className="mt-8 rounded-2xl bg-white p-5">
               <div className="mb-4 rounded-xl bg-editorial-ink px-4 py-3 text-sm font-medium text-white">
                 Draft this reply in my voice.
               </div>
               <div className="rounded-xl bg-editorial-surface-2 px-4 py-3 text-sm leading-relaxed text-editorial-ink-2">
-                Sure — here&apos;s a clean version ready to paste where your cursor is.
+                Sure — here&apos;s a clean version ready to paste where you&apos;re typing.
               </div>
             </div>
           </article>

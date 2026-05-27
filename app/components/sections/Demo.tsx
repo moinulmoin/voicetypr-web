@@ -21,7 +21,7 @@ export default function Demo() {
                   playsInline
                   preload="metadata"
                   poster="/voicetypr-demo-poster.jpg"
-                  aria-label="VoiceTypr demo — speak at ~150 wpm, paste at your cursor in seconds"
+                  aria-label="VoiceTypr demo — speak naturally, text lands where you're typing"
                   className="h-full w-full object-contain"
                 >
                   <source
@@ -38,7 +38,7 @@ export default function Demo() {
                 >
                   <Image
                     src="/Write.jpg"
-                    alt="VoiceTypr demo — speak at ~150 wpm, paste at your cursor in seconds"
+                    alt="VoiceTypr demo — speak naturally, text lands where you're typing"
                     fill
                     priority
                     sizes="(min-width: 1024px) 960px, calc(100vw - 48px)"

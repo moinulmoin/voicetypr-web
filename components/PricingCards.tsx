@@ -36,12 +36,12 @@ const V2_PRICES: Record<PublicPlanKey, number> = {
 };
 
 const includedFeatures = [
-  'Local Whisper + Parakeet models · offline dictation by default',
+  'On-device dictation · offline by default',
   'Works in any app with a text cursor',
   'Global hotkey, push-to-talk, and toggle modes',
   'Audio and video file transcription',
   'Searchable local transcript history',
-  'Cleaner prompts, emails, and everyday writing',
+  'Cleaner emails, notes, and everyday writing',
   'macOS 13+ and Windows 10+',
   'Direct support from the founder',
 ] as const;
@@ -53,7 +53,7 @@ const roadmapFeatures = [
   'Text replacements',
   'Reusable snippets',
   'Use a stronger machine on your network',
-  'AI agent automation',
+  'Automation & integrations',
 ] as const;
 
 export default function PricingCards({

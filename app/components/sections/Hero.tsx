@@ -16,7 +16,7 @@ export default function HeroSection() {
               Replace typing with your voice in the apps you already use.
             </span>
             <span className="mt-1 block">
-              Cursor, Claude, ChatGPT, Slack, Gmail, docs, and more. Offline dictation by default. No subscription.
+              Gmail, Slack, Notion, Google Docs, and more — plus ChatGPT, Claude, and Cursor when you use them. Offline dictation by default. No subscription.
             </span>
           </p>
 

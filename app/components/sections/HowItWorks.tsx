@@ -30,7 +30,7 @@ const steps = [
         <path fill="currentColor" d="M4 7h9v2H4V7Zm11-1h2v1h3v2h-3v1h-2V6ZM4 15h3v2H4v-2Zm5-1h2v1h9v2h-9v1H9v-4Z" />
       </svg>
     ),
-    title: 'Pick a model',
+    title: 'Choose speed or accuracy',
     body: 'Choose speed or accuracy.',
     artifact: (
       <div className="space-y-2 rounded-xl border border-editorial-line bg-editorial-surface p-3 text-sm">

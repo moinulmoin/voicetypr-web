@@ -62,7 +62,7 @@ export default function OfflineDictationForWindowsPage() {
             Offline dictation app for Windows — private voice typing in every app you already use.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            VoiceTypr gives Windows users private, local AI dictation with a simple hotkey. Speak, release, and the text appears where your cursor already is.
+            VoiceTypr gives Windows users private on-device dictation — hold a shortcut, speak, release, and text appears where you&apos;re typing.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link

@@ -14,8 +14,8 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
     a: 'Yes — 3-day free trial, no card required. When the trial ends, buy a lifetime license only if it saves you time. No auto-charge, no card on file. Purchases include a 7-day money-back guarantee.',
   },
   {
-    q: 'Does it work with ChatGPT, Claude, and Cursor?',
-    a: 'Yes. Place your cursor anywhere, hold the hotkey, and VoiceTypr pastes formatted text into ChatGPT, Claude, Cursor, VS Code, email, Slack — any app that takes a text cursor.',
+    q: 'Does it work in Gmail, Slack, ChatGPT, and other apps?',
+    a: 'Yes. Click where you want text, hold your hotkey, and speak. VoiceTypr pastes into Gmail, Slack, Notion, Word, ChatGPT, Cursor — anywhere you type.',
   },
   {
     q: 'Is my voice data private?',
@@ -23,7 +23,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'How does cleaner text work?',
-    a: 'Local transcription works by default. If you enable cleaner text, VoiceTypr sends the final transcript text — not your voice recording — to the AI provider you configure. Use any major cloud provider, or point it at an OpenAI-compatible local endpoint for a fully offline setup.',
+    a: 'Local transcription works by default. If you enable cleaner text, VoiceTypr sends the final transcript text — not your voice recording — to the AI provider you configure. Use any major cloud provider, or keep everything on your computer for a fully offline setup.',
   },
   {
     q: 'What are the system requirements?',
@@ -39,7 +39,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'Does it use my GPU on Windows?',
-    a: 'Yes — VoiceTypr auto-detects NVIDIA, AMD, and Intel GPUs for faster transcription. If no GPU is available it falls back to CPU automatically; it still works.',
+    a: 'On Windows, VoiceTypr uses your graphics chip when it can for faster transcription. If not, it uses your processor — it still works.',
   },
 ];
 

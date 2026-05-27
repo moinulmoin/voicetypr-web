@@ -223,7 +223,7 @@ export default async function AlternativePage({
                   <RelatedGuidesSection
                     eyebrow="open the adjacent query too"
                     title="Related guides people usually compare next"
-                    description="The search rarely stops at one comparison page. These are the neighboring pages that help keep the cluster tight."
+                    description="Most people compare more than one tool. These pages cover the next question you'll probably have."
                     links={relatedGuides}
                     dataTrackPrefix="alternative-related-guides"
                     embedded

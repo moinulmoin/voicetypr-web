@@ -207,11 +207,11 @@ const relatedGuides: DiscoveryLink[] = [
 const faqs = [
   {
     q: "What does local transcription mean in VoiceTypr?",
-    a: "VoiceTypr transcribes your voice on your machine using Whisper (macOS + Windows) or Parakeet (macOS Apple Silicon) after setup. Optional AI enhancement can send text, never audio, to your configured provider when enabled. It is off by default and can be disabled entirely.",
+    a: "After setup, your voice is transcribed on your device by default. Optional text cleanup can use a cloud provider you choose — never your audio — and only when you turn it on.",
   },
   {
     q: "How does transcription accuracy compare?",
-    a: "VoiceTypr ships multiple Whisper model sizes (tiny to large). Larger models are more accurate but slower. On Apple Silicon, the optimized Parakeet model offers a solid speed/accuracy tradeoff. Wispr uses proprietary cloud models with their own accuracy profile — some users find theirs slightly better on edge cases like accent handling, but at the cost of privacy and a subscription. Try both 3-day trials and see which fits your workflow.",
+    a: "Pick a faster or more accurate on-device option in settings. Wispr runs in the cloud — some prefer its accent handling, but you trade privacy and a subscription. Try the 3-day trial in your real apps and compare.",
   },
   {
     q: "Will it work with my Cursor / Claude / ChatGPT workflow?",
@@ -258,7 +258,7 @@ const steps: Array<{ n: string; title: string; body: React.ReactNode }> = [
     body: (
       <>
         Default is <span className="ed-kbd">⌘⇧Space</span> on macOS or{" "}
-        <span className="ed-kbd">Ctrl+Shift+Space</span> on Windows. Push-to-talk lives on Option/Alt+Space. Most people run the medium Whisper model for the best speed–accuracy tradeoff.
+        <span className="ed-kbd">Ctrl+Shift+Space</span> on Windows. Push-to-talk lives on Option/Alt+Space. Most people pick a balanced on-device option in settings for the best speed–accuracy tradeoff.
       </>
     ),
   },
@@ -312,7 +312,7 @@ export default function WisprFlowAlternativePage() {
               </h1>
 
               <p className="mx-auto max-w-2xl text-[18px] md:text-[19px] leading-[1.55] text-editorial-ink-2">
-                The Wispr Flow alternative buyers usually want is simple: stop paying monthly, transcribe locally by default, and still paste into every app you already use. Optional AI formatting can use cloud text workflows if you enable it.
+                The Wispr Flow alternative most people want is simple: stop paying monthly, transcribe on your device by default, and still paste into every app you already use — Gmail, Slack, Notion, Cursor, and more.
               </p>
 
               <p className="mt-4 font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">

@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 const useCases = [
-  ["Prompt the agent", "Talk through the change, constraints, edge cases, and acceptance criteria before the idea collapses into a one-line prompt."],
+  ["Prompt the agent", "Describe the full change — what should happen, what must not break, and how you'll know it's done — before it shrinks into a too-short prompt."],
   ["Explain a bug", "Dictate reproduction steps and expected behavior directly into the issue, chat, or Cursor composer."],
   ["Write PR notes", "Summarize what changed while the context is still in your head."],
   ["Leave useful comments", "Capture why the code exists, not just what it does, without breaking flow."],

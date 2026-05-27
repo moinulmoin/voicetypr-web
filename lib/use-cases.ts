@@ -131,14 +131,14 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Hyperfocus without the punctuation tax",
         body:
-          "While you're locked in, voice keeps up with the velocity. The Default formatting preset cleans punctuation and capitalization automatically — so when you come out of the session, you have prose, not a wall of unbroken stream-of-thought.",
+          "While you're locked in, voice keeps up with the velocity. Turn on automatic punctuation cleanup if you want — so you leave the session with real paragraphs, not one endless block of speech.",
       },
     ],
     faqs: [
       {
         q: "Will it pick up my voice when I'm thinking out loud and tripping over words?",
         a:
-          "Yes. The medium Whisper model handles filler words, restarts, and \"um\" / \"uh\" reasonably well. The optional Default formatting preset cleans those up further when you don't want them in the final output. Keep AI formatting off if you'd rather see exactly what you said.",
+          'Yes. On-device transcription handles filler words, restarts, and "um" / "uh" reasonably well. The optional Default formatting preset cleans those up further when you don\'t want them in the final output. Keep AI formatting off if you\'d rather see exactly what you said.',
       },
       {
         q: "Can I use it for journaling with local transcription?",
@@ -164,7 +164,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the thought <em>before it leaves.</em>",
-      body: "Hold the hotkey, say the thought once, and paste it where you were already working—transcribed on your machine by default. Try VoiceTypr free for 3 days.",
+      body: "Hold the hotkey, say the thought once, and paste it where you were already working—still on-device by default. Try VoiceTypr free for 3 days.",
     },
     keywords: [
       "voice typing for adhd",
@@ -189,7 +189,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for dyslexia",
       headline: "Say what you mean. <em>Skip the spelling fight.</em>",
       lede:
-        "If reading what you've typed is slower than typing it in the first place — and autocorrect keeps swapping the wrong word for the wrong reason — voice bypasses the loop entirely. You speak, the text appears, you keep moving.",
+        "If reading your draft is slower than writing it — and autocorrect keeps changing the wrong words — skip the fight. Speak, get text, keep moving.",
       metaStrip: ["speaking-speed capture", "local transcription", "no autocorrect wars"],
     },
     pains: [
@@ -253,7 +253,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does the model spell uncommon words correctly?",
         a:
-          "Yes for most domain vocabulary — the medium and large Whisper models are trained on a broad corpus including technical terms, names, places. Domain-specific jargon (rare scientific terms, niche product names) sometimes needs a quick edit, but the common-word miss rate is very low.",
+          "Yes for most domain vocabulary — the medium and large on-device models are trained on a broad corpus including technical terms, names, places. Domain-specific jargon (rare scientific terms, niche product names) sometimes needs a quick edit, but the common-word miss rate is very low.",
       },
       {
         q: "What about names and proper nouns?",
@@ -388,7 +388,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Will it work with my voice if I'm tired and not enunciating clearly?",
         a:
-          "The medium Whisper model handles tired-voice speech better than people expect. If clarity drops noticeably, the large model is more accurate at the cost of speed; you can switch per-session.",
+          "The medium on-device model handles tired-voice speech better than people expect. If clarity drops noticeably, the large model is more accurate at the cost of speed; you can switch per-session.",
       },
     ],
     finalCta: {
@@ -620,7 +620,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "What if my speech is not perfectly clear?",
         a:
-          "Whisper handles many accents, pauses, and restarts well, but no dictation system is perfect. Use the trial with your real voice and real microphone before buying.",
+          "On-device transcription handles many accents, pauses, and restarts well, but no dictation system is perfect. Use the trial with your real voice and real microphone before buying.",
       },
     ],
     finalCta: {
@@ -655,7 +655,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for developers",
       headline: "Dictate the English. <em>Type the code.</em>",
       lede:
-        "Most of your day isn't typing code anymore — it's typing English at compilers, agents, reviewers, and Slack. VoiceTypr handles the English so your hands can focus on the part that still needs them.",
+        "Most of your day isn't typing code anymore — it's typing prose: prompts, PR descriptions, Slack threads, and docs. VoiceTypr handles the English so your hands can focus on the part that still needs them.",
       metaStrip: [
         "cursor · claude · chatgpt",
         "slack · linear · notion",
@@ -671,7 +671,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Cloud dictation is a non-starter for sensitive prompts.",
         body:
-          "Sensitive prompts and pre-release context stay off the cloud by default. Transcribed on your machine by default. Optional AI formatting can send text only if you enable it.",
+          "Sensitive prompts and pre-release context stay off the cloud by default. Still on-device by default.",
       },
       {
         title: "PR descriptions and design docs get skipped when typing is expensive.",
@@ -691,7 +691,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "0",
         title: "Audio leaving your machine",
         body:
-          "Whisper runs locally. Your half-formed prompts about an unreleased feature don't end up in someone else's training pipeline.",
+          "Transcription runs on your machine. Your half-formed prompts about an unreleased feature don't end up in someone else's training pipeline.",
         meta: "Outcome · privacy",
       },
       {
@@ -743,7 +743,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "How does it compare to the macOS / Windows built-in dictation?",
         a:
-          "Built-in dictation hallucinates names, drops punctuation on long blocks, and on macOS in particular has a hard time with technical vocabulary. VoiceTypr uses Whisper, which is trained on a broader corpus and handles tech-speak much better.",
+          "Built-in dictation hallucinates names, drops punctuation on long blocks, and on macOS in particular has a hard time with technical vocabulary. VoiceTypr uses a broader on-device model trained on more varied speech and handles tech-speak much better.",
       },
     ],
     finalCta: {
@@ -786,7 +786,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Cloud dictation is a hard pass for unfinished work.",
         body:
-          "Unfinished drafts and plot material deserve discretion. Transcribed on your machine by default. Optional AI formatting can send text only if you enable it.",
+          "Unfinished drafts and plot material deserve discretion. Still on-device by default.",
       },
       {
         title: "Built-in dictation can't handle a long block.",
@@ -853,7 +853,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "What about transcribing interviews?",
         a:
-          "VoiceTypr is built for first-person dictation, not multi-speaker transcription. For interview audio specifically, a tool like Whisper.cpp directly or a transcription-focused service is a better fit.",
+          "VoiceTypr is built for first-person dictation, not multi-speaker transcription. For interview audio specifically, a dedicated transcription workflow or transcription-focused service is a better fit.",
       },
       {
         q: "Will it slow down my old laptop?",
@@ -1011,7 +1011,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "The best lines arrive when you're away from the keyboard.",
         body:
-          "A clean intro, a sharper framing, the actual nut graf — they often land on the walk back from the interview, not when you sit down to type. If you wait, you lose detail.",
+          "A clean intro, a sharper angle, and the paragraph that states why the story matters — they often land on the walk back from the interview.",
       },
       {
         title: "Interview notes turn into backlog fast.",
@@ -1094,7 +1094,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the angle <em>before typing flattens it.</em>",
-      body: "File the lede and summary while the interview is still in your head. Transcribed locally by default; 3-day trial, lifetime license option.",
+      body: "File the lede and summary while the interview is still in your head. Still on-device by default; 3-day trial, lifetime license option.",
     },
     keywords: [
       "voice typing for journalists",
@@ -1106,21 +1106,21 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "product-managers",
-    title: "VoiceTypr for Product Managers — PRDs, specs, and updates at speaking speed",
+    title: "VoiceTypr for Product Managers — product specs and updates at speaking speed",
     ogTitle: "VoiceTypr for Product Managers",
     description:
-      "Voice typing for product managers. Dictate PRDs, user stories, sprint updates, and decision docs in Notion, Jira, Slack, and Google Docs.",
+      "Voice typing for product managers. Dictate product specs, user stories, sprint updates, and decision docs in Notion, Jira, Slack, and Google Docs.",
     navLabel: "Product managers",
     hubTeaser:
-      "Convert standup reasoning into PRDs, decision logs, and Jira stories before the next meeting wipes the nuance.",
+      "Convert standup reasoning into product specs, decision logs, and Jira stories before the next meeting wipes the nuance.",
     category: "profession",
     order: 5,
     hero: {
       eyebrow: "voicetypr for product managers",
       headline: "Product work happens in meetings. <em>The writing happens after.</em>",
       lede:
-        "Most PM work starts as spoken reasoning — in standups, user calls, design reviews, and stakeholder chaos. VoiceTypr helps you turn that reasoning into PRDs, updates, and decision docs without spending the next hour retyping what you already know.",
-      metaStrip: ["prds · docs · jira", "local transcription", "cross-app workflow"],
+        "Most PM work starts as spoken reasoning — in standups, user calls, design reviews, and stakeholder chaos. VoiceTypr helps you turn that reasoning into product specs, updates, and decision docs without spending the next hour retyping what you already know.",
+      metaStrip: ["product specs · docs · jira", "local transcription", "cross-app workflow"],
     },
     pains: [
       {
@@ -1131,7 +1131,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "PM writing is scattered across too many tools.",
         body:
-          "PRD in Notion, ticket in Jira, update in Slack, recap in email, notes in Docs. A good dictation workflow needs to follow your cursor, not trap you in one editor.",
+          "Product spec in Notion, ticket in Jira, update in Slack, recap in email, notes in Docs. A good dictation workflow needs to follow your cursor, not trap you in one editor.",
       },
       {
         title: "Meeting context decays before the documentation happens.",
@@ -1142,7 +1142,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     outcomes: [
       {
         marker: "1-pass",
-        title: "PRD draft in one sitting",
+        title: "Product spec draft in one sitting",
         body:
           "Talk through problem, users, edge cases, and non-goals once—then edit the doc instead of fighting a blank page at keyboard speed.",
         meta: "Outcome · throughput",
@@ -1164,7 +1164,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     ],
     workflows: [
       {
-        title: "Talk the PRD before you polish it",
+        title: "Talk the product spec before you polish it",
         body:
           "Open the doc and dictate the problem, users, edge cases, and non-goals exactly as you would explain them to engineering. Then edit. The blank-page tax disappears.",
       },
@@ -1193,7 +1193,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "What about product terms and internal jargon?",
         a:
-          "Modern Whisper-based dictation usually handles product and technical language well, but you should still do a quick pass for company-specific names.",
+          "Modern on-device dictation usually handles product and technical language well, but you should still do a quick pass for company-specific names.",
       },
       {
         q: "Does it help with AI-heavy PM workflows too?",
@@ -1209,13 +1209,13 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Document the decision <em>while it still makes sense.</em>",
-      body: "Turn the reasoning from your last standup into a PRD or decision log before the next meeting. Local by default; free trial, then pay once.",
+      body: "Turn the reasoning from your last standup into a product spec or decision log before the next meeting. Local by default; free trial, then pay once.",
     },
     keywords: [
       "voice typing for product managers",
       "dictation software for product managers",
       "dictate product specs",
-      "voice typing for prds",
+      "voice typing for product specs",
       "voice to text for product managers",
     ],
   },
@@ -1893,13 +1893,13 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it replace CRM automation or sequencing tools?",
         a:
-          "No. VoiceTypr is an input layer. It helps you create the text faster inside the tools you already run.",
+          "No. It speeds up how you get words into email, CRM, and docs — it doesn't replace those tools.",
       },
     ],
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Send the follow-up. <em>Do less typing to get there.</em>",
-      body: "Send the follow-up before the prospect goes cold—dictate, paste into CRM or Gmail. Transcribed on your machine by default; try free for 3 days.",
+      body: "Send the follow-up before the prospect goes cold—dictate, paste into CRM or Gmail. Still on-device by default; try free for 3 days.",
     },
     keywords: [
       "voice typing for sales reps",
@@ -2008,7 +2008,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it replace copy tools or AI writing apps?",
         a:
-          "No. VoiceTypr is an input layer. It helps you feed better raw material into the rest of your writing stack.",
+          "No. It speeds up how you get words into email, CRM, and docs — it doesn't replace those tools.",
       },
     ],
     finalCta: {

@@ -153,7 +153,7 @@ export default function Reviews() {
             What people are <em>saying</em>
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-editorial-ink-2">
-            From developers, writers, and founders who pay once and dictate into the tools they already use.
+            From writers, founders, and developers who pay once and dictate into the tools they already use.
           </p>
         </div>
 

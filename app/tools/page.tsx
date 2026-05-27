@@ -9,7 +9,7 @@ const TOOLS_INDEX_URL = "https://voicetypr.com/tools";
 const toolsIndexTitle =
   "Free writing tools — dictation vs typing, typing test & prompt counter | VoiceTypr";
 const toolsIndexDescription =
-  "Free tools for builders who write all day: dictation vs typing calculator, 10-second typing speed test, typing load calculator, and AI prompt length counter.";
+  "Free tools if you write all day: compare dictation vs typing time, test your speed, estimate keyboard load, and count prompt length.";
 
 export const metadata: Metadata = {
   title: toolsIndexTitle,

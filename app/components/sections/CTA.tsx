@@ -18,7 +18,7 @@ export default function CTA() {
               <span className="block">Start <em>talking</em></span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-white/76">
-              Try VoiceTypr free for 3 days. Dictate into the apps you already use, with offline dictation by default and no subscription.
+              Try VoiceTypr free for 3 days. Dictate into the apps you already use. Offline by default. No subscription.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

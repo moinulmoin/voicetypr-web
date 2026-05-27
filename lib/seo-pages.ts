@@ -648,7 +648,7 @@ export const alternativePages: SeoPage[] = [
       "Works on Windows too — not just Mac",
       "Pay once instead of $144/year",
       "Local transcription by default; optional text cleanup when enabled",
-      "Same Whisper models underneath",
+      "Same style of on-device transcription, with Mac and Windows builds and lifetime pricing.",
     ],
     switchGuide: {
       voiceTyprIf: [
@@ -662,7 +662,7 @@ export const alternativePages: SeoPage[] = [
       ],
       notes: [
         { title: 'Superwhisper', body: 'Strong Mac capture tool with polished UX, but recurring pricing and no Windows build.' },
-        { title: 'VoiceTypr', body: 'Same Whisper family, broader platform coverage, and lifetime pricing for daily dictation.' },
+        { title: 'VoiceTypr', body: 'Same style of on-device transcription, broader platform coverage, and lifetime pricing for daily dictation.' },
       ],
     },
     ctaText: "Switch from Superwhisper",
@@ -737,7 +737,7 @@ export const alternativePages: SeoPage[] = [
     ],
     whySwitch: [
       "Lower upfront price than Dragon Professional",
-      "Modern local Whisper models without Dragon's profile-training workflow",
+      "Modern on-device transcription without Dragon's profile-training workflow",
       "Works on Mac too",
       "Active development with regular updates",
     ],
@@ -753,7 +753,7 @@ export const alternativePages: SeoPage[] = [
       ],
       notes: [
         { title: 'Dragon', body: 'Still powerful for specialized command-and-control workflows, but heavy setup and price.' },
-        { title: 'VoiceTypr', body: 'Modern local Whisper dictation for everyday writing in any text field.' },
+        { title: 'VoiceTypr', body: 'Modern on-device dictation for everyday writing in any text field.' },
       ],
     },
     ctaText: "Replace Dragon",
@@ -790,7 +790,7 @@ export const alternativePages: SeoPage[] = [
     ],
     whySwitch: [
       "Built for dictation-first writing, not full computer control",
-      "Modern local Whisper transcription instead of the old Windows speech engine",
+      "Modern on-device transcription instead of the old Windows speech engine",
       "Works in every normal text field with one hotkey",
       "A clearer upgrade path for Windows users who still need offline privacy",
     ],

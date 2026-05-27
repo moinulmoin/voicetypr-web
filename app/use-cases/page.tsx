@@ -80,9 +80,9 @@ export default function UseCasesHubPage() {
                 Who uses VoiceTypr
               </h1>
               <p className="max-w-[640px] text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
-                When typing is the bottleneck — physical, cognitive, or because
-                the English side of your job grew faster than your fingers —
-                voice routes around it. Here&apos;s how that looks for the people who use VoiceTypr daily.
+                Voice gets words into the app you already have open. Here&apos;s
+                how that looks for writers, founders, developers, ADHD, RSI, and
+                everyone else below.
               </p>
               <nav
                 aria-label="Popular starting points"
