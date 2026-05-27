@@ -190,26 +190,18 @@ export default function PricingCards({
             </ul>
 
             <div className="mt-6 rounded-2xl border border-dashed border-editorial-line bg-editorial-surface-2 p-4">
-              <div className="flex flex-wrap items-center gap-2">
-                <div className="text-xs font-semibold uppercase tracking-widest text-editorial-ink-3">
-                  Roadmap
-                </div>
-                <span className="rounded-full border border-editorial-line bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-editorial-ink-3">
-                  Not shipped yet
-                </span>
+              <div className="text-xs font-semibold uppercase tracking-widest text-editorial-ink-3">
+                Coming next
               </div>
               <p className="mt-2 text-[12px] leading-relaxed text-editorial-ink-3">
-                Planned for upcoming releases — not included in today&apos;s build.
+                Built on top of what you already own — included as we ship them.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {roadmapFeatures.map((feature) => (
                   <span
                     key={feature}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-editorial-line bg-white px-2.5 py-1 text-[11px] font-medium text-editorial-ink-2 shadow-sm"
+                    className="inline-flex items-center rounded-full border border-editorial-line bg-white px-3 py-1 text-[11px] font-medium text-editorial-ink-2 shadow-sm"
                   >
-                    <span className="rounded bg-editorial-surface-2 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-editorial-ink-3">
-                      Soon
-                    </span>
                     {feature}
                   </span>
                 ))}
