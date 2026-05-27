@@ -14,7 +14,7 @@ export default function FounderNote() {
                 I type for 12+ hours a day. Most tools locked me into a subscription or felt like legacy software. VoiceTypr is fast, with offline dictation by default and local transcription on your machine.
               </p>
               <p>
-                Try it free for 3 days — full access, no card required. Keep it only if dictation fits how you work.
+                Try it free for 3 days, no card. (Spoiler: you’ll keep it.)
               </p>
             </div>
           </div>

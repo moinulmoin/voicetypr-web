@@ -162,8 +162,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Languages',
-    title: 'Multilingual dictation across major languages',
-    body: 'Speak naturally in English, Spanish, French, German, Italian, Dutch, and other widely used languages without switching tools.',
+    title: 'Dictation in 99+ languages',
+    body: 'Speak naturally in English, Spanish, French, German, Italian, Portuguese, Hindi, Arabic, Japanese, and more — without switching tools.',
     demo: (
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="mb-3 text-xs font-medium uppercase tracking-widest text-editorial-ink-3">

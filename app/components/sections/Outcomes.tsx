@@ -30,27 +30,19 @@ export default function Outcomes() {
             </p>
 
             <div className="mt-8 rounded-2xl bg-white p-5">
-              <div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
-                {[
-                  { step: 'Hold hotkey', detail: 'Push-to-talk or toggle' },
-                  { step: 'Speak', detail: 'Say the thought once' },
-                  { step: 'Paste', detail: 'Text lands at your cursor' },
-                ].map((item, index) => (
-                  <div key={item.step} className="contents">
-                    <div className="rounded-xl border border-editorial-line bg-editorial-surface-2 p-4 text-center sm:text-left">
-                      <div className="text-sm font-semibold text-editorial-ink">{item.step}</div>
-                      <div className="mt-1 text-xs text-editorial-ink-3">{item.detail}</div>
-                    </div>
-                    {index < 2 ? (
-                      <div
-                        aria-hidden="true"
-                        className="hidden text-center text-lg font-medium text-editorial-ink-3 sm:block"
-                      >
-                        →
-                      </div>
-                    ) : null}
-                  </div>
-                ))}
+              <div className="grid grid-cols-3 overflow-hidden rounded-xl border border-editorial-line text-sm">
+                <div className="bg-editorial-ink p-4 text-white">
+                  <div className="text-3xl font-semibold">~150</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-white/70">wpm speaking</div>
+                </div>
+                <div className="bg-editorial-surface-2 p-4 text-editorial-ink">
+                  <div className="text-3xl font-semibold">~45</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-editorial-ink-3">wpm typing</div>
+                </div>
+                <div className="bg-white p-4 text-editorial-ink">
+                  <div className="text-3xl font-semibold">1</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-editorial-ink-3">hotkey</div>
+                </div>
               </div>
             </div>
 

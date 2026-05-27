@@ -31,19 +31,11 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'How many devices can I use?',
-    a: 'Your license covers the device count you buy: 1, 2, or 4 simultaneous activations. Deactivate a machine and move the license to another within that limit. Need more seats? Email support@voicetypr.com for team licensing.',
-  },
-  {
-    q: 'Are taxes included in the price?',
-    a: 'Checkout runs through Polar. They calculate and collect sales tax or VAT where required based on your location — you see the final total before you pay.',
+    a: 'Pick 1, 2, or 4 activations when you buy. Switch machines anytime within your limit — deactivate one, activate another. Need a team license? Email support@voicetypr.com.',
   },
   {
     q: 'What does lifetime mean?',
-    a: 'One payment for the current VoiceTypr product, including updates we ship for it — no subscription. We do not guarantee every future feature or a fixed release schedule; if development pauses, your license stays valid for the latest version available at that time.',
-  },
-  {
-    q: 'How is VoiceTypr different from built-in dictation?',
-    a: 'macOS and Windows include system dictation, but it is often tied to the OS text field and may use cloud processing depending on settings. VoiceTypr uses local transcription by default, works with a global hotkey into ChatGPT, Cursor, Slack, and any text cursor, and is a one-time purchase with model choice and file transcription.',
+    a: "One price, yours forever. No subscription, no card on file. Updates we ship come with it — VoiceTypr keeps working on the version you own.",
   },
   {
     q: 'Does it use my GPU on Windows?',
