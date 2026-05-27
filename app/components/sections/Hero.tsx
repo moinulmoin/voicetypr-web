@@ -16,7 +16,7 @@ export default function HeroSection() {
               Replace typing with your voice in the apps you already use.
             </span>
             <span className="mt-1 block">
-              Works in Gmail, Slack, Notion, ChatGPT, Claude, Cursor, Claude Code, OpenCode, Hermes — and every text field on your screen. Offline dictation by default. No subscription.
+              Works in Gmail, Slack, Notion, ChatGPT, Claude, Cursor, Claude Code, OpenClaw, Hermes, NanoClaw — and every text field on your screen. Offline dictation by default. No subscription.
             </span>
           </p>
 

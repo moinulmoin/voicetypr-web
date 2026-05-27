@@ -279,7 +279,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'AI Agents & Automation',
     title: 'AI Agents & Automation',
-    body: 'Pair VoiceTypr with AI coding agents like Cursor, Claude Code, OpenCode, and Hermes. Send audio from your workflow, get plain text back — ready to paste or save.',
+    body: 'Pair VoiceTypr with AI coding agents like OpenClaw, Hermes, and NanoClaw. Send audio from your workflow, get plain text back — ready to use/save.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
