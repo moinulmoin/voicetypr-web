@@ -1,5 +1,5 @@
 const workflowChips = [
-  'Prompt by voice',
+  'Type faster',
   'Reply cleaner',
   'Capture specs',
   'Dictate notes',
@@ -23,7 +23,7 @@ export default function Outcomes() {
         <div className="mt-12 grid grid-cols-1 items-start gap-4 lg:grid-cols-3">
           <article className="rounded-3xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur lg:col-span-2">
             <h3 className="text-2xl font-semibold tracking-tight text-editorial-ink">
-              Prompt at speaking speed
+              Write at speaking speed
             </h3>
             <p className="mt-3 max-w-2xl text-base leading-relaxed text-editorial-ink-2">
               Your brain runs faster than your fingers. Capture the thought, clean it up, and paste it without switching tools.

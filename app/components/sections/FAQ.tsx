@@ -19,7 +19,7 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'Is my voice data private?',
-    a: 'Yes. VoiceTypr uses offline dictation by default with local models (Whisper on Mac and Windows, Parakeet on Apple Silicon Macs). Optional cleaner-text features work on final text, not your voice recording, when you choose to enable them.',
+    a: 'Yes. VoiceTypr uses offline dictation by default — transcription happens on your machine. Optional cleaner-text features work on the final text, not your voice recording, when you choose to enable them.',
   },
   {
     q: 'How does cleaner text work?',

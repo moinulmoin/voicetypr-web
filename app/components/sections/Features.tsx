@@ -46,8 +46,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Privacy',
-    title: 'Fast, private, offline dictation by default',
-    body: 'Local transcription on your machine turns speech into text, so everyday dictation stays quick without routing audio through a cloud transcription service.',
+    title: 'Fast, private, offline-first',
+    body: 'Local models turn speech into text on your machine, so everyday dictation feels quick without routing audio through a cloud transcription service.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-sm shadow-sm">
         {[
@@ -64,8 +64,8 @@ const featureCards: FeatureCard[] = [
   },
   {
     label: 'Models',
-    title: 'Pick speed or accuracy',
-    body: 'Switch between fast models for quick notes and larger models for precise transcription — any time, not just on higher tiers.',
+    title: 'Pick your engine',
+    body: 'On-device local models (Whisper, Parakeet) for transcription — switch between fast or precise any time. Pair with leading cloud models (OpenAI, Anthropic, Groq) for optional AI formatting on the final text.',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
         <div className="mb-4 flex items-center justify-between">
@@ -217,7 +217,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Vocabulary',
     title: 'Teach it your words',
-    body: 'Add product names, acronyms, and phrases you use daily so transcription picks them up more reliably.',
+    body: 'Add product names, acronyms, and phrases you use daily so the transcription gets them right every time.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">

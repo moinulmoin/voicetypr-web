@@ -268,7 +268,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Is my voice data used to train models?",
         a:
-          "No. VoiceTypr transcribes your voice on your machine using Whisper by default. Optional AI formatting sends text only when enabled; your audio is not sent for model training.",
+          "No. VoiceTypr transcribes your voice on your machine by default. Optional AI formatting sends text only when enabled; your audio is not sent for model training.",
       },
       {
         q: "Does it work for someone whose first language isn't English?",

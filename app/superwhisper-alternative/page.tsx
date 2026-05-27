@@ -68,7 +68,7 @@ const faqs = [
   },
   {
     q: "What does local transcription mean in practice?",
-    a: "Your voice is transcribed on your machine using Whisper (macOS and Windows) or Parakeet (macOS Apple Silicon) after setup. Optional AI formatting can send text—not audio—to your configured provider when you turn it on.",
+    a: "Your voice is transcribed on your machine after setup. Optional AI formatting can send text — not audio — to your configured provider when you turn it on.",
   },
   {
     q: "Will it work with Cursor, Claude, and ChatGPT?",
