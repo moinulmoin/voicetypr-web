@@ -277,9 +277,9 @@ const featureCards: FeatureCard[] = [
     ),
   },
   {
-    label: 'AI automation',
-    title: 'Connect VoiceTypr to your automations.',
-    body: 'Send a recording or file from your workflow. Get plain text back — ready to paste or save.',
+    label: 'AI Agents & Automation',
+    title: 'AI Agents & Automation',
+    body: 'Pair VoiceTypr with AI coding agents like Cursor, Claude Code, OpenCode, and Hermes. Send audio from your workflow, get plain text back — ready to paste or save.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
@@ -303,7 +303,7 @@ const roadmapLabels = [
   'Text replacements',
   'Reusable snippets',
   'Stronger machine on your network',
-  'Voice pipeline for AI agents',
+  'AI Agents & Automation',
 ] as const;
 
 

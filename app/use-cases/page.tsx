@@ -81,7 +81,7 @@ export default function UseCasesHubPage() {
               </h1>
               <p className="max-w-[640px] text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
                 Voice gets words into the app you already have open. Here&apos;s
-                how that looks for writers, founders, developers, ADHD, RSI, and
+                how that looks for creators, founders, developers, ADHD, RSI, and
                 everyone else below.
               </p>
               <nav

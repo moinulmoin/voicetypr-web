@@ -53,7 +53,7 @@ const roadmapFeatures = [
   'Text replacements',
   'Reusable snippets',
   'Use a stronger machine on your network',
-  'Automation & integrations',
+  'AI Agents & Automation',
 ] as const;
 
 export default function PricingCards({
