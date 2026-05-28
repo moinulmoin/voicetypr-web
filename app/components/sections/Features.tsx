@@ -1,16 +1,7 @@
 import type { ReactNode } from 'react';
-import { ClaudeAI, Cursor, Gmail, Notion, OpenAI, Slack } from '@/components/icons';
 import { cn } from '@/lib/utils';
+import { FEATURED_APPS } from '@/lib/constants';
 import FeatureIdeaForm from './FeatureIdeaForm';
-
-const appTargets = [
-  { label: 'Gmail', Icon: Gmail },
-  { label: 'Slack', Icon: Slack },
-  { label: 'Notion', Icon: Notion },
-  { label: 'ChatGPT', Icon: OpenAI },
-  { label: 'Claude', Icon: ClaudeAI },
-  { label: 'Cursor', Icon: Cursor },
-] as const;
 
 type FeatureCard = {
   label: string;
@@ -31,7 +22,7 @@ const featureCards: FeatureCard[] = [
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <div className="mb-3 rounded-lg bg-editorial-ink px-3 py-2 text-sm text-white">Paste where you&apos;re typing</div>
         <div className="grid gap-2 sm:grid-cols-3">
-          {appTargets.map(({ label, Icon }) => (
+          {FEATURED_APPS.map(({ label, Icon }) => (
             <span
               key={label}
               className="flex items-center gap-2 rounded-md border border-editorial-line bg-editorial-surface-2 px-3 py-2 text-xs font-medium text-editorial-ink-2"
@@ -279,7 +270,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'AI Agents & Automation',
     title: 'AI Agents & Automation',
-    body: 'Pair VoiceTypr with AI coding agents like OpenClaw, Hermes, and NanoClaw. Send audio from your workflow, get plain text back — ready to use/save.',
+    body: 'Pair VoiceTypr with AI coding agents and automation tools. Send audio from your workflow, get plain text back — ready to use/save.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">

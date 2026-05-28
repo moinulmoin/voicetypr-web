@@ -1,3 +1,5 @@
+import { ClaudeAI, Cursor, Gmail, Notion, OpenAI, Slack } from '@/components/icons';
+
 export const CONFIG = {
   // Trial
   trialDurationDays: 3,
@@ -64,3 +66,24 @@ export const ERROR_MESSAGES: Record<ErrorCode, string> = {
   [ErrorCode.LICENSE_DISABLED]: 'License disabled.',
   [ErrorCode.LICENSE_ACTIVATION_LIMIT_REACHED]: 'This license has already been activated on the maximum number of devices.',
 };
+
+export const FEATURED_APPS = [
+  { label: 'Gmail', Icon: Gmail },
+  { label: 'Slack', Icon: Slack },
+  { label: 'Notion', Icon: Notion },
+  { label: 'ChatGPT', Icon: OpenAI },
+  { label: 'Claude', Icon: ClaudeAI },
+  { label: 'Cursor', Icon: Cursor },
+] as const;
+
+/** 
+ * Subset used in the hero for better visual breathing room.
+ * More punchy version focused on the highest-signal apps.
+ */
+export const HERO_APPS = [
+  { label: 'Gmail', Icon: Gmail },
+  { label: 'Slack', Icon: Slack },
+  { label: 'Cursor', Icon: Cursor },
+  { label: 'Claude', Icon: ClaudeAI },
+  { label: 'ChatGPT', Icon: OpenAI },
+] as const;

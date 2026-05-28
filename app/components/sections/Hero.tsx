@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { HERO_APPS } from '@/lib/constants';
+
 
 export default function HeroSection() {
   return (
@@ -16,7 +18,18 @@ export default function HeroSection() {
               Replace typing with your voice in the apps you already use.
             </span>
             <span className="mt-1 block">
-              Works in Gmail, Slack, Notion, ChatGPT, Claude, Cursor, Claude Code, OpenClaw, Hermes, NanoClaw — and every text field on your screen. Offline dictation by default. No subscription.
+              Works in{' '}
+              {HERO_APPS.map(({ label, Icon }, index) => (
+                <>
+                  <Icon
+                    className="inline h-[0.9em] w-[0.9em] align-[-0.1em] mr-1.5 shrink-0 opacity-90"
+                    aria-hidden="true"
+                  />
+                  {label}
+                  {index < HERO_APPS.length - 2 ? ', ' : index === HERO_APPS.length - 2 ? ', and ' : ''}
+                </>
+              ))}
+              {' — and every text field on your screen. Offline dictation by default. No subscription.'}
             </span>
           </p>
 
