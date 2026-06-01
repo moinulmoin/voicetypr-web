@@ -270,7 +270,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'AI Agents & Automation',
     title: 'AI Agents & Automation',
-    body: 'Pair VoiceTypr with AI coding agents and automation tools. Send audio from your workflow, get plain text back — ready to use/save.',
+    body: 'CLI and API access so you can trigger transcription from your own scripts, AI agents, or automation tools.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
@@ -356,7 +356,7 @@ export default function Features() {
               What we&apos;re building next
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/76">
-              The core app is already live. These are extras arriving in upcoming releases.
+              We’re shipping powerful new capabilities that make VoiceTypr much stronger.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/86">
               {roadmapLabels.map((feature) => (

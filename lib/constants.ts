@@ -77,12 +77,11 @@ export const FEATURED_APPS = [
 ] as const;
 
 /** 
- * Subset used in the hero for better visual breathing room.
- * More punchy version focused on the highest-signal apps.
+ * Apps shown in the hero (4 items max for breathing room).
+ * Focused on the highest-signal apps for our target audience.
  */
 export const HERO_APPS = [
   { label: 'Gmail', Icon: Gmail },
-  { label: 'Slack', Icon: Slack },
   { label: 'Cursor', Icon: Cursor },
   { label: 'Claude', Icon: ClaudeAI },
   { label: 'ChatGPT', Icon: OpenAI },
