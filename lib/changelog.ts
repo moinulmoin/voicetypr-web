@@ -25,9 +25,30 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.12.4",
+    date: "2026-06-01",
+    latest: true,
+    highlights: [
+      "Windows now launches safely on machines without Vulkan drivers",
+      "Updates ask before downloading or installing unless automatic installs are enabled",
+      "Hotkey and push-to-talk reliability improvements with better support diagnostics",
+    ],
+    features: [
+      "AI: restored the native Anthropic provider with current model aliases",
+    ],
+    fixes: [
+      "Windows: moved optional Vulkan Whisper acceleration into a sidecar so the main app remains CPU-safe",
+      "Updater: shows update availability without silently downloading or installing by default",
+      "Windows: fixed updater elevation by using the basic UI installer flow",
+      "Recording: prevents duplicate push-to-talk press events from starting overlapping flows",
+      "Support: adds hotkey diagnostics/report context for shortcut failures",
+      "macOS: keeps Parakeet sidecar JSON responses clean when CoreML emits native diagnostics",
+    ],
+  },
+  {
     version: "1.12.3",
     date: "2026-04-29",
-    latest: true,
+    latest: false,
     highlights: [
       "Auto-paste toggle so transcripts can land in history without inserting into the active app",
       "In-app bug and crash reports with redacted log excerpt and system info",
