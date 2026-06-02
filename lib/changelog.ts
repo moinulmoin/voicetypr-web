@@ -25,9 +25,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.12.5",
+    date: "2026-06-02",
+    latest: true,
+    highlights: [
+      "Windows GPU transcription hotfix for the 1.12.4 Vulkan sidecar regression",
+      "Successful Vulkan sidecar responses now parse correctly instead of falling back to slow CPU mode",
+    ],
+    fixes: [
+      "Windows: fixes Vulkan sidecar timing fields so GPU responses parse correctly",
+      "Transcription: prevents the 1.12.4 GPU path from falling back to unusably slow CPU transcription after successful sidecar work",
+    ],
+  },
+  {
     version: "1.12.4",
     date: "2026-06-01",
-    latest: true,
+    latest: false,
     highlights: [
       "Windows now launches safely on machines without Vulkan drivers",
       "Updates ask before downloading or installing unless automatic installs are enabled",
