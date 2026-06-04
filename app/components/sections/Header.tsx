@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/#faq", label: "FAQ", section: "faq" },
 ] as const;
 
-
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -24,8 +23,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-
 
   return (
     <header data-markdown-skip className="pointer-events-none fixed inset-x-0 top-0 z-50">
@@ -68,14 +65,6 @@ export default function Header() {
               Use cases
             </Link>
 
-            <Link
-              href="/tools"
-              className="transition-colors hover:text-editorial-ink"
-              data-umami-event="nav-free-tools-click"
-            >
-              Free tools
-            </Link>
-
             {navLinks.slice(2).map((link) => (
               <a
                 key={link.section}
@@ -89,17 +78,19 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
             <Link
               href="/download"
-              className={`rounded-md border text-sm font-medium text-editorial-ink transition-colors hover:bg-editorial-surface-2 ${
-                isScrolled
-                  ? "border-editorial-line bg-white px-4 py-2 shadow-sm"
-                  : "border-editorial-line bg-white px-4 py-2 shadow-sm"
-              }`}
-              data-umami-event="header-download-click"
+              className="pointer-events-auto hidden items-center rounded-xl border border-white/20 px-4 py-2 text-sm font-medium text-editorial-ink transition hover:bg-white/5 md:flex"
+              data-umami-event="nav-download-click"
             >
-              Download free trial
+              Download
+            </Link>
+            <Link
+              href="/download"
+              className="pointer-events-auto flex h-9 items-center rounded-xl bg-white px-5 text-sm font-medium text-black transition hover:bg-white/90 active:scale-[0.985] md:hidden"
+            >
+              Download
             </Link>
           </div>
         </div>

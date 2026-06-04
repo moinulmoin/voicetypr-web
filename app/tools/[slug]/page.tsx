@@ -90,7 +90,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             </ToolPageShell>
 
             {siblingTools.length > 0 ? (
-              <div className="mt-10 border-t border-editorial-line pt-8">
+              <div className="mt-10 pt-8">
                 <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                   More free tools
                 </p>
