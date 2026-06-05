@@ -295,14 +295,14 @@ export default function WisprFlowAlternativePage() {
                 </thead>
                 <tbody>
                   {comparison.map((group, groupIndex) => (
-                    <Fragment key={groupIndex}>
-                      <tr className="border-t border-white/10 bg-white/[0.015]">
+                    <Fragment key={group.category}>
+                      <tr key={`${groupIndex}-category`} className="border-t border-white/10 bg-white/[0.015]">
                         <td colSpan={3} className="px-8 py-4 text-sm font-semibold tracking-[1px] text-white/60">
                           {group.category}
                         </td>
                       </tr>
-                      {group.rows.map((row, rowIndex) => (
-                        <tr key={rowIndex} className="border-t border-white/10">
+                      {group.rows.map((row) => (
+                        <tr key={row.label} className="border-t border-white/10">
                           <td className="py-5 pr-8 text-[15px] text-white/80">{row.label}</td>
                           <td className="py-5 px-8">
                             <div className="flex items-center gap-3 text-[15px]">
