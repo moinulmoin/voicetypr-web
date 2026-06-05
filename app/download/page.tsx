@@ -41,6 +41,29 @@ export const metadata: Metadata = {
 
 export default async function DownloadPage() {
   const assets = await getLatestReleaseAssets();
-  
-  return <DownloadPageClient assets={assets} />;
+
+  const cookieStore = await cookies();
+  const affonsoReferral = cookieStore.get('affonso_referral')?.value || '';
+
+  let referrer = '';
+  try {
+    const rawReferer = (await headers()).get('referer');
+    if (rawReferer) referrer = new URL(rawReferer).origin;
+  } catch { /* invalid URL, keep empty */ }
+
+  const ua = (await headers()).get('user-agent')?.toLowerCase() || '';
+  const defaultSelected = ua.includes('windows')
+    ? 'windows'
+    : ua.includes('mac')
+      ? 'macos-silicon'
+      : undefined;
+
+  return (
+    <DownloadPageClient
+      assets={assets}
+      defaultSelected={defaultSelected}
+      affonsoReferral={affonsoReferral}
+      referrer={referrer}
+    />
+  );
 }

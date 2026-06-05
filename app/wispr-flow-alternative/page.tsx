@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Fragment, Suspense } from "react";
+import { Fragment, Suspense, type ReactNode } from "react";
 import { Check, Minus } from "lucide-react";
 import RelatedGuidesSection from "../components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
@@ -147,6 +147,97 @@ const comparison: Array<{
   },
 ];
 
+const relatedGuides: DiscoveryLink[] = [
+  {
+    href: "/superwhisper-alternative",
+    eyebrow: "mac-native option",
+    title: "Comparing Superwhisper instead?",
+    description:
+      "See how VoiceTypr compares if you want a polished Mac workflow but also need Windows and a single lifetime license.",
+    ctaLabel: "Read the Superwhisper comparison",
+  },
+  {
+    href: "/aqua-voice-alternative",
+    eyebrow: "subscription fatigue",
+    title: "Coming from Aqua Voice?",
+    description:
+      "Same pay-once and local-transcription story, written for buyers who started with Aqua Voice.",
+    ctaLabel: "Read the Aqua Voice comparison",
+  },
+  {
+    href: "/offline-dictation-app-for-windows",
+    eyebrow: "windows-first",
+    title: "Need offline dictation on Windows?",
+    description:
+      "A focused guide for Windows buyers who want local models, lifetime pricing, and dictation in every text field.",
+    ctaLabel: "See the Windows guide",
+  },
+];
+
+const faqs = [
+  {
+    q: "What does local transcription mean in VoiceTypr?",
+    a: "After setup, your voice is transcribed on your device by default. Optional text cleanup can use a cloud provider you choose — never your audio — and only when you turn it on.",
+  },
+  {
+    q: "How does transcription accuracy compare?",
+    a: "Pick a faster or more accurate on-device option in settings. Wispr runs in the cloud — some prefer its accent handling, but you trade privacy and a subscription. Try the 3-day trial in your real apps and compare.",
+  },
+  {
+    q: "Will it work with my Cursor / Claude / ChatGPT workflow?",
+    a: "Yes. VoiceTypr pastes text into any application that accepts keyboard input — Cursor, Claude desktop, ChatGPT, VS Code, Slack, Gmail, Notion, Linear, anything. Hold a hotkey, speak, release. Text appears wherever your cursor is.",
+  },
+  {
+    q: "Can I switch without losing my Wispr settings?",
+    a: "Dictation apps store settings locally per app, so there's nothing to migrate. Most users are up and running in under 5 minutes: install VoiceTypr, pick a hotkey, download a model, start talking. Your Wispr install keeps working in parallel while you evaluate.",
+  },
+  {
+    q: "What if I need more than 4 devices?",
+    a: "Contact support@voicetypr.com and we'll help you get set up.",
+  },
+  {
+    q: "What if I already paid for a year of Wispr Flow?",
+    a: "Use them in parallel. Once your Wispr sub expires, don't renew. The savings compound: year two is $0 with VoiceTypr vs $144–180/yr with Wispr.",
+  },
+  {
+    q: "What's the catch with 'lifetime'?",
+    a: "No catch. Updates stay included. If we ever ship a fundamentally different product, existing customers get a substantial discount on the new version. We're not playing the rug-pull game.",
+  },
+];
+
+const steps: Array<{ n: string; title: string; body: ReactNode }> = [
+  {
+    n: "01",
+    title: "Download VoiceTypr",
+    body: (
+      <>
+        Mac .dmg or Windows .exe from{" "}
+        <Link href="/download" className="text-white underline-offset-2 hover:underline">
+          /download
+        </Link>
+        . No account required.
+      </>
+    ),
+  },
+  {
+    n: "02",
+    title: "Pick a hotkey and a model",
+    body: (
+      <>
+        Default is <span className="rounded border border-white/20 px-1.5 py-0.5 font-mono text-sm">⌘⇧Space</span> on macOS or{" "}
+        <span className="rounded border border-white/20 px-1.5 py-0.5 font-mono text-sm">Ctrl+Shift+Space</span> on Windows.
+        Push-to-talk lives on Option/Alt+Space.
+      </>
+    ),
+  },
+  {
+    n: "03",
+    title: "Run both side-by-side for a week",
+    body:
+      "Use the 3-day trial to test your real daily workflow before buying. Keep using Wispr in parallel so you can compare real output. When your Wispr sub is up for renewal, decide with data instead of a gut feel.",
+  },
+];
+
 export default function WisprFlowAlternativePage() {
   return (
     <>
@@ -254,7 +345,7 @@ export default function WisprFlowAlternativePage() {
               </div>
               <div className="rounded-3xl border border-white/10 bg-white/[0.015] p-8">
                 <p className="text-lg leading-snug text-white/80">
-                  “The app is incredible, I did not expect it to be so fast while fully offline!”
+                  “The app is incredible, I did not expect it to be so fast with offline dictation!”
                 </p>
                 <div className="mt-6 text-sm text-white/50">— Stephen K. L.</div>
               </div>
@@ -262,33 +353,106 @@ export default function WisprFlowAlternativePage() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-20">
-          <div className="max-w-3xl mx-auto px-6 text-center">
-            <h2 className="mx-auto mb-5 max-w-[760px] text-[clamp(36px,5vw,56px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
-              Try the Wispr Flow alternative with a 3-day trial
-            </h2>
-            <p className="mx-auto mb-8 max-w-xl text-[16px] leading-[1.55] text-white/72">
-              No credit card. Transcription runs locally by default. Pay once, no subscription.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/download"
-                data-track="wispr-alt-final-cta-click"
-                className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
-              >
-                Start free trial
-              </Link>
-              <Link
-                href="/pricing"
-                className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
-              >
-                Buy lifetime license
-              </Link>
+        <section className="border-b border-white/10 py-16">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="mb-10 max-w-[760px]">
+              <div className="text-sm font-medium tracking-[3px] text-white/50">NO MIGRATION · NO ACCOUNT TRANSFER</div>
+              <h2 className="mt-3 text-5xl font-semibold tracking-[-1.5px]">How to switch in under five minutes</h2>
+            </div>
+            <ol className="space-y-9 max-w-[820px]">
+              {steps.map((step) => (
+                <li key={step.n} className="grid grid-cols-[auto_1fr] gap-6">
+                  <span className="pt-0.5 text-[30px] font-semibold leading-none text-white/40">{step.n}</span>
+                  <div>
+                    <h3 className="mb-1.5 text-[20px] font-semibold leading-[1.25]">{step.title}</h3>
+                    <p className="text-[15px] leading-[1.6] text-white/70">{step.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="border-b border-white/10 py-16" id="faq">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+              <div>
+                <div className="text-sm font-medium tracking-[3px] text-white/50">QUESTIONS BEFORE SWITCHING</div>
+                <h2 className="mt-3 text-4xl font-semibold tracking-[-1px]">The honest switch FAQ</h2>
+                <p className="mt-4 text-[16px] leading-[1.6] text-white/70">
+                  Pulled from real conversations with people who actually made the move.
+                </p>
+              </div>
+              <div>
+                {faqs.map((faq, i) => (
+                  <details
+                    key={faq.q}
+                    open={i === 0}
+                    className="group cursor-pointer border-t border-white/10 py-5 last:border-b last:border-white/10"
+                  >
+                    <summary className="flex list-none items-start justify-between gap-6 text-[18px] font-semibold leading-[1.3] text-white [&::-webkit-details-marker]:hidden">
+                      <span>{faq.q}</span>
+                      <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-white/10 text-base font-light text-white/70 transition group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <div className="max-w-[640px] pt-3.5 text-[15px] leading-[1.6] text-white/70">{faq.a}</div>
+                  </details>
+                ))}
+                <div className="mt-8 text-sm text-white/50">
+                  Not answered here?{" "}
+                  <a
+                    href="mailto:support@voicetypr.com"
+                    className="text-white hover:underline"
+                    data-track="wispr-alt-faq-contact-click"
+                  >
+                    Email support
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </main>
+
+      <div className="landing-editorial bg-editorial-bg">
+        <Suspense fallback={null}>
+          <Pricing />
+        </Suspense>
+        <RelatedGuidesSection
+          eyebrow="still comparing"
+          title="Other alternatives worth reading"
+          description="If Wispr Flow is not the only tool on your list, these pages lay out the same pay-once and local-transcription case for other popular options."
+          links={relatedGuides}
+          dataTrackPrefix="wispr-alt-related-guides"
+        />
+      </div>
+
+      <section className="bg-[#0a0a0a] py-20 text-white">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="mx-auto mb-5 max-w-[760px] text-[clamp(36px,5vw,56px)] font-semibold leading-[1.06] tracking-[-0.03em]">
+            Try the Wispr Flow alternative with a 3-day trial
+          </h2>
+          <p className="mx-auto mb-8 max-w-xl text-[16px] leading-[1.55] text-white/72">
+            No credit card. Transcription runs locally by default. Pay once, no subscription.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/download"
+              data-track="wispr-alt-final-cta-click"
+              className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+            >
+              Start free trial
+            </Link>
+            <Link
+              href="#pricing"
+              className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+            >
+              Buy lifetime license
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <Suspense>
         <SuccessModal />

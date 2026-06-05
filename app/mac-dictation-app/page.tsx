@@ -96,7 +96,7 @@ export default function MacDictationAppPage() {
             Download for Mac
           </Link>
           <Link
-            href="/pricing"
+            href="/#pricing"
             className="inline-flex items-center justify-center rounded-xl border border-white/20 px-8 py-4 text-lg font-medium hover:bg-white/5 transition-colors"
           >
             See pricing

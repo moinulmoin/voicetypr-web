@@ -119,7 +119,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://assets.voicetypr.com" />
         <link rel="dns-prefetch" href="https://assets.voicetypr.com" />
