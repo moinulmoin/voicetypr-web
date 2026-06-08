@@ -25,9 +25,62 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.12.9",
+    date: "2026-06-08",
+    latest: true,
+    highlights: [
+      "Model downloads now verify against current upstream checksums",
+      "Windows toggle hotkeys no longer start and immediately stop from repeated key events",
+      "Onboarding shows clearer download errors and only continues once a model is ready",
+    ],
+    fixes: [
+      "Models: replaces stale checksum metadata so valid Whisper downloads are no longer deleted after verification",
+      "Onboarding: surfaces terminal download errors and aligns model readiness with the main Models tab",
+      "Windows: ignores duplicate toggle hotkey press events while the shortcut is held, preventing empty recordings",
+    ],
+  },
+  {
+    version: "1.12.8",
+    date: "2026-06-05",
+    latest: false,
+    highlights: [
+      "Model management stays responsive during downloads",
+      "Settings can refresh model status without interrupting an active download",
+    ],
+    fixes: [
+      "Models: keeps the UI responsive while a download is in progress",
+      "Downloads: prevents status refreshes from racing active model operations",
+    ],
+  },
+  {
+    version: "1.12.7",
+    date: "2026-06-05",
+    latest: false,
+    highlights: [
+      "Windows model downloads and catalog metadata repaired",
+      "Windows Vulkan sidecar warm-up is safer and less noisy",
+    ],
+    fixes: [
+      "Windows: repairs local model catalog downloads and related runtime packaging",
+      "Windows: warms the optional Vulkan sidecar more reliably without making the main app depend on Vulkan",
+      "Updater: backs out a passive installer path that could hide elevation prompts on some machines",
+    ],
+  },
+  {
+    version: "1.12.6",
+    date: "2026-06-04",
+    latest: false,
+    highlights: [
+      "Windows transcription fallback is faster and safer on machines without GPU acceleration",
+    ],
+    fixes: [
+      "Windows: optimizes transcription fallback so CPU-only recovery is more usable when GPU acceleration is unavailable",
+    ],
+  },
+  {
     version: "1.12.5",
     date: "2026-06-02",
-    latest: true,
+    latest: false,
     highlights: [
       "Windows GPU transcription hotfix for the 1.12.4 Vulkan sidecar regression",
       "Successful Vulkan sidecar responses now parse correctly instead of falling back to slow CPU mode",
