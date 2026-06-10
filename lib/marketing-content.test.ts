@@ -22,6 +22,10 @@ const marketingSourceFiles = [
   'public/pricing.md',
   'public/accessibility.md',
   'public/windows-dictation.md',
+  'app/hipaa-compliant-dictation/page.tsx',
+  'app/zero-knowledge/page.tsx',
+  'app/air-gapped/page.tsx',
+  'app/gdpr-compliant/page.tsx',
 ];
 
 const bannedFragments = [

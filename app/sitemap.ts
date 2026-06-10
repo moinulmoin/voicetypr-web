@@ -113,6 +113,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.4,
     },
+    {
+      url: `${baseUrl}/hipaa-compliant-dictation`,
+      lastModified: lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/zero-knowledge`,
+      lastModified: lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/air-gapped`,
+      lastModified: lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/gdpr-compliant`,
+      lastModified: lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
   ];
 
   const aiReadableRoutes: MetadataRoute.Sitemap = [

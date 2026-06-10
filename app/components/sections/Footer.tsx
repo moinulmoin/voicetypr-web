@@ -74,6 +74,15 @@ const columns = [
       { label: 'Cookies', href: '/cookies', internal: true },
     ],
   },
+  {
+    title: 'Compliance',
+    links: [
+      { label: 'HIPAA', href: '/hipaa-compliant-dictation', internal: true },
+      { label: 'Zero-Knowledge', href: '/zero-knowledge', internal: true },
+      { label: 'Air-Gapped', href: '/air-gapped', internal: true },
+      { label: 'GDPR', href: '/gdpr-compliant', internal: true },
+    ],
+  },
 ] as const;
 
 const socialLinks = [

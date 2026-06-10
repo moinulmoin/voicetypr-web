@@ -513,6 +513,20 @@ const relatedGuidesByUseCaseSlug: Record<string, DiscoveryLink[]> = {
       description: 'A broader route for lawyers mainly using dictation to reduce drafting strain and repetitive typing.',
       ctaLabel: 'See the accessibility guide',
     },
+    {
+      href: '/zero-knowledge',
+      eyebrow: 'privacy',
+      title: 'Zero-knowledge voice typing',
+      description: 'For legal buyers who need verifiable privacy and client confidentiality.',
+      ctaLabel: 'Read about zero-knowledge',
+    },
+    {
+      href: '/gdpr-compliant',
+      eyebrow: 'compliance',
+      title: 'GDPR-compliant dictation',
+      description: 'EU data protection for legal practices handling client personal data.',
+      ctaLabel: 'Read about GDPR compliance',
+    },
   ],
   students: [
     {
@@ -531,6 +545,20 @@ const relatedGuidesByUseCaseSlug: Record<string, DiscoveryLink[]> = {
     },
   ],
   researchers: [
+    {
+      href: '/zero-knowledge',
+      eyebrow: 'privacy',
+      title: 'Zero-knowledge voice typing',
+      description: 'For researchers who need to protect unpublished findings and sensitive data.',
+      ctaLabel: 'Read about zero-knowledge',
+    },
+    {
+      href: '/gdpr-compliant',
+      eyebrow: 'compliance',
+      title: 'GDPR-compliant dictation',
+      description: 'EU data protection for academic and institutional research.',
+      ctaLabel: 'Read about GDPR compliance',
+    },
     {
       href: '/use-cases/students',
       eyebrow: 'study-to-research bridge',
@@ -638,6 +666,20 @@ export const downloadDiscoveryLinks: DiscoveryLink[] = [
     description: 'The use-case page for buyers who simply need to reduce hand load and keep working.',
     ctaLabel: 'See the use case',
   },
+  {
+    href: '/zero-knowledge',
+    eyebrow: 'privacy',
+    title: 'Zero-knowledge architecture',
+    description: 'How VoiceTypr ensures we never see, touch, or store your transcripts.',
+    ctaLabel: 'Read about zero-knowledge',
+  },
+  {
+    href: '/gdpr-compliant',
+    eyebrow: 'compliance',
+    title: 'GDPR-compliant dictation',
+    description: 'EU data protection with local processing and German-hosted infrastructure.',
+    ctaLabel: 'Read about GDPR compliance',
+  },
 ];
 
 export const offlineWindowsRelatedGuides: DiscoveryLink[] = [
@@ -647,6 +689,20 @@ export const offlineWindowsRelatedGuides: DiscoveryLink[] = [
     title: 'Windows voice typing guide',
     description: 'For people comparing all the realistic Windows dictation routes, not just the offline angle.',
     ctaLabel: 'See the Windows guide',
+  },
+  {
+    href: '/zero-knowledge',
+    eyebrow: 'privacy',
+    title: 'Zero-knowledge architecture',
+    description: 'How VoiceTypr ensures we never see, touch, or store your transcripts.',
+    ctaLabel: 'Read about zero-knowledge',
+  },
+  {
+    href: '/gdpr-compliant',
+    eyebrow: 'compliance',
+    title: 'GDPR-compliant dictation',
+    description: 'EU data protection with local processing and German-hosted infrastructure.',
+    ctaLabel: 'Read about GDPR compliance',
   },
   {
     href: '/alternative/windows-speech-recognition',
@@ -685,5 +741,19 @@ export const voiceTypingRelatedGuides: DiscoveryLink[] = [
     title: 'RSI use case',
     description: 'For buyers who care less about features and more about getting through the work with fewer keystrokes.',
     ctaLabel: 'See the use case',
+  },
+  {
+    href: '/zero-knowledge',
+    eyebrow: 'privacy',
+    title: 'Zero-knowledge voice typing',
+    description: 'We never see, touch, or store your transcripts. Architecture for privacy-conscious buyers.',
+    ctaLabel: 'Read about zero-knowledge',
+  },
+  {
+    href: '/gdpr-compliant',
+    eyebrow: 'compliance',
+    title: 'GDPR-compliant dictation',
+    description: 'EU data protection with local processing and German-hosted infrastructure.',
+    ctaLabel: 'Read about GDPR compliance',
   },
 ];
