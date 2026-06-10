@@ -25,9 +25,25 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.12.10",
+    date: "2026-06-10",
+    latest: true,
+    highlights: [
+      "Local Whisper transcription no longer gets stuck in Transcribing on slow CPU-only systems",
+      "Short CPU dictation is faster by avoiding hidden Whisper retry passes",
+      "No-speech and timeout cases now give clearer feedback instead of silently inserting nothing",
+    ],
+    fixes: [
+      "Transcription: disables Whisper temperature fallback retries for the CPU profile to reduce latency on short recordings",
+      "Transcription: adds bounded timeout and cooperative cancellation handling for local Whisper recording transcription",
+      "Feedback: treats empty output, [SOUND], and [BLANK_AUDIO] as no-speech cases with a clear message",
+      "Release: pins Windows CI and release runners to VS 2022 so Windows builds do not fail on unsupported VS 2026 CMake generator detection",
+    ],
+  },
+  {
     version: "1.12.9",
     date: "2026-06-08",
-    latest: true,
+    latest: false,
     highlights: [
       "Model downloads now verify against current upstream checksums",
       "Windows toggle hotkeys no longer start and immediately stop from repeated key events",
