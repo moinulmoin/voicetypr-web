@@ -78,9 +78,26 @@ const cursorRelatedGuides: DiscoveryLink[] = [
   },
 ];
 
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\u003c");
+}
+
 export default function VoiceInputForCursorPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 2, name: "Voice input for Cursor", item: "https://voicetypr.com/voice-input-for-cursor" },
+    ],
+  };
+
   return (
     <main id="main-content" className="landing-editorial relative min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
+      />
       <Header />
 
       {/* Hero */}

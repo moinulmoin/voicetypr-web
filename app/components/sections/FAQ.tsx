@@ -67,48 +67,48 @@ export default function FAQ() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(faqJsonLd) }}
       />
-    <section className="ed-section" id="faq">
-      <div className="ed-container">
-        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
-          <div className="lg:sticky lg:top-28">
-            <h2 className="text-4xl leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-              The <em>honest</em> FAQ
-            </h2>
-            <p className="mt-4 max-w-sm text-base leading-relaxed text-editorial-ink-2">
-              Real questions from buyers, Windows users, privacy-conscious teams, and people switching from subscription dictation apps.
-            </p>
-            <div className="mt-8 text-sm text-editorial-ink-3">
-              Any other questions?{' '}
-              <a
-                href="mailto:support@voicetypr.com"
-                className="text-editorial-ink underline underline-offset-4 hover:text-editorial-ink-2"
-                data-track="faq-contact-click"
-              >
-                Contact us
-              </a>
+      <section className="ed-section" id="faq">
+        <div className="ed-container">
+          <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+            <div className="lg:sticky lg:top-28">
+              <h2 className="text-4xl leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+                The <em>honest</em> FAQ
+              </h2>
+              <p className="mt-4 max-w-sm text-base leading-relaxed text-editorial-ink-2">
+                Real questions from buyers, Windows users, privacy-conscious teams, and people switching from subscription dictation apps.
+              </p>
+              <div className="mt-8 text-sm text-editorial-ink-3">
+                Any other questions?{' '}
+                <a
+                  href="mailto:support@voicetypr.com"
+                  className="text-editorial-ink underline underline-offset-4 hover:text-editorial-ink-2"
+                  data-track="faq-contact-click"
+                >
+                  Contact us
+                </a>
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              {faqs.map((faq, index) => (
+                <article key={faq.q} className="grid gap-4 md:grid-cols-[4rem_1fr]">
+                  <div className="font-mono text-xs text-editorial-ink-3">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold leading-snug tracking-tight text-editorial-ink">
+                      {faq.q}
+                    </h3>
+                    <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
+                      {faq.a}
+                    </p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
-
-          <div className="space-y-8">
-            {faqs.map((faq, index) => (
-              <article key={faq.q} className="grid gap-4 md:grid-cols-[4rem_1fr]">
-                <div className="font-mono text-xs text-editorial-ink-3">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold leading-snug tracking-tight text-editorial-ink">
-                    {faq.q}
-                  </h3>
-                  <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-                    {faq.a}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 }
