@@ -173,7 +173,7 @@ export default function DownloadPageClient({ assets, defaultSelected, affonsoRef
       : macosInstallationSteps;
 
   return (
-    <main className="landing-editorial relative min-h-screen">
+    <main id="main-content" className="landing-editorial relative min-h-screen">
       <Header />
 
       {/* Hero */}
