@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
-import RelatedGuidesSection from '@/app/components/RelatedGuidesSection';
-import type { DiscoveryLink } from '@/lib/seo-discovery';
 import Header from '@/app/components/sections/Header';
 import Footer from '@/app/components/sections/Footer';
 
@@ -67,31 +65,6 @@ const faqs = [
     a: 'Yes. Voicetypr works on Windows 10+ and macOS 13+. Hold the hotkey, speak, release, and the text appears where your cursor already is.',
   },
 ] as const;
-
-const voicetyperRelatedGuides: DiscoveryLink[] = [
-  {
-    href: '/voice-typing',
-    eyebrow: 'general workflow',
-    title: 'Voice typing in every app',
-    description:
-      'The full pay-once dictation guide if you want voice typing in every app, not just the VoiceTyper name.',
-    ctaLabel: 'See the general guide',
-  },
-  {
-    href: '/offline-dictation-app-for-windows',
-    eyebrow: 'windows offline path',
-    title: 'Offline dictation for Windows',
-    description: 'Local transcription on Windows when offline privacy matters most.',
-    ctaLabel: 'See the Windows page',
-  },
-  {
-    href: '/best/mac-dictation',
-    eyebrow: 'mac comparison',
-    title: 'Mac dictation guide',
-    description: 'Compare realistic local dictation options on Mac.',
-    ctaLabel: 'See the Mac guide',
-  },
-];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -234,14 +207,6 @@ export default function VoiceTyperPage() {
           </div>
         </div>
       </section>
-
-      <RelatedGuidesSection
-        eyebrow="Related guides"
-        title="Guides people often read after VoiceTyper"
-        description="VoiceTyper is a common misspelling of Voicetypr. These guides cover pricing, workflows, and platform-specific comparisons."
-        links={voicetyperRelatedGuides}
-        dataTrackPrefix="voicetyper-related-guides"
-      />
 
       <section className="ed-section">
         <div className="ed-container">
