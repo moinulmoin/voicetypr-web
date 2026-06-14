@@ -10,6 +10,10 @@ import {
   alternativePages,
 } from "@/lib/seo-pages";
 
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\u003c");
+}
+
 export async function generateStaticParams() {
   return alternativePages.map((p) => ({ slug: p.slug }));
 }
@@ -64,8 +68,21 @@ export default async function AlternativePage({
   if (!page) return notFound();
   const relatedGuides = getRelatedGuidesForSeoSlug(slug);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 2, name: page.h1, item: `https://voicetypr.com/alternative/${slug}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
+      />
       <main id="main-content" className="landing-editorial relative min-h-screen">
         <Header />
         <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">

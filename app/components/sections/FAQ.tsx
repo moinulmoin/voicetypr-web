@@ -43,8 +43,30 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
 ];
 
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, '\u003c');
+}
+
 export default function FAQ() {
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: typeof faq.a === 'string' ? faq.a : '',
+      },
+    })),
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(faqJsonLd) }}
+      />
     <section className="ed-section" id="faq">
       <div className="ed-container">
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
@@ -87,5 +109,6 @@ export default function FAQ() {
         </div>
       </div>
     </section>
+    </>
   );
 }

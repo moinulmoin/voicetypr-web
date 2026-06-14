@@ -86,6 +86,15 @@ export default async function BestPage({
   const showLimitations = page.competitors.some((comp) => comp.limitation);
   const jsonLd = buildBestPageJsonLd(slug, page);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 2, name: page.h1, item: `https://voicetypr.com/best/${slug}` },
+    ],
+  };
+
   return (
     <>
       {jsonLd ? (
@@ -94,6 +103,10 @@ export default async function BestPage({
           dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
         />
       ) : null}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
+      />
       <main id="main-content" className="landing-editorial relative min-h-screen">
         <Header />
         <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
