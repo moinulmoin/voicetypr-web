@@ -7,9 +7,9 @@ import Header from "../components/sections/Header";
 import Footer from "../components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
+  title: "Offline Dictation App for Windows in 2026 — Voicetypr",
   description:
-    "VoiceTypr is an offline dictation app for Windows. Speak into Cursor, ChatGPT, email, docs, and any text field with local transcription from $39 once.",
+    "Voicetypr is an offline dictation app for Windows. Speak into Cursor, ChatGPT, email, docs, and any text field with local transcription from $39 once.",
   keywords: [
     "offline dictation app for windows",
     "windows offline voice typing",
@@ -21,17 +21,17 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/offline-dictation-app-for-windows",
   },
   openGraph: {
-    title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
+    title: "Offline Dictation App for Windows in 2026 — Voicetypr",
     description:
       "Offline voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
     url: "https://voicetypr.com/offline-dictation-app-for-windows",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Offline Dictation App for Windows in 2026 — VoiceTypr",
+    title: "Offline Dictation App for Windows in 2026 — Voicetypr",
     description:
       "Offline voice-to-text for Windows. Speak into Cursor, ChatGPT, email, docs, and any app.",
     images: ["/voicetypr-og.png"],
@@ -62,7 +62,7 @@ export default function OfflineDictationForWindowsPage() {
             Offline dictation app for Windows — private voice typing in every app you already use.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            VoiceTypr gives Windows users private on-device dictation — hold a shortcut, speak, release, and text appears where you&apos;re typing.
+            Voicetypr gives Windows users private on-device dictation — hold a shortcut, speak, release, and text appears where you&apos;re typing.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link

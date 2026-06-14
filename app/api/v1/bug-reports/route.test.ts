@@ -85,7 +85,7 @@ describe('POST /api/v1/bug-reports', () => {
 
     const formData = vi.mocked(fetch).mock.calls[0]![1]!.body as FormData;
     const payload = JSON.parse(formData.get('payload_json') as string);
-    expect(payload.content).toBe('New VoiceTypr bug report');
+    expect(payload.content).toBe('New Voicetypr bug report');
     expect(payload.allowed_mentions).toEqual({ parse: [] });
     expect(payload.attachments[0].filename).toBe('voicetypr-report.txt');
   });
@@ -121,8 +121,8 @@ describe('POST /api/v1/bug-reports', () => {
 
     const formData = vi.mocked(fetch).mock.calls[0]![1]!.body as FormData;
     const payload = JSON.parse(formData.get('payload_json') as string);
-    expect(payload.content).toBe('New VoiceTypr crash report');
-    expect(payload.embeds[0].title).toBe('VoiceTypr crash report');
+    expect(payload.content).toBe('New Voicetypr crash report');
+    expect(payload.embeds[0].title).toBe('Voicetypr crash report');
   });
 
   it('rejects invalid manual reports before rate limiting or Discord delivery', async () => {

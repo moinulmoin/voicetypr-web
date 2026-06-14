@@ -51,7 +51,7 @@ export async function activateLicenseKey(
   deviceName?: string
 ) {
   // Build a descriptive label for Polar
-  let label = "VoiceTypr";
+  let label = "Voicetypr";
 
   // Add app version
   if (appVersion) {
@@ -74,9 +74,9 @@ export async function activateLicenseKey(
   }
 
   // Example labels:
-  // "VoiceTypr v1.2.3 - MacOS 14.6.1 - John's MacBook Pro"
-  // "VoiceTypr v1.2.3 - Windows 11"
-  // "VoiceTypr - Linux - dev-machine"
+  // "Voicetypr v1.2.3 - MacOS 14.6.1 - John's MacBook Pro"
+  // "Voicetypr v1.2.3 - Windows 11"
+  // "Voicetypr - Linux - dev-machine"
 
   const response = await polar.licenseKeys.activate({
     key: licenseKey,

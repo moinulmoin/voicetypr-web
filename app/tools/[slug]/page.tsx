@@ -39,7 +39,7 @@ export async function generateMetadata({
       title: tool.ogTitle,
       description: tool.metaDescription,
       url,
-      siteName: "VoiceTypr",
+      siteName: "Voicetypr",
       type: "website",
       images: [
         {
@@ -75,7 +75,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
       { "@type": "ListItem", position: 2, name: "Free tools", item: "https://voicetypr.com/tools" },
       { "@type": "ListItem", position: 3, name: tool.shortTitle, item: getFreeToolCanonicalUrl(slug) },
     ],
@@ -93,7 +93,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
               <Link href="/" className="transition-colors hover:text-editorial-ink">
-                VoiceTypr
+                Voicetypr
               </Link>
               <span>/</span>
               <Link href="/tools" className="transition-colors hover:text-editorial-ink">

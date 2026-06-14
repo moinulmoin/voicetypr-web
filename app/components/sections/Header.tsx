@@ -35,9 +35,9 @@ export default function Header() {
           }`}
         >
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/favicon-32x32.png" alt="VoiceTypr logo" width={22} height={22} className="h-[22px] w-[22px] rounded-sm" />
+            <Image src="/favicon-32x32.png" alt="Voicetypr logo" width={22} height={22} className="h-[22px] w-[22px] rounded-sm" />
             <span className="text-sm font-semibold tracking-tight text-editorial-ink">
-              VoiceTypr
+              Voicetypr
             </span>
             <span className="hidden text-xs text-editorial-ink-3 md:inline">
               by Ideaplexa

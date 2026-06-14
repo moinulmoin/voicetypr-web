@@ -45,13 +45,13 @@ export const USE_CASE_CATEGORIES: Record<UseCaseCategory, { label: string; eyebr
     label: "Accessibility",
     eyebrow: "for the way you actually work",
     description:
-      "If typing is the bottleneck — physical, cognitive, or otherwise — voice routes around it. These are the people VoiceTypr was built for first.",
+      "If typing is the bottleneck — physical, cognitive, or otherwise — voice routes around it. These are the people Voicetypr was built for first.",
   },
   profession: {
     label: "By profession",
     eyebrow: "what it looks like in your craft",
     description:
-      "How VoiceTypr shows up day-to-day for the people who use it most. Concrete workflows, not generic productivity claims.",
+      "How Voicetypr shows up day-to-day for the people who use it most. Concrete workflows, not generic productivity claims.",
   },
 };
 
@@ -61,8 +61,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   // ──────────────────────────────────────────────────────────────────────
   {
     slug: "adhd",
-    title: "VoiceTypr for ADHD — Voice typing that bypasses the friction",
-    ogTitle: "VoiceTypr for ADHD",
+    title: "Voicetypr for ADHD — Voice typing that bypasses the friction",
+    ogTitle: "Voicetypr for ADHD",
     description:
       "Type at the speed you think. Voice typing for people with ADHD: capture ideas before they vanish, write at speaking speed, and reduce typing friction.",
     navLabel: "ADHD",
@@ -74,7 +74,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for adhd",
       headline: "The thought just left. <em>Catch it before it does.</em>",
       lede:
-        "If your brain runs faster than your fingers — and the idea is gone by the time you finish typing the first sentence — voice closes that gap. VoiceTypr captures the thought at speaking speed, locally, and pastes it wherever your cursor is.",
+        "If your brain runs faster than your fingers — and the idea is gone by the time you finish typing the first sentence — voice closes that gap. Voicetypr captures the thought at speaking speed, locally, and pastes it wherever your cursor is.",
       metaStrip: ["speaking-speed capture", "local transcription", "no setup ritual"],
     },
     pains: [
@@ -143,12 +143,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for journaling with local transcription?",
         a:
-          "Yes. VoiceTypr transcribes your voice on your machine by default. Optional AI formatting sends text only when you explicitly turn it on, never the audio.",
+          "Yes. Voicetypr transcribes your voice on your machine by default. Optional AI formatting sends text only when you explicitly turn it on, never the audio.",
       },
       {
         q: "Does it work with Things / Apple Notes / Obsidian / Notion?",
         a:
-          "Yes. VoiceTypr pastes into any text field that accepts keyboard input. Place your cursor where you want the text, hold the hotkey, talk. The app you're in doesn't need to know anything about VoiceTypr.",
+          "Yes. Voicetypr pastes into any text field that accepts keyboard input. Place your cursor where you want the text, hold the hotkey, talk. The app you're in doesn't need to know anything about Voicetypr.",
       },
       {
         q: "I get distracted; will I forget the hotkey?",
@@ -164,7 +164,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
     finalCta: {
       eyebrow: "three days, no card",
       headline: "Catch the thought <em>before it leaves.</em>",
-      body: "Hold the hotkey, say the thought once, and paste it where you were already working—still on-device by default. Try VoiceTypr free for 3 days.",
+      body: "Hold the hotkey, say the thought once, and paste it where you were already working—still on-device by default. Try Voicetypr free for 3 days.",
     },
     keywords: [
       "voice typing for adhd",
@@ -176,8 +176,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "dyslexia",
-    title: "VoiceTypr for Dyslexia — Bypass spelling friction, write at speaking speed",
-    ogTitle: "VoiceTypr for Dyslexia",
+    title: "Voicetypr for Dyslexia — Bypass spelling friction, write at speaking speed",
+    ogTitle: "Voicetypr for Dyslexia",
     description:
       "Voice typing for dyslexia. Write what you mean without fighting spelling, autocorrect, or re-reading loops. Local transcription with pay-once pricing.",
     navLabel: "Dyslexia",
@@ -268,12 +268,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Is my voice data used to train models?",
         a:
-          "No. VoiceTypr transcribes your voice on your machine by default. Optional AI formatting sends text only when enabled; your audio is not sent for model training.",
+          "No. Voicetypr transcribes your voice on your machine by default. Optional AI formatting sends text only when enabled; your audio is not sent for model training.",
       },
       {
         q: "Does it work for someone whose first language isn't English?",
         a:
-          "Yes — VoiceTypr supports 99+ languages. Dictation works in your native tongue or in English. You can switch via the model language picker.",
+          "Yes — Voicetypr supports 99+ languages. Dictation works in your native tongue or in English. You can switch via the model language picker.",
       },
     ],
     finalCta: {
@@ -291,10 +291,10 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "rsi",
-    title: "VoiceTypr for RSI — Voice typing for wrist pain and repetitive strain",
-    ogTitle: "VoiceTypr for RSI",
+    title: "Voicetypr for RSI — Voice typing for wrist pain and repetitive strain",
+    ogTitle: "Voicetypr for RSI",
     description:
-      "Wrist pain or RSI slowing your typing? VoiceTypr is offline voice-to-text that shifts daily writing off your hands. Pay once, lifetime license.",
+      "Wrist pain or RSI slowing your typing? Voicetypr is offline voice-to-text that shifts daily writing off your hands. Pay once, lifetime license.",
     navLabel: "RSI / wrist pain",
     hubTeaser:
       "Route daily writing through voice so wrists and forearms get relief while replies and docs still land on time.",
@@ -304,7 +304,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for rsi",
       headline: "When typing hurts. <em>Talk instead.</em>",
       lede:
-        "Wrist pain, repetitive strain, post-tendonitis recovery — when your hands are the bottleneck, voice is the relief valve. VoiceTypr runs offline and works in every app you already use, so you don't have to give up your tools to give your hands a break.",
+        "Wrist pain, repetitive strain, post-tendonitis recovery — when your hands are the bottleneck, voice is the relief valve. Voicetypr runs offline and works in every app you already use, so you don't have to give up your tools to give your hands a break.",
       metaStrip: ["fewer keystrokes", "local transcription", "works in every text field"],
     },
     pains: [
@@ -378,7 +378,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it work with vertical mice / split keyboards / accessibility hardware?",
         a:
-          "Yes. VoiceTypr only needs a microphone and a hotkey it can listen for. It doesn't care what your input hardware looks like. Custom hotkeys are supported if the defaults conflict.",
+          "Yes. Voicetypr only needs a microphone and a hotkey it can listen for. It doesn't care what your input hardware looks like. Custom hotkeys are supported if the defaults conflict.",
       },
       {
         q: "What about taking a break — can I disable it temporarily?",
@@ -408,8 +408,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
 
   {
     slug: "carpal-tunnel",
-    title: "VoiceTypr for Carpal Tunnel — Voice typing when your hands need a break",
-    ogTitle: "VoiceTypr for Carpal Tunnel",
+    title: "Voicetypr for Carpal Tunnel — Voice typing when your hands need a break",
+    ogTitle: "Voicetypr for Carpal Tunnel",
     description:
       "Voice typing for carpal tunnel and hand pain. Dictate emails, docs, prompts, and replies locally in any app on Mac or Windows. Pay once.",
     navLabel: "Carpal tunnel",
@@ -421,7 +421,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for carpal tunnel",
       headline: "Your hands are asking for less. <em>Give them voice.</em>",
       lede:
-        "Carpal tunnel turns ordinary typing into a negotiation with pain. VoiceTypr lets you keep writing emails, prompts, docs, and replies while your hands do less of the work. Hold a hotkey, talk, release. The text lands where your cursor already is.",
+        "Carpal tunnel turns ordinary typing into a negotiation with pain. Voicetypr lets you keep writing emails, prompts, docs, and replies while your hands do less of the work. Hold a hotkey, talk, release. The text lands where your cursor already is.",
       metaStrip: ["fewer keystrokes", "local transcription", "works in every app"],
     },
     pains: [
@@ -438,7 +438,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         title: "Privacy matters more when health is involved.",
         body:
-          "If you are dictating medical notes, work accommodations, or private emails, cloud transcription can feel wrong. VoiceTypr keeps audio on your machine by default.",
+          "If you are dictating medical notes, work accommodations, or private emails, cloud transcription can feel wrong. Voicetypr keeps audio on your machine by default.",
       },
     ],
     outcomes: [
@@ -453,7 +453,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "App, any text field",
         body:
-          "Word, Gmail, Slack, Notion, Cursor, Google Docs, support inboxes. If you can paste into it, VoiceTypr can put text there.",
+          "Word, Gmail, Slack, Notion, Cursor, Google Docs, support inboxes. If you can paste into it, Voicetypr can put text there.",
         meta: "Outcome · reach",
       },
       {
@@ -490,17 +490,17 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does this replace medical advice or ergonomics?",
         a:
-          "No. VoiceTypr is a writing tool, not treatment. It can reduce typing load, but you should still follow medical and ergonomic guidance for your specific condition.",
+          "No. Voicetypr is a writing tool, not treatment. It can reduce typing load, but you should still follow medical and ergonomic guidance for your specific condition.",
       },
       {
         q: "Will it work on Windows?",
         a:
-          "Yes. VoiceTypr works on Windows and macOS. It pastes text into normal Windows apps, including Word, Gmail, Slack, Cursor, VS Code, and browser text fields.",
+          "Yes. Voicetypr works on Windows and macOS. It pastes text into normal Windows apps, including Word, Gmail, Slack, Cursor, VS Code, and browser text fields.",
       },
       {
         q: "Is the audio sent to a cloud transcription service?",
         a:
-          "No. VoiceTypr transcribes your voice on your machine by default. Optional AI formatting can send final text to an AI provider if you enable it, but not the original audio.",
+          "No. Voicetypr transcribes your voice on your machine by default. Optional AI formatting can send final text to an AI provider if you enable it, but not the original audio.",
       },
       {
         q: "Is it good for short or long dictation?",
@@ -523,8 +523,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "motor-impairments",
-    title: "VoiceTypr for Motor Impairments — Accessible voice typing in every app",
-    ogTitle: "VoiceTypr for Motor Impairments",
+    title: "Voicetypr for Motor Impairments — Accessible voice typing in every app",
+    ogTitle: "Voicetypr for Motor Impairments",
     description:
       "Accessible voice typing for people with motor impairments. Dictate into Windows or Mac apps with local transcription and lifetime pricing.",
     navLabel: "Motor impairments",
@@ -536,14 +536,14 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "accessible voice typing",
       headline: "Typing should not decide <em>how much you get to say.</em>",
       lede:
-        "For many people who rely on assistive input, the hard part is not having something to say. It is getting words through a keyboard often enough, long enough, and with low enough friction. VoiceTypr turns speech into text in the apps you already use, with local transcription by default.",
+        "For many people who rely on assistive input, the hard part is not having something to say. It is getting words through a keyboard often enough, long enough, and with low enough friction. Voicetypr turns speech into text in the apps you already use, with local transcription by default.",
       metaStrip: ["windows + mac", "local transcription", "works in every text field"],
     },
     pains: [
       {
         title: "Accessibility tools often split control and writing.",
         body:
-          "Voice control helps you move around the computer. Dictation helps you create text. VoiceTypr focuses on the writing side so emails, forms, docs, prompts, and messages do not depend entirely on typing.",
+          "Voice control helps you move around the computer. Dictation helps you create text. Voicetypr focuses on the writing side so emails, forms, docs, prompts, and messages do not depend entirely on typing.",
       },
       {
         title: "Per-app dictation breaks the flow.",
@@ -561,7 +561,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Text field",
         body:
-          "VoiceTypr pastes into standard text inputs across Windows and Mac. No special plugin per app.",
+          "Voicetypr pastes into standard text inputs across Windows and Mac. No special plugin per app.",
         meta: "Outcome · access",
       },
       {
@@ -598,9 +598,9 @@ const USE_CASE_ENTRIES: UseCase[] = [
     ],
     faqs: [
       {
-        q: "Is VoiceTypr a full computer control tool?",
+        q: "Is Voicetypr a full computer control tool?",
         a:
-          "No. It is a dictation tool. Windows Voice Access and Apple Voice Control are better for navigating the computer by voice. VoiceTypr is for turning speech into text inside the apps where you write.",
+          "No. It is a dictation tool. Windows Voice Access and Apple Voice Control are better for navigating the computer by voice. Voicetypr is for turning speech into text inside the apps where you write.",
       },
       {
         q: "Can I try it before paying?",
@@ -610,7 +610,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it work with accessibility hardware?",
         a:
-          "Yes. VoiceTypr only needs a microphone and a shortcut it can listen for. It works alongside split keyboards, vertical mice, adaptive keyboards, and other input hardware.",
+          "Yes. Voicetypr only needs a microphone and a shortcut it can listen for. It works alongside split keyboards, vertical mice, adaptive keyboards, and other input hardware.",
       },
       {
         q: "Does it support Windows users?",
@@ -642,8 +642,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   // ──────────────────────────────────────────────────────────────────────
   {
     slug: "developers",
-    title: "VoiceTypr for Developers — Voice typing for prompts, commits, and PR descriptions",
-    ogTitle: "VoiceTypr for Developers",
+    title: "Voicetypr for Developers — Voice typing for prompts, commits, and PR descriptions",
+    ogTitle: "Voicetypr for Developers",
     description:
       "Dictate prompts to Cursor, commit messages, PR descriptions, and design docs. Offline voice typing built for developers who write more English than code.",
     navLabel: "Developers",
@@ -655,7 +655,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for developers",
       headline: "Dictate the English. <em>Type the code.</em>",
       lede:
-        "Most of your day isn't typing code anymore — it's typing prose: prompts, PR descriptions, Slack threads, and docs. VoiceTypr handles the English so your hands can focus on the part that still needs them.",
+        "Most of your day isn't typing code anymore — it's typing prose: prompts, PR descriptions, Slack threads, and docs. Voicetypr handles the English so your hands can focus on the part that still needs them.",
       metaStrip: [
         "cursor · claude · chatgpt",
         "slack · linear · notion",
@@ -728,7 +728,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it work in Cursor's agent prompt box specifically?",
         a:
-          "Yes. VoiceTypr pastes into any text field that accepts keyboard input. Cursor's prompt box is a normal textarea — paste-in works the same as in any other app.",
+          "Yes. Voicetypr pastes into any text field that accepts keyboard input. Cursor's prompt box is a normal textarea — paste-in works the same as in any other app.",
       },
       {
         q: "What about terminal commands?",
@@ -738,12 +738,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Will it work over SSH / on a remote machine?",
         a:
-          "VoiceTypr runs on your local machine and pastes into the local app — including your terminal. If the terminal is connected to a remote machine, the text reaches the remote shell the same way typed text would.",
+          "Voicetypr runs on your local machine and pastes into the local app — including your terminal. If the terminal is connected to a remote machine, the text reaches the remote shell the same way typed text would.",
       },
       {
         q: "How does it compare to the macOS / Windows built-in dictation?",
         a:
-          "Built-in dictation hallucinates names, drops punctuation on long blocks, and on macOS in particular has a hard time with technical vocabulary. VoiceTypr uses a broader on-device model trained on more varied speech and handles tech-speak much better.",
+          "Built-in dictation hallucinates names, drops punctuation on long blocks, and on macOS in particular has a hard time with technical vocabulary. Voicetypr uses a broader on-device model trained on more varied speech and handles tech-speak much better.",
       },
     ],
     finalCta: {
@@ -761,8 +761,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "writers",
-    title: "VoiceTypr for Writers — Draft by speaking, edit later",
-    ogTitle: "VoiceTypr for Writers",
+    title: "Voicetypr for Writers — Draft by speaking, edit later",
+    ogTitle: "Voicetypr for Writers",
     description:
       "Voice typing for writers, novelists, and content creators. Draft by speaking, edit later. Local transcription, pay-once, works in every writing app.",
     navLabel: "Writers",
@@ -813,7 +813,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Writing app",
         body:
-          "Scrivener, Ulysses, Bear, iA Writer, Word, Google Docs, Substack, Notion. VoiceTypr pastes into all of them.",
+          "Scrivener, Ulysses, Bear, iA Writer, Word, Google Docs, Substack, Notion. Voicetypr pastes into all of them.",
         meta: "Outcome · scope",
       },
     ],
@@ -848,12 +848,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for non-English drafting?",
         a:
-          "Yes. VoiceTypr supports 99+ languages — pick your model language in settings.",
+          "Yes. Voicetypr supports 99+ languages — pick your model language in settings.",
       },
       {
         q: "What about transcribing interviews?",
         a:
-          "VoiceTypr is built for first-person dictation, not multi-speaker transcription. For interview audio specifically, a dedicated transcription workflow or transcription-focused service is a better fit.",
+          "Voicetypr is built for first-person dictation, not multi-speaker transcription. For interview audio specifically, a dedicated transcription workflow or transcription-focused service is a better fit.",
       },
       {
         q: "Will it slow down my old laptop?",
@@ -876,8 +876,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "founders",
-    title: "VoiceTypr for Founders — Talk to your AI tools at the speed of thought",
-    ogTitle: "VoiceTypr for Founders",
+    title: "Voicetypr for Founders — Talk to your AI tools at the speed of thought",
+    ogTitle: "Voicetypr for Founders",
     description:
       "Built by a solo founder, for solo founders. Dictate prompts, support replies, specs, and Slack updates. Local transcription, pay-once, no subscription.",
     navLabel: "Founders & solopreneurs",
@@ -889,7 +889,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for founders",
       headline: "You're the bottleneck. <em>Voice unbottlenecks you.</em>",
       lede:
-        "When you're the only one shipping product, support, marketing, and ops, every minute typing is a minute not building. VoiceTypr is the dictation tool a solo founder built because he was tired of paying $180 a year for one.",
+        "When you're the only one shipping product, support, marketing, and ops, every minute typing is a minute not building. Voicetypr is the dictation tool a solo founder built because he was tired of paying $180 a year for one.",
       metaStrip: ["12+ hr/day workflows", "local transcription", "pay once · lifetime"],
     },
     pains: [
@@ -963,7 +963,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Is it built by a solo founder?",
         a:
-          "Yes. VoiceTypr is built and maintained by Moinul Moin, an indie operator. The whole story is in the founder essay.",
+          "Yes. Voicetypr is built and maintained by Moinul Moin, an indie operator. The whole story is in the founder essay.",
       },
       {
         q: "Refunds if it doesn't fit my workflow?",
@@ -991,8 +991,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "journalists",
-    title: "VoiceTypr for Journalists — Capture the story before the trail goes cold",
-    ogTitle: "VoiceTypr for Journalists",
+    title: "Voicetypr for Journalists — Capture the story before the trail goes cold",
+    ogTitle: "Voicetypr for Journalists",
     description:
       "Voice typing for journalists and reporters. Summarize interviews, draft intros, and write faster in your usual apps with local transcription.",
     navLabel: "Journalists",
@@ -1004,7 +1004,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for journalists",
       headline: "The interview happened. <em>Write while it's still alive.</em>",
       lede:
-        "Reporting moves faster than typing. Right after an interview or press event, the shape of the story is clear for about fifteen minutes. VoiceTypr helps you dump that structure, angle, and first draft into the app you already use before the signal fades.",
+        "Reporting moves faster than typing. Right after an interview or press event, the shape of the story is clear for about fifteen minutes. Voicetypr helps you dump that structure, angle, and first draft into the app you already use before the signal fades.",
       metaStrip: ["fresh-context drafting", "local transcription", "works in every editor"],
     },
     pains: [
@@ -1036,7 +1036,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Editor, any tool",
         body:
-          "Google Docs, Word, Notes, Notion, CMS draft boxes, email. If the story takes shape in a normal text field, VoiceTypr fits there.",
+          "Google Docs, Word, Notes, Notion, CMS draft boxes, email. If the story takes shape in a normal text field, Voicetypr fits there.",
         meta: "Outcome · scope",
       },
       {
@@ -1068,17 +1068,17 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Is this for transcribing full interviews?",
         a:
-          "Not primarily. VoiceTypr is strongest for your own first-person drafting and summaries. For multi-speaker audio transcription, a dedicated transcription workflow is usually a better fit.",
+          "Not primarily. Voicetypr is strongest for your own first-person drafting and summaries. For multi-speaker audio transcription, a dedicated transcription workflow is usually a better fit.",
       },
       {
         q: "Can I use it inside Google Docs or my CMS draft box?",
         a:
-          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser-based editors and CMS forms.",
+          "Yes. Voicetypr works anywhere a normal text field accepts keyboard input, including browser-based editors and CMS forms.",
       },
       {
         q: "What if I quote names or places the model might miss?",
         a:
-          "You should still do an editorial pass. VoiceTypr is for getting the draft out fast, not for skipping fact-checking or proper-name cleanup.",
+          "You should still do an editorial pass. Voicetypr is for getting the draft out fast, not for skipping fact-checking or proper-name cleanup.",
       },
       {
         q: "Does local transcription mean every surrounding service is offline?",
@@ -1088,7 +1088,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I draft in non-English languages?",
         a:
-          "Yes. VoiceTypr supports 99+ languages, so multilingual reporting workflows are fine as long as you pick the right language in settings.",
+          "Yes. Voicetypr supports 99+ languages, so multilingual reporting workflows are fine as long as you pick the right language in settings.",
       },
     ],
     finalCta: {
@@ -1106,8 +1106,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "product-managers",
-    title: "VoiceTypr for Product Managers — product specs and updates at speaking speed",
-    ogTitle: "VoiceTypr for Product Managers",
+    title: "Voicetypr for Product Managers — product specs and updates at speaking speed",
+    ogTitle: "Voicetypr for Product Managers",
     description:
       "Voice typing for product managers. Dictate product specs, user stories, sprint updates, and decision docs in Notion, Jira, Slack, and Google Docs.",
     navLabel: "Product managers",
@@ -1119,7 +1119,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for product managers",
       headline: "Product work happens in meetings. <em>The writing happens after.</em>",
       lede:
-        "Most PM work starts as spoken reasoning — in standups, user calls, design reviews, and stakeholder chaos. VoiceTypr helps you turn that reasoning into product specs, updates, and decision docs without spending the next hour retyping what you already know.",
+        "Most PM work starts as spoken reasoning — in standups, user calls, design reviews, and stakeholder chaos. Voicetypr helps you turn that reasoning into product specs, updates, and decision docs without spending the next hour retyping what you already know.",
       metaStrip: ["product specs · docs · jira", "local transcription", "cross-app workflow"],
     },
     pains: [
@@ -1151,7 +1151,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Works in the stack you already have",
         body:
-          "Notion, Jira, Linear, Slack, email, docs, browser forms. Product writing usually lives in text fields across six tools. VoiceTypr meets you there.",
+          "Notion, Jira, Linear, Slack, email, docs, browser forms. Product writing usually lives in text fields across six tools. Voicetypr meets you there.",
         meta: "Outcome · scope",
       },
       {
@@ -1183,12 +1183,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it in Notion, Jira, or Linear?",
         a:
-          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser-based product tools.",
+          "Yes. Voicetypr works anywhere a normal text field accepts keyboard input, including browser-based product tools.",
       },
       {
         q: "Is this meant to replace meeting notes software?",
         a:
-          "No. VoiceTypr is strongest for your own drafting and synthesis after the meeting, not as a bot that joins and records group calls.",
+          "No. Voicetypr is strongest for your own drafting and synthesis after the meeting, not as a bot that joins and records group calls.",
       },
       {
         q: "What about product terms and internal jargon?",
@@ -1203,7 +1203,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it on Windows and Mac?",
         a:
-          "Yes. VoiceTypr supports Windows 10+ and macOS 13+.",
+          "Yes. Voicetypr supports Windows 10+ and macOS 13+.",
       },
     ],
     finalCta: {
@@ -1221,8 +1221,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "customer-support",
-    title: "VoiceTypr for Customer Support — Reply faster without torching your hands",
-    ogTitle: "VoiceTypr for Customer Support",
+    title: "Voicetypr for Customer Support — Reply faster without torching your hands",
+    ogTitle: "Voicetypr for Customer Support",
     description:
       "Voice typing for customer support reps. Dictate ticket replies, CRM notes, and escalation context faster in help desks, chat, and email.",
     navLabel: "Customer support",
@@ -1234,7 +1234,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for customer support",
       headline: "The replies are repetitive. <em>The typing doesn't have to be.</em>",
       lede:
-        "Support work means typing all day: replies, summaries, follow-ups, internal notes, and escalation context. VoiceTypr moves the long-form parts to speech so your fingers are not carrying every customer conversation alone.",
+        "Support work means typing all day: replies, summaries, follow-ups, internal notes, and escalation context. Voicetypr moves the long-form parts to speech so your fingers are not carrying every customer conversation alone.",
       metaStrip: ["tickets · crm · email", "local transcription", "every-app input"],
     },
     pains: [
@@ -1266,7 +1266,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Help desk, any tool",
         body:
-          "Zendesk, Intercom, Help Scout, Gmail, Slack, CRMs, browser-based support tools. If there is a cursor, VoiceTypr can work there.",
+          "Zendesk, Intercom, Help Scout, Gmail, Slack, CRMs, browser-based support tools. If there is a cursor, Voicetypr can work there.",
         meta: "Outcome · scope",
       },
       {
@@ -1298,7 +1298,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it in my help desk or CRM?",
         a:
-          "Usually yes. VoiceTypr works in normal text fields across browser tools, desktop apps, and email clients.",
+          "Usually yes. Voicetypr works in normal text fields across browser tools, desktop apps, and email clients.",
       },
       {
         q: "Is this just for canned replies?",
@@ -1318,7 +1318,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it replace help desk automation?",
         a:
-          "No. VoiceTypr is an input tool, not a workflow automation platform. It helps you write the response faster inside the tools you already use.",
+          "No. Voicetypr is an input tool, not a workflow automation platform. It helps you write the response faster inside the tools you already use.",
       },
     ],
     finalCta: {
@@ -1336,8 +1336,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "lawyers",
-    title: "VoiceTypr for Lawyers — Legal writing without paying Dragon prices",
-    ogTitle: "VoiceTypr for Lawyers",
+    title: "Voicetypr for Lawyers — Legal writing without paying Dragon prices",
+    ogTitle: "Voicetypr for Lawyers",
     description:
       "Voice typing for lawyers. Dictate client emails, case notes, drafts, and time-entry context faster with local transcription by default.",
     navLabel: "Lawyers",
@@ -1349,7 +1349,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for lawyers",
       headline: "The thinking is legal. <em>The bottleneck is still typing.</em>",
       lede:
-        "Legal work involves a ridiculous amount of text: client emails, case notes, summaries, draft arguments, internal memos, and time-entry detail. VoiceTypr helps solo and small-firm lawyers move that drafting load to voice without buying into heavier legacy dictation stacks.",
+        "Legal work involves a ridiculous amount of text: client emails, case notes, summaries, draft arguments, internal memos, and time-entry detail. Voicetypr helps solo and small-firm lawyers move that drafting load to voice without buying into heavier legacy dictation stacks.",
       metaStrip: ["drafts · notes · email", "local transcription", "pay once · lifetime"],
     },
     pains: [
@@ -1388,7 +1388,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "$39",
         title: "Lower entry price than legacy legal dictation",
         body:
-          "For lawyers who mainly need faster everyday writing, VoiceTypr is a much smaller commitment than high-ticket legacy software.",
+          "For lawyers who mainly need faster everyday writing, Voicetypr is a much smaller commitment than high-ticket legacy software.",
         meta: "Outcome · cost",
       },
     ],
@@ -1413,22 +1413,22 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Is this a replacement for Dragon Legal in every scenario?",
         a:
-          "Not in every scenario. Firms with deep custom legal vocabulary or highly specialized legacy workflows may still prefer Dragon-style tooling. VoiceTypr is the cleaner fit for many modern solo and small-team dictation workflows.",
+          "Not in every scenario. Firms with deep custom legal vocabulary or highly specialized legacy workflows may still prefer Dragon-style tooling. Voicetypr is the cleaner fit for many modern solo and small-team dictation workflows.",
       },
       {
         q: "Can I use it in Word and browser-based tools?",
         a:
-          "Yes. VoiceTypr works in normal text fields across Word, browser apps, email, docs, and notes.",
+          "Yes. Voicetypr works in normal text fields across Word, browser apps, email, docs, and notes.",
       },
       {
         q: "Are you making legal compliance guarantees here?",
         a:
-          "No. VoiceTypr is a dictation tool with local transcription by default. It is not presented as a legal compliance certification layer.",
+          "No. Voicetypr is a dictation tool with local transcription by default. It is not presented as a legal compliance certification layer.",
       },
       {
         q: "Will it handle names and legal terms perfectly?",
         a:
-          "You should still do an edit pass, especially for names, citations, and jurisdiction-specific language. VoiceTypr helps you draft faster; it does not remove the lawyer's review step.",
+          "You should still do an edit pass, especially for names, citations, and jurisdiction-specific language. Voicetypr helps you draft faster; it does not remove the lawyer's review step.",
       },
       {
         q: "Why would a lawyer care about pay-once pricing?",
@@ -1451,8 +1451,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "students",
-    title: "VoiceTypr for Students — Get the draft out before perfection kills it",
-    ogTitle: "VoiceTypr for Students",
+    title: "Voicetypr for Students — Get the draft out before perfection kills it",
+    ogTitle: "Voicetypr for Students",
     description:
       "Voice typing for students. Dictate essays, lecture notes, outlines, and study prompts faster in Google Docs, Word, Notion, and browser tools.",
     navLabel: "Students",
@@ -1464,7 +1464,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for students",
       headline: "You know what to say. <em>Typing is what slows it down.</em>",
       lede:
-        "A lot of schoolwork is not thinking, it is transferring thought into text. Essays, notes, outlines, application answers, discussion posts, study prompts. VoiceTypr helps students get the first pass out faster, especially when typing is tiring, slow, or mentally sticky.",
+        "A lot of schoolwork is not thinking, it is transferring thought into text. Essays, notes, outlines, application answers, discussion posts, study prompts. Voicetypr helps students get the first pass out faster, especially when typing is tiring, slow, or mentally sticky.",
       metaStrip: ["essays · notes · prompts", "local transcription", "works in school tools"],
     },
     pains: [
@@ -1496,7 +1496,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "School tools, any text field",
         body:
-          "Google Docs, Word, Notion, browser assignments, chat, email, prompt boxes. VoiceTypr works where the coursework already happens.",
+          "Google Docs, Word, Notion, browser assignments, chat, email, prompt boxes. Voicetypr works where the coursework already happens.",
         meta: "Outcome · scope",
       },
       {
@@ -1528,7 +1528,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it in Google Docs or Word?",
         a:
-          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including Docs, Word, browser forms, and notes apps.",
+          "Yes. Voicetypr works anywhere a normal text field accepts keyboard input, including Docs, Word, browser forms, and notes apps.",
       },
       {
         q: "Is this only for students with ADHD or dyslexia?",
@@ -1538,12 +1538,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it write the essay for me?",
         a:
-          "No. VoiceTypr turns your speech into text. It is an input tool, not a ghostwriter.",
+          "No. Voicetypr turns your speech into text. It is an input tool, not a ghostwriter.",
       },
       {
         q: "Can I use it for study prompts and AI tools too?",
         a:
-          "Yes. Prompt boxes in ChatGPT, Claude, and similar tools are normal text fields, so VoiceTypr works there as well.",
+          "Yes. Prompt boxes in ChatGPT, Claude, and similar tools are normal text fields, so Voicetypr works there as well.",
       },
       {
         q: "What if I need to edit heavily afterward?",
@@ -1566,8 +1566,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "researchers",
-    title: "VoiceTypr for Researchers — Capture the idea before the paper version shows up",
-    ogTitle: "VoiceTypr for Researchers",
+    title: "Voicetypr for Researchers — Capture the idea before the paper version shows up",
+    ogTitle: "Voicetypr for Researchers",
     description:
       "Voice typing for researchers. Dictate field notes, literature summaries, memos, and draft sections in Docs, Word, Notion, and your email client.",
     navLabel: "Researchers",
@@ -1579,7 +1579,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for researchers",
       headline: "The thought is clear now. <em>It won't stay that way forever.</em>",
       lede:
-        "Research work produces a constant stream of half-finished thinking: paper notes, literature reactions, method caveats, draft paragraphs, and synthesis after meetings. VoiceTypr helps you capture those before they flatten into vague bullet points or disappear completely.",
+        "Research work produces a constant stream of half-finished thinking: paper notes, literature reactions, method caveats, draft paragraphs, and synthesis after meetings. Voicetypr helps you capture those before they flatten into vague bullet points or disappear completely.",
       metaStrip: ["notes · memos · drafts", "local transcription", "works in every editor"],
     },
     pains: [
@@ -1643,7 +1643,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for academic writing in Word or Google Docs?",
         a:
-          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including Word, Docs, note apps, and email.",
+          "Yes. Voicetypr works anywhere a normal text field accepts keyboard input, including Word, Docs, note apps, and email.",
       },
       {
         q: "Is it good for writing final publishable prose in one pass?",
@@ -1658,12 +1658,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for AI prompts and literature-synthesis tools too?",
         a:
-          "Yes. Prompt boxes are normal text fields, so VoiceTypr works there the same way it does in docs or notes.",
+          "Yes. Prompt boxes are normal text fields, so Voicetypr works there the same way it does in docs or notes.",
       },
       {
         q: "Is this a meeting transcription platform?",
         a:
-          "No. VoiceTypr is strongest for your own dictation and synthesis, not as a multi-speaker recording or collaboration system.",
+          "No. Voicetypr is strongest for your own dictation and synthesis, not as a multi-speaker recording or collaboration system.",
       },
     ],
     finalCta: {
@@ -1681,8 +1681,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "recruiters",
-    title: "VoiceTypr for Recruiters — Candidate notes before the next call starts",
-    ogTitle: "VoiceTypr for Recruiters",
+    title: "Voicetypr for Recruiters — Candidate notes before the next call starts",
+    ogTitle: "Voicetypr for Recruiters",
     description:
       "Voice typing for recruiters. Dictate candidate notes, outreach drafts, interview summaries, and CRM updates faster in your usual tools.",
     navLabel: "Recruiters",
@@ -1694,7 +1694,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for recruiters",
       headline: "The call ended. <em>The notes still need to exist.</em>",
       lede:
-        "Recruiting is full of short windows between conversations. Candidate notes, outreach follow-ups, scorecards, and CRM updates all need to be written while the person is still fresh in your head. VoiceTypr helps you get that context down before the next meeting wipes it out.",
+        "Recruiting is full of short windows between conversations. Candidate notes, outreach follow-ups, scorecards, and CRM updates all need to be written while the person is still fresh in your head. Voicetypr helps you get that context down before the next meeting wipes it out.",
       metaStrip: ["notes · outreach · crm", "local transcription", "every-app input"],
     },
     pains: [
@@ -1726,7 +1726,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Works in ATS, CRM, docs, and email",
         body:
-          "Recruiting workflows jump across browser tools, notes, spreadsheets, and inboxes. VoiceTypr follows the cursor instead of forcing a new workflow.",
+          "Recruiting workflows jump across browser tools, notes, spreadsheets, and inboxes. Voicetypr follows the cursor instead of forcing a new workflow.",
         meta: "Outcome · scope",
       },
       {
@@ -1758,7 +1758,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it inside my ATS or browser-based recruiting tools?",
         a:
-          "Usually yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser apps.",
+          "Usually yes. Voicetypr works anywhere a normal text field accepts keyboard input, including browser apps.",
       },
       {
         q: "Is it only useful for candidate notes?",
@@ -1773,12 +1773,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can it help with AI sourcing or outreach prompts too?",
         a:
-          "Yes. Prompt boxes and search fields are normal text inputs, so VoiceTypr works there as well.",
+          "Yes. Prompt boxes and search fields are normal text inputs, so Voicetypr works there as well.",
       },
       {
         q: "Is this a recruiting automation platform?",
         a:
-          "No. VoiceTypr is an input tool. It helps you write inside the recruiting stack you already use.",
+          "No. Voicetypr is an input tool. It helps you write inside the recruiting stack you already use.",
       },
     ],
     finalCta: {
@@ -1796,8 +1796,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "sales",
-    title: "VoiceTypr for Sales — Follow up while the call still has heat",
-    ogTitle: "VoiceTypr for Sales",
+    title: "Voicetypr for Sales — Follow up while the call still has heat",
+    ogTitle: "Voicetypr for Sales",
     description:
       "Voice typing for sales reps. Dictate follow-ups, CRM notes, call recaps, and proposal drafts across Gmail, Salesforce, HubSpot, and Slack.",
     navLabel: "Sales",
@@ -1809,7 +1809,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for sales",
       headline: "The deal moves on speed. <em>The admin still wants paragraphs.</em>",
       lede:
-        "Sales work is full of writing that matters but never feels like the main event: follow-up emails, CRM updates, discovery notes, proposal context, and internal handoffs. VoiceTypr cuts the typing tax so you can get the words into the system before momentum drops.",
+        "Sales work is full of writing that matters but never feels like the main event: follow-up emails, CRM updates, discovery notes, proposal context, and internal handoffs. Voicetypr cuts the typing tax so you can get the words into the system before momentum drops.",
       metaStrip: ["follow-ups · crm · proposals", "local transcription", "works in every tool"],
     },
     pains: [
@@ -1848,7 +1848,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Email, CRM, docs, proposal tools",
         body:
-          "Sales work jumps across Gmail, HubSpot, Salesforce, notes, docs, and browser forms. VoiceTypr fits that reality.",
+          "Sales work jumps across Gmail, HubSpot, Salesforce, notes, docs, and browser forms. Voicetypr fits that reality.",
         meta: "Outcome · scope",
       },
     ],
@@ -1873,7 +1873,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it in my CRM?",
         a:
-          "Usually yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser-based CRM tools.",
+          "Usually yes. Voicetypr works anywhere a normal text field accepts keyboard input, including browser-based CRM tools.",
       },
       {
         q: "Is this just for follow-up emails?",
@@ -1888,7 +1888,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for sales prompts in AI tools too?",
         a:
-          "Yes. Prompt boxes and browser forms are normal text fields, so VoiceTypr works there too.",
+          "Yes. Prompt boxes and browser forms are normal text fields, so Voicetypr works there too.",
       },
       {
         q: "Does it replace CRM automation or sequencing tools?",
@@ -1911,8 +1911,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "marketers",
-    title: "VoiceTypr for Marketers — Talk the draft before the campaign gets flattened",
-    ogTitle: "VoiceTypr for Marketers",
+    title: "Voicetypr for Marketers — Talk the draft before the campaign gets flattened",
+    ogTitle: "Voicetypr for Marketers",
     description:
       "Voice typing for marketers. Dictate campaign briefs, copy drafts, content outlines, and strategy notes faster in the tools you already use.",
     navLabel: "Marketers",
@@ -1924,7 +1924,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for marketers",
       headline: "The campaign starts as talk. <em>The draft still needs words.</em>",
       lede:
-        "Marketing work produces a huge amount of text before anything ships: briefs, hooks, ad copy, landing page structure, emails, angle tests, and internal notes. VoiceTypr helps you get those first passes out quickly so the good idea arrives before over-editing kills it.",
+        "Marketing work produces a huge amount of text before anything ships: briefs, hooks, ad copy, landing page structure, emails, angle tests, and internal notes. Voicetypr helps you get those first passes out quickly so the good idea arrives before over-editing kills it.",
       metaStrip: ["copy · briefs · outlines", "local transcription", "works in every app"],
     },
     pains: [
@@ -1988,7 +1988,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it in Notion, Google Docs, and CMS fields?",
         a:
-          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including browser tools and docs.",
+          "Yes. Voicetypr works anywhere a normal text field accepts keyboard input, including browser tools and docs.",
       },
       {
         q: "Is this only for long-form copy?",
@@ -2026,8 +2026,8 @@ const USE_CASE_ENTRIES: UseCase[] = [
   },
   {
     slug: "consultants",
-    title: "VoiceTypr for Consultants — The meeting ends, the memo still needs to happen",
-    ogTitle: "VoiceTypr for Consultants",
+    title: "Voicetypr for Consultants — The meeting ends, the memo still needs to happen",
+    ogTitle: "Voicetypr for Consultants",
     description:
       "Voice typing for consultants. Dictate client recaps, workshop notes, proposal drafts, and internal memos in the tools you already bill through.",
     navLabel: "Consultants",
@@ -2039,7 +2039,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       eyebrow: "voicetypr for consultants",
       headline: "The client call is over. <em>The write-up still isn't.</em>",
       lede:
-        "Consulting work creates constant translation pressure: meeting to memo, discussion to proposal, insight to recommendation, notes to email. VoiceTypr helps you move that text-heavy follow-through faster so the useful thinking survives the handoff into written form.",
+        "Consulting work creates constant translation pressure: meeting to memo, discussion to proposal, insight to recommendation, notes to email. Voicetypr helps you move that text-heavy follow-through faster so the useful thinking survives the handoff into written form.",
       metaStrip: ["memos · proposals · recap notes", "local transcription", "every-app workflow"],
     },
     pains: [
@@ -2071,7 +2071,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
         marker: "any",
         title: "Docs, email, notes, proposal tools",
         body:
-          "Consulting writing happens across docs, browser tools, chat, email, and prompts. VoiceTypr works across the whole spread.",
+          "Consulting writing happens across docs, browser tools, chat, email, and prompts. Voicetypr works across the whole spread.",
         meta: "Outcome · scope",
       },
       {
@@ -2103,7 +2103,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for client emails and internal docs?",
         a:
-          "Yes. VoiceTypr works anywhere a normal text field accepts keyboard input, including docs, email, and browser tools.",
+          "Yes. Voicetypr works anywhere a normal text field accepts keyboard input, including docs, email, and browser tools.",
       },
       {
         q: "Is this mainly for consultants who write long memos?",
@@ -2113,12 +2113,12 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Will it still need editing?",
         a:
-          "Yes. VoiceTypr is best at getting the first pass out fast. Most consultants will still refine tone, structure, and wording afterward.",
+          "Yes. Voicetypr is best at getting the first pass out fast. Most consultants will still refine tone, structure, and wording afterward.",
       },
       {
         q: "Can I use it with prompt-based consulting workflows too?",
         a:
-          "Yes. Prompt boxes in AI tools are normal text fields, so VoiceTypr fits there naturally.",
+          "Yes. Prompt boxes in AI tools are normal text fields, so Voicetypr fits there naturally.",
       },
       {
         q: "Does it replace note-taking or project-management software?",

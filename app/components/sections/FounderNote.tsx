@@ -7,11 +7,11 @@ export default function FounderNote() {
         <div className="mx-auto max-w-4xl text-center">
           <div className="mt-2">
             <blockquote className="text-3xl font-semibold leading-tight tracking-tight text-editorial-ink md:text-5xl">
-              “I built VoiceTypr because paying a monthly fee for basic dictation didn’t feel right.”
+              “I built Voicetypr because paying a monthly fee for basic dictation didn’t feel right.”
             </blockquote>
             <div className="mx-auto mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-editorial-ink-2">
               <p>
-                I type for 12+ hours a day. Most tools locked me into a subscription or felt like legacy software. VoiceTypr is fast, offline by default, and runs on your machine.
+                I type for 12+ hours a day. Most tools locked me into a subscription or felt like legacy software. Voicetypr is fast, offline by default, and runs on your machine.
               </p>
               <p>
                 Try it free for 3 days. See if it actually saves you time. (Spoiler: it does.)
@@ -38,7 +38,7 @@ export default function FounderNote() {
                 Moinul Moin
               </a>
               <div className="text-xs text-editorial-ink-3">
-                Solo founder · VoiceTypr ·{' '}
+                Solo founder · Voicetypr ·{' '}
                 <a
                   href="https://ideaplexa.com"
                   target="_blank"

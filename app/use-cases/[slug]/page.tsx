@@ -39,7 +39,7 @@ export async function generateMetadata({
       title: useCase.ogTitle,
       description: useCase.description,
       url,
-      siteName: "VoiceTypr",
+      siteName: "Voicetypr",
       type: "article",
       images: [
         {
@@ -342,7 +342,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   The honest <em>{useCase.navLabel}</em> FAQ
                 </h2>
                 <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
-                  Pulled from real conversations with people who use VoiceTypr for this exact reason.
+                  Pulled from real conversations with people who use Voicetypr for this exact reason.
                 </p>
               </div>
 
@@ -385,7 +385,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
           <section className="ed-section !py-0">
             <div className="ed-container">
               <div className="max-w-3xl rounded-2xl border border-editorial-line bg-white p-5 text-sm leading-relaxed text-editorial-ink-2">
-                VoiceTypr is productivity software, not medical software. It can help reduce typing load, but it does not diagnose, treat, or prevent any condition. Follow medical and ergonomic guidance for your own situation.
+                Voicetypr is productivity software, not medical software. It can help reduce typing load, but it does not diagnose, treat, or prevent any condition. Follow medical and ergonomic guidance for your own situation.
               </div>
             </div>
           </section>
@@ -430,7 +430,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                     data-track-slug={useCase.slug}
                     className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
                   >
-                    Download VoiceTypr
+                    Download Voicetypr
                   </Link>
                   <Link
                     href="/#pricing"

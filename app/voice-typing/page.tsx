@@ -7,9 +7,9 @@ import Footer from '@/app/components/sections/Footer';
 import { voiceTypingRelatedGuides } from '@/lib/seo-discovery';
 
 export const metadata: Metadata = {
-  title: 'Voice Typing Software in 2026 — VoiceTypr',
+  title: 'Voice Typing Software in 2026 — Voicetypr',
   description:
-    'Voice typing for Mac and Windows that works in every app. VoiceTypr runs offline by default, starts at $39 once, and needs no monthly subscription.',
+    'Voice typing for Mac and Windows that works in every app. Voicetypr runs offline by default, starts at $39 once, and needs no monthly subscription.',
   keywords: [
     'voice typing',
     'voice typing software',
@@ -20,17 +20,17 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://voicetypr.com/voice-typing' },
   openGraph: {
-    title: 'Voice Typing Software in 2026 — VoiceTypr',
+    title: 'Voice Typing Software in 2026 — Voicetypr',
     description:
       'Voice typing for every app on Mac and Windows. Offline dictation by default, pay-once license, no monthly subscription.',
     url: 'https://voicetypr.com/voice-typing',
-    siteName: 'VoiceTypr',
+    siteName: 'Voicetypr',
     images: [{ url: '/voicetypr-og.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Voice Typing Software in 2026 — VoiceTypr',
+    title: 'Voice Typing Software in 2026 — Voicetypr',
     description:
       'Voice typing for every app on Mac and Windows. Offline dictation by default, pay-once license, no monthly subscription.',
     images: ['/voicetypr-og.png'],
@@ -94,7 +94,7 @@ export default function VoiceTypingPage() {
               Most work isn&apos;t one long document — it&apos;s emails, notes, replies, outlines, and forms across many apps. Voice typing gets the first draft out faster without opening another editor.
             </p>
             <p>
-              VoiceTypr is designed for that workflow: stay in the app, speak naturally, and let the text land where it belongs.
+              Voicetypr is designed for that workflow: stay in the app, speak naturally, and let the text land where it belongs.
             </p>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function VoiceTypingPage() {
       <section className="ed-section">
         <div className="ed-container max-w-4xl">
           <h2 className="text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-            Why VoiceTypr instead of built-in dictation.
+            Why Voicetypr instead of built-in dictation.
           </h2>
           <div className="mt-8 space-y-4">
             {reasons.map((reason) => (

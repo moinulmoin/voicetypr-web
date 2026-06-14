@@ -7,9 +7,9 @@ import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "Superwhisper Alternative in 2026 — VoiceTypr",
+  title: "Superwhisper Alternative in 2026 — Voicetypr",
   description:
-    "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Looking for a Superwhisper alternative? Local transcription by default, lifetime license, no subscription.",
+    "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Looking for a Superwhisper alternative? Local transcription by default, lifetime license, no subscription.",
   keywords: [
     "superwhisper alternative",
     "superwhisper alternative windows",
@@ -22,19 +22,19 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/superwhisper-alternative",
   },
   openGraph: {
-    title: "Superwhisper Alternative in 2026 — VoiceTypr",
+    title: "Superwhisper Alternative in 2026 — Voicetypr",
     description:
-      "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Local transcription by default, lifetime license, no subscription.",
+      "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Local transcription by default, lifetime license, no subscription.",
     url: "https://voicetypr.com/superwhisper-alternative",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Superwhisper Alternative in 2026 — VoiceTypr",
+    title: "Superwhisper Alternative in 2026 — Voicetypr",
     description:
-      "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Local transcription by default, lifetime license, no subscription.",
+      "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Local transcription by default, lifetime license, no subscription.",
     images: ["/voicetypr-og.png"],
   },
   robots: { index: true, follow: true },
@@ -64,8 +64,8 @@ const reasons = [
 
 const faqs = [
   {
-    q: "Does VoiceTypr work on Windows if I already use Superwhisper on Mac?",
-    a: "Yes. VoiceTypr ships native builds for macOS and Windows under one lifetime license tier. You can run the same hotkey workflow on both machines without maintaining two separate subscriptions.",
+    q: "Does Voicetypr work on Windows if I already use Superwhisper on Mac?",
+    a: "Yes. Voicetypr ships native builds for macOS and Windows under one lifetime license tier. You can run the same hotkey workflow on both machines without maintaining two separate subscriptions.",
   },
   {
     q: "What does local transcription mean in practice?",
@@ -73,10 +73,10 @@ const faqs = [
   },
   {
     q: "Will it work with Cursor, Claude, and ChatGPT?",
-    a: "Yes. Hold a hotkey, speak, release. VoiceTypr pastes into any text field, including Cursor, Claude desktop, ChatGPT, VS Code, Slack, Gmail, and Notion.",
+    a: "Yes. Hold a hotkey, speak, release. Voicetypr pastes into any text field, including Cursor, Claude desktop, ChatGPT, VS Code, Slack, Gmail, and Notion.",
   },
   {
-    q: "Can I try VoiceTypr before canceling Superwhisper?",
+    q: "Can I try Voicetypr before canceling Superwhisper?",
     a: "Run both side by side during the 3-day trial. Compare real output in your daily workflow, then keep the tool that matches your platform and pricing needs.",
   },
 ] as const;
@@ -130,7 +130,7 @@ export default function SuperwhisperAlternativePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
       { "@type": "ListItem", position: 2, name: "Superwhisper alternative", item: "https://voicetypr.com/superwhisper-alternative" },
     ],
   };
@@ -153,7 +153,7 @@ export default function SuperwhisperAlternativePage() {
           <div className="mx-auto max-w-4xl">
             <div className="mb-5 flex items-center gap-2 text-sm text-editorial-ink-3">
               <Link href="/" className="transition-colors hover:text-editorial-ink">
-                VoiceTypr
+                Voicetypr
               </Link>
               <span>/</span>
               <span>Superwhisper alternative</span>
@@ -200,7 +200,7 @@ export default function SuperwhisperAlternativePage() {
             The comparison
           </div>
           <h2 className="text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-            VoiceTypr vs Superwhisper
+            Voicetypr vs Superwhisper
           </h2>
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-editorial-line bg-white/82 shadow-sm backdrop-blur">
@@ -212,7 +212,7 @@ export default function SuperwhisperAlternativePage() {
                       Criterion
                     </th>
                     <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                      VoiceTypr
+                      Voicetypr
                     </th>
                     <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                       Superwhisper
@@ -296,7 +296,7 @@ export default function SuperwhisperAlternativePage() {
                 Questions Superwhisper shoppers ask
               </h2>
               <p className="mt-4 text-[16px] leading-[1.65] text-editorial-ink-2">
-                Straight answers on platforms, privacy, and whether VoiceTypr fits a builder workflow.
+                Straight answers on platforms, privacy, and whether Voicetypr fits a builder workflow.
               </p>
             </div>
 

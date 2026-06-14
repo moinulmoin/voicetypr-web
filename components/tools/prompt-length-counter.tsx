@@ -87,7 +87,7 @@ export function PromptLengthCounter() {
           href="/download"
           className="inline-flex h-9 items-center rounded-md bg-editorial-ink px-3.5 text-[13px] font-medium text-white transition hover:opacity-90"
         >
-          Dictate longer prompts faster with VoiceTypr
+          Dictate longer prompts faster with Voicetypr
         </Link>
         <Link
           href="/voice-input-for-cursor"

@@ -31,7 +31,7 @@ describe('markdown negotiation', () => {
         <head>
           <title>Fallback title</title>
           <meta name="description" content="Private &amp; local dictation">
-          <meta property="og:title" content="VoiceTypr">
+          <meta property="og:title" content="Voicetypr">
           <meta property="og:image" content="/og.png">
           <script type="application/ld+json">{"@type":"SoftwareApplication"}</script>
         </head>
@@ -64,6 +64,6 @@ describe('markdown negotiation', () => {
   });
 
   it('returns a stable positive token estimate', () => {
-    expect(estimateMarkdownTokens('# VoiceTypr\n\nOffline dictation for builders.')).toBe(8);
+    expect(estimateMarkdownTokens('# Voicetypr\n\nOffline dictation for builders.')).toBe(8);
   });
 });

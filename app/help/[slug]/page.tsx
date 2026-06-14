@@ -25,7 +25,7 @@ export async function generateMetadata({
   const article = await getArticleBySlug(slug);
   if (!article) return {};
 
-  const title = `${article.title} — VoiceTypr Help`;
+  const title = `${article.title} — Voicetypr Help`;
   const url = `https://voicetypr.com/help/${article.slug}`;
   return {
     title,
@@ -37,7 +37,7 @@ export async function generateMetadata({
       title,
       description: article.description,
       url,
-      siteName: 'VoiceTypr',
+      siteName: 'Voicetypr',
       images: [{ url: '/voicetypr-og.png', width: 1200, height: 630 }],
       type: 'article',
     },

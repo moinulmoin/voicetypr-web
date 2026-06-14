@@ -37,13 +37,13 @@ export default function EmailCaptureModal({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-[18px] font-semibold">Get VoiceTypr</DialogTitle>
+          <DialogTitle className="text-[18px] font-semibold">Get Voicetypr</DialogTitle>
           <DialogDescription className="text-editorial-ink-2">
             Get the download link and occasional product updates. Unsubscribe anytime.
           </DialogDescription>
         </DialogHeader>
 
-        <form action={formAction} className="space-y-4" data-track="email-capture-form">
+        <form action={formAction} className="space-y-4">
           <div className="relative">
             <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-editorial-ink-3" />
             <Input

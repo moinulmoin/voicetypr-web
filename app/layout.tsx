@@ -32,9 +32,9 @@ const fontSerif = Instrument_Serif({
 // Mono falls back to the system stack via Tailwind's default `font-mono`.
 // No web font download for mono.
 export const metadata: Metadata = {
-  title: "VoiceTypr — AI dictation for Mac & Windows",
+  title: "Voicetypr — Offline AI Voice Dictation for Mac & Windows",
   description:
-    "VoiceTypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
+    "Voicetypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
   keywords: [
     "voice to text",
     "voice typing",
@@ -68,26 +68,26 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title: "VoiceTypr — AI dictation for Mac & Windows",
+    title: "Voicetypr — Offline AI Voice Dictation for Mac & Windows",
     description:
-      "VoiceTypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
+      "Voicetypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
     type: "website",
     url: "https://voicetypr.com",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [
       {
         url: "/voicetypr-og.png",
         width: 1200,
         height: 630,
-        alt: "VoiceTypr — AI dictation app for Mac and Windows",
+        alt: "Voicetypr — offline AI voice dictation app for Mac and Windows",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceTypr — AI dictation for Mac & Windows",
+    title: "Voicetypr — Offline AI Voice Dictation for Mac & Windows",
     description:
-      "VoiceTypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
+      "Voicetypr lets you dictate into any app on macOS and Windows. Offline dictation by default. Pay once.",
     images: ["/voicetypr-og.png"],
     creator: "@moinulmoin",
   },
@@ -135,7 +135,7 @@ export default function RootLayout({
               {
                 "@type": "SoftwareApplication",
                 "@id": "https://voicetypr.com/#software",
-                name: "VoiceTypr",
+                name: "Voicetypr",
                 description:
                   "Speak into Cursor, ChatGPT, Claude, Slack, Gmail, and docs with offline-first dictation. Pay once for private AI voice-to-text on Mac and Windows.",
                 applicationCategory: "ProductivityApplication",
@@ -200,7 +200,7 @@ export default function RootLayout({
               {
                 "@type": "Organization",
                 "@id": "https://voicetypr.com/#organization",
-                name: "VoiceTypr",
+                name: "Voicetypr",
                 alternateName: ["VoiceTyper", "Voice Typr"],
                 url: "https://voicetypr.com",
                 logo: "https://voicetypr.com/logo.png",
@@ -227,7 +227,7 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "@id": "https://voicetypr.com/#website",
                 url: "https://voicetypr.com",
-                name: "VoiceTypr",
+                name: "Voicetypr",
                 alternateName: "VoiceTyper",
                 description:
                   "Offline-first voice-to-text for founders, builders, and AI power users who write all day.",

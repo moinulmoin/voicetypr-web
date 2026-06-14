@@ -4,16 +4,16 @@ import Footer from "../components/sections/Footer";
 import { CHANGELOG, type ChangelogEntry } from "@/lib/changelog";
 
 export const metadata: Metadata = {
-  title: "Changelog — VoiceTypr",
+  title: "Changelog — Voicetypr",
   description:
-    "Every VoiceTypr release, what shipped, what got fixed, and what changed. Curated from the desktop app's CHANGELOG.md, latest first.",
+    "Every Voicetypr release, what shipped, what got fixed, and what changed. Curated from the desktop app's CHANGELOG.md, latest first.",
   alternates: { canonical: "https://voicetypr.com/changelog" },
   openGraph: {
-    title: "Changelog — VoiceTypr",
+    title: "Changelog — Voicetypr",
     description:
-      "Every VoiceTypr release, what shipped, what got fixed, and what changed. Latest first.",
+      "Every Voicetypr release, what shipped, what got fixed, and what changed. Latest first.",
     url: "https://voicetypr.com/changelog",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     type: "website",
     images: ["/voicetypr-og.png"],
   },

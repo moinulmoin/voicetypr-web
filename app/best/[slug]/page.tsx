@@ -60,7 +60,7 @@ export async function generateMetadata({
       title,
       description: page.lede,
       url,
-      siteName: 'VoiceTypr',
+      siteName: 'Voicetypr',
       images: [{ url: '/voicetypr-og.png', width: 1200, height: 630 }],
       type: 'website',
     },
@@ -90,7 +90,7 @@ export default async function BestPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
       { "@type": "ListItem", position: 2, name: page.h1, item: `https://voicetypr.com/best/${slug}` },
     ],
   };
@@ -114,7 +114,7 @@ export default async function BestPage({
             <div className="mx-auto max-w-4xl">
               <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
                 <Link href="/" className="transition-colors hover:text-editorial-ink">
-                  VoiceTypr
+                  Voicetypr
                 </Link>
                 <span>/</span>
                 <span>Best</span>
@@ -165,7 +165,7 @@ export default async function BestPage({
                           <tr
                             key={comp.name}
                             className={
-                              comp.name === "VoiceTypr"
+                              comp.name === "Voicetypr"
                                 ? "bg-editorial-surface dark:bg-editorial-surface-2 dark:ring-1 dark:ring-inset dark:ring-editorial-line/70"
                                 : "bg-white"
                             }

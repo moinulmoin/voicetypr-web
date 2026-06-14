@@ -54,12 +54,12 @@ async function sendDiscordFeatureIdea(idea: string, request: NextRequest): Promi
 
   const page = request.headers.get('referer') || 'Unknown page';
   const payload = {
-    username: 'VoiceTypr Ideas',
-    content: 'New VoiceTypr feature idea',
+    username: 'Voicetypr Ideas',
+    content: 'New Voicetypr feature idea',
     allowed_mentions: { parse: [] },
     embeds: [
       {
-        title: 'VoiceTypr feature request',
+        title: 'Voicetypr feature request',
         description: truncate(idea, 1_000),
         color: 0xd4965d,
         fields: [

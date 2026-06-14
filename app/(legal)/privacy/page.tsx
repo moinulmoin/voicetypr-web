@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — VoiceTypr",
+  title: "Privacy Policy — Voicetypr",
   description:
-    "How VoiceTypr handles license, purchase, support, analytics, and optional formatting data.",
+    "How Voicetypr handles license, purchase, support, analytics, and optional formatting data.",
   alternates: { canonical: "https://voicetypr.com/privacy" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Privacy Policy — VoiceTypr",
+    title: "Privacy Policy — Voicetypr",
     description:
       "Local transcription by default, plus clear disclosures for licensing, support, analytics, and optional text formatting.",
     url: "https://voicetypr.com/privacy",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     type: "article",
   },
 };
@@ -41,7 +41,7 @@ export default function PrivacyPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>1. Introduction</h2>
         <p className={pClass}>
-          Ideaplexa LLC (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy. This Privacy Policy explains how we collect, use, and protect information when you use VoiceTypr (&ldquo;the Software&rdquo;).
+          Ideaplexa LLC (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy. This Privacy Policy explains how we collect, use, and protect information when you use Voicetypr (&ldquo;the Software&rdquo;).
         </p>
       </section>
 
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
         <h2 className={h2Class}>3. Local and Optional Network Processing</h2>
 
         <h3 className={h3Class}>3.1 Local transcription and local usage data</h3>
-        <p className={pClass}>VoiceTypr normally transcribes voice on your device using local models. Local app data may include:</p>
+        <p className={pClass}>Voicetypr normally transcribes voice on your device using local models. Local app data may include:</p>
         <ul className={ulClass}>
           <li>Usage streaks and daily activity</li>
           <li>Transcription history stored by the app on your device</li>
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
 
         <h3 className={h3Class}>3.2 Optional AI formatting and network features</h3>
         <p className={pClass}>
-          If you enable AI formatting presets, VoiceTypr may send the transcribed text, not the original audio, to the AI provider you configure. If you explicitly enable an optional non-local transcription mode, audio may be sent as part of that opt-in workflow. These features are separate from the default local transcription workflow.
+          If you enable AI formatting presets, Voicetypr may send the transcribed text, not the original audio, to the AI provider you configure. If you explicitly enable an optional non-local transcription mode, audio may be sent as part of that opt-in workflow. These features are separate from the default local transcription workflow.
         </p>
       </section>
 
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>6. Data Storage and Security</h2>
         <ul className={ulClass}>
-          <li>License, trial, and support data is stored with service providers we use to operate VoiceTypr</li>
+          <li>License, trial, and support data is stored with service providers we use to operate Voicetypr</li>
           <li>We use reasonable technical and organizational security measures</li>
           <li>Access is limited to authorized personnel and service providers who need it to operate, secure, or support the product</li>
           <li>Where data is transferred internationally, we rely on appropriate safeguards where required</li>
@@ -180,7 +180,7 @@ export default function PrivacyPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>11. Children&apos;s Privacy</h2>
         <p className={pClass}>
-          VoiceTypr is intended for users aged 13 and older. We do not knowingly collect information from children under 13. If you believe we have collected such information, please contact us.
+          Voicetypr is intended for users aged 13 and older. We do not knowingly collect information from children under 13. If you believe we have collected such information, please contact us.
         </p>
       </section>
 

@@ -14,14 +14,14 @@ import Footer from "../components/sections/Footer";
 const AFFONSO_URL = "https://voicetypr.affonso.io";
 
 export const metadata: Metadata = {
-  title: "VoiceTypr Affiliate Program — 20% standard, 30% for selected partners",
+  title: "Voicetypr Affiliate Program — 20% standard, 30% for selected partners",
   description:
-    "Promote VoiceTypr, the offline AI voice-to-text app for Mac and Windows. Earn 20% per sale by default, or 30% as a selected partner.",
+    "Promote Voicetypr, the offline AI voice-to-text app for Mac and Windows. Earn 20% per sale by default, or 30% as a selected partner.",
   alternates: {
     canonical: "https://voicetypr.com/affiliate",
   },
   openGraph: {
-    title: "Become a VoiceTypr Affiliate — 20% standard, 30% for selected partners",
+    title: "Become a Voicetypr Affiliate — 20% standard, 30% for selected partners",
     description:
       "Promote an offline AI voice-to-text app your audience actually wants. 20% commission by default, 30% for selected partners.",
     url: "https://voicetypr.com/affiliate",
@@ -83,11 +83,11 @@ const faqs = [
   },
   {
     q: "Can I use paid ads?",
-    a: "Yes, with constraints. No bidding on 'VoiceTypr' branded keywords, no misleading creatives (e.g. fake '90% off' claims), no impersonation. Everything else — content, SEO, newsletters, organic social, review sites — is fair game.",
+    a: "Yes, with constraints. No bidding on 'Voicetypr' branded keywords, no misleading creatives (e.g. fake '90% off' claims), no impersonation. Everything else — content, SEO, newsletters, organic social, review sites — is fair game.",
   },
   {
     q: "How do I get upgraded to 30%?",
-    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing VoiceTypr in actual use. Reply to your approval email with the link and we move you to the 30% tier.",
+    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing Voicetypr in actual use. Reply to your approval email with the link and we move you to the 30% tier.",
   },
   {
     q: "Are there higher tiers beyond 30%?",
@@ -103,7 +103,7 @@ const faqs = [
   },
   {
     q: "What if someone refunds?",
-    a: "Commission is clawed back on refunded orders. Buyers can trial the app before purchasing, and refunds follow the VoiceTypr refund policy.",
+    a: "Commission is clawed back on refunded orders. Buyers can trial the app before purchasing, and refunds follow the Voicetypr refund policy.",
   },
 ];
 
@@ -140,7 +140,7 @@ export default function AffiliatePage() {
           <div className="ed-container max-w-4xl text-center">
             <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">20% standard · 30% selected partners</p>
             <h1 className="mt-4 text-[clamp(42px,6vw,68px)] font-semibold leading-[0.98] tracking-[-0.04em]">
-              Promote VoiceTypr.
+              Promote Voicetypr.
               <br />
               Earn real money.
             </h1>

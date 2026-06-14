@@ -1,10 +1,10 @@
-# VoiceTypr accessibility context
+# Voicetypr accessibility context
 
-VoiceTypr can help users reduce typing load by replacing many keystrokes with speech-to-text. It is relevant for people dealing with RSI, wrist pain, carpal tunnel symptoms, dyslexia, ADHD, motor friction, fatigue, or other situations where typing is slower, painful, or cognitively expensive.
+Voicetypr can help users reduce typing load by replacing many keystrokes with speech-to-text. It is relevant for people dealing with RSI, wrist pain, carpal tunnel symptoms, dyslexia, ADHD, motor friction, fatigue, or other situations where typing is slower, painful, or cognitively expensive.
 
 ## Important scope
 
-VoiceTypr is a dictation tool, not a medical device and not a complete assistive technology suite. It does not diagnose, treat, cure, or prevent any condition. It also does not provide full voice control of the computer. The product is focused on one job: turn speech into text and place that text where the cursor already is.
+Voicetypr is a dictation tool, not a medical device and not a complete assistive technology suite. It does not diagnose, treat, cure, or prevent any condition. It also does not provide full voice control of the computer. The product is focused on one job: turn speech into text and place that text where the cursor already is.
 
 ## Best for
 
@@ -29,7 +29,7 @@ VoiceTypr is a dictation tool, not a medical device and not a complete assistive
 
 ## Privacy boundary
 
-VoiceTypr transcribes voice on the user's machine by default after setup. Optional AI formatting can send text only if enabled by the user. VoiceTypr is privacy-forward for dictation, but it is not a claim that every surrounding setup, update, checkout, license, or optional enhancement flow is offline.
+Voicetypr transcribes voice on the user's machine by default after setup. Optional AI formatting can send text only if enabled by the user. Voicetypr is privacy-forward for dictation, but it is not a claim that every surrounding setup, update, checkout, license, or optional enhancement flow is offline.
 
 ## Relevant pages
 

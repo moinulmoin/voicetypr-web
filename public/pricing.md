@@ -1,6 +1,6 @@
-# VoiceTypr pricing
+# Voicetypr pricing
 
-VoiceTypr uses pay-once lifetime pricing instead of a subscription. A 3-day free trial is available before purchase and does not require a credit card.
+Voicetypr uses pay-once lifetime pricing instead of a subscription. A 3-day free trial is available before purchase and does not require a credit card.
 
 ## Plans
 
@@ -20,13 +20,13 @@ Need more devices or buying for your team? Contact support@voicetypr.com and weâ
 
 ## What pricing means
 
-A VoiceTypr license is meant for people who want a durable desktop utility rather than another monthly AI tool. The product is useful for dictating prompts, replies, notes, documents, support messages, and code-adjacent writing in existing apps.
+A Voicetypr license is meant for people who want a durable desktop utility rather than another monthly AI tool. The product is useful for dictating prompts, replies, notes, documents, support messages, and code-adjacent writing in existing apps.
 
 The license covers the app and updates. Local transcription is the default, so everyday dictation does not depend on a cloud transcription service. Optional cleaner text features can process text only when the user enables them.
 
 ## Buyer fit
 
-VoiceTypr is a good fit for users who want a simple dictation workflow, predictable ownership cost, and privacy-forward local transcription. It is not a meeting transcription platform, shared transcript workspace, or full voice-control accessibility suite.
+Voicetypr is a good fit for users who want a simple dictation workflow, predictable ownership cost, and privacy-forward local transcription. It is not a meeting transcription platform, shared transcript workspace, or full voice-control accessibility suite.
 
 ## Relevant links
 

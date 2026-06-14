@@ -7,9 +7,9 @@ import Footer from "@/app/components/sections/Footer";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "Voice Input for Cursor — Offline Dictation for Developers | VoiceTypr",
+  title: "Voice Input for Cursor — Offline Dictation for Developers | Voicetypr",
   description:
-    "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Voice input for Cursor that works offline by default. Dictate prompts, PR notes, and comments into Cursor, Claude, ChatGPT and any text field.",
+    "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Voice input for Cursor that works offline by default. Dictate prompts, PR notes, and comments into Cursor, Claude, ChatGPT and any text field.",
   keywords: [
     "voice input for cursor",
     "cursor voice typing",
@@ -22,18 +22,18 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/voice-input-for-cursor",
   },
   openGraph: {
-    title: "Voice Input for Cursor — Offline Dictation for Developers | VoiceTypr",
+    title: "Voice Input for Cursor — Offline Dictation for Developers | Voicetypr",
     description:
-      "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Voice input for Cursor that works offline by default.",
+      "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Voice input for Cursor that works offline by default.",
     url: "https://voicetypr.com/voice-input-for-cursor",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voice Input for Cursor — Offline Dictation for Developers | VoiceTypr",
-    description: "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Voice input for Cursor.",
+    title: "Voice Input for Cursor — Offline Dictation for Developers | Voicetypr",
+    description: "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Voice input for Cursor.",
     images: ["/voicetypr-og.png"],
   },
   robots: { index: true, follow: true },
@@ -87,7 +87,7 @@ export default function VoiceInputForCursorPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
       { "@type": "ListItem", position: 2, name: "Voice input for Cursor", item: "https://voicetypr.com/voice-input-for-cursor" },
     ],
   };
@@ -106,7 +106,7 @@ export default function VoiceInputForCursorPage() {
           <div className="mx-auto max-w-4xl">
             <div className="mb-5 flex items-center gap-2 text-sm text-editorial-ink-3">
               <Link href="/" className="transition-colors hover:text-editorial-ink">
-                VoiceTypr
+                Voicetypr
               </Link>
               <span>/</span>
               <span>Voice input for Cursor</span>

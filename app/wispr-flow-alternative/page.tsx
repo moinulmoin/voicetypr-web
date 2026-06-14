@@ -10,9 +10,9 @@ import Pricing from "@/app/components/sections/Pricing";
 import { SuccessModal } from "@/app/components/SuccessModal";
 
 export const metadata: Metadata = {
-  title: "Wispr Flow Alternative in 2026 — VoiceTypr",
+  title: "Wispr Flow Alternative in 2026 — Voicetypr",
   description:
-    "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Looking for a Wispr Flow alternative? Lifetime license, cross-platform, offline by default.",
+    "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Looking for a Wispr Flow alternative? Lifetime license, cross-platform, offline by default.",
   keywords: [
     "wispr flow alternative",
     "wispr flow alternative mac",
@@ -27,26 +27,26 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/wispr-flow-alternative",
   },
   openGraph: {
-    title: "Wispr Flow Alternative in 2026 — VoiceTypr",
+    title: "Wispr Flow Alternative in 2026 — Voicetypr",
     description:
-      "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Lifetime license, cross-platform, offline by default.",
+      "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Lifetime license, cross-platform, offline by default.",
     url: "https://voicetypr.com/wispr-flow-alternative",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [
       {
         url: "/voicetypr-og.png",
         width: 1200,
         height: 630,
-        alt: "VoiceTypr — Wispr Flow Alternative",
+        alt: "Voicetypr — Wispr Flow Alternative",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wispr Flow Alternative in 2026 — VoiceTypr",
+    title: "Wispr Flow Alternative in 2026 — Voicetypr",
     description:
-      "VoiceTypr is a private offline AI voice dictation app for Mac and Windows. Lifetime license, cross-platform, offline by default.",
+      "Voicetypr is a private offline AI voice dictation app for Mac and Windows. Lifetime license, cross-platform, offline by default.",
     images: ["/voicetypr-og.png"],
   },
   robots: { index: true, follow: true },
@@ -79,7 +79,7 @@ const comparison: Array<{
         wispr: neutral("$15/mo or $12/mo annual"),
       },
       {
-        label: "2-year cost (VoiceTypr / annual plan)",
+        label: "2-year cost (Voicetypr / annual plan)",
         voicetypr: check("$39 once"),
         wispr: neutral("$288 ongoing"),
       },
@@ -153,7 +153,7 @@ const relatedGuides: DiscoveryLink[] = [
     eyebrow: "mac-native option",
     title: "Comparing Superwhisper instead?",
     description:
-      "See how VoiceTypr compares if you want a polished Mac workflow but also need Windows and a single lifetime license.",
+      "See how Voicetypr compares if you want a polished Mac workflow but also need Windows and a single lifetime license.",
     ctaLabel: "Read the Superwhisper comparison",
   },
   {
@@ -176,7 +176,7 @@ const relatedGuides: DiscoveryLink[] = [
 
 const faqs = [
   {
-    q: "What does local transcription mean in VoiceTypr?",
+    q: "What does local transcription mean in Voicetypr?",
     a: "After setup, your voice is transcribed on your device by default. Optional text cleanup can use a cloud provider you choose — never your audio — and only when you turn it on.",
   },
   {
@@ -185,11 +185,11 @@ const faqs = [
   },
   {
     q: "Will it work with my Cursor / Claude / ChatGPT workflow?",
-    a: "Yes. VoiceTypr pastes text into any application that accepts keyboard input — Cursor, Claude desktop, ChatGPT, VS Code, Slack, Gmail, Notion, Linear, anything. Hold a hotkey, speak, release. Text appears wherever your cursor is.",
+    a: "Yes. Voicetypr pastes text into any application that accepts keyboard input — Cursor, Claude desktop, ChatGPT, VS Code, Slack, Gmail, Notion, Linear, anything. Hold a hotkey, speak, release. Text appears wherever your cursor is.",
   },
   {
     q: "Can I switch without losing my Wispr settings?",
-    a: "Dictation apps store settings locally per app, so there's nothing to migrate. Most users are up and running in under 5 minutes: install VoiceTypr, pick a hotkey, download a model, start talking. Your Wispr install keeps working in parallel while you evaluate.",
+    a: "Dictation apps store settings locally per app, so there's nothing to migrate. Most users are up and running in under 5 minutes: install Voicetypr, pick a hotkey, download a model, start talking. Your Wispr install keeps working in parallel while you evaluate.",
   },
   {
     q: "What if I need more than 4 devices?",
@@ -197,7 +197,7 @@ const faqs = [
   },
   {
     q: "What if I already paid for a year of Wispr Flow?",
-    a: "Use them in parallel. Once your Wispr sub expires, don't renew. The savings compound: year two is $0 with VoiceTypr vs $144–180/yr with Wispr.",
+    a: "Use them in parallel. Once your Wispr sub expires, don't renew. The savings compound: year two is $0 with Voicetypr vs $144–180/yr with Wispr.",
   },
   {
     q: "What's the catch with 'lifetime'?",
@@ -208,7 +208,7 @@ const faqs = [
 const steps: Array<{ n: string; title: string; body: ReactNode }> = [
   {
     n: "01",
-    title: "Download VoiceTypr",
+    title: "Download Voicetypr",
     body: (
       <>
         Mac .dmg or Windows .exe from{" "}
@@ -260,7 +260,7 @@ export default function WisprFlowAlternativePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "VoiceTypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
       { "@type": "ListItem", position: 2, name: "Wispr Flow alternative", item: "https://voicetypr.com/wispr-flow-alternative" },
     ],
   };
@@ -283,7 +283,7 @@ export default function WisprFlowAlternativePage() {
           <div className="mx-auto max-w-4xl">
             <div className="mb-5 flex items-center gap-2 text-sm text-editorial-ink-3">
               <Link href="/" className="transition-colors hover:text-editorial-ink">
-                VoiceTypr
+                Voicetypr
               </Link>
               <span>/</span>
               <span>Wispr Flow alternative</span>
@@ -331,7 +331,7 @@ export default function WisprFlowAlternativePage() {
               Head-to-head
             </div>
             <h2 className="mt-2 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-              VoiceTypr vs Wispr Flow
+              Voicetypr vs Wispr Flow
             </h2>
           </div>
 
@@ -344,7 +344,7 @@ export default function WisprFlowAlternativePage() {
                       Feature
                     </th>
                     <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink">
-                      VoiceTypr
+                      Voicetypr
                     </th>
                     <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
                       Wispr Flow
@@ -402,7 +402,7 @@ export default function WisprFlowAlternativePage() {
           <div className="grid gap-4 md:grid-cols-2">
             <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6">
               <p className="text-[16px] leading-snug text-editorial-ink">
-                &ldquo;I switched from Wispr Flow because I didn&apos;t want another monthly subscription, and I needed something that works on both Mac and Windows. VoiceTypr ticks both boxes. One payment, no ongoing costs, exactly what I was looking for.&rdquo;
+                &ldquo;I switched from Wispr Flow because I didn&apos;t want another monthly subscription, and I needed something that works on both Mac and Windows. Voicetypr ticks both boxes. One payment, no ongoing costs, exactly what I was looking for.&rdquo;
               </p>
               <div className="mt-5 text-[13px] text-editorial-ink-3">— Catherine E.</div>
             </article>

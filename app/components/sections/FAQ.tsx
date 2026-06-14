@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 const faqs: Array<{ q: string; a: ReactNode }> = [
   {
-    q: 'Does VoiceTypr work on Windows?',
+    q: 'Does Voicetypr work on Windows?',
     a: "Yes — Windows 10 and later. Download the .exe installer, run it, and you're set. We ship Mac and Windows as first-class platforms.",
   },
   {
@@ -10,20 +10,20 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
     a: "Yes. SmartScreen shows that because I don't have a Microsoft code-signing cert yet (they cost $200-$300/year and I'm keeping solo-founder costs lean). Click More info → Run anyway. The warning fades as more people install it.",
   },
   {
-    q: 'Can I try VoiceTypr for free?',
+    q: 'Can I try Voicetypr for free?',
     a: 'Yes — 3-day free trial, no card required. When the trial ends, buy a lifetime license only if it saves you time. No auto-charge, no card on file. Purchases include a 7-day money-back guarantee.',
   },
   {
     q: 'Does it work in Gmail, Slack, ChatGPT, and other apps?',
-    a: 'Yes. Click where you want text, hold your hotkey, and speak. VoiceTypr pastes into Gmail, Slack, Notion, Word, ChatGPT, Cursor — anywhere you type.',
+    a: 'Yes. Click where you want text, hold your hotkey, and speak. Voicetypr pastes into Gmail, Slack, Notion, Word, ChatGPT, Cursor — anywhere you type.',
   },
   {
     q: 'Is my voice data private?',
-    a: 'Yes. VoiceTypr uses offline dictation by default — transcription happens on your machine. Optional cleaner-text features work on the final text, not your voice recording, when you choose to enable them.',
+    a: 'Yes. Voicetypr uses offline dictation by default — transcription happens on your machine. Optional cleaner-text features work on the final text, not your voice recording, when you choose to enable them.',
   },
   {
     q: 'How does cleaner text work?',
-    a: 'Local transcription works by default. If you enable cleaner text, VoiceTypr sends the final transcript text — not your voice recording — to the AI provider you configure. Use any major cloud provider, or keep everything on your computer for a fully offline setup.',
+    a: 'Local transcription works by default. If you enable cleaner text, Voicetypr sends the final transcript text — not your voice recording — to the AI provider you configure. Use any major cloud provider, or keep everything on your computer for a fully offline setup.',
   },
   {
     q: 'What are the system requirements?',
@@ -35,11 +35,11 @@ const faqs: Array<{ q: string; a: ReactNode }> = [
   },
   {
     q: 'What does lifetime mean?',
-    a: "One price, yours forever. No subscription, no card on file. Updates we ship come with it — VoiceTypr keeps working on the version you own.",
+    a: "One price, yours forever. No subscription, no card on file. Updates we ship come with it — Voicetypr keeps working on the version you own.",
   },
   {
     q: 'Does it use my GPU on Windows?',
-    a: 'On Windows, VoiceTypr uses your graphics chip when it can for faster transcription. If not, it uses your processor — it still works.',
+    a: 'On Windows, Voicetypr uses your graphics chip when it can for faster transcription. If not, it uses your processor — it still works.',
   },
 ];
 

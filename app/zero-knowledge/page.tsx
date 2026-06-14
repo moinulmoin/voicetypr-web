@@ -6,9 +6,9 @@ import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "Zero-Knowledge Voice Typing — We Never See Your Transcripts — VoiceTypr",
+  title: "Zero-Knowledge Voice Typing — We Never See Your Transcripts — Voicetypr",
   description:
-    "VoiceTypr uses zero-knowledge architecture. We never see, touch, or store your transcripts. Audio processing occurs locally on your machine. macOS and Windows.",
+    "Voicetypr uses zero-knowledge architecture. We never see, touch, or store your transcripts. Audio processing occurs locally on your machine. macOS and Windows.",
   keywords: [
     "zero knowledge dictation",
     "zero knowledge voice typing",
@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/zero-knowledge",
   },
   openGraph: {
-    title: "Zero-Knowledge Voice Typing — We Never See Your Transcripts — VoiceTypr",
+    title: "Zero-Knowledge Voice Typing — We Never See Your Transcripts — Voicetypr",
     description:
-      "VoiceTypr uses zero-knowledge architecture. We never see, touch, or store your transcripts. Audio processing occurs locally on your machine.",
+      "Voicetypr uses zero-knowledge architecture. We never see, touch, or store your transcripts. Audio processing occurs locally on your machine.",
     url: "https://voicetypr.com/zero-knowledge",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zero-Knowledge Voice Typing — VoiceTypr",
+    title: "Zero-Knowledge Voice Typing — Voicetypr",
     description: "We never see, touch, or store your transcripts. Audio processing occurs locally on your machine.",
     images: ["/voicetypr-og.png"],
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "What does zero-knowledge mean for VoiceTypr?",
+    q: "What does zero-knowledge mean for Voicetypr?",
     a: "It means we cannot see, access, or store your audio recordings or transcripts. The transcription happens entirely on your local device using on-device AI models. We never receive the audio file, the transcript, or any intermediate representation. The only data we see is license validation and optional support diagnostics you choose to send.",
   },
   {
@@ -50,11 +50,11 @@ const faqs = [
   },
   {
     q: "What happens if I enable AI text formatting?",
-    a: "Optional AI formatting sends only the transcribed text — never the original audio — to the AI provider you configure. VoiceTypr itself still does not see or store this text. You choose the provider, or disable the feature entirely. The audio recording stays on your machine regardless.",
+    a: "Optional AI formatting sends only the transcribed text — never the original audio — to the AI provider you configure. Voicetypr itself still does not see or store this text. You choose the provider, or disable the feature entirely. The audio recording stays on your machine regardless.",
   },
   {
     q: "Is my data encrypted on my device?",
-    a: "VoiceTypr relies on your operating system's built-in encryption and access controls. On macOS, this includes FileVault and user permissions. On Windows, this includes BitLocker and NTFS permissions. We do not add a separate encryption layer because modern OS-level encryption is robust and well-tested.",
+    a: "Voicetypr relies on your operating system's built-in encryption and access controls. On macOS, this includes FileVault and user permissions. On Windows, this includes BitLocker and NTFS permissions. We do not add a separate encryption layer because modern OS-level encryption is robust and well-tested.",
   },
   {
     q: "How do you verify my license without seeing my data?",
@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     q: "Can I verify that no data is being sent during transcription?",
-    a: "Yes. You can run VoiceTypr on a network monitoring tool or firewall to observe that no traffic is generated during dictation. The only network activity occurs during license checks, updates, and optional support reports — never during the actual transcription of your voice.",
+    a: "Yes. You can run Voicetypr on a network monitoring tool or firewall to observe that no traffic is generated during dictation. The only network activity occurs during license checks, updates, and optional support reports — never during the actual transcription of your voice.",
   },
 ] as const;
 
@@ -230,7 +230,7 @@ export default function ZeroKnowledgePage() {
                 <h3 className="text-[21px] font-semibold leading-[1.2]">Audio never reaches us</h3>
                 <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
                   Your microphone captures audio, and local AI models (Whisper and Parakeet) process it entirely on your device.
-                  The audio file is never transmitted to VoiceTypr servers or any cloud transcription service.
+                  The audio file is never transmitted to Voicetypr servers or any cloud transcription service.
                 </p>
                 <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
                   Purely local processing
@@ -399,7 +399,7 @@ export default function ZeroKnowledgePage() {
                   href="/download"
                   className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
                 >
-                  Download VoiceTypr
+                  Download Voicetypr
                 </Link>
                 <Link
                   href="/pricing"

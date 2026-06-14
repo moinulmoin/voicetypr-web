@@ -98,7 +98,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_repeat(5,minmax(0,1fr))]">
           <div>
             <Link href="/" className="text-2xl font-semibold tracking-tight text-editorial-ink">
-              VoiceTypr
+              Voicetypr
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-editorial-ink-2">
               Offline AI dictation for creators, founders, and builders. Available on macOS and Windows.
@@ -163,7 +163,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col justify-between gap-2 border-t border-editorial-line pt-5 text-xs text-editorial-ink-3 md:flex-row md:items-center">
-          <span>© 2026 VoiceTypr</span>
+          <span>© 2026 Voicetypr</span>
           <span>Offline-first voice-to-text for macOS & Windows</span>
         </div>
       </div>

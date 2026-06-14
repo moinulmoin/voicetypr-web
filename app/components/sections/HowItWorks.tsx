@@ -8,7 +8,7 @@ const steps = [
         <path fill="currentColor" d="M11 3h2v9.17l3.59-3.58L18 10l-6 6-6-6 1.41-1.41L11 12.17V3Zm-6 14h2v2h10v-2h2v4H5v-4Z" />
       </svg>
     ),
-    title: 'Download VoiceTypr',
+    title: 'Download Voicetypr',
     body: 'Install for Mac or Windows.',
     artifact: (
       <div className="space-y-2 rounded-xl border border-editorial-line bg-editorial-surface p-3 text-sm">

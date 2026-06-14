@@ -212,7 +212,7 @@ const featureCards: FeatureCard[] = [
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 font-mono text-xs text-editorial-ink-2 shadow-sm">
-        {['Voicetypr → VoiceTypr', 'Newsletter', 'Ideaplexa'].map((item) => (
+        {['Voicetypr → Voicetypr', 'Newsletter', 'Ideaplexa'].map((item) => (
           <div key={item} className="border-b border-editorial-line py-2 last:border-0">
             {item}
           </div>
@@ -223,7 +223,7 @@ const featureCards: FeatureCard[] = [
   {
     label: 'Replacements',
     title: 'Fix repeated mistakes automatically',
-    body: 'Set replacements for words and phrases the model often mishears. VoiceTypr swaps them before pasting.',
+    body: 'Set replacements for words and phrases the model often mishears. Voicetypr swaps them before pasting.',
     status: 'Soon',
     demo: (
       <div className="rounded-xl bg-white p-4 text-xs shadow-sm">
@@ -356,7 +356,7 @@ export default function Features() {
               What we&apos;re building next
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/76">
-              We’re shipping powerful new capabilities that make VoiceTypr much stronger.
+              We’re shipping powerful new capabilities that make Voicetypr much stronger.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/86">
               {roadmapLabels.map((feature) => (
@@ -375,7 +375,7 @@ export default function Features() {
               Tell us what slows down your writing
             </h3>
             <p className="mt-3 text-base leading-relaxed text-editorial-ink-2">
-              Have a workflow VoiceTypr does not handle yet? Send the use case and we will use real requests to decide what ships next.
+              Have a workflow Voicetypr does not handle yet? Send the use case and we will use real requests to decide what ships next.
             </p>
             <div className="mt-6">
               <FeatureIdeaForm />
