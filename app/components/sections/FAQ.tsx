@@ -60,7 +60,7 @@ export default function FAQ() {
               <a
                 href="mailto:support@voicetypr.com"
                 className="text-editorial-ink underline underline-offset-4 hover:text-editorial-ink-2"
-                data-umami-event="faq-contact-click"
+                data-track="faq-contact-click"
               >
                 Contact us
               </a>

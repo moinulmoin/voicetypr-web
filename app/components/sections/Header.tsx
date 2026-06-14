@@ -50,8 +50,8 @@ export default function Header() {
                 key={link.section}
                 href={`/#${link.section}`}
                 className="transition-colors hover:text-editorial-ink"
-                data-umami-event="nav-click"
-                data-umami-event-section={link.section}
+                data-track="nav-click"
+                data-track-section={link.section}
               >
                 {link.label}
               </a>
@@ -60,7 +60,7 @@ export default function Header() {
             <Link
               href="/use-cases"
               className="transition-colors hover:text-editorial-ink"
-              data-umami-event="nav-use-cases-click"
+              data-track="nav-use-cases-click"
             >
               Use cases
             </Link>
@@ -70,8 +70,8 @@ export default function Header() {
                 key={link.section}
                 href={`/#${link.section}`}
                 className="transition-colors hover:text-editorial-ink"
-                data-umami-event="nav-click"
-                data-umami-event-section={link.section}
+                data-track="nav-click"
+                data-track-section={link.section}
               >
                 {link.label}
               </a>
@@ -82,7 +82,7 @@ export default function Header() {
             <Link
               href="/download"
               className="pointer-events-auto hidden items-center rounded-xl border border-white/20 px-4 py-2 text-sm font-medium text-editorial-ink transition hover:bg-white/5 md:flex"
-              data-umami-event="nav-download-click"
+              data-track="nav-download-click"
             >
               Download
             </Link>

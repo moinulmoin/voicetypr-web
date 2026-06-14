@@ -39,11 +39,11 @@ export default function EmailCaptureModal({
         <DialogHeader>
           <DialogTitle className="text-[18px] font-semibold">Get VoiceTypr</DialogTitle>
           <DialogDescription className="text-editorial-ink-2">
-            You may receive emails for updates and feature releases.
+            Get the download link and occasional product updates. Unsubscribe anytime.
           </DialogDescription>
         </DialogHeader>
 
-        <form action={formAction} className="space-y-4" data-umami-event="email-capture-form">
+        <form action={formAction} className="space-y-4" data-track="email-capture-form">
           <div className="relative">
             <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-editorial-ink-3" />
             <Input
@@ -64,7 +64,7 @@ export default function EmailCaptureModal({
             type="submit"
             className="w-full"
             disabled={isPending}
-            data-umami-event="email-capture-submit"
+            data-track="email-capture-submit"
           >
             {isPending ? "Please wait..." : "Download"}
           </Button>

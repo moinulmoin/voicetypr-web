@@ -64,7 +64,7 @@ export default function Demo() {
               href="https://youtu.be/L_yU879QbE4"
               target="_blank"
               rel="noopener noreferrer"
-              data-umami-event="demo-full-walkthrough-click"
+              data-track="demo-full-walkthrough-click"
               className="text-editorial-ink underline underline-offset-4 transition-colors hover:text-editorial-ink-2"
             >
               Watch the full workflow &rarr;

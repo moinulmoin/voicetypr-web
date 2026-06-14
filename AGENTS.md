@@ -20,7 +20,8 @@ components/             # Shared components (PricingCards, providers, icons)
 hooks/                  # Custom React hooks (useFlashOffer)
 lib/                    # Server utilities (db, redis, polar, pricing, types, constants)
 prisma/                 # Prisma schema and migrations
-middleware.ts           # Next.js middleware
+proxy.ts                # Next.js proxy (formerly middleware.ts in Next.js 16)
+next.config.mjs         # Next.js config (redirects, headers, image domains)
 ```
 
 ## Build & Development Commands
@@ -68,5 +69,6 @@ pnpm db:studio        # Open Prisma Studio GUI
 - **Licensing**: Polar SDK handles payments and license activation. API routes in `app/api/v1/` validate licenses and manage trials.
 - **Database**: PostgreSQL via Prisma. Key models: `License`, `Device`, `ActivityLog`.
 - **Caching**: Upstash Redis (`lib/redis.ts`) for rate limiting and ephemeral data.
-- **Analytics**: OpenPanel and Umami tracking (`components/analytics.tsx`, `components/openpanel.tsx`).
-- **Middleware**: `middleware.ts` handles request-level concerns (rewrites, redirects).
+- **Analytics**: OpenPanel only (`components/openpanel.tsx`). Event attributes use the `data-track` convention; Umami has been removed.
+- **Proxy**: `proxy.ts` (Next.js 16's rename of `middleware.ts`) handles request-level concerns: markdown content negotiation (rewrites markdown-accepting requests to `/api/markdown`), GDPR geo-consent cookie (`vt_geo_requires_consent`), and security headers.
+- **Redirects**: old doorway pages 301 to canonical editorial equivalents via `redirects()` in `next.config.mjs`.

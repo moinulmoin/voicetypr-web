@@ -22,6 +22,10 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
       next: { revalidate: 24 * 3600 }, // Cache for 24 hours
       headers: {
         'Accept': 'application/vnd.github.v3+json',
+        // Authenticated requests get 5,000 req/hr instead of 60 req/hr per IP.
+        ...(process.env.GITHUB_TOKEN
+          ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+          : {}),
       }
     });
 

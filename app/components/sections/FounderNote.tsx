@@ -29,11 +29,11 @@ export default function FounderNote() {
             />
             <div className="min-w-0">
               <a
-                href="https://twitter.com/immoinulmoin"
+                href="https://twitter.com/moinulmoin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-editorial-ink hover:underline"
-                data-umami-event="founder-twitter-click"
+                data-track="founder-twitter-click"
               >
                 Moinul Moin
               </a>
@@ -44,7 +44,7 @@ export default function FounderNote() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline"
-                  data-umami-event="founder-ideaplexa-click"
+                  data-track="founder-ideaplexa-click"
                 >
                   Ideaplexa
                 </a>

@@ -89,7 +89,7 @@ const relatedGuides: DiscoveryLink[] = [
     ctaLabel: "Learn about GDPR compliance",
   },
   {
-    href: "/offline-dictation-app",
+    href: "/best/offline-dictation",
     eyebrow: "Product",
     title: "Offline Dictation App",
     description: "Private offline AI voice dictation for Mac and Windows. No subscription.",

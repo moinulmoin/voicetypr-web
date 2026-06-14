@@ -24,14 +24,14 @@ export default function CTA() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/download"
-                data-umami-event="cta-download-click"
+                data-track="cta-download-click"
                 className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface active:scale-95"
               >
                 Download free trial
               </Link>
               <Link
                 href="/#pricing"
-                data-umami-event="cta-pricing-click"
+                data-track="cta-pricing-click"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
               >
               Get lifetime license

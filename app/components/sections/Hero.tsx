@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 
 import { HERO_APPS } from '@/lib/constants';
 
@@ -20,14 +21,14 @@ export default function HeroSection() {
             <span className="mt-1 block">
               Works in{' '}
               {HERO_APPS.map(({ label, Icon }, index) => (
-                <>
+                <Fragment key={label}>
                   <Icon
                     className="inline h-[0.9em] w-[0.9em] align-[-0.1em] mr-1.5 shrink-0 opacity-90"
                     aria-hidden="true"
                   />
                   {label}
                   {index < HERO_APPS.length - 2 ? ', ' : index === HERO_APPS.length - 2 ? ', and ' : ''}
-                </>
+                </Fragment>
               ))}
               {' — and every text field on your screen. Offline dictation by default. No subscription.'}
             </span>
@@ -36,14 +37,14 @@ export default function HeroSection() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/download"
-              data-umami-event="hero-download-click"
+              data-track="hero-download-click"
               className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white shadow-[0_14px_28px_rgba(24,24,26,0.16)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-black active:translate-y-0 active:scale-95"
             >
               Download free trial
             </Link>
             <Link
               href="/#pricing"
-              data-umami-event="hero-pricing-click"
+              data-track="hero-pricing-click"
               className="inline-flex h-12 items-center rounded-md border border-editorial-line bg-white/85 px-5 text-sm font-medium text-editorial-ink shadow-sm backdrop-blur transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-editorial-surface active:translate-y-0 active:scale-95"
             >
               Get lifetime license

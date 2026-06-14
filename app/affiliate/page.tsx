@@ -121,7 +121,7 @@ function AffiliateCta({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      data-umami-event={event}
+      data-track={event}
       className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
     >
       {children}

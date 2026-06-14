@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { Suspense } from "react";
 
 import "@/app/globals.css";
-// import { Analytics } from "@/components/analytics"; // Umami disabled in favor of OpenPanel
 import { OpenPanel } from "@/components/openpanel";
 import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
@@ -202,9 +201,14 @@ export default function RootLayout({
                 "@type": "Organization",
                 "@id": "https://voicetypr.com/#organization",
                 name: "VoiceTypr",
+                alternateName: ["VoiceTyper", "Voice Typr"],
                 url: "https://voicetypr.com",
                 logo: "https://voicetypr.com/logo.png",
-                sameAs: ["https://twitter.com/moinulmoin"],
+                sameAs: [
+                  "https://twitter.com/moinulmoin",
+                  "https://github.com/moinulmoin/voicetypr",
+                  "https://ideaplexa.com",
+                ],
                 parentOrganization: {
                   "@id": "https://ideaplexa.com/#organization",
                 },
@@ -224,6 +228,7 @@ export default function RootLayout({
                 "@id": "https://voicetypr.com/#website",
                 url: "https://voicetypr.com",
                 name: "VoiceTypr",
+                alternateName: "VoiceTyper",
                 description:
                   "Offline-first voice-to-text for founders, builders, and AI power users who write all day.",
                 publisher: {
@@ -248,7 +253,6 @@ export default function RootLayout({
           <Providers>
             <DeferredPixels />
             {children}
-            {/* <Analytics /> */} {/* Umami disabled in favor of OpenPanel */}
             <OpenPanel />
           </Providers>
         </Suspense>

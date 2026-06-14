@@ -5,7 +5,10 @@ import { getAllUseCases } from "@/lib/use-cases";
 import { getAllFreeTools } from "@/lib/free-tools";
 
 const siteUrl = "https://voicetypr.com";
-const lastModified = new Date("2026-05-25");
+
+// Build time — the site is actively maintained, so this signals freshness to
+// crawlers instead of a stale hardcoded date that looks abandoned.
+const lastModified = new Date();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteUrl;
