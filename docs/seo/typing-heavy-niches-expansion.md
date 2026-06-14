@@ -1,4 +1,4 @@
-# VoiceTypr SEO expansion — typing-heavy professions beyond Windows + accessibility
+# Voicetypr SEO expansion — typing-heavy professions beyond Windows + accessibility
 
 ## Current baseline in repo
 
@@ -34,7 +34,7 @@ Existing high-intent clusters already covered:
 
 ## Core conclusion
 
-VoiceTypr is no longer just a Windows/accessibility SEO play.
+Voicetypr is no longer just a Windows/accessibility SEO play.
 
 The product is a strong fit for a much broader market: people whose work is bottlenecked by typing long-form text in normal desktop apps. That includes people writing prompts, docs, replies, notes, specs, case notes, pitches, and updates all day.
 
@@ -59,7 +59,7 @@ Do not drift into claims that imply:
 
 ## Priority 1 pages added in this pass
 
-These are the cleanest fit with current VoiceTypr positioning and the strongest extension of what already exists.
+These are the cleanest fit with current Voicetypr positioning and the strongest extension of what already exists.
 
 ### 1) `/use-cases/journalists`
 
@@ -84,12 +84,12 @@ These are the cleanest fit with current VoiceTypr positioning and the strongest 
 - Capture the story while context is fresh.
 - Summarize interviews faster.
 - Draft the article intro and structure by voice.
-- Clarify that VoiceTypr is for first-person drafting, not multi-speaker newsroom transcription.
+- Clarify that Voicetypr is for first-person drafting, not multi-speaker newsroom transcription.
 
 ### 2) `/use-cases/product-managers`
 
 **Why it fits**
-- Strong fit with VoiceTypr’s AI/prompt-heavy/productivity positioning.
+- Strong fit with Voicetypr’s AI/prompt-heavy/productivity positioning.
 - Existing market pages target PM dictation for PRDs, user stories, updates, and specs.
 - Natural bridge from founders + developers.
 
@@ -107,7 +107,7 @@ These are the cleanest fit with current VoiceTypr positioning and the strongest 
 
 **Angle**
 - PRDs, user stories, sprint updates, decision docs, and stakeholder summaries.
-- Product work happens in conversations; VoiceTypr helps turn that into text without switching tools.
+- Product work happens in conversations; Voicetypr helps turn that into text without switching tools.
 
 ### 3) `/use-cases/customer-support`
 
@@ -252,9 +252,9 @@ Keep it short. Do not make the footer look like a directory dump.
 Each page should answer these five things clearly:
 1. What typing-heavy work this person actually does.
 2. Why typing becomes the bottleneck.
-3. Where VoiceTypr fits in their real tool stack.
+3. Where Voicetypr fits in their real tool stack.
 4. Why local-first / pay-once / every-app input matters for them.
-5. What VoiceTypr is not for.
+5. What Voicetypr is not for.
 
 ### Examples by page
 - Journalists: not for multi-speaker newsroom transcription.
@@ -284,7 +284,7 @@ The key rule still stands: harden the existing cluster before adding another bat
 
 ## What is not complete yet
 
-- VoiceTypr still over-indexes on Windows/accessibility relative to the bigger “people who type all day” market, but the gap is much smaller now.
+- Voicetypr still over-indexes on Windows/accessibility relative to the bigger “people who type all day” market, but the gap is much smaller now.
 - Profession coverage is now thirteen pages deep: developers, writers, founders, journalists, product managers, customer support, lawyers, students, researchers, recruiters, sales, marketers, and consultants.
 - The next expansion should be less about obvious professions and more about adjacent workflow pages, stronger in-body links, freshness signals, and page-level schema.
 - The footer guide set now reflects the broader market without turning the site into a directory.
@@ -300,7 +300,7 @@ The key rule still stands: harden the existing cluster before adding another bat
 
 Yes, push harder — but do it through a **profession/use-case cluster expansion**, not by bloating the homepage and not by publishing generic “best dictation software” fluff.
 
-VoiceTypr’s sharpest SEO wedge is:
+Voicetypr’s sharpest SEO wedge is:
 
 **“voice typing for people who write a lot, across real desktop apps, with local transcription by default and pay-once pricing.”**
 

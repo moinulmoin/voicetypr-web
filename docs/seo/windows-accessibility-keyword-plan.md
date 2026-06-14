@@ -1,4 +1,4 @@
-# VoiceTypr SEO keyword plan: Windows + accessibility
+# Voicetypr SEO keyword plan: Windows + accessibility
 
 Date: 2026-05-15
 
@@ -6,7 +6,7 @@ Date: 2026-05-15
 
 - Windows demand is fragmented across "Windows voice typing", "Windows speech-to-text", "offline dictation for Windows", "Dragon alternative", and people trying to understand the shift from classic Windows Speech Recognition to Voice Access.
 - Accessibility demand is more problem-led than tool-led. People search around RSI, carpal tunnel, wrist pain, dyslexia, ADHD, motor impairments, hands-free typing, assistive dictation, and accessible voice typing.
-- Competing pages often lead with broad dictation roundups. VoiceTypr should own the sharper angle: local/offline dictation that works in every app, with lifetime pricing.
+- Competing pages often lead with broad dictation roundups. Voicetypr should own the sharper angle: local/offline dictation that works in every app, with lifetime pricing.
 
 ## Windows keyword clusters
 
@@ -59,7 +59,7 @@ Pages now targeting this:
 - `/best/windows-voice-typing`
 
 Angle:
-Microsoft moved users toward Voice Access. Voice Access is useful for computer control; VoiceTypr is cleaner for dictation-first writing.
+Microsoft moved users toward Voice Access. Voice Access is useful for computer control; Voicetypr is cleaner for dictation-first writing.
 
 ## Accessibility keyword clusters
 
@@ -77,7 +77,7 @@ Pages now targeting this:
 - `/best/accessible-dictation`
 
 Angle:
-Typing load is the enemy. VoiceTypr reduces keystrokes without forcing a new writing app.
+Typing load is the enemy. Voicetypr reduces keystrokes without forcing a new writing app.
 
 ### Cluster 2: Carpal tunnel
 
@@ -109,7 +109,7 @@ Pages now targeting this:
 - `/best/accessible-dictation`
 
 Angle:
-Respectful, practical, no savior copy. VoiceTypr is not full computer control; it is focused on turning speech into text anywhere the cursor is.
+Respectful, practical, no savior copy. Voicetypr is not full computer control; it is focused on turning speech into text anywhere the cursor is.
 
 ### Cluster 4: Dyslexia and ADHD
 

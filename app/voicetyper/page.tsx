@@ -7,9 +7,9 @@ import Header from '@/app/components/sections/Header';
 import Footer from '@/app/components/sections/Footer';
 
 export const metadata: Metadata = {
-  title: 'VoiceTyper App & Pricing — VoiceTypr for Mac and Windows',
+  title: 'VoiceTyper App & Pricing — Voicetypr for Mac and Windows',
   description:
-    'Looking for VoiceTyper, a voice typer app, or VoiceTyper pricing? VoiceTypr is pay-once voice-to-text for Mac and Windows, from $39.',
+    'Looking for VoiceTyper, a voice typer app, or VoiceTyper pricing? Voicetypr is pay-once voice-to-text for Mac and Windows, from $39.',
   keywords: [
     'voicetyper',
     'voice typer',
@@ -18,23 +18,23 @@ export const metadata: Metadata = {
     'voicetyper cost',
     'voice typing app',
     'voice to text app',
-    'VoiceTypr',
+    'Voicetypr',
   ],
   alternates: { canonical: 'https://voicetypr.com/voicetyper' },
   openGraph: {
-    title: 'VoiceTyper App & Pricing — VoiceTypr',
+    title: 'VoiceTyper App & Pricing — Voicetypr',
     description:
-      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Offline dictation by default, pricing from $39.',
+      'Voicetypr is the pay-once voice typer app for Mac and Windows. Offline dictation by default, pricing from $39.',
     url: 'https://voicetypr.com/voicetyper',
-    siteName: 'VoiceTypr',
+    siteName: 'Voicetypr',
     images: [{ url: '/voicetypr-og.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VoiceTyper App & Pricing — VoiceTypr',
+    title: 'VoiceTyper App & Pricing — Voicetypr',
     description:
-      'VoiceTypr is the pay-once voice typer app for Mac and Windows. Offline dictation by default, pricing from $39.',
+      'Voicetypr is the pay-once voice typer app for Mac and Windows. Offline dictation by default, pricing from $39.',
     images: ['/voicetypr-og.png'],
   },
 };
@@ -47,7 +47,7 @@ const reasons = [
 ] as const;
 
 const comparisons = [
-  ['Search term', 'VoiceTyper / voice typer', 'VoiceTypr'],
+  ['Search term', 'VoiceTyper / voice typer', 'Voicetypr'],
   ['What it means', 'A generic phrase people use for voice-to-text apps', 'The actual app name'],
   ['Best fit', 'Finding a tool that types what you say', 'Offline voice typing in every app'],
   ['Pricing', 'Varies by the app you choose', 'From $39 once'],
@@ -55,16 +55,16 @@ const comparisons = [
 
 const faqs = [
   {
-    q: 'Is it VoiceTyper or VoiceTypr?',
-    a: 'The product name is VoiceTypr. People often search VoiceTyper or voice typer app because they are looking for an app that types what they say. Same intent, different spelling.',
+    q: 'Is it VoiceTyper or Voicetypr?',
+    a: 'The product name is Voicetypr. People often search VoiceTyper or voice typer app because they are looking for an app that types what they say. Same intent, different spelling.',
   },
   {
-    q: 'How much does VoiceTypr cost?',
-    a: 'VoiceTypr starts at $39 for a lifetime license. There is also a 3-day free trial with no card required, so you can test the app before paying.',
+    q: 'How much does Voicetypr cost?',
+    a: 'Voicetypr starts at $39 for a lifetime license. There is also a 3-day free trial with no card required, so you can test the app before paying.',
   },
   {
-    q: 'Is VoiceTypr a voice typer app for Windows and Mac?',
-    a: 'Yes. VoiceTypr works on Windows 10+ and macOS 13+. Hold the hotkey, speak, release, and the text appears where your cursor already is.',
+    q: 'Is Voicetypr a voice typer app for Windows and Mac?',
+    a: 'Yes. Voicetypr works on Windows 10+ and macOS 13+. Hold the hotkey, speak, release, and the text appears where your cursor already is.',
   },
 ] as const;
 
@@ -100,7 +100,7 @@ const jsonLd = {
       '@type': 'WebPage',
       '@id': 'https://voicetypr.com/voicetyper#webpage',
       url: 'https://voicetypr.com/voicetyper',
-      name: 'VoiceTyper App & Pricing — VoiceTypr',
+      name: 'VoiceTyper App & Pricing — Voicetypr',
       description: metadata.description,
       isPartOf: { '@id': 'https://voicetypr.com/#website' },
       about: { '@id': 'https://voicetypr.com/#product' },
@@ -137,10 +137,10 @@ export default function VoiceTyperPage() {
         <div className="ed-container max-w-4xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">voicetyper · voice typer</p>
           <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Looking for VoiceTyper? The app is VoiceTypr.
+            Looking for VoiceTyper? The app is Voicetypr.
           </h1>
           <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            If you looked up VoiceTyper, voice typer, voice typer app, or voice typing app, you probably want one thing: speak into the computer and get clean text where the cursor already is. VoiceTypr is built to help you write with your voice in every app.
+            If you looked up VoiceTyper, voice typer, voice typer app, or voice typing app, you probably want one thing: speak into the computer and get clean text where the cursor already is. Voicetypr is built to help you write with your voice in every app.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
@@ -164,12 +164,12 @@ export default function VoiceTyperPage() {
           <div>
             <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">name clarity</p>
             <h2 className="mt-3 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-              VoiceTypr is a voice typer for every text field.
+              Voicetypr is a voice typer for every text field.
             </h2>
           </div>
           <div className="space-y-4 text-[16px] leading-[1.7] text-editorial-ink-2">
             <p>
-              The missing vowel is intentional: <strong className="font-medium text-editorial-ink">VoiceTypr</strong> is the product name. The workflow is simple: hold a hotkey, talk, release, and the text appears in the app you were already using.
+              The missing vowel is intentional: <strong className="font-medium text-editorial-ink">Voicetypr</strong> is the product name. The workflow is simple: hold a hotkey, talk, release, and the text appears in the app you were already using.
             </p>
             <p>
               Use it for AI prompts, support replies, docs, specs, meeting follow-ups, or long messages you would rather say than type.
@@ -238,7 +238,7 @@ export default function VoiceTyperPage() {
       <RelatedGuidesSection
         eyebrow="Related guides"
         title="Guides people often read after VoiceTyper"
-        description="VoiceTyper is a common misspelling of VoiceTypr. These guides cover pricing, workflows, and platform-specific comparisons."
+        description="VoiceTyper is a common misspelling of Voicetypr. These guides cover pricing, workflows, and platform-specific comparisons."
         links={voicetyperRelatedGuides}
         dataTrackPrefix="voicetyper-related-guides"
       />
@@ -250,7 +250,7 @@ export default function VoiceTyperPage() {
             <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
             <div className="relative">
               <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
-                Try VoiceTypr—the app people mean when they look up VoiceTyper.
+                Try Voicetypr—the app people mean when they look up VoiceTyper.
               </h2>
               <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
                 3-day free trial. No credit card. Pay once from $39 on Mac and Windows.

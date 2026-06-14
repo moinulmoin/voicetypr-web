@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy — VoiceTypr",
+  title: "Cookie Policy — Voicetypr",
   description:
     "We keep cookies simple. One necessary cookie remembers your banner choice; optional marketing tags (including Affonso attribution cookies for 14 days) load only with consent.",
   alternates: { canonical: "https://voicetypr.com/cookies" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Cookie Policy — VoiceTypr",
+    title: "Cookie Policy — Voicetypr",
     description:
       "One necessary cookie. Optional marketing tags, including Affonso attribution cookies for 14 days, only with consent.",
     url: "https://voicetypr.com/cookies",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     type: "article",
   },
 };

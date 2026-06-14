@@ -6,9 +6,9 @@ import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "HIPAA-Eligible Dictation Software for Healthcare — VoiceTypr",
+  title: "HIPAA-Eligible Dictation Software for Healthcare — Voicetypr",
   description:
-    "VoiceTypr is designed to support HIPAA compliance. Local transcription keeps audio on your device. No cloud audio storage. No subscription. macOS and Windows.",
+    "Voicetypr is designed to support HIPAA compliance. Local transcription keeps audio on your device. No cloud audio storage. No subscription. macOS and Windows.",
   keywords: [
     "HIPAA dictation software",
     "HIPAA compliant voice typing",
@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/hipaa-compliant-dictation",
   },
   openGraph: {
-    title: "HIPAA-Eligible Dictation Software for Healthcare — VoiceTypr",
+    title: "HIPAA-Eligible Dictation Software for Healthcare — Voicetypr",
     description:
       "Designed to support HIPAA compliance. Local transcription keeps audio on your device. No cloud audio storage. macOS and Windows.",
     url: "https://voicetypr.com/hipaa-compliant-dictation",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HIPAA-Eligible Dictation for Healthcare — VoiceTypr",
+    title: "HIPAA-Eligible Dictation for Healthcare — Voicetypr",
     description: "Designed to support HIPAA compliance. Local transcription keeps audio on your device.",
     images: ["/voicetypr-og.png"],
   },
@@ -41,24 +41,24 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "Is VoiceTypr HIPAA certified?",
-    a: "There is no official HIPAA certification for software. VoiceTypr is designed to support your HIPAA compliance posture by processing audio locally on your device, minimizing the data that could be subject to a breach. You remain responsible for implementing appropriate safeguards, access controls, and business associate agreements with any downstream services you use.",
+    q: "Is Voicetypr HIPAA certified?",
+    a: "There is no official HIPAA certification for software. Voicetypr is designed to support your HIPAA compliance posture by processing audio locally on your device, minimizing the data that could be subject to a breach. You remain responsible for implementing appropriate safeguards, access controls, and business associate agreements with any downstream services you use.",
   },
   {
     q: "Does my patient audio ever leave my computer?",
-    a: "Not during standard transcription. VoiceTypr uses local AI models (Whisper and Parakeet) that run entirely on your Mac or Windows machine. The audio file is processed locally and the transcript is produced on your device. No audio is transmitted to our servers or any cloud transcription service unless you explicitly enable an optional non-local mode.",
+    a: "Not during standard transcription. Voicetypr uses local AI models (Whisper and Parakeet) that run entirely on your Mac or Windows machine. The audio file is processed locally and the transcript is produced on your device. No audio is transmitted to our servers or any cloud transcription service unless you explicitly enable an optional non-local mode.",
   },
   {
     q: "What if I want to use AI formatting for my notes?",
     a: "Optional AI formatting sends only the transcribed text — not the original audio — to the AI provider you configure. You can use any provider you trust, or disable the feature entirely. Even with formatting enabled, the audio recording stays on your machine.",
   },
   {
-    q: "Do I need a Business Associate Agreement (BAA) with VoiceTypr?",
-    a: "For the core dictation function, no BAA is required because VoiceTypr does not receive, process, or store your audio or transcripts on our infrastructure. The transcription happens on your device. If you choose to use optional cloud-connected features, you should evaluate whether those providers require a BAA for your use case.",
+    q: "Do I need a Business Associate Agreement (BAA) with Voicetypr?",
+    a: "For the core dictation function, no BAA is required because Voicetypr does not receive, process, or store your audio or transcripts on our infrastructure. The transcription happens on your device. If you choose to use optional cloud-connected features, you should evaluate whether those providers require a BAA for your use case.",
   },
   {
     q: "Can I use this for therapy notes, medical records, or clinical documentation?",
-    a: "Many therapists, counselors, and healthcare professionals use VoiceTypr for documentation precisely because the local processing reduces the attack surface for protected health information (PHI). You should conduct your own risk assessment and ensure your device and environment meet your organization's security requirements.",
+    a: "Many therapists, counselors, and healthcare professionals use Voicetypr for documentation precisely because the local processing reduces the attack surface for protected health information (PHI). You should conduct your own risk assessment and ensure your device and environment meet your organization's security requirements.",
   },
   {
     q: "How does local transcription help with the Security Rule?",
@@ -71,7 +71,7 @@ const relatedGuides: DiscoveryLink[] = [
     href: "/zero-knowledge",
     eyebrow: "Architecture",
     title: "Zero-Knowledge Voice Typing",
-    description: "How VoiceTypr's architecture ensures we never see, touch, or store your transcripts.",
+    description: "How Voicetypr's architecture ensures we never see, touch, or store your transcripts.",
     ctaLabel: "Read about zero-knowledge",
   },
   {
@@ -89,7 +89,7 @@ const relatedGuides: DiscoveryLink[] = [
     ctaLabel: "Learn about GDPR compliance",
   },
   {
-    href: "/offline-dictation-app",
+    href: "/best/offline-dictation",
     eyebrow: "Product",
     title: "Offline Dictation App",
     description: "Private offline AI voice dictation for Mac and Windows. No subscription.",
@@ -139,7 +139,7 @@ export default function HipaaDictationPage() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
-              VoiceTypr is designed to support your HIPAA compliance posture.
+              Voicetypr is designed to support your HIPAA compliance posture.
               Local transcription keeps audio on your device — not on cloud servers.
               No subscription. macOS and Windows.
             </p>
@@ -230,7 +230,7 @@ export default function HipaaDictationPage() {
                 <div className="text-[38px] font-semibold leading-none text-editorial-ink">01</div>
                 <h3 className="text-[21px] font-semibold leading-[1.2]">Audio stays on your device</h3>
                 <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  VoiceTypr uses local Whisper and Parakeet models that run entirely on your Mac or Windows machine.
+                  Voicetypr uses local Whisper and Parakeet models that run entirely on your Mac or Windows machine.
                   The microphone captures audio, the model transcribes it, and the text appears in your app — all locally.
                 </p>
                 <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
@@ -320,10 +320,10 @@ export default function HipaaDictationPage() {
       <section className="ed-section !py-0">
         <div className="ed-container">
           <div className="max-w-3xl rounded-2xl border border-editorial-line bg-white p-5 text-sm leading-relaxed text-editorial-ink-2">
-            <strong className="text-editorial-ink">Important:</strong> VoiceTypr is productivity software, not medical software.
+            <strong className="text-editorial-ink">Important:</strong> Voicetypr is productivity software, not medical software.
             It is designed to support your HIPAA compliance posture by minimizing data exposure, but it does not guarantee compliance.
             You remain responsible for conducting your own risk assessment, implementing appropriate safeguards, and ensuring your
-            use of VoiceTypr meets your organization&apos;s specific requirements. This page is for informational purposes and does not
+            use of Voicetypr meets your organization&apos;s specific requirements. This page is for informational purposes and does not
             constitute legal advice.
           </div>
         </div>
@@ -416,7 +416,7 @@ export default function HipaaDictationPage() {
                   href="/download"
                   className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
                 >
-                  Download VoiceTypr
+                  Download Voicetypr
                 </Link>
                 <Link
                   href="/pricing"

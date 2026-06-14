@@ -62,7 +62,7 @@ export const seoPages: SeoPage[] = [
         limitation: "Polished capture, but recurring pricing and cloud-first positioning are not for every buyer.",
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -118,8 +118,8 @@ export const seoPages: SeoPage[] = [
           a: "For everyday writing, prompts, and replies, yes. It is not meant to replace full macOS Voice Control navigation.",
         },
         {
-          q: "Does VoiceTypr work on Intel Macs?",
-          a: "Yes. VoiceTypr supports macOS 13+ on Intel and Apple Silicon, with Apple Silicon recommended for the fastest local models.",
+          q: "Does Voicetypr work on Intel Macs?",
+          a: "Yes. Voicetypr supports macOS 13+ on Intel and Apple Silicon, with Apple Silicon recommended for the fastest local models.",
         },
         {
           q: "What stays local?",
@@ -127,7 +127,7 @@ export const seoPages: SeoPage[] = [
         },
       ],
     },
-    ctaText: "Try VoiceTypr on Mac",
+    ctaText: "Try Voicetypr on Mac",
   },
   {
     slug: "windows-dictation",
@@ -158,7 +158,7 @@ export const seoPages: SeoPage[] = [
         subscription: true,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -210,7 +210,7 @@ export const seoPages: SeoPage[] = [
       faq: [
         {
           q: "Is this for Windows 10 or Windows 11?",
-          a: "VoiceTypr supports Windows 10 and later, so it covers people who are not ready or able to move every machine to Windows 11.",
+          a: "Voicetypr supports Windows 10 and later, so it covers people who are not ready or able to move every machine to Windows 11.",
         },
         {
           q: "Does it replace Windows Voice Access?",
@@ -222,14 +222,14 @@ export const seoPages: SeoPage[] = [
         },
       ],
     },
-    ctaText: "Try VoiceTypr on Windows",
+    ctaText: "Try Voicetypr on Windows",
   },
   {
     slug: "offline-dictation",
-    metaTitle: "Best offline dictation app (2026) | VoiceTypr",
+    metaTitle: "Best offline dictation app (2026) | Voicetypr",
     h1: "The best offline dictation app in 2026 — works without the internet",
     lede:
-      "VoiceTypr transcribes your voice locally after setup — no internet needed for day-to-day dictation. Here are the real offline options, and what offline actually covers.",
+      "Voicetypr transcribes your voice locally after setup — no internet needed for day-to-day dictation. Here are the real offline options, and what offline actually covers.",
     angle: "category-owner",
     competitors: [
       {
@@ -257,7 +257,7 @@ export const seoPages: SeoPage[] = [
         limitation: "Convenient on Mac, but not a cross-platform offline dictation app.",
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -310,7 +310,7 @@ export const seoPages: SeoPage[] = [
       faq: [
         {
           q: "What does offline mean here?",
-          a: "VoiceTypr transcribes your voice on your machine after setup. Optional AI formatting may send text if you enable it.",
+          a: "Voicetypr transcribes your voice on your machine after setup. Optional AI formatting may send text if you enable it.",
         },
         {
           q: "Do I need internet to install models?",
@@ -358,7 +358,7 @@ export const seoPages: SeoPage[] = [
         subscription: false,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -387,7 +387,7 @@ export const seoPages: SeoPage[] = [
         },
         {
           title: "Built-in control vs dedicated app",
-          body: "Voice Access is broader accessibility control. VoiceTypr is narrower and faster to understand: hold a hotkey, speak, paste text.",
+          body: "Voice Access is broader accessibility control. Voicetypr is narrower and faster to understand: hold a hotkey, speak, paste text.",
         },
         {
           title: "Privacy expectations",
@@ -411,15 +411,15 @@ export const seoPages: SeoPage[] = [
       faq: [
         {
           q: "Why not just use Windows Voice Typing?",
-          a: "Use it if occasional short dictation is enough. VoiceTypr is for people who want a dedicated daily workflow across apps.",
+          a: "Use it if occasional short dictation is enough. Voicetypr is for people who want a dedicated daily workflow across apps.",
         },
         {
-          q: "Is VoiceTypr an accessibility controller?",
+          q: "Is Voicetypr an accessibility controller?",
           a: "No. It focuses on dictation and paste-to-cursor text entry, not full PC command control.",
         },
         {
           q: "Does it work outside Microsoft apps?",
-          a: "Yes. VoiceTypr pastes into normal text fields across browsers, editors, chat, email, and AI tools.",
+          a: "Yes. Voicetypr pastes into normal text fields across browsers, editors, chat, email, and AI tools.",
         },
       ],
     },
@@ -454,7 +454,7 @@ export const seoPages: SeoPage[] = [
         subscription: false,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "Every app on Windows",
         offline: "Yes — local by default",
@@ -506,7 +506,7 @@ export const seoPages: SeoPage[] = [
       faq: [
         {
           q: "Is this only for Microsoft Word?",
-          a: "No. VoiceTypr works anywhere a normal text field accepts pasted text.",
+          a: "No. Voicetypr works anywhere a normal text field accepts pasted text.",
         },
         {
           q: "Is it a meeting transcription app?",
@@ -552,7 +552,7 @@ export const seoPages: SeoPage[] = [
         subscription: false,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -604,7 +604,7 @@ export const seoPages: SeoPage[] = [
       ],
       faq: [
         {
-          q: "Is VoiceTypr medical software?",
+          q: "Is Voicetypr medical software?",
           a: "No. It is a productivity and accessibility-friendly dictation tool, not a medical device or clinical accommodation assessment.",
         },
         {
@@ -613,7 +613,7 @@ export const seoPages: SeoPage[] = [
         },
         {
           q: "Does it control the computer by voice?",
-          a: "No. VoiceTypr focuses on text dictation. Use Windows Voice Access or Apple Voice Control when you need full navigation commands.",
+          a: "No. Voicetypr focuses on text dictation. Use Windows Voice Access or Apple Voice Control when you need full navigation commands.",
         },
       ],
     },
@@ -637,7 +637,7 @@ export const alternativePages: SeoPage[] = [
         subscription: true,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -662,7 +662,7 @@ export const alternativePages: SeoPage[] = [
       ],
       notes: [
         { title: 'Superwhisper', body: 'Strong Mac capture tool with polished UX, but recurring pricing and no Windows build.' },
-        { title: 'VoiceTypr', body: 'Same style of on-device transcription, broader platform coverage, and lifetime pricing for daily dictation.' },
+        { title: 'Voicetypr', body: 'Same style of on-device transcription, broader platform coverage, and lifetime pricing for daily dictation.' },
       ],
     },
     ctaText: "Switch from Superwhisper",
@@ -682,7 +682,7 @@ export const alternativePages: SeoPage[] = [
         subscription: true,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -707,14 +707,14 @@ export const alternativePages: SeoPage[] = [
       ],
       notes: [
         { title: 'Wispr Flow', body: 'Fast cloud workflow, but subscription pricing and less offline-first positioning.' },
-        { title: 'VoiceTypr', body: 'Built for founders who want local transcription, lifetime pricing, and cross-app paste.' },
+        { title: 'Voicetypr', body: 'Built for founders who want local transcription, lifetime pricing, and cross-app paste.' },
       ],
     },
     ctaText: "Switch from Wispr Flow",
   },
   {
     slug: "dragon",
-    metaTitle: "Best Dragon alternative (2026) | VoiceTypr",
+    metaTitle: "Best Dragon alternative (2026) | Voicetypr",
     h1: "The best Dragon NaturallySpeaking alternative in 2026",
     lede:
       "Dragon remains powerful for specialized workflows, but many buyers find the upfront cost and setup heavier than everyday dictation needs. Here's the modern pay-once alternative.",
@@ -728,7 +728,7 @@ export const alternativePages: SeoPage[] = [
         subscription: false,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -753,17 +753,17 @@ export const alternativePages: SeoPage[] = [
       ],
       notes: [
         { title: 'Dragon', body: 'Still powerful for specialized command-and-control workflows, but heavy setup and price.' },
-        { title: 'VoiceTypr', body: 'Modern on-device dictation for everyday writing in any text field.' },
+        { title: 'Voicetypr', body: 'Modern on-device dictation for everyday writing in any text field.' },
       ],
     },
     ctaText: "Replace Dragon",
   },
   {
     slug: "windows-speech-recognition",
-    metaTitle: "Best Windows Speech Recognition alt (2026) | VoiceTypr",
+    metaTitle: "Best Windows Speech Recognition alt (2026) | Voicetypr",
     h1: "The best Windows Speech Recognition alternative in 2026",
     lede:
-      "Classic Windows Speech Recognition is deprecated and replaced by Voice Access on newer Windows 11 releases. If you want modern offline dictation for every app, VoiceTypr is the cleaner upgrade.",
+      "Classic Windows Speech Recognition is deprecated and replaced by Voice Access on newer Windows 11 releases. If you want modern offline dictation for every app, Voicetypr is the cleaner upgrade.",
     angle: "comparison",
     competitors: [
       {
@@ -781,7 +781,7 @@ export const alternativePages: SeoPage[] = [
         subscription: false,
       },
       {
-        name: "VoiceTypr",
+        name: "Voicetypr",
         price: "From $39 once",
         platforms: "macOS + Windows",
         offline: "Yes — local by default",
@@ -806,7 +806,7 @@ export const alternativePages: SeoPage[] = [
       ],
       notes: [
         { title: 'Windows Speech Recognition', body: 'Deprecated path on newer Windows releases; fine historically, weak as a long-term plan.' },
-        { title: 'VoiceTypr', body: 'Dictation-first writing tool for every text field with local models and one hotkey.' },
+        { title: 'Voicetypr', body: 'Dictation-first writing tool for every text field with local models and one hotkey.' },
       ],
     },
     ctaText: "Replace Windows Speech Recognition",
@@ -816,7 +816,7 @@ export const alternativePages: SeoPage[] = [
 
 export function getSeoPageMetaTitle(page: SeoPage): string {
   if (page.metaTitle) return page.metaTitle;
-  return `${page.h1} — VoiceTypr`;
+  return `${page.h1} — Voicetypr`;
 }
 
 export function getSeoPageBySlug(slug: string): SeoPage | undefined {

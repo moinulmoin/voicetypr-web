@@ -1,6 +1,6 @@
-# VoiceTypr Design System
+# Voicetypr Design System
 
-This is the single source of truth for VoiceTypr's web design system.
+This is the single source of truth for Voicetypr's web design system.
 Use this file for landing page work, secondary pages, help/legal surfaces, SEO pages, and future refinements.
 
 ## Users
@@ -8,7 +8,7 @@ Use this file for landing page work, secondary pages, help/legal surfaces, SEO p
 Solo founders, indie hackers, AI power users, and developers whose day is mostly typing English into tools like Cursor, Claude, ChatGPT, docs, email, and chat.
 
 They:
-- use VoiceTypr 8–12 hours a day
+- use Voicetypr 8–12 hours a day
 - work on macOS or Windows
 - have strong taste
 - dislike marketing language

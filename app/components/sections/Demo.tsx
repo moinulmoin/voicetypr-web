@@ -21,7 +21,7 @@ export default function Demo() {
                   playsInline
                   preload="metadata"
                   poster="/voicetypr-demo-poster.jpg"
-                  aria-label="VoiceTypr demo — speak naturally, text lands where you're typing"
+                  aria-label="Voicetypr demo — speak naturally, text lands where you're typing"
                   className="h-full w-full object-contain"
                 >
                   <source
@@ -34,11 +34,11 @@ export default function Demo() {
                   type="button"
                   onClick={() => setShowVideo(true)}
                   className="group relative h-full w-full overflow-hidden"
-                  aria-label="Play VoiceTypr demo video"
+                  aria-label="Play Voicetypr demo video"
                 >
                   <Image
                     src="/Write.jpg"
-                    alt="VoiceTypr demo — speak naturally, text lands where you're typing"
+                    alt="Voicetypr demo — speak naturally, text lands where you're typing"
                     fill
                     priority
                     sizes="(min-width: 1024px) 960px, calc(100vw - 48px)"
@@ -64,7 +64,7 @@ export default function Demo() {
               href="https://youtu.be/L_yU879QbE4"
               target="_blank"
               rel="noopener noreferrer"
-              data-umami-event="demo-full-walkthrough-click"
+              data-track="demo-full-walkthrough-click"
               className="text-editorial-ink underline underline-offset-4 transition-colors hover:text-editorial-ink-2"
             >
               Watch the full workflow &rarr;

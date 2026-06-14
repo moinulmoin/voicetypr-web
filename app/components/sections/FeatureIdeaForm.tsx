@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 type SubmitState = 'idle' | 'sending' | 'sent' | 'error';
 
 const RESET_DELAY_MS = 2500;
-const DEFAULT_IDEA = 'I wish VoiceTypr could ';
+const DEFAULT_IDEA = 'I wish Voicetypr could ';
 
 export default function FeatureIdeaForm() {
   const [idea, setIdea] = useState(DEFAULT_IDEA);

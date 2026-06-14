@@ -7,7 +7,7 @@ import { getAllFreeTools } from "@/lib/free-tools";
 const TOOLS_INDEX_URL = "https://voicetypr.com/tools";
 
 const toolsIndexTitle =
-  "Free writing tools — dictation vs typing, typing test & prompt counter | VoiceTypr";
+  "Free writing tools — dictation vs typing, typing test & prompt counter | Voicetypr";
 const toolsIndexDescription =
   "Free tools if you write all day: compare dictation vs typing time, test your speed, estimate keyboard load, and count prompt length.";
 
@@ -16,16 +16,16 @@ export const metadata: Metadata = {
   description: toolsIndexDescription,
   alternates: { canonical: TOOLS_INDEX_URL },
   openGraph: {
-    title: "Free writing tools — VoiceTypr",
+    title: "Free writing tools — Voicetypr",
     description: toolsIndexDescription,
     url: TOOLS_INDEX_URL,
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     type: "website",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free writing tools — VoiceTypr",
+    title: "Free writing tools — Voicetypr",
     description: toolsIndexDescription,
     images: ["/voicetypr-og.png"],
     creator: "@moinulmoin",
@@ -44,7 +44,7 @@ export default function ToolsIndexPage() {
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
               <Link href="/" className="transition-colors hover:text-editorial-ink">
-                VoiceTypr
+                Voicetypr
               </Link>
               <span>/</span>
               <span>Free tools</span>

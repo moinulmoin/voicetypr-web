@@ -29,7 +29,7 @@ describe('POST /api/feature-ideas', () => {
     global.fetch = fetchMock;
 
     const response = await POST(createRequest(
-      { idea: 'I wish VoiceTypr could save a custom prompt style.' },
+      { idea: 'I wish Voicetypr could save a custom prompt style.' },
       { referer: 'https://voicetypr.com/#features' }
     ));
 
@@ -42,10 +42,10 @@ describe('POST /api/feature-ideas', () => {
     expect(init.method).toBe('POST');
 
     const payload = JSON.parse(String(init.body));
-    expect(payload.content).toBe('New VoiceTypr feature idea');
+    expect(payload.content).toBe('New Voicetypr feature idea');
     expect(payload.allowed_mentions).toEqual({ parse: [] });
-    expect(payload.embeds[0].title).toBe('VoiceTypr feature request');
-    expect(payload.embeds[0].description).toBe('I wish VoiceTypr could save a custom prompt style.');
+    expect(payload.embeds[0].title).toBe('Voicetypr feature request');
+    expect(payload.embeds[0].description).toBe('I wish Voicetypr could save a custom prompt style.');
     expect(payload.embeds[0].fields[0].value).toBe('https://voicetypr.com/#features');
   });
 
@@ -55,7 +55,7 @@ describe('POST /api/feature-ideas', () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(null, { status: 204 }));
     global.fetch = fetchMock;
 
-    const response = await POST(createRequest({ idea: 'I wish VoiceTypr could sync snippets.' }));
+    const response = await POST(createRequest({ idea: 'I wish Voicetypr could sync snippets.' }));
 
     expect(response.status).toBe(200);
     expect(fetchMock).toHaveBeenCalledOnce();

@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — VoiceTypr",
+  title: "Terms of Service — Voicetypr",
   description:
-    "Pay once, lifetime use. License terms, refunds, EU consumer rights, and dispute resolution for VoiceTypr.",
+    "Pay once, lifetime use. License terms, refunds, EU consumer rights, and dispute resolution for Voicetypr.",
   alternates: { canonical: "https://voicetypr.com/terms" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Terms of Service — VoiceTypr",
+    title: "Terms of Service — Voicetypr",
     description:
       "License terms, refunds, EU consumer rights, and dispute resolution.",
     url: "https://voicetypr.com/terms",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     type: "article",
   },
 };
@@ -39,14 +39,14 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>1. Agreement to Terms</h2>
         <p className={pClass}>
-          By downloading, installing, or using VoiceTypr (&ldquo;the Software&rdquo;), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, do not use the Software.
+          By downloading, installing, or using Voicetypr (&ldquo;the Software&rdquo;), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, do not use the Software.
         </p>
       </section>
 
       <section className={sectionClass}>
         <h2 className={h2Class}>2. License Grant</h2>
         <p className={pClass}>
-          Ideaplexa LLC grants you a non-exclusive, non-transferable license to use VoiceTypr. The number of devices you can activate depends on the device count purchased:
+          Ideaplexa LLC grants you a non-exclusive, non-transferable license to use Voicetypr. The number of devices you can activate depends on the device count purchased:
         </p>
         <ul className={ulClass}>
           <li><strong className="text-editorial-ink">1 device:</strong> Activation on one (1) device at a time</li>
@@ -62,14 +62,14 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>3. Trial Period</h2>
         <p className={pClass}>
-          VoiceTypr offers a 3-day free trial with full access to all features. No payment information is required during the trial period. After the trial expires, you must purchase a license to continue using the Software.
+          Voicetypr offers a 3-day free trial with full access to all features. No payment information is required during the trial period. After the trial expires, you must purchase a license to continue using the Software.
         </p>
       </section>
 
       <section className={sectionClass}>
         <h2 className={h2Class}>4. Purchase and Refunds</h2>
         <ul className={ulClass}>
-          <li>VoiceTypr is sold as a one-time purchase with no recurring fees</li>
+          <li>Voicetypr is sold as a one-time purchase with no recurring fees</li>
           <li>Purchases include access to software updates we release for the product</li>
           <li>We offer a 7-day money-back guarantee from the date of purchase</li>
           <li>Refunds will result in immediate license deactivation</li>
@@ -100,7 +100,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>6. Privacy and Data</h2>
         <p className={pClass}>
-          VoiceTypr processes normal voice transcription locally on your device. The Software connects to our servers for license validation, activation, trial verification, checkout, updates, support, and related product services. Optional AI formatting or optional non-local transcription features may send text or audio only when you enable those workflows. Please review our <Link href="/privacy" className="text-editorial-ink underline-offset-4 hover:underline">Privacy Policy</Link> for detailed information.
+          Voicetypr processes normal voice transcription locally on your device. The Software connects to our servers for license validation, activation, trial verification, checkout, updates, support, and related product services. Optional AI formatting or optional non-local transcription features may send text or audio only when you enable those workflows. Please review our <Link href="/privacy" className="text-editorial-ink underline-offset-4 hover:underline">Privacy Policy</Link> for detailed information.
         </p>
       </section>
 

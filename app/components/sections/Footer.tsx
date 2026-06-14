@@ -86,7 +86,7 @@ const columns = [
 ] as const;
 
 const socialLinks = [
-  { label: 'Twitter/X', href: 'https://twitter.com/immoinulmoin', Icon: XformerlyTwitter },
+  { label: 'Twitter/X', href: 'https://twitter.com/moinulmoin', Icon: XformerlyTwitter },
   { label: 'GitHub', href: 'https://github.com/moinulmoin/voicetypr', Icon: GitHub },
   { label: 'Email', href: 'mailto:support@voicetypr.com', Icon: Gmail },
 ] as const;
@@ -98,7 +98,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_repeat(5,minmax(0,1fr))]">
           <div>
             <Link href="/" className="text-2xl font-semibold tracking-tight text-editorial-ink">
-              VoiceTypr
+              Voicetypr
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-editorial-ink-2">
               Offline AI dictation for creators, founders, and builders. Available on macOS and Windows.
@@ -111,8 +111,8 @@ export default function Footer() {
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="inline-flex h-8 items-center gap-2 rounded-md border border-editorial-line bg-white px-3 text-xs font-medium text-editorial-ink-2 shadow-sm transition-colors hover:text-editorial-ink"
-                  data-umami-event="footer-social-click"
-                  data-umami-event-page={label.toLowerCase()}
+                  data-track="footer-social-click"
+                  data-track-page={label.toLowerCase()}
                   aria-label={label}
                 >
                   <Icon className="h-3.5 w-3.5" />
@@ -138,8 +138,8 @@ export default function Footer() {
                       <Link
                         href={link.href}
                         className="transition-colors hover:text-editorial-ink"
-                        data-umami-event="footer-link-click"
-                        data-umami-event-page={link.label.toLowerCase()}
+                        data-track="footer-link-click"
+                        data-track-page={link.label.toLowerCase()}
                       >
                         {link.label}
                       </Link>
@@ -149,8 +149,8 @@ export default function Footer() {
                         target={link.href.startsWith('http') ? '_blank' : undefined}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className="transition-colors hover:text-editorial-ink"
-                        data-umami-event="footer-link-click"
-                        data-umami-event-page={link.label.toLowerCase()}
+                        data-track="footer-link-click"
+                        data-track-page={link.label.toLowerCase()}
                       >
                         {link.label}
                       </a>
@@ -163,7 +163,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col justify-between gap-2 border-t border-editorial-line pt-5 text-xs text-editorial-ink-3 md:flex-row md:items-center">
-          <span>© 2026 VoiceTypr</span>
+          <span>© 2026 Voicetypr</span>
           <span>Offline-first voice-to-text for macOS & Windows</span>
         </div>
       </div>

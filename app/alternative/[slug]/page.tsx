@@ -10,6 +10,10 @@ import {
   alternativePages,
 } from "@/lib/seo-pages";
 
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\u003c");
+}
+
 export async function generateStaticParams() {
   return alternativePages.map((p) => ({ slug: p.slug }));
 }
@@ -29,7 +33,7 @@ export async function generateMetadata({
   if (!page) return {};
   const duplicateCanonical = duplicateCanonicalBySlug[slug];
   const canonical = duplicateCanonical ?? `https://voicetypr.com/alternative/${slug}`;
-  const title = `${page.h1} — VoiceTypr`;
+  const title = `${page.h1} — Voicetypr`;
   return {
     title,
     description: page.lede,
@@ -40,7 +44,7 @@ export async function generateMetadata({
       title,
       description: page.lede,
       url: canonical,
-      siteName: "VoiceTypr",
+      siteName: "Voicetypr",
       images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
       type: "website",
     },
@@ -64,8 +68,21 @@ export default async function AlternativePage({
   if (!page) return notFound();
   const relatedGuides = getRelatedGuidesForSeoSlug(slug);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 2, name: page.h1, item: `https://voicetypr.com/alternative/${slug}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
+      />
       <main id="main-content" className="landing-editorial relative min-h-screen">
         <Header />
         <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
@@ -73,7 +90,7 @@ export default async function AlternativePage({
             <div className="mx-auto max-w-4xl">
               <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
                 <Link href="/" className="transition-colors hover:text-editorial-ink">
-                  VoiceTypr
+                  Voicetypr
                 </Link>
                 <span>/</span>
                 <span>Alternative</span>
@@ -119,7 +136,7 @@ export default async function AlternativePage({
                           <tr
                             key={comp.name}
                             className={
-                              comp.name === "VoiceTypr"
+                              comp.name === "Voicetypr"
                                 ? "bg-editorial-surface dark:bg-editorial-surface-2 dark:ring-1 dark:ring-inset dark:ring-editorial-line/70"
                                 : "bg-white"
                             }
@@ -174,7 +191,7 @@ export default async function AlternativePage({
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 shadow-sm backdrop-blur">
                       <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
-                        Choose VoiceTypr if
+                        Choose Voicetypr if
                       </h2>
                       <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
                         {page.switchGuide.voiceTyprIf.map((item) => (

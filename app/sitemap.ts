@@ -5,7 +5,12 @@ import { getAllUseCases } from "@/lib/use-cases";
 import { getAllFreeTools } from "@/lib/free-tools";
 
 const siteUrl = "https://voicetypr.com";
-const lastModified = new Date("2026-05-25");
+
+// Bump this when content meaningfully changes (release checklist item).
+// sitemap.ts is a request-time route handler, so new Date() here would report
+// "today" on every Googlebot fetch and devalue the lastmod signal. A fixed
+// recent date is the honest "last known content change" timestamp.
+const lastModified = new Date("2026-06-14");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteUrl;

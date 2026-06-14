@@ -158,8 +158,6 @@ export default function PricingCards({
           <div>
             <button
               onClick={() => handleCheckout(selected.productId)}
-              data-umami-event={`${eventPrefix}-plan-click`}
-              data-umami-event-plan={selected.key}
               data-track={`${eventPrefix}-plan-click`}
               data-track-plan={selected.key}
               className="inline-flex h-14 w-full items-center justify-center rounded-xl bg-editorial-ink px-6 text-base font-semibold text-white transition hover:bg-black active:scale-95"

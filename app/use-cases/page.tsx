@@ -10,26 +10,26 @@ import {
 } from "@/lib/use-cases";
 
 export const metadata: Metadata = {
-  title: "Use Cases — VoiceTypr",
+  title: "Use Cases — Voicetypr",
   description:
-    "How people use VoiceTypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
+    "How people use Voicetypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
   alternates: {
     canonical: "https://voicetypr.com/use-cases",
   },
   openGraph: {
-    title: "Use Cases — VoiceTypr",
+    title: "Use Cases — Voicetypr",
     description:
-      "How people use VoiceTypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
+      "How people use Voicetypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
     url: "https://voicetypr.com/use-cases",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Use Cases — VoiceTypr",
+    title: "Use Cases — Voicetypr",
     description:
-      "How people use VoiceTypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
+      "How people use Voicetypr: ADHD, RSI, developers, writers, journalists, product managers, support teams, students, and other typing-heavy workflows.",
     images: ["/voicetypr-og.png"],
   },
 };
@@ -77,7 +77,7 @@ export default function UseCasesHubPage() {
                 Use cases
               </div>
               <h1 className="mt-3 mb-5 text-[clamp(44px,6.4vw,76px)] font-bold leading-[1.02] tracking-[-0.02em]">
-                Who uses VoiceTypr
+                Who uses Voicetypr
               </h1>
               <p className="max-w-[640px] text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
                 Voice gets words into the app you already have open. Here&apos;s

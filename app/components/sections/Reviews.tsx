@@ -5,7 +5,7 @@ const featuredTestimonial = {
   id: 8,
   title: 'Switched from Wispr Flow',
   content:
-    "I switched from Wispr Flow because I didn't want another monthly subscription, and I needed something that works on both Mac and Windows. VoiceTypr ticks both boxes. One payment, no ongoing costs, exactly what I was looking for.",
+    "I switched from Wispr Flow because I didn't want another monthly subscription, and I needed something that works on both Mac and Windows. Voicetypr ticks both boxes. One payment, no ongoing costs, exactly what I was looking for.",
   author: { name: 'Catherine E.', handle: 'catherine.e', avatar: 'CE' },
   source: 'email' as const,
 };
@@ -48,7 +48,7 @@ const testimonials = [
     id: 11,
     title: 'Game-changer workflow',
     content:
-      "I'm really impressed with VoiceTypr on Windows. It's a game-changer for my workflow, and I'd happily purchase a license soon.",
+      "I'm really impressed with Voicetypr on Windows. It's a game-changer for my workflow, and I'd happily purchase a license soon.",
     author: { name: 'Andreas K.', handle: 'andreas.k', avatar: 'AK' },
     source: 'email' as const,
   },

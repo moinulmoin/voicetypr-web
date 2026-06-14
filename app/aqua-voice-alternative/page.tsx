@@ -7,9 +7,9 @@ import Footer from "../components/sections/Footer";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "Aqua Voice Alternative in 2026 — VoiceTypr",
+  title: "Aqua Voice Alternative in 2026 — Voicetypr",
   description:
-    "Looking for an Aqua Voice alternative? VoiceTypr transcribes locally by default on Mac and Windows and starts at $39 once.",
+    "Looking for an Aqua Voice alternative? Voicetypr transcribes locally by default on Mac and Windows and starts at $39 once.",
   keywords: [
     "aqua voice alternative",
     "aqua dictation alternative",
@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/aqua-voice-alternative",
   },
   openGraph: {
-    title: "Aqua Voice Alternative in 2026 — VoiceTypr",
+    title: "Aqua Voice Alternative in 2026 — Voicetypr",
     description:
       "Local transcription by default on Mac and Windows. One payment, lifetime access.",
     url: "https://voicetypr.com/aqua-voice-alternative",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aqua Voice Alternative in 2026 — VoiceTypr",
+    title: "Aqua Voice Alternative in 2026 — Voicetypr",
     description:
       "Local transcription by default on Mac and Windows. One payment, lifetime access.",
     images: ["/voicetypr-og.png"],
@@ -60,16 +60,16 @@ const reasons = [
 
 const faqs = [
   {
-    q: "Is VoiceTypr actually offline?",
+    q: "Is Voicetypr actually offline?",
     a: "Transcription runs locally by default after you download a model. Optional AI formatting can use cloud text workflows if you enable it—it sends text, not audio.",
   },
   {
     q: "How does pricing compare to Aqua Voice?",
-    a: "VoiceTypr Pro is $39 once. Aqua Voice is subscription-based, so the break-even point usually arrives within the first few months if you dictate regularly.",
+    a: "Voicetypr Pro is $39 once. Aqua Voice is subscription-based, so the break-even point usually arrives within the first few months if you dictate regularly.",
   },
   {
-    q: "Does VoiceTypr support Windows?",
-    a: "Yes. VoiceTypr runs on macOS and Windows under one lifetime license tier, which matters if your Aqua Voice workflow only covered a Mac laptop.",
+    q: "Does Voicetypr support Windows?",
+    a: "Yes. Voicetypr runs on macOS and Windows under one lifetime license tier, which matters if your Aqua Voice workflow only covered a Mac laptop.",
   },
   {
     q: "Can I use it for sensitive notes?",
@@ -83,7 +83,7 @@ const relatedGuides: DiscoveryLink[] = [
     eyebrow: "cloud dictation",
     title: "Comparing Wispr Flow instead?",
     description:
-      "See how VoiceTypr compares on subscription cost, local transcription, and Windows support.",
+      "See how Voicetypr compares on subscription cost, local transcription, and Windows support.",
     ctaLabel: "Read the Wispr Flow comparison",
   },
   {
@@ -104,9 +104,30 @@ const relatedGuides: DiscoveryLink[] = [
   },
 ];
 
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\u003c");
+}
+
 export default function AquaVoiceAlternativePage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <main id="main-content" className="landing-editorial min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(faqJsonLd) }}
+      />
       <Header />
       <section className="ed-section ed-section-hero pt-32 lg:pt-40">
         <div className="ed-container max-w-4xl">
@@ -142,7 +163,7 @@ export default function AquaVoiceAlternativePage() {
               <thead className="border-b border-editorial-line/60 bg-white">
                 <tr>
                   <th className="px-5 py-4 font-medium text-editorial-ink">Criterion</th>
-                  <th className="px-5 py-4 font-medium text-editorial-ink">VoiceTypr</th>
+                  <th className="px-5 py-4 font-medium text-editorial-ink">Voicetypr</th>
                   <th className="px-5 py-4 font-medium text-editorial-ink-2">Aqua Voice</th>
                 </tr>
               </thead>
@@ -213,7 +234,7 @@ export default function AquaVoiceAlternativePage() {
       <RelatedGuidesSection
         eyebrow="still comparing"
         title="Other alternatives worth reading"
-        description="If Aqua Voice is not the only subscription dictation app you are weighing, these pages compare VoiceTypr to other common picks."
+        description="If Aqua Voice is not the only subscription dictation app you are weighing, these pages compare Voicetypr to other common picks."
         links={relatedGuides}
         dataTrackPrefix="aqua-voice-alt-related-guides"
       />

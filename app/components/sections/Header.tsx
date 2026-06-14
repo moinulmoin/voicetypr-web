@@ -35,9 +35,9 @@ export default function Header() {
           }`}
         >
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/favicon-32x32.png" alt="VoiceTypr logo" width={22} height={22} className="h-[22px] w-[22px] rounded-sm" />
+            <Image src="/favicon-32x32.png" alt="Voicetypr logo" width={22} height={22} className="h-[22px] w-[22px] rounded-sm" />
             <span className="text-sm font-semibold tracking-tight text-editorial-ink">
-              VoiceTypr
+              Voicetypr
             </span>
             <span className="hidden text-xs text-editorial-ink-3 md:inline">
               by Ideaplexa
@@ -50,8 +50,8 @@ export default function Header() {
                 key={link.section}
                 href={`/#${link.section}`}
                 className="transition-colors hover:text-editorial-ink"
-                data-umami-event="nav-click"
-                data-umami-event-section={link.section}
+                data-track="nav-click"
+                data-track-section={link.section}
               >
                 {link.label}
               </a>
@@ -60,7 +60,7 @@ export default function Header() {
             <Link
               href="/use-cases"
               className="transition-colors hover:text-editorial-ink"
-              data-umami-event="nav-use-cases-click"
+              data-track="nav-use-cases-click"
             >
               Use cases
             </Link>
@@ -70,8 +70,8 @@ export default function Header() {
                 key={link.section}
                 href={`/#${link.section}`}
                 className="transition-colors hover:text-editorial-ink"
-                data-umami-event="nav-click"
-                data-umami-event-section={link.section}
+                data-track="nav-click"
+                data-track-section={link.section}
               >
                 {link.label}
               </a>
@@ -82,7 +82,7 @@ export default function Header() {
             <Link
               href="/download"
               className="pointer-events-auto hidden items-center rounded-xl border border-white/20 px-4 py-2 text-sm font-medium text-editorial-ink transition hover:bg-white/5 md:flex"
-              data-umami-event="nav-download-click"
+              data-track="nav-download-click"
             >
               Download
             </Link>

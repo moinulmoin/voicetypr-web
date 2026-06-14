@@ -6,9 +6,9 @@ import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "GDPR-Compliant Dictation — EU Data Protection — VoiceTypr",
+  title: "GDPR-Compliant Dictation — EU Data Protection — Voicetypr",
   description:
-    "VoiceTypr is designed for GDPR compliance. Local transcription minimizes data transfer. EU-hosted infrastructure. No subscription. macOS and Windows.",
+    "Voicetypr is designed for GDPR compliance. Local transcription minimizes data transfer. EU-hosted infrastructure. No subscription. macOS and Windows.",
   keywords: [
     "GDPR dictation software",
     "GDPR compliant voice typing",
@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/gdpr-compliant",
   },
   openGraph: {
-    title: "GDPR-Compliant Dictation — EU Data Protection — VoiceTypr",
+    title: "GDPR-Compliant Dictation — EU Data Protection — Voicetypr",
     description:
-      "VoiceTypr is designed for GDPR compliance. Local transcription minimizes data transfer. EU-hosted infrastructure.",
+      "Voicetypr is designed for GDPR compliance. Local transcription minimizes data transfer. EU-hosted infrastructure.",
     url: "https://voicetypr.com/gdpr-compliant",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GDPR-Compliant Dictation — VoiceTypr",
+    title: "GDPR-Compliant Dictation — Voicetypr",
     description: "Designed for GDPR compliance. Local transcription minimizes data transfer. EU-hosted infrastructure.",
     images: ["/voicetypr-og.png"],
   },
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "Is VoiceTypr GDPR compliant?",
-    a: "VoiceTypr is designed to support your GDPR compliance posture. By processing audio locally on your device, we minimize the personal data that leaves your control. We provide clear data processing information, honor data subject rights, and use EU-hosted infrastructure for the limited data we do process. You remain responsible for ensuring your use of VoiceTypr meets your specific compliance requirements.",
+    q: "Is Voicetypr GDPR compliant?",
+    a: "Voicetypr is designed to support your GDPR compliance posture. By processing audio locally on your device, we minimize the personal data that leaves your control. We provide clear data processing information, honor data subject rights, and use EU-hosted infrastructure for the limited data we do process. You remain responsible for ensuring your use of Voicetypr meets your specific compliance requirements.",
   },
   {
     q: "Where is my data stored?",
@@ -57,7 +57,7 @@ const faqs = [
     a: "You can request access, rectification, erasure, restriction, or portability of your personal data by contacting support@voicetypr.com. Because audio and transcripts are stored locally on your device, you maintain direct control over this data. For data we hold (license records, support history), we will respond to requests within the statutory timeframe.",
   },
   {
-    q: "Does VoiceTypr use third-country data transfers?",
+    q: "Does Voicetypr use third-country data transfers?",
     a: "The core transcription function does not involve any data transfer — it happens entirely on your device. For the limited data we do process (license validation, support, etc.), we rely on appropriate safeguards where international transfers are required. We use EU-hosted infrastructure as the primary processing location.",
   },
   {
@@ -89,7 +89,7 @@ const relatedGuides: DiscoveryLink[] = [
     ctaLabel: "Explore air-gap capabilities",
   },
   {
-    href: "/offline-dictation-app",
+    href: "/best/offline-dictation",
     eyebrow: "Product",
     title: "Offline Dictation App",
     description: "Private offline AI voice dictation for Mac and Windows. No subscription.",
@@ -139,7 +139,7 @@ export default function GdprCompliantPage() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
-              VoiceTypr is designed for EU data protection compliance.
+              Voicetypr is designed for EU data protection compliance.
               Local transcription minimizes data transfer. German-hosted infrastructure.
               No subscription. macOS and Windows.
             </p>
@@ -406,7 +406,7 @@ export default function GdprCompliantPage() {
                   href="/download"
                   className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
                 >
-                  Download VoiceTypr
+                  Download Voicetypr
                 </Link>
                 <Link
                   href="/pricing"

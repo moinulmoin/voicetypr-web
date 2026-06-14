@@ -3,26 +3,26 @@ import { getAllArticles } from "@/lib/help";
 import HelpHubClient from "./HelpHubClient";
 
 export const metadata: Metadata = {
-  title: "Help Center – VoiceTypr",
+  title: "Help Center – Voicetypr",
   description:
-    "Guides, troubleshooting, and answers to common questions about VoiceTypr.",
+    "Guides, troubleshooting, and answers to common questions about Voicetypr.",
   alternates: {
     canonical: "https://voicetypr.com/help",
   },
   openGraph: {
-    title: "Help Center – VoiceTypr",
+    title: "Help Center – Voicetypr",
     description:
-      "Guides, troubleshooting, and answers to common questions about VoiceTypr.",
+      "Guides, troubleshooting, and answers to common questions about Voicetypr.",
     url: "https://voicetypr.com/help",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Help Center – VoiceTypr",
+    title: "Help Center – Voicetypr",
     description:
-      "Guides, troubleshooting, and answers to common questions about VoiceTypr.",
+      "Guides, troubleshooting, and answers to common questions about Voicetypr.",
     images: ["/voicetypr-og.png"],
   },
 };

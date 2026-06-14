@@ -1,9 +1,6 @@
 "use server";
 
-import { Redis } from "@upstash/redis";
-
-// Initialize Redis client
-const redis = Redis.fromEnv()
+import { redis } from "@/lib/redis";
 
 export type WaitlistState = {
   success?: boolean;

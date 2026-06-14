@@ -22,7 +22,7 @@ describe('GET /api/markdown', () => {
 
   it('fetches same-origin html and returns markdown', async () => {
     fetchMock.mockResolvedValue(
-      new Response('<html><body><main><h1>VoiceTypr</h1></main></body></html>', {
+      new Response('<html><body><main><h1>Voicetypr</h1></main></body></html>', {
         status: 200,
         headers: {
           'content-type': 'text/html; charset=utf-8',
@@ -44,6 +44,6 @@ describe('GET /api/markdown', () => {
     expect(response.status).toBe(200);
     expect(response.headers.get('content-type')).toBe('text/markdown; charset=utf-8');
     expect(response.headers.get('cache-control')).toBe('public, max-age=60');
-    expect(markdown).toContain('# VoiceTypr');
+    expect(markdown).toContain('# Voicetypr');
   });
 });

@@ -134,15 +134,15 @@ async function sendDiscordReport(report: BugReportRequest): Promise<void> {
 
   const fullReport = formatFullReport(report);
   const payload = {
-    username: 'VoiceTypr Reports',
-    content: report.kind === 'crash' ? 'New VoiceTypr crash report' : 'New VoiceTypr bug report',
+    username: 'Voicetypr Reports',
+    content: report.kind === 'crash' ? 'New Voicetypr crash report' : 'New Voicetypr bug report',
     allowed_mentions: { parse: [] },
     embeds: [buildDiscordEmbed(report)],
     attachments: [
       {
         id: 0,
         filename: 'voicetypr-report.txt',
-        description: 'VoiceTypr report including latest log excerpt',
+        description: 'Voicetypr report including latest log excerpt',
       },
     ],
   };
@@ -169,7 +169,7 @@ async function sendDiscordReport(report: BugReportRequest): Promise<void> {
 
 function buildDiscordEmbed(report: BugReportRequest) {
   const environment = report.environment;
-  const title = report.kind === 'crash' ? 'VoiceTypr crash report' : 'VoiceTypr bug report';
+  const title = report.kind === 'crash' ? 'Voicetypr crash report' : 'Voicetypr bug report';
   const description = report.kind === 'crash'
     ? truncate(redactDiagnosticText(report.crash.errorMessage), 1_000)
     : truncate(redactDiagnosticText(report.message), 1_000);
@@ -209,7 +209,7 @@ function formatLogSummary(report: BugReportRequest): string {
 function formatFullReport(report: BugReportRequest): string {
   const lines: string[] = [];
 
-  lines.push(`# VoiceTypr ${report.kind === 'crash' ? 'Crash' : 'Bug'} Report`);
+  lines.push(`# Voicetypr ${report.kind === 'crash' ? 'Crash' : 'Bug'} Report`);
   lines.push('');
 
   if (report.name || report.email) {

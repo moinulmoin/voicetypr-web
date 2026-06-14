@@ -19,9 +19,16 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
 
   try {
     const response = await fetch('https://api.github.com/repos/moinulmoin/voicetypr/releases/latest', {
-      next: { revalidate: 24 * 3600 }, // Cache for 24 hours
+      // 30-day fallback TTL in case the webhook never fires; the
+      // 'github-release' tag is revalidated on-demand by
+      // POST /api/webhooks/github when a release event arrives.
+      next: { revalidate: 30 * 24 * 3600, tags: ['github-release'] },
       headers: {
         'Accept': 'application/vnd.github.v3+json',
+        // Authenticated requests get 5,000 req/hr instead of 60 req/hr per IP.
+        ...(process.env.GITHUB_TOKEN
+          ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+          : {}),
       }
     });
 

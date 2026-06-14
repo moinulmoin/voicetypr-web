@@ -6,9 +6,9 @@ import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "Air-Gap Ready Dictation — Works Entirely Offline — VoiceTypr",
+  title: "Air-Gap Ready Dictation — Works Entirely Offline — Voicetypr",
   description:
-    "VoiceTypr works offline by default. Audio stays on your machine during transcription. Air-gap ready dictation for secure environments. No subscription. macOS and Windows.",
+    "Voicetypr works offline by default. Audio stays on your machine during transcription. Air-gap ready dictation for secure environments. No subscription. macOS and Windows.",
   keywords: [
     "air gapped dictation",
     "offline dictation software",
@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/air-gapped",
   },
   openGraph: {
-    title: "Air-Gap Ready Dictation — Works Entirely Offline — VoiceTypr",
+    title: "Air-Gap Ready Dictation — Works Entirely Offline — Voicetypr",
     description:
-      "VoiceTypr works offline by default. Audio stays on your machine during transcription. Air-gap ready dictation for secure environments.",
+      "Voicetypr works offline by default. Audio stays on your machine during transcription. Air-gap ready dictation for secure environments.",
     url: "https://voicetypr.com/air-gapped",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Air-Gap Ready Dictation — VoiceTypr",
+    title: "Air-Gap Ready Dictation — Voicetypr",
     description: "Works offline by default. Audio stays on your machine during transcription.",
     images: ["/voicetypr-og.png"],
   },
@@ -41,20 +41,20 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "Does VoiceTypr work without any internet connection?",
-    a: "Yes. The core transcription function works completely offline. VoiceTypr uses local AI models (Whisper and Parakeet) that run on your device. No internet connection is required for dictation. The only features that need a network connection are license validation, software updates, and optional support reports.",
+    q: "Does Voicetypr work without any internet connection?",
+    a: "Yes. The core transcription function works completely offline. Voicetypr uses local AI models (Whisper and Parakeet) that run on your device. No internet connection is required for dictation. The only features that need a network connection are license validation, software updates, and optional support reports.",
   },
   {
-    q: "Can I use VoiceTypr on an air-gapped network?",
-    a: "Yes. VoiceTypr is designed to work in isolated environments. The transcription engine does not require network access. For license activation on an air-gapped machine, you can use offline activation methods or contact support for enterprise deployment options.",
+    q: "Can I use Voicetypr on an air-gapped network?",
+    a: "Yes. Voicetypr is designed to work in isolated environments. The transcription engine does not require network access. For license activation on an air-gapped machine, you can use offline activation methods or contact support for enterprise deployment options.",
   },
   {
-    q: "What data does VoiceTypr send when I am online?",
-    a: "When connected, VoiceTypr sends only license validation requests, software update checks, and optional support diagnostics you choose to submit. None of these contain audio recordings or transcripts. The license check verifies your key and device hash; the update check downloads version information; support reports contain technical details only.",
+    q: "What data does Voicetypr send when I am online?",
+    a: "When connected, Voicetypr sends only license validation requests, software update checks, and optional support diagnostics you choose to submit. None of these contain audio recordings or transcripts. The license check verifies your key and device hash; the update check downloads version information; support reports contain technical details only.",
   },
   {
     q: "How long can I work offline before needing to reconnect?",
-    a: "VoiceTypr includes a 7-day offline grace period for license validation. Once activated, you can use the software for up to 7 days without any network connection. After that, a brief license check is needed. This is designed for travelers, remote workers, and secure environments with intermittent connectivity.",
+    a: "Voicetypr includes a 7-day offline grace period for license validation. Once activated, you can use the software for up to 7 days without any network connection. After that, a brief license check is needed. This is designed for travelers, remote workers, and secure environments with intermittent connectivity.",
   },
   {
     q: "Does the app phone home during transcription?",
@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     q: "Can I verify that no data leaves my device during dictation?",
-    a: "Yes. Run VoiceTypr on a network monitoring tool, firewall, or disconnected machine. You will observe that no network traffic is generated during dictation. The application does not transmit audio, transcripts, or usage data during normal operation.",
+    a: "Yes. Run Voicetypr on a network monitoring tool, firewall, or disconnected machine. You will observe that no network traffic is generated during dictation. The application does not transmit audio, transcripts, or usage data during normal operation.",
   },
 ] as const;
 
@@ -89,7 +89,7 @@ const relatedGuides: DiscoveryLink[] = [
     ctaLabel: "Learn about GDPR compliance",
   },
   {
-    href: "/offline-dictation-app",
+    href: "/best/offline-dictation",
     eyebrow: "Product",
     title: "Offline Dictation App",
     description: "Private offline AI voice dictation for Mac and Windows. No subscription.",
@@ -209,7 +209,7 @@ export default function AirGappedPage() {
               </h3>
               <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
                 Some apps offer offline mode as a limited fallback with reduced accuracy, fewer languages, or no AI features.
-                VoiceTypr is designed offline-first. The full transcription capability is available without any network connection,
+                Voicetypr is designed offline-first. The full transcription capability is available without any network connection,
                 using the same local models as the online mode.
               </p>
             </article>
@@ -242,7 +242,7 @@ export default function AirGappedPage() {
                 <div className="text-[38px] font-semibold leading-none text-editorial-ink">02</div>
                 <h3 className="text-[21px] font-semibold leading-[1.2]">7-day offline grace period</h3>
                 <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  Once activated, VoiceTypr works for up to 7 days without any network connection. For air-gapped environments,
+                  Once activated, Voicetypr works for up to 7 days without any network connection. For air-gapped environments,
                   we support offline activation and enterprise licensing that does not require periodic check-ins.
                 </p>
                 <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
@@ -286,7 +286,7 @@ export default function AirGappedPage() {
                   <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Classified and government facilities</h3>
                   <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
                     Work in SCIFs, military installations, or government offices with no external network access.
-                    VoiceTypr does not attempt to connect during transcription, avoiding security violations and
+                    Voicetypr does not attempt to connect during transcription, avoiding security violations and
                     maintaining compliance with facility network policies.
                   </p>
                 </div>
@@ -308,7 +308,7 @@ export default function AirGappedPage() {
                   <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Remote and field locations</h3>
                   <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
                     Work from research stations, ships, remote construction sites, or disaster zones with intermittent
-                    or no connectivity. VoiceTypr provides full transcription capability regardless of network availability,
+                    or no connectivity. Voicetypr provides full transcription capability regardless of network availability,
                     with a 7-day grace period for license validation.
                   </p>
                 </div>
@@ -405,7 +405,7 @@ export default function AirGappedPage() {
                   href="/download"
                   className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
                 >
-                  Download VoiceTypr
+                  Download Voicetypr
                 </Link>
                 <Link
                   href="/pricing"

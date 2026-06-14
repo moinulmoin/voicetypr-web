@@ -1,4 +1,4 @@
-# VoiceTypr Sales Sprint — 6-Week Plan to $100k Run-Rate
+# Voicetypr Sales Sprint — 6-Week Plan to $100k Run-Rate
 
 Owner: Moin
 Sprint start: 2026-04-18
@@ -24,9 +24,9 @@ The problem is not marketplaces. At current $35/$56/$98 AOV, hitting $100k requi
 | Wispr Flow | $15/mo monthly, $12/mo annual | **No** |
 | Aqua Voice | $8/mo annual | **No** |
 | Superwhisper | $8.49/mo, $84.99/yr, **$249.99 lifetime** | Yes (cross-platform Mac/Win/iOS) |
-| VoiceTypr | $35/$56/$98 lifetime | Yes, cheapest in category |
+| Voicetypr | $35/$56/$98 lifetime | Yes, cheapest in category |
 
-Correct framing: **"cheapest offline lifetime voice-to-text"** — not "the only lifetime." VoiceTypr Max at $98 is 61% cheaper than Superwhisper Lifetime at $249.99. That's a defensible edge.
+Correct framing: **"cheapest offline lifetime voice-to-text"** — not "the only lifetime." Voicetypr Max at $98 is 61% cheaper than Superwhisper Lifetime at $249.99. That's a defensible edge.
 
 ## The Math
 
@@ -90,7 +90,7 @@ Everything below is a single vertical slice that must ship together:
 
 - [ ] `/aqua-voice-alternative` + `/offline-dictation-app-for-windows` SEO pages
 - [ ] Microsoft Store: add `msix` target, submit for review (approval takes 1–2 weeks so start now)
-- [ ] In-app affiliate entry point ("Refer VoiceTypr, earn 25%")
+- [ ] In-app affiliate entry point ("Refer Voicetypr, earn 25%")
 
 **Moin:** Product Hunt re-launch with "voice input for AI builders" angle, respond to review comments.
 

@@ -4,11 +4,11 @@ import DownloadPageClient from "./DownloadPageClient";
 import { getLatestReleaseAssets } from "@/app/lib/github";
 
 export const metadata: Metadata = {
-  title: "VoiceTypr — Offline AI Voice Dictation for Mac & Windows",
-  description: "Download VoiceTypr, the private offline AI voice dictation app for Mac and Windows. Works in any app. Pay once, no subscription.",
+  title: "Voicetypr — Offline AI Voice Dictation for Mac & Windows",
+  description: "Download Voicetypr, the private offline AI voice dictation app for Mac and Windows. Works in any app. Pay once, no subscription.",
   keywords: [
     "download voice to text",
-    "VoiceTypr download", 
+    "Voicetypr download", 
     "voice typing software download",
     "speech to text download",
     "voice dictation software",
@@ -23,16 +23,16 @@ export const metadata: Metadata = {
     canonical: "https://voicetypr.com/download",
   },
   openGraph: {
-    title: "VoiceTypr — Offline AI Voice Dictation for Mac & Windows",
+    title: "Voicetypr — Offline AI Voice Dictation for Mac & Windows",
     description: "Download the private offline AI voice dictation app for Mac and Windows. Pay once, no subscription.",
     url: "https://voicetypr.com/download",
-    siteName: "VoiceTypr",
+    siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceTypr — Offline AI Voice Dictation for Mac & Windows",
+    title: "Voicetypr — Offline AI Voice Dictation for Mac & Windows",
     description: "Download the private offline AI voice dictation app for Mac and Windows. Pay once.",
     images: ["/voicetypr-og.png"],
   },

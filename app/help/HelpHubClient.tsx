@@ -36,7 +36,7 @@ export default function HelpHubClient({
           Help Center
         </h1>
         <p className="max-w-[600px] text-[16px] leading-[1.65] text-editorial-ink-2">
-          Everything you need to get VoiceTypr working. If you can&apos;t find
+          Everything you need to get Voicetypr working. If you can&apos;t find
           what you&apos;re looking for, email{" "}
           <a
             href="mailto:support@voicetypr.com"

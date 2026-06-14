@@ -38,6 +38,38 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    // Consolidate thin / cannibalizing doorway pages into the stronger
+    // editorial equivalents (P1 items 7–8). 301 (permanent) so Google folds
+    // link equity into the canonical target.
+    return [
+      {
+        source: "/mac-dictation-app",
+        destination: "/best/mac-dictation",
+        permanent: true,
+      },
+      {
+        source: "/offline-dictation-app",
+        destination: "/best/offline-dictation",
+        permanent: true,
+      },
+      {
+        source: "/windows-voice-typing",
+        destination: "/best/windows-voice-typing",
+        permanent: true,
+      },
+      {
+        source: "/dragon-dictation-alternative",
+        destination: "/alternative/dragon",
+        permanent: true,
+      },
+      {
+        source: "/voice-typing-app",
+        destination: "/voice-typing",
+        permanent: true,
+      },
+    ];
+  },
 }
 
 export default nextConfig

@@ -22,10 +22,10 @@ export const freeTools: readonly FreeTool[] = [
     title: "Dictation vs typing calculator",
     lede: "See how much writing time you get back when dictation runs at speaking speed instead of keyboard speed.",
     description: "Compare typing time vs dictation time for your daily word volume.",
-    metaTitle: "Dictation vs typing calculator | VoiceTypr",
+    metaTitle: "Dictation vs typing calculator | Voicetypr",
     metaDescription:
       "Free calculator to compare typing vs dictation time, annual hours saved, and optional dollar value.",
-    ogTitle: "Dictation vs typing calculator — VoiceTypr",
+    ogTitle: "Dictation vs typing calculator — Voicetypr",
   },
   {
     slug: "typing-load-calculator",
@@ -33,10 +33,10 @@ export const freeTools: readonly FreeTool[] = [
     title: "Keyboard typing load calculator",
     lede: "Estimate weekly keyboard load and how many breaks make sense before strain becomes the bottleneck.",
     description: "Score weekly typing hours and get a practical break recommendation.",
-    metaTitle: "Typing load calculator | VoiceTypr",
+    metaTitle: "Typing load calculator | Voicetypr",
     metaDescription:
       "Free typing load calculator for founders and builders who write all day and want a realistic strain estimate.",
-    ogTitle: "Typing load calculator — VoiceTypr",
+    ogTitle: "Typing load calculator — Voicetypr",
   },
   {
     slug: "typing-speed-test",
@@ -44,10 +44,10 @@ export const freeTools: readonly FreeTool[] = [
     title: "10-second typing speed test",
     lede: "Measure a quick typing sample, then compare it against comfortable dictation speed.",
     description: "A simple 10-second WPM test with a restart button.",
-    metaTitle: "Typing speed test (10 seconds) | VoiceTypr",
+    metaTitle: "Typing speed test (10 seconds) | Voicetypr",
     metaDescription:
       "Free 10-second typing speed test to measure WPM and see how dictation compares.",
-    ogTitle: "10-second typing speed test — VoiceTypr",
+    ogTitle: "10-second typing speed test — Voicetypr",
   },
   {
     slug: "prompt-length-counter",
@@ -55,10 +55,10 @@ export const freeTools: readonly FreeTool[] = [
     title: "AI prompt length counter",
     lede: "Count characters, words, lines, and a rough token estimate before you paste into ChatGPT, Cursor, or Claude.",
     description: "Live prompt stats with a rough token estimate and reading time.",
-    metaTitle: "Prompt length counter — AI prompt character counter | VoiceTypr",
+    metaTitle: "Prompt length counter — AI prompt character counter | Voicetypr",
     metaDescription:
       "Free prompt length counter and AI prompt character counter. Count words, lines, sentences, rough tokens, and reading time as you write.",
-    ogTitle: "AI prompt length counter — VoiceTypr",
+    ogTitle: "AI prompt length counter — Voicetypr",
   },
 ] as const;
 

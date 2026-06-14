@@ -16,7 +16,7 @@ export default function Outcomes() {
             Get clean text where you&apos;re typing
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-editorial-ink-2">
-            Stop rewriting the same thought by hand. VoiceTypr turns speech into usable text in the apps you already use.
+            Stop rewriting the same thought by hand. Voicetypr turns speech into usable text in the apps you already use.
           </p>
         </div>
 

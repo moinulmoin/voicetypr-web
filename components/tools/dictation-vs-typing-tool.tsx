@@ -110,7 +110,7 @@ export function DictationVsTypingTool() {
                 href="/download"
                 className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
               >
-                Try VoiceTypr free
+                Try Voicetypr free
               </Link>
               <Link
                 href="/use-cases/customer-support"

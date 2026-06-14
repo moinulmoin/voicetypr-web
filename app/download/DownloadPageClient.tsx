@@ -37,13 +37,13 @@ interface DownloadOption {
 const macosInstallationSteps = [
   { step: "1", title: "Download", description: "Get the .dmg for your Mac" },
   { step: "2", title: "Install", description: "Open the .dmg and drag to Applications" },
-  { step: "3", title: "Launch", description: "Open VoiceTypr and start dictating" },
+  { step: "3", title: "Launch", description: "Open Voicetypr and start dictating" },
 ];
 
 const windowsInstallationSteps = [
   { step: "1", title: "Download", description: "Get the .exe for Windows" },
   { step: "2", title: "Install", description: "Run the installer and follow the steps" },
-  { step: "3", title: "Launch", description: "Open VoiceTypr and start dictating" },
+  { step: "3", title: "Launch", description: "Open Voicetypr and start dictating" },
 ];
 
 function DownloadPricing({ affonsoReferral, referrer }: { affonsoReferral: string; referrer: string }) {

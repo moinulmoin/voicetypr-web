@@ -99,7 +99,7 @@ describe('marketing content guardrails', () => {
   it('gives every alternative page switch guidance', () => {
     for (const page of alternativePages) {
       expect(page.switchGuide, `${page.slug} should define switch guidance`).toBeDefined();
-      expect(page.switchGuide?.voiceTyprIf.length, `${page.slug} should define VoiceTypr fit`).toBeGreaterThanOrEqual(2);
+      expect(page.switchGuide?.voiceTyprIf.length, `${page.slug} should define Voicetypr fit`).toBeGreaterThanOrEqual(2);
       expect(page.switchGuide?.otherIf.length, `${page.slug} should define incumbent fit`).toBeGreaterThanOrEqual(1);
       expect(page.switchGuide?.notes?.length, `${page.slug} should define comparison notes`).toBeGreaterThanOrEqual(2);
     }

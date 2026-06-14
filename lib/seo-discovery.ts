@@ -329,7 +329,7 @@ const relatedGuidesByUseCaseSlug: Record<string, DiscoveryLink[]> = {
       href: '/voice-typing',
       eyebrow: 'general workflow',
       title: 'Voice typing in every app',
-      description: 'A cleaner overview of how VoiceTypr fits into everyday writing across tools.',
+      description: 'A cleaner overview of how Voicetypr fits into everyday writing across tools.',
       ctaLabel: 'See the general guide',
     },
   ],
@@ -503,7 +503,7 @@ const relatedGuidesByUseCaseSlug: Record<string, DiscoveryLink[]> = {
       href: '/alternative/dragon',
       eyebrow: 'legacy comparison',
       title: 'Dragon alternative',
-      description: 'Relevant for legal buyers comparing VoiceTypr against the old premium dictation default.',
+      description: 'Relevant for legal buyers comparing Voicetypr against the old premium dictation default.',
       ctaLabel: 'See the Dragon comparison',
     },
     {
@@ -670,7 +670,7 @@ export const downloadDiscoveryLinks: DiscoveryLink[] = [
     href: '/zero-knowledge',
     eyebrow: 'privacy',
     title: 'Zero-knowledge architecture',
-    description: 'How VoiceTypr ensures we never see, touch, or store your transcripts.',
+    description: 'How Voicetypr ensures we never see, touch, or store your transcripts.',
     ctaLabel: 'Read about zero-knowledge',
   },
   {
@@ -694,7 +694,7 @@ export const offlineWindowsRelatedGuides: DiscoveryLink[] = [
     href: '/zero-knowledge',
     eyebrow: 'privacy',
     title: 'Zero-knowledge architecture',
-    description: 'How VoiceTypr ensures we never see, touch, or store your transcripts.',
+    description: 'How Voicetypr ensures we never see, touch, or store your transcripts.',
     ctaLabel: 'Read about zero-knowledge',
   },
   {

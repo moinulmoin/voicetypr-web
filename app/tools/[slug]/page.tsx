@@ -12,6 +12,10 @@ import {
   getFreeToolCanonicalUrl,
 } from "@/lib/free-tools";
 
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\u003c");
+}
+
 export async function generateStaticParams() {
   return freeTools.map((tool) => ({ slug: tool.slug }));
 }
@@ -35,7 +39,7 @@ export async function generateMetadata({
       title: tool.ogTitle,
       description: tool.metaDescription,
       url,
-      siteName: "VoiceTypr",
+      siteName: "Voicetypr",
       type: "website",
       images: [
         {
@@ -67,15 +71,29 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   const siblingTools = getAllFreeTools().filter((entry) => entry.slug !== slug);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
+      { "@type": "ListItem", position: 2, name: "Free tools", item: "https://voicetypr.com/tools" },
+      { "@type": "ListItem", position: 3, name: tool.shortTitle, item: getFreeToolCanonicalUrl(slug) },
+    ],
+  };
+
   return (
     <main id="main-content" className="landing-editorial relative min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
+      />
       <Header />
       <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
         <div className="ed-container">
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
               <Link href="/" className="transition-colors hover:text-editorial-ink">
-                VoiceTypr
+                Voicetypr
               </Link>
               <span>/</span>
               <Link href="/tools" className="transition-colors hover:text-editorial-ink">
