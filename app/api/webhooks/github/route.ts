@@ -72,7 +72,11 @@ export async function POST(request: Request) {
     return new NextResponse("Ignored: not a release event", { status: 200 });
   }
 
-  revalidateTag("github-release", { expire: 30 * 24 * 3600 });
+  // Next 16 requires a profile arg. `{ expire: 0 }` sets the tag's expiry to
+  // `now`, which is what makes areTagsExpired() return true and forces a
+  // re-fetch on the next request. (A non-zero value would *delay* the purge
+  // by that many seconds — the opposite of what an on-demand webhook wants.)
+  revalidateTag("github-release", { expire: 0 });
   console.log(
     `[GitHub Webhook] release.${payload.action ?? "unknown"} → revalidated "github-release" tag`,
   );
