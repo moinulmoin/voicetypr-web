@@ -1,4 +1,5 @@
 import { Polar } from '@polar-sh/sdk';
+import type { CheckoutCreate } from '@polar-sh/sdk/models/components/checkoutcreate';
 
 export const polarServer =
   process.env.NODE_ENV !== 'production' ? 'sandbox' : 'production';
@@ -7,6 +8,17 @@ export const polar = new Polar({
   accessToken: process.env.POLAR_ACCESS_TOKEN!,
   server: polarServer,
 });
+
+export function createPolarClient(env: NodeJS.ProcessEnv = process.env) {
+  return new Polar({
+    accessToken: env.POLAR_ACCESS_TOKEN!,
+    server: env.NODE_ENV !== 'production' ? 'sandbox' : 'production',
+  });
+}
+
+export async function createCheckoutSession(request: CheckoutCreate, env: NodeJS.ProcessEnv = process.env) {
+  return createPolarClient(env).checkouts.create(request);
+}
 
 export async function validateLicenseKey(licenseKey: string, activationId: string) {
   return polar.licenseKeys.validate({

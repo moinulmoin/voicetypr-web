@@ -7,6 +7,8 @@
     "dev": "turbo run build --filter=@voicetypr/contracts --filter=@voicetypr/db --filter=@voicetypr/api-core --cache-dir=.turbo/cache && turbo run dev --filter=@voicetypr/web --cache-dir=.turbo/cache",
     "dev:api": "turbo run build --filter=@voicetypr/contracts --filter=@voicetypr/db --filter=@voicetypr/api-core --cache-dir=.turbo/cache && turbo run dev --filter=@voicetypr/api --cache-dir=.turbo/cache",
     "build": "turbo run build --cache-dir=.turbo/cache",
+    "deploy:api": "pnpm db:migrate:deploy && turbo run build --filter=@voicetypr/api --cache-dir=.turbo/cache",
+    "deploy:web": "pnpm db:migrate:deploy && turbo run build --filter=@voicetypr/web --cache-dir=.turbo/cache",
     "start": "turbo run start --filter=@voicetypr/web --cache-dir=.turbo/cache",
     "lint": "turbo run lint --cache-dir=.turbo/cache",
     "lint:fix": "turbo run lint:fix --cache-dir=.turbo/cache",

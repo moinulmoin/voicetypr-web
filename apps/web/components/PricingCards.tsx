@@ -29,6 +29,8 @@ const deviceOptions: DeviceOption[] = PUBLIC_PLAN_KEYS.map((key) => ({
   productId: productIds[key],
 }));
 
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '') ?? '';
+
 const V2_PRICES: Record<PublicPlanKey, number> = {
   pro: 59,
   plus: 99,
@@ -83,7 +85,7 @@ export default function PricingCards({
         ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
         : '';
 
-    window.location.assign(`/api/checkout?products=${productId}${metadataParam}`);
+    window.location.assign(`${apiBaseUrl}/api/checkout?products=${productId}${metadataParam}`);
   };
 
   return (

@@ -1,5 +1,8 @@
 import { Hono, type Context } from 'hono';
 import type { ContentfulStatusCode } from 'hono/utils/http-status';
+import { WebhookVerificationError, validateEvent } from '@polar-sh/sdk/webhooks';
+import type { CheckoutCreate } from '@polar-sh/sdk/models/components/checkoutcreate';
+import type { WebhookOrderPaidPayload } from '@polar-sh/sdk/models/components/webhookorderpaidpayload';
 import type { ZodError } from 'zod';
 import {
   bugReportRequestSchema,
@@ -16,7 +19,8 @@ import {
 } from '@voicetypr/db';
 import { ERROR_MESSAGES, ErrorCode, CONFIG } from './constants.js';
 import { getMaxDevicesForLicense } from './license-utils.js';
-import { activateLicenseKey, deactivateLicenseKey, validateLicenseKey } from './polar.js';
+import { getOrderProductRevenue } from './order-revenue.js';
+import { activateLicenseKey, createCheckoutSession, deactivateLicenseKey, validateLicenseKey } from './polar.js';
 import { PLANS, getPlanByLicensePrefix, resolvePlan } from './pricing.js';
 import { getRedis } from './redis.js';
 
@@ -42,6 +46,9 @@ type RedisScript<T> = {
 };
 type RedisLike = {
   createScript<T>(script: string): RedisScript<T>;
+  get?(key: string): Promise<unknown>;
+  set?(key: string, value: string, options?: { ex?: number; nx?: boolean }): Promise<unknown>;
+  del?(key: string): Promise<unknown>;
 };
 
 export interface ApiCoreDependencies {
@@ -52,6 +59,7 @@ export interface ApiCoreDependencies {
   env: NodeJS.ProcessEnv;
   runAfter: (task: () => Promise<void>) => void;
   activateLicenseKey: typeof activateLicenseKey;
+  createCheckoutSession: typeof createCheckoutSession;
   deactivateLicenseKey: typeof deactivateLicenseKey;
   validateLicenseKey: typeof validateLicenseKey;
 }
@@ -69,6 +77,7 @@ function resolveDependencies(options: ApiCoreOptions): ApiCoreDependencies {
       void task().catch((error) => console.error('[API] Background task failed:', error));
     }),
     activateLicenseKey: options.activateLicenseKey ?? activateLicenseKey,
+    createCheckoutSession: options.createCheckoutSession ?? createCheckoutSession,
     deactivateLicenseKey: options.deactivateLicenseKey ?? deactivateLicenseKey,
     validateLicenseKey: options.validateLicenseKey ?? validateLicenseKey,
   };
@@ -86,6 +95,8 @@ export function createVoicetyprApi(options: ApiCoreOptions = {}) {
     return rateLimitScript;
   };
 
+  app.get('/healthz', (c) => json(c, { ok: true, service: 'voicetypr-api' }));
+
   app.use('/api/v1/*', async (c, next) => {
     await next();
     for (const [key, value] of Object.entries(corsHeaders)) {
@@ -94,6 +105,79 @@ export function createVoicetyprApi(options: ApiCoreOptions = {}) {
   });
 
   app.options('/api/v1/*', (c) => c.body(null, 200));
+
+  app.get('/api/checkout', async (c) => {
+    try {
+      const products = parseCheckoutProducts(c);
+      const allowedProducts = getAllowedProductIds(deps.env);
+
+      if (products.length === 0 || products.some((productId) => !allowedProducts.has(productId))) {
+        return createErrorResponse(c, ErrorCode.PARAMETER_VALIDATION_ERROR, 400);
+      }
+
+      let metadata: Record<string, string | number | boolean> | undefined;
+      try {
+        metadata = parseCheckoutMetadata(c.req.query('metadata'));
+      } catch {
+        return createErrorResponse(c, ErrorCode.PARAMETER_VALIDATION_ERROR, 400);
+      }
+
+      const appUrl = getAppUrl(deps.env);
+      const checkoutRequest: CheckoutCreate = {
+        products,
+        successUrl: `${appUrl}?checkout=success`,
+        returnUrl: appUrl,
+        metadata,
+      };
+      const checkout = await deps.createCheckoutSession(checkoutRequest, deps.env);
+
+      return c.redirect(checkout.url, 303);
+    } catch (error) {
+      return handleInternalError(c, error);
+    }
+  });
+
+  app.post('/api/webhooks/polar', async (c) => {
+    const webhookSecret = deps.env.POLAR_WEBHOOK_SECRET;
+    if (!webhookSecret) {
+      return handleInternalError(c, new Error('POLAR_WEBHOOK_SECRET is not configured'));
+    }
+
+    const bodyText = await c.req.text();
+    const headers: Record<string, string> = {};
+    c.req.raw.headers.forEach((value, key) => {
+      headers[key] = value;
+    });
+
+    let payload: ReturnType<typeof validateEvent>;
+    try {
+      payload = validateEvent(bodyText, headers, webhookSecret);
+    } catch (error) {
+      if (error instanceof WebhookVerificationError) {
+        return json(c, { received: false }, 400);
+      }
+      return handleInternalError(c, error);
+    }
+
+    try {
+      switch (payload.type) {
+        case 'order.paid':
+          await deduplicated(deps, payload, () => handleOrderPaid(deps, payload));
+          break;
+        case 'order.refunded':
+          await deduplicated(deps, payload, async () => {
+            console.log(`[Webhook] order.refunded: ${payload.data.id}`);
+          });
+          break;
+        default:
+          console.log(`[Webhook] Ignored event: ${payload.type}`);
+      }
+    } catch (error) {
+      return handleInternalError(c, error);
+    }
+
+    return json(c, { received: true });
+  });
 
   app.post('/api/v1/license/activate', async (c) => {
     try {
@@ -587,6 +671,208 @@ function json(c: Context, body: unknown, statusCode: number = 200, headers: Reco
     'content-type': 'application/json; charset=utf-8',
     ...headers,
   });
+}
+
+function getAppUrl(env: NodeJS.ProcessEnv): string {
+  return env.NEXT_PUBLIC_APP_URL || env.APP_URL || 'http://localhost:3000';
+}
+
+function parseCheckoutProducts(c: Context): string[] {
+  const products = c.req.query('products') || c.req.query('productId') || '';
+  return products
+    .split(',')
+    .map((productId) => productId.trim())
+    .filter(Boolean);
+}
+
+function getAllowedProductIds(env: NodeJS.ProcessEnv): Set<string> {
+  return new Set(
+    [
+      env.POLAR_PRODUCT_ID_PRO ?? env.NEXT_PUBLIC_PRO_PRODUCT_ID,
+      env.POLAR_PRODUCT_ID_PLUS ?? env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
+      env.POLAR_PRODUCT_ID_MAX ?? env.NEXT_PUBLIC_MAX_PRODUCT_ID,
+      env.POLAR_PRODUCT_ID_TEAM ?? env.NEXT_PUBLIC_TEAM_PRODUCT_ID,
+    ].filter((productId): productId is string => !!productId)
+  );
+}
+
+function parseCheckoutMetadata(rawMetadata: string | undefined): Record<string, string | number | boolean> | undefined {
+  if (!rawMetadata) return undefined;
+
+  const parsed = JSON.parse(rawMetadata) as unknown;
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return undefined;
+
+  const metadata: Record<string, string | number | boolean> = {};
+  for (const [key, value] of Object.entries(parsed)) {
+    if (key.length > 40 || Object.keys(metadata).length >= 50) continue;
+
+    if (typeof value === 'string') {
+      metadata[key] = value.slice(0, 500);
+    } else if (typeof value === 'number' || typeof value === 'boolean') {
+      metadata[key] = value;
+    }
+  }
+
+  return Object.keys(metadata).length > 0 ? metadata : undefined;
+}
+
+function getWebhookRedis(deps: ApiCoreDependencies): Required<Pick<RedisLike, 'get' | 'set' | 'del'>> {
+  const redis = deps.redis ?? (getRedis() as unknown as RedisLike);
+  if (!redis.get || !redis.set || !redis.del) {
+    throw new Error('Redis webhook deduplication methods are not available');
+  }
+  return { get: redis.get.bind(redis), set: redis.set.bind(redis), del: redis.del.bind(redis) };
+}
+
+async function deduplicated<T extends { type: string; data: { id?: string | number } }>(
+  deps: ApiCoreDependencies,
+  payload: T,
+  handler: () => Promise<void>,
+) {
+  const redis = getWebhookRedis(deps);
+  const eventId = payload.data.id ?? JSON.stringify(payload.data).slice(0, 32);
+  const eventKey = `${payload.type}:${eventId}`;
+  const processedKey = `webhook:processed:${eventKey}`;
+  const lockKey = `webhook:processing:${eventKey}`;
+
+  const alreadyProcessed = await redis.get(processedKey);
+  if (alreadyProcessed) {
+    console.log(`[Webhook] Duplicate event skipped: ${eventKey}`);
+    return;
+  }
+
+  const lockClaimed = await redis.set(lockKey, '1', { ex: 300, nx: true });
+  if (!lockClaimed) {
+    console.log(`[Webhook] Event already in-flight: ${eventKey}`);
+    return;
+  }
+
+  try {
+    await handler();
+    await redis.set(processedKey, '1', { ex: 86400 });
+  } finally {
+    await redis.del(lockKey);
+  }
+}
+
+async function handleOrderPaid(deps: ApiCoreDependencies, payload: WebhookOrderPaidPayload) {
+  const data = payload.data;
+  const metadata = data.metadata;
+  const checkoutTotalAmount = data.totalAmount;
+  const productId = data.productId;
+  const productRevenue = getOrderProductRevenue(data);
+  const revenueAmount = productRevenue?.amount ?? checkoutTotalAmount;
+  if (!revenueAmount) {
+    console.log('[Webhook] No revenue amount found in order.paid event');
+    return;
+  }
+
+  const deviceId = typeof metadata.deviceId === 'string' ? metadata.deviceId : undefined;
+
+  deps.runAfter(async () => {
+    try {
+      await trackOpenPanelRevenue(deps, revenueAmount, {
+        deviceId,
+        productId,
+        currency: data.currency,
+        checkoutSubtotalAmount: data.subtotalAmount,
+        checkoutDiscountAmount: data.discountAmount,
+        checkoutTaxAmount: data.taxAmount,
+        checkoutTotalAmount,
+        revenueSource: productRevenue?.source ?? 'checkout_total',
+      });
+    } catch (err) {
+      console.error('[Webhook] OpenPanel revenue flush failed:', err);
+    }
+  });
+
+  console.log(`[Webhook] Revenue queued: $${(revenueAmount / 100).toFixed(2)}${deviceId ? ` (deviceId: ${deviceId})` : ''}`);
+  await persistLicensePlan(deps, data as unknown as Record<string, unknown>);
+}
+
+async function trackOpenPanelRevenue(
+  deps: ApiCoreDependencies,
+  amount: number,
+  properties: Record<string, unknown> & { deviceId?: string },
+) {
+  const clientId = deps.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID;
+  const clientSecret = deps.env.OPENPANEL_CLIENT_SECRET ?? deps.env.OPENPANEL_SECRET_KEY;
+  if (!clientId || !clientSecret) {
+    console.warn('[Webhook] OpenPanel env vars are not configured; skipping revenue event');
+    return;
+  }
+
+  const { deviceId, ...rest } = properties;
+  const response = await deps.fetch(`${deps.env.NEXT_PUBLIC_OPENPANEL_API_URL || 'https://api.openpanel.dev'}/track`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'openpanel-client-id': clientId,
+      'openpanel-client-secret': clientSecret,
+      'openpanel-sdk-name': 'voicetypr-api',
+      'openpanel-sdk-version': '0.0.1',
+    },
+    body: JSON.stringify({
+      type: 'track',
+      payload: {
+        name: 'revenue',
+        properties: {
+          ...rest,
+          ...(deviceId ? { __deviceId: deviceId } : {}),
+          __revenue: amount,
+        },
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenPanel revenue event failed with ${response.status}`);
+  }
+}
+
+async function persistLicensePlan(deps: ApiCoreDependencies, data: Record<string, unknown>) {
+  try {
+    const licenseKey = extractLicenseKey(data);
+    const productId = extractProductId(data);
+
+    if (!licenseKey) return;
+
+    const planKey = resolvePlan(productId, licenseKey);
+    if (!planKey) return;
+
+    const planMeta = PLANS[planKey];
+
+    await deps.prisma.license.updateMany({
+      where: { licenseKey },
+      data: {
+        plan: planKey,
+        maxDevices: planMeta.maxDevices,
+      },
+    });
+  } catch (err) {
+    console.error('[Webhook] Failed to persist license plan:', err);
+  }
+}
+
+function extractLicenseKey(data: Record<string, unknown>): string | null {
+  const metadata = data.metadata as Record<string, unknown> | undefined;
+  const candidates = [
+    data.license_key,
+    data.licenseKey,
+    metadata?.license_key,
+    metadata?.licenseKey,
+  ];
+
+  for (const candidate of candidates) {
+    if (typeof candidate === 'string' && candidate.length > 0) return candidate;
+  }
+  return null;
+}
+
+function extractProductId(data: Record<string, unknown>): string | null {
+  return typeof data.productId === 'string' && data.productId.length > 0
+    ? data.productId
+    : null;
 }
 
 function redactLicenseKey(key: string): string {
