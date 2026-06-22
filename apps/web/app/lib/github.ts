@@ -1,3 +1,5 @@
+import { cacheLife, cacheTag } from 'next/cache';
+
 export interface ReleaseAssets {
   intel?: string;
   silicon?: string;
@@ -13,16 +15,26 @@ interface GitHubRelease {
   assets?: GitHubReleaseAsset[];
 }
 
+const GITHUB_RELEASE_REVALIDATE_SECONDS = 3 * 24 * 3600;
+const GITHUB_RELEASE_EXPIRE_SECONDS = 7 * 24 * 3600;
+
 export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
+  'use cache';
+
+  cacheTag('github-release');
+  cacheLife({
+    revalidate: GITHUB_RELEASE_REVALIDATE_SECONDS,
+    expire: GITHUB_RELEASE_EXPIRE_SECONDS,
+  });
+
   // Fallback URL for the first release
   const FALLBACK_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL!
 
   try {
     const response = await fetch('https://api.github.com/repos/moinulmoin/voicetypr/releases/latest', {
-      // 30-day fallback TTL in case the webhook never fires; the
+      // 3-day fallback TTL in case the webhook never fires; the
       // 'github-release' tag is revalidated on-demand by
       // POST /api/webhooks/github when a release event arrives.
-      next: { revalidate: 30 * 24 * 3600, tags: ['github-release'] },
       headers: {
         'Accept': 'application/vnd.github.v3+json',
         // Authenticated requests get 5,000 req/hr instead of 60 req/hr per IP.
