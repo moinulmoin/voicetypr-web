@@ -8,7 +8,6 @@ import { OpenPanel } from "@/components/openpanel";
 import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
 import { Providers } from "@/components/providers";
-import Script from "next/script";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -125,7 +124,7 @@ export default function RootLayout({
       </head>
       <body className={`${fontSans.variable} ${fontSerif.variable} font-sans antialiased`}>
       {/* JSON-LD Structured Data */}
-      <Script
+      <script
         id="json-ld-structured-data"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
