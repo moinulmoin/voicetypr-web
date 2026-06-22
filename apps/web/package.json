@@ -10,11 +10,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "db:generate": "pnpm --filter @voicetypr/db db:generate",
-    "db:push": "pnpm --filter @voicetypr/db db:push",
-    "db:migrate": "pnpm --filter @voicetypr/db db:migrate",
-    "db:studio": "pnpm --filter @voicetypr/db db:studio"
+    "test": "vitest run"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -32,7 +28,6 @@
     "@upstash/redis": "^1.35.0",
     "@voicetypr/api-core": "workspace:*",
     "@voicetypr/contracts": "workspace:*",
-    "@voicetypr/db": "workspace:*",
     "boring-avatars": "^2.0.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

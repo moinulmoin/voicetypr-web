@@ -79,7 +79,13 @@ Set the Vercel frontend env var:
 NEXT_PUBLIC_API_URL=https://api.voicetypr.com
 ```
 
-Update the Polar webhook endpoint to:
+The existing Polar webhook can stay on the Vercel web domain during the migration:
+
+```text
+https://voicetypr.com/api/webhooks/polar
+```
+
+That route is still a thin adapter to the shared Hono app. Move Polar to the Coolify API domain only when you want Coolify to own webhook delivery, and before removing the web-side API adapters:
 
 ```text
 https://api.voicetypr.com/api/webhooks/polar
