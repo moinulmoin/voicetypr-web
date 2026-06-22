@@ -2,6 +2,7 @@
 
 # Dependencies
 node_modules
+.pnpm-store/
 .pnp
 .pnp.js
 
@@ -23,9 +24,11 @@ coverage
 
 # Build Outputs
 .next/
+**/.next/
 out/
 build
 dist
+**/dist/
 
 
 # Debug
@@ -37,7 +40,7 @@ npm-debug.log*
 
 # Agent documentation (for Claude)
 agent-docs/
-/generated/prisma
+**/generated/prisma
 
 # Sisyphus work tracking
 .sisyphus/
