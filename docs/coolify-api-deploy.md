@@ -36,6 +36,10 @@ NEXT_PUBLIC_OPENPANEL_API_URL=https://api.openpanel.dev
 
 `OPENPANEL_SECRET_KEY` is also accepted as a fallback for `OPENPANEL_CLIENT_SECRET`.
 
+## Coolify Environment Settings
+
+Keep production secrets as runtime-only in Coolify. Do not mark `NODE_ENV=production`, Polar, Redis, Discord, OpenPanel, or database variables as available at build time unless a future build step explicitly needs them. The Docker build uses a placeholder `DATABASE_URL` only for Prisma client generation.
+
 ## Deploy Order
 
 Run migrations before releasing a new API container:
