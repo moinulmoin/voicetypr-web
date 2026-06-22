@@ -1,5 +1,7 @@
 import { Hono, type Context } from 'hono';
 import type { ContentfulStatusCode } from 'hono/utils/http-status';
+import { initLogger } from 'evlog';
+import { evlog, type EvlogVariables } from 'evlog/hono';
 import { WebhookVerificationError, validateEvent } from '@polar-sh/sdk/webhooks';
 import type { CheckoutCreate } from '@polar-sh/sdk/models/components/checkoutcreate';
 import type { WebhookOrderPaidPayload } from '@polar-sh/sdk/models/components/webhookorderpaidpayload';
@@ -50,7 +52,6 @@ type RedisLike = {
   set?(key: string, value: string, options?: { ex?: number; nx?: boolean }): Promise<unknown>;
   del?(key: string): Promise<unknown>;
 };
-
 export interface ApiCoreDependencies {
   prisma: PrismaLike;
   Prisma: typeof Prisma;
@@ -85,7 +86,14 @@ function resolveDependencies(options: ApiCoreOptions): ApiCoreDependencies {
 
 export function createVoicetyprApi(options: ApiCoreOptions = {}) {
   const deps = resolveDependencies(options);
-  const app = new Hono();
+  initLogger({
+    env: {
+      service: 'voicetypr-api',
+      environment: deps.env.NODE_ENV ?? process.env.NODE_ENV ?? 'development',
+    },
+  });
+
+  const app = new Hono<EvlogVariables>();
   let rateLimitScript: RedisScript<number> | undefined;
   const getRateLimitScript = (): RedisScript<number> => {
     if (!rateLimitScript) {
@@ -95,6 +103,18 @@ export function createVoicetyprApi(options: ApiCoreOptions = {}) {
     return rateLimitScript;
   };
 
+  app.use(evlog());
+  app.use('*', async (c, next) => {
+    c.get('log').set({
+      host: c.req.header('host'),
+      proto: c.req.header('x-forwarded-proto'),
+      ip: getClientIp(c),
+      cfRay: c.req.header('cf-ray'),
+    });
+    await next();
+  });
+
+  app.get('/', (c) => json(c, { ok: true, service: 'voicetypr-api' }));
   app.get('/healthz', (c) => json(c, { ok: true, service: 'voicetypr-api' }));
 
   app.use('/api/v1/*', async (c, next) => {

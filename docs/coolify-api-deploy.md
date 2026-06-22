@@ -11,8 +11,11 @@ Voicetypr's production split is:
 
 - Dockerfile: `Dockerfile.api`
 - Exposed port: `4000`
+- Application/service port: `4000`
 - Health check: `GET /healthz`
 - Public domain: `https://api.voicetypr.com`
+
+If Cloudflare returns `522` while Coolify logs only show `Voicetypr API listening on http://0.0.0.0:4000`, first verify that the Coolify public proxy routes the domain to container port `4000` rather than the old Next.js port `3000`. `0.0.0.0` is the correct container listen address; binding only to `localhost` or `127.0.0.1` would make the app unreachable from the proxy. The API uses `evlog` Hono middleware for structured request logs; if `/healthz` produces no request log line, the request is not reaching the Node process.
 
 ## Required Environment Variables
 
@@ -60,6 +63,12 @@ pnpm build
 docker build -f Dockerfile.api -t voicetypr-api .
 docker run --rm -p 4000:4000 --env-file .env voicetypr-api
 curl http://localhost:4000/healthz
+```
+
+Expected API logs after a successful request:
+
+```text
+{"method":"GET","path":"/healthz","requestId":"...","host":"api.voicetypr.com","proto":"https","ip":"...","cfRay":"...","status":200,"duration":"1ms","timestamp":"...","level":"info","service":"voicetypr-api","environment":"production"}
 ```
 
 ## Cutover

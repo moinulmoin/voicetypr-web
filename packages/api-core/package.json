@@ -12,6 +12,7 @@
     "@upstash/redis": "^1.35.0",
     "@voicetypr/contracts": "workspace:*",
     "@voicetypr/db": "workspace:*",
+    "evlog": "^2.19.1",
     "hono": "^4.12.25",
     "zod": "^3.25.75"
   },
