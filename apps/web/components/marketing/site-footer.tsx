@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getAllFreeTools } from "@/lib/free-tools";
 import { Bi } from "@/app/components/landing-v2/brand-icons";
+import { Brandmark } from "@/components/marketing/brandmark";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
@@ -35,6 +36,7 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
       { label: "Ideaplexa", href: "https://ideaplexa.com", external: true },
       { label: "GitHub", href: "https://github.com/moinulmoin/voicetypr", external: true },
       { label: "Affiliate", href: "/affiliate" },
+      { label: "Brand kit", href: "/brand" },
     ],
   },
   {
@@ -79,14 +81,12 @@ export function SiteFooter() {
     .map((t) => ({ label: t.shortTitle, href: `/tools/${t.slug}` }));
 
   return (
-    <footer className="mt-28 border-t border-border pb-12 pt-14 md:mt-32" data-markdown-skip>
+    <footer className="mt-28 pb-12 pt-14 md:mt-32" data-markdown-skip>
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-2 items-start gap-9 md:grid-cols-[1.4fr_repeat(5,minmax(0,1fr))]">
           <div>
             <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight text-foreground">
-              <span className="bi text-lg text-sage">
-                <Bi name="mic" />
-              </span>
+              <Brandmark className="h-6 w-6 shrink-0 text-sage" />
               Voicetypr
             </Link>
             <p className="mt-3.5 max-w-60 text-sm leading-relaxed text-muted-foreground">
@@ -124,8 +124,8 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground">
-          <span>© 2026 Voicetypr · All rights reserved</span>
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 pt-2 text-xs text-muted-foreground">
+          <span>© 2026 Voicetypr · by <a href="https://ideaplexa.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 transition-colors hover:text-foreground">Ideaplexa</a></span>
           <div className="flex gap-3.5 text-base text-muted-foreground [&_a:hover]:text-foreground">
             <a href="https://twitter.com/moinulmoin" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
               <Bi name="x" />

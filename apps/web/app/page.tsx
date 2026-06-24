@@ -3,24 +3,19 @@ import { Suspense } from "react";
 
 import { SuccessModal } from "./components/SuccessModal";
 import LandingV2 from "./components/landing-v2/LandingV2";
-import { getAllFreeTools } from "@/lib/free-tools";
+import { SiteFooter } from "@/components/marketing/site-footer";
 
 export default async function HomePage() {
   const cookieStore = await cookies();
   const affonsoReferral = cookieStore.get("affonso_referral")?.value || "";
   const referrer = (await headers()).get("referer") || "";
 
-  const footerTools = getAllFreeTools().map((tool) => ({
-    label: tool.shortTitle,
-    href: `/tools/${tool.slug}`,
-  }));
-
   return (
     <>
       <LandingV2
         affonsoReferral={affonsoReferral}
         referrer={referrer}
-        footerTools={footerTools}
+        footer={<SiteFooter />}
       />
       <Suspense>
         <SuccessModal />

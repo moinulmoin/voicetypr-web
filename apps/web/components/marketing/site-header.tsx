@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Bi } from "@/app/components/landing-v2/brand-icons";
+import { Brandmark } from "@/components/marketing/brandmark";
 
 const NAV = [
   { label: "Features", href: "/#features" },
@@ -25,15 +26,13 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-30 border-b transition-colors duration-300",
-        scrolled ? "border-border bg-background/85 backdrop-blur" : "border-transparent bg-transparent",
+        "sticky top-0 z-30 transition-colors duration-300",
+        scrolled ? "bg-background/85 backdrop-blur" : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight text-foreground">
-          <span className="bi text-lg text-sage">
-            <Bi name="mic" />
-          </span>
+          <Brandmark className="h-6 w-6 shrink-0 text-sage" />
           Voicetypr
         </Link>
         <nav className="flex items-center gap-7">

@@ -10,16 +10,15 @@ import {
   PUBLIC_PLAN_KEYS,
   type PublicPlanKey,
 } from '@/lib/pricing';
-import { ThemeToggle } from '@/components/theme-toggle';
 import { Bi, injectBrandIcons } from './brand-icons';
+import { Brandmark } from '@/components/marketing/brandmark';
 import DownloadButton from './DownloadButton';
-
-type FooterLink = { label: string; href: string; external?: boolean };
+import type { ReactNode } from 'react';
 
 interface LandingV2Props {
   affonsoReferral: string;
   referrer: string;
-  footerTools: FooterLink[];
+  footer: ReactNode;
 }
 
 /* ---------- Static content ---------- */
@@ -76,47 +75,7 @@ const NAV = [
   { href: '/use-cases', label: 'Use cases' },
 ];
 
-const FOOTER_STATIC: { title: string; links: FooterLink[] }[] = [
-  {
-    title: 'Product',
-    links: [
-      { label: 'Download', href: '/download' },
-      { label: 'Pricing', href: '/#pricing' },
-      { label: 'Use cases', href: '/use-cases' },
-      { label: 'Changelog', href: '/changelog' },
-    ],
-  },
-  {
-    title: 'Guides',
-    links: [
-      { label: 'Mac dictation', href: '/best/mac-dictation' },
-      { label: 'Offline dictation', href: '/best/offline-dictation' },
-      { label: 'Windows voice typing', href: '/best/windows-voice-typing' },
-      { label: 'Voice input for Cursor', href: '/voice-input-for-cursor' },
-      { label: 'Wispr Flow alternative', href: '/wispr-flow-alternative' },
-      { label: 'Dictation app', href: '/voice-typing' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'Support', href: 'mailto:support@voicetypr.com', external: true },
-      { label: 'Ideaplexa', href: 'https://ideaplexa.com', external: true },
-      { label: 'GitHub', href: 'https://github.com/moinulmoin/voicetypr', external: true },
-      { label: 'Affiliate', href: '/affiliate' },
-    ],
-  },
-  {
-    title: 'Trust',
-    links: [
-      { label: 'Privacy', href: '/privacy' },
-      { label: 'Terms', href: '/terms' },
-      { label: 'Cookies', href: '/cookies' },
-      { label: 'HIPAA', href: '/hipaa-compliant-dictation' },
-      { label: 'GDPR', href: '/gdpr-compliant' },
-    ],
-  },
-];
+// Footer columns now live in the shared SiteFooter (passed in via the `footer` prop from page.tsx).
 
 function initials(name: string) {
   return name
@@ -127,7 +86,7 @@ function initials(name: string) {
     .toUpperCase();
 }
 
-export default function LandingV2({ affonsoReferral, referrer, footerTools }: LandingV2Props) {
+export default function LandingV2({ affonsoReferral, referrer, footer }: LandingV2Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const [plan, setPlan] = useState<PublicPlanKey>('plus');
@@ -543,9 +502,7 @@ export default function LandingV2({ affonsoReferral, referrer, footerTools }: La
             className="flex items-center gap-[9px] text-[15px] font-semibold tracking-[-0.01em] text-editorial-ink"
             href="/"
           >
-            <span className="wordmark-glyph bi">
-              <Bi name="mic" />
-            </span>
+            <Brandmark className="h-[22px] w-[22px] shrink-0 text-sage" />
             Voicetypr
           </Link>
           <nav className="flex items-center gap-7">
@@ -601,7 +558,7 @@ export default function LandingV2({ affonsoReferral, referrer, footerTools }: La
                   data-track="hero-demo-click"
                   aria-haspopup="dialog"
                 >
-                  <span className="play-dot" aria-hidden="true">▶</span>
+                  <span className="play-dot" aria-hidden="true"><svg viewBox="0 0 12 12" width="9" height="9" fill="currentColor"><path d="M4.5 3 L9 6 L4.5 9 Z" /></svg></span>
                   Watch the demo
                 </button>
               </div>
@@ -1029,60 +986,8 @@ export default function LandingV2({ affonsoReferral, referrer, footerTools }: La
         </section>
       </main>
 
-      {/* ============ FOOTER ============ */}
-      <footer className="mt-12 border-t border-editorial-line pt-14 pb-12" data-markdown-skip>
-        <div className="vt-container">
-          <div className="grid grid-cols-[1.4fr_repeat(5,minmax(0,1fr))] items-start gap-9 max-[800px]:grid-cols-2">
-            <div>
-              <Link
-                className="flex items-center gap-[9px] text-[15px] font-semibold tracking-[-0.01em] text-editorial-ink"
-                href="/"
-              >
-                <span className="wordmark-glyph bi"><Bi name="mic" /></span>
-                Voicetypr
-              </Link>
-              <p className="mt-[14px] max-w-[240px] text-[13px] leading-[1.55] text-editorial-ink-3">
-                Fast, local voice-to-text for Mac &amp; Windows. Built for founders, builders, and creators.
-              </p>
-              <div className="mt-[18px]">
-                <ThemeToggle />
-              </div>
-            </div>
-            {FOOTER_STATIC.map((col) => (
-              <div key={col.title}>
-                <h3 className="mb-[14px] text-[13px] font-semibold text-editorial-ink">{col.title}</h3>
-                <ul className="m-0 grid list-none gap-[10px] p-0 text-[13.5px] text-editorial-ink-2">
-                  {col.links.map((l) => (
-                    <li key={l.label}>
-                      {l.external || l.href.startsWith('mailto:') ? (
-                        <a className="transition-colors hover:text-editorial-ink" href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined} data-track="footer-link-click">{l.label}</a>
-                      ) : (
-                        <Link className="transition-colors hover:text-editorial-ink" href={l.href} data-track="footer-link-click">{l.label}</Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-            <div>
-              <h3 className="mb-[14px] text-[13px] font-semibold text-editorial-ink">Free tools</h3>
-              <ul className="m-0 grid list-none gap-[10px] p-0 text-[13.5px] text-editorial-ink-2">
-                {footerTools.slice(0, 6).map((l) => (
-                  <li key={l.href}><Link className="transition-colors hover:text-editorial-ink" href={l.href} data-track="footer-link-click">{l.label}</Link></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-editorial-line pt-6 text-[12.5px] text-editorial-ink-3">
-            <span>© 2026 Voicetypr · All rights reserved</span>
-            <div className="flex gap-[14px] text-[16px] text-editorial-ink-2 [&_a:hover]:text-editorial-ink">
-              <a href="https://twitter.com/moinulmoin" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><Bi name="x" /></a>
-              <a href="https://github.com/moinulmoin/voicetypr" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Bi name="github" /></a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* ============ FOOTER (shared SiteFooter, passed from page.tsx) ============ */}
+      {footer}
 
       <Link
         id="vtStickyCta"
