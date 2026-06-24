@@ -11,7 +11,7 @@ import {
 } from "@/lib/free-tools-calculations";
 
 const textareaClass =
-  "min-h-[200px] w-full resize-none overflow-hidden rounded-2xl border border-editorial-line bg-white px-4 py-3 text-[15px] leading-relaxed text-editorial-ink outline-none focus-visible:border-editorial-ink";
+  "min-h-[200px] w-full resize-none overflow-hidden rounded-2xl border border-border bg-card px-4 py-3 text-[15px] leading-relaxed text-foreground outline-none focus-visible:border-foreground";
 
 export function PromptLengthCounter() {
   const [text, setText] = useState("");
@@ -50,8 +50,8 @@ export function PromptLengthCounter() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 backdrop-blur">
-        <label htmlFor="prompt-input" className="text-[13px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+      <div className="rounded-2xl border border-border bg-card p-5">
+        <label htmlFor="prompt-input" className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
           Your prompt
         </label>
         <textarea
@@ -63,7 +63,7 @@ export function PromptLengthCounter() {
           aria-label="Prompt text"
           className={`mt-3 ${textareaClass}`}
         />
-        <p className="mt-3 text-[13px] leading-relaxed text-editorial-ink-3">
+        <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
           Token estimate is a rough heuristic for English. Different models tokenize differently.
         </p>
       </div>
@@ -72,26 +72,26 @@ export function PromptLengthCounter() {
         {statItems.map((item) => (
           <div
             key={item.label}
-            className="rounded-2xl border border-editorial-line bg-editorial-surface-2 px-4 py-3"
+            className="rounded-2xl border border-border bg-muted px-4 py-3"
           >
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
+            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
               {item.label}
             </div>
-            <div className="mt-1 text-[26px] font-semibold tracking-tight text-editorial-ink">{item.value}</div>
+            <div className="mt-1 text-[26px] font-semibold tracking-tight text-foreground">{item.value}</div>
           </div>
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border border-editorial-line bg-white/82 px-5 py-4 backdrop-blur">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border border-border bg-card px-5 py-4">
         <Link
           href="/download"
-          className="inline-flex h-9 items-center rounded-md bg-editorial-ink px-3.5 text-[13px] font-medium text-white transition hover:opacity-90"
+          className="inline-flex h-9 items-center rounded-md bg-primary px-3.5 text-[13px] font-medium text-primary-foreground transition hover:opacity-90"
         >
           Dictate longer prompts faster with Voicetypr
         </Link>
         <Link
           href="/voice-input-for-cursor"
-          className="text-[13px] font-medium text-editorial-ink underline decoration-editorial-ink/25 underline-offset-4 transition hover:decoration-editorial-ink"
+          className="text-[13px] font-medium text-foreground underline decoration-foreground/25 underline-offset-4 transition hover:decoration-foreground"
         >
           Voice input for Cursor
         </Link>

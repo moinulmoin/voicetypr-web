@@ -49,30 +49,30 @@ export function TypingSpeedTest() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-editorial-line bg-white/82 px-5 py-4 backdrop-blur">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card px-5 py-4">
         <div>
-          <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Timer</div>
-          <div className="text-[32px] font-semibold tracking-tight text-editorial-ink">
+          <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted-foreground">Timer</div>
+          <div className="text-[32px] font-semibold tracking-tight text-foreground">
             {uiPhase === "running" ? `${secondsLeft}s` : uiPhase === "done" ? "Done" : `${TEST_DURATION_SECONDS}s`}
           </div>
         </div>
         <div className="flex gap-2">
           {uiPhase === "idle" ? (
-            <Button onClick={start} className="bg-editorial-ink text-white hover:opacity-90">
+            <Button onClick={start} className="bg-primary text-primary-foreground hover:opacity-90">
               Start test
             </Button>
           ) : null}
           {uiPhase === "done" ? (
-            <Button variant="outline" onClick={reset} className="border-editorial-line">
+            <Button variant="outline" onClick={reset} className="border-border">
               Run again
             </Button>
           ) : null}
         </div>
       </div>
 
-      <div className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-5">
-        <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Prompt</p>
-        <p className="mt-2 text-[15px] leading-relaxed text-editorial-ink-2">{PROMPT}</p>
+      <div className="rounded-2xl border border-border bg-muted p-5">
+        <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted-foreground">Prompt</p>
+        <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{PROMPT}</p>
       </div>
 
       <textarea
@@ -85,26 +85,26 @@ export function TypingSpeedTest() {
             ? "Press Start test, then type here for 10 seconds."
             : "Type the prompt here..."
         }
-        className="min-h-[180px] w-full rounded-2xl border border-editorial-line bg-white px-4 py-3 text-[15px] leading-relaxed text-editorial-ink outline-none focus-visible:border-editorial-ink disabled:cursor-not-allowed disabled:bg-editorial-surface-2"
+        className="min-h-[180px] w-full rounded-2xl border border-border bg-card px-4 py-3 text-[15px] leading-relaxed text-foreground outline-none focus-visible:border-sage disabled:cursor-not-allowed disabled:bg-muted"
       />
 
       {uiPhase === "done" && wpm !== null ? (
         <div
           role="status"
           aria-live="polite"
-          className="space-y-4 rounded-2xl border border-editorial-line bg-white/82 p-5"
+          className="space-y-4 rounded-2xl border border-border bg-card p-5"
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Your speed</div>
-              <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">{wpm} WPM</div>
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted-foreground">Your speed</div>
+              <div className="mt-1 text-[34px] font-semibold tracking-tight text-foreground">{wpm} WPM</div>
             </div>
             <div>
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Typical dictation</div>
-              <div className="mt-1 text-[34px] font-semibold tracking-tight text-editorial-ink">
+              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted-foreground">Typical dictation</div>
+              <div className="mt-1 text-[34px] font-semibold tracking-tight text-sage">
                 ~{DEFAULT_DICTATION_WPM} WPM
               </div>
-              <p className="mt-2 text-[14px] text-editorial-ink-2">
+              <p className="mt-2 text-[14px] text-muted-foreground">
                 {wpm > 0 ? `Roughly ${(DEFAULT_DICTATION_WPM / wpm).toFixed(1)}x faster when you dictate instead.` : null}
               </p>
             </div>
@@ -112,13 +112,13 @@ export function TypingSpeedTest() {
           <div className="flex flex-col items-start gap-3">
             <Link
               href="/download"
-              className="inline-flex h-10 items-center rounded-md bg-editorial-ink px-4 text-sm font-medium text-white transition hover:opacity-90"
+              className="inline-flex h-10 items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:opacity-90"
             >
               Try Voicetypr free
             </Link>
             <Link
               href="/voice-typing"
-              className="text-[13px] text-editorial-ink-3 underline-offset-2 transition hover:text-editorial-ink-2 hover:underline"
+              className="text-[13px] text-muted-foreground underline-offset-2 transition hover:text-foreground hover:underline"
             >
               Read the voice typing guide
             </Link>

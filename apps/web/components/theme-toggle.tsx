@@ -96,7 +96,7 @@ export function ThemeToggle() {
 
   return (
     <div
-      className="inline-flex rounded-lg border border-editorial-line bg-editorial-surface-2 p-0.5 text-[11px] font-medium text-editorial-ink-2 shadow-sm"
+      className="inline-flex rounded-lg border border-border bg-muted p-0.5 text-[11px] font-medium text-muted-foreground shadow-sm"
       aria-label="Theme preference"
       role="radiogroup"
     >
@@ -113,8 +113,8 @@ export function ThemeToggle() {
             onClick={() => setTheme(option)}
             className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 leading-none transition-colors disabled:cursor-default ${
               active
-                ? "bg-editorial-ink text-white shadow-sm"
-                : "hover:bg-editorial-line hover:text-editorial-ink"
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "hover:bg-muted hover:text-foreground"
             }`}
           >
             <ThemeIcon theme={option} />
