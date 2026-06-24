@@ -1,16 +1,14 @@
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config as loadEnv } from 'dotenv';
-import { defineConfig } from 'prisma/config';
+import { defineConfig, env } from 'prisma/config';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-loadEnv({ path: join(__dirname, '../../.env') });
-loadEnv();
-
-const databaseUrl =
-  process.env.DATABASE_URL ??
-  'postgresql://user:password@localhost:5432/voicetypr?schema=public';
+// Prisma 7 disables automatic .env loading once a config file is present, so the
+// CLI (generate / migrate / db push / studio) depends on this explicit load.
+// Source it from the API app's .env — the canonical home for DATABASE_URL.
+loadEnv({ path: join(__dirname, '../../apps/api/.env') });
 
 export default defineConfig({
   schema: 'prisma/schema.prisma',
@@ -18,6 +16,6 @@ export default defineConfig({
     path: 'prisma/migrations',
   },
   datasource: {
-    url: databaseUrl,
+    url: env('DATABASE_URL'),
   },
 });

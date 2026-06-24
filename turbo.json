@@ -1,8 +1,8 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "globalDependencies": [
-    ".env",
-    ".env.local"
+    "apps/*/.env",
+    "apps/*/.env.local"
   ],
   "globalEnv": [
     "CI",

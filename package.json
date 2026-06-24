@@ -19,6 +19,7 @@
     "db:push": "turbo run db:push --filter=@voicetypr/db --cache-dir=.turbo/cache",
     "db:migrate": "turbo run db:migrate --filter=@voicetypr/db --cache-dir=.turbo/cache",
     "db:studio": "turbo run db:studio --filter=@voicetypr/db --cache-dir=.turbo/cache",
+    "compose": "docker compose --env-file apps/api/.env",
     "postinstall": "pnpm --filter @voicetypr/db db:generate"
   },
   "devDependencies": {

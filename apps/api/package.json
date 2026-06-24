@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@hono/node-server": "^2.0.5",
-    "@voicetypr/api-core": "workspace:*"
+    "@voicetypr/api-core": "workspace:*",
+    "dotenv": "^17.4.2"
   },
   "devDependencies": {
     "@types/node": "^20",

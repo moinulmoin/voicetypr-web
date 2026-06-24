@@ -20,6 +20,9 @@ importers:
       '@voicetypr/api-core':
         specifier: workspace:*
         version: link:../../packages/api-core
+      dotenv:
+        specifier: ^17.4.2
+        version: 17.4.2
     devDependencies:
       '@types/node':
         specifier: ^20
