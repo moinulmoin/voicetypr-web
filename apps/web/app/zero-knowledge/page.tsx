@@ -7,25 +7,28 @@ import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
-  title: "Zero-Knowledge Voice Typing — We Never See Your Transcripts — Voicetypr",
+  title: "Zero Data Collection Voice Typing — Beyond Zero Data Retention — Voicetypr",
   description:
-    "Voicetypr uses zero-knowledge architecture. We never see, touch, or store your transcripts. Audio processing occurs locally on your machine. macOS and Windows.",
+    "Most private AI promises zero data retention. Voicetypr goes further with zero data collection — in local mode your voice is transcribed on your device and never sent to us. macOS and Windows.",
   keywords: [
     "zero knowledge dictation",
+    "zero data collection",
+    "zero data retention",
     "zero knowledge voice typing",
     "private transcription",
     "secure voice typing",
     "local transcription architecture",
     "privacy first dictation",
     "no cloud audio storage",
+    "compliance dictation",
   ],
   alternates: {
     canonical: "https://voicetypr.com/zero-knowledge",
   },
   openGraph: {
-    title: "Zero-Knowledge Voice Typing — We Never See Your Transcripts — Voicetypr",
+    title: "Zero Data Collection Voice Typing — Beyond Zero Data Retention — Voicetypr",
     description:
-      "Voicetypr uses zero-knowledge architecture. We never see, touch, or store your transcripts. Audio processing occurs locally on your machine.",
+      "Most private AI promises zero data retention. Voicetypr goes further with zero data collection — in local mode your voice is transcribed on your device and never sent to us.",
     url: "https://voicetypr.com/zero-knowledge",
     siteName: "Voicetypr",
     images: [{ url: "/voicetypr-og.png", width: 1200, height: 630 }],
@@ -33,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zero-Knowledge Voice Typing — Voicetypr",
-    description: "We never see, touch, or store your transcripts. Audio processing occurs locally on your machine.",
+    title: "Zero Data Collection Voice Typing — Voicetypr",
+    description: "Beyond zero data retention. In local mode your voice is transcribed on your device and never sent to us.",
     images: ["/voicetypr-og.png"],
   },
   robots: { index: true, follow: true },
@@ -42,8 +45,8 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "What does zero-knowledge mean for Voicetypr?",
-    a: "It means we cannot see, access, or store your audio recordings or transcripts. The transcription happens entirely on your local device using on-device AI models. We never receive the audio file, the transcript, or any intermediate representation. The only data we see is license validation and optional support diagnostics you choose to send.",
+    q: "What is the difference between zero data retention and zero data collection?",
+    a: "Zero data retention means a provider receives your data but promises to delete it on a schedule. Zero data collection means there is nothing to retain because the data never leaves your device. In Voicetypr's local mode, transcription happens entirely on your device using on-device AI models — we do not receive the audio file, the transcript, or any intermediate representation. The only data we see is license validation and optional support diagnostics you choose to send.",
   },
   {
     q: "Can you access my transcripts if I report a bug?",
@@ -63,7 +66,7 @@ const faqs = [
   },
   {
     q: "Can I verify that no data is being sent during transcription?",
-    a: "Yes. You can run Voicetypr on a network monitoring tool or firewall to observe that no traffic is generated during dictation. The only network activity occurs during license checks, updates, and optional support reports — never during the actual transcription of your voice.",
+    a: "Yes. In local mode you can run a network monitoring tool or firewall to observe that no traffic is generated during dictation. The only network activity occurs during license checks, updates, and optional support reports — never during the actual local transcription of your voice. (Optional cloud transcription and AI text formatting are opt-in and do send data when you enable them.)",
   },
 ] as const;
 
@@ -125,22 +128,76 @@ const problems = [
 
 const solutions = [
   {
-    title: "Audio never reaches us",
+    title: "Audio stays on your device",
     body:
-      "Your microphone captures audio, and local AI models (Whisper and Parakeet) process it entirely on your device. The audio file is never transmitted to Voicetypr servers or any cloud transcription service.",
-    meta: "Purely local processing",
+      "In local mode, your microphone captures audio and local AI models (Whisper and Parakeet) process it on your device. The audio file is not transmitted to Voicetypr servers or any cloud transcription service.",
+    meta: "Local processing",
   },
   {
     title: "Transcripts stay on your machine",
     body:
-      "We do not store, log, or have access to your transcripts. The text is produced on your device and pasted into the application you are using. We cannot retrieve it, even if compelled.",
+      "We do not store, log, or have access to transcripts produced in local mode. The text is generated on your device and pasted into the application you are using — there is nothing on our side to retrieve.",
     meta: "No server-side storage",
   },
   {
     title: "License checks are isolated",
     body:
-      "The only network communication is for license validation, updates, and optional support reports. These are architecturally separate from the transcription system and contain no audio or transcript data.",
+      "The only network communication for core dictation is license validation, updates, and optional support reports. These are architecturally separate from the transcription system and contain no audio or transcript data.",
     meta: "Clean separation",
+  },
+] as const;
+
+const retentionTiers = [
+  {
+    label: "Most cloud AI",
+    title: "We delete it after",
+    body:
+      "Audio and transcripts are sent to a provider's servers, then deleted on a schedule. You are trusting a policy and a process you cannot see — and the data still left your device.",
+  },
+  {
+    label: "Privacy-leaning AI",
+    title: "Zero data retention",
+    body:
+      "A stronger promise: the provider says it does not keep your data. But the data was still transmitted, processed off-device, and is governed by that promise rather than by where it physically lives.",
+  },
+  {
+    label: "Voicetypr, local mode",
+    title: "Zero data collection",
+    body:
+      "There is nothing to retain because nothing is collected. Your voice is transcribed on your device by local models and never sent to us. Going further than retention promises by removing the transfer entirely.",
+  },
+] as const;
+
+const frameworks = [
+  {
+    name: "GDPR / EU",
+    summary: "Data minimization and no transfer",
+    body:
+      "Local processing means little to no personal data leaves the device, which supports data-minimization principles and avoids cross-border transfer concerns for core dictation. Helps reduce the scope of what you have to account for.",
+  },
+  {
+    name: "HIPAA",
+    summary: "Audio processed on-device",
+    body:
+      "Audio processed locally is not received or stored on our servers, so no BAA is needed for core local dictation. Evaluate any optional cloud or AI features yourself before using them with PHI.",
+  },
+  {
+    name: "CCPA / CPRA",
+    summary: "No sale of personal information",
+    body:
+      "We do not sell personal information, and local processing means there is little to collect or share in the first place. A smaller data footprint supports your consumer-privacy posture.",
+  },
+  {
+    name: "PCI DSS",
+    summary: "Reduced data footprint",
+    body:
+      "Voicetypr is not a payment application, but its reduced data footprint helps keep dictation out of scope. Payments for the license are handled by Polar, not by the dictation app.",
+  },
+  {
+    name: "GLBA",
+    summary: "On-device sensitive dictation",
+    body:
+      "Relevant to financial workflows: local processing keeps sensitive dictation on the device, helping you safeguard nonpublic personal information rather than routing it through a third party.",
   },
 ] as const;
 
@@ -190,20 +247,21 @@ export default function ZeroKnowledgePage() {
           <Container>
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-tight tracking-tight">
-                Zero-knowledge architecture{" "}
+                Beyond zero data retention.{" "}
                 <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
-                  for your voice
+                  Zero data collection.
                 </em>
               </h1>
 
               <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
-                We never see, touch, or store your transcripts. Audio processing occurs entirely on your machine.
+                Most &ldquo;private&rdquo; AI promises it won&rsquo;t keep your data. In local mode, Voicetypr never
+                collects it in the first place — your voice is transcribed on your device and never sent to us.
                 No subscription. macOS and Windows.
               </p>
 
               <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
-                <span>No audio on our servers</span>
-                <span>No transcript storage</span>
+                <span>Local mode: voice stays on device</span>
+                <span>Nothing collected to retain</span>
                 <span>Lifetime license</span>
               </div>
 
@@ -222,6 +280,40 @@ export default function ZeroKnowledgePage() {
                 </Link>
               </div>
             </div>
+          </Container>
+        </Section>
+
+        {/* Beyond zero data retention */}
+        <Section>
+          <Container>
+            <div className="mb-8 max-w-[760px]">
+              <p className="mb-2 text-sm font-medium text-sage">Retention vs. collection</p>
+              <h2 className={H2_CLASS}>Don&rsquo;t settle for &ldquo;we&rsquo;ll delete it later&rdquo;</h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                There is a real difference between a promise not to keep your data and never receiving it at all.
+                Here is where each approach lands.
+              </p>
+            </div>
+
+            <ol className="grid gap-4 md:grid-cols-3">
+              {retentionTiers.map((tier, i) => {
+                const isLast = i === retentionTiers.length - 1;
+                return (
+                  <li
+                    key={tier.title}
+                    className={`flex flex-col gap-3 rounded-2xl border p-6 ${
+                      isLast ? "border-sage/40 bg-sage-bg" : "border-border bg-card"
+                    }`}
+                  >
+                    <span className={`text-xs font-medium ${isLast ? "text-sage" : "text-muted-foreground"}`}>
+                      {tier.label}
+                    </span>
+                    <h3 className="text-lg font-semibold leading-snug text-foreground">{tier.title}</h3>
+                    <p className="text-[15px] leading-relaxed text-muted-foreground">{tier.body}</p>
+                  </li>
+                );
+              })}
+            </ol>
           </Container>
         </Section>
 
@@ -289,6 +381,42 @@ export default function ZeroKnowledgePage() {
                 ))}
               </ol>
             </div>
+          </Container>
+        </Section>
+
+        {/* Compliance framework mapping */}
+        <Section>
+          <Container>
+            <div className="mb-8 max-w-[760px]">
+              <p className="mb-2 text-sm font-medium text-sage">Compliance frameworks</p>
+              <h2 className={H2_CLASS}>How local-first architecture maps to your obligations</h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                Zero data collection is not just a privacy story — it shrinks the surface that most frameworks
+                care about. Here is how the architecture lines up, framework by framework.
+              </p>
+            </div>
+
+            <ul className="grid gap-4 md:grid-cols-2">
+              {frameworks.map((framework) => (
+                <li
+                  key={framework.name}
+                  className="flex flex-col gap-2 rounded-2xl border border-border bg-card p-6"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="text-lg font-semibold tracking-tight text-foreground">{framework.name}</h3>
+                    <span className="text-xs font-medium text-sage">{framework.summary}</span>
+                  </div>
+                  <p className="text-[15px] leading-relaxed text-muted-foreground">{framework.body}</p>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-8 max-w-[760px] text-sm leading-relaxed text-muted-foreground">
+              Voicetypr is designed to support your compliance posture; it is not a certification, and you remain
+              responsible for your own compliance obligations. Optional cloud transcription and AI text formatting
+              are opt-in — AI formatting sends transcribed text only, using your own provider and key — so evaluate
+              those features against your requirements before enabling them.
+            </p>
           </Container>
         </Section>
 
@@ -369,7 +497,7 @@ export default function ZeroKnowledgePage() {
                   </em>
                 </h2>
                 <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
-                  3-day free trial. No credit card. Your voice stays on your device from day one.
+                  3-day free trial. No credit card. In local mode your voice stays on your device from day one.
                   Pay once, use forever.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
