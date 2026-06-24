@@ -8,25 +8,25 @@ import Link from "next/link";
 export const mdxComponents = {
   h1: (props: ComponentPropsWithoutRef<"h1">) => (
     <h1
-      className="text-[clamp(32px,4vw,48px)] font-semibold !font-sans leading-[1.1] tracking-[-0.02em] mt-12 mb-5"
+      className="text-[clamp(2rem,4vw,3rem)] font-sans font-bold leading-[1.1] tracking-tight text-foreground mt-12 mb-5"
       {...props}
     />
   ),
   h2: (props: ComponentPropsWithoutRef<"h2">) => (
     <h2
-      className="text-[clamp(24px,2.5vw,32px)] font-semibold !font-sans leading-[1.15] tracking-[-0.01em] mt-14 mb-4"
+      className="text-[clamp(1.5rem,2.5vw,2rem)] font-sans font-bold leading-[1.15] tracking-tight text-foreground mt-14 mb-4"
       {...props}
     />
   ),
   h3: (props: ComponentPropsWithoutRef<"h3">) => (
     <h3
-      className="text-[20px] md:text-[22px] font-semibold !font-sans leading-[1.2] mt-10 mb-3"
+      className="text-xl md:text-[1.375rem] font-sans font-bold leading-snug tracking-tight text-foreground mt-10 mb-3"
       {...props}
     />
   ),
   p: (props: ComponentPropsWithoutRef<"p">) => (
     <p
-      className="text-[17px] leading-[1.7] text-editorial-ink-2 my-5 max-w-[680px]"
+      className="text-[17px] leading-[1.7] text-muted-foreground my-5 max-w-[680px]"
       {...props}
     />
   ),
@@ -38,7 +38,7 @@ export const mdxComponents = {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="text-editorial-ink underline-offset-2 hover:underline"
+          className="text-sage underline underline-offset-2"
           {...rest}
         />
       );
@@ -46,20 +46,20 @@ export const mdxComponents = {
     return (
       <Link
         href={href}
-        className="text-editorial-ink underline-offset-2 hover:underline"
+        className="text-sage underline underline-offset-2"
         {...rest}
       />
     );
   },
   ul: (props: ComponentPropsWithoutRef<"ul">) => (
     <ul
-      className="my-5 max-w-[680px] list-disc pl-6 marker:text-editorial-ink-3 space-y-2 text-[17px] leading-[1.7] text-editorial-ink-2"
+      className="my-5 max-w-[680px] list-disc pl-6 marker:text-muted-foreground space-y-2 text-[17px] leading-[1.7] text-muted-foreground"
       {...props}
     />
   ),
   ol: (props: ComponentPropsWithoutRef<"ol">) => (
     <ol
-      className="my-5 max-w-[680px] list-decimal pl-6 marker:text-editorial-ink-3 space-y-2 text-[17px] leading-[1.7] text-editorial-ink-2"
+      className="my-5 max-w-[680px] list-decimal pl-6 marker:text-muted-foreground space-y-2 text-[17px] leading-[1.7] text-muted-foreground"
       {...props}
     />
   ),
@@ -68,34 +68,34 @@ export const mdxComponents = {
   ),
   blockquote: (props: ComponentPropsWithoutRef<"blockquote">) => (
     <blockquote
-      className="my-7 max-w-[680px] rounded-lg bg-editorial-surface-2 px-5 py-4 text-[17px] leading-[1.6] text-editorial-ink-2 italic"
+      className="my-7 max-w-[680px] border-l-2 border-border pl-5 text-[17px] leading-[1.6] text-muted-foreground italic"
       {...props}
     />
   ),
   hr: () => (
-    <hr className="my-10 max-w-[680px] border-editorial-line" />
+    <hr className="my-10 max-w-[680px] border-border" />
   ),
   strong: (props: ComponentPropsWithoutRef<"strong">) => (
-    <strong className="text-editorial-ink font-medium" {...props} />
+    <strong className="text-foreground font-medium" {...props} />
   ),
   em: (props: ComponentPropsWithoutRef<"em">) => (
     <em className="italic" {...props} />
   ),
   code: ({ className, ...rest }: ComponentPropsWithoutRef<"code">) => {
     // rehype-pretty-code emits `data-language` etc. on highlighted blocks.
-    // For inline code, the className is undefined → use editorial inline style.
+    // For inline code, the className is undefined → use the inline style.
     const isBlock = className?.includes("language-");
     if (isBlock) return <code className={className} {...rest} />;
     return (
       <code
-        className="font-mono text-[13.5px] bg-editorial-surface-2 border border-editorial-line rounded px-1.5 py-0.5 text-editorial-ink"
+        className="font-mono text-[13.5px] bg-muted border border-border rounded px-1.5 py-0.5 text-foreground"
         {...rest}
       />
     );
   },
   pre: (props: ComponentPropsWithoutRef<"pre">) => (
     <pre
-      className="my-7 max-w-[820px] overflow-x-auto rounded-xl border border-editorial-line bg-editorial-surface-2 p-5 text-[13.5px] leading-[1.6] [&_code]:!bg-transparent [&_code]:!p-0 [&_code]:!border-0"
+      className="my-7 max-w-[820px] overflow-x-auto rounded-xl border border-border bg-muted p-5 text-[13.5px] leading-[1.6] [&_code]:!bg-transparent [&_code]:!p-0 [&_code]:!border-0"
       {...props}
     />
   ),
@@ -104,23 +104,23 @@ export const mdxComponents = {
     <img
       src={src}
       alt={alt}
-      className="my-7 max-w-full rounded-xl border border-editorial-line"
+      className="my-7 max-w-full rounded-xl border border-border"
       loading="lazy"
       {...rest}
     />
   ),
   table: (props: ComponentPropsWithoutRef<"table">) => (
-    <div className="my-7 max-w-full overflow-x-auto rounded-xl border border-editorial-line bg-editorial-surface">
+    <div className="my-7 max-w-full overflow-x-auto rounded-xl border border-border bg-muted">
       <table className="w-full text-[14.5px]" {...props} />
     </div>
   ),
   thead: (props: ComponentPropsWithoutRef<"thead">) => (
-    <thead className="border-b border-editorial-line bg-editorial-surface-2" {...props} />
+    <thead className="border-b border-border bg-muted" {...props} />
   ),
   th: (props: ComponentPropsWithoutRef<"th">) => (
-    <th className="px-4 py-3 text-left font-medium text-[11px] uppercase tracking-[0.06em] text-editorial-ink-3" {...props} />
+    <th className="px-4 py-3 text-left font-medium text-[11px] uppercase tracking-[0.06em] text-muted-foreground" {...props} />
   ),
   td: (props: ComponentPropsWithoutRef<"td">) => (
-    <td className="px-4 py-3 align-top text-editorial-ink-2 border-t border-editorial-line/60" {...props} />
+    <td className="px-4 py-3 align-top text-muted-foreground border-t border-border" {...props} />
   ),
 };

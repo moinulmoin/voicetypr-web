@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/app/components/sections/Header";
-import Footer from "@/app/components/sections/Footer";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
@@ -97,6 +98,9 @@ const relatedGuides: DiscoveryLink[] = [
   },
 ];
 
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
+
 function safeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
@@ -116,311 +120,290 @@ export default function GdprCompliantPage() {
   };
 
   return (
-    <main id="main-content" className="landing-editorial relative min-h-screen">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
-      <Header />
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
-      {/* Hero */}
-      <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
-        <div className="ed-container">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-5 flex justify-center">
-              <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                Compliance · EU
-              </span>
-            </div>
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-tight tracking-tight">
+                GDPR-compliant dictation{" "}
+                <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                  by design
+                </em>
+              </h1>
 
-            <h1 className="mb-5 text-balance text-[clamp(42px,5.2vw,68px)] font-bold leading-[1.03] tracking-[-0.02em]">
-              GDPR-compliant dictation{" "}
-              <em>by design</em>
-            </h1>
-
-            <p className="mx-auto max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
-              Voicetypr is designed for EU data protection compliance.
-              Local transcription minimizes data transfer. German-hosted infrastructure.
-              No subscription. macOS and Windows.
-            </p>
-
-            <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-              <span>Local transcription</span>
-              <span>EU-hosted data</span>
-              <span>Lifetime license</span>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/download"
-                className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-              >
-                Start 3-day free trial
-              </Link>
-              <Link
-                href="/privacy"
-                className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface-2 active:scale-95"
-              >
-                Read Privacy Policy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="mb-10 max-w-[760px]">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              The challenge
-            </div>
-            <h2 className="mt-2 mb-3 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-              Why cloud dictation creates GDPR complexity
-            </h2>
-          </div>
-          <div className="max-w-[760px]">
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">01</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Audio and transcripts are personal data
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Under GDPR, voice recordings and transcripts containing personal information are classified as personal data.
-                When you send them to a cloud transcription service, you must establish a legal basis, inform data subjects,
-                ensure appropriate safeguards, and manage data retention — all for a service that should be a simple productivity tool.
+              <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+                Voicetypr is designed for EU data protection compliance.
+                Local transcription minimizes data transfer. German-hosted infrastructure.
+                No subscription. macOS and Windows.
               </p>
-            </article>
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">02</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Third-country transfers are hard to justify
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Many cloud dictation providers process data in the United States or other third countries.
-                GDPR requires additional safeguards for such transfers (SCCs, adequacy decisions, or binding corporate rules).
-                Local transcription eliminates this complexity entirely by keeping data within your jurisdiction.
-              </p>
-            </article>
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">03</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Data retention is outside your control
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Cloud providers often retain data for model training, quality assurance, or legal compliance.
-                Under GDPR, you must ensure data is not kept longer than necessary. With local processing, you control retention
-                directly — your audio and transcripts are on your device, subject to your policies.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      {/* The Solution */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="rounded-[24px] bg-editorial-surface-2 p-8 md:p-12">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">How it works</div>
-            <h2 className="mt-2 mb-10 max-w-[760px] text-[clamp(36px,3.6vw,52px)] font-semibold leading-[1.08] tracking-[-0.01em]">
-              Local processing reduces your GDPR scope
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">01</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">Data stays under your control</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  Audio and transcripts are produced and stored on your local device. You decide how long to keep them,
-                  where to back them up, and who has access. This aligns with GDPR principles of data minimization and
-                  storage limitation.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  Data minimization
-                </div>
-              </article>
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">02</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">EU-hosted infrastructure</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  For the limited data we do process (license management, support, etc.), we use EU-hosted infrastructure.
-                  This reduces third-country transfer requirements and supports your data residency preferences.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  Data residency
-                </div>
-              </article>
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">03</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">Transparent data practices</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  Our Privacy Policy clearly documents what data we collect, why we collect it, how long we keep it,
-                  and who we share it with. We honor data subject rights including access, rectification, erasure,
-                  and portability.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  Transparency
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="mb-10 max-w-[760px]">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              In practice
-            </div>
-            <h2 className="mt-2 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-              Three EU workflows where GDPR matters
-            </h2>
-          </div>
-
-          <div className="max-w-[820px] rounded-2xl bg-editorial-surface-2 p-7 md:p-10">
-            <ol className="space-y-9">
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">01</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">German professional services</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Lawyers, consultants, and accountants in Germany handle sensitive client data subject to strict
-                    professional secrecy obligations (Berufsgeheimnis). Local transcription ensures this data never leaves
-                    your controlled environment, supporting both GDPR and professional confidentiality requirements.
-                  </p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">02</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">EU corporate documentation</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Enterprise teams across the EU need to document meetings, decisions, and processes without creating
-                    additional GDPR obligations. Local transcription keeps this data within the organization&apos;s perimeter,
-                    avoiding cloud provider data processing agreements and transfer impact assessments.
-                  </p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">03</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Public sector and education</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Schools, universities, and public administration bodies in the EU must handle personal data carefully.
-                    Local transcription supports compliance with both GDPR and sector-specific regulations by minimizing
-                    external data exposure and keeping processing within institutional boundaries.
-                  </p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
-            <div>
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                questions before you switch
+              <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+                <span>Local transcription</span>
+                <span>EU-hosted data</span>
+                <span>Lifetime license</span>
               </div>
-              <h2 className="mb-4 mt-2 text-[clamp(32px,3.3vw,44px)] font-semibold leading-[1.1] tracking-[-0.01em]">
-                The honest <em>GDPR</em> FAQ
-              </h2>
-              <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
-                Pulled from real conversations with EU companies, German professionals, and compliance officers.
-              </p>
-            </div>
 
-            <div>
-              {faqs.map((faq, i) => (
-                <details
-                  key={faq.q}
-                  open={i === 0}
-                  className="group cursor-pointer border-t border-editorial-line/70 py-5 last:border-b last:border-editorial-line/70"
-                >
-                  <summary className="list-none flex items-start justify-between gap-6 text-[19px] font-semibold leading-[1.32] text-editorial-ink [&::-webkit-details-marker]:hidden">
-                    <span>{faq.q}</span>
-                    <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-editorial-surface text-base font-light text-editorial-ink-2 [transition:transform_400ms_cubic-bezier(0.32,0.72,0,1)] group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
-                  <div className="max-w-[640px] pt-3.5 text-[15px] leading-[1.65] text-editorial-ink-2">
-                    {faq.a}
-                  </div>
-                </details>
-              ))}
-
-              <div className="mt-8 text-sm text-editorial-ink-3">
-                Not answered here?{" "}
-                <a
-                  href="mailto:support@voicetypr.com"
-                  className="text-editorial-ink underline-offset-4 hover:underline"
-                >
-                  Email support
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Guides */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <RelatedGuidesSection
-            eyebrow="related pages"
-            title="If EU compliance is your concern, these pages matter too"
-            description="Explore our HIPAA compliance, zero-knowledge architecture, and offline capabilities."
-            links={relatedGuides}
-            dataTrackPrefix="gdpr-related-guides"
-            embedded
-          />
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-            <div className="relative">
-              <div className="mb-4 flex justify-center">
-                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-white/55">
-                  Secure checkout
-                </span>
-              </div>
-              <h2 className="mx-auto mb-5 max-w-4xl text-[clamp(42px,5.8vw,72px)] font-bold leading-[1.02] tracking-[-0.02em] !text-white">
-                Dictate <em>compliantly</em>
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
-                3-day free trial. No credit card. Local transcription with EU data residency.
-                Pay once, use forever.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/download"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
-                  Download Voicetypr
+                  Start 3-day free trial
                 </Link>
                 <Link
-                  href="/pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  href="/privacy"
+                  className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
-                  Buy lifetime license
+                  Read Privacy Policy
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Section>
 
-      <Footer />
-    </main>
+        {/* The Problem */}
+        <Section>
+          <Container>
+            <div className="max-w-[760px]">
+              <h2 className={H2_CLASS}>Why cloud dictation creates GDPR complexity</h2>
+            </div>
+            <div className="mt-8 max-w-[760px]">
+              <article className="border-b border-border py-6 last:border-b-0">
+                <div className="mb-2 font-sans text-sm font-semibold text-sage">01</div>
+                <h3 className="mb-2 text-xl font-semibold leading-snug text-foreground">
+                  Audio and transcripts are personal data
+                </h3>
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  Under GDPR, voice recordings and transcripts containing personal information are classified as personal data.
+                  When you send them to a cloud transcription service, you must establish a legal basis, inform data subjects,
+                  ensure appropriate safeguards, and manage data retention — all for a service that should be a simple productivity tool.
+                </p>
+              </article>
+              <article className="border-b border-border py-6 last:border-b-0">
+                <div className="mb-2 font-sans text-sm font-semibold text-sage">02</div>
+                <h3 className="mb-2 text-xl font-semibold leading-snug text-foreground">
+                  Third-country transfers are hard to justify
+                </h3>
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  Many cloud dictation providers process data in the United States or other third countries.
+                  GDPR requires additional safeguards for such transfers (SCCs, adequacy decisions, or binding corporate rules).
+                  Local transcription eliminates this complexity entirely by keeping data within your jurisdiction.
+                </p>
+              </article>
+              <article className="border-b border-border py-6 last:border-b-0">
+                <div className="mb-2 font-sans text-sm font-semibold text-sage">03</div>
+                <h3 className="mb-2 text-xl font-semibold leading-snug text-foreground">
+                  Data retention is outside your control
+                </h3>
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  Cloud providers often retain data for model training, quality assurance, or legal compliance.
+                  Under GDPR, you must ensure data is not kept longer than necessary. With local processing, you control retention
+                  directly — your audio and transcripts are on your device, subject to your policies.
+                </p>
+              </article>
+            </div>
+          </Container>
+        </Section>
+
+        {/* The Solution */}
+        <Section>
+          <Container>
+            <div className="rounded-3xl bg-muted p-8 md:p-12">
+              <h2 className={`${H2_CLASS} max-w-[760px]`}>
+                Local processing reduces your GDPR scope
+              </h2>
+
+              <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+                <article className="flex min-h-60 flex-col gap-3 rounded-2xl border border-border bg-card p-6">
+                  <div className="font-sans text-4xl font-bold leading-none text-foreground">01</div>
+                  <h3 className="text-lg font-semibold leading-snug text-foreground">Data stays under your control</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Audio and transcripts are produced and stored on your local device. You decide how long to keep them,
+                    where to back them up, and who has access. This aligns with GDPR principles of data minimization and
+                    storage limitation.
+                  </p>
+                  <div className="mt-auto pt-3 text-xs font-medium text-sage">Data minimization</div>
+                </article>
+                <article className="flex min-h-60 flex-col gap-3 rounded-2xl border border-border bg-card p-6">
+                  <div className="font-sans text-4xl font-bold leading-none text-foreground">02</div>
+                  <h3 className="text-lg font-semibold leading-snug text-foreground">EU-hosted infrastructure</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    For the limited data we do process (license management, support, etc.), we use EU-hosted infrastructure.
+                    This reduces third-country transfer requirements and supports your data residency preferences.
+                  </p>
+                  <div className="mt-auto pt-3 text-xs font-medium text-sage">Data residency</div>
+                </article>
+                <article className="flex min-h-60 flex-col gap-3 rounded-2xl border border-border bg-card p-6">
+                  <div className="font-sans text-4xl font-bold leading-none text-foreground">03</div>
+                  <h3 className="text-lg font-semibold leading-snug text-foreground">Transparent data practices</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Our Privacy Policy clearly documents what data we collect, why we collect it, how long we keep it,
+                    and who we share it with. We honor data subject rights including access, rectification, erasure,
+                    and portability.
+                  </p>
+                  <div className="mt-auto pt-3 text-xs font-medium text-sage">Transparency</div>
+                </article>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Use Cases */}
+        <Section>
+          <Container>
+            <div className="max-w-[760px]">
+              <h2 className={H2_CLASS}>Three EU workflows where GDPR matters</h2>
+            </div>
+
+            <div className="mt-8 max-w-[820px] rounded-2xl bg-muted p-7 md:p-10">
+              <ol className="grid gap-9">
+                <li className="grid grid-cols-[auto_1fr] gap-6">
+                  <span className="font-sans text-3xl font-bold leading-none text-sage">01</span>
+                  <div>
+                    <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">German professional services</h3>
+                    <p className="text-[15px] leading-relaxed text-muted-foreground">
+                      Lawyers, consultants, and accountants in Germany handle sensitive client data subject to strict
+                      professional secrecy obligations (Berufsgeheimnis). Local transcription ensures this data never leaves
+                      your controlled environment, supporting both GDPR and professional confidentiality requirements.
+                    </p>
+                  </div>
+                </li>
+                <li className="grid grid-cols-[auto_1fr] gap-6">
+                  <span className="font-sans text-3xl font-bold leading-none text-sage">02</span>
+                  <div>
+                    <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">EU corporate documentation</h3>
+                    <p className="text-[15px] leading-relaxed text-muted-foreground">
+                      Enterprise teams across the EU need to document meetings, decisions, and processes without creating
+                      additional GDPR obligations. Local transcription keeps this data within the organization&apos;s perimeter,
+                      avoiding cloud provider data processing agreements and transfer impact assessments.
+                    </p>
+                  </div>
+                </li>
+                <li className="grid grid-cols-[auto_1fr] gap-6">
+                  <span className="font-sans text-3xl font-bold leading-none text-sage">03</span>
+                  <div>
+                    <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">Public sector and education</h3>
+                    <p className="text-[15px] leading-relaxed text-muted-foreground">
+                      Schools, universities, and public administration bodies in the EU must handle personal data carefully.
+                      Local transcription supports compliance with both GDPR and sector-specific regulations by minimizing
+                      external data exposure and keeping processing within institutional boundaries.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </Container>
+        </Section>
+
+        {/* FAQ */}
+        <Section>
+          <Container>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+              <div>
+                <h2 className={H2_CLASS}>
+                  The honest{" "}
+                  <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                    GDPR
+                  </em>{" "}
+                  FAQ
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Pulled from real conversations with EU companies, German professionals, and compliance officers.
+                </p>
+              </div>
+
+              <div>
+                {faqs.map((faq, i) => (
+                  <details
+                    key={faq.q}
+                    open={i === 0}
+                    className="group cursor-pointer border-t border-border py-5 last:border-b last:border-border"
+                  >
+                    <summary className="flex list-none items-start justify-between gap-6 text-lg font-semibold leading-snug text-foreground [&::-webkit-details-marker]:hidden">
+                      <span>{faq.q}</span>
+                      <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-muted text-base font-light text-muted-foreground transition-transform duration-300 group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <div className="max-w-[640px] pt-3.5 text-[15px] leading-relaxed text-muted-foreground">
+                      {faq.a}
+                    </div>
+                  </details>
+                ))}
+
+                <div className="mt-8 text-sm text-muted-foreground">
+                  Not answered here?{" "}
+                  <a
+                    href="mailto:support@voicetypr.com"
+                    className="text-foreground underline-offset-4 hover:underline"
+                  >
+                    Email support
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Related Guides */}
+        <Section>
+          <Container>
+            <RelatedGuidesSection
+              eyebrow="related pages"
+              title="If EU compliance is your concern, these pages matter too"
+              description="Explore our HIPAA compliance, zero-knowledge architecture, and offline capabilities."
+              links={relatedGuides}
+              dataTrackPrefix="gdpr-related-guides"
+              embedded
+            />
+          </Container>
+        </Section>
+
+        {/* Final CTA */}
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  Dictate{" "}
+                  <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                    compliantly
+                  </em>
+                </h2>
+                <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
+                  3-day free trial. No credit card. Local transcription with EU data residency.
+                  Pay once, use forever.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Download Voicetypr
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
+      </main>
+    </>
   );
 }

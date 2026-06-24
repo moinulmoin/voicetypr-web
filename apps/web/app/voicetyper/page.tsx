@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
-import Header from '@/app/components/sections/Header';
-import Footer from '@/app/components/sections/Footer';
+import { SiteHeader } from '@/components/marketing/site-header';
+import { SiteFooter } from '@/components/marketing/site-footer';
+import { Section, Container } from '@/components/marketing/section';
 
 export const metadata: Metadata = {
   title: 'VoiceTyper App & Pricing — Voicetypr for Mac and Windows',
@@ -98,148 +99,174 @@ function safeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, '\\u003c');
 }
 
+const H2_CLASS =
+  'text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground';
+
 export default function VoiceTyperPage() {
   return (
-    <main id="main-content" className="landing-editorial min-h-screen">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
-      <Header />
-      <section className="ed-section ed-section-hero pt-32 lg:pt-40">
-        <div className="ed-container max-w-4xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">voicetyper · voice typer</p>
-          <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Looking for VoiceTyper? The app is Voicetypr.
-          </h1>
-          <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            If you looked up VoiceTyper, voice typer, voice typer app, or voice typing app, you probably want one thing: speak into the computer and get clean text where the cursor already is. Voicetypr is built to help you write with your voice in every app.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              href="/download"
-              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-            >
-              Start 3-day free trial
-            </Link>
-            <Link
-              href="/#pricing"
-              className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
-            >
-              Buy lifetime license
-            </Link>
-          </div>
-        </div>
-      </section>
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
-      <section className="ed-section">
-        <div className="ed-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">name clarity</p>
-            <h2 className="mt-3 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-              Voicetypr is a voice typer for every text field.
-            </h2>
-          </div>
-          <div className="space-y-4 text-[16px] leading-[1.7] text-editorial-ink-2">
-            <p>
-              The missing vowel is intentional: <strong className="font-medium text-editorial-ink">Voicetypr</strong> is the product name. The workflow is simple: hold a hotkey, talk, release, and the text appears in the app you were already using.
-            </p>
-            <p>
-              Use it for AI prompts, support replies, docs, specs, meeting follow-ups, or long messages you would rather say than type.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="ed-section">
-        <div className="ed-container max-w-4xl">
-          <div className="overflow-hidden rounded-xl bg-editorial-surface-2 p-1.5">
-            <table className="w-full text-left text-sm">
-              <tbody>
-                {comparisons.map(([label, searchTerm, voiceTypr]) => (
-                  <tr key={label} className="border-b border-editorial-line/60 last:border-b-0">
-                    <th className="bg-white px-5 py-4 font-medium text-editorial-ink">{label}</th>
-                    <td className="px-5 py-4 text-editorial-ink-2">{searchTerm}</td>
-                    <td className="px-5 py-4 font-medium text-editorial-ink">{voiceTypr}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section className="ed-section">
-        <div className="ed-container max-w-4xl">
-          <h2 className="text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-            Why people use it instead of a generic voice typer.
-          </h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {reasons.map((reason) => (
-              <div key={reason} className="flex gap-3 text-[15px] leading-[1.6] text-editorial-ink-2">
-                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" />
-                <span>{reason}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="ed-section">
-        <div className="ed-container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">pricing and spelling</p>
-            <h2 className="mt-3 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-              The common VoiceTyper questions.
-            </h2>
-          </div>
-          <div className="space-y-6">
-            {faqs.map((faq) => (
-              <article key={faq.q} className="border-b border-editorial-line/70 pb-6 last:border-b-0 last:pb-0">
-                <h3 className="text-[19px] font-semibold leading-snug text-editorial-ink">
-                  {faq.q}
-                </h3>
-                <p className="mt-3 text-[15px] leading-[1.65] text-editorial-ink-2">
-                  {faq.a}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-            <div className="relative">
-              <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
-                Try Voicetypr—the app people mean when they look up VoiceTyper.
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
-                3-day free trial. No credit card. Pay once from $39 on Mac and Windows.
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="max-w-4xl">
+              <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-tight tracking-tight">
+                Looking for VoiceTyper? The app is{' '}
+                <em className="italic font-normal" style={{ fontFamily: 'var(--font-serif)' }}>
+                  Voicetypr
+                </em>
+                .
+              </h1>
+              <p className="mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+                If you looked up VoiceTyper, voice typer, voice typer app, or voice typing app, you probably want one thing: speak into the computer and get clean text where the cursor already is. Voicetypr is built to help you write with your voice in every app.
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   href="/download"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
                   Start 3-day free trial
                 </Link>
                 <Link
                   href="/#pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
                   Buy lifetime license
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Section>
 
-      <Footer />
-    </main>
+        {/* Name clarity */}
+        <Section>
+          <Container>
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div>
+                <h2 className={H2_CLASS}>
+                  Voicetypr is a voice typer for every text field.
+                </h2>
+              </div>
+              <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+                <p>
+                  The missing vowel is intentional: <strong className="font-semibold text-foreground">Voicetypr</strong> is the product name. The workflow is simple: hold a hotkey, talk, release, and the text appears in the app you were already using.
+                </p>
+                <p>
+                  Use it for AI prompts, support replies, docs, specs, meeting follow-ups, or long messages you would rather say than type.
+                </p>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Comparison table */}
+        <Section>
+          <Container>
+            <div className="max-w-4xl overflow-hidden rounded-2xl border border-border bg-card">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <tbody>
+                    {comparisons.map(([label, searchTerm, voiceTypr]) => (
+                      <tr key={label} className="border-b border-border last:border-b-0">
+                        <th className="bg-muted px-5 py-4 font-semibold text-foreground">{label}</th>
+                        <td className="px-5 py-4 text-muted-foreground">{searchTerm}</td>
+                        <td className="px-5 py-4 font-medium text-foreground">{voiceTypr}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Why people use it */}
+        <Section>
+          <Container>
+            <div className="max-w-4xl">
+              <h2 className={H2_CLASS}>
+                Why people use it instead of a generic voice typer.
+              </h2>
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                {reasons.map((reason) => (
+                  <div key={reason} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground">
+                    <Check className="mt-1 h-4 w-4 flex-shrink-0 text-sage" />
+                    <span>{reason}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* FAQ */}
+        <Section>
+          <Container>
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+              <div>
+                <h2 className={H2_CLASS}>
+                  The common{' '}
+                  <em className="italic font-normal" style={{ fontFamily: 'var(--font-serif)' }}>
+                    VoiceTyper
+                  </em>{' '}
+                  questions.
+                </h2>
+              </div>
+              <div>
+                {faqs.map((faq) => (
+                  <article key={faq.q} className="border-b border-border py-6 last:border-b-0">
+                    <h3 className="text-xl font-semibold leading-snug text-foreground">
+                      {faq.q}
+                    </h3>
+                    <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                      {faq.a}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Final CTA */}
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto mb-5 max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  Try Voicetypr—the app people mean when they look up VoiceTyper.
+                </h2>
+                <p className="mx-auto mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
+                  3-day free trial. No credit card. Pay once from $39 on Mac and Windows.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Start 3-day free trial
+                  </Link>
+                  <Link
+                    href="/#pricing"
+                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
+      </main>
+    </>
   );
 }

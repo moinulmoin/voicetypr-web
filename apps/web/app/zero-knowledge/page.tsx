@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/app/components/sections/Header";
-import Footer from "@/app/components/sections/Footer";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
@@ -101,6 +102,66 @@ function safeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
+
+const problems = [
+  {
+    title: "Your voice is stored on someone else's servers",
+    body:
+      "Cloud dictation services retain audio recordings for quality assurance, debugging, or model improvement. That means your conversations, dictation, and potentially sensitive content live on infrastructure you do not control, subject to the provider's security practices and data retention policies.",
+  },
+  {
+    title: "Transcripts are readable by provider staff",
+    body:
+      "Even if the audio is deleted, the transcript often remains. Cloud providers may use transcripts for quality control, content moderation, or model training. That means your notes, ideas, and sensitive content are accessible to employees and systems within the provider's organization.",
+  },
+  {
+    title: "You cannot verify what is collected",
+    body:
+      "Closed-source cloud services do not let you audit their data collection. You must trust their privacy policy, which can change. With local processing, you can verify with network tools that no data is transmitted during transcription.",
+  },
+] as const;
+
+const solutions = [
+  {
+    title: "Audio never reaches us",
+    body:
+      "Your microphone captures audio, and local AI models (Whisper and Parakeet) process it entirely on your device. The audio file is never transmitted to Voicetypr servers or any cloud transcription service.",
+    meta: "Purely local processing",
+  },
+  {
+    title: "Transcripts stay on your machine",
+    body:
+      "We do not store, log, or have access to your transcripts. The text is produced on your device and pasted into the application you are using. We cannot retrieve it, even if compelled.",
+    meta: "No server-side storage",
+  },
+  {
+    title: "License checks are isolated",
+    body:
+      "The only network communication is for license validation, updates, and optional support reports. These are architecturally separate from the transcription system and contain no audio or transcript data.",
+    meta: "Clean separation",
+  },
+] as const;
+
+const professions = [
+  {
+    title: "Journalists and investigators",
+    body:
+      "Dictate interview notes, source conversations, and research without risking exposure through a cloud provider. Your sources and story content remain on your device. No third party can subpoena transcripts they do not possess.",
+  },
+  {
+    title: "Lawyers and legal professionals",
+    body:
+      "Draft client communications, case notes, and briefs without sending privileged information to external servers. Local transcription preserves attorney-client privilege by keeping the content within your controlled environment.",
+  },
+  {
+    title: "Researchers and academics",
+    body:
+      "Transcribe research notes, field observations, and preliminary findings without exposing unpublished work to cloud providers. You maintain full control over your intellectual property and research data.",
+  },
+] as const;
+
 export default function ZeroKnowledgePage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -116,304 +177,222 @@ export default function ZeroKnowledgePage() {
   };
 
   return (
-    <main id="main-content" className="landing-editorial relative min-h-screen">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
-      <Header />
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
-      {/* Hero */}
-      <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
-        <div className="ed-container">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-5 flex justify-center">
-              <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                Architecture · Privacy
-              </span>
-            </div>
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-tight tracking-tight">
+                Zero-knowledge architecture{" "}
+                <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                  for your voice
+                </em>
+              </h1>
 
-            <h1 className="mb-5 text-balance text-[clamp(42px,5.2vw,68px)] font-bold leading-[1.03] tracking-[-0.02em]">
-              Zero-knowledge architecture{" "}
-              <em>for your voice</em>
-            </h1>
-
-            <p className="mx-auto max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
-              We never see, touch, or store your transcripts. Audio processing occurs entirely on your machine.
-              No subscription. macOS and Windows.
-            </p>
-
-            <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-              <span>No audio on our servers</span>
-              <span>No transcript storage</span>
-              <span>Lifetime license</span>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/download"
-                className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-              >
-                Start 3-day free trial
-              </Link>
-              <Link
-                href="/privacy"
-                className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface-2 active:scale-95"
-              >
-                Read Privacy Policy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="mb-10 max-w-[760px]">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              The exposure
-            </div>
-            <h2 className="mt-2 mb-3 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-              Why most dictation services compromise your privacy
-            </h2>
-          </div>
-          <div className="max-w-[760px]">
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">01</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Your voice is stored on someone else&apos;s servers
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Cloud dictation services retain audio recordings for quality assurance, debugging, or model improvement.
-                That means your conversations, dictation, and potentially sensitive content live on infrastructure you do not control,
-                subject to the provider&apos;s security practices and data retention policies.
+              <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+                We never see, touch, or store your transcripts. Audio processing occurs entirely on your machine.
+                No subscription. macOS and Windows.
               </p>
-            </article>
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">02</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Transcripts are readable by provider staff
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Even if the audio is deleted, the transcript often remains. Cloud providers may use transcripts for quality control,
-                content moderation, or model training. That means your notes, ideas, and sensitive content are accessible to employees
-                and systems within the provider&apos;s organization.
-              </p>
-            </article>
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">03</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                You cannot verify what is collected
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Closed-source cloud services do not let you audit their data collection. You must trust their privacy policy,
-                which can change. With local processing, you can verify with network tools that no data is transmitted during transcription.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      {/* The Solution */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="rounded-[24px] bg-editorial-surface-2 p-8 md:p-12">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">How it works</div>
-            <h2 className="mt-2 mb-10 max-w-[760px] text-[clamp(36px,3.6vw,52px)] font-semibold leading-[1.08] tracking-[-0.01em]">
-              Our architecture is designed to know nothing
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">01</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">Audio never reaches us</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  Your microphone captures audio, and local AI models (Whisper and Parakeet) process it entirely on your device.
-                  The audio file is never transmitted to Voicetypr servers or any cloud transcription service.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  Purely local processing
-                </div>
-              </article>
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">02</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">Transcripts stay on your machine</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  We do not store, log, or have access to your transcripts. The text is produced on your device and pasted
-                  into the application you are using. We cannot retrieve it, even if compelled.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  No server-side storage
-                </div>
-              </article>
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">03</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">License checks are isolated</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  The only network communication is for license validation, updates, and optional support reports.
-                  These are architecturally separate from the transcription system and contain no audio or transcript data.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  Clean separation
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="mb-10 max-w-[760px]">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              In practice
-            </div>
-            <h2 className="mt-2 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-              Three professions where zero-knowledge matters
-            </h2>
-          </div>
-
-          <div className="max-w-[820px] rounded-2xl bg-editorial-surface-2 p-7 md:p-10">
-            <ol className="space-y-9">
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">01</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Journalists and investigators</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Dictate interview notes, source conversations, and research without risking exposure through a cloud provider.
-                    Your sources and story content remain on your device. No third party can subpoena transcripts they do not possess.
-                  </p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">02</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Lawyers and legal professionals</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Draft client communications, case notes, and briefs without sending privileged information to external servers.
-                    Local transcription preserves attorney-client privilege by keeping the content within your controlled environment.
-                  </p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">03</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Researchers and academics</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Transcribe research notes, field observations, and preliminary findings without exposing unpublished work
-                    to cloud providers. You maintain full control over your intellectual property and research data.
-                  </p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
-            <div>
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                questions before you switch
+              <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+                <span>No audio on our servers</span>
+                <span>No transcript storage</span>
+                <span>Lifetime license</span>
               </div>
-              <h2 className="mb-4 mt-2 text-[clamp(32px,3.3vw,44px)] font-semibold leading-[1.1] tracking-[-0.01em]">
-                The honest <em>zero-knowledge</em> FAQ
-              </h2>
-              <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
-                Pulled from real conversations with security-conscious professionals who need verifiable privacy.
-              </p>
-            </div>
 
-            <div>
-              {faqs.map((faq, i) => (
-                <details
-                  key={faq.q}
-                  open={i === 0}
-                  className="group cursor-pointer border-t border-editorial-line/70 py-5 last:border-b last:border-editorial-line/70"
-                >
-                  <summary className="list-none flex items-start justify-between gap-6 text-[19px] font-semibold leading-[1.32] text-editorial-ink [&::-webkit-details-marker]:hidden">
-                    <span>{faq.q}</span>
-                    <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-editorial-surface text-base font-light text-editorial-ink-2 [transition:transform_400ms_cubic-bezier(0.32,0.72,0,1)] group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
-                  <div className="max-w-[640px] pt-3.5 text-[15px] leading-[1.65] text-editorial-ink-2">
-                    {faq.a}
-                  </div>
-                </details>
-              ))}
-
-              <div className="mt-8 text-sm text-editorial-ink-3">
-                Not answered here?{" "}
-                <a
-                  href="mailto:support@voicetypr.com"
-                  className="text-editorial-ink underline-offset-4 hover:underline"
-                >
-                  Email support
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Guides */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <RelatedGuidesSection
-            eyebrow="related pages"
-            title="If privacy is your concern, these pages matter too"
-            description="Explore our HIPAA compliance, offline capabilities, and EU data protection positioning."
-            links={relatedGuides}
-            dataTrackPrefix="zero-knowledge-related-guides"
-            embedded
-          />
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-            <div className="relative">
-              <div className="mb-4 flex justify-center">
-                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-white/55">
-                  Secure checkout
-                </span>
-              </div>
-              <h2 className="mx-auto mb-5 max-w-4xl text-[clamp(42px,5.8vw,72px)] font-bold leading-[1.02] tracking-[-0.02em] !text-white">
-                Dictate with <em>confidence</em>
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
-                3-day free trial. No credit card. Your voice stays on your device from day one.
-                Pay once, use forever.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/download"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
-                  Download Voicetypr
+                  Start 3-day free trial
                 </Link>
                 <Link
-                  href="/pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  href="/privacy"
+                  className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
-                  Buy lifetime license
+                  Read Privacy Policy
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Section>
 
-      <Footer />
-    </main>
+        {/* The Problem */}
+        <Section>
+          <Container>
+            <h2 className={`${H2_CLASS} max-w-[760px]`}>
+              Why most dictation services compromise your privacy
+            </h2>
+            <div className="mt-8 max-w-[760px]">
+              {problems.map((problem, i) => (
+                <article key={i} className="border-b border-border py-6 last:border-b-0">
+                  <div className="mb-2 font-sans text-sm font-semibold text-sage">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold leading-snug text-foreground">{problem.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-muted-foreground">{problem.body}</p>
+                </article>
+              ))}
+            </div>
+          </Container>
+        </Section>
+
+        {/* The Solution */}
+        <Section>
+          <Container>
+            <div className="rounded-3xl bg-muted p-8 md:p-12">
+              <h2 className={`${H2_CLASS} max-w-[760px]`}>
+                Our architecture is designed to know nothing
+              </h2>
+              <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+                {solutions.map((solution, i) => (
+                  <article key={i} className="flex min-h-60 flex-col gap-3 rounded-2xl border border-border bg-card p-6">
+                    <div className="font-sans text-4xl font-bold leading-none text-foreground">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-lg font-semibold leading-snug text-foreground">{solution.title}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{solution.body}</p>
+                    <div className="mt-auto pt-3 text-xs font-medium text-sage">{solution.meta}</div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Use Cases */}
+        <Section>
+          <Container>
+            <h2 className={`${H2_CLASS} max-w-[760px]`}>
+              Three professions where zero-knowledge matters
+            </h2>
+            <div className="mt-8 max-w-[820px] rounded-2xl bg-muted p-7 md:p-10">
+              <ol className="grid gap-9">
+                {professions.map((profession, i) => (
+                  <li key={i} className="grid grid-cols-[auto_1fr] gap-6">
+                    <span className="font-sans text-3xl font-bold leading-none text-sage">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">{profession.title}</h3>
+                      <p className="text-[15px] leading-relaxed text-muted-foreground">{profession.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Container>
+        </Section>
+
+        {/* FAQ */}
+        <Section>
+          <Container>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+              <div>
+                <h2 className={H2_CLASS}>
+                  The honest{" "}
+                  <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                    zero-knowledge
+                  </em>{" "}
+                  FAQ
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Pulled from real conversations with security-conscious professionals who need verifiable privacy.
+                </p>
+              </div>
+
+              <div>
+                {faqs.map((faq, i) => (
+                  <details
+                    key={faq.q}
+                    open={i === 0}
+                    className="group cursor-pointer border-t border-border py-5 last:border-b last:border-border"
+                  >
+                    <summary className="flex list-none items-start justify-between gap-6 text-lg font-semibold leading-snug text-foreground [&::-webkit-details-marker]:hidden">
+                      <span>{faq.q}</span>
+                      <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-muted text-base font-light text-muted-foreground transition-transform duration-300 group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <div className="max-w-[640px] pt-3.5 text-[15px] leading-relaxed text-muted-foreground">
+                      {faq.a}
+                    </div>
+                  </details>
+                ))}
+
+                <div className="mt-8 text-sm text-muted-foreground">
+                  Not answered here?{" "}
+                  <a
+                    href="mailto:support@voicetypr.com"
+                    className="text-foreground underline-offset-4 hover:underline"
+                  >
+                    Email support
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Related Guides */}
+        <Section>
+          <Container>
+            <RelatedGuidesSection
+              eyebrow="related pages"
+              title="If privacy is your concern, these pages matter too"
+              description="Explore our HIPAA compliance, offline capabilities, and EU data protection positioning."
+              links={relatedGuides}
+              dataTrackPrefix="zero-knowledge-related-guides"
+              embedded
+            />
+          </Container>
+        </Section>
+
+        {/* Final CTA */}
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  Dictate with{" "}
+                  <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                    confidence
+                  </em>
+                </h2>
+                <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
+                  3-day free trial. No credit card. Your voice stays on your device from day one.
+                  Pay once, use forever.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Download Voicetypr
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
+      </main>
+    </>
   );
 }

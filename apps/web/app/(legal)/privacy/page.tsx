@@ -19,21 +19,22 @@ export const metadata: Metadata = {
 
 const sectionClass = "mt-12";
 const h2Class =
-  "font-sans text-[clamp(21px,2vw,28px)] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink mb-4";
+  "font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-[1.15] tracking-tight text-foreground mb-4";
 const h3Class =
-  "font-sans font-semibold text-[16px] mt-6 mb-2 text-editorial-ink";
-const pClass = "text-editorial-ink-2 text-[15px] leading-[1.7]";
-const ulClass = "list-disc pl-5 mt-2 space-y-1.5 text-editorial-ink-2 text-[15px] leading-[1.7]";
+  "font-sans font-semibold text-base mt-6 mb-2 text-foreground";
+const pClass = "text-muted-foreground text-[15px] leading-[1.7]";
+const ulClass =
+  "list-disc pl-5 mt-2 space-y-1.5 text-muted-foreground text-[15px] leading-[1.7]";
+const linkClass = "text-sage underline underline-offset-2";
 
 export default function PrivacyPage() {
   return (
     <>
       <header className="mb-12 pb-2">
-        <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · privacy</span>
-        <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
+        <h1 className="mb-3 font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-tight tracking-tight text-foreground">
           Privacy Policy
         </h1>
-        <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
+        <p className="text-sm text-muted-foreground">
           Last Updated: May 22, 2026
         </p>
       </header>
@@ -75,7 +76,7 @@ export default function PrivacyPage() {
 
         <h3 className={h3Class}>2.4 Cookies and online identifiers</h3>
         <p className={pClass}>
-          See our <Link href="/cookies" className="text-editorial-ink underline-offset-4 hover:underline">Cookie Policy</Link> for details on cookie categories and purposes. Non&#8209;essential cookies load only with your consent.
+          See our <Link href="/cookies" className={linkClass}>Cookie Policy</Link> for details on cookie categories and purposes. Non&#8209;essential cookies load only with your consent.
         </p>
       </section>
 
@@ -111,18 +112,18 @@ export default function PrivacyPage() {
           <li>Your full transcription history, unless you choose to send diagnostics or enable an optional provider workflow</li>
         </ul>
         <p className={`${pClass} mt-4`}>
-          <strong className="text-editorial-ink">Local transcription is the default. Optional AI formatting can send text only when you enable it, and support reports can include the diagnostic details you choose to submit.</strong>
+          <strong className="text-foreground">Local transcription is the default. Optional AI formatting can send text only when you enable it, and support reports can include the diagnostic details you choose to submit.</strong>
         </p>
       </section>
 
       <section className={sectionClass}>
         <h2 className={h2Class}>5. Purposes and Legal Bases (GDPR)</h2>
         <ul className={ulClass}>
-          <li>License and trial management — <em>Performance of contract</em></li>
-          <li>Fraud prevention and security — <em>Legitimate interests</em></li>
-          <li>Customer support — <em>Performance of contract</em> or <em>Legitimate interests</em></li>
-          <li>Analytics — <em>Legitimate interests</em>; OpenPanel is used for website analytics</li>
-          <li>Marketing/attribution — <em>Consent</em> (loaded only with consent)</li>
+          <li>License and trial management — <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>Performance of contract</em></li>
+          <li>Fraud prevention and security — <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>Legitimate interests</em></li>
+          <li>Customer support — <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>Performance of contract</em> or <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>Legitimate interests</em></li>
+          <li>Analytics — <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>Legitimate interests</em>; OpenPanel is used for website analytics</li>
+          <li>Marketing/attribution — <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>Consent</em> (loaded only with consent)</li>
         </ul>
       </section>
 
@@ -150,12 +151,12 @@ export default function PrivacyPage() {
         <h2 className={h2Class}>8. Third-Party Services</h2>
         <p className={pClass}>We use the following third-party services:</p>
         <ul className={ulClass}>
-          <li><strong className="text-editorial-ink">Polar.sh:</strong> Checkout, payment processing, license key generation, activation, refunds, and customer/license records</li>
-          <li><strong className="text-editorial-ink">Database and hosting providers:</strong> Infrastructure for license validation, trials, and website/API operation</li>
-          <li><strong className="text-editorial-ink">OpenPanel:</strong> Website analytics</li>
-          <li><strong className="text-editorial-ink">Google Tag Manager &amp; Affonso:</strong> Marketing/attribution and metrics; Affonso runs in consent mode and marketing cookies are only enabled with consent</li>
-          <li><strong className="text-editorial-ink">Discord:</strong> Delivery of support, bug, and crash reports you submit through the app</li>
-          <li><strong className="text-editorial-ink">Optional AI providers:</strong> If you enable AI formatting, text may be sent to the provider you configure, such as OpenAI, Anthropic, Google Gemini, or an OpenAI-compatible endpoint</li>
+          <li><strong className="text-foreground">Polar.sh:</strong> Checkout, payment processing, license key generation, activation, refunds, and customer/license records</li>
+          <li><strong className="text-foreground">Database and hosting providers:</strong> Infrastructure for license validation, trials, and website/API operation</li>
+          <li><strong className="text-foreground">OpenPanel:</strong> Website analytics</li>
+          <li><strong className="text-foreground">Google Tag Manager &amp; Affonso:</strong> Marketing/attribution and metrics; Affonso runs in consent mode and marketing cookies are only enabled with consent</li>
+          <li><strong className="text-foreground">Discord:</strong> Delivery of support, bug, and crash reports you submit through the app</li>
+          <li><strong className="text-foreground">Optional AI providers:</strong> If you enable AI formatting, text may be sent to the provider you configure, such as OpenAI, Anthropic, Google Gemini, or an OpenAI-compatible endpoint</li>
         </ul>
         <p className={`${pClass} mt-3`}>These services have their own privacy policies and data practices.</p>
       </section>
@@ -166,7 +167,7 @@ export default function PrivacyPage() {
           Depending on your location, you may have the right to access, rectify, erase, restrict, object to processing, or request portability of your personal data. You can also withdraw consent at any time for consent&#8209;based processing.
         </p>
         <p className={`${pClass} mt-3`}>
-          To exercise rights, contact: <a href="mailto:support@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">support@voicetypr.com</a>. You may also lodge a complaint with your local supervisory authority in the EU/EEA.
+          To exercise rights, contact: <a href="mailto:support@voicetypr.com" className={linkClass}>support@voicetypr.com</a>. You may also lodge a complaint with your local supervisory authority in the EU/EEA.
         </p>
       </section>
 
@@ -196,19 +197,19 @@ export default function PrivacyPage() {
         <p className={pClass}>
           For privacy-related questions or concerns:
         </p>
-        <p className={`${pClass} mt-3 bg-editorial-surface-2 p-4 font-mono text-[14px]`}>
+        <p className={`${pClass} mt-3 rounded-xl border border-border bg-muted p-4 font-mono text-sm`}>
           Ideaplexa LLC<br />
           30 N Gould St Ste N<br />
           Sheridan, WY 82801<br />
           United States<br />
-          Email: <a href="mailto:support@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">support@voicetypr.com</a>
+          Email: <a href="mailto:support@voicetypr.com" className={linkClass}>support@voicetypr.com</a>
         </p>
       </section>
 
       <section className={sectionClass}>
         <h2 className={h2Class}>14. California (CCPA/CPRA)</h2>
         <p className={pClass}>
-          We disclose categories such as identifiers (license/account), commercial information (purchase), and device data for operational purposes. We do not sell personal information. To exercise California rights or send a &ldquo;Do Not Sell/Share&rdquo; request, contact <a href="mailto:support@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">support@voicetypr.com</a>.
+          We disclose categories such as identifiers (license/account), commercial information (purchase), and device data for operational purposes. We do not sell personal information. To exercise California rights or send a &ldquo;Do Not Sell/Share&rdquo; request, contact <a href="mailto:support@voicetypr.com" className={linkClass}>support@voicetypr.com</a>.
         </p>
       </section>
     </>

@@ -8,8 +8,9 @@ import {
 import {
   Check,
 } from "lucide-react";
-import Header from "../components/sections/Header";
-import Footer from "../components/sections/Footer";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 
 const AFFONSO_URL = "https://voicetypr.affonso.io";
 
@@ -107,6 +108,9 @@ const faqs = [
   },
 ];
 
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
+
 function AffiliateCta({
   href,
   children,
@@ -122,7 +126,7 @@ function AffiliateCta({
       target="_blank"
       rel="noopener noreferrer"
       data-track={event}
-      className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+      className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
     >
       {children}
     </a>
@@ -132,220 +136,235 @@ function AffiliateCta({
 export default function AffiliatePage() {
   return (
     <>
-      <main id="main-content" className="landing-editorial min-h-screen">
-        <Header />
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
         {/* Hero */}
-        <section className="ed-section ed-section-hero !pt-52 md:!pt-60 lg:!pt-64">
-          <div className="ed-container max-w-4xl text-center">
-            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">20% standard · 30% selected partners</p>
-            <h1 className="mt-4 text-[clamp(42px,6vw,68px)] font-semibold leading-[0.98] tracking-[-0.04em]">
-              Promote Voicetypr.
-              <br />
-              Earn real money.
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-balance text-[18px] leading-[1.6] text-editorial-ink-2">
-              Offline AI voice-to-text for Mac and Windows. Pay-once software,
-              high-intent buyers, and an audience that&apos;s already searching
-              for an alternative to $15/month dictation apps.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <AffiliateCta
-                href={AFFONSO_URL}
-                event="affiliate-hero-apply-click"
-              >
-                Apply
-              </AffiliateCta>
-              {/* TODO: Restore creator-kit CTA when real kit assets exist. */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
+                Promote Voicetypr.
+                <br />
+                Earn{" "}
+                <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                  real money
+                </em>
+                .
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+                Offline AI voice-to-text for Mac and Windows. Pay-once software,
+                high-intent buyers, and an audience that&apos;s already searching
+                for an alternative to $15/month dictation apps.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <AffiliateCta
+                  href={AFFONSO_URL}
+                  event="affiliate-hero-apply-click"
+                >
+                  Apply
+                </AffiliateCta>
+                {/* TODO: Restore creator-kit CTA when real kit assets exist. */}
+              </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
 
         {/* Commission tiers */}
-        <section className="ed-section">
-          <div className="ed-container max-w-5xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
-                Commission tiers
-              </h2>
-              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
-                Start at 20%. Ship content as a selected creator, earn 30%.
-              </p>
-            </div>
-
-            <div className="max-w-[720px] mx-auto mb-12">
-              {tiers.map((tier) => (
-                <div
-                  key={tier.name}
-                  className={`flex items-baseline justify-between gap-4 py-5 border-b border-editorial-line ${tier.highlight ? "" : ""}`}
-                >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-[17px] font-medium text-editorial-ink">
-                        {tier.name}
-                      </h3>
-                      {tier.highlight && (
-                        <span className="inline-block rounded-full bg-editorial-ink px-2 py-0.5 text-[10px] font-medium text-white">
-                          Most common
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-[14px] text-editorial-ink-2">
-                      {tier.who} · {tier.how}
-                    </p>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <span className="text-[28px] font-semibold tracking-[-0.02em] text-editorial-ink">
-                      {tier.commission}
-                    </span>
-                    <span className="ml-1 text-[13px] text-editorial-ink-2">
-                      {tier.per100}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Earnings table */}
-            <div className="mt-12">
-              <h3 className="mb-4 text-center text-[17px] font-medium text-editorial-ink">
-                What you earn per sale
-              </h3>
-              <div className="overflow-hidden rounded-xl border border-editorial-line bg-editorial-surface-2">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead className="border-b border-editorial-line bg-editorial-surface-2">
-                      <tr>
-                        <th className="px-4 py-3 text-left text-[13px] font-medium text-editorial-ink">
-                          Plan sold
-                        </th>
-                        <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
-                          At 20%
-                        </th>
-                        <th className="px-4 py-3 text-right text-[13px] font-medium text-editorial-ink">
-                          At 30%
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {exampleEarnings.map((row, idx) => (
-                        <tr
-                          key={row.tier}
-                          className={
-                            idx !== exampleEarnings.length - 1
-                              ? "border-b border-editorial-line/60"
-                              : ""
-                          }
-                        >
-                          <td className="px-4 py-3 text-[14px] font-medium text-editorial-ink">
-                            {row.tier}
-                          </td>
-                          <td className="px-4 py-3 text-right tabular-nums text-[14px] text-editorial-ink-2">
-                            {row.commission20}
-                          </td>
-                          <td className="px-4 py-3 text-right text-[14px] font-medium tabular-nums text-editorial-ink">
-                            {row.commission30}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+        <Section>
+          <Container>
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-12 text-center">
+                <h2 className={H2_CLASS}>Commission tiers</h2>
+                <p className="mt-3.5 text-base leading-relaxed text-muted-foreground">
+                  Start at 20%. Ship content as a selected creator, earn 30%.
+                </p>
               </div>
-              <p className="mt-3 text-center text-[12px] text-editorial-ink-3">
-                All plans are one-time purchases · lifetime license.
-              </p>
+
+              <div className="mx-auto mb-12 max-w-[720px]">
+                {tiers.map((tier) => (
+                  <div
+                    key={tier.name}
+                    className="flex items-baseline justify-between gap-4 border-b border-border py-5"
+                  >
+                    <div className="flex-1">
+                      <div className="mb-1 flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-foreground">
+                          {tier.name}
+                        </h3>
+                        {tier.highlight && (
+                          <span className="inline-block rounded-full bg-sage-bg px-2 py-0.5 text-[10px] font-medium text-sage">
+                            Most common
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {tier.who} · {tier.how}
+                      </p>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <span className="text-3xl font-bold tracking-tight text-foreground">
+                        {tier.commission}
+                      </span>
+                      <span className="ml-1 text-[13px] text-muted-foreground">
+                        {tier.per100}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Earnings table */}
+              <div className="mt-12">
+                <h3 className="mb-5 text-center text-lg font-semibold text-foreground">
+                  What you earn per sale
+                </h3>
+                <div className="overflow-hidden rounded-2xl border border-border bg-card">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left">
+                      <thead>
+                        <tr className="border-b border-border">
+                          <th scope="col" className="px-4 py-3 text-left text-sm font-semibold text-foreground">
+                            Plan sold
+                          </th>
+                          <th scope="col" className="px-4 py-3 text-right text-sm font-semibold text-foreground">
+                            At 20%
+                          </th>
+                          <th scope="col" className="px-4 py-3 text-right text-sm font-semibold text-foreground">
+                            At 30%
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {exampleEarnings.map((row, idx) => (
+                          <tr
+                            key={row.tier}
+                            className={
+                              idx !== exampleEarnings.length - 1
+                                ? "border-b border-border"
+                                : ""
+                            }
+                          >
+                            <td className="px-4 py-4 align-top text-sm font-medium text-foreground">
+                              {row.tier}
+                            </td>
+                            <td className="px-4 py-4 text-right align-top text-sm tabular-nums text-muted-foreground">
+                              {row.commission20}
+                            </td>
+                            <td className="px-4 py-4 text-right align-top text-sm font-medium tabular-nums text-foreground">
+                              {row.commission30}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <p className="mt-3 text-center text-xs text-muted-foreground">
+                  All plans are one-time purchases · lifetime license.
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
 
         {/* Who's a good fit */}
-        <section className="ed-section">
-          <div className="ed-container max-w-4xl">
-            <div className="mb-10 text-center">
-              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
-                Who&apos;s a good fit
-              </h2>
-              <p className="mt-3 text-[16px] text-editorial-ink-2 sm:text-[17px]">
-                If you match any of these, you&apos;ll do well.
-              </p>
+        <Section>
+          <Container>
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-10 text-center">
+                <h2 className={H2_CLASS}>Who&apos;s a good fit</h2>
+                <p className="mt-3.5 text-base leading-relaxed text-muted-foreground">
+                  If you match any of these, you&apos;ll do well.
+                </p>
+              </div>
+              <ul className="mx-auto max-w-[640px] space-y-3">
+                {fits.map((fit) => (
+                  <li
+                    key={fit}
+                    className="flex items-start gap-3 text-[15px] leading-relaxed text-muted-foreground"
+                  >
+                    <Check
+                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-sage"
+                      aria-hidden
+                    />
+                    <span>{fit}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="max-w-[640px] mx-auto space-y-3">
-              {fits.map((fit) => (
-                <li
-                  key={fit}
-                  className="flex items-start gap-3 text-[15px] text-editorial-ink-2"
-                >
-                  <Check
-                    className="mt-0.5 h-4 w-4 flex-shrink-0 text-editorial-ink"
-                    aria-hidden
-                  />
-                  <span>{fit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
 
         {/* FAQ */}
-        <section className="ed-section" id="affiliate-faq">
-          <div className="ed-container max-w-3xl">
-            <div className="mb-8 text-center">
-              <h2 className="text-[clamp(30px,4vw,44px)] leading-[1.05] tracking-[-0.035em]">
-                Frequently asked questions
-              </h2>
+        <Section id="affiliate-faq">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <div className="mb-8 text-center">
+                <h2 className={H2_CLASS}>Frequently asked questions</h2>
+              </div>
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, idx) => (
+                  <AccordionItem
+                    key={faq.q}
+                    value={`faq-${idx}`}
+                    className="border-b border-border"
+                  >
+                    <AccordionTrigger className="text-left text-[15px] font-semibold text-foreground">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, idx) => (
-                <AccordionItem
-                  key={faq.q}
-                  value={`faq-${idx}`}
-                  className="border-b border-editorial-line"
-                >
-                  <AccordionTrigger className="text-left text-[15px] font-medium text-editorial-ink">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-[14px] leading-[1.6] text-editorial-ink-2">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         {/* Final CTA */}
-        <section className="ed-section text-center">
-          <div className="ed-container max-w-2xl">
-            <h2 className="text-[clamp(34px,4vw,48px)] leading-[1.03] tracking-[-0.04em] mb-4">
-              Ready to promote?
-            </h2>
-            <p className="mx-auto mb-8 text-[17px] text-editorial-ink-2 leading-[1.6]">
-              Sign up in 60 seconds. Get your link and start earning 20% on
-              every sale.
-            </p>
-            <AffiliateCta
-              href={AFFONSO_URL}
-              event="affiliate-final-apply-click"
-            >
-              Apply
-            </AffiliateCta>
-            <p className="mt-6 text-[13px] text-editorial-ink-3">
-              Questions?{" "}
-              <a
-                href="mailto:support@voicetypr.com?subject=Affiliate%20program"
-                className="text-editorial-ink hover:underline"
-              >
-                support@voicetypr.com
-              </a>
-            </p>
-          </div>
-        </section>
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  Ready to promote?
+                </h2>
+                <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
+                  Sign up in 60 seconds. Get your link and start earning 20% on
+                  every sale.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <a
+                    href={AFFONSO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-track="affiliate-final-apply-click"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Apply
+                  </a>
+                </div>
+                <p className="mt-6 text-sm text-primary-foreground/75">
+                  Questions?{" "}
+                  <a
+                    href="mailto:support@voicetypr.com?subject=Affiliate%20program"
+                    className="text-primary-foreground underline-offset-4 hover:underline"
+                  >
+                    support@voicetypr.com
+                  </a>
+                </p>
+              </div>
+            </div>
+          </Container>
+        </Section>
 
-        <Footer />
+        <SiteFooter />
       </main>
     </>
   );

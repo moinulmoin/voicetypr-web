@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import RelatedGuidesSection from "../components/RelatedGuidesSection";
-import Header from "../components/sections/Header";
-import Footer from "../components/sections/Footer";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
@@ -105,8 +105,11 @@ const relatedGuides: DiscoveryLink[] = [
 ];
 
 function safeJsonLd(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, "\u003c");
+  return JSON.stringify(value).replace(/</g, "\\u003c");
 }
+
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
 
 export default function AquaVoiceAlternativePage() {
   const faqJsonLd = {
@@ -123,155 +126,186 @@ export default function AquaVoiceAlternativePage() {
   };
 
   return (
-    <main id="main-content" className="landing-editorial min-h-screen">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(faqJsonLd) }}
       />
-      <Header />
-      <section className="ed-section ed-section-hero pt-32 lg:pt-40">
-        <div className="ed-container max-w-4xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">aqua voice alternative</p>
-          <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            The Aqua Voice alternative for pay-once dictation on Mac and Windows
-          </h1>
-          <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            The Aqua Voice alternative for buyers tired of subscriptions: transcription runs locally by default, optional AI formatting can use cloud text workflows if enabled, and one license covers Mac and Windows.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              href="/download"
-              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-            >
-              Start free trial
-            </Link>
-            <Link
-              href="/#pricing"
-              className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
-            >
-              Buy lifetime license
-            </Link>
-          </div>
-        </div>
-      </section>
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
-      <section className="ed-section">
-        <div className="ed-container max-w-4xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">the comparison</p>
-          <div className="mt-6 overflow-hidden rounded-xl bg-editorial-surface-2 p-1.5">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-editorial-line/60 bg-white">
-                <tr>
-                  <th className="px-5 py-4 font-medium text-editorial-ink">Criterion</th>
-                  <th className="px-5 py-4 font-medium text-editorial-ink">Voicetypr</th>
-                  <th className="px-5 py-4 font-medium text-editorial-ink-2">Aqua Voice</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {rows.map(([label, voicetypr, aqua]) => (
-                  <tr key={label} className="border-b border-editorial-line/50 last:border-b-0">
-                    <td className="px-5 py-4 font-medium text-editorial-ink">{label}</td>
-                    <td className="px-5 py-4 text-editorial-ink">{voicetypr}</td>
-                    <td className="px-5 py-4 text-editorial-ink-2">{aqua}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section className="ed-section">
-        <div className="ed-container max-w-3xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">why people switch</p>
-          <h2 className="mt-2 text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
-            Pay once and keep transcription on your machine by default
-          </h2>
-          <ul className="mt-8 space-y-4">
-            {reasons.map((reason) => (
-              <li key={reason} className="flex gap-3 text-[16px] leading-[1.6] text-editorial-ink-2">
-                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" aria-hidden />
-                <span>{reason}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="ed-section" id="faq">
-        <div className="ed-container">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
-            <div>
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">before you switch</div>
-              <h2 className="mb-4 mt-2 text-[clamp(32px,3.6vw,44px)] font-semibold leading-[1.08] tracking-tight">
-                Questions Aqua Voice shoppers ask
-              </h2>
-              <p className="text-[16px] leading-[1.6] text-editorial-ink-2">
-                Pricing, platforms, and what local transcription means when you are comparing subscriptions.
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="max-w-3xl">
+              <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
+                The Aqua Voice alternative for{" "}
+                <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                  pay-once
+                </em>{" "}
+                dictation on Mac and Windows
+              </h1>
+              <p className="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+                The Aqua Voice alternative for buyers tired of subscriptions: transcription runs locally by default, optional AI formatting can use cloud text workflows if enabled, and one license covers Mac and Windows.
               </p>
-            </div>
-            <div>
-              {faqs.map((faq, i) => (
-                <details
-                  key={faq.q}
-                  open={i === 0}
-                  className="group cursor-pointer border-t border-editorial-line py-5 last:border-b last:border-editorial-line"
-                >
-                  <summary className="flex list-none items-start justify-between gap-6 font-sans text-[19px] font-semibold leading-[1.3] text-editorial-ink [&::-webkit-details-marker]:hidden">
-                    <span>{faq.q}</span>
-                    <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-editorial-surface-2 text-base font-light text-editorial-ink-2 [transition:transform_400ms_cubic-bezier(0.32,0.72,0,1)] group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
-                  <div className="max-w-[640px] pt-3.5 text-[15px] leading-[1.6] text-editorial-ink-2">{faq.a}</div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <RelatedGuidesSection
-        eyebrow="still comparing"
-        title="Other alternatives worth reading"
-        description="If Aqua Voice is not the only subscription dictation app you are weighing, these pages compare Voicetypr to other common picks."
-        links={relatedGuides}
-        dataTrackPrefix="aqua-voice-alt-related-guides"
-      />
-
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-            <div className="relative">
-              <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
-                Try the Aqua Voice alternative with a 3-day trial
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
-                No credit card. Transcription runs locally by default. Pay once for Mac and Windows.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   href="/download"
-                  data-track="aqua-voice-alt-final-cta-click"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
                   Start free trial
                 </Link>
                 <Link
                   href="/#pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
                   Buy lifetime license
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Section>
 
-      <Footer />
-    </main>
+        {/* The comparison */}
+        <Section>
+          <Container>
+            <div className="max-w-3xl">
+              <h2 className={H2_CLASS}>The comparison</h2>
+              <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th scope="col" className="px-5 py-4 font-semibold text-foreground">Criterion</th>
+                        <th scope="col" className="px-5 py-4 font-semibold text-foreground">Voicetypr</th>
+                        <th scope="col" className="px-5 py-4 font-semibold text-muted-foreground">Aqua Voice</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rows.map(([label, voicetypr, aqua]) => (
+                        <tr key={label} className="border-b border-border last:border-b-0">
+                          <td className="px-5 py-4 align-top font-medium text-foreground">{label}</td>
+                          <td className="px-5 py-4 align-top text-foreground">{voicetypr}</td>
+                          <td className="px-5 py-4 align-top text-muted-foreground">{aqua}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Why people switch */}
+        <Section>
+          <Container>
+            <div className="max-w-3xl">
+              <h2 className={H2_CLASS}>
+                Pay once and keep transcription{" "}
+                <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                  on your machine
+                </em>{" "}
+                by default
+              </h2>
+              <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border">
+                {reasons.map((reason, i) => (
+                  <li key={reason} className="flex items-start gap-4 bg-card p-6">
+                    <span className="font-sans text-sm font-semibold text-sage">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[16px] leading-relaxed text-muted-foreground">{reason}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Container>
+        </Section>
+
+        {/* FAQ */}
+        <Section id="faq">
+          <Container>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+              <div>
+                <h2 className={H2_CLASS}>
+                  Questions Aqua Voice{" "}
+                  <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                    shoppers
+                  </em>{" "}
+                  ask
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Pricing, platforms, and what local transcription means when you are comparing subscriptions.
+                </p>
+              </div>
+              <div>
+                {faqs.map((faq, i) => (
+                  <details
+                    key={faq.q}
+                    open={i === 0}
+                    className="group cursor-pointer border-t border-border py-5 last:border-b last:border-border"
+                  >
+                    <summary className="flex list-none items-start justify-between gap-6 text-lg font-semibold leading-snug text-foreground [&::-webkit-details-marker]:hidden">
+                      <span>{faq.q}</span>
+                      <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-muted text-base font-light text-muted-foreground transition-transform duration-300 group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <div className="max-w-[640px] pt-3.5 text-[15px] leading-relaxed text-muted-foreground">{faq.a}</div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <Section>
+          <Container>
+            <RelatedGuidesSection
+              eyebrow="still comparing"
+              title="Other alternatives worth reading"
+              description="If Aqua Voice is not the only subscription dictation app you are weighing, these pages compare Voicetypr to other common picks."
+              links={relatedGuides}
+              dataTrackPrefix="aqua-voice-alt-related-guides"
+              embedded
+            />
+          </Container>
+        </Section>
+
+        {/* Final CTA */}
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  Try the Aqua Voice alternative with a 3-day trial
+                </h2>
+                <p className="mx-auto mt-5 mb-8 max-w-2xl text-balance text-base leading-relaxed text-primary-foreground/75">
+                  No credit card. Transcription runs locally by default. Pay once for Mac and Windows.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    data-track="aqua-voice-alt-final-cta-click"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Start free trial
+                  </Link>
+                  <Link
+                    href="/#pricing"
+                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
+      </main>
+    </>
   );
 }

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Footer from "@/app/components/sections/Footer";
-import Header from "@/app/components/sections/Header";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import { getAllFreeTools } from "@/lib/free-tools";
 
 const TOOLS_INDEX_URL = "https://voicetypr.com/tools";
@@ -37,24 +38,29 @@ export default function ToolsIndexPage() {
   const tools = getAllFreeTools();
 
   return (
-    <main id="main-content" className="landing-editorial relative min-h-screen">
-      <Header />
-      <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
-        <div className="ed-container">
+    <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+      <SiteHeader />
+
+      {/* Hero */}
+      <Section className="pt-20 md:pt-24">
+        <Container>
           <div className="mx-auto max-w-4xl">
-            <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
-              <Link href="/" className="transition-colors hover:text-editorial-ink">
+            <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+              <Link href="/" className="transition-colors hover:text-foreground">
                 Voicetypr
               </Link>
-              <span>/</span>
+              <span aria-hidden>/</span>
               <span>Free tools</span>
             </div>
 
             <header className="mb-10">
-              <h1 className="max-w-3xl text-[clamp(38px,5.2vw,62px)] font-semibold leading-[1.06] tracking-[-0.04em]">
-                Free tools for faster writing
+              <h1 className="max-w-3xl text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
+                Free tools for{" "}
+                <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                  faster writing
+                </em>
               </h1>
-              <p className="mt-5 max-w-2xl text-[17px] leading-[1.65] text-editorial-ink-2">
+              <p className="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
                 Quick calculators to estimate typing load, measure speed, and see what dictation can save you.
               </p>
             </header>
@@ -64,17 +70,18 @@ export default function ToolsIndexPage() {
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="rounded-2xl border border-editorial-line bg-white/82 p-5 transition hover:border-editorial-ink/30"
+                  className="rounded-2xl border border-border bg-card p-5 transition-colors hover:bg-muted"
                 >
-                  <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">{tool.shortTitle}</h2>
-                  <p className="mt-2 text-[14px] leading-relaxed text-editorial-ink-2">{tool.description}</p>
+                  <h2 className="text-lg font-semibold tracking-tight text-foreground">{tool.shortTitle}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tool.description}</p>
                 </Link>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-      <Footer />
+        </Container>
+      </Section>
+
+      <SiteFooter />
     </main>
   );
 }

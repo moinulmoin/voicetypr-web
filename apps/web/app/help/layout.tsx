@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import {
   getAllArticles,
   groupByCategory,
@@ -22,58 +25,62 @@ export default async function HelpLayout({
   ];
 
   return (
-    <div className="landing-editorial min-h-screen">
-      <div className="ed-container py-12 md:py-16">
-        <div className="lg:hidden mb-8">
-          <Link
-            href="/help"
-            className="inline-flex items-center gap-2 text-sm text-editorial-ink-3 hover:text-editorial-ink transition-colors"
-          >
-            <span>&larr;</span> Help Center
-          </Link>
-        </div>
+    <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+      <SiteHeader />
+      <Section>
+        <Container>
+          <div className="lg:hidden mb-8">
+            <Link
+              href="/help"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <span>&larr;</span> Help Center
+            </Link>
+          </div>
 
-        <div className="lg:flex lg:gap-16">
-          {/* Sidebar */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <nav className="sticky top-24">
-              <Link
-                href="/help"
-                className="inline-flex items-center gap-2 text-sm text-editorial-ink-3 hover:text-editorial-ink transition-colors mb-8"
-              >
-                <span>&larr;</span> Help Center
-              </Link>
+          <div className="lg:flex lg:gap-16">
+            {/* Sidebar */}
+            <aside className="hidden lg:block w-64 flex-shrink-0">
+              <nav className="sticky top-24">
+                <Link
+                  href="/help"
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+                >
+                  <span>&larr;</span> Help Center
+                </Link>
 
-              {categoryOrder.map((cat) => {
-                const items = grouped[cat];
-                if (!items?.length) return null;
-                return (
-                  <div key={cat} className="mb-6">
-                    <h3 className="text-xs font-medium uppercase tracking-[0.12em] text-editorial-ink-3 mb-3">
-                      {HELP_CATEGORY_LABELS[cat]}
-                    </h3>
-                    <ul className="space-y-1.5">
-                      {items.map((article) => (
-                        <li key={article.slug}>
-                          <Link
-                            href={`/help/${article.slug}`}
-                            className="block py-0.5 text-[14px] leading-[1.5] text-editorial-ink-2 transition-colors hover:text-editorial-ink"
-                          >
-                            {article.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </nav>
-          </aside>
+                {categoryOrder.map((cat) => {
+                  const items = grouped[cat];
+                  if (!items?.length) return null;
+                  return (
+                    <div key={cat} className="mb-6">
+                      <h3 className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-3">
+                        {HELP_CATEGORY_LABELS[cat]}
+                      </h3>
+                      <ul className="space-y-1.5">
+                        {items.map((article) => (
+                          <li key={article.slug}>
+                            <Link
+                              href={`/help/${article.slug}`}
+                              className="block py-0.5 text-sm leading-normal text-muted-foreground transition-colors hover:text-foreground"
+                            >
+                              {article.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </nav>
+            </aside>
 
-          {/* Main content */}
-          <main id="main-content" className="flex-1 min-w-0">{children}</main>
-        </div>
-      </div>
-    </div>
+            {/* Main content */}
+            <div className="flex-1 min-w-0">{children}</div>
+          </div>
+        </Container>
+      </Section>
+      <SiteFooter />
+    </main>
   );
 }

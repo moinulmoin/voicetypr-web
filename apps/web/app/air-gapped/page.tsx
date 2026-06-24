@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/app/components/sections/Header";
-import Footer from "@/app/components/sections/Footer";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
@@ -101,6 +102,62 @@ function safeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
+
+const SERIF_EM_STYLE = { fontFamily: "var(--font-serif)" } as const;
+
+const problems = [
+  {
+    title: "Cloud transcription requires internet access",
+    body: "Most modern dictation apps depend on cloud APIs for transcription. That means they stop working entirely when the network is down, restricted, or classified. You cannot dictate on a plane, in a secure facility, or on a network with no external access.",
+  },
+  {
+    title: "Background connections leak data",
+    body: "Even when not actively transcribing, many apps maintain persistent connections to cloud services for analytics, telemetry, or model updates. On a classified network, these background connections are a security violation and can cause your app to be flagged or blocked.",
+  },
+  {
+    title: "Offline mode is an afterthought",
+    body: "Some apps offer offline mode as a limited fallback with reduced accuracy, fewer languages, or no AI features. Voicetypr is designed offline-first. The full transcription capability is available without any network connection, using the same local models as the online mode.",
+  },
+];
+
+const solutions = [
+  {
+    marker: "01",
+    title: "Fully local AI models",
+    body: "Whisper and Parakeet models run entirely on your device. No cloud inference, no API calls, no model downloads during transcription. Everything needed is included in the application.",
+    meta: "No network dependency",
+  },
+  {
+    marker: "02",
+    title: "7-day offline grace period",
+    body: "Once activated, Voicetypr works for up to 7 days without any network connection. For air-gapped environments, we support offline activation and enterprise licensing that does not require periodic check-ins.",
+    meta: "Extended offline operation",
+  },
+  {
+    marker: "03",
+    title: "No telemetry during dictation",
+    body: "The transcription system does not send analytics, usage data, or diagnostics while you dictate. Any network communication is explicitly for license validation or updates, and you can verify this with network monitoring tools.",
+    meta: "Verifiable silence",
+  },
+];
+
+const environments = [
+  {
+    title: "Classified and government facilities",
+    body: "Work in SCIFs, military installations, or government offices with no external network access. Voicetypr does not attempt to connect during transcription, avoiding security violations and maintaining compliance with facility network policies.",
+  },
+  {
+    title: "Financial and legal secure rooms",
+    body: "Dictate sensitive deal notes, client discussions, or legal strategy in environments where network access is prohibited. The transcription stays entirely within the secure room, with no risk of data leakage through cloud services.",
+  },
+  {
+    title: "Remote and field locations",
+    body: "Work from research stations, ships, remote construction sites, or disaster zones with intermittent or no connectivity. Voicetypr provides full transcription capability regardless of network availability, with a 7-day grace period for license validation.",
+  },
+];
+
 export default function AirGappedPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -116,310 +173,232 @@ export default function AirGappedPage() {
   };
 
   return (
-    <main id="main-content" className="landing-editorial relative min-h-screen">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
-      <Header />
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
-      {/* Hero */}
-      <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
-        <div className="ed-container">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-5 flex justify-center">
-              <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                Offline · Security
-              </span>
-            </div>
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="mx-auto max-w-4xl text-center">
+              <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
+                Air-gap ready{" "}
+                <em className="italic font-normal" style={SERIF_EM_STYLE}>
+                  dictation
+                </em>
+              </h1>
 
-            <h1 className="mb-5 text-balance text-[clamp(42px,5.2vw,68px)] font-bold leading-[1.03] tracking-[-0.02em]">
-              Air-gap ready{" "}
-              <em>dictation</em>
-            </h1>
-
-            <p className="mx-auto max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2 md:text-[19px]">
-              Works offline by default. Audio stays on your machine during transcription.
-              Designed for secure environments, classified networks, and privacy-critical workflows.
-              No subscription. macOS and Windows.
-            </p>
-
-            <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-              <span>No network required</span>
-              <span>7-day offline grace</span>
-              <span>Lifetime license</span>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/download"
-                className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-              >
-                Start 3-day free trial
-              </Link>
-              <Link
-                href="/privacy"
-                className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface-2 active:scale-95"
-              >
-                Read Privacy Policy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="mb-10 max-w-[760px]">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              The constraint
-            </div>
-            <h2 className="mt-2 mb-3 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-              Why most dictation apps fail in secure environments
-            </h2>
-          </div>
-          <div className="max-w-[760px]">
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">01</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Cloud transcription requires internet access
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Most modern dictation apps depend on cloud APIs for transcription. That means they stop working entirely
-                when the network is down, restricted, or classified. You cannot dictate on a plane, in a secure facility,
-                or on a network with no external access.
+              <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+                Works offline by default. Audio stays on your machine during transcription.
+                Designed for secure environments, classified networks, and privacy-critical workflows.
+                No subscription. macOS and Windows.
               </p>
-            </article>
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">02</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Background connections leak data
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Even when not actively transcribing, many apps maintain persistent connections to cloud services for
-                analytics, telemetry, or model updates. On a classified network, these background connections are a security
-                violation and can cause your app to be flagged or blocked.
-              </p>
-            </article>
-            <article className="border-b border-editorial-line/70 py-6 last:border-b-0">
-              <div className="mb-2 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">03</div>
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.25]">
-                Offline mode is an afterthought
-              </h3>
-              <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                Some apps offer offline mode as a limited fallback with reduced accuracy, fewer languages, or no AI features.
-                Voicetypr is designed offline-first. The full transcription capability is available without any network connection,
-                using the same local models as the online mode.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      {/* The Solution */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="rounded-[24px] bg-editorial-surface-2 p-8 md:p-12">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">How it works</div>
-            <h2 className="mt-2 mb-10 max-w-[760px] text-[clamp(36px,3.6vw,52px)] font-semibold leading-[1.08] tracking-[-0.01em]">
-              Built for environments where the network is the threat
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">01</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">Fully local AI models</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  Whisper and Parakeet models run entirely on your device. No cloud inference, no API calls, no model
-                  downloads during transcription. Everything needed is included in the application.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  No network dependency
-                </div>
-              </article>
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">02</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">7-day offline grace period</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  Once activated, Voicetypr works for up to 7 days without any network connection. For air-gapped environments,
-                  we support offline activation and enterprise licensing that does not require periodic check-ins.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  Extended offline operation
-                </div>
-              </article>
-              <article className="flex min-h-[240px] flex-col gap-3 rounded-xl bg-white p-6">
-                <div className="text-[38px] font-semibold leading-none text-editorial-ink">03</div>
-                <h3 className="text-[21px] font-semibold leading-[1.2]">No telemetry during dictation</h3>
-                <p className="text-[14.5px] leading-[1.6] text-editorial-ink-2">
-                  The transcription system does not send analytics, usage data, or diagnostics while you dictate.
-                  Any network communication is explicitly for license validation or updates, and you can verify this
-                  with network monitoring tools.
-                </p>
-                <div className="mt-auto pt-3 text-[12px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-                  Verifiable silence
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="mb-10 max-w-[760px]">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              In practice
-            </div>
-            <h2 className="mt-2 text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.12] tracking-[-0.01em]">
-              Three environments where air-gapped matters
-            </h2>
-          </div>
-
-          <div className="max-w-[820px] rounded-2xl bg-editorial-surface-2 p-7 md:p-10">
-            <ol className="space-y-9">
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">01</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Classified and government facilities</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Work in SCIFs, military installations, or government offices with no external network access.
-                    Voicetypr does not attempt to connect during transcription, avoiding security violations and
-                    maintaining compliance with facility network policies.
-                  </p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">02</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Financial and legal secure rooms</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Dictate sensitive deal notes, client discussions, or legal strategy in environments where
-                    network access is prohibited. The transcription stays entirely within the secure room,
-                    with no risk of data leakage through cloud services.
-                  </p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-6">
-                <span className="pt-0.5 text-[34px] font-semibold leading-none text-editorial-ink">03</span>
-                <div>
-                  <h3 className="mb-1.5 text-[21px] font-semibold leading-[1.25]">Remote and field locations</h3>
-                  <p className="text-[15px] leading-[1.65] text-editorial-ink-2">
-                    Work from research stations, ships, remote construction sites, or disaster zones with intermittent
-                    or no connectivity. Voicetypr provides full transcription capability regardless of network availability,
-                    with a 7-day grace period for license validation.
-                  </p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
-            <div>
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                questions before you switch
+              <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+                <span>No network required</span>
+                <span>7-day offline grace</span>
+                <span>Lifetime license</span>
               </div>
-              <h2 className="mb-4 mt-2 text-[clamp(32px,3.3vw,44px)] font-semibold leading-[1.1] tracking-[-0.01em]">
-                The honest <em>air-gapped</em> FAQ
-              </h2>
-              <p className="text-[16px] leading-[1.65] text-editorial-ink-2">
-                Pulled from real conversations with security officers, system administrators, and field operators.
-              </p>
-            </div>
 
-            <div>
-              {faqs.map((faq, i) => (
-                <details
-                  key={faq.q}
-                  open={i === 0}
-                  className="group cursor-pointer border-t border-editorial-line/70 py-5 last:border-b last:border-editorial-line/70"
-                >
-                  <summary className="list-none flex items-start justify-between gap-6 text-[19px] font-semibold leading-[1.32] text-editorial-ink [&::-webkit-details-marker]:hidden">
-                    <span>{faq.q}</span>
-                    <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-editorial-surface text-base font-light text-editorial-ink-2 [transition:transform_400ms_cubic-bezier(0.32,0.72,0,1)] group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
-                  <div className="max-w-[640px] pt-3.5 text-[15px] leading-[1.65] text-editorial-ink-2">
-                    {faq.a}
-                  </div>
-                </details>
-              ))}
-
-              <div className="mt-8 text-sm text-editorial-ink-3">
-                Not answered here?{" "}
-                <a
-                  href="mailto:support@voicetypr.com"
-                  className="text-editorial-ink underline-offset-4 hover:underline"
-                >
-                  Email support
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Guides */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <RelatedGuidesSection
-            eyebrow="related pages"
-            title="If offline operation is your concern, these pages matter too"
-            description="Explore our HIPAA compliance, zero-knowledge architecture, and EU data protection positioning."
-            links={relatedGuides}
-            dataTrackPrefix="air-gapped-related-guides"
-            embedded
-          />
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-            <div className="relative">
-              <div className="mb-4 flex justify-center">
-                <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-white/55">
-                  Secure checkout
-                </span>
-              </div>
-              <h2 className="mx-auto mb-5 max-w-4xl text-[clamp(42px,5.8vw,72px)] font-bold leading-[1.02] tracking-[-0.02em] !text-white">
-                Dictate <em>offline</em>
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
-                3-day free trial. No credit card. Works entirely offline from day one.
-                Pay once, use forever.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/download"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
-                  Download Voicetypr
+                  Start 3-day free trial
                 </Link>
                 <Link
-                  href="/pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  href="/privacy"
+                  className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
-                  Buy lifetime license
+                  Read Privacy Policy
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Section>
 
-      <Footer />
-    </main>
+        {/* The Problem */}
+        <Section>
+          <Container>
+            <h2 className={`${H2_CLASS} max-w-[760px]`}>
+              Why most dictation apps fail in secure environments
+            </h2>
+            <div className="mt-8 max-w-[760px]">
+              {problems.map((problem, i) => (
+                <article key={i} className="border-b border-border py-6 last:border-b-0">
+                  <div className="mb-2 font-sans text-sm font-semibold text-sage">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold leading-snug text-foreground">
+                    {problem.title}
+                  </h3>
+                  <p className="text-[15px] leading-relaxed text-muted-foreground">{problem.body}</p>
+                </article>
+              ))}
+            </div>
+          </Container>
+        </Section>
+
+        {/* The Solution */}
+        <Section>
+          <Container>
+            <div className="rounded-3xl bg-muted p-8 md:p-12">
+              <h2 className={`${H2_CLASS} max-w-[760px]`}>
+                Built for environments where the network is the threat
+              </h2>
+              <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+                {solutions.map((solution, i) => (
+                  <article
+                    key={i}
+                    className="flex min-h-60 flex-col gap-3 rounded-2xl border border-border bg-card p-6"
+                  >
+                    <div className="font-sans text-4xl font-bold leading-none text-foreground">
+                      {solution.marker}
+                    </div>
+                    <h3 className="text-lg font-semibold leading-snug text-foreground">
+                      {solution.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{solution.body}</p>
+                    <div className="mt-auto pt-3 text-xs font-medium text-sage">{solution.meta}</div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Use Cases */}
+        <Section>
+          <Container>
+            <h2 className={`${H2_CLASS} max-w-[760px]`}>
+              Three environments where air-gapped matters
+            </h2>
+            <div className="mt-8 max-w-[820px] rounded-2xl bg-muted p-7 md:p-10">
+              <ol className="grid gap-9">
+                {environments.map((env, i) => (
+                  <li key={i} className="grid grid-cols-[auto_1fr] gap-6">
+                    <span className="font-sans text-3xl font-bold leading-none text-sage">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">
+                        {env.title}
+                      </h3>
+                      <p className="text-[15px] leading-relaxed text-muted-foreground">{env.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Container>
+        </Section>
+
+        {/* FAQ */}
+        <Section>
+          <Container>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+              <div>
+                <h2 className={H2_CLASS}>
+                  The honest{" "}
+                  <em className="italic font-normal" style={SERIF_EM_STYLE}>
+                    air-gapped
+                  </em>{" "}
+                  FAQ
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Pulled from real conversations with security officers, system administrators, and field operators.
+                </p>
+              </div>
+
+              <div>
+                {faqs.map((faq, i) => (
+                  <details
+                    key={faq.q}
+                    open={i === 0}
+                    className="group cursor-pointer border-t border-border py-5 last:border-b last:border-border"
+                  >
+                    <summary className="flex list-none items-start justify-between gap-6 text-lg font-semibold leading-snug text-foreground [&::-webkit-details-marker]:hidden">
+                      <span>{faq.q}</span>
+                      <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-muted text-base font-light text-muted-foreground transition-transform duration-300 group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <div className="max-w-[640px] pt-3.5 text-[15px] leading-relaxed text-muted-foreground">
+                      {faq.a}
+                    </div>
+                  </details>
+                ))}
+
+                <div className="mt-8 text-sm text-muted-foreground">
+                  Not answered here?{" "}
+                  <a
+                    href="mailto:support@voicetypr.com"
+                    className="text-foreground underline-offset-4 hover:underline"
+                  >
+                    Email support
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Related Guides */}
+        <Section>
+          <Container>
+            <RelatedGuidesSection
+              eyebrow="related pages"
+              title="If offline operation is your concern, these pages matter too"
+              description="Explore our HIPAA compliance, zero-knowledge architecture, and EU data protection positioning."
+              links={relatedGuides}
+              dataTrackPrefix="air-gapped-related-guides"
+              embedded
+            />
+          </Container>
+        </Section>
+
+        {/* Final CTA */}
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  Dictate{" "}
+                  <em className="italic font-normal" style={SERIF_EM_STYLE}>
+                    offline
+                  </em>
+                </h2>
+                <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
+                  3-day free trial. No credit card. Works entirely offline from day one.
+                  Pay once, use forever.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Download Voicetypr
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
+      </main>
+    </>
   );
 }

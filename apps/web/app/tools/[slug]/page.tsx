@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Footer from "@/app/components/sections/Footer";
-import Header from "@/app/components/sections/Header";
-import { ToolPageShell } from "@/components/tools/tool-page-shell";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import { toolComponents } from "@/components/tools/tool-registry";
 import {
   freeTools,
@@ -13,7 +13,7 @@ import {
 } from "@/lib/free-tools";
 
 function safeJsonLd(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, "\u003c");
+  return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
 export async function generateStaticParams() {
@@ -82,53 +82,63 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   };
 
   return (
-    <main id="main-content" className="landing-editorial relative min-h-screen">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
       />
-      <Header />
-      <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
-        <div className="ed-container">
-          <div className="mx-auto max-w-4xl">
-            <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
-              <Link href="/" className="transition-colors hover:text-editorial-ink">
-                Voicetypr
-              </Link>
-              <span>/</span>
-              <Link href="/tools" className="transition-colors hover:text-editorial-ink">
-                Free tools
-              </Link>
-              <span>/</span>
-              <span>{tool.shortTitle}</span>
-            </div>
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
-            <ToolPageShell title={tool.title} lede={tool.lede}>
-              <ToolComponent />
-            </ToolPageShell>
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="mx-auto max-w-4xl">
+              <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+                <Link href="/" className="transition-colors hover:text-foreground">
+                  Voicetypr
+                </Link>
+                <span aria-hidden>/</span>
+                <Link href="/tools" className="transition-colors hover:text-foreground">
+                  Free tools
+                </Link>
+                <span aria-hidden>/</span>
+                <span className="text-foreground">{tool.shortTitle}</span>
+              </nav>
 
-            {siblingTools.length > 0 ? (
-              <div className="mt-10 pt-8">
-                <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                  More free tools
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {siblingTools.map((sibling) => (
-                    <Link
-                      key={sibling.slug}
-                      href={`/tools/${sibling.slug}`}
-                      className="rounded-full border border-editorial-line bg-white/82 px-3 py-1.5 text-[13px] font-medium text-editorial-ink transition hover:border-editorial-ink/30"
-                    >
-                      {sibling.shortTitle}
-                    </Link>
-                  ))}
-                </div>
+              <div className="rounded-3xl border border-border bg-card p-5 md:p-10">
+                <header className="mb-8 border-b border-border pb-8">
+                  <h1 className="max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight text-foreground">
+                    {tool.title}
+                  </h1>
+                  <p className="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+                    {tool.lede}
+                  </p>
+                </header>
+                <ToolComponent />
               </div>
-            ) : null}
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </main>
+
+              {siblingTools.length > 0 ? (
+                <div className="mt-10 pt-2">
+                  <p className="text-sm font-medium text-muted-foreground">More free tools</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {siblingTools.map((sibling) => (
+                      <Link
+                        key={sibling.slug}
+                        href={`/tools/${sibling.slug}`}
+                        className="rounded-full border border-border bg-card px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                      >
+                        {sibling.shortTitle}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
+      </main>
+    </>
   );
 }

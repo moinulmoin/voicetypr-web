@@ -19,19 +19,18 @@ export const metadata: Metadata = {
 
 const sectionClass = "mt-12";
 const h2Class =
-  "font-sans text-[clamp(21px,2vw,28px)] font-semibold leading-[1.2] tracking-[-0.01em] text-editorial-ink mb-4";
-const pClass = "text-editorial-ink-2 text-[15px] leading-[1.7]";
-const ulClass = "list-disc pl-5 mt-2 space-y-1.5 text-editorial-ink-2 text-[15px] leading-[1.7]";
+  "font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-[1.2] tracking-tight text-foreground mb-4";
+const pClass = "text-muted-foreground text-[15px] leading-[1.7]";
+const ulClass = "list-disc pl-5 mt-2 space-y-1.5 text-muted-foreground text-[15px] leading-[1.7]";
 
 export default function TermsPage() {
   return (
     <>
       <header className="mb-12 pb-2">
-        <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Policy · terms</span>
-        <h1 className="mt-3 mb-3 font-sans text-[clamp(34px,4.2vw,50px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
+        <h1 className="mb-3 font-sans text-[clamp(2.25rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-foreground">
           Terms and Conditions
         </h1>
-        <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-editorial-ink-3">
+        <p className="text-sm font-medium text-muted-foreground">
           Last Updated: May 22, 2026
         </p>
       </header>
@@ -49,10 +48,10 @@ export default function TermsPage() {
           Ideaplexa LLC grants you a non-exclusive, non-transferable license to use Voicetypr. The number of devices you can activate depends on the device count purchased:
         </p>
         <ul className={ulClass}>
-          <li><strong className="text-editorial-ink">1 device:</strong> Activation on one (1) device at a time</li>
-          <li><strong className="text-editorial-ink">2 devices:</strong> Activation on two (2) devices simultaneously</li>
-          <li><strong className="text-editorial-ink">4 devices:</strong> Activation on four (4) devices simultaneously</li>
-          <li><strong className="text-editorial-ink">Additional devices/team licenses:</strong> Activation limit stated at purchase</li>
+          <li><strong className="text-foreground">1 device:</strong> Activation on one (1) device at a time</li>
+          <li><strong className="text-foreground">2 devices:</strong> Activation on two (2) devices simultaneously</li>
+          <li><strong className="text-foreground">4 devices:</strong> Activation on four (4) devices simultaneously</li>
+          <li><strong className="text-foreground">Additional devices/team licenses:</strong> Activation limit stated at purchase</li>
         </ul>
         <p className={`${pClass} mt-3`}>
           You may deactivate and reactivate your license on different devices as needed within your license limits.
@@ -100,7 +99,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>6. Privacy and Data</h2>
         <p className={pClass}>
-          Voicetypr processes normal voice transcription locally on your device. The Software connects to our servers for license validation, activation, trial verification, checkout, updates, support, and related product services. Optional AI formatting or optional non-local transcription features may send text or audio only when you enable those workflows. Please review our <Link href="/privacy" className="text-editorial-ink underline-offset-4 hover:underline">Privacy Policy</Link> for detailed information.
+          Voicetypr processes normal voice transcription locally on your device. The Software connects to our servers for license validation, activation, trial verification, checkout, updates, support, and related product services. Optional AI formatting or optional non-local transcription features may send text or audio only when you enable those workflows. Please review our <Link href="/privacy" className="text-sage underline underline-offset-2">Privacy Policy</Link> for detailed information.
         </p>
       </section>
 
@@ -137,7 +136,7 @@ export default function TermsPage() {
         <p className={pClass}>
           TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL IDEAPLEXA LLC BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE.
         </p>
-        <p className={`${pClass} mt-3 text-[13.5px] text-editorial-ink-3`}>
+        <p className={`${pClass} mt-3 text-[13.5px] text-muted-foreground`}>
           Nothing in these Terms limits liability that cannot be limited under applicable law (for example, liability for fraud, intentional misconduct, or non&#8209;waivable consumer rights).
         </p>
       </section>
@@ -152,7 +151,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>11. Venue and Dispute Resolution</h2>
         <p className={pClass}>
-          Courts located in Sheridan County, Wyoming shall have exclusive jurisdiction. You agree to first attempt informal resolution by contacting <a href="mailto:support@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">support@voicetypr.com</a>.
+          Courts located in Sheridan County, Wyoming shall have exclusive jurisdiction. You agree to first attempt informal resolution by contacting <a href="mailto:support@voicetypr.com" className="text-sage underline underline-offset-2">support@voicetypr.com</a>.
         </p>
       </section>
 
@@ -172,12 +171,12 @@ export default function TermsPage() {
 
       <section className={sectionClass}>
         <h2 className={h2Class}>14. Contact Information</h2>
-        <p className={`${pClass} bg-editorial-surface-2 p-4 font-mono text-[14px]`}>
+        <p className={`${pClass} bg-muted p-4 font-mono text-[14px]`}>
           Ideaplexa LLC<br />
           30 N Gould St Ste N<br />
           Sheridan, WY 82801<br />
           United States<br />
-          Email: <a href="mailto:support@voicetypr.com" className="text-editorial-ink underline-offset-4 hover:underline">support@voicetypr.com</a>
+          Email: <a href="mailto:support@voicetypr.com" className="text-sage underline underline-offset-2">support@voicetypr.com</a>
         </p>
       </section>
     </>

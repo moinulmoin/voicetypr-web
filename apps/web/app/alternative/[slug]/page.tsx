@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Footer from "@/app/components/sections/Footer";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
-import Header from "@/app/components/sections/Header";
 import { getRelatedGuidesForSeoSlug } from "@/lib/seo-discovery";
 import {
   getAlternativePageBySlug,
@@ -11,7 +12,7 @@ import {
 } from "@/lib/seo-pages";
 
 function safeJsonLd(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, "\u003c");
+  return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
 export async function generateStaticParams() {
@@ -58,6 +59,9 @@ export async function generateMetadata({
   };
 }
 
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
+
 export default async function AlternativePage({
   params,
 }: {
@@ -83,200 +87,221 @@ export default async function AlternativePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
       />
-      <main id="main-content" className="landing-editorial relative min-h-screen">
-        <Header />
-        <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
-          <div className="ed-container">
-            <div className="mx-auto max-w-4xl">
-              <div className="mb-8 flex items-center gap-2 text-sm text-editorial-ink-3">
-                <Link href="/" className="transition-colors hover:text-editorial-ink">
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
+
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+                <Link href="/" className="transition-colors hover:text-foreground">
                   Voicetypr
                 </Link>
-                <span>/</span>
+                <span aria-hidden>/</span>
                 <span>Alternative</span>
               </div>
 
-              <header className="mb-12">
-                <h1 className="max-w-3xl text-[clamp(38px,5.2vw,62px)] font-semibold leading-[1.06] tracking-[-0.04em]">
+              <header>
+                <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
                   {page.h1}
                 </h1>
-                <p className="mt-5 max-w-2xl text-[17px] leading-[1.65] text-editorial-ink-2">
+                <p className="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
                   {page.lede}
                 </p>
               </header>
+            </div>
+          </Container>
+        </Section>
 
-              <section className="mb-12">
-                <div className="mb-5 text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                  The replacement path
-                </div>
-                <div className="overflow-hidden rounded-2xl border border-editorial-line bg-white/82 shadow-sm backdrop-blur">
-                  <div className="overflow-x-auto p-1.5">
-                    <table className="w-full text-left">
-                      <caption className="sr-only">
-                        Comparison of tools for switching from the incumbent
-                      </caption>
-                      <thead>
-                        <tr>
-                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                            Tool
-                          </th>
-                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                            Price
-                          </th>
-                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                            Platforms
-                          </th>
-                          <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                            Offline
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {page.competitors.map((comp) => (
+        {/* Comparison table */}
+        <Section>
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className={H2_CLASS}>The replacement path</h2>
+              <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
+                <div className="overflow-x-auto p-1.5">
+                  <table className="w-full text-left">
+                    <caption className="sr-only">
+                      Comparison of tools for switching from the incumbent
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
+                          Tool
+                        </th>
+                        <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
+                          Price
+                        </th>
+                        <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
+                          Platforms
+                        </th>
+                        <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
+                          Offline
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {page.competitors.map((comp) => {
+                        const isVoicetypr = comp.name === "Voicetypr";
+                        return (
                           <tr
                             key={comp.name}
-                            className={
-                              comp.name === "Voicetypr"
-                                ? "bg-editorial-surface dark:bg-editorial-surface-2 dark:ring-1 dark:ring-inset dark:ring-editorial-line/70"
-                                : "bg-white"
-                            }
+                            className={isVoicetypr ? "bg-sage-bg" : "bg-card"}
                           >
                             <td className="px-3 py-3 pr-4 align-top">
                               <div className="flex items-center gap-2">
-                                <span className="text-[15px] font-medium text-editorial-ink">
+                                <span className={`text-[15px] font-medium ${isVoicetypr ? "text-sage" : "text-foreground"}`}>
                                   {comp.name}
                                 </span>
                                 {comp.subscription && (
-                                  <span className="text-[11px] uppercase tracking-[0.1em] text-editorial-ink-3">
+                                  <span className="text-[11px] uppercase tracking-wide text-muted-foreground">
                                     Subscription
                                   </span>
                                 )}
                               </div>
                             </td>
-                            <td className="px-3 py-3 pr-4 text-[14px] text-editorial-ink-2">
+                            <td className="px-3 py-3 pr-4 text-sm text-muted-foreground">
                               {comp.price}
                             </td>
-                            <td className="px-3 py-3 pr-4 text-[14px] text-editorial-ink-2">
+                            <td className="px-3 py-3 pr-4 text-sm text-muted-foreground">
                               {comp.platforms}
                             </td>
-                            <td className="px-3 py-3 text-[14px]">
-                              <span className={comp.offline.startsWith("Yes") ? "font-medium text-editorial-ink" : "text-editorial-ink-3"}>
+                            <td className="px-3 py-3 text-sm">
+                              <span className={comp.offline.startsWith("Yes") ? "font-medium text-foreground" : "text-muted-foreground"}>
                                 {comp.offline}
                               </span>
                             </td>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
-              </section>
-
-              <section className="mb-12">
-                <div className="mb-5 text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                  What gets better after you switch
-                </div>
-                <ul className="space-y-3.5">
-                  {page.whySwitch.map((reason, i) => (
-                    <li key={i} className="flex items-start gap-3 text-[16px] leading-[1.65] text-editorial-ink-2">
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-ink" />
-                      <span>{reason}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              {page.switchGuide ? (
-                <section className="mb-12 space-y-8">
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div className="rounded-2xl border border-editorial-line bg-white/82 p-5 shadow-sm backdrop-blur">
-                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
-                        Choose Voicetypr if
-                      </h2>
-                      <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
-                        {page.switchGuide.voiceTyprIf.map((item) => (
-                          <li key={item} className="flex gap-3">
-                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-ink" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="rounded-2xl border border-editorial-line bg-white/72 p-5 shadow-sm backdrop-blur">
-                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
-                        Stay with the incumbent if
-                      </h2>
-                      <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-editorial-ink-2">
-                        {page.switchGuide.otherIf.map((item) => (
-                          <li key={item} className="flex gap-3">
-                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-editorial-line-2" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {page.switchGuide.notes && page.switchGuide.notes.length > 0 ? (
-                    <div className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-5">
-                      <h2 className="text-[18px] font-semibold tracking-tight text-editorial-ink">
-                        Quick comparison notes
-                      </h2>
-                      <div className="mt-4 grid gap-4 md:grid-cols-2">
-                        {page.switchGuide.notes.map((note) => (
-                          <article key={note.title}>
-                            <h3 className="text-[15px] font-semibold text-editorial-ink">{note.title}</h3>
-                            <p className="mt-2 text-[14px] leading-relaxed text-editorial-ink-2">{note.body}</p>
-                          </article>
-                        ))}
-                      </div>
-                    </div>
-                  ) : null}
-                </section>
-              ) : null}
-
-              {relatedGuides.length > 0 ? (
-                <div className="mb-12">
-                  <RelatedGuidesSection
-                    eyebrow="open the adjacent query too"
-                    title="Related guides people usually compare next"
-                    description="Most people compare more than one tool. These pages cover the next question you'll probably have."
-                    links={relatedGuides}
-                    dataTrackPrefix="alternative-related-guides"
-                    embedded
-                  />
-                </div>
-              ) : null}
-
-              <section className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-8 md:py-12">
-                <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#d4965d]/22 blur-3xl" />
-                <div className="relative">
-                  <h2 className="max-w-2xl text-[30px] font-semibold leading-[1.06] tracking-[-0.03em] text-white md:text-[36px]">
-                    {page.ctaText}
-                  </h2>
-                  <p className="mt-3 text-[15px] text-white/72">
-                    3-day free trial. No credit card. All features included.
-                  </p>
-                  <div className="mt-6 flex flex-wrap items-center gap-4">
-                    <Link
-                      href="/download"
-                      className="inline-flex h-11 items-center rounded-md bg-white px-4 text-sm font-medium text-editorial-ink transition hover:bg-editorial-surface"
-                    >
-                      Start free trial
-                    </Link>
-                    <Link
-                      href="/#pricing"
-                      className="text-sm font-medium text-white/85 transition-colors hover:text-white"
-                    >
-                      View lifetime pricing
-                    </Link>
-                  </div>
-                </div>
-              </section>
+              </div>
             </div>
-          </div>
-        </section>
-        <Footer />
+          </Container>
+        </Section>
+
+        {/* Why switch */}
+        <Section>
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className={H2_CLASS}>What gets better after you switch</h2>
+              <ul className="mt-8 space-y-4">
+                {page.whySwitch.map((reason, i) => (
+                  <li key={i} className="flex items-start gap-3 text-base leading-relaxed text-muted-foreground">
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-sage" />
+                    <span>{reason}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Switch guide */}
+        {page.switchGuide ? (
+          <Section>
+            <Container>
+              <div className="mx-auto max-w-3xl space-y-6">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="rounded-2xl border border-border bg-card p-6">
+                    <h2 className="text-lg font-semibold tracking-tight text-foreground">
+                      Choose Voicetypr if
+                    </h2>
+                    <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
+                      {page.switchGuide.voiceTyprIf.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-sage" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="rounded-2xl border border-border bg-card p-6">
+                    <h2 className="text-lg font-semibold tracking-tight text-foreground">
+                      Stay with the incumbent if
+                    </h2>
+                    <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
+                      {page.switchGuide.otherIf.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-border" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {page.switchGuide.notes && page.switchGuide.notes.length > 0 ? (
+                  <div className="rounded-2xl bg-muted p-6 md:p-8">
+                    <h2 className="text-lg font-semibold tracking-tight text-foreground">
+                      Quick comparison notes
+                    </h2>
+                    <div className="mt-5 grid gap-6 md:grid-cols-2">
+                      {page.switchGuide.notes.map((note) => (
+                        <article key={note.title}>
+                          <h3 className="text-[15px] font-semibold text-foreground">{note.title}</h3>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{note.body}</p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </Container>
+          </Section>
+        ) : null}
+
+        {/* Related guides */}
+        {relatedGuides.length > 0 ? (
+          <Section>
+            <Container>
+              <RelatedGuidesSection
+                eyebrow="open the adjacent query too"
+                title="Related guides people usually compare next"
+                description="Most people compare more than one tool. These pages cover the next question you'll probably have."
+                links={relatedGuides}
+                dataTrackPrefix="alternative-related-guides"
+                embedded
+              />
+            </Container>
+          </Section>
+        ) : null}
+
+        {/* Final CTA */}
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  {page.ctaText}
+                </h2>
+                <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
+                  3-day free trial. No credit card. All features included.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Start free trial
+                  </Link>
+                  <Link
+                    href="/#pricing"
+                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    View lifetime pricing
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
       </main>
     </>
   );

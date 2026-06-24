@@ -23,16 +23,12 @@ export default function RelatedGuidesSection({
   const content = (
     <>
       <div className="mb-10 max-w-[760px]">
-        <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-          {eyebrow}
-        </div>
-        <h2 className="mt-2 text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08] tracking-[-0.02em] text-editorial-ink">
+        <p className="mb-2 text-sm font-medium text-sage">{eyebrow}</p>
+        <h2 className="font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground">
           {title}
         </h2>
         {description ? (
-          <p className="mt-3 max-w-[620px] text-[16px] leading-[1.65] text-editorial-ink-2">
-            {description}
-          </p>
+          <p className="mt-3 max-w-[620px] text-base leading-relaxed text-muted-foreground">{description}</p>
         ) : null}
       </div>
 
@@ -43,18 +39,12 @@ export default function RelatedGuidesSection({
             href={link.href}
             data-track={`${dataTrackPrefix}-click`}
             data-track-destination={link.href}
-            className="group rounded-2xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur transition-colors hover:bg-editorial-surface"
+            className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:bg-muted"
           >
-            <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              {link.eyebrow}
-            </div>
-            <h3 className="mt-3 text-[24px] font-semibold leading-[1.15] tracking-[-0.02em] text-editorial-ink">
-              {link.title}
-            </h3>
-            <p className="mt-3 text-[15px] leading-[1.65] text-editorial-ink-2">
-              {link.description}
-            </p>
-            <div className="mt-6 text-sm font-medium text-editorial-ink transition-colors group-hover:text-black">
+            <p className="text-xs font-medium text-sage">{link.eyebrow}</p>
+            <h3 className="mt-3 text-xl font-semibold leading-snug tracking-tight text-foreground">{link.title}</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{link.description}</p>
+            <div className="mt-6 text-sm font-medium text-foreground transition-colors group-hover:text-sage">
               {link.ctaLabel} →
             </div>
           </Link>
@@ -66,8 +56,8 @@ export default function RelatedGuidesSection({
   if (embedded) return content;
 
   return (
-    <section className="ed-section">
-      <div className="ed-container">{content}</div>
+    <section className="pt-28 md:pt-32">
+      <div className="mx-auto max-w-6xl px-6">{content}</div>
     </section>
   );
 }

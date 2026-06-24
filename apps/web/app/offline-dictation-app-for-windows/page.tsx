@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import { offlineWindowsRelatedGuides } from "@/lib/seo-discovery";
-import Header from "../components/sections/Header";
-import Footer from "../components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Offline Dictation App for Windows in 2026 — Voicetypr",
@@ -51,111 +52,124 @@ const workflows = [
   ["Docs and support replies", "Talk through the answer, paste clean text, then edit the final 10%."],
 ] as const;
 
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
+
 export default function OfflineDictationForWindowsPage() {
   return (
-    <main id="main-content" className="landing-editorial min-h-screen">
-      <Header />
-      <section className="ed-section ed-section-hero pt-32 lg:pt-40">
-        <div className="ed-container max-w-4xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">offline dictation for windows</p>
-          <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Offline dictation app for Windows — private voice typing in every app you already use.
+    <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+      <SiteHeader />
+
+      {/* Hero */}
+      <Section className="pt-20 md:pt-24">
+        <Container className="max-w-4xl">
+          <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-tight tracking-tight">
+            Offline dictation app for Windows —{" "}
+            <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+              private voice typing
+            </em>{" "}
+            in every app you already use.
           </h1>
-          <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Voicetypr gives Windows users private on-device dictation — hold a shortcut, speak, release, and text appears where you&apos;re typing.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/download"
-              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
+              className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
             >
               Start 3-day free trial
             </Link>
             <Link
               href="/#pricing"
-              className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
+              className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
             >
               Buy lifetime license
             </Link>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="ed-section">
-        <div className="ed-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      {/* Why it matters */}
+      <Section>
+        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">why it matters</p>
-            <h2 className="mt-2 text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-tight">
-              Windows dictation is still underserved.
+            <h2 className={`${H2_CLASS} max-w-[760px]`}>
+              Windows dictation is still{" "}
+              <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                underserved
+              </em>
+              .
             </h2>
           </div>
-          <div className="rounded-2xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
+          <div className="rounded-2xl border border-border bg-card p-6">
             <ul className="space-y-4">
               {benefits.map((benefit) => (
-                <li key={benefit} className="flex gap-3 text-[16px] leading-[1.6] text-editorial-ink-2">
-                  <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" aria-hidden />
+                <li key={benefit} className="flex gap-3 text-base leading-relaxed text-muted-foreground">
+                  <Check className="mt-1 h-4 w-4 flex-shrink-0 text-sage" aria-hidden />
                   <span>{benefit}</span>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="ed-section">
-        <div className="ed-container max-w-5xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">common workflows</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+      {/* Common workflows */}
+      <Section>
+        <Container className="max-w-5xl">
+          <h2 className={`${H2_CLASS} max-w-[760px]`}>Common workflows</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
             {workflows.map(([title, body]) => (
-              <article key={title} className="rounded-2xl border border-editorial-line bg-white/80 p-6 shadow-sm backdrop-blur">
-                <h3 className="text-[18px] font-medium text-editorial-ink">{title}</h3>
-                <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">{body}</p>
+              <article key={title} className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="text-lg font-semibold leading-snug text-foreground">{title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{body}</p>
               </article>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       <RelatedGuidesSection
-        eyebrow="Related guides"
+        eyebrow="related guides"
         title="More Windows dictation guides"
         description="Compare built-in replacements, broader Windows options, and workflows where typing load matters."
         links={offlineWindowsRelatedGuides}
         dataTrackPrefix="offline-windows-related-guides"
       />
 
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+      {/* Final CTA */}
+      <Section>
+        <Container>
+          <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
             <div className="relative">
-              <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
+              <h2 className="mx-auto mb-5 max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
                 Try offline Windows dictation with a 3-day trial.
               </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
+              <p className="mx-auto mb-8 max-w-2xl text-balance text-base leading-relaxed text-primary-foreground/75">
                 3-day free trial. No credit card. Local transcription in Word, Outlook, Cursor, and every text field.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/download"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
                   Start 3-day free trial
                 </Link>
                 <Link
                   href="/#pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
                 >
                   Buy lifetime license
                 </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <Footer />
+      <SiteFooter />
     </main>
   );
 }

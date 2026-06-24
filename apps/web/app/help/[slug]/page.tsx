@@ -63,18 +63,18 @@ export default async function HelpArticlePage({
   const { prev, next } = getAdjacentArticles(slug, allArticles);
 
   return (
-    <article className="ed-section ed-section-hero">
-      <header className="mb-10 border-b border-editorial-line pb-7">
-        <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">Support · article</span>
-        <h1 className="mt-3 mb-3 font-sans text-[clamp(32px,4vw,46px)] font-semibold leading-[1.1] tracking-[-0.02em] text-editorial-ink">
+    <article className="pt-4">
+      <header className="mb-10 border-b border-border pb-7">
+        <span className="text-sm font-medium text-muted-foreground">Support · article</span>
+        <h1 className="mt-3 mb-3 font-sans text-[clamp(32px,4vw,46px)] font-bold leading-[1.1] tracking-tight text-foreground">
           {article.title}
         </h1>
-        <p className="max-w-[640px] text-[16px] leading-[1.65] text-editorial-ink-2">
+        <p className="max-w-[640px] text-base leading-relaxed text-muted-foreground">
           {article.description}
         </p>
       </header>
 
-      <div className="prose-editorial max-w-[680px]">
+      <div className="max-w-[680px]">
         <MDXRemote
           source={article.content}
           components={mdxComponents}
@@ -83,16 +83,16 @@ export default async function HelpArticlePage({
       </div>
 
       {/* Prev/Next */}
-      <nav className="mt-16 grid gap-4 border-t border-editorial-line pt-8 md:grid-cols-2">
+      <nav className="mt-16 grid gap-4 border-t border-border pt-8 md:grid-cols-2">
         {prev ? (
           <Link
             href={`/help/${prev.slug}`}
-            className="group bg-editorial-surface-2 p-4 text-left transition hover:bg-editorial-surface"
+            className="group rounded-xl bg-muted p-4 text-left transition-colors hover:bg-card"
           >
-            <span className="mb-1 block text-xs uppercase tracking-[0.1em] text-editorial-ink-3">
+            <span className="mb-1 block text-xs text-muted-foreground">
               &larr; Previous
             </span>
-            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-ink">
+            <span className="text-[15px] font-semibold text-foreground">
               {prev.title}
             </span>
           </Link>
@@ -102,12 +102,12 @@ export default async function HelpArticlePage({
         {next ? (
           <Link
             href={`/help/${next.slug}`}
-            className="group bg-editorial-surface-2 p-4 text-left transition hover:bg-editorial-surface md:text-right"
+            className="group rounded-xl bg-muted p-4 text-left transition-colors hover:bg-card md:text-right"
           >
-            <span className="mb-1 block text-xs uppercase tracking-[0.1em] text-editorial-ink-3">
+            <span className="mb-1 block text-xs text-muted-foreground">
               Next &rarr;
             </span>
-            <span className="text-[15px] font-semibold text-editorial-ink transition-colors group-hover:text-editorial-ink">
+            <span className="text-[15px] font-semibold text-foreground">
               {next.title}
             </span>
           </Link>

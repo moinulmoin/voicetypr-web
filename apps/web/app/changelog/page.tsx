@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Header from "../components/sections/Header";
-import Footer from "../components/sections/Footer";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import { CHANGELOG, type ChangelogEntry } from "@/lib/changelog";
 
 export const metadata: Metadata = {
@@ -45,21 +46,21 @@ function ReleaseSection({
 
   const dotColor =
     tone === "feature"
-      ? "bg-editorial-ink"
+      ? "bg-sage"
       : tone === "fix"
-        ? "bg-editorial-ink-3"
-        : "bg-editorial-line-2";
+        ? "bg-muted-foreground"
+        : "bg-foreground";
 
   return (
     <div className="mt-7">
-      <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 mb-3">
+      <div className="mb-3 font-sans text-sm font-semibold text-foreground">
         {label}
       </div>
       <ul className="space-y-2.5">
         {items.map((item, i) => (
           <li
             key={`${label}-${i}`}
-            className="grid grid-cols-[auto_1fr] gap-3 text-[15px] leading-[1.6] text-editorial-ink-2"
+            className="grid grid-cols-[auto_1fr] gap-3 text-[15px] leading-relaxed text-muted-foreground"
           >
             <span
               aria-hidden
@@ -75,18 +76,18 @@ function ReleaseSection({
 
 function Release({ entry, isFirst = false }: { entry: ChangelogEntry; isFirst?: boolean }) {
   return (
-    <article className={`grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-12 py-10 first:pt-0 border-t first:border-t-0 border-editorial-line ${isFirst ? "pb-14" : ""}`}>
+    <article className={`grid grid-cols-1 gap-8 border-t border-border py-10 first:border-t-0 first:pt-0 lg:grid-cols-[200px_1fr] lg:gap-12 ${isFirst ? "pb-14" : ""}`}>
       <header className="lg:sticky lg:top-28 lg:self-start">
         <div className="flex flex-wrap items-baseline gap-3 lg:flex-col lg:items-start lg:gap-2">
-          <div className={`leading-none tracking-[-0.04em] text-editorial-ink font-semibold ${isFirst ? "text-[clamp(42px,5vw,62px)]" : "text-[clamp(30px,3vw,42px)]"}`}>
+          <div className={`font-sans font-bold leading-none tracking-tight text-foreground ${isFirst ? "text-[clamp(2.625rem,5vw,3.875rem)]" : "text-[clamp(1.875rem,3vw,2.625rem)]"}`}>
             {entry.version}
           </div>
           {entry.latest ? (
-            <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">latest</span>
+            <span className="rounded-full bg-sage-bg px-2.5 py-0.5 text-xs font-semibold text-sage">latest</span>
           ) : null}
           <time
             dateTime={entry.date}
-            className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3"
+            className="font-sans text-xs font-medium text-muted-foreground"
           >
             {formatDate(entry.date)}
           </time>
@@ -95,19 +96,19 @@ function Release({ entry, isFirst = false }: { entry: ChangelogEntry; isFirst?: 
 
       <div>
         {entry.highlights && entry.highlights.length > 0 ? (
-          <div className="rounded-xl border border-editorial-line bg-editorial-surface px-5 py-5 md:px-6 md:py-6">
-            <div className="font-sans font-medium uppercase tracking-[0.12em] text-[12px] text-editorial-ink-3 mb-3">
+          <div className="rounded-2xl border border-border bg-muted px-5 py-5 md:px-6 md:py-6">
+            <div className="mb-3 font-sans text-sm font-semibold text-foreground">
               Highlights
             </div>
             <ul className="space-y-2.5">
               {entry.highlights.map((item, i) => (
                 <li
                   key={`hl-${entry.version}-${i}`}
-                  className={`grid grid-cols-[auto_1fr] gap-3 leading-[1.4] ${isFirst ? "font-sans text-[19px] md:text-[21px] text-editorial-ink" : "font-sans text-[17px] md:text-[19px] text-editorial-ink"}`}
+                  className={`grid grid-cols-[auto_1fr] gap-3 leading-snug text-foreground ${isFirst ? "font-sans text-[19px] md:text-[21px]" : "font-sans text-[17px] md:text-[19px]"}`}
                 >
                   <span
                     aria-hidden
-                    className="mt-2.5 h-1.5 w-1.5 rounded-full bg-editorial-ink"
+                    className="mt-2.5 h-1.5 w-1.5 rounded-full bg-sage"
                   />
                   <span>{item}</span>
                 </li>
@@ -133,24 +134,24 @@ export default function ChangelogPage() {
     <>
       <main
         id="main-content"
-        className="landing-editorial relative min-h-screen"
+        className="min-h-dvh bg-background font-sans text-foreground"
       >
-        <Header />
+        <SiteHeader />
 
-        <section className="ed-section ed-section-hero pt-[120px] md:pt-[140px] pb-0">
-          <div className="ed-container">
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
             <div className="max-w-[820px]">
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">what shipped, what got fixed</div>
-              <h1 className="mt-3 mb-5 text-[clamp(46px,7vw,92px)] font-semibold leading-[0.95] tracking-[-0.05em]">
+              <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
                 Changelog
               </h1>
-              <p className="max-w-[640px] text-[18px] leading-[1.55] text-editorial-ink-2 md:text-[20px]">
+              <p className="mt-5 max-w-[640px] text-balance text-lg leading-relaxed text-muted-foreground md:text-xl">
                 Every release, latest first. Curated from the desktop app&rsquo;s{" "}
                 <a
                   href={FULL_CHANGELOG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-editorial-ink underline-offset-2 hover:underline"
+                  className="text-foreground underline-offset-2 hover:underline"
                   data-track="changelog-source-click"
                 >
                   CHANGELOG.md
@@ -158,36 +159,37 @@ export default function ChangelogPage() {
                 . Plain language, no commit hashes.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="ed-section">
-          <div className="ed-container">
+        {/* Releases */}
+        <Section>
+          <Container>
             <div className="max-w-[1080px]">
               {CHANGELOG.map((entry, i) => (
                 <Release key={entry.version} entry={entry} isFirst={i === 0} />
               ))}
             </div>
 
-            <div className="mt-16 max-w-[1080px] flex flex-wrap items-center justify-between gap-4 pt-10 border-t border-editorial-line">
-              <p className="font-sans font-medium uppercase tracking-[0.12em] text-[12.5px] text-editorial-ink-3">
+            <div className="mt-16 flex max-w-[1080px] flex-wrap items-center justify-between gap-4 border-t border-border pt-10">
+              <p className="text-sm text-muted-foreground">
                 Earlier releases live on GitHub, including the unedited commit history.
               </p>
               <a
                 href={RELEASES_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[13px] font-mono uppercase tracking-[0.14em] text-editorial-ink transition-colors hover:text-editorial-ink-2"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-muted-foreground"
                 data-track="changelog-releases-click"
               >
                 View on GitHub
                 <span aria-hidden>→</span>
               </a>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <Footer />
+        <SiteFooter />
       </main>
     </>
   );

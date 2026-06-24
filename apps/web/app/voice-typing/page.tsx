@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
+import { SiteHeader } from '@/components/marketing/site-header';
+import { SiteFooter } from '@/components/marketing/site-footer';
+import { Section, Container } from '@/components/marketing/section';
 import RelatedGuidesSection from '@/app/components/RelatedGuidesSection';
-import Header from '@/app/components/sections/Header';
-import Footer from '@/app/components/sections/Footer';
 import { voiceTypingRelatedGuides } from '@/lib/seo-discovery';
 
 export const metadata: Metadata = {
@@ -51,127 +52,142 @@ const reasons = [
   'One-time purchase from $39, with device-count options for multiple machines.',
 ] as const;
 
+const H2_CLASS =
+  'text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground';
+
 export default function VoiceTypingPage() {
   return (
-    <main id="main-content" className="landing-editorial min-h-screen">
-      <Header />
-      <section className="ed-section ed-section-hero pt-32 lg:pt-40">
-        <div className="ed-container max-w-4xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">voice typing software</p>
-          <h1 className="text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-            Voice typing software for <em>every app</em>
-          </h1>
-          <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-            Dictate into Cursor, Claude, ChatGPT, Gmail, Slack, docs, notes, or a support queue on Mac and Windows. Offline-first by default, pay once, no monthly subscription.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              href="/download"
-              className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-            >
-              Start 3-day free trial
-            </Link>
-            <Link
-              href="/#pricing"
-              className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
-            >
-              Buy lifetime license
-            </Link>
-          </div>
-        </div>
-      </section>
+    <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+      <SiteHeader />
 
-      <section className="ed-section">
-        <div className="ed-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">why voice typing</p>
-            <h2 className="mt-3 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-              When typing slows you down, talking is faster.
-            </h2>
-          </div>
-          <div className="space-y-4 text-[16px] leading-[1.7] text-editorial-ink-2">
-            <p>
-              Most work isn&apos;t one long document — it&apos;s emails, notes, replies, outlines, and forms across many apps. Voice typing gets the first draft out faster without opening another editor.
+      {/* Hero */}
+      <Section className="pt-20 md:pt-24">
+        <Container>
+          <div className="max-w-4xl">
+            <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
+              Voice typing software for{' '}
+              <em className="italic font-normal" style={{ fontFamily: 'var(--font-serif)' }}>
+                every app
+              </em>
+            </h1>
+            <p className="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
+              Dictate into Cursor, Claude, ChatGPT, Gmail, Slack, docs, notes, or a support queue on Mac and Windows. Offline-first by default, pay once, no monthly subscription.
             </p>
-            <p>
-              Voicetypr is designed for that workflow: stay in the app, speak naturally, and let the text land where it belongs.
-            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href="/download"
+                className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
+              >
+                Start 3-day free trial
+              </Link>
+              <Link
+                href="/#pricing"
+                className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
+              >
+                Buy lifetime license
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="ed-section">
-        <div className="ed-container max-w-5xl">
-          <h2 className="text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-            What people use voice typing for.
-          </h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {workflows.map(([title, body]) => (
-              <article key={title} className="rounded-2xl bg-editorial-surface-2 p-6">
-                <h3 className="text-lg font-semibold tracking-tight text-editorial-ink">{title}</h3>
-                <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">{body}</p>
-              </article>
-            ))}
+      {/* Why voice typing */}
+      <Section>
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <h2 className={H2_CLASS}>When typing slows you down, talking is faster.</h2>
+            <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+              <p>
+                Most work isn&apos;t one long document — it&apos;s emails, notes, replies, outlines, and forms across many apps. Voice typing gets the first draft out faster without opening another editor.
+              </p>
+              <p>
+                Voicetypr is designed for that workflow: stay in the app, speak naturally, and let the text land where it belongs.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="ed-section">
-        <div className="ed-container max-w-4xl">
-          <h2 className="text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-            Why Voicetypr instead of built-in dictation.
-          </h2>
-          <div className="mt-8 space-y-4">
-            {reasons.map((reason) => (
-              <div key={reason} className="flex gap-3 text-[15px] leading-[1.6] text-editorial-ink-2">
-                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" />
-                <span>{reason}</span>
-              </div>
-            ))}
+      {/* What people use voice typing for */}
+      <Section>
+        <Container>
+          <div className="max-w-5xl">
+            <h2 className={H2_CLASS}>What people use voice typing for.</h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {workflows.map(([title, body]) => (
+                <article key={title} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="text-lg font-semibold tracking-tight text-foreground">{title}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{body}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <RelatedGuidesSection
-        eyebrow="Related guides"
-        title="More specific voice typing guides"
-        description="If pay-once dictation in every app is the goal, these pages cover Windows offline use, Cursor workflows, and platform comparisons."
-        links={voiceTypingRelatedGuides}
-        dataTrackPrefix="voice-typing-related-guides"
-      />
+      {/* Why Voicetypr instead of built-in dictation */}
+      <Section>
+        <Container>
+          <div className="max-w-4xl">
+            <h2 className={H2_CLASS}>Why Voicetypr instead of built-in dictation.</h2>
+            <div className="mt-8 space-y-4">
+              {reasons.map((reason) => (
+                <div key={reason} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground">
+                  <Check className="mt-1 h-4 w-4 flex-shrink-0 text-sage" />
+                  <span>{reason}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
 
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+      {/* Related guides */}
+      <Section>
+        <Container>
+          <RelatedGuidesSection
+            eyebrow="Related guides"
+            title="More specific voice typing guides"
+            description="If pay-once dictation in every app is the goal, these pages cover Windows offline use, Cursor workflows, and platform comparisons."
+            links={voiceTypingRelatedGuides}
+            dataTrackPrefix="voice-typing-related-guides"
+            embedded
+          />
+        </Container>
+      </Section>
+
+      {/* Final CTA */}
+      <Section>
+        <Container>
+          <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
             <div className="relative">
-              <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
+              <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
                 Voice typing in every app, with a 3-day trial.
               </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
+              <p className="mx-auto mt-5 mb-8 max-w-2xl text-balance text-base leading-relaxed text-primary-foreground/75">
                 3-day free trial. No credit card. Offline-first on Mac and Windows.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/download"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
                   Start 3-day free trial
                 </Link>
                 <Link
                   href="/#pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
                 >
                   Buy lifetime license
                 </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <Footer />
+      <SiteFooter />
     </main>
   );
 }

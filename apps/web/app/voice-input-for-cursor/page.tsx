@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
-import Header from "@/app/components/sections/Header";
-import Footer from "@/app/components/sections/Footer";
+import { SiteHeader } from "@/components/marketing/site-header";
+import { SiteFooter } from "@/components/marketing/site-footer";
+import { Section, Container } from "@/components/marketing/section";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
@@ -79,8 +80,11 @@ const cursorRelatedGuides: DiscoveryLink[] = [
 ];
 
 function safeJsonLd(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, "\u003c");
+  return JSON.stringify(value).replace(/</g, "\\u003c");
 }
+
+const H2_CLASS =
+  "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
 
 export default function VoiceInputForCursorPage() {
   const breadcrumbJsonLd = {
@@ -93,184 +97,174 @@ export default function VoiceInputForCursorPage() {
   };
 
   return (
-    <main id="main-content" className="landing-editorial relative min-h-screen">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
       />
-      <Header />
+      <main id="main-content" className="min-h-dvh bg-background font-sans text-foreground">
+        <SiteHeader />
 
-      {/* Hero */}
-      <section className="ed-section ed-section-hero pb-0 pt-[120px] md:pt-[140px]">
-        <div className="ed-container">
-          <div className="mx-auto max-w-4xl">
-            <div className="mb-5 flex items-center gap-2 text-sm text-editorial-ink-3">
-              <Link href="/" className="transition-colors hover:text-editorial-ink">
-                Voicetypr
-              </Link>
-              <span>/</span>
-              <span>Voice input for Cursor</span>
-            </div>
-
-            <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              developer workflow
-            </p>
-            <h1 className="mt-3 text-[clamp(40px,6vw,70px)] font-semibold leading-[1.02] tracking-tight">
-              Voice input for <em>Cursor</em>, offline by default
-            </h1>
-            <p className="mt-6 max-w-2xl text-[18px] leading-[1.6] text-editorial-ink-2">
-              Private voice input that runs offline by default on Mac and Windows with a global hotkey. Hold a key, speak, and the text lands in the Cursor composer — or any other text field on your screen.
-            </p>
-
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-medium uppercase tracking-[0.1em] text-editorial-ink-3">
-              <span>Offline by default</span>
-              <span>Mac + Windows</span>
-              <span>Pay once</span>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                href="/download"
-                className="inline-flex h-12 items-center rounded-md bg-editorial-ink px-5 text-sm font-medium text-white transition duration-300 ease-out hover:bg-black active:scale-95"
-              >
-                Start 3-day free trial
-              </Link>
-              <Link
-                href="/#pricing"
-                className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink shadow-sm transition duration-300 ease-out hover:bg-editorial-surface-2 active:scale-95"
-              >
-                See pricing
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Developer workflows */}
-      <section className="ed-section">
-        <div className="ed-container max-w-5xl">
-          <div className="mb-8">
-            <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-              Developer workflows
-            </div>
-            <h2 className="mt-2 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-              Write Cursor prompts with your voice
-            </h2>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {useCases.map(([title, body]) => (
-              <article key={title} className="rounded-2xl bg-editorial-surface-2 p-6">
-                <h3 className="text-lg font-semibold tracking-tight text-editorial-ink">{title}</h3>
-                <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">{body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why it works */}
-      <section className="ed-section">
-        <div className="ed-container max-w-4xl">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <div>
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                Why it works
+        {/* Hero */}
+        <Section className="pt-20 md:pt-24">
+          <Container>
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
+                <Link href="/" className="transition-colors hover:text-foreground">
+                  Voicetypr
+                </Link>
+                <span aria-hidden>/</span>
+                <span>Voice input for Cursor</span>
               </div>
-              <h2 className="mt-2 text-[clamp(32px,4vw,50px)] font-semibold leading-[1.08] tracking-tight">
-                Cursor rewards context. Voice makes context cheap.
-              </h2>
-            </div>
-            <ul className="space-y-4">
-              {checklist.map((item) => (
-                <li key={item} className="flex gap-3 text-[16px] leading-[1.65] text-editorial-ink-2">
-                  <Check className="mt-1 h-4 w-4 flex-shrink-0 text-editorial-ink" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
 
-      {/* Offline + works everywhere */}
-      <section className="ed-section">
-        <div className="ed-container max-w-4xl">
-          <div className="grid gap-4 md:grid-cols-2">
-            <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6">
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                Offline by default
+              <h1 className="font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-tight tracking-tight">
+                Voice input for{" "}
+                <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+                  Cursor
+                </em>
+                , offline by default
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                Private voice input that runs offline by default on Mac and Windows with a global hotkey. Hold a key, speak, and the text lands in the Cursor composer — or any other text field on your screen.
+              </p>
+
+              <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
+                <span>Offline by default</span>
+                <span>Mac + Windows</span>
+                <span>Pay once</span>
               </div>
-              <h3 className="mt-3 text-[21px] font-semibold leading-[1.2] text-editorial-ink">
-                Your voice never leaves your machine
-              </h3>
-              <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">
-                Transcription runs locally using Whisper and Parakeet models. No cloud required for core dictation in Cursor.
-              </p>
-            </article>
-            <article className="rounded-2xl border border-editorial-line bg-editorial-surface-2 p-6">
-              <div className="text-[12px] font-medium uppercase tracking-[0.14em] text-editorial-ink-3">
-                Works everywhere
-              </div>
-              <h3 className="mt-3 text-[21px] font-semibold leading-[1.2] text-editorial-ink">
-                One hotkey for Cursor + everything else
-              </h3>
-              <p className="mt-3 text-[15px] leading-[1.6] text-editorial-ink-2">
-                Global shortcut works in Cursor, Claude, ChatGPT, Gmail, Slack, Notion, VS Code — any text field on your screen.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      {/* Related Guides */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <RelatedGuidesSection
-            eyebrow="Related guides"
-            title="More guides for Cursor and developer dictation"
-            description="Compare broader typing guides, Windows-specific options, and developer workflows beyond Cursor paste-ins."
-            links={cursorRelatedGuides}
-            dataTrackPrefix="voice-input-for-cursor-related-guides"
-            embedded
-          />
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="ed-section">
-        <div className="ed-container">
-          <div className="cta-dark-card relative overflow-hidden rounded-[2rem] bg-editorial-ink px-6 py-10 text-center text-white shadow-[0_28px_90px_rgba(24,24,26,0.18)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-[#d4965d]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-            <div className="relative">
-              <h2 className="mx-auto mb-5 max-w-3xl text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
-                Voice input for Cursor that actually works offline
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/72">
-                3-day free trial. No credit card. Works in Cursor, Claude, VS Code, and every text field.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   href="/download"
-                  data-track="voice-input-cursor-final-cta-click"
-                  className="inline-flex h-12 items-center rounded-md bg-white px-5 text-sm font-medium text-editorial-ink transition duration-300 ease-out hover:bg-editorial-surface active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
-                  Start free trial
+                  Start 3-day free trial
                 </Link>
                 <Link
                   href="/#pricing"
-                  className="inline-flex h-12 items-center rounded-md border border-white/18 bg-white/8 px-5 text-sm font-medium text-white transition hover:bg-white/14 active:scale-95"
+                  className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
-                  Buy lifetime license
+                  See pricing
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Section>
 
-      <Footer />
-    </main>
+        {/* Developer workflows */}
+        <Section>
+          <Container>
+            <div className="mb-8 max-w-[760px]">
+              <p className="mb-2 text-sm font-medium text-sage">Developer workflows</p>
+              <h2 className={H2_CLASS}>Write Cursor prompts with your voice</h2>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {useCases.map(([title, body]) => (
+                <article key={title} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="text-lg font-semibold tracking-tight text-foreground">{title}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{body}</p>
+                </article>
+              ))}
+            </div>
+          </Container>
+        </Section>
+
+        {/* Why it works */}
+        <Section>
+          <Container>
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div>
+                <p className="mb-2 text-sm font-medium text-sage">Why it works</p>
+                <h2 className={H2_CLASS}>Cursor rewards context. Voice makes context cheap.</h2>
+              </div>
+              <ul className="space-y-4">
+                {checklist.map((item) => (
+                  <li key={item} className="flex gap-3 text-base leading-relaxed text-muted-foreground">
+                    <Check className="mt-1 h-4 w-4 flex-shrink-0 text-sage" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Offline + works everywhere */}
+        <Section>
+          <Container>
+            <div className="grid gap-4 md:grid-cols-2">
+              <article className="rounded-2xl border border-border bg-muted p-6">
+                <p className="text-sm font-medium text-sage">Offline by default</p>
+                <h3 className="mt-3 text-xl font-semibold leading-snug text-foreground">
+                  Your voice never leaves your machine
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                  Transcription runs locally using Whisper and Parakeet models. No cloud required for core dictation in Cursor.
+                </p>
+              </article>
+              <article className="rounded-2xl border border-border bg-muted p-6">
+                <p className="text-sm font-medium text-sage">Works everywhere</p>
+                <h3 className="mt-3 text-xl font-semibold leading-snug text-foreground">
+                  One hotkey for Cursor + everything else
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                  Global shortcut works in Cursor, Claude, ChatGPT, Gmail, Slack, Notion, VS Code — any text field on your screen.
+                </p>
+              </article>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Related Guides */}
+        <Section>
+          <Container>
+            <RelatedGuidesSection
+              eyebrow="Related guides"
+              title="More guides for Cursor and developer dictation"
+              description="Compare broader typing guides, Windows-specific options, and developer workflows beyond Cursor paste-ins."
+              links={cursorRelatedGuides}
+              dataTrackPrefix="voice-input-for-cursor-related-guides"
+              embedded
+            />
+          </Container>
+        </Section>
+
+        {/* Final CTA */}
+        <Section>
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
+              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
+              <div className="relative">
+                <h2 className="mx-auto mb-5 max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
+                  Voice input for Cursor that actually works offline
+                </h2>
+                <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-primary-foreground/75">
+                  3-day free trial. No credit card. Works in Cursor, Claude, VS Code, and every text field.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/download"
+                    data-track="voice-input-cursor-final-cta-click"
+                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
+                  >
+                    Start free trial
+                  </Link>
+                  <Link
+                    href="/#pricing"
+                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
+                  >
+                    Buy lifetime license
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <SiteFooter />
+      </main>
+    </>
   );
 }
