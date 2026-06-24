@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm text-muted-foreground">
-          Last Updated: May 22, 2026
+          Last Updated: June 24, 2026
         </p>
       </header>
 
@@ -154,11 +154,11 @@ export default function PrivacyPage() {
           <li><strong className="text-foreground">Polar.sh:</strong> Checkout, payment processing, license key generation, activation, refunds, and customer/license records</li>
           <li><strong className="text-foreground">Database and hosting providers:</strong> Infrastructure for license validation, trials, and website/API operation</li>
           <li><strong className="text-foreground">OpenPanel:</strong> Website analytics</li>
-          <li><strong className="text-foreground">Google Tag Manager &amp; Affonso:</strong> Marketing/attribution and metrics; Affonso runs in consent mode and marketing cookies are only enabled with consent</li>
+          <li><strong className="text-foreground">Google Tag Manager, X (Twitter) Ads &amp; Affonso:</strong> Marketing, advertising-conversion, and affiliate-attribution tags loaded through our tag manager; these load only with your consent, and Affonso runs in consent mode</li>
           <li><strong className="text-foreground">Discord:</strong> Delivery of support, bug, and crash reports you submit through the app</li>
           <li><strong className="text-foreground">Optional AI providers:</strong> If you enable AI formatting, text may be sent to the provider you configure, such as OpenAI, Anthropic, Google Gemini, or an OpenAI-compatible endpoint</li>
         </ul>
-        <p className={`${pClass} mt-3`}>These services have their own privacy policies and data practices.</p>
+        <p className={`${pClass} mt-3`}>These services have their own privacy policies and data practices. This list is illustrative rather than exhaustive, and we may add, change, or replace service providers from time to time as needed to operate, secure, and improve Voicetypr.</p>
       </section>
 
       <section className={sectionClass}>
@@ -209,7 +209,7 @@ export default function PrivacyPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>14. California (CCPA/CPRA)</h2>
         <p className={pClass}>
-          We disclose categories such as identifiers (license/account), commercial information (purchase), and device data for operational purposes. We do not sell personal information. To exercise California rights or send a &ldquo;Do Not Sell/Share&rdquo; request, contact <a href="mailto:support@voicetypr.com" className={linkClass}>support@voicetypr.com</a>.
+          We disclose categories such as identifiers (license/account), commercial information (purchase), and device data for operational purposes. We do not sell personal information. To exercise California rights, or to opt out of any sharing of personal information for cross&#8209;context behavioral advertising, contact <a href="mailto:support@voicetypr.com" className={linkClass}>support@voicetypr.com</a>.
         </p>
       </section>
     </>

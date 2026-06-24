@@ -31,7 +31,7 @@ export default function TermsPage() {
           Terms and Conditions
         </h1>
         <p className="text-sm font-medium text-muted-foreground">
-          Last Updated: May 22, 2026
+          Last Updated: June 24, 2026
         </p>
       </header>
 
@@ -54,7 +54,7 @@ export default function TermsPage() {
           <li><strong className="text-foreground">Additional devices/team licenses:</strong> Activation limit stated at purchase</li>
         </ul>
         <p className={`${pClass} mt-3`}>
-          You may deactivate and reactivate your license on different devices as needed within your license limits.
+          You may deactivate and reactivate your license on different devices as needed within your license limits. Your use of the Software is also governed by our <Link href="/eula" className="text-sage underline underline-offset-2">End User License Agreement</Link>.
         </p>
       </section>
 
@@ -74,7 +74,7 @@ export default function TermsPage() {
           <li>Refunds will result in immediate license deactivation</li>
         </ul>
         <p className={`${pClass} mt-3`}>
-          The 7&#8209;day period starts on the purchase date shown on your order confirmation (license issuance), regardless of when you download or activate.
+          The 7&#8209;day period starts on the purchase date shown on your order confirmation (license issuance), regardless of when you download or activate. See our <Link href="/refund" className="text-sage underline underline-offset-2">Refund Policy</Link> for full details.
         </p>
       </section>
 
@@ -111,6 +111,13 @@ export default function TermsPage() {
       </section>
 
       <section className={sectionClass}>
+        <h2 className={h2Class}>6B. Third-Party Services</h2>
+        <p className={pClass}>
+          The Software and our services rely on third&#8209;party providers &mdash; including, without limitation, our payment provider (Polar.sh), hosting and infrastructure providers, analytics and affiliate&#8209;attribution providers (such as Affonso), and any optional AI or transcription providers you choose to enable. Your use of those services may also be subject to their own terms and policies. We do not control, and are not responsible for, the availability, performance, pricing, or practices of third&#8209;party services, and the providers we rely on may change at any time. How we handle personal data is described in our <Link href="/privacy" className="text-sage underline underline-offset-2">Privacy Policy</Link>.
+        </p>
+      </section>
+
+      <section className={sectionClass}>
         <h2 className={h2Class}>7. Support and Updates</h2>
         <p className={pClass}>
           Support is provided via email. Updates we release for the product are included with your purchase, but development cadence and priorities may change, and we do not guarantee delivery of future features or updates. If active development is paused, your license remains valid for the latest released version available at that time, which you may continue to use under these Terms. Maintenance or compatibility updates may be provided at our discretion.
@@ -120,7 +127,7 @@ export default function TermsPage() {
       <section className={sectionClass}>
         <h2 className={h2Class}>7A. Product Direction and Changes</h2>
         <p className={pClass}>
-          We continually evaluate what to build next. Accordingly, Ideaplexa LLC reserves the right, in its sole discretion, to modify, suspend, or discontinue any feature or release schedule at any time. Roadmaps are aspirational and may change. Nothing in these Terms obligates us to deliver specific functionality. These decisions do not affect the validity of your license for versions already released to you.
+          We continually evaluate what to build next. Accordingly, Ideaplexa LLC reserves the right, in its sole discretion and at any time, to modify, suspend, or discontinue any feature, release, the Software, or any supporting service (including license validation, checkout, and optional network features), and to pause, slow, or cease active development &mdash; in each case for any reason or for no reason, and with or without notice. Where practical we will try to provide reasonable notice, but we are not obligated to. Roadmaps are aspirational and may change, and nothing in these Terms obligates us to deliver any specific functionality, feature, or future update. These decisions do not affect the validity of your license for versions already released to you, and a discontinuation does not entitle you to any refund beyond the money&#8209;back guarantee described above.
         </p>
       </section>
 

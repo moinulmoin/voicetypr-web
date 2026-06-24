@@ -27,7 +27,7 @@ export default function CookiesPage() {
           Cookie Policy
         </h1>
         <p className="text-sm text-muted-foreground">
-          Last Updated: October 27, 2025
+          Last Updated: June 24, 2026
         </p>
       </header>
 
@@ -37,7 +37,11 @@ export default function CookiesPage() {
           <span className="rounded-md border border-border bg-card px-1.5 py-0.5 font-mono text-[13px] text-foreground">
             vt_consent
           </span>
-          ) to remember your choice on the banner. If you accept, third&#8209;party marketing tags (via Google Tag Manager) and the Affonso direct attribution script may set their own attribution cookies (Affonso cookie window: 30 days). If you don&rsquo;t accept, they won&rsquo;t load.
+          ) to remember your choice on the banner. If you accept, third&#8209;party marketing and advertising tags &mdash; loaded through Google Tag Manager, including conversion tags such as X (Twitter) Ads, plus the Affonso affiliate&#8209;attribution script &mdash; may set their own cookies (Affonso cookie window: 30 days). If you don&rsquo;t accept, they won&rsquo;t load.
+        </p>
+
+        <p className={pClass}>
+          We also use OpenPanel for privacy&#8209;friendly product analytics. The service providers and tags we use may change from time to time.
         </p>
 
         <p className={pClass}>
