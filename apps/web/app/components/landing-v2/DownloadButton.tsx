@@ -81,7 +81,7 @@ export default function DownloadButton() {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex w-11 items-center justify-center rounded-r-xl border-l border-primary-foreground/20 bg-primary text-primary-foreground transition-opacity hover:opacity-90"
+        className="inline-flex w-9 items-center justify-center rounded-r-xl border-l border-primary-foreground/20 bg-primary text-primary-foreground transition-opacity hover:opacity-90"
       >
         <Bi name="chevron" className={`text-base transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
