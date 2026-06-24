@@ -109,8 +109,8 @@ const solutionSteps = [
   {
     marker: "01",
     title: "Audio stays on your device",
-    body: "Voicetypr uses local Whisper and Parakeet models that run entirely on your Mac or Windows machine. The microphone captures audio, the model transcribes it, and the text appears in your app — all locally.",
-    meta: "No network transmission",
+    body: "In local mode, Voicetypr uses local Whisper and Parakeet models that run entirely on your Mac or Windows machine. The microphone captures audio, the model transcribes it, and the text appears in your app — all on your device.",
+    meta: "No network transmission in local mode",
   },
   {
     marker: "02",
@@ -147,7 +147,7 @@ const risks = [
 const workflows = [
   {
     title: "Therapy and counseling notes",
-    body: "Dictate session notes directly into your EHR or practice management software. The audio never leaves your office computer, reducing the risk of a breach involving client conversation recordings. You maintain full control over where the transcript is stored.",
+    body: "Dictate session notes directly into your EHR or practice management software. In local mode, the audio never leaves your office computer, reducing the risk of a breach involving client conversation recordings. You maintain full control over where the transcript is stored.",
   },
   {
     title: "Clinical documentation and charting",
@@ -283,9 +283,11 @@ export default function HipaaDictationPage() {
           <Container>
             <div className="max-w-3xl rounded-2xl border border-border bg-card p-5 text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Important:</strong> Voicetypr is productivity software, not medical software.
-              It is designed to support your HIPAA compliance posture by minimizing data exposure, but it does not guarantee compliance.
-              You remain responsible for conducting your own risk assessment, implementing appropriate safeguards, and ensuring your
-              use of Voicetypr meets your organization&apos;s specific requirements. This page is for informational purposes and does not
+              Voicetypr is designed to support your HIPAA compliance posture — it is not a certification, and you remain responsible
+              for your own compliance obligations. Optional cloud transcription and AI text formatting are opt-in; when enabled, data
+              leaves your device (AI formatting sends transcribed text only, using the provider and key you configure). You remain
+              responsible for conducting your own risk assessment, implementing appropriate safeguards, and ensuring your use of
+              Voicetypr meets your organization&apos;s specific requirements. This page is for informational purposes and does not
               constitute legal advice.
             </div>
           </Container>

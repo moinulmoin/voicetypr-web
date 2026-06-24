@@ -43,11 +43,11 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "Is Voicetypr GDPR compliant?",
-    a: "Voicetypr is designed to support your GDPR compliance posture. By processing audio locally on your device, we minimize the personal data that leaves your control. We provide clear data processing information, honor data subject rights, and use EU-hosted infrastructure for the limited data we do process. You remain responsible for ensuring your use of Voicetypr meets your specific compliance requirements.",
+    a: "Voicetypr is designed to support your GDPR compliance — it is not a certification or legal advice, and you remain responsible for your own compliance obligations. In local mode, audio is processed on your device, minimizing the personal data that leaves your control. We provide clear data processing information, honor data subject rights, and use EU-hosted infrastructure for the limited account data we do process. Optional cloud transcription and AI formatting are opt-in, so you decide whether any content leaves your device.",
   },
   {
     q: "Where is my data stored?",
-    a: "Your audio recordings and transcripts are stored on your local device — not on our servers. The limited data we do process (license information, device identifiers for validation, and optional support diagnostics) is handled on EU-hosted infrastructure. We do not transfer audio or transcript content to third countries.",
+    a: "In local mode, your audio recordings and transcripts are stored on your device — not on our servers — and we transfer no audio or transcript content to third countries. The limited account data we do process (license information, device identifiers for validation, and optional support diagnostics) is handled on EU-hosted infrastructure. Optional cloud transcription and optional AI formatting are opt-in: only when you enable them does content leave your device, and you should review your chosen provider's terms.",
   },
   {
     q: "What is the legal basis for processing my data?",
@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     q: "Does Voicetypr use third-country data transfers?",
-    a: "The core transcription function does not involve any data transfer — it happens entirely on your device. For the limited data we do process (license validation, support, etc.), we rely on appropriate safeguards where international transfers are required. We use EU-hosted infrastructure as the primary processing location.",
+    a: "In local mode, transcription involves no data transfer — it happens entirely on your device. For the limited account data we do process (license validation, support, etc.), we rely on appropriate safeguards where international transfers are required, and we use EU-hosted infrastructure as the primary processing location. Optional cloud transcription and optional AI formatting are opt-in features that route content to the provider you configure, so any transfers they create are under your control and your provider's terms.",
   },
   {
     q: "What happens if I use optional AI formatting?",
@@ -140,8 +140,8 @@ export default function GdprCompliantPage() {
               </h1>
 
               <p className="mx-auto mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
-                Voicetypr is designed for EU data protection compliance.
-                Local transcription minimizes data transfer. German-hosted infrastructure.
+                Voicetypr is designed to support EU data protection.
+                In local mode, transcription runs on your device and minimizes data transfer. German-hosted infrastructure.
                 No subscription. macOS and Windows.
               </p>
 
@@ -226,9 +226,9 @@ export default function GdprCompliantPage() {
                   <div className="font-sans text-4xl font-bold leading-none text-foreground">01</div>
                   <h3 className="text-lg font-semibold leading-snug text-foreground">Data stays under your control</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">
-                    Audio and transcripts are produced and stored on your local device. You decide how long to keep them,
+                    In local mode, audio and transcripts are produced and stored on your device. You decide how long to keep them,
                     where to back them up, and who has access. This aligns with GDPR principles of data minimization and
-                    storage limitation.
+                    storage limitation. Optional cloud and AI features stay opt-in.
                   </p>
                   <div className="mt-auto pt-3 text-xs font-medium text-sage">Data minimization</div>
                 </article>
@@ -271,8 +271,8 @@ export default function GdprCompliantPage() {
                     <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">German professional services</h3>
                     <p className="text-[15px] leading-relaxed text-muted-foreground">
                       Lawyers, consultants, and accountants in Germany handle sensitive client data subject to strict
-                      professional secrecy obligations (Berufsgeheimnis). Local transcription ensures this data never leaves
-                      your controlled environment, supporting both GDPR and professional confidentiality requirements.
+                      professional secrecy obligations (Berufsgeheimnis). In local mode, transcription runs on your device, so this
+                      data stays in your controlled environment, supporting both GDPR and professional confidentiality requirements.
                     </p>
                   </div>
                 </li>
@@ -282,7 +282,7 @@ export default function GdprCompliantPage() {
                     <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">EU corporate documentation</h3>
                     <p className="text-[15px] leading-relaxed text-muted-foreground">
                       Enterprise teams across the EU need to document meetings, decisions, and processes without creating
-                      additional GDPR obligations. Local transcription keeps this data within the organization&apos;s perimeter,
+                      additional GDPR obligations. In local mode, transcription keeps this data within the organization&apos;s perimeter,
                       avoiding cloud provider data processing agreements and transfer impact assessments.
                     </p>
                   </div>
@@ -293,7 +293,7 @@ export default function GdprCompliantPage() {
                     <h3 className="mb-1.5 text-xl font-semibold leading-snug text-foreground">Public sector and education</h3>
                     <p className="text-[15px] leading-relaxed text-muted-foreground">
                       Schools, universities, and public administration bodies in the EU must handle personal data carefully.
-                      Local transcription supports compliance with both GDPR and sector-specific regulations by minimizing
+                      In local mode, transcription supports compliance with both GDPR and sector-specific regulations by minimizing
                       external data exposure and keeping processing within institutional boundaries.
                     </p>
                   </div>
@@ -348,6 +348,11 @@ export default function GdprCompliantPage() {
                     Email support
                   </a>
                 </div>
+
+                <p className="mt-6 rounded-2xl border border-border bg-muted p-5 text-xs leading-relaxed text-muted-foreground">
+                  Voicetypr is designed to support your GDPR compliance — it is not a certification or
+                  legal advice, and you remain responsible for your own compliance obligations.
+                </p>
               </div>
             </div>
           </Container>

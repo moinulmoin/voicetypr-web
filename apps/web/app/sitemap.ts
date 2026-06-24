@@ -3,6 +3,7 @@ import { getAllArticles } from "@/lib/help";
 import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
 import { getAllFreeTools } from "@/lib/free-tools";
+import { getAllGeoSlugs } from "@/lib/geo-pages";
 
 const siteUrl = "https://voicetypr.com";
 
@@ -69,6 +70,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastModified,
       changeFrequency: "weekly",
       priority: 0.78,
+    },
+    {
+      url: `${baseUrl}/voice-for-ai-agents`,
+      lastModified: lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/network-transcription`,
+      lastModified: lastModified,
+      changeFrequency: "weekly",
+      priority: 0.76,
     },
     {
       url: `${baseUrl}/voice-typing`,
@@ -194,6 +207,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65,
     }));
 
+  const geoRoutes: MetadataRoute.Sitemap = getAllGeoSlugs().map((slug) => ({
+    url: `${baseUrl}/voice-typing/${slug}`,
+    lastModified: lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...aiReadableRoutes,
@@ -202,5 +222,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...helpRoutes,
     ...bestRoutes,
     ...alternativeRoutes,
+    ...geoRoutes,
   ];
 }

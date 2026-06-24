@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     q: "What data does Voicetypr send when I am online?",
-    a: "When connected, Voicetypr sends only license validation requests, software update checks, and optional support diagnostics you choose to submit. None of these contain audio recordings or transcripts. The license check verifies your key and device hash; the update check downloads version information; support reports contain technical details only.",
+    a: "When connected, Voicetypr sends only license validation requests, software update checks, and optional support diagnostics you choose to submit. None of these contain audio recordings or transcripts. The license check verifies your key and device hash; the update check downloads version information; support reports contain technical details only. Optional cloud transcription and optional AI text formatting are opt-in features that require a network — they are simply unavailable in an air-gapped setup, and they are never used unless you explicitly turn them on.",
   },
   {
     q: "How long can I work offline before needing to reconnect?",
@@ -59,11 +59,11 @@ const faqs = [
   },
   {
     q: "Does the app phone home during transcription?",
-    a: "No. The transcription system is completely isolated from network communication. You can verify this with network monitoring tools. The only network activity occurs during license validation, updates, and optional support reports — all of which are separate from the dictation process.",
+    a: "No. During local transcription, the dictation engine is completely isolated from network communication. You can verify this with network monitoring tools. The only network activity occurs during license validation, updates, and optional support reports — all of which are separate from the dictation process. Optional cloud transcription and optional AI text formatting are the exceptions: they require a network and only run when you explicitly enable them, so they play no part in an air-gapped workflow.",
   },
   {
     q: "Can I verify that no data leaves my device during dictation?",
-    a: "Yes. Run Voicetypr on a network monitoring tool, firewall, or disconnected machine. You will observe that no network traffic is generated during dictation. The application does not transmit audio, transcripts, or usage data during normal operation.",
+    a: "Yes. With local transcription, run Voicetypr behind a network monitoring tool, firewall, or on a disconnected machine. You will observe that no network traffic is generated during dictation — your audio and transcripts stay on your device. The application does not transmit audio, transcripts, or usage data during local, offline operation. The only ways data leaves your device are the optional cloud transcription and optional AI text formatting features, which are off by default, require a network, and are therefore not used in an air-gapped setup.",
   },
 ] as const;
 
@@ -138,7 +138,7 @@ const solutions = [
   {
     marker: "03",
     title: "No telemetry during dictation",
-    body: "The transcription system does not send analytics, usage data, or diagnostics while you dictate. Any network communication is explicitly for license validation or updates, and you can verify this with network monitoring tools.",
+    body: "With local transcription, Voicetypr does not send analytics, usage data, or diagnostics while you dictate. Any network communication is explicitly for license validation or updates, and you can verify this with network monitoring tools. Optional cloud and AI features require a network and stay off in an air-gapped setup.",
     meta: "Verifiable silence",
   },
 ];
@@ -294,6 +294,17 @@ export default function AirGappedPage() {
                   </li>
                 ))}
               </ol>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Important Disclaimer */}
+        <Section className="pt-0">
+          <Container>
+            <div className="max-w-3xl rounded-2xl border border-border bg-card p-5 text-sm leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">Important:</strong> Voicetypr is designed to support
+              air-gapped and high-security workflows — you remain responsible for validating it within your
+              own security and compliance requirements.
             </div>
           </Container>
         </Section>
