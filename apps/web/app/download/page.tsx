@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { headers, cookies } from "next/headers";
+import { headers } from "next/headers";
 import DownloadPageClient from "./DownloadPageClient";
 import { getLatestReleaseAssets } from "@/app/lib/github";
 
@@ -39,31 +39,18 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default async function DownloadPage() {
+export default async function DownloadPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ platform?: string }>;
+}) {
   const assets = await getLatestReleaseAssets();
 
-  const cookieStore = await cookies();
-  const affonsoReferral = cookieStore.get('affonso_referral')?.value || '';
-
-  let referrer = '';
-  try {
-    const rawReferer = (await headers()).get('referer');
-    if (rawReferer) referrer = new URL(rawReferer).origin;
-  } catch { /* invalid URL, keep empty */ }
-
+  const param = (await searchParams)?.platform;
+  const valid = new Set(['macos-silicon', 'macos-intel', 'windows']);
   const ua = (await headers()).get('user-agent')?.toLowerCase() || '';
-  const defaultSelected = ua.includes('windows')
-    ? 'windows'
-    : ua.includes('mac')
-      ? 'macos-silicon'
-      : undefined;
+  const detected = ua.includes('windows') ? 'windows' : 'macos-silicon';
+  const selected = param && valid.has(param) ? param : detected;
 
-  return (
-    <DownloadPageClient
-      assets={assets}
-      defaultSelected={defaultSelected}
-      affonsoReferral={affonsoReferral}
-      referrer={referrer}
-    />
-  );
+  return <DownloadPageClient assets={assets} selected={selected} />;
 }
