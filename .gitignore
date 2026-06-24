@@ -49,3 +49,8 @@ agent-docs/
 .agents/
 .claude/skills/
 skills-lock.json
+
+# Agent tooling + build artifacts (never check in)
+.codex/
+.impeccable/
+generated/
