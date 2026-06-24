@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { getConsent } from "./cookie-consent";
 
 const GTM_ID = "GTM-WT5KZRJM";
-const AFFONSO_SRC = "https://cdn.affonso.io/js/pixel.min.js";
+const AFFONSO_SRC = "/r/pixel.js";
 const AFFONSO_PROGRAM_ID = "cmfl3j0cw001ogn7r874fqlxq";
 
 type IdleDeadline = {
@@ -66,7 +66,8 @@ export function DeferredPixels() {
       affonsoScript.defer = true;
       affonsoScript.src = AFFONSO_SRC;
       affonsoScript.dataset.affonso = AFFONSO_PROGRAM_ID;
-      affonsoScript.dataset.cookie_duration = "14";
+      affonsoScript.dataset.apiBase = "/r";
+      affonsoScript.dataset.cookie_duration = "30";
       affonsoScript.dataset.requiresConsent = "true";
       affonsoScript.dataset.voicetyprAffonso = "true";
       affonsoScript.addEventListener(

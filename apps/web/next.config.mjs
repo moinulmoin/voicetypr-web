@@ -76,6 +76,15 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    // First-party Affonso delivery: proxy the affiliate pixel + tracking through
+    // our own domain so ad blockers / privacy tools don't drop referrals.
+    return [
+      { source: "/r/pixel.js", destination: "https://cdn.affonso.io/js/pixel.min.js" },
+      { source: "/r/psl.min.js", destination: "https://cdn.affonso.io/js/psl.min.js" },
+      { source: "/r/track", destination: "https://api.affonso.io/v1/track" },
+    ];
+  },
 }
 
 export default nextConfig
