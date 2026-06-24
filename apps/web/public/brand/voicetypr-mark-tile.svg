@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Voicetypr brandmark app icon</title>
+  <desc id="desc">A rounded black app tile with a white V, sage voice waveform, and cursor-like center signal.</desc>
+  <defs>
+    <linearGradient id="tile" x1="190" y1="92" x2="848" y2="940" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#252529"/>
+      <stop offset="0.58" stop-color="#141416"/>
+      <stop offset="1" stop-color="#09090a"/>
+    </linearGradient>
+    <linearGradient id="sage" x1="402" y1="236" x2="632" y2="708" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a6cfab"/>
+      <stop offset="1" stop-color="#3f7d5b"/>
+    </linearGradient>
+    <filter id="shadow" x="-18%" y="-16%" width="136%" height="142%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="34" flood-color="#101012" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect x="112" y="96" width="800" height="800" rx="180" fill="url(#tile)" filter="url(#shadow)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M286 394 C332 576 401 700 480 786" stroke="#fbfbfa" stroke-width="72"/>
+    <path d="M738 394 C692 576 623 700 544 786" stroke="#fbfbfa" stroke-width="72"/>
+    <path d="M512 326 L512 676" stroke="url(#sage)" stroke-width="46"/>
+    <path d="M404 452 L404 514" stroke="url(#sage)" stroke-width="30"/>
+    <path d="M452 414 L452 552" stroke="url(#sage)" stroke-width="30"/>
+    <path d="M572 414 L572 552" stroke="url(#sage)" stroke-width="30"/>
+    <path d="M620 452 L620 514" stroke="url(#sage)" stroke-width="30"/>
+  </g>
+  <circle cx="512" cy="248" r="36" fill="url(#sage)"/>
+</svg>

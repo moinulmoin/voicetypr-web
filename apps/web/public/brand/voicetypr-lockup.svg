@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="300" viewBox="0 0 1180 300" role="img" aria-labelledby="title desc">
+  <title id="title">Voicetypr horizontal logo lockup</title>
+  <desc id="desc">A Voicetypr app icon brandmark paired with the Voicetypr wordmark.</desc>
+  <defs>
+    <linearGradient id="tile" x1="36" y1="20" x2="230" y2="268" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#252529"/>
+      <stop offset="0.58" stop-color="#141416"/>
+      <stop offset="1" stop-color="#09090a"/>
+    </linearGradient>
+    <linearGradient id="sage" x1="112" y1="70" x2="180" y2="206" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a6cfab"/>
+      <stop offset="1" stop-color="#3f7d5b"/>
+    </linearGradient>
+    <filter id="shadow" x="-18%" y="-16%" width="136%" height="142%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="13" flood-color="#101012" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect x="30" y="30" width="240" height="240" rx="54" fill="url(#tile)" filter="url(#shadow)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M82 119 C96 174 116 210 140 236" stroke="#fbfbfa" stroke-width="22"/>
+    <path d="M218 119 C204 174 184 210 160 236" stroke="#fbfbfa" stroke-width="22"/>
+    <path d="M150 98 L150 203" stroke="url(#sage)" stroke-width="14"/>
+    <path d="M118 136 L118 154" stroke="url(#sage)" stroke-width="9"/>
+    <path d="M132 124 L132 166" stroke="url(#sage)" stroke-width="9"/>
+    <path d="M168 124 L168 166" stroke="url(#sage)" stroke-width="9"/>
+    <path d="M182 136 L182 154" stroke="url(#sage)" stroke-width="9"/>
+  </g>
+  <circle cx="150" cy="76" r="11" fill="url(#sage)"/>
+  <text x="324" y="188" fill="#18181a" font-family="Geist, Inter, Arial, sans-serif" font-size="112" font-weight="600" letter-spacing="-3.4">Voicetypr</text>
+</svg>
