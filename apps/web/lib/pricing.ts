@@ -18,7 +18,7 @@ export interface PlanMeta {
 
 export const PLANS: Record<PlanKey, PlanMeta> = {
   pro:  { key: 'pro',  label: 'Pro',  maxDevices: 1,  price: 39,  keyPrefix: 'VTP' },
-  plus: { key: 'plus', label: 'Plus', maxDevices: 2,  price: 59,  keyPrefix: 'VTS' },
+  plus: { key: 'plus', label: 'Plus', maxDevices: 2,  price: 69,  keyPrefix: 'VTS' },
   max:  { key: 'max',  label: 'Max',  maxDevices: 4,  price: 99,  keyPrefix: 'VTM' },
   team: { key: 'team', label: 'Team', maxDevices: 10, price: 199, keyPrefix: 'VTT' },
 };

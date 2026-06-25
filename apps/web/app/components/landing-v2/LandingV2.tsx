@@ -54,6 +54,10 @@ const PRICE_FEATURES = [
   'On-device dictation, offline by default',
   'Works in every app with a text cursor',
   'Global hotkey, push-to-talk, toggle modes',
+  'AI formatting that cleans up your speech',
+  'Cloud models too — Groq, Deepgram, OpenAI',
+  'Network transcription across your devices',
+  'CLI & Agent API for scripts and AI agents',
   'Audio and video file transcription',
   'Searchable local transcript history',
   'macOS 13+ and Windows 10+',
@@ -443,9 +447,9 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
     const flStage = root.querySelector('#vtFlStage');
     if (flWord && flName && flStage && !reduceMotion) {
       const GREETINGS: Array<[string, string]> = [
-        ['Hello', 'English'], ['Hola', 'Español'], ['Bonjour', 'Français'],
-        ['Olá', 'Português'], ['こんにちは', '日本語'], ['안녕하세요', '한국어'],
-        ['नमस्ते', 'हिन्दी'], ['Hallo', 'Deutsch'], ['Ciao', 'Italiano'],
+        ['Hello', 'English'], ['你好', '中文'], ['Hola', 'Español'],
+        ['Bonjour', 'Français'], ['Ciao', 'Italiano'], ['こんにちは', '日本語'],
+        ['Hallo', 'Deutsch'], ['Olá', 'Português'],
       ];
       let gi = 0;
       intervals.push(
@@ -696,7 +700,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                 <div className="fc-text">
                   <span className="feat-icon bi"><Bi name="terminal" /></span>
                   <h3>Agent CLI &amp; API</h3>
-                  <p>Drive Voicetypr from the command line or your scripts. Audio in, text or JSON out.</p>
+                  <p>Drive Voicetypr from your CLI or scripts — audio in, text or JSON out. Give your AI agents (OpenClaw, Hermes, nanoclaw) ears.</p>
                 </div>
                 <div className="cli-term" aria-hidden="true">
                   <div className="cli-row cli-dim">voicetypr · agent</div>
@@ -844,10 +848,6 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                 </article>
               ))}
             </div>
-            <p className="tweets-foot">
-              More notes from happy users on{' '}
-              <a href="https://github.com/moinulmoin/voicetypr" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
           </div>
         </section>
 
@@ -908,8 +908,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
             </div>
 
             <p className="pricing-team">
-              Need <b>5+ seats</b>? Volume pricing, central billing, and an MSA for your team.{' '}
-              <a href="mailto:support@voicetypr.com?subject=Team%20licensing">Talk to sales →</a>
+              Need <b>5+ seats</b>?{' '}
+              <a href="mailto:support@voicetypr.com?subject=Team%20licensing">Contact us →</a>
             </p>
           </div>
         </section>
@@ -969,7 +969,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         </section>
 
         {/* ============ FINAL CTA ============ */}
-        <section className="pt-[128px] pb-20">
+        <section className="pt-[128px] pb-32">
           <div className="vt-container">
             <div className="cta-card rv">
               <h3><span className="roman">Stop typing.</span><br />Start <em>talking</em>.</h3>
