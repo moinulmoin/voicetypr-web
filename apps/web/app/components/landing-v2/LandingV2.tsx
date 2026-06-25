@@ -969,7 +969,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         </section>
 
         {/* ============ FINAL CTA ============ */}
-        <section className="pt-[128px] pb-32">
+        <section className="pt-[128px]">
           <div className="vt-container">
             <div className="cta-card rv">
               <h3><span className="roman">Stop typing.</span><br />Start <em>talking</em>.</h3>
