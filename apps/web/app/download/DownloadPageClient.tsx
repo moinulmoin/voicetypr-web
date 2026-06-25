@@ -219,26 +219,22 @@ export default function DownloadPageClient({
     }
   };
 
-  // Auto-start the download for a real installer asset (served as an attachment,
-  // so the browser downloads it without navigating away from this page).
+  // Auto-start the download. directUrl is a cross-origin GitHub release asset
+  // served with `Content-Disposition: attachment`, so navigating straight to it
+  // starts the download without unloading this page. A synthetic <a download>
+  // click is unreliable: the `download` attribute is ignored cross-origin, and
+  // the resulting navigation is silently dropped when fired from a timeout right
+  // after an SPA route transition (it only "works" after a hard refresh).
   useEffect(() => {
     if (fired.current || !directUrl) return;
-    fired.current = true;
     const t = setTimeout(() => {
+      fired.current = true;
       track();
-      // Programmatic <a> click is the reliable cross-browser download trigger —
-      // it downloads the attachment without navigating this page away.
-      const a = document.createElement("a");
-      a.href = directUrl;
-      a.download = "";
-      a.rel = "noopener";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      window.location.assign(directUrl);
     }, 800);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [directUrl]);
 
   const steps = isWindows ? WIN_STEPS : MAC_STEPS;
   const osName = isWindows ? "Windows" : "macOS";
