@@ -15,16 +15,16 @@ import { Section, Container } from "@/components/marketing/section";
 const AFFONSO_URL = "https://voicetypr.affonso.io";
 
 export const metadata: Metadata = {
-  title: "Voicetypr Affiliate Program — 20% standard, 30% for selected partners",
+  title: "Voicetypr Affiliate Program — 30% standard, 40% for selected partners",
   description:
-    "Promote Voicetypr, the offline AI voice-to-text app for Mac and Windows. Earn 20% per sale by default, or 30% as a selected partner.",
+    "Promote Voicetypr, the offline AI voice-to-text app for Mac and Windows. Earn 30% per sale by default, or 40% as a selected partner.",
   alternates: {
     canonical: "https://voicetypr.com/affiliate",
   },
   openGraph: {
-    title: "Become a Voicetypr Affiliate — 20% standard, 30% for selected partners",
+    title: "Become a Voicetypr Affiliate — 30% standard, 40% for selected partners",
     description:
-      "Promote an offline AI voice-to-text app your audience actually wants. 20% commission by default, 30% for selected partners.",
+      "Promote an offline AI voice-to-text app your audience actually wants. 30% commission by default, 40% for selected partners.",
     url: "https://voicetypr.com/affiliate",
     type: "website",
   },
@@ -34,26 +34,26 @@ export const metadata: Metadata = {
 const tiers = [
   {
     name: "Standard",
-    commission: "20%",
-    per100: "$7.80+ per sale",
+    commission: "30%",
+    per100: "$11.70+ per sale",
     who: "Any approved affiliate",
     how: "Sign up, get your link, start promoting.",
     highlight: true,
   },
   {
     name: "Creator",
-    commission: "30%",
-    per100: "$11.70+ per sale",
+    commission: "40%",
+    per100: "$15.60+ per sale",
     who: "Selected creators and partners with an engaged audience",
-    how: "Ship one demo video or long-form post; we move you to the 30% tier.",
+    how: "Ship one demo video or long-form post; we move you to the 40% tier.",
     highlight: false,
   },
 ];
 
 const exampleEarnings = [
-  { tier: "1 device ($39)", commission20: "$7.80", commission30: "$11.70" },
-  { tier: "2 devices ($59)", commission20: "$11.80", commission30: "$17.70" },
-  { tier: "4 devices ($99)", commission20: "$19.80", commission30: "$29.70" },
+  { tier: "1 device ($39)", commission30: "$11.70", commission40: "$15.60" },
+  { tier: "2 devices ($59)", commission30: "$17.70", commission40: "$23.60" },
+  { tier: "4 devices ($99)", commission30: "$29.70", commission40: "$39.60" },
 ];
 
 
@@ -87,12 +87,12 @@ const faqs = [
     a: "Yes, with constraints. No bidding on 'Voicetypr' branded keywords, no misleading creatives (e.g. fake '90% off' claims), no impersonation. Everything else — content, SEO, newsletters, organic social, review sites — is fair game.",
   },
   {
-    q: "How do I get upgraded to 30%?",
-    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing Voicetypr in actual use. Reply to your approval email with the link and we move you to the 30% tier.",
+    q: "How do I get upgraded to 40%?",
+    a: "Ship one real piece of content (demo video, newsletter feature, long-form post) showing Voicetypr in actual use. Reply to your approval email with the link and we move you to the 40% tier.",
   },
   {
-    q: "Are there higher tiers beyond 30%?",
-    a: "Not currently. 20% is the standard rate for all approved affiliates, and 30% is available for selected creators and partners who ship real content.",
+    q: "Are there higher tiers beyond 40%?",
+    a: "Not currently. 30% is the standard rate for all approved affiliates, and 40% is available for selected creators and partners who ship real content.",
   },
   {
     q: "Can I offer my audience a discount?",
@@ -178,7 +178,7 @@ export default function AffiliatePage() {
               <div className="mb-12 text-center">
                 <h2 className={H2_CLASS}>Commission tiers</h2>
                 <p className="mt-3.5 text-base leading-relaxed text-muted-foreground">
-                  Start at 20%. Ship content as a selected creator, earn 30%.
+                  Start at 30%. Ship content as a selected creator, earn 40%.
                 </p>
               </div>
 
@@ -229,10 +229,10 @@ export default function AffiliatePage() {
                             Plan sold
                           </th>
                           <th scope="col" className="px-4 py-3 text-right text-sm font-semibold text-foreground">
-                            At 20%
+                            At 30%
                           </th>
                           <th scope="col" className="px-4 py-3 text-right text-sm font-semibold text-foreground">
-                            At 30%
+                            At 40%
                           </th>
                         </tr>
                       </thead>
@@ -250,10 +250,10 @@ export default function AffiliatePage() {
                               {row.tier}
                             </td>
                             <td className="px-4 py-4 text-right align-top text-sm tabular-nums text-muted-foreground">
-                              {row.commission20}
+                              {row.commission30}
                             </td>
                             <td className="px-4 py-4 text-right align-top text-sm font-medium tabular-nums text-foreground">
-                              {row.commission30}
+                              {row.commission40}
                             </td>
                           </tr>
                         ))}
@@ -336,7 +336,7 @@ export default function AffiliatePage() {
                   Ready to promote?
                 </h2>
                 <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
-                  Sign up in 60 seconds. Get your link and start earning 20% on
+                  Sign up in 60 seconds. Get your link and start earning 30% on
                   every sale.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
