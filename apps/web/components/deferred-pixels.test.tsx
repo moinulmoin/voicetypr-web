@@ -78,7 +78,7 @@ describe('DeferredPixels', () => {
     expect(
       document.querySelector<HTMLScriptElement>('script[data-voicetypr-affonso="true"]')
         ?.dataset.cookie_duration
-    ).toBe('14');
+    ).toBe('30');
     expect(window.dataLayer[1]).toEqual([
       'consent',
       'update',

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { Section, Container } from "@/components/marketing/section";
+import { FinalCTA } from "@/components/marketing/FinalCTA";
+import { FaqSection } from "@/components/marketing/FaqSection";
 import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
@@ -310,54 +312,19 @@ export default function AirGappedPage() {
         </Section>
 
         {/* FAQ */}
-        <Section>
-          <Container>
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
-              <div>
-                <h2 className={H2_CLASS}>
-                  The honest{" "}
-                  <em className="italic font-normal" style={SERIF_EM_STYLE}>
-                    air-gapped
-                  </em>{" "}
-                  FAQ
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  Pulled from real conversations with security officers, system administrators, and field operators.
-                </p>
-              </div>
-
-              <div>
-                {faqs.map((faq, i) => (
-                  <details
-                    key={faq.q}
-                    open={i === 0}
-                    className="group cursor-pointer border-t border-border py-5 last:border-b last:border-border"
-                  >
-                    <summary className="flex list-none items-start justify-between gap-6 text-lg font-semibold leading-snug text-foreground [&::-webkit-details-marker]:hidden">
-                      <span>{faq.q}</span>
-                      <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-muted text-base font-light text-muted-foreground transition-transform duration-300 group-open:rotate-45">
-                        +
-                      </span>
-                    </summary>
-                    <div className="max-w-[640px] pt-3.5 text-[15px] leading-relaxed text-muted-foreground">
-                      {faq.a}
-                    </div>
-                  </details>
-                ))}
-
-                <div className="mt-8 text-sm text-muted-foreground">
-                  Not answered here?{" "}
-                  <a
-                    href="mailto:support@voicetypr.com"
-                    className="text-foreground underline-offset-4 hover:underline"
-                  >
-                    Email support
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </Section>
+        <FaqSection
+          faqs={faqs}
+          title={
+            <>
+              The honest{" "}
+              <em className="italic font-normal" style={SERIF_EM_STYLE}>
+                air-gapped
+              </em>{" "}
+              FAQ
+            </>
+          }
+          intro="Pulled from real conversations with security officers, system administrators, and field operators."
+        />
 
         {/* Related Guides */}
         <Section>
@@ -374,39 +341,17 @@ export default function AirGappedPage() {
         </Section>
 
         {/* Final CTA */}
-        <Section>
-          <Container>
-            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
-              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
-              <div className="relative">
-                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
-                  Dictate{" "}
-                  <em className="italic font-normal" style={SERIF_EM_STYLE}>
-                    offline
-                  </em>
-                </h2>
-                <p className="mx-auto mt-5 mb-8 max-w-xl text-balance text-base leading-relaxed text-primary-foreground/75">
-                  3-day free trial. No credit card. Works entirely offline from day one.
-                  Pay once, use forever.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link
-                    href="/download"
-                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
-                  >
-                    Download Voicetypr
-                  </Link>
-                  <Link
-                    href="/pricing"
-                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
-                  >
-                    Buy lifetime license
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </Section>
+        <FinalCTA
+          headline={
+            <>
+              Dictate{" "}
+              <em className="italic font-normal" style={SERIF_EM_STYLE}>
+                offline
+              </em>
+            </>
+          }
+          subtitle="3-day free trial. No credit card. Works entirely offline from day one. Pay once, use forever."
+        />
 
         <SiteFooter />
       </main>

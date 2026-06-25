@@ -52,7 +52,7 @@ const tiers = [
 
 const exampleEarnings = [
   { tier: "1 device ($39)", commission30: "$11.70", commission40: "$15.60" },
-  { tier: "2 devices ($59)", commission30: "$17.70", commission40: "$23.60" },
+  { tier: "2 devices ($69)", commission30: "$20.70", commission40: "$27.60" },
   { tier: "4 devices ($99)", commission30: "$29.70", commission40: "$39.60" },
 ];
 

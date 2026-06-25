@@ -5,7 +5,7 @@ Voicetypr uses pay-once lifetime pricing instead of a subscription. A 3-day free
 ## Plans
 
 - Pro: $39 once. Includes 1 device activation, lifetime license, and free updates.
-- Plus: $59 once. Includes 2 device activations, lifetime license, and free updates.
+- Plus: $69 once. Includes 2 device activations, lifetime license, and free updates.
 - Max: $99 once. Includes 4 device activations, lifetime license, and free updates.
 
 Need more devices or buying for your team? Contact support@voicetypr.com and we’ll help you get set up.

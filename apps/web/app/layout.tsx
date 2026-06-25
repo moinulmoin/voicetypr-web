@@ -156,7 +156,7 @@ export default function RootLayout({
                   {
                     "@type": "Offer",
                     name: "Plus Plan",
-                    price: "59.00",
+                    price: "69.00",
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                     description:

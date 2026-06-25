@@ -8,7 +8,7 @@ import {
   getPlanByLicensePrefix,
   getPlanByProductId,
   resolvePlan,
-} from './pricing';
+} from '@voicetypr/api-core/pricing';
 
 const originalEnv = { ...process.env };
 
@@ -18,7 +18,7 @@ afterEach(() => {
 
 describe('pricing plan metadata', () => {
   it('keeps the pricing ladder and device limits in one place', () => {
-    expect(BASE_PRICES).toEqual({ pro: 39, plus: 59, max: 99, team: 199 });
+    expect(BASE_PRICES).toEqual({ pro: 39, plus: 69, max: 99, team: 199 });
     expect(PUBLIC_PLAN_KEYS).toEqual(['pro', 'plus', 'max']);
     expect(getMaxDevices('pro')).toBe(1);
     expect(getMaxDevices('plus')).toBe(2);

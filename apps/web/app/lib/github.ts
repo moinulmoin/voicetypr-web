@@ -95,9 +95,3 @@ export async function getLatestReleaseAssets(): Promise<ReleaseAssets> {
     return { silicon: FALLBACK_URL };
   }
 }
-
-// Keep the old function for backward compatibility
-export async function getLatestReleaseDMG(): Promise<string> {
-  const assets = await getLatestReleaseAssets();
-  return assets.silicon || assets.intel || process.env.NEXT_PUBLIC_DOWNLOAD_URL!;
-}

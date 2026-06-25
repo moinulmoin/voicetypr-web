@@ -274,7 +274,3 @@ export const CHANGELOG: ChangelogEntry[] = [
     ],
   },
 ];
-
-export function getLatestVersion(): ChangelogEntry | null {
-  return CHANGELOG[0] ?? null;
-}

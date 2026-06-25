@@ -9,7 +9,8 @@ import {
   formatPrice,
   PUBLIC_PLAN_KEYS,
   type PublicPlanKey,
-} from '@/lib/pricing';
+} from '@voicetypr/api-core/pricing';
+import { productIds, redirectToCheckout } from '@/lib/checkout';
 import { Bi, injectBrandIcons } from './brand-icons';
 import { Brandmark } from '@/components/marketing/brandmark';
 import DownloadButton from './DownloadButton';
@@ -65,12 +66,6 @@ const PRICE_FEATURES = [
 ];
 
 const DEVICE_LABEL: Record<PublicPlanKey, string> = { pro: '1 device', plus: '2 devices', max: '4 devices' };
-const productIds: Record<PublicPlanKey, string | undefined> = {
-  pro: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID,
-  plus: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
-  max: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID,
-};
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '') ?? '';
 
 const NAV = [
   { href: '/#features', label: 'Features' },
@@ -140,18 +135,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
       window.location.assign('/download');
       return;
     }
-    const metadata: Record<string, string> = {};
-    if (typeof window !== 'undefined' && window.openpanel?.getDeviceId) {
-      const deviceId = window.openpanel.getDeviceId();
-      if (deviceId) metadata.deviceId = deviceId;
-    }
-    if (affonsoReferral) metadata.affonso_referral = affonsoReferral;
-    if (referrer) metadata.referrer = referrer;
-    const metadataParam =
-      Object.keys(metadata).length > 0
-        ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
-        : '';
-    window.location.assign(`${apiBaseUrl}/api/checkout?products=${productId}${metadataParam}`);
+    redirectToCheckout(productId, { affonsoReferral, referrer });
   };
 
   /* ---------- Interactions (ported from landing-v2.js) ---------- */

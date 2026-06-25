@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getOrderProductRevenue } from './order-revenue';
+import { getOrderProductRevenue } from '@voicetypr/api-core';
 
 describe('getOrderProductRevenue', () => {
   it('uses Polar product line item amounts before discounts and taxes', () => {

@@ -28,34 +28,3 @@ export function Section({
     </section>
   );
 }
-
-/** Section heading + optional sub, in the v2 display style. */
-export function SectionHeading({
-  title,
-  sub,
-  align = "center",
-  className,
-}: {
-  title: ReactNode;
-  sub?: ReactNode;
-  align?: "center" | "left";
-  className?: string;
-}) {
-  return (
-    <div className={cn(align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl", className)}>
-      <h2 className="text-balance font-sans text-[clamp(2rem,4.4vw,3rem)] font-bold leading-[1.05] tracking-tight text-foreground">
-        {title}
-      </h2>
-      {sub ? (
-        <p
-          className={cn(
-            "mt-3.5 text-balance text-base leading-relaxed text-muted-foreground",
-            align === "center" && "mx-auto max-w-xl",
-          )}
-        >
-          {sub}
-        </p>
-      ) : null}
-    </div>
-  );
-}

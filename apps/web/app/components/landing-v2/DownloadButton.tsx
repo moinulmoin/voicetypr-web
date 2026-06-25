@@ -1,13 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Bi } from './brand-icons';
-
-export const MS_STORE_URL =
-  'https://apps.microsoft.com/store/detail/9P8J3X9B2JG6?cid=DevShareMTwPCS';
+import { MS_STORE_URL } from '@/lib/download-links';
 
 type OS = 'mac' | 'windows' | 'other';
+
+function detectOs(): OS {
+  const ua = navigator.userAgent.toLowerCase();
+  return ua.includes('windows') ? 'windows' : /mac|iphone|ipad/.test(ua) ? 'mac' : 'other';
+}
 
 const OPTIONS = [
   { id: 'macos-silicon', label: 'macOS', sub: 'Apple Silicon', icon: 'apple', href: '/download?platform=macos-silicon' },
@@ -33,14 +36,9 @@ function ItemBody({ icon, label, sub, external }: { icon: string; label: string;
 }
 
 export default function DownloadButton() {
-  const [os, setOs] = useState<OS>('other');
+  const os = useSyncExternalStore(() => () => {}, detectOs, () => 'other');
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ua = navigator.userAgent.toLowerCase();
-    setOs(ua.includes('windows') ? 'windows' : /mac|iphone|ipad/.test(ua) ? 'mac' : 'other');
-  }, []);
 
   useEffect(() => {
     if (!open) return;

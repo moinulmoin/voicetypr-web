@@ -1,7 +1,6 @@
 export const DEFAULT_TYPING_WPM = 45;
 export const DEFAULT_DICTATION_WPM = 120;
 export const DEFAULT_WORK_DAYS_PER_YEAR = 250;
-export const DEFAULT_WORK_DAYS_PER_MONTH = 22;
 
 export type DictationVsTypingInput = {
   wordsPerDay: number;
@@ -32,45 +31,6 @@ export type TypingLoadResult = {
   label: string;
   breakMinutesPerHour: number;
   recommendation: string;
-};
-
-export type TimeSavingsInput = {
-  words: number;
-  typingWpm?: number;
-  dictationWpm?: number;
-};
-
-export type TimeSavingsResult = {
-  typingMinutes: number;
-  dictationMinutes: number;
-  minutesSaved: number;
-  hoursSaved: number;
-  percentFaster: number;
-};
-
-export type WordsToMinutesInput = {
-  words: number;
-  wpm?: number;
-};
-
-export type WordsToMinutesResult = {
-  minutes: number;
-  hours: number;
-};
-
-export type RoiInput = {
-  wordsPerDay: number;
-  workDaysPerMonth?: number;
-  hourlyRate: number;
-  typingWpm?: number;
-  dictationWpm?: number;
-};
-
-export type RoiResult = TimeSavingsResult & {
-  monthlyWords: number;
-  monthlyHoursSaved: number;
-  monthlyValue: number;
-  annualValue: number;
 };
 
 function positiveOrDefault(value: number | undefined, fallback: number) {
@@ -132,57 +92,6 @@ export function formatHours(hours: number) {
   if (!Number.isFinite(hours) || hours <= 0) return "0 min";
   if (hours < 1) return `${Math.round(hours * 60)} min`;
   return `${hours.toFixed(1)} hours`;
-}
-
-export function calculateWordsToMinutes({ words, wpm = DEFAULT_DICTATION_WPM }: WordsToMinutesInput): WordsToMinutesResult {
-  const safeWords = nonNegative(words);
-  const safeWpm = positiveOrDefault(wpm, DEFAULT_DICTATION_WPM);
-  const minutes = safeWords / safeWpm;
-
-  return {
-    minutes,
-    hours: minutes / 60,
-  };
-}
-
-export function calculateTimeSavings({
-  words,
-  typingWpm = DEFAULT_TYPING_WPM,
-  dictationWpm = DEFAULT_DICTATION_WPM,
-}: TimeSavingsInput): TimeSavingsResult {
-  const safeWords = nonNegative(words);
-  const typingMinutes = calculateWordsToMinutes({ words: safeWords, wpm: typingWpm }).minutes;
-  const dictationMinutes = calculateWordsToMinutes({ words: safeWords, wpm: dictationWpm }).minutes;
-  const minutesSaved = Math.max(0, typingMinutes - dictationMinutes);
-
-  return {
-    typingMinutes,
-    dictationMinutes,
-    minutesSaved,
-    hoursSaved: minutesSaved / 60,
-    percentFaster: dictationMinutes > 0 ? Math.max(0, ((typingMinutes - dictationMinutes) / dictationMinutes) * 100) : 0,
-  };
-}
-
-export function calculateRoi({
-  wordsPerDay,
-  workDaysPerMonth = DEFAULT_WORK_DAYS_PER_MONTH,
-  hourlyRate,
-  typingWpm = DEFAULT_TYPING_WPM,
-  dictationWpm = DEFAULT_DICTATION_WPM,
-}: RoiInput): RoiResult {
-  const monthlyWords = nonNegative(wordsPerDay) * nonNegative(workDaysPerMonth);
-  const savings = calculateTimeSavings({ words: monthlyWords, typingWpm, dictationWpm });
-  const monthlyHoursSaved = savings.hoursSaved;
-  const monthlyValue = monthlyHoursSaved * nonNegative(hourlyRate);
-
-  return {
-    ...savings,
-    monthlyWords,
-    monthlyHoursSaved,
-    monthlyValue,
-    annualValue: monthlyValue * 12,
-  };
 }
 
 export function calculateDictationVsTyping({

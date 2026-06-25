@@ -8,19 +8,7 @@ import { downloadURL } from "@/lib/utils";
 import { Bi } from "@/app/components/landing-v2/brand-icons";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
-
-export const MS_STORE_URL =
-  "https://apps.microsoft.com/store/detail/9P8J3X9B2JG6?cid=DevShareMTwPCS";
-
-// Kept for unit tests + reuse by the landing OS detection.
-export function getDownloadOptions(assets: ReleaseAssets) {
-  const all = [
-    { id: "macos-silicon", url: assets.silicon },
-    { id: "macos-intel", url: assets.intel },
-    { id: "windows", url: assets.windows },
-  ];
-  return all.filter((opt) => opt.url);
-}
+import { MS_STORE_URL } from "@/lib/download-links";
 
 export function getDetectedDownloadOptionId(
   options: ReadonlyArray<{ id: string }>,

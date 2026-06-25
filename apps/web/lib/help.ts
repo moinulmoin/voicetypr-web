@@ -60,14 +60,12 @@ export async function getArticleBySlug(slug: string): Promise<HelpArticle | null
 // Re-export shared utilities for convenience
 export {
   HELP_CATEGORY_LABELS,
-  searchArticles,
   getAdjacentArticles,
   groupByCategory,
 } from "./help-shared";
 
 export type {
   HelpCategory,
-  HelpFrontmatter,
   HelpArticleMeta,
   HelpArticle,
 } from "./help-shared";

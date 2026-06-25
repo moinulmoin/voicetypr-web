@@ -5,6 +5,7 @@ import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { Section, Container } from "@/components/marketing/section";
+import { FinalCTA } from "@/components/marketing/FinalCTA";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {
@@ -210,7 +211,7 @@ export default function VoiceForAiAgentsPage() {
                 </em>
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                Dictate into Cursor, Claude Code, ChatGPT, Cline, Windsurf, Aider — any terminal or editor — because Voicetypr pastes where your cursor is. Then drive transcription programmatically with a scriptable Agent CLI and a local HTTP API. It's also the voice layer for personal AI agents like OpenClaw, NanoClaw, and Hermes — speak to them wherever they live. Offline-first, with local Whisper and Parakeet models.
+                Dictate into Cursor, Claude Code, ChatGPT, Cline, Windsurf, Aider — any terminal or editor — because Voicetypr pastes where your cursor is. Then drive transcription programmatically with a scriptable Agent CLI and a local HTTP API. It&apos;s also the voice layer for personal AI agents like OpenClaw, NanoClaw, and Hermes — speak to them wherever they live. Offline-first, with local Whisper and Parakeet models.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
@@ -267,7 +268,7 @@ export default function VoiceForAiAgentsPage() {
               <p className="mb-2 text-sm font-medium text-sage">Works in your stack</p>
               <h2 className={H2_CLASS}>One hotkey, every agent you already use</h2>
               <p className="mt-3 max-w-[620px] text-base leading-relaxed text-muted-foreground">
-                Because Voicetypr pastes into the focused field, there's no per-tool setup. The same global hotkey works wherever you type.
+                Because Voicetypr pastes into the focused field, there&apos;s no per-tool setup. The same global hotkey works wherever you type.
               </p>
             </div>
 
@@ -424,36 +425,15 @@ export default function VoiceForAiAgentsPage() {
         </Section>
 
         {/* Final CTA */}
-        <Section>
-          <Container>
-            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
-              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
-              <div className="relative">
-                <h2 className="mx-auto mb-5 max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
-                  Give your AI agents a voice
-                </h2>
-                <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-primary-foreground/75">
-                  3-day free trial. No credit card. Dictate into Cursor and Claude Code, and call transcription from your own scripts.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link
-                    href="/download"
-                    data-track="voice-for-ai-agents-final-cta-click"
-                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
-                  >
-                    Start free trial
-                  </Link>
-                  <Link
-                    href="/#pricing"
-                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
-                  >
-                    Buy lifetime license
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </Section>
+        <FinalCTA
+          headline="Give your AI agents a voice"
+          subtitle="3-day free trial. No credit card. Dictate into Cursor and Claude Code, and call transcription from your own scripts."
+          primaryLabel="Start free trial"
+          primaryDataTrack="voice-for-ai-agents-final-cta-click"
+          secondaryHref="/#pricing"
+          headlineClassName="mx-auto mb-5 max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight"
+          subtitleClassName="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-primary-foreground/75"
+        />
 
         <SiteFooter />
       </main>

@@ -1,6 +1,7 @@
 'use client';
 
-import { BASE_PRICES, PLANS, PUBLIC_PLAN_KEYS, formatPrice, type PublicPlanKey } from '@/lib/pricing';
+import { BASE_PRICES, PLANS, PUBLIC_PLAN_KEYS, formatPrice, type PublicPlanKey } from '@voicetypr/api-core/pricing';
+import { productIds, redirectToCheckout } from '@/lib/checkout';
 import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 import { useState } from 'react';
@@ -17,19 +18,11 @@ interface DeviceOption {
   productId: string | undefined;
 }
 
-const productIds: Record<PublicPlanKey, string | undefined> = {
-  pro: process.env.NEXT_PUBLIC_PRO_PRODUCT_ID,
-  plus: process.env.NEXT_PUBLIC_PLUS_PRODUCT_ID,
-  max: process.env.NEXT_PUBLIC_MAX_PRODUCT_ID,
-};
-
 const deviceOptions: DeviceOption[] = PUBLIC_PLAN_KEYS.map((key) => ({
   key,
   devices: PLANS[key].maxDevices,
   productId: productIds[key],
 }));
-
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '') ?? '';
 
 const V2_PRICES: Record<PublicPlanKey, number> = {
   pro: 59,
@@ -69,23 +62,7 @@ export default function PricingCards({
 
   const handleCheckout = (productId: string | undefined) => {
     if (!productId) return;
-
-    const metadata: Record<string, string> = {};
-
-    if (typeof window !== 'undefined' && window.openpanel?.getDeviceId) {
-      const deviceId = window.openpanel.getDeviceId();
-      if (deviceId) metadata.deviceId = deviceId;
-    }
-
-    if (affonsoReferral) metadata.affonso_referral = affonsoReferral;
-    if (referrer) metadata.referrer = referrer;
-
-    const metadataParam =
-      Object.keys(metadata).length > 0
-        ? `&metadata=${encodeURIComponent(JSON.stringify(metadata))}`
-        : '';
-
-    window.location.assign(`${apiBaseUrl}/api/checkout?products=${productId}${metadataParam}`);
+    redirectToCheckout(productId, { affonsoReferral, referrer });
   };
 
   return (

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { Section, Container } from "@/components/marketing/section";
+import { FinalCTA } from "@/components/marketing/FinalCTA";
 import RelatedGuidesSection from "../components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
@@ -273,36 +274,14 @@ export default function AquaVoiceAlternativePage() {
         </Section>
 
         {/* Final CTA */}
-        <Section>
-          <Container>
-            <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-center text-primary-foreground md:px-10 md:py-16">
-              <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-sage/30 blur-3xl" />
-              <div className="relative">
-                <h2 className="mx-auto max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight">
-                  Try the Aqua Voice alternative with a 3-day trial
-                </h2>
-                <p className="mx-auto mt-5 mb-8 max-w-2xl text-balance text-base leading-relaxed text-primary-foreground/75">
-                  No credit card. Transcription runs locally by default. Pay once for Mac and Windows.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link
-                    href="/download"
-                    data-track="aqua-voice-alt-final-cta-click"
-                    className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
-                  >
-                    Start free trial
-                  </Link>
-                  <Link
-                    href="/#pricing"
-                    className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
-                  >
-                    Buy lifetime license
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </Section>
+        <FinalCTA
+          headline="Try the Aqua Voice alternative with a 3-day trial"
+          subtitle="No credit card. Transcription runs locally by default. Pay once for Mac and Windows."
+          primaryLabel="Start free trial"
+          primaryDataTrack="aqua-voice-alt-final-cta-click"
+          secondaryHref="/#pricing"
+          subtitleClassName="mx-auto mt-5 mb-8 max-w-2xl text-balance text-base leading-relaxed text-primary-foreground/75"
+        />
 
         <SiteFooter />
       </main>
