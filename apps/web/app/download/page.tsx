@@ -51,6 +51,7 @@ export default async function DownloadPage({
   const ua = (await headers()).get('user-agent')?.toLowerCase() || '';
   const detected = ua.includes('windows') ? 'windows' : 'macos-silicon';
   const selected = param && valid.has(param) ? param : detected;
+  const explicit = Boolean(param && valid.has(param));
 
-  return <DownloadPageClient assets={assets} selected={selected} />;
+  return <DownloadPageClient assets={assets} selected={selected} explicit={explicit} />;
 }

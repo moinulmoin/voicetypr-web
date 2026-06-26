@@ -1,16 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Bi } from './brand-icons';
 import { MS_STORE_URL } from '@/lib/download-links';
-
-type OS = 'mac' | 'windows' | 'other';
-
-function detectOs(): OS {
-  const ua = navigator.userAgent.toLowerCase();
-  return ua.includes('windows') ? 'windows' : /mac|iphone|ipad/.test(ua) ? 'mac' : 'other';
-}
+import { useDetectedOs } from '@/lib/use-os';
 
 const OPTIONS = [
   { id: 'macos-silicon', label: 'macOS', sub: 'Apple Silicon', icon: 'apple', href: '/download?platform=macos-silicon' },
@@ -36,7 +30,7 @@ function ItemBody({ icon, label, sub, external }: { icon: string; label: string;
 }
 
 export default function DownloadButton() {
-  const os = useSyncExternalStore(() => () => {}, detectOs, () => 'other');
+  const os = useDetectedOs();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -61,7 +55,7 @@ export default function DownloadButton() {
       ? { label: 'Download for Windows', icon: 'windows' as const, href: '/download?platform=windows' }
       : os === 'mac'
         ? { label: 'Download for macOS', icon: 'apple' as const, href: '/download?platform=macos-silicon' }
-        : { label: 'Download for Mac & PC', icon: 'apple' as const, href: '/download' };
+        : { label: 'Download for Mac & PC', icon: null, href: '/download' };
 
   return (
     <div className="relative inline-flex items-stretch align-middle" ref={ref}>
@@ -70,7 +64,7 @@ export default function DownloadButton() {
         data-track="hero-download-click"
         className="inline-flex h-12 items-center gap-2.5 rounded-l-xl bg-primary px-5 text-sm font-semibold tracking-tight text-primary-foreground transition-opacity hover:opacity-90"
       >
-        <Bi name={primary.icon} className="text-lg" />
+        {primary.icon ? <Bi name={primary.icon} className="text-lg" /> : null}
         {primary.label}
       </Link>
       <button

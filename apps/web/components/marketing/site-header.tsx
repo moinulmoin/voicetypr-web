@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useDetectedOs, downloadHrefForOs } from "@/lib/use-os";
 import { Bi } from "@/app/components/landing-v2/brand-icons";
 import { Brandmark } from "@/components/marketing/brandmark";
 
@@ -15,6 +16,7 @@ const NAV = [
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const os = useDetectedOs();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -44,12 +46,16 @@ export function SiteHeader() {
             ))}
           </div>
           <Link
-            href="/download"
+            href={downloadHrefForOs(os)}
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             data-track="nav-download-click"
           >
             Download
-            <Bi name="apple" className="text-sm" />
+            {os === "windows" ? (
+              <Bi name="windows" className="text-sm" />
+            ) : os === "mac" ? (
+              <Bi name="apple" className="text-sm" />
+            ) : null}
           </Link>
         </nav>
       </div>

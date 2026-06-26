@@ -11,6 +11,7 @@ import {
   type PublicPlanKey,
 } from '@voicetypr/api-core/pricing';
 import { productIds, redirectToCheckout } from '@/lib/checkout';
+import { downloadHrefForOs, useDetectedOs } from '@/lib/use-os';
 import { Bi, injectBrandIcons } from './brand-icons';
 import { Brandmark } from '@/components/marketing/brandmark';
 import DownloadButton from './DownloadButton';
@@ -90,6 +91,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const [plan, setPlan] = useState<PublicPlanKey>('plus');
   const [demoOpen, setDemoOpen] = useState(false);
+  const os = useDetectedOs();
 
   // Demo modal: lock scroll, close on Escape, trap focus, restore focus on close.
   useEffect(() => {
@@ -517,8 +519,18 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                 ),
               )}
             </div>
-            <Link className="btn btn-primary btn-sm" href="/download" data-track="nav-download-click">
-              Download <Bi name="apple" style={{ fontSize: 14, marginLeft: -2 }} />
+            <Link
+              className="btn btn-primary btn-sm"
+              href={downloadHrefForOs(os)}
+              data-track="nav-download-click"
+            >
+              Download
+              {os !== 'other' && (
+                <>
+                  {' '}
+                  <Bi name={os === 'windows' ? 'windows' : 'apple'} style={{ fontSize: 14, marginLeft: -2 }} />
+                </>
+              )}
             </Link>
           </nav>
         </div>
@@ -960,9 +972,17 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               <p className="cta-sub">
                 Free for 3 days, then it&apos;s yours for good. Works on macOS and Windows.
               </p>
-              <Link className="btn btn-primary" href="/download" data-track="cta-download-click">
-                <Bi name="apple" />
-                Download for Mac &amp; PC
+              <Link className="btn btn-primary" href={downloadHrefForOs(os)} data-track="cta-download-click">
+                {os === 'windows' ? (
+                  <Bi name="windows" />
+                ) : os === 'mac' ? (
+                  <Bi name="apple" />
+                ) : null}
+                {os === 'windows'
+                  ? 'Download for Windows'
+                  : os === 'mac'
+                    ? 'Download for macOS'
+                    : 'Download for Mac & PC'}
               </Link>
               <p className="cta-fine">macOS 13+ · Windows 10+ · No card for trial</p>
             </div>
@@ -975,12 +995,16 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
 
       <Link
         id="vtStickyCta"
-        href="/download"
+        href={downloadHrefForOs(os)}
         className="sticky-cta"
         data-track="sticky-download-click"
         data-markdown-skip
       >
-        Download for Mac &amp; PC
+        {os === 'windows'
+          ? 'Download for Windows'
+          : os === 'mac'
+            ? 'Download for macOS'
+            : 'Download for Mac & PC'}
       </Link>
 
       {/* ============ DEMO MODAL ============ */}

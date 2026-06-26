@@ -9,6 +9,7 @@ import { Bi } from "@/app/components/landing-v2/brand-icons";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { MS_STORE_URL } from "@/lib/download-links";
+import { useDetectedOs } from "@/lib/use-os";
 
 export function getDetectedDownloadOptionId(
   options: ReadonlyArray<{ id: string }>,
@@ -110,14 +111,37 @@ function StepVisual({ index, isWindows }: { index: number; isWindows: boolean })
 
   // 3 — launched: Voicetypr in your dock (mac) / taskbar (windows), beside your apps
   if (isWindows) {
+    // Windows 11 taskbar: a Start button + search field anchor the left,
+    // pinned apps sit in the middle (Voicetypr is running — sage underline),
+    // and a clock + show-desktop sliver bookend the right.
     return (
-      <span className="flex items-center gap-2.5 rounded-xl border border-border bg-card/70 px-3 py-2 shadow-md backdrop-blur-xl">
-        <NeighborApp {...CURSOR_APP} className="h-9 w-9 rounded-lg" />
-        <span className="relative">
-          <AppTile className="h-9 w-9 rounded-lg shadow-sm" />
-          <span className="absolute -bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-sage" />
+      <span className="flex w-full items-center justify-between gap-2 rounded-lg border border-border bg-card/85 px-2.5 py-2 shadow-md backdrop-blur-md">
+        <span className="flex items-center gap-1.5">
+          <span className="grid h-6 w-6 place-items-center text-foreground">
+            <Bi name="windows" className="text-base" />
+          </span>
+          <span className="grid h-6 w-6 place-items-center rounded-md bg-muted text-muted-foreground">
+            <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.2" stroke="currentColor" strokeWidth="2.6" />
+              <path d="m16 16 4.2 4.2" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
+            </svg>
+          </span>
         </span>
-        <NeighborApp {...CLAUDE_APP} className="h-9 w-9 rounded-lg" />
+        <span className="flex items-center gap-2">
+          <NeighborApp {...CURSOR_APP} className="h-8 w-8 rounded-md" />
+          <span className="relative">
+            <AppTile className="h-8 w-8 rounded-md shadow-sm" />
+            <span className="absolute -bottom-1.5 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-sage" />
+          </span>
+          <NeighborApp {...CLAUDE_APP} className="h-8 w-8 rounded-md" />
+        </span>
+        <span className="flex items-center gap-1.5" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-muted-foreground" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+            <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span className="h-4 w-0.5 rounded-full bg-muted-foreground/40" />
+        </span>
       </span>
     );
   }
@@ -166,6 +190,10 @@ const MAC_FAQS = [
 
 const WIN_FAQS = [
   {
+    q: "My browser blocked the download / “isn’t commonly downloaded”?",
+    a: "Because the installer isn’t code-signed yet, Chrome and Edge flag it on download (not on running it). Click Keep — in Edge, open the ⋯ menu on the warning → Keep → Keep anyway — to save the .exe, then open it. It’s the official build straight from our GitHub releases.",
+  },
+  {
     q: "“Windows protected your PC” / Unknown publisher?",
     a: "SmartScreen shows that because the installer isn’t EV-code-signed yet. Click More info → Run anyway — it’s the official build straight from our GitHub releases.",
   },
@@ -186,11 +214,25 @@ const WIN_FAQS = [
 export default function DownloadPageClient({
   assets,
   selected,
+  explicit,
 }: {
   assets: ReleaseAssets;
   selected: string;
+  explicit: boolean;
 }) {
-  const platform = selected || "macos-silicon";
+  // Respect an explicit ?platform= choice. Otherwise client-correct the
+  // platform: the server may have guessed wrong (or cached wrong under
+  // cacheComponents). useDetectedOs returns 'other' on the server and during
+  // the first hydration render, so `platform` equals `selected` then — no
+  // hydration mismatch — and corrects immediately after hydration.
+  const detectedOs = useDetectedOs();
+  const platform = explicit
+    ? selected
+    : detectedOs === "windows"
+      ? "windows"
+      : detectedOs === "mac"
+        ? "macos-silicon"
+        : selected || "macos-silicon";
   const isWindows = platform === "windows";
   const directUrl = assetUrl(assets, platform);
   const manualUrl = directUrl || process.env.NEXT_PUBLIC_DOWNLOAD_URL || downloadURL;
