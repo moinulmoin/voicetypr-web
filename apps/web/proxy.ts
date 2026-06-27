@@ -28,18 +28,42 @@ const BYPASS_HEADER = 'x-markdown-bypass';
 // Keep in sync when a new /es use-case translation lands. Out-of-sync only ever
 // leaves a translated page noindexed (safe), never the reverse.
 const TRANSLATED_USE_CASE_SLUGS = [
+  // accessibility
   'adhd',
   'dyslexia',
   'rsi',
   'carpal-tunnel',
   'broken-wrist',
   'arthritis',
+  'tendonitis',
+  'fibromyalgia',
+  'motor-impairments',
+  'parkinsons',
+  'essential-tremor',
+  'one-handed-typing',
+  'dysgraphia',
+  'hand-surgery-recovery',
+  'blind',
+  // profession
   'developers',
   'writers',
   'students',
   'founders',
-  'tendonitis',
-  'fibromyalgia',
+  'lawyers',
+  'consultants',
+  'real-estate-agents',
+  'recruiters',
+  'journalists',
+  'marketers',
+  'bloggers',
+  'novelists',
+  'sales',
+  'product-managers',
+  'researchers',
+  'customer-support',
+  'doctors',
+  'therapists',
+  'academics',
 ];
 
 // Geo (country) slugs whose Spanish copy has shipped (keys of GEO_PAGE_ES in
