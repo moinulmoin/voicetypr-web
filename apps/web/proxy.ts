@@ -22,10 +22,34 @@ const GDPR_COUNTRIES = [
 
 const BYPASS_HEADER = 'x-markdown-bypass';
 
+// Use-case slugs whose Spanish copy has shipped (keys of USE_CASE_ES in
+// lib/use-cases.es.ts). Kept as a plain string list — NOT imported from that
+// module — so the middleware bundle never pulls in the full translated dataset.
+// Keep in sync when a new /es use-case translation lands. Out-of-sync only ever
+// leaves a translated page noindexed (safe), never the reverse.
+const TRANSLATED_USE_CASE_SLUGS = [
+  'adhd',
+  'dyslexia',
+  'rsi',
+  'carpal-tunnel',
+  'broken-wrist',
+  'arthritis',
+  'developers',
+  'writers',
+  'students',
+  'founders',
+  'tendonitis',
+  'fibromyalgia',
+];
+
 // Alt-locale paths that ARE genuinely translated and may be indexed. Everything
 // else under a non-default locale gets X-Robots-Tag: noindex until its content is
 // localized. Add paths here as each page's Spanish copy ships.
-const INDEXABLE_ALT_LOCALE_PATHS = new Set(['/es', '/es/download']);
+const INDEXABLE_ALT_LOCALE_PATHS = new Set([
+  '/es',
+  '/es/download',
+  ...TRANSLATED_USE_CASE_SLUGS.map((slug) => `/es/use-cases/${slug}`),
+]);
 
 // next-intl locale router (localePrefix: "as-needed" — English stays at root,
 // other locales get a /<locale> prefix). Routing only; pages stay prerendered.

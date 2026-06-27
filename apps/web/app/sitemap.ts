@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/help";
 import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
+import { USE_CASE_ES } from "@/lib/use-cases.es";
 import { getAllFreeTools } from "@/lib/free-tools";
 import { getAllGeoSlugs } from "@/lib/geo-pages";
 
@@ -199,12 +200,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.68,
   }));
 
-  const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().map((useCase) => ({
-    url: `${baseUrl}/use-cases/${useCase.slug}`,
-    lastModified: lastModified,
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
+  const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().flatMap((useCase) => {
+    const hasEs = Boolean(USE_CASE_ES[useCase.slug]);
+    const enUrl = `${baseUrl}/use-cases/${useCase.slug}`;
+    const esUrl = `${baseUrl}/es/use-cases/${useCase.slug}`;
+    // Only emit hreflang alternates when the Spanish copy has actually shipped;
+    // otherwise /es/use-cases/<slug> is noindex English and must not be advertised.
+    const alternates = hasEs ? { languages: { en: enUrl, es: esUrl } } : undefined;
+
+    const entries: MetadataRoute.Sitemap = [
+      {
+        url: enUrl,
+        lastModified: lastModified,
+        changeFrequency: "monthly",
+        priority: 0.75,
+        ...(alternates ? { alternates } : {}),
+      },
+    ];
+
+    if (hasEs) {
+      entries.push({
+        url: esUrl,
+        lastModified: lastModified,
+        changeFrequency: "monthly",
+        priority: 0.7,
+        alternates,
+      });
+    }
+
+    return entries;
+  });
 
   const helpArticles = await getAllArticles();
   const helpRoutes: MetadataRoute.Sitemap = helpArticles.map((article) => ({

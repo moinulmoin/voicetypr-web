@@ -12,30 +12,106 @@ import {
   getUseCase,
   type UseCase,
 } from "@/lib/use-cases";
+import { USE_CASE_ES } from "@/lib/use-cases.es";
 
-type RouteParams = { slug: string };
+type RouteParams = { locale: string; slug: string };
+
+/**
+ * UI chrome strings for the use-case template, per locale. The data-driven
+ * content (hero/pains/outcomes/…) comes from the localized UseCase; these are
+ * the surrounding headings, buttons and boilerplate. en values are byte-identical
+ * to the original hardcoded copy so English pages are unchanged.
+ */
+const UI_STRINGS = {
+  en: {
+    backToAll: "All use cases",
+    startTrial: "Start 3-day free trial",
+    seePricing: "See pricing",
+    lastUpdated: "Last updated",
+    painsHeading: "The friction is real, and specific",
+    outcomesHeading: "The shape of the day, different",
+    workflowsHeading: "Three workflows where it shows up",
+    nearbyWorkflows: "Nearby workflows:",
+    nearbyAnd: " and ",
+    nearbyFor: "for",
+    faqHeadingPre: "The honest",
+    faqHeadingPost: "FAQ",
+    faqIntro: "Pulled from real conversations with people who use Voicetypr for this exact reason.",
+    faqNotAnswered: "Not answered here?",
+    faqEmail: "Email support",
+    medicalDisclaimer:
+      "Voicetypr is productivity software, not medical software. It can help reduce typing load, but it does not diagnose, treat, or prevent any condition. Follow medical and ergonomic guidance for your own situation.",
+    relatedEyebrow: "related pages",
+    relatedTitle: "If this is your problem, these pages usually matter too",
+    relatedDescription:
+      "You might be comparing Windows tools, looking for a Dragon alternative, or trying to reduce typing load for a specific reason. These pages keep the path clear.",
+    finalDownload: "Download Voicetypr",
+    finalBuy: "Buy lifetime license",
+  },
+  es: {
+    backToAll: "Todos los casos de uso",
+    startTrial: "Empieza la prueba gratis de 3 días",
+    seePricing: "Ver precios",
+    lastUpdated: "Última actualización",
+    painsHeading: "La fricción es real, y concreta",
+    outcomesHeading: "La forma del día, distinta",
+    workflowsHeading: "Tres flujos donde se nota",
+    nearbyWorkflows: "Flujos cercanos:",
+    nearbyAnd: " y ",
+    nearbyFor: "para",
+    faqHeadingPre: "Preguntas sinceras sobre",
+    faqHeadingPost: "",
+    faqIntro: "Sacadas de conversaciones reales con personas que usan Voicetypr justo por este motivo.",
+    faqNotAnswered: "¿No está aquí tu respuesta?",
+    faqEmail: "Escribe a soporte",
+    medicalDisclaimer:
+      "Voicetypr es software de productividad, no software médico. Puede ayudar a reducir la carga de escritura, pero no diagnostica, trata ni previene ninguna afección. Sigue las indicaciones médicas y ergonómicas para tu propia situación.",
+    relatedEyebrow: "páginas relacionadas",
+    relatedTitle: "Si este es tu problema, estas páginas también suelen importar",
+    relatedDescription:
+      "Quizá estés comparando herramientas de Windows, buscando una alternativa a Dragon o intentando reducir la carga de escritura por un motivo concreto. Estas páginas mantienen el camino claro.",
+    finalDownload: "Descarga Voicetypr",
+    finalBuy: "Compra la licencia de por vida",
+  },
+} as const;
+
+type UiStrings = { [K in keyof (typeof UI_STRINGS)["en"]]: string };
+
+function getUiStrings(locale: string): UiStrings {
+  return locale === "es" ? UI_STRINGS.es : UI_STRINGS.en;
+}
 
 type PageProps = {
   params: Promise<RouteParams>;
 };
 
-export async function generateStaticParams(): Promise<RouteParams[]> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return getAllUseCaseSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const useCase = getUseCase(slug);
+  const { slug, locale } = await params;
+  const useCase = getUseCase(slug, locale);
   if (!useCase) return {};
 
-  const url = `https://voicetypr.com/use-cases/${useCase.slug}`;
+  const enUrl = `https://voicetypr.com/use-cases/${useCase.slug}`;
+  const esUrl = `https://voicetypr.com/es/use-cases/${useCase.slug}`;
+  const url = locale === "es" ? esUrl : enUrl;
+  // Only advertise the es alternate once its Spanish copy has shipped; otherwise
+  // /es/<slug> is noindex English (proxy) and must not be cross-linked.
+  const hasEs = Boolean(USE_CASE_ES[useCase.slug]);
+  const languages = hasEs ? { en: enUrl, es: esUrl, "x-default": enUrl } : undefined;
+  // Untranslated /es slugs are English fallback content the proxy marks
+  // X-Robots-Tag: noindex — keep the in-page robots signal consistent so we
+  // never tell crawlers "index" and "noindex" at once.
+  const indexable = locale !== "es" || hasEs;
   return {
     title: useCase.title,
     description: useCase.description,
     keywords: useCase.keywords,
-    alternates: { canonical: url },
+    alternates: { canonical: url, ...(languages ? { languages } : {}) },
     openGraph: {
       title: useCase.ogTitle,
       description: useCase.description,
@@ -58,7 +134,7 @@ export async function generateMetadata({
       images: ["/voicetypr-og.png"],
       creator: "@moinulmoin",
     },
-    robots: { index: true, follow: true },
+    robots: { index: indexable, follow: true },
     other: {
       "article:modified_time": `${USE_CASE_PAGES_LAST_UPDATED}T00:00:00.000Z`,
       "og:updated_time": `${USE_CASE_PAGES_LAST_UPDATED}T00:00:00.000Z`,
@@ -93,8 +169,8 @@ function stripAccentMarkers(text: string): string {
   return text.replace(/<\/?em>/g, "");
 }
 
-function formatLastUpdated(isoDate: string): string {
-  return new Intl.DateTimeFormat("en", {
+function formatLastUpdated(isoDate: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale === "es" ? "es" : "en", {
     day: "numeric",
     month: "long",
     timeZone: "UTC",
@@ -106,8 +182,11 @@ function safeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
-function buildUseCaseJsonLd(useCase: UseCase) {
-  const url = `https://voicetypr.com/use-cases/${useCase.slug}`;
+function buildUseCaseJsonLd(useCase: UseCase, locale: string) {
+  const url =
+    locale === "es"
+      ? `https://voicetypr.com/es/use-cases/${useCase.slug}`
+      : `https://voicetypr.com/use-cases/${useCase.slug}`;
 
   return {
     "@context": "https://schema.org",
@@ -140,21 +219,25 @@ function buildUseCaseJsonLd(useCase: UseCase) {
 }
 
 export default async function UseCasePage({ params }: PageProps) {
-  const { slug } = await params;
-  const useCase = getUseCase(slug);
+  const { slug, locale } = await params;
+  const useCase = getUseCase(slug, locale);
   if (!useCase) notFound();
 
-  return <UseCaseView useCase={useCase} />;
+  return <UseCaseView useCase={useCase} locale={locale} />;
 }
 
 const H2_CLASS =
   "text-balance font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground";
 
-function UseCaseView({ useCase }: { useCase: UseCase }) {
+function UseCaseView({ useCase, locale }: { useCase: UseCase; locale: string }) {
   const relatedGuides = getRelatedGuidesForUseCase(useCase.slug);
   const contextualLinks = getContextualUseCaseLinks(useCase.slug);
-  const lastUpdatedLabel = formatLastUpdated(USE_CASE_PAGES_LAST_UPDATED);
-  const jsonLd = buildUseCaseJsonLd(useCase);
+  const lastUpdatedLabel = formatLastUpdated(USE_CASE_PAGES_LAST_UPDATED, locale);
+  const jsonLd = buildUseCaseJsonLd(useCase, locale);
+  const t = getUiStrings(locale);
+  const useCasesHref = locale === "es" ? "/es/use-cases" : "/use-cases";
+  const downloadHref = locale === "es" ? "/es/download" : "/download";
+  const pricingHref = locale === "es" ? "/es#pricing" : "/#pricing";
 
   return (
     <>
@@ -167,10 +250,10 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
           <Container>
             <div className="mx-auto max-w-3xl text-center">
               <Link
-                href="/use-cases"
+                href={useCasesHref}
                 className="mb-7 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
-                <span aria-hidden>←</span> All use cases
+                <span aria-hidden>←</span> {t.backToAll}
               </Link>
               <h1 className="text-balance font-sans text-[clamp(2.5rem,5.2vw,4.25rem)] font-bold leading-[1.03] tracking-tight">
                 <HeadlineWithAccent text={useCase.hero.headline} />
@@ -185,22 +268,22 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
               </div>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link
-                  href="/download"
+                  href={downloadHref}
                   data-track="use-case-hero-download-click"
                   data-track-slug={useCase.slug}
                   className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
-                  Start 3-day free trial
+                  {t.startTrial}
                 </Link>
                 <Link
-                  href="/#pricing"
+                  href={pricingHref}
                   className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
-                  See pricing
+                  {t.seePricing}
                 </Link>
               </div>
               <p className="mt-6 text-xs text-muted-foreground">
-                Last updated <time dateTime={USE_CASE_PAGES_LAST_UPDATED}>{lastUpdatedLabel}</time>
+                {t.lastUpdated} <time dateTime={USE_CASE_PAGES_LAST_UPDATED}>{lastUpdatedLabel}</time>
               </p>
             </div>
           </Container>
@@ -209,7 +292,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         {/* Pains */}
         <Section>
           <Container>
-            <h2 className={`${H2_CLASS} max-w-[760px]`}>The friction is real, and specific</h2>
+            <h2 className={`${H2_CLASS} max-w-[760px]`}>{t.painsHeading}</h2>
             <div className="mt-8 max-w-[760px]">
               {useCase.pains.map((pain, i) => (
                 <article key={i} className="border-b border-border py-6 last:border-b-0">
@@ -226,7 +309,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         <Section>
           <Container>
             <div className="rounded-3xl bg-muted p-8 md:p-12">
-              <h2 className={`${H2_CLASS} max-w-[760px]`}>The shape of the day, different</h2>
+              <h2 className={`${H2_CLASS} max-w-[760px]`}>{t.outcomesHeading}</h2>
               <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
                 {useCase.outcomes.map((outcome, i) => (
                   <article key={i} className="flex min-h-60 flex-col gap-3 rounded-2xl border border-border bg-card p-6">
@@ -244,7 +327,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
         {/* Workflows */}
         <Section>
           <Container>
-            <h2 className={`${H2_CLASS} max-w-[760px]`}>Three workflows where it shows up</h2>
+            <h2 className={`${H2_CLASS} max-w-[760px]`}>{t.workflowsHeading}</h2>
             <div className="mt-8 max-w-[820px] rounded-2xl bg-muted p-7 md:p-10">
               <ol className="grid gap-9">
                 {useCase.workflows.map((workflow, i) => (
@@ -257,12 +340,14 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   </li>
                 ))}
               </ol>
-              {contextualLinks.length > 0 ? (
+              {/* Discovery links use English labels and partly point to English-only
+                  comparison pages, so they render on the English locale only. */}
+              {locale !== "es" && contextualLinks.length > 0 ? (
                 <div className="mt-9 border-t border-border pt-6 text-sm leading-relaxed text-muted-foreground">
-                  <span className="font-medium text-foreground">Nearby workflows:</span>{" "}
+                  <span className="font-medium text-foreground">{t.nearbyWorkflows}</span>{" "}
                   {contextualLinks.map((link, i) => (
                     <span key={link.href}>
-                      {i > 0 ? " and " : ""}
+                      {i > 0 ? t.nearbyAnd : ""}
                       <Link
                         href={link.href}
                         className="font-medium text-foreground underline-offset-4 hover:underline"
@@ -271,7 +356,7 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                       >
                         {link.label}
                       </Link>{" "}
-                      for {link.context}
+                      {t.nearbyFor} {link.context}
                     </span>
                   ))}
                   .
@@ -287,14 +372,14 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
               <div>
                 <h2 className={H2_CLASS}>
-                  The honest{" "}
+                  {t.faqHeadingPre}{" "}
                   <em className="italic font-normal" style={{ fontFamily: "var(--font-serif)" }}>
                     {useCase.navLabel}
-                  </em>{" "}
-                  FAQ
+                  </em>
+                  {t.faqHeadingPost ? <>{" "}{t.faqHeadingPost}</> : null}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  Pulled from real conversations with people who use Voicetypr for this exact reason.
+                  {t.faqIntro}
                 </p>
               </div>
               <div>
@@ -314,14 +399,14 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                   </details>
                 ))}
                 <div className="mt-8 text-sm text-muted-foreground">
-                  Not answered here?{" "}
+                  {t.faqNotAnswered}{" "}
                   <a
                     href="mailto:support@voicetypr.com"
                     className="text-foreground underline-offset-4 hover:underline"
                     data-track="use-case-faq-contact-click"
                     data-track-slug={useCase.slug}
                   >
-                    Email support
+                    {t.faqEmail}
                   </a>
                 </div>
               </div>
@@ -333,15 +418,15 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
           <Section className="pt-12">
             <Container>
               <div className="max-w-3xl rounded-2xl border border-border bg-card p-5 text-sm leading-relaxed text-muted-foreground">
-                Voicetypr is productivity software, not medical software. It can help reduce typing load, but it does
-                not diagnose, treat, or prevent any condition. Follow medical and ergonomic guidance for your own
-                situation.
+                {t.medicalDisclaimer}
               </div>
             </Container>
           </Section>
         ) : null}
 
-        {relatedGuides.length > 0 ? (
+        {/* Related guides point to English-only comparison/alternative pages, so
+            this discovery block renders on the English locale only. */}
+        {locale !== "es" && relatedGuides.length > 0 ? (
           <Section>
             <Container>
               <RelatedGuidesSection
@@ -370,18 +455,18 @@ function UseCaseView({ useCase }: { useCase: UseCase }) {
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
                   <Link
-                    href="/download"
+                    href={downloadHref}
                     data-track="use-case-final-cta-click"
                     data-track-slug={useCase.slug}
                     className="inline-flex h-12 items-center rounded-xl bg-background px-5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 active:scale-95"
                   >
-                    Download Voicetypr
+                    {t.finalDownload}
                   </Link>
                   <Link
-                    href="/#pricing"
+                    href={pricingHref}
                     className="inline-flex h-12 items-center rounded-xl border border-primary-foreground/20 px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 active:scale-95"
                   >
-                    Buy lifetime license
+                    {t.finalBuy}
                   </Link>
                 </div>
               </div>

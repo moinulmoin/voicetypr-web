@@ -5,6 +5,8 @@
  * marketing slop).
  */
 
+import { USE_CASE_ES } from "./use-cases.es";
+
 export type UseCaseCategory = "accessibility" | "profession";
 
 export const USE_CASE_PAGES_LAST_UPDATED = "2026-06-27";
@@ -4032,7 +4034,11 @@ export function getUseCasesByCategory(): Record<UseCaseCategory, UseCase[]> {
   return grouped;
 }
 
-export function getUseCase(slug: string): UseCase | null {
+export function getUseCase(slug: string, locale?: string): UseCase | null {
+  if (locale === "es") {
+    const es = USE_CASE_ES[slug];
+    if (es) return es;
+  }
   return USE_CASE_BY_SLUG[slug] ?? null;
 }
 
