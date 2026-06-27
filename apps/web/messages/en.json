@@ -1,0 +1,21 @@
+{
+  "Nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "useCases": "Use cases",
+    "download": "Download"
+  },
+  "Common": {
+    "tryFree": "Start 3-day free trial",
+    "buyLifetime": "Buy lifetime license",
+    "seePricing": "See pricing",
+    "noCardTrial": "No card for trial",
+    "payOnce": "Pay once, keep forever"
+  },
+  "LocaleBanner": {
+    "suggest": "View this page in {language}?",
+    "switch": "Switch",
+    "dismiss": "Dismiss"
+  }
+}

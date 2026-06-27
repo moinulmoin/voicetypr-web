@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { Section, Container } from "@/components/marketing/section";
 import { FinalCTA } from "@/components/marketing/FinalCTA";
-import RelatedGuidesSection from "../components/RelatedGuidesSection";
+import RelatedGuidesSection from "@/app/components/RelatedGuidesSection";
 import type { DiscoveryLink } from "@/lib/seo-discovery";
 
 export const metadata: Metadata = {

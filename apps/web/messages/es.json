@@ -1,0 +1,21 @@
+{
+  "Nav": {
+    "features": "Funciones",
+    "pricing": "Precios",
+    "faq": "Preguntas frecuentes",
+    "useCases": "Casos de uso",
+    "download": "Descargar"
+  },
+  "Common": {
+    "tryFree": "Empieza la prueba gratis de 3 días",
+    "buyLifetime": "Compra la licencia de por vida",
+    "seePricing": "Ver precios",
+    "noCardTrial": "Sin tarjeta para la prueba",
+    "payOnce": "Paga una vez, tuyo para siempre"
+  },
+  "LocaleBanner": {
+    "suggest": "¿Ver esta página en {language}?",
+    "switch": "Cambiar",
+    "dismiss": "Descartar"
+  }
+}

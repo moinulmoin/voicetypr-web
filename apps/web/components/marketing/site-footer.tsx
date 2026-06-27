@@ -1,8 +1,9 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getAllFreeTools } from "@/lib/free-tools";
 import { Bi } from "@/app/components/landing-v2/brand-icons";
 import { Brandmark } from "@/components/marketing/brandmark";
+import { LanguageSwitcher } from "@/components/marketing/language-switcher";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
@@ -126,13 +127,16 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 pt-2 text-xs text-muted-foreground">
           <span>© 2026 Voicetypr · by <a href="https://ideaplexa.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 transition-colors hover:text-foreground">Ideaplexa</a></span>
-          <div className="flex gap-3.5 text-base text-muted-foreground [&_a:hover]:text-foreground">
-            <a href="https://twitter.com/moinulmoin" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
-              <Bi name="x" />
-            </a>
-            <a href="https://github.com/moinulmoin/voicetypr" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Bi name="github" />
-            </a>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <div className="flex gap-3.5 text-base text-muted-foreground [&_a:hover]:text-foreground">
+              <a href="https://twitter.com/moinulmoin" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+                <Bi name="x" />
+              </a>
+              <a href="https://github.com/moinulmoin/voicetypr" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <Bi name="github" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
