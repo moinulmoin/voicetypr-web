@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/help";
 import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
+import { USE_CASE_ES } from "@/lib/use-cases.es";
+import { GEO_PAGE_ES } from "@/lib/geo-pages.es";
 import { getAllFreeTools } from "@/lib/free-tools";
 import { getAllGeoSlugs } from "@/lib/geo-pages";
 
@@ -22,12 +24,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastModified,
       changeFrequency: "daily",
       priority: 1,
+      alternates: { languages: { en: baseUrl, es: `${baseUrl}/es` } },
+    },
+    {
+      // Spanish home — the one localized page (the rest of /es is noindex for now).
+      url: `${baseUrl}/es`,
+      lastModified: lastModified,
+      changeFrequency: "daily",
+      priority: 0.9,
+      alternates: { languages: { en: baseUrl, es: `${baseUrl}/es` } },
     },
     {
       url: `${baseUrl}/download`,
       lastModified: lastModified,
       changeFrequency: "daily",
       priority: 0.9,
+      alternates: { languages: { en: `${baseUrl}/download`, es: `${baseUrl}/es/download` } },
+    },
+    {
+      url: `${baseUrl}/es/download`,
+      lastModified: lastModified,
+      changeFrequency: "daily",
+      priority: 0.85,
+      alternates: { languages: { en: `${baseUrl}/download`, es: `${baseUrl}/es/download` } },
     },
     {
       url: `${baseUrl}/tools`,
@@ -182,12 +201,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.68,
   }));
 
-  const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().map((useCase) => ({
-    url: `${baseUrl}/use-cases/${useCase.slug}`,
-    lastModified: lastModified,
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
+  const useCaseRoutes: MetadataRoute.Sitemap = getAllUseCases().flatMap((useCase) => {
+    const hasEs = Boolean(USE_CASE_ES[useCase.slug]);
+    const enUrl = `${baseUrl}/use-cases/${useCase.slug}`;
+    const esUrl = `${baseUrl}/es/use-cases/${useCase.slug}`;
+    // Only emit hreflang alternates when the Spanish copy has actually shipped;
+    // otherwise /es/use-cases/<slug> is noindex English and must not be advertised.
+    const alternates = hasEs ? { languages: { en: enUrl, es: esUrl } } : undefined;
+
+    const entries: MetadataRoute.Sitemap = [
+      {
+        url: enUrl,
+        lastModified: lastModified,
+        changeFrequency: "monthly",
+        priority: 0.75,
+        ...(alternates ? { alternates } : {}),
+      },
+    ];
+
+    if (hasEs) {
+      entries.push({
+        url: esUrl,
+        lastModified: lastModified,
+        changeFrequency: "monthly",
+        priority: 0.7,
+        alternates,
+      });
+    }
+
+    return entries;
+  });
 
   const helpArticles = await getAllArticles();
   const helpRoutes: MetadataRoute.Sitemap = helpArticles.map((article) => ({
@@ -213,12 +256,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65,
     }));
 
-  const geoRoutes: MetadataRoute.Sitemap = getAllGeoSlugs().map((slug) => ({
-    url: `${baseUrl}/voice-typing/${slug}`,
-    lastModified: lastModified,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const geoRoutes: MetadataRoute.Sitemap = getAllGeoSlugs().flatMap((slug) => {
+    const hasEs = Boolean(GEO_PAGE_ES[slug]);
+    const enUrl = `${baseUrl}/voice-typing/${slug}`;
+    const esUrl = `${baseUrl}/es/voice-typing/${slug}`;
+    // Only emit hreflang alternates once the Spanish copy has shipped; otherwise
+    // /es/voice-typing/<slug> is noindex English and must not be advertised.
+    const alternates = hasEs ? { languages: { en: enUrl, es: esUrl } } : undefined;
+
+    const entries: MetadataRoute.Sitemap = [
+      {
+        url: enUrl,
+        lastModified: lastModified,
+        changeFrequency: "monthly",
+        priority: 0.7,
+        ...(alternates ? { alternates } : {}),
+      },
+    ];
+
+    if (hasEs) {
+      entries.push({
+        url: esUrl,
+        lastModified: lastModified,
+        changeFrequency: "monthly",
+        priority: 0.65,
+        alternates,
+      });
+    }
+
+    return entries;
+  });
 
   return [
     ...staticRoutes,

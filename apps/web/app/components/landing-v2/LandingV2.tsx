@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 
 import {
@@ -38,42 +39,12 @@ const TWEETS = [
   { c: 'Vibe coders gonna love this.', n: 'Paul Li', sub: '@PaulTheLi', src: 'x', col: '#18181a' },
 ] as const;
 
-const FAQS: Array<[string, string]> = [
-  ['Does Voicetypr work on Windows?', 'Yes, Windows 10 and later. Download the .exe installer, run it, and you’re set. We ship Mac and Windows as first-class platforms.'],
-  ['Windows says “Unknown Publisher,” is it safe?', 'Yes. SmartScreen shows that because I don’t have a Microsoft code-signing cert yet (they cost $200–$300/year and I’m keeping solo-founder costs lean). Click More info → Run anyway.'],
-  ['Can I try Voicetypr for free?', 'Yes, 3-day free trial, no card required. When the trial ends, buy a lifetime license only if it saves you time. Purchases include a 7-day money-back guarantee.'],
-  ['Does it work in Gmail, Slack, ChatGPT, and other apps?', 'Yes. Click where you want text, hold your hotkey, and speak. Voicetypr pastes into Gmail, Slack, Notion, Word, ChatGPT, Cursor, anywhere you type.'],
-  ['Is my voice data private?', 'Yes. Voicetypr uses offline dictation by default, so transcription happens on your machine. Optional cleaner-text features work on the final text, not your voice recording.'],
-  ['How does the AI cleanup work?', 'It’s optional. Connect your own OpenAI, Anthropic, or Gemini key and Voicetypr turns rough dictation into clean prompts, emails, notes, even code. It only ever sends the text, never your audio, and you can leave it off entirely.'],
-  ['What are the system requirements?', 'macOS Ventura 13+ with Apple Silicon recommended, Intel Mac supported, or Windows 10+. Minimum 4 GB RAM.'],
-  ['How many devices can I use?', 'Pick 1, 2, or 4 activations when you buy. Switch machines anytime within your limit. Need a team license? Email support@voicetypr.com.'],
-  ['What does lifetime mean?', 'One price, yours forever. No subscription, no card on file. Updates we ship come with it, and Voicetypr keeps working on the version you own.'],
-  ['What languages does Voicetypr support?', '99+ languages including English, Spanish, French, German, Hindi, and Japanese, with automatic detection.'],
-  ['Does it use my GPU on Windows?', 'On Windows, Voicetypr uses your graphics chip when it can for faster transcription. If not, it uses your processor, and it still works.'],
-];
-
-const PRICE_FEATURES = [
-  'On-device dictation, offline by default',
-  'Works in every app with a text cursor',
-  'Global hotkey, push-to-talk, toggle modes',
-  'AI formatting that cleans up your speech',
-  'Cloud models too — Groq, Deepgram, OpenAI',
-  'Network transcription across your devices',
-  'CLI & Agent API for scripts and AI agents',
-  'Audio and video file transcription',
-  'Searchable local transcript history',
-  'macOS 13+ and Windows 10+',
-  'Direct support from the founder',
-];
-
-const DEVICE_LABEL: Record<PublicPlanKey, string> = { pro: '1 device', plus: '2 devices', max: '4 devices' };
-
 const NAV = [
-  { href: '/#features', label: 'Features' },
-  { href: '/#pricing', label: 'Pricing' },
-  { href: '/#faq', label: 'FAQ' },
-  { href: '/use-cases', label: 'Use cases' },
-];
+  { href: '/#features', key: 'features' },
+  { href: '/#pricing', key: 'pricing' },
+  { href: '/#faq', key: 'faq' },
+  { href: '/use-cases', key: 'useCases' },
+] as const;
 
 // Footer columns now live in the shared SiteFooter (passed in via the `footer` prop from page.tsx).
 
@@ -92,6 +63,12 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
   const [plan, setPlan] = useState<PublicPlanKey>('plus');
   const [demoOpen, setDemoOpen] = useState(false);
   const os = useDetectedOs();
+  const t = useTranslations('Home');
+  const tNav = useTranslations('Nav');
+  const faqs = t.raw('faqs') as Array<[string, string]>;
+  const priceFeatures = t.raw('priceFeatures') as string[];
+  const deviceLabel = (k: PublicPlanKey) =>
+    t(k === 'pro' ? 'devicePro' : k === 'plus' ? 'devicePlus' : 'deviceMax');
 
   // Demo modal: lock scroll, close on Escape, trap focus, restore focus on close.
   useEffect(() => {
@@ -470,7 +447,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
   const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQS.map(([q, a]) => ({
+    mainEntity: faqs.map(([q, a]) => ({
       '@type': 'Question',
       name: q,
       acceptedAnswer: { '@type': 'Answer', text: a },
@@ -500,21 +477,21 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               {NAV.map((l) =>
                 l.href.startsWith('/#') ? (
                   <a
-                    key={l.label}
+                    key={l.key}
                     href={l.href}
                     className="transition-colors hover:text-editorial-ink"
                     data-track="nav-click"
                   >
-                    {l.label}
+                    {tNav(l.key)}
                   </a>
                 ) : (
                   <Link
-                    key={l.label}
+                    key={l.key}
                     href={l.href}
                     className="transition-colors hover:text-editorial-ink"
                     data-track="nav-click"
                   >
-                    {l.label}
+                    {tNav(l.key)}
                   </Link>
                 ),
               )}
@@ -524,7 +501,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               href={downloadHrefForOs(os)}
               data-track="nav-download-click"
             >
-              Download
+              {tNav('download')}
               {os !== 'other' && (
                 <>
                   {' '}
@@ -541,13 +518,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="hero">
           <div className="hero-bloom" />
           <div className="vt-container">
-            <h1>
-              Type with your <em>voice</em>.
-            </h1>
-            <p className="hero-sub">
-              Your brain moves faster than your fingers. Speak, and Voicetypr&apos;s offline voice typing
-              drops clean text into any app, about 3× faster than typing.
-            </p>
+            <h1>{t.rich('heroTitle', { em: (c) => <em>{c}</em> })}</h1>
+            <p className="hero-sub">{t('heroSub')}</p>
             <div className="hero-cta">
               <div className="hero-actions">
                 <DownloadButton />
@@ -559,26 +531,22 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                   aria-haspopup="dialog"
                 >
                   <span className="play-dot" aria-hidden="true"><svg viewBox="0 0 12 12" width="9" height="9" fill="currentColor"><path d="M4.5 3 L9 6 L4.5 9 Z" /></svg></span>
-                  Watch the demo
+                  {t('heroWatchDemo')}
                 </button>
               </div>
-              <p className="hero-meta">
-                Free 3-day trial, <b>no card to start</b>
-              </p>
+              <p className="hero-meta">{t.rich('heroTrial', { b: (c) => <b>{c}</b> })}</p>
             </div>
 
             <div className="hero-trust">
               <div className="trust-avatars">
                 <span className="avatar relative transition-transform duration-200 hover:z-10 hover:scale-110"><Image src="/avatars/marc.jpg" alt="Marc Lou, indie hacker" width={40} height={40} /></span>
-                <span className="avatar relative transition-transform duration-200 hover:z-10 hover:scale-110"><Image src="/avatars/will.jpg" alt="Will, creator of JarvX" width={40} height={40} /></span>
+                <span className="avatar relative transition-transform duration-200 hover:z-10 hover:scale-110"><Image src="/avatars/piotr.jpg" alt="Piotr Kulpinski, founder" width={40} height={40} /></span>
                 <span className="avatar relative transition-transform duration-200 hover:z-10 hover:scale-110"><Image src="/avatars/dominik.jpg" alt="Dominik Koch, founder of Notra" width={40} height={40} /></span>
                 <span className="avatar relative transition-transform duration-200 hover:z-10 hover:scale-110"><Image src="/avatars/orcdev.jpg" alt="OrcDev, tech content creator" width={40} height={40} /></span>
                 <span className="avatar relative transition-transform duration-200 hover:z-10 hover:scale-110"><Image src="/avatars/dudu.jpg" alt="Dudu, founder of Toolfolio" width={40} height={40} /></span>
                 <span className="avatar relative transition-transform duration-200 hover:z-10 hover:scale-110"><Image src="/avatars/thomas.jpg" alt="Thomas H. Chapin IV, AI engineer" width={40} height={40} /></span>
               </div>
-              <p className="trust-text">
-                Loved by founders, builders &amp; creators
-              </p>
+              <p className="trust-text">{t('heroLovedBy')}</p>
             </div>
 
             <div className="stage-wrap rv">
@@ -596,7 +564,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                   <div className="hud" id="vtHud" aria-hidden="true">
                     <span className="hud-wave" id="vtHudWave" />
                   </div>
-                  <span className="hud-state" id="vtHudState">hold to talk</span>
+                  <span className="hud-state" id="vtHudState">{t('hudHoldToTalk')}</span>
                 </div>
               </div>
 
@@ -615,37 +583,33 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="pt-[128px]" id="setup">
           <div className="vt-container">
             <div className="mx-auto max-w-[620px] text-center">
-              <h2 className="section-h2">
-                Up and running in minutes
-              </h2>
-              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">
-                Install, pick a model, set a hotkey, then talk. That&apos;s it.
-              </p>
+              <h2 className="section-h2">{t('setupTitle')}</h2>
+              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">{t('setupSub')}</p>
             </div>
 
             <div className="loop rv">
               <div className="loop-node">
                 <span className="nb nb-step">1</span>
-                <h3>Install</h3>
-                <p>Download for Mac or Windows and open it.</p>
+                <h3>{t('step1Title')}</h3>
+                <p>{t('step1Body')}</p>
               </div>
               <span className="loop-arrow" aria-hidden="true">→</span>
               <div className="loop-node">
                 <span className="nb nb-step">2</span>
-                <h3>Pick a model</h3>
-                <p>Choose a local model: small for speed, large for accuracy.</p>
+                <h3>{t('step2Title')}</h3>
+                <p>{t('step2Body')}</p>
               </div>
               <span className="loop-arrow" aria-hidden="true">→</span>
               <div className="loop-node">
                 <span className="nb nb-step">3</span>
-                <h3>Set a hotkey</h3>
-                <p>Choose your shortcut, then press and talk in any app.</p>
+                <h3>{t('step3Title')}</h3>
+                <p>{t('step3Body')}</p>
               </div>
               <span className="loop-arrow" aria-hidden="true">→</span>
               <div className="loop-node">
                 <span className="nb nb-step">4</span>
-                <h3>Start talking</h3>
-                <p>Talk all day and give your fingers a rest.</p>
+                <h3>{t('step4Title')}</h3>
+                <p>{t('step4Body')}</p>
               </div>
             </div>
           </div>
@@ -655,20 +619,16 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="pt-[128px]" id="features">
           <div className="vt-container">
             <div className="mx-auto max-w-[620px] text-center">
-              <h2 className="section-h2">
-                More than just dictation
-              </h2>
-              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">
-                Local dictation by default. Optional cloud transcription and AI cleanup when you want more.
-              </p>
+              <h2 className="section-h2">{t('featuresTitle')}</h2>
+              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">{t('featuresSub')}</p>
             </div>
 
             <div className="bento feat-top">
               <article className="feat-card feat-apps span-2 rv">
                 <div className="fc-text">
                   <span className="feat-icon bi"><Bi name="apps" /></span>
-                  <h3>Talk into every app</h3>
-                  <p>One global hotkey drops clean text wherever your cursor sits, no per-app setup, no copy-paste.</p>
+                  <h3>{t('featAppsTitle')}</h3>
+                  <p>{t('featAppsBody')}</p>
                 </div>
                 <div className="fa-list" id="vtFaList" aria-hidden="true">
                   <div className="fa-row"><span className="fa-ico bi"><Bi name="gmail" /></span><span className="fa-app">Gmail</span><span className="fa-line"><span className="fa-typed" /><span className="fa-caret" /></span></div>
@@ -681,8 +641,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               <article className="feat-card feat-lang rv rv-d1">
                 <div className="fc-text">
                   <span className="feat-icon bi"><Bi name="globe" /></span>
-                  <h3>99+ languages</h3>
-                  <p>Automatic detection. Just speak, in any language.</p>
+                  <h3>{t('featLangTitle')}</h3>
+                  <p>{t('featLangBody')}</p>
                 </div>
                 <div className="fl-stage" id="vtFlStage" aria-hidden="true">
                   <span className="fl-word" id="vtFlWord">Hello</span>
@@ -695,8 +655,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               <article className="feat-card feat-scene rv">
                 <div className="fc-text">
                   <span className="feat-icon bi"><Bi name="terminal" /></span>
-                  <h3>Agent CLI &amp; API</h3>
-                  <p>Drive Voicetypr from your CLI or scripts — audio in, text or JSON out. Give your AI agents (OpenClaw, Hermes, nanoclaw) ears.</p>
+                  <h3>{t('featCliTitle')}</h3>
+                  <p>{t('featCliBody')}</p>
                 </div>
                 <div className="cli-term" aria-hidden="true">
                   <div className="cli-row cli-dim">voicetypr · agent</div>
@@ -708,8 +668,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               <article className="feat-card feat-scene rv rv-d1">
                 <div className="fc-text">
                   <span className="feat-icon bi"><Bi name="cloud" /></span>
-                  <h3>Local or cloud, your call</h3>
-                  <p>On-device Whisper and Parakeet by default. On a lighter machine, switch to a cloud engine for speed and accuracy.</p>
+                  <h3>{t('featCloudTitle')}</h3>
+                  <p>{t('featCloudBody')}</p>
                 </div>
                 <div className="engine-pick" aria-hidden="true">
                   <span className="eng-row on"><span className="bi"><Bi name="check" /></span>Local · Whisper</span>
@@ -721,8 +681,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               <article className="feat-card feat-scene rv rv-d2">
                 <div className="fc-text">
                   <span className="feat-icon bi"><Bi name="network" /></span>
-                  <h3>Use a stronger machine</h3>
-                  <p>Let a powerful desktop transcribe for a lighter laptop, over your own Wi-Fi.</p>
+                  <h3>{t('featNetworkTitle')}</h3>
+                  <p>{t('featNetworkBody')}</p>
                 </div>
                 <div className="remote-demo" aria-hidden="true">
                   <span className="rd-dev">This laptop</span>
@@ -735,8 +695,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
             <article className="feat-card feat-rewrite rv" style={{ marginTop: 14 }}>
               <div className="rw-intro">
                 <span className="feat-icon bi"><Bi name="sparkle" /></span>
-                <h3>Clean it up with AI</h3>
-                <p>Bring your own OpenAI, Anthropic, or Gemini key and turn rough dictation into clean prompts, emails, and notes. Text only, never your audio, and always optional.</p>
+                <h3>{t('featAiTitle')}</h3>
+                <p>{t('featAiBody')}</p>
               </div>
               <div className="rw-demo" aria-hidden="true">
                 <div className="rw-line rw-said">
@@ -751,36 +711,34 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               </div>
             </article>
 
-            <p className="mt-16 text-center text-[14px] font-medium text-editorial-ink-3">
-              Built for how you actually work
-            </p>
+            <p className="mt-16 text-center text-[14px] font-medium text-editorial-ink-3">{t('builtFor')}</p>
             <div className="mt-7 grid grid-cols-4 gap-x-7 gap-y-9 max-[900px]:grid-cols-2 max-[540px]:grid-cols-1">
               <div>
-                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="keyboard" /></span>Capture your way</h3>
+                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="keyboard" /></span>{t('t2CaptureTitle')}</h3>
                 <ul className="t2-list">
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>Push-to-talk</li>
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>Tap to lock, hands-free</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2CaptureA')}</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2CaptureB')}</li>
                 </ul>
               </div>
               <div>
-                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="waveform" /></span>Sharper transcripts</h3>
+                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="waveform" /></span>{t('t2SharperTitle')}</h3>
                 <ul className="t2-list">
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>Custom vocabulary</li>
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>Translation</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2SharperA')}</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2SharperB')}</li>
                 </ul>
               </div>
               <div>
-                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="sparkle" /></span>Formatting &amp; rules</h3>
+                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="sparkle" /></span>{t('t2FormatTitle')}</h3>
                 <ul className="t2-list">
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>6 formatting modes</li>
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>Per-app rules</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2FormatA')}</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2FormatB')}</li>
                 </ul>
               </div>
               <div>
-                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="chip" /></span>Workflow &amp; power</h3>
+                <h3 className="t2-head"><span className="bi text-[16px] text-sage"><Bi name="chip" /></span>{t('t2WorkflowTitle')}</h3>
                 <ul className="t2-list">
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>Audio &amp; video files</li>
-                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>Searchable history</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2WorkflowA')}</li>
+                  <li><span className="bi text-[13px] text-sage"><Bi name="check" /></span>{t('t2WorkflowB')}</li>
                 </ul>
               </div>
             </div>
@@ -791,28 +749,21 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="pt-[128px]">
           <div className="vt-container">
             <div className="mx-auto max-w-[680px] text-center rv">
-              <h2 className="section-h2">
-                Get your hours back
-              </h2>
-              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">
-                You think faster than you type. Voice typing closes the gap, so ideas land before
-                they slip and the hours you lose to the keyboard come back to you.
-              </p>
+              <h2 className="section-h2">{t('mathTitle')}</h2>
+              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">{t('mathSub')}</p>
             </div>
             <div className="speed rv" aria-hidden="true">
               <div className="speed-row">
-                <span className="speed-label">You, typing</span>
+                <span className="speed-label">{t('speedTyping')}</span>
                 <span className="speed-track"><span className="speed-fill speed-type" /></span>
                 <span className="speed-num">≈ 40 wpm</span>
               </div>
               <div className="speed-row">
-                <span className="speed-label">You, talking</span>
+                <span className="speed-label">{t('speedTalking')}</span>
                 <span className="speed-track"><span className="speed-fill speed-talk" /></span>
                 <span className="speed-num">≈ 130 wpm</span>
               </div>
-              <p className="speed-foot">
-                About <b>3× faster</b> than the keyboard. That gap is the hours you get back.
-              </p>
+              <p className="speed-foot">{t.rich('speedFoot', { b: (c) => <b>{c}</b> })}</p>
             </div>
           </div>
         </section>
@@ -821,12 +772,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="pt-[128px]" id="testimonials">
           <div className="vt-container">
             <div className="mx-auto max-w-[620px] text-center">
-              <h2 className="section-h2">
-                Why people switch and stay
-              </h2>
-              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">
-                Founders, developers, and creators who type all day.
-              </p>
+              <h2 className="section-h2">{t('testimonialsTitle')}</h2>
+              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">{t('testimonialsSub')}</p>
             </div>
 
             <div className="tweets">
@@ -851,20 +798,16 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="pt-[128px]" id="pricing">
           <div className="vt-container-narrow">
             <div className="mx-auto max-w-[620px] text-center">
-              <h2 className="section-h2">
-                Pay <em className="not-italic text-sage">once</em>. Keep <em className="not-italic text-sage">forever</em>.
-              </h2>
-              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">
-                One license, yours for life. Try it free for 3 days, no card required.
-              </p>
+              <h2 className="section-h2">{t.rich('pricingTitle', { em: (c) => <em className="not-italic text-sage">{c}</em> })}</h2>
+              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">{t('pricingSub')}</p>
             </div>
 
             <div className="pricing-hero rv">
               <div className="pricing-hero-main">
-                <p className="ph-anchor">Most tools charge $10–15 a month, forever. <b>Voicetypr is one payment.</b></p>
+                <p className="ph-anchor">{t.rich('priceAnchor', { b: (c) => <b>{c}</b> })}</p>
                 <div className="ph-figure">
                   <span className="now">{formatPrice(BASE_PRICES[plan])}</span>
-                  <span className="per">once · {DEVICE_LABEL[plan]}</span>
+                  <span className="per">{t('priceOnce', { device: deviceLabel(plan) })}</span>
                 </div>
                 <div className="ph-pick">
                   {PUBLIC_PLAN_KEYS.map((key) => (
@@ -875,7 +818,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                       aria-pressed={key === plan}
                       onClick={() => setPlan(key)}
                     >
-                      {DEVICE_LABEL[key]}
+                      {deviceLabel(key)}
                     </button>
                   ))}
                 </div>
@@ -888,15 +831,15 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                     data-track="pricing-plan-click"
                     data-track-plan={plan}
                   >
-                    Buy lifetime · {formatPrice(BASE_PRICES[plan])}
+                    {t('buyLifetime', { price: formatPrice(BASE_PRICES[plan]) })}
                   </button>
-                  <small>Secure checkout · 7-day money-back guarantee</small>
+                  <small>{t('secureCheckout')}</small>
                 </div>
               </div>
               <div className="pricing-hero-side">
-                <h3>Everything included</h3>
+                <h3>{t('everythingIncluded')}</h3>
                 <ul className="ph-list">
-                  {PRICE_FEATURES.map((f) => (
+                  {priceFeatures.map((f) => (
                     <li key={f}><span className="bi"><Bi name="check" /></span>{f}</li>
                   ))}
                 </ul>
@@ -904,8 +847,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
             </div>
 
             <p className="pricing-team">
-              Need <b>5+ seats</b>?{' '}
-              <a href="mailto:support@voicetypr.com?subject=Team%20licensing">Contact us →</a>
+              {t.rich('needSeats', { b: (c) => <b>{c}</b> })}{' '}
+              <a href="mailto:support@voicetypr.com?subject=Team%20licensing">{t('contactUs')}</a>
             </p>
           </div>
         </section>
@@ -917,19 +860,13 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               <span className="avatar">
                 <Image src="/avatars/moinul.jpg" alt="Moinul Moin, founder & AI engineer at Ideaplexa" width={56} height={56} />
               </span>
-              <p className="founder-quote">
-                “I built Voicetypr because paying a monthly fee for basic dictation didn&apos;t feel right.”
-              </p>
-              <p className="founder-body">
-                I type for 12+ hours a day. Most tools locked me into a subscription or felt like legacy
-                software. Voicetypr is fast, offline by default, and runs on your machine. Try it free for
-                3 days to see if it actually saves you time.
-              </p>
+              <p className="founder-quote">“{t('founderQuote')}”</p>
+              <p className="founder-body">{t('founderBody')}</p>
               <p className="founder-sig">
                 <b>
                   <a href="https://twitter.com/moinulmoin" target="_blank" rel="noopener noreferrer" data-track="founder-twitter-click">Moinul Moin</a>
                 </b>{' '}
-                · Solo founder, Voicetypr
+                {t('founderSig')}
               </p>
             </div>
           </div>
@@ -939,16 +876,12 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="pt-[128px]" id="faq">
           <div className="vt-container">
             <div className="mx-auto max-w-[620px] text-center">
-              <h2 className="section-h2">
-                Questions, <em className="not-italic text-sage">answered</em>
-              </h2>
-              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">
-                Have a different question? Email support@voicetypr.com and we&apos;ll reply within a day.
-              </p>
+              <h2 className="section-h2">{t.rich('faqTitle', { em: (c) => <em className="not-italic text-sage">{c}</em> })}</h2>
+              <p className="mx-auto mt-[14px] max-w-[540px] text-balance text-[15.5px] leading-[1.6] text-editorial-ink-2">{t('faqSub')}</p>
             </div>
 
             <div className="mx-auto mt-[52px] grid max-w-[980px] grid-cols-2 gap-x-14 gap-y-[34px] max-[720px]:grid-cols-1 max-[720px]:gap-7">
-              {FAQS.map(([q, a]) => (
+              {faqs.map(([q, a]) => (
                 <div key={q}>
                   <h3 className="mb-[9px] text-[15.5px] font-semibold tracking-[-0.005em] text-editorial-ink">{q}</h3>
                   <p className="text-[14px] leading-[1.62] text-editorial-ink-2">{a}</p>
@@ -956,10 +889,9 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               ))}
             </div>
             <p className="mt-12 text-center text-[13.5px] text-editorial-ink-2">
-              Still have a question?{' '}
-              <a className="font-medium text-editorial-ink underline underline-offset-[3px]" href="mailto:support@voicetypr.com" data-track="faq-contact-click">Email support</a>{' '}
-              and we&apos;ll
-              reply within a day.
+              {t('faqStill')}{' '}
+              <a className="font-medium text-editorial-ink underline underline-offset-[3px]" href="mailto:support@voicetypr.com" data-track="faq-contact-click">{t('faqEmailSupport')}</a>{' '}
+              {t('faqStillTail')}
             </p>
           </div>
         </section>
@@ -968,10 +900,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         <section className="pt-[128px]">
           <div className="vt-container">
             <div className="cta-card rv">
-              <h3><span className="roman">Stop typing.</span><br />Start <em>talking</em>.</h3>
-              <p className="cta-sub">
-                Free for 3 days, then it&apos;s yours for good. Works on macOS and Windows.
-              </p>
+              <h3>{t.rich('finalCtaTitle', { em: (c) => <em>{c}</em> })}</h3>
+              <p className="cta-sub">{t('finalCtaSub')}</p>
               <Link className="btn btn-primary" href={downloadHrefForOs(os)} data-track="cta-download-click">
                 {os === 'windows' ? (
                   <Bi name="windows" />
@@ -979,12 +909,12 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                   <Bi name="apple" />
                 ) : null}
                 {os === 'windows'
-                  ? 'Download for Windows'
+                  ? t('downloadWindows')
                   : os === 'mac'
-                    ? 'Download for macOS'
-                    : 'Download for Mac & PC'}
+                    ? t('downloadMac')
+                    : t('downloadBoth')}
               </Link>
-              <p className="cta-fine">macOS 13+ · Windows 10+ · No card for trial</p>
+              <p className="cta-fine">{t('finalCtaFine')}</p>
             </div>
           </div>
         </section>
@@ -1001,10 +931,10 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
         data-markdown-skip
       >
         {os === 'windows'
-          ? 'Download for Windows'
+          ? t('downloadWindows')
           : os === 'mac'
-            ? 'Download for macOS'
-            : 'Download for Mac & PC'}
+            ? t('downloadMac')
+            : t('downloadBoth')}
       </Link>
 
       {/* ============ DEMO MODAL ============ */}
@@ -1023,7 +953,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
               className="vt-modal-close"
               onClick={() => setDemoOpen(false)}
             >
-              Close ✕
+              {t('closeDemo')}
             </button>
             <div className="vt-modal-frame">
               <iframe

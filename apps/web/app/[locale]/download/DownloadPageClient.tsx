@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ReleaseAssets } from "@/app/lib/github";
@@ -60,6 +61,7 @@ const CURSOR_APP = { src: "/brand/apps/cursor.svg", alt: "Cursor", bg: "#0b0b0c"
 const CLAUDE_APP = { src: "/brand/apps/claude.svg", alt: "Claude", bg: "#d97757" };
 
 function StepVisual({ index, isWindows }: { index: number; isWindows: boolean }) {
+  const t = useTranslations("Download");
   // 1 — the installer in your downloads
   if (index === 0) {
     return (
@@ -78,7 +80,7 @@ function StepVisual({ index, isWindows }: { index: number; isWindows: boolean })
         <span className="w-[210px] rounded-xl border border-border bg-card p-3 shadow-sm">
           <span className="flex items-center gap-2">
             <AppTile className="h-6 w-6 rounded-md" />
-            <span className="text-xs font-medium text-foreground">Installing Voicetypr&hellip;</span>
+            <span className="text-xs font-medium text-foreground">{t("installing")}</span>
           </span>
           <span className="mt-2.5 block h-1.5 w-full overflow-hidden rounded-full bg-muted">
             <span className="block h-full w-2/3 rounded-full bg-sage" />
@@ -102,7 +104,7 @@ function StepVisual({ index, isWindows }: { index: number; isWindows: boolean })
           <Bi name="arrow" className="text-lg text-muted-foreground" />
           <span className="flex flex-col items-center gap-1.5">
             <FolderIcon className="h-12 w-12" />
-            <span className="text-[10px] text-muted-foreground">Applications</span>
+            <span className="text-[10px] text-muted-foreground">{t("applications")}</span>
           </span>
         </span>
       </span>
@@ -157,60 +159,6 @@ function StepVisual({ index, isWindows }: { index: number; isWindows: boolean })
   );
 }
 
-const MAC_STEPS = [
-  { title: "Open the installer", desc: "Double-click Voicetypr.dmg in your Downloads." },
-  { title: "Drag to Applications", desc: "Drag the Voicetypr icon into your Applications folder." },
-  { title: "Launch & talk", desc: "Open Voicetypr, set a hotkey, and start dictating." },
-];
-
-const WIN_STEPS = [
-  { title: "Open the installer", desc: "Run the Voicetypr .exe from your Downloads." },
-  { title: "Allow & install", desc: "If Windows shows “Unknown publisher,” click More info → Run anyway." },
-  { title: "Launch & talk", desc: "Open Voicetypr, set a hotkey, and start dictating." },
-];
-
-const MAC_FAQS = [
-  {
-    q: "Is the Mac app notarized?",
-    a: "Yes — Voicetypr is notarized by Apple, so it opens normally with no Gatekeeper warnings or right-click workarounds. Just open it and start dictating.",
-  },
-  {
-    q: "Apple Silicon or Intel — which build?",
-    a: "Macs from 2020 on are Apple Silicon (M-series) — use the default build. Older Intel Macs can grab the Intel build from the “Need a different build?” links above.",
-  },
-  {
-    q: "Does it work fully offline?",
-    a: "Yes — transcription runs on-device with local models, so your voice never leaves your Mac. Optional cloud AI formatting is opt-in and uses your own key.",
-  },
-  {
-    q: "Which macOS versions are supported?",
-    a: "macOS 13 (Ventura) and later, on both Apple Silicon and Intel.",
-  },
-];
-
-const WIN_FAQS = [
-  {
-    q: "My browser blocked the download / “isn’t commonly downloaded”?",
-    a: "Because the installer isn’t code-signed yet, Chrome and Edge flag it on download (not on running it). Click Keep — in Edge, open the ⋯ menu on the warning → Keep → Keep anyway — to save the .exe, then open it. It’s the official build straight from our GitHub releases.",
-  },
-  {
-    q: "“Windows protected your PC” / Unknown publisher?",
-    a: "SmartScreen shows that because the installer isn’t EV-code-signed yet. Click More info → Run anyway — it’s the official build straight from our GitHub releases.",
-  },
-  {
-    q: "My antivirus flagged it — is it safe?",
-    a: "New, unsigned installers occasionally trip a false positive. The build comes directly from our public GitHub releases, where you can verify the source.",
-  },
-  {
-    q: "Does it work fully offline?",
-    a: "Yes — transcription runs on-device with local models, so your voice never leaves your PC. Optional cloud AI formatting is opt-in and uses your own key.",
-  },
-  {
-    q: "Which Windows versions are supported?",
-    a: "Windows 10 and 11 (64-bit). Prefer the store? There’s a Microsoft Store build too.",
-  },
-];
-
 export default function DownloadPageClient({
   assets,
   selected,
@@ -220,6 +168,7 @@ export default function DownloadPageClient({
   selected: string;
   explicit: boolean;
 }) {
+  const t = useTranslations("Download");
   // Respect an explicit ?platform= choice. Otherwise client-correct the
   // platform: the server may have guessed wrong (or cached wrong under
   // cacheComponents). useDetectedOs returns 'other' on the server and during
@@ -266,9 +215,9 @@ export default function DownloadPageClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [directUrl]);
 
-  const steps = isWindows ? WIN_STEPS : MAC_STEPS;
+  const steps = (isWindows ? t.raw("winSteps") : t.raw("macSteps")) as Array<[string, string]>;
   const osName = isWindows ? "Windows" : "macOS";
-  const faqs = isWindows ? WIN_FAQS : MAC_FAQS;
+  const faqs = (isWindows ? t.raw("winFaqs") : t.raw("macFaqs")) as Array<[string, string]>;
 
   return (
     <div className="flex min-h-dvh flex-col bg-background font-sans text-foreground">
@@ -277,17 +226,17 @@ export default function DownloadPageClient({
       <main id="main-content" className="flex-1">
         <section className="mx-auto max-w-2xl px-6 pt-16 text-center md:pt-24">
           <h1 className="text-balance font-sans text-[clamp(2.25rem,5vw,3.25rem)] font-bold leading-tight tracking-tight">
-            You&apos;re almost there.
+            {t("almostThere")}
           </h1>
           <p className="mx-auto mt-4 max-w-md text-balance text-base leading-relaxed text-muted-foreground">
-            Your {osName} download is starting automatically. Didn&apos;t work?{" "}
+            {t("startingAuto", { os: osName })}{" "}
             <a
               href={manualUrl}
               onClick={track}
               className="font-medium text-sage underline underline-offset-2"
               data-track="download-manual"
             >
-              Download manually
+              {t("downloadManually")}
             </a>
             .
           </p>
@@ -295,22 +244,22 @@ export default function DownloadPageClient({
 
         <section className="mx-auto mt-12 max-w-4xl px-6">
           <div className="grid gap-4 md:grid-cols-3">
-            {steps.map((s, i) => (
-              <div key={s.title} className="rounded-2xl border border-border bg-card p-5">
+            {steps.map(([title, desc], i) => (
+              <div key={title} className="rounded-2xl border border-border bg-card p-5">
                 <div className="mb-5 grid h-32 place-items-center rounded-xl bg-muted">
                   <StepVisual index={i} isWindows={isWindows} />
                 </div>
                 <div className="flex items-center gap-2.5">
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-sage-bg text-xs font-bold text-sage">{i + 1}</span>
-                  <h2 className="text-base font-semibold text-foreground">{s.title}</h2>
+                  <h2 className="text-base font-semibold text-foreground">{title}</h2>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>
 
           <p className="mt-10 text-center text-sm text-muted-foreground">
-            Free 3-day trial, no card to start. Need a different build?{" "}
+            {t("trialNeedBuild")}{" "}
             <Link href="/download?platform=macos-silicon" className="underline underline-offset-2 hover:text-foreground">macOS</Link>
             {" · "}
             <Link href="/download?platform=windows" className="underline underline-offset-2 hover:text-foreground">Windows</Link>
@@ -321,13 +270,13 @@ export default function DownloadPageClient({
 
         <section className="mx-auto mt-16 max-w-[900px] px-6 pb-4">
           <h2 className="text-balance text-center font-sans text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-tight text-foreground">
-            Common {osName} <span className="text-sage">questions</span>
+            {t.rich("commonQuestions", { os: osName, sage: (c) => <span className="text-sage">{c}</span> })}
           </h2>
           <div className="mx-auto mt-12 grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-2">
-            {faqs.map((f) => (
-              <div key={f.q}>
-                <h3 className="mb-2 text-[15.5px] font-semibold tracking-tight text-foreground">{f.q}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+            {faqs.map(([q, a]) => (
+              <div key={q}>
+                <h3 className="mb-2 text-[15.5px] font-semibold tracking-tight text-foreground">{q}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{a}</p>
               </div>
             ))}
           </div>

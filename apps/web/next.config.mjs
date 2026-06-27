@@ -1,5 +1,6 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -87,4 +88,6 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig)

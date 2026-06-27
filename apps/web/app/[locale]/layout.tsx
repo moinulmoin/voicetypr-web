@@ -8,6 +8,11 @@ import { OpenPanel } from "@/components/openpanel";
 import CookieConsent from "@/components/cookie-consent";
 import { DeferredPixels } from "@/components/deferred-pixels";
 import { Providers } from "@/components/providers";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { LocaleSuggestBanner } from "@/components/marketing/locale-suggest-banner";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -111,13 +116,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  setRequestLocale(locale);
+
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth" data-scroll-behavior="smooth">
+    <html lang={locale} suppressHydrationWarning className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://assets.voicetypr.com" />
         <link rel="dns-prefetch" href="https://assets.voicetypr.com" />
@@ -249,11 +266,14 @@ export default function RootLayout({
         </a>
         <CookieConsent />
         <Suspense fallback={null}>
-          <Providers>
-            <DeferredPixels />
-            {children}
-            <OpenPanel />
-          </Providers>
+          <NextIntlClientProvider>
+            <Providers>
+              <DeferredPixels />
+              {children}
+              <OpenPanel />
+            </Providers>
+            <LocaleSuggestBanner />
+          </NextIntlClientProvider>
         </Suspense>
       </body>
     </html>

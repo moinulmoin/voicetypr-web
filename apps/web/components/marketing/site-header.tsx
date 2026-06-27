@@ -1,22 +1,24 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useDetectedOs, downloadHrefForOs } from "@/lib/use-os";
 import { Bi } from "@/app/components/landing-v2/brand-icons";
 import { Brandmark } from "@/components/marketing/brandmark";
+import { useTranslations } from "next-intl";
 
 const NAV = [
-  { label: "Features", href: "/#features" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "Use cases", href: "/use-cases" },
-];
+  { key: "features", href: "/#features" },
+  { key: "pricing", href: "/#pricing" },
+  { key: "faq", href: "/#faq" },
+  { key: "useCases", href: "/use-cases" },
+] as const;
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const os = useDetectedOs();
+  const t = useTranslations("Nav");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -29,7 +31,9 @@ export function SiteHeader() {
     <header
       className={cn(
         "sticky top-0 z-30 transition-colors duration-300",
-        scrolled ? "bg-background/85 backdrop-blur" : "bg-transparent",
+        scrolled
+          ? "border-b border-border bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/80"
+          : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -40,8 +44,8 @@ export function SiteHeader() {
         <nav className="flex items-center gap-7">
           <div className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
             {NAV.map((l) => (
-              <Link key={l.label} href={l.href} className="transition-colors hover:text-foreground" data-track="nav-click">
-                {l.label}
+              <Link key={l.key} href={l.href} className="transition-colors hover:text-foreground" data-track="nav-click">
+                {t(l.key)}
               </Link>
             ))}
           </div>
@@ -50,7 +54,7 @@ export function SiteHeader() {
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             data-track="nav-download-click"
           >
-            Download
+            {t("download")}
             {os === "windows" ? (
               <Bi name="windows" className="text-sm" />
             ) : os === "mac" ? (

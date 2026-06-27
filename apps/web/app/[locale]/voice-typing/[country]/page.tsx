@@ -14,36 +14,137 @@ import {
   getGeoPage,
   type GeoPage,
 } from "@/lib/geo-pages";
+import { GEO_PAGE_ES } from "@/lib/geo-pages.es";
 
-type RouteParams = { country: string };
+type RouteParams = { locale: string; country: string };
 
 type PageProps = {
   params: Promise<RouteParams>;
 };
 
 // Unknown / removed country slugs 404 via notFound() in the page body below.
-export async function generateStaticParams(): Promise<RouteParams[]> {
+// locale is supplied by the parent [locale] segment; only the country dimension
+// is enumerated here (Next cartesian-products them).
+export async function generateStaticParams(): Promise<{ country: string }[]> {
   return getAllGeoSlugs().map((country) => ({ country }));
 }
 
+/**
+ * Per-locale chrome strings for the geo template, fully interpolated against the
+ * page so the JSX stays clean. en values reproduce the original hardcoded copy
+ * verbatim, so English pages render byte-identically.
+ */
+function getGeoStrings(page: GeoPage, locale: string) {
+  const c = page.country;
+  if (locale === "es") {
+    return {
+      breadcrumbHome: "Voicetypr",
+      breadcrumbSection: "Dictado por voz",
+      breadcrumbCurrent: `Dictado por voz en ${c}`,
+      metaOffline: "Sin conexión por defecto",
+      metaPlatforms: "Mac + Windows",
+      metaPayOnce: "Pago único",
+      ctaTrial: "Empieza la prueba gratis de 3 días",
+      ctaPricing: "Ver precios",
+      privacyEyebrow: `Privacidad en ${c}`,
+      privacyHeading: "Tu voz nunca sale de tu dispositivo",
+      govEyebrow: "Ley aplicable",
+      govHeading: `Pensado para las expectativas de privacidad de ${c}`,
+      govBodyPre: `En ${c}, los datos personales se rigen por `,
+      govBodyPost:
+        ". La arquitectura local-first de Voicetypr está diseñada para ayudarte a cumplir esas expectativas; tú sigues siendo responsable como responsable del tratamiento.",
+      regEyebrow: "Autoridad de control",
+      regHeading: "Menos que explicarle al regulador",
+      regBodyPre: "La supervisión corre a cargo de ",
+      regBodyPost:
+        ". Como el dictado principal mantiene tu audio en tu dispositivo, reduces la superficie de transferencia de datos que más se vigila.",
+      langEyebrow: "Idiomas",
+      langHeading: "Transcrito en el dispositivo, en tu idioma",
+      langBody: `Whisper es multilingüe, así que los modelos locales manejan los idiomas que la gente realmente usa en ${c}, sin pasar por la nube para el dictado principal.`,
+      fitEyebrow: "Por qué encaja",
+      fitHeading: `Dictado privado que encaja con ${c}`,
+      faqEyebrow: "Preguntas frecuentes",
+      faqHeading: `Dictado por voz en ${c}, respondido`,
+      finalHeadline: `Dictado por voz privado para ${c}`,
+      finalSubtitle:
+        "Prueba gratis de 3 días. Sin tarjeta. La transcripción local mantiene tu voz en tu dispositivo, en Mac y Windows.",
+      finalPrimary: "Empieza la prueba gratis",
+      finalSecondary: "Compra la licencia de por vida",
+    };
+  }
+  return {
+    breadcrumbHome: "Voicetypr",
+    breadcrumbSection: "Voice typing",
+    breadcrumbCurrent: `Voice typing in ${c}`,
+    metaOffline: "Offline by default",
+    metaPlatforms: "Mac + Windows",
+    metaPayOnce: "Pay once",
+    ctaTrial: "Start 3-day free trial",
+    ctaPricing: "See pricing",
+    privacyEyebrow: `Privacy in ${c}`,
+    privacyHeading: "Your voice never leaves your device",
+    govEyebrow: "Governing law",
+    govHeading: `Built around ${page.demonym} privacy expectations`,
+    govBodyPre: `Personal data in ${c} is governed by `,
+    govBodyPost:
+      ". Voicetypr's local-first architecture is designed to help you meet those expectations — you remain responsible as the data controller.",
+    regEyebrow: "Regulator",
+    regHeading: "Less to explain to the regulator",
+    regBodyPre: "Oversight comes from ",
+    regBodyPost:
+      ". Because core dictation keeps your audio on your device, you cut down the data-transfer surface they scrutinise most.",
+    langEyebrow: "Language support",
+    langHeading: "Transcribed on-device, in your language",
+    langBody: `Whisper is multilingual, so the local models handle the languages people actually work in across ${c} — no cloud round-trip required for core dictation.`,
+    fitEyebrow: "Why it fits",
+    fitHeading: `Private dictation that fits ${c}`,
+    faqEyebrow: "FAQ",
+    faqHeading: `Voice typing in ${c}, answered`,
+    finalHeadline: `Private voice typing for ${c}`,
+    finalSubtitle:
+      "3-day free trial. No credit card. Local transcription keeps your voice on your device, across Mac and Windows.",
+    finalPrimary: "Start free trial",
+    finalSecondary: "Buy lifetime license",
+  };
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { country } = await params;
-  const page = getGeoPage(country);
+  const { country, locale } = await params;
+  const page = getGeoPage(country, locale);
   if (!page) return {};
 
-  const url = `https://voicetypr.com/voice-typing/${page.slug}`;
+  const enUrl = `https://voicetypr.com/voice-typing/${page.slug}`;
+  const esUrl = `https://voicetypr.com/es/voice-typing/${page.slug}`;
+  const url = locale === "es" ? esUrl : enUrl;
+  // Only advertise the es alternate once its Spanish copy has shipped; otherwise
+  // /es/<slug> is noindex English (proxy) and must not be cross-linked.
+  const hasEs = Boolean(GEO_PAGE_ES[page.slug]);
+  const languages = hasEs ? { en: enUrl, es: esUrl, "x-default": enUrl } : undefined;
+  // Keep the in-page robots signal consistent with the proxy noindex gate.
+  const indexable = locale !== "es" || hasEs;
+  const keywords =
+    locale === "es"
+      ? [
+          `dictado por voz ${page.country}`,
+          `dictado ${page.country}`,
+          `voz a texto ${page.country}`,
+          "dictado sin conexión",
+          "dictado por voz privado",
+          "voz a texto local",
+        ]
+      : [
+          `voice typing ${page.country}`,
+          `dictation ${page.country}`,
+          `${page.demonym} voice to text`,
+          "offline dictation",
+          "private voice typing",
+          "local speech to text",
+        ];
   return {
     title: page.metaTitle,
     description: page.metaDescription,
-    keywords: [
-      `voice typing ${page.country}`,
-      `dictation ${page.country}`,
-      `${page.demonym} voice to text`,
-      "offline dictation",
-      "private voice typing",
-      "local speech to text",
-    ],
-    alternates: { canonical: url },
+    keywords,
+    alternates: { canonical: url, ...(languages ? { languages } : {}) },
     openGraph: {
       title: page.metaTitle,
       description: page.metaDescription,
@@ -66,7 +167,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: ["/voicetypr-og.png"],
       creator: "@moinulmoin",
     },
-    robots: { index: true, follow: true },
+    robots: { index: indexable, follow: true },
     other: {
       "article:modified_time": `${GEO_PAGES_LAST_UPDATED}T00:00:00.000Z`,
       "og:updated_time": `${GEO_PAGES_LAST_UPDATED}T00:00:00.000Z`,
@@ -129,25 +230,33 @@ const geoRelatedGuides: DiscoveryLink[] = [
 ];
 
 export default async function VoiceTypingCountryPage({ params }: PageProps) {
-  const { country } = await params;
-  const page = getGeoPage(country);
+  const { country, locale } = await params;
+  const page = getGeoPage(country, locale);
   if (!page) notFound();
 
-  return <GeoPageBody page={page} />;
+  return <GeoPageBody page={page} locale={locale} />;
 }
 
-function GeoPageBody({ page }: { page: GeoPage }) {
+function GeoPageBody({ page, locale }: { page: GeoPage; locale: string }) {
+  const s = getGeoStrings(page, locale);
+  const isEs = locale === "es";
+  const homeHref = isEs ? "/es" : "/";
+  const voiceTypingHref = isEs ? "/es/voice-typing" : "/voice-typing";
+  const downloadHref = isEs ? "/es/download" : "/download";
+  const pricingHref = isEs ? "/es#pricing" : "/#pricing";
+  const baseUrl = isEs ? "https://voicetypr.com/es" : "https://voicetypr.com";
+
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
-      { "@type": "ListItem", position: 2, name: "Voice typing", item: "https://voicetypr.com/voice-typing" },
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: `${baseUrl}/` },
+      { "@type": "ListItem", position: 2, name: s.breadcrumbSection, item: `${baseUrl}/voice-typing` },
       {
         "@type": "ListItem",
         position: 3,
-        name: `Voice typing in ${page.country}`,
-        item: `https://voicetypr.com/voice-typing/${page.slug}`,
+        name: s.breadcrumbCurrent,
+        item: `${baseUrl}/voice-typing/${page.slug}`,
       },
     ],
   };
@@ -180,12 +289,12 @@ function GeoPageBody({ page }: { page: GeoPage }) {
           <Container>
             <div className="mx-auto max-w-4xl">
               <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
-                <Link href="/" className="transition-colors hover:text-foreground">
-                  Voicetypr
+                <Link href={homeHref} className="transition-colors hover:text-foreground">
+                  {s.breadcrumbHome}
                 </Link>
                 <span aria-hidden>/</span>
-                <Link href="/voice-typing" className="transition-colors hover:text-foreground">
-                  Voice typing
+                <Link href={voiceTypingHref} className="transition-colors hover:text-foreground">
+                  {s.breadcrumbSection}
                 </Link>
                 <span aria-hidden>/</span>
                 <span>{page.country}</span>
@@ -197,23 +306,23 @@ function GeoPageBody({ page }: { page: GeoPage }) {
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{page.intro}</p>
 
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
-                <span>Offline by default</span>
-                <span>Mac + Windows</span>
-                <span>Pay once</span>
+                <span>{s.metaOffline}</span>
+                <span>{s.metaPlatforms}</span>
+                <span>{s.metaPayOnce}</span>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/download"
+                  href={downloadHref}
                   className="inline-flex h-12 items-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 active:scale-95"
                 >
-                  Start 3-day free trial
+                  {s.ctaTrial}
                 </Link>
                 <Link
-                  href="/#pricing"
+                  href={pricingHref}
                   className="inline-flex h-12 items-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:scale-95"
                 >
-                  See pricing
+                  {s.ctaPricing}
                 </Link>
               </div>
             </div>
@@ -225,8 +334,8 @@ function GeoPageBody({ page }: { page: GeoPage }) {
           <Container>
             <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div>
-                <p className="mb-2 text-sm font-medium text-sage">Privacy in {page.country}</p>
-                <h2 className={H2_CLASS}>Your voice never leaves your device</h2>
+                <p className="mb-2 text-sm font-medium text-sage">{s.privacyEyebrow}</p>
+                <h2 className={H2_CLASS}>{s.privacyHeading}</h2>
               </div>
               <p className="text-base leading-relaxed text-muted-foreground">{page.localAngle}</p>
             </div>
@@ -238,24 +347,25 @@ function GeoPageBody({ page }: { page: GeoPage }) {
           <Container>
             <div className="grid gap-4 md:grid-cols-2">
               <article className="rounded-2xl border border-border bg-muted p-6">
-                <p className="text-sm font-medium text-sage">Governing law</p>
+                <p className="text-sm font-medium text-sage">{s.govEyebrow}</p>
                 <h3 className="mt-3 text-xl font-semibold leading-snug text-foreground">
-                  Built around {page.demonym} privacy expectations
+                  {s.govHeading}
                 </h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                  Personal data in {page.country} is governed by {page.privacyLaw}. Voicetypr&apos;s local-first
-                  architecture is designed to help you meet those expectations — you remain responsible as the data
-                  controller.
+                  {s.govBodyPre}
+                  {page.privacyLaw}
+                  {s.govBodyPost}
                 </p>
               </article>
               <article className="rounded-2xl border border-border bg-muted p-6">
-                <p className="text-sm font-medium text-sage">Regulator</p>
+                <p className="text-sm font-medium text-sage">{s.regEyebrow}</p>
                 <h3 className="mt-3 text-xl font-semibold leading-snug text-foreground">
-                  Less to explain to the regulator
+                  {s.regHeading}
                 </h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                  Oversight comes from {page.regulator}. Because core dictation keeps your audio on your device, you cut
-                  down the data-transfer surface they scrutinise most.
+                  {s.regBodyPre}
+                  {page.regulator}
+                  {s.regBodyPost}
                 </p>
               </article>
             </div>
@@ -266,11 +376,10 @@ function GeoPageBody({ page }: { page: GeoPage }) {
         <Section>
           <Container>
             <div className="mb-8 max-w-[760px]">
-              <p className="mb-2 text-sm font-medium text-sage">Language support</p>
-              <h2 className={H2_CLASS}>Transcribed on-device, in your language</h2>
+              <p className="mb-2 text-sm font-medium text-sage">{s.langEyebrow}</p>
+              <h2 className={H2_CLASS}>{s.langHeading}</h2>
               <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                Whisper is multilingual, so the local models handle the languages people actually work in across{" "}
-                {page.country} — no cloud round-trip required for core dictation.
+                {s.langBody}
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -291,8 +400,8 @@ function GeoPageBody({ page }: { page: GeoPage }) {
           <Container>
             <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div>
-                <p className="mb-2 text-sm font-medium text-sage">Why it fits</p>
-                <h2 className={H2_CLASS}>Private dictation that fits {page.country}</h2>
+                <p className="mb-2 text-sm font-medium text-sage">{s.fitEyebrow}</p>
+                <h2 className={H2_CLASS}>{s.fitHeading}</h2>
               </div>
               <ul className="space-y-4">
                 {page.bullets.map((item) => (
@@ -310,8 +419,8 @@ function GeoPageBody({ page }: { page: GeoPage }) {
         <Section>
           <Container>
             <div className="mb-8 max-w-[760px]">
-              <p className="mb-2 text-sm font-medium text-sage">FAQ</p>
-              <h2 className={H2_CLASS}>Voice typing in {page.country}, answered</h2>
+              <p className="mb-2 text-sm font-medium text-sage">{s.faqEyebrow}</p>
+              <h2 className={H2_CLASS}>{s.faqHeading}</h2>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {page.faqs.map((faq) => (
@@ -324,27 +433,31 @@ function GeoPageBody({ page }: { page: GeoPage }) {
           </Container>
         </Section>
 
-        {/* Related Guides */}
-        <Section>
-          <Container>
-            <RelatedGuidesSection
-              eyebrow="Related guides"
-              title="More on private, offline dictation"
-              description="Compare the broader voice typing guide, the zero-knowledge architecture, and the offline-first roundup."
-              links={geoRelatedGuides}
-              dataTrackPrefix={`voice-typing-${page.slug}-related-guides`}
-              embedded
-            />
-          </Container>
-        </Section>
+        {/* Related Guides — targets are English-only pages, so render on en only. */}
+        {!isEs ? (
+          <Section>
+            <Container>
+              <RelatedGuidesSection
+                eyebrow="Related guides"
+                title="More on private, offline dictation"
+                description="Compare the broader voice typing guide, the zero-knowledge architecture, and the offline-first roundup."
+                links={geoRelatedGuides}
+                dataTrackPrefix={`voice-typing-${page.slug}-related-guides`}
+                embedded
+              />
+            </Container>
+          </Section>
+        ) : null}
 
         {/* Final CTA */}
         <FinalCTA
-          headline={<>Private voice typing for {page.country}</>}
-          subtitle="3-day free trial. No credit card. Local transcription keeps your voice on your device, across Mac and Windows."
-          primaryLabel="Start free trial"
+          headline={<>{s.finalHeadline}</>}
+          subtitle={s.finalSubtitle}
+          primaryHref={downloadHref}
+          primaryLabel={s.finalPrimary}
           primaryDataTrack={`voice-typing-${page.slug}-final-cta-click`}
-          secondaryHref="/#pricing"
+          secondaryHref={pricingHref}
+          secondaryLabel={s.finalSecondary}
           headlineClassName="mx-auto mb-5 max-w-3xl text-balance font-sans text-[clamp(2.25rem,4.6vw,3.5rem)] font-bold leading-[1.04] tracking-tight"
           subtitleClassName="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-primary-foreground/75"
         />
