@@ -1108,6 +1108,198 @@ export const geoPages: GeoPage[] = [
       },
     ],
   },
+  {
+    slug: "argentina",
+    country: "Argentina",
+    demonym: "Argentine",
+    languages: ["Spanish", "English"],
+    privacyLaw:
+      "the Personal Data Protection Act (Ley 25.326 de Protección de los Datos Personales), with a comprehensive, GDPR-aligned reform inspired by the AAIP currently before Congress",
+    regulator:
+      "the Agencia de Acceso a la Información Pública (AAIP), Argentina's data protection authority",
+    h1: "Voice typing in <em>Argentina</em>, offline by default",
+    metaTitle: "Voice Typing in Argentina — Offline, Private Spanish Dictation (Ley 25.326-Aware) | Voicetypr",
+    metaDescription:
+      "Voicetypr is an offline-by-default AI dictation app for Argentina. Local Whisper transcribes Spanish on your device — designed to help you meet Ley 25.326 expectations. Pay once, no subscription.",
+    intro:
+      "Voicetypr is a private, offline-by-default voice dictation app for Mac and Windows. Hold a hotkey, speak in Spanish, and the text lands in whatever field you are working in. In local mode, transcription runs entirely on your device — so your voice never travels to a server, and you are not paying a monthly subscription in dollars to dictate in your own language.",
+    localAngle:
+      "Argentina was a privacy pioneer — its Personal Data Protection Act (Ley 25.326) dates to 2000, was one of the first in Latin America, and earned the country the EU's 'adequacy' recognition. That framework is now being modernized: comprehensive reform bills inspired by the AAIP are before Congress to align it with the GDPR, though Ley 25.326 remains the law in force. Voicetypr fits this market on two fronts. First, the local Whisper and Parakeet models transcribe Spanish very well on-device — including everyday Argentine vocabulary — so your dictation stays offline and private: in local mode your audio is transcribed on your own machine, we store nothing on our servers, and no recording is sent to a cloud transcription service. Second, Voicetypr is a one-time purchase, not a recurring USD subscription that bills your card every month — a real advantage in a price-sensitive market. This is architecture, not a certificate: you remain the responsible party (the data controller) for your own data, and Voicetypr is designed to help you meet your Ley 25.326 expectations.",
+    bullets: [
+      "Local transcription runs on your device — in local mode your voice never leaves your machine and nothing is stored on our servers.",
+      "Spanish is transcribed on-device by local Whisper and Parakeet models, which handle it strongly — including everyday Argentine vocabulary — with no cloud round-trip.",
+      "Optional cloud speech-to-text and optional AI text formatting are strictly opt-in — and AI formatting sends only text, using your own provider and API key.",
+      "Designed to help you meet Ley 25.326 expectations under AAIP oversight by keeping the sensitive part — your voice — on your device by default.",
+      "Pay once from $39 with a 3-day free trial — no recurring USD subscription billing your card month after month, which matters in a price-sensitive market.",
+      "Works system-wide across email, chat, docs, code editors, and any text field on Mac and Windows.",
+    ],
+    faqs: [
+      {
+        question: "Is Voicetypr compliant with Ley 25.326?",
+        answer:
+          "Compliance depends on your full data-handling setup, so no tool can simply certify it for you. What Voicetypr provides is architecture that helps: in local mode, transcription runs on your device, your voice never leaves your machine, and we store nothing on our servers. By keeping your audio off any cloud, Voicetypr is designed to help you meet your Ley 25.326 obligations, while you remain the responsible party for compliance.",
+      },
+      {
+        question: "Does my voice leave my device or get sent abroad?",
+        answer:
+          "Not in local mode. The local Whisper and Parakeet models transcribe your speech directly on your own Mac or Windows machine, so the audio is never uploaded anywhere. If you explicitly turn on the optional cloud speech-to-text feature, only that specific request reaches the provider you chose — but it is off by default and entirely your decision.",
+      },
+      {
+        question: "Can Voicetypr transcribe Spanish accurately?",
+        answer:
+          "Yes. The local models are multilingual and Spanish is one of their stronger languages, so they handle natural speech, accents, and everyday Argentine and professional vocabulary directly on your Mac or Windows machine, with no cloud round-trip. Optional AI text formatting can tidy punctuation, accents, and capitalization afterward — that step sends only text, using your own AI provider and key, never your audio.",
+      },
+      {
+        question: "Which authority regulates data protection in Argentina?",
+        answer:
+          "Data protection in Argentina is overseen by the Agencia de Acceso a la Información Pública (AAIP), which enforces Ley 25.326 — the framework a comprehensive, GDPR-aligned reform is now working to modernize in Congress. Because Voicetypr's core dictation keeps your voice on your device, you reduce the data-transfer surface that authority scrutinises most — though you remain responsible for any personal data you produce.",
+      },
+    ],
+  },
+  {
+    slug: "colombia",
+    country: "Colombia",
+    demonym: "Colombian",
+    languages: ["Spanish", "English"],
+    privacyLaw:
+      "Law 1581 of 2012 (Ley 1581 de 2012, the Statutory Data Protection Law), which gives effect to the constitutional right of habeas data, with a GDPR-aligned modernization bill before Congress",
+    regulator:
+      "the Superintendencia de Industria y Comercio (SIC), through its Delegatura para la Protección de Datos Personales (the Personal Data Protection Delegature)",
+    h1: "Voice typing in <em>Colombia</em>, offline by default",
+    metaTitle: "Voice Typing in Colombia — Offline, Private Spanish Dictation (Ley 1581-Aware) | Voicetypr",
+    metaDescription:
+      "Voicetypr is an offline-by-default AI dictation app for Colombia. Local Whisper transcribes Spanish on your device — designed to help you meet Ley 1581 expectations. Pay once, no subscription.",
+    intro:
+      "Voicetypr is a private, offline-by-default voice dictation app for Mac and Windows. Hold a hotkey, speak in Spanish, and the text lands in whatever field you are working in. In local mode, transcription runs entirely on your device — so your voice never travels to a server, and you are not paying a monthly subscription in dollars to dictate in your own language.",
+    localAngle:
+      "Colombia protects personal data under Law 1581 of 2012, the statutory law that gives effect to the constitutional right of habeas data, enforced by the Superintendencia de Industria y Comercio (SIC) through its dedicated Delegatura para la Protección de Datos Personales — an active regulator that issues real sanctions. A modernization bill, drafted jointly by the SIC and the national government, is now before Congress to align the regime more closely with the GDPR, though Law 1581 remains in force. With a large, fast-growing technology, BPO, and freelancer scene, a lot of sensitive material gets dictated here every day: client notes, support replies, contracts, code. Voicetypr fits on two fronts. First, the local Whisper and Parakeet models transcribe Spanish very well on-device — including everyday Colombian vocabulary — so your dictation stays offline and private: in local mode your audio is transcribed on your own machine, we store nothing on our servers, and no recording is sent to a cloud transcription service. Second, Voicetypr is a one-time purchase, not a recurring USD subscription that bills your card every month — a real advantage in a price-sensitive market. This is architecture, not a certificate: you remain the responsible party (the data controller) for your own data, and Voicetypr is designed to help you meet your Ley 1581 expectations.",
+    bullets: [
+      "Local transcription runs on your device — in local mode your voice never leaves your machine and nothing is stored on our servers.",
+      "Spanish is transcribed on-device by local Whisper and Parakeet models, which handle it strongly — including everyday Colombian vocabulary — with no cloud round-trip.",
+      "Optional cloud speech-to-text and optional AI text formatting are strictly opt-in — and AI formatting sends only text, using your own provider and API key.",
+      "Designed to help you meet Ley 1581 expectations under SIC oversight by keeping the sensitive part — your voice — on your device by default.",
+      "Pay once from $39 with a 3-day free trial — no recurring USD subscription billing your card month after month, which matters in a price-sensitive market.",
+      "Works system-wide across email, chat, docs, code editors, and any text field on Mac and Windows.",
+    ],
+    faqs: [
+      {
+        question: "Is Voicetypr compliant with Ley 1581?",
+        answer:
+          "Compliance depends on your full data-handling setup, so no tool can simply certify it for you. What Voicetypr provides is architecture that helps: in local mode, transcription runs on your device, your voice never leaves your machine, and we store nothing on our servers. By keeping your audio off any cloud, Voicetypr is designed to help you meet your Ley 1581 obligations, while you remain the responsible party for compliance.",
+      },
+      {
+        question: "Does my voice leave my device or get sent abroad?",
+        answer:
+          "Not in local mode. The local Whisper and Parakeet models transcribe your speech directly on your own Mac or Windows machine, so the audio is never uploaded anywhere. If you explicitly turn on the optional cloud speech-to-text feature, only that specific request reaches the provider you chose — but it is off by default and entirely your decision.",
+      },
+      {
+        question: "Can Voicetypr transcribe Spanish accurately?",
+        answer:
+          "Yes. The local models are multilingual and Spanish is one of their stronger languages, so they handle natural speech, accents, and everyday Colombian and professional vocabulary directly on your Mac or Windows machine, with no cloud round-trip. Optional AI text formatting can tidy punctuation, accents, and capitalization afterward — that step sends only text, using your own AI provider and key, never your audio.",
+      },
+      {
+        question: "Which authority regulates data protection in Colombia?",
+        answer:
+          "Data protection in Colombia is enforced by the Superintendencia de Industria y Comercio (SIC), through its Delegatura para la Protección de Datos Personales, under Law 1581 of 2012 — the statutory law that gives effect to the constitutional right of habeas data, now the subject of a GDPR-aligned modernization bill in Congress. Because Voicetypr's core dictation keeps your voice on your device, you reduce the data-transfer surface the SIC scrutinises most — though you remain responsible for any personal data you produce.",
+      },
+    ],
+  },
+  {
+    slug: "chile",
+    country: "Chile",
+    demonym: "Chilean",
+    languages: ["Spanish", "English"],
+    privacyLaw:
+      "Chile's data-protection framework — historically Ley 19.628 sobre Protección de la Vida Privada, now being modernized by Ley 21.719, which enters into force on 1 December 2026",
+    regulator:
+      "the new Agencia de Protección de Datos Personales (APDP), the autonomous authority that Ley 21.719 creates to supervise data protection in Chile",
+    h1: "Voice typing in <em>Chile</em>, offline by default",
+    metaTitle: "Voice Typing in Chile — Offline, Private Spanish Dictation (Ley 21.719-Aware) | Voicetypr",
+    metaDescription:
+      "Offline-by-default AI dictation for Chile. Local Whisper transcribes your Spanish on-device — designed to help you meet Ley 21.719 expectations. Pay once.",
+    intro:
+      "Voicetypr is a private, offline-by-default voice dictation app for Mac and Windows. Hold a hotkey, speak in Spanish, and the text lands in whatever field you are working in. In local mode, transcription runs entirely on your device — so your voice never travels to a server, and you are not paying a monthly subscription in dollars to dictate in your own language.",
+    localAngle:
+      "Chile is rebuilding its privacy regime: the long-standing Ley 19.628 sobre Protección de la Vida Privada is being modernized by Ley 21.719, which enters into force on 1 December 2026 and creates a new, autonomous Agencia de Protección de Datos Personales with real powers to investigate and fine. Until then Ley 19.628 still governs, so Chilean organisations are already preparing for a stricter, GDPR-influenced standard. Voicetypr's local-first architecture fits that direction of travel: in local mode your audio is transcribed on your own machine, we store nothing on our servers, and no recording is sent to a cloud transcription service. The local Whisper and Parakeet models transcribe Chilean Spanish well on-device, so your Spanish dictation stays offline and private by default — and because Voicetypr is a one-time purchase rather than a recurring USD subscription, it fits a price-sensitive market too. This is architecture, not a certificate: you remain responsible for the personal data you handle, and Voicetypr is designed to help you meet Ley 21.719 expectations as they take effect.",
+    bullets: [
+      "Local transcription runs on your device — in local mode your voice never leaves your machine and nothing is stored on our servers.",
+      "Chilean Spanish and English are transcribed on-device by local Whisper and Parakeet models, which handle Spanish strongly; no cloud round-trip for core dictation.",
+      "Optional cloud speech-to-text and optional AI text formatting are strictly opt-in — and AI formatting sends only text, using your own provider and API key.",
+      "Designed to help you meet Ley 21.719 expectations — the modernized framework Chile adopts on 1 December 2026 — by keeping the sensitive part, your voice, on your device by default.",
+      "Pay once from $39 with a 3-day free trial — a one-time purchase, not a recurring USD subscription draining your card every month, which matters in a price-sensitive market.",
+      "Works system-wide across email, chat, docs, code editors, and any text field on Mac and Windows.",
+    ],
+    faqs: [
+      {
+        question: "Is Voicetypr compliant with Ley 21.719?",
+        answer:
+          "Compliance is a property of your full processing setup, so no tool can certify it for you — especially while Chile transitions from Ley 19.628 to Ley 21.719. What Voicetypr offers is helpful architecture: in local mode, transcription runs on your device, your voice never leaves your machine, and we store nothing on our servers. By keeping your audio off any cloud, Voicetypr is designed to help you meet your Ley 21.719 obligations as they take effect, while you remain responsible for compliance.",
+      },
+      {
+        question: "Does my voice get uploaded to a server in Chile or abroad?",
+        answer:
+          "Not in local mode. The local Whisper and Parakeet models transcribe your speech directly on your own Mac or Windows machine, so the audio is never uploaded anywhere. If you explicitly turn on the optional cloud speech-to-text feature, only that specific request reaches the provider you chose — but it is off by default and entirely your decision.",
+      },
+      {
+        question: "Can Voicetypr transcribe Chilean Spanish accurately?",
+        answer:
+          "Yes. The local models are multilingual and handle Spanish well — including everyday Chilean vocabulary — all on-device with no cloud round-trip, and you can switch between Spanish and English. Optional AI text formatting can tidy punctuation, accents, and capitalisation afterwards — that step sends only text, using your own AI provider and key, never your audio.",
+      },
+      {
+        question: "Who will regulate data protection in Chile?",
+        answer:
+          "Chile is changing its regulator. Today the framework still rests on Ley 19.628, but Ley 21.719 — in force from 1 December 2026 — creates a new, autonomous Agencia de Protección de Datos Personales with powers to investigate and fine. Because Voicetypr's core dictation keeps your voice on your device, you reduce the data-transfer surface that authority will scrutinise most — though you remain responsible for any personal data you produce.",
+      },
+    ],
+  },
+  {
+    slug: "peru",
+    country: "Peru",
+    demonym: "Peruvian",
+    languages: ["Spanish", "English"],
+    privacyLaw:
+      "Ley 29733, the Ley de Protección de Datos Personales, together with its new reglamento (Decreto Supremo 016-2024-JUS) in force since 31 March 2025",
+    regulator:
+      "the Autoridad Nacional de Protección de Datos Personales (ANPD), within the Ministerio de Justicia y Derechos Humanos (Ministry of Justice and Human Rights)",
+    h1: "Voice typing in <em>Peru</em>, offline by default",
+    metaTitle: "Voice Typing in Peru — Offline, Private Spanish Dictation (Ley 29733-Aware) | Voicetypr",
+    metaDescription:
+      "Offline-by-default AI dictation for Peru. Local Whisper transcribes your Spanish on-device — designed to help you meet Ley 29733 expectations. Pay once.",
+    intro:
+      "Voicetypr is a private, offline-by-default voice dictation app for Mac and Windows. Hold a hotkey, speak in Spanish, and the text lands in whatever field you are working in. In local mode, transcription runs entirely on your device — so your voice never travels to a server, and you are not paying a monthly subscription in dollars to dictate in your own language.",
+    localAngle:
+      "Peru is a fast-growing, price-sensitive Spanish-speaking market, and its privacy rules just got sharper: Ley 29733, the Ley de Protección de Datos Personales, now runs on a new reglamento — Decreto Supremo 016-2024-JUS, in force since 31 March 2025 — that strengthens the Autoridad Nacional de Protección de Datos Personales (ANPD), the regulator inside the Ministerio de Justicia y Derechos Humanos, and tightens rules like a 48-hour breach-notification window. Voicetypr fits this market on two fronts. First, the local Whisper and Parakeet models transcribe Peruvian Spanish well on-device, so your dictation stays offline and private by default: in local mode your audio is transcribed on your own machine, we store nothing on our servers, and no recording is sent to a cloud transcription service. Second, Voicetypr is a one-time purchase, not a recurring USD subscription that quietly drains your card every month. This is architecture, not a certificate: you remain responsible for the personal data you handle, and Voicetypr is designed to help you meet your Ley 29733 expectations.",
+    bullets: [
+      "Local transcription runs on your device — in local mode your voice never leaves your machine and nothing is stored on our servers.",
+      "Peruvian Spanish and English are transcribed on-device by local Whisper and Parakeet models, which handle Spanish strongly; no cloud round-trip for core dictation.",
+      "Optional cloud speech-to-text and optional AI text formatting are strictly opt-in — and AI formatting sends only text, using your own provider and API key.",
+      "Designed to help you meet Ley 29733 expectations — reinforced by its 2025 reglamento — by keeping the sensitive part, your voice, on your device by default.",
+      "Pay once from $39 with a 3-day free trial — a one-time purchase, not a recurring USD subscription draining your card every month, which matters in a price-sensitive market.",
+      "Works system-wide across email, chat, docs, code editors, and any text field on Mac and Windows.",
+    ],
+    faqs: [
+      {
+        question: "Is Voicetypr compliant with Ley 29733?",
+        answer:
+          "Compliance depends on your full processing setup, so no tool can simply certify it for you. What Voicetypr provides is architecture that helps: in local mode, transcription runs on your device, your voice never leaves your machine, and we store nothing on our servers. By keeping your audio off any cloud, Voicetypr is designed to help you meet your Ley 29733 obligations — including under its 2025 reglamento — while you remain responsible for compliance.",
+      },
+      {
+        question: "Does my voice leave my device or go to a server abroad?",
+        answer:
+          "Not in local mode. The local Whisper and Parakeet models transcribe your speech directly on your own Mac or Windows machine, so the audio is never uploaded anywhere. If you explicitly turn on the optional cloud speech-to-text feature, only that specific request reaches the provider you chose — but it is off by default and entirely your decision.",
+      },
+      {
+        question: "Can Voicetypr transcribe Peruvian Spanish accurately?",
+        answer:
+          "Yes. The local models are multilingual and handle Spanish well — including everyday Peruvian vocabulary — all on-device with no cloud round-trip, and you can switch between Spanish and English. Optional AI text formatting can tidy punctuation, accents, and capitalisation afterwards — that step sends only text, using your own AI provider and key, never your audio.",
+      },
+      {
+        question: "Who regulates data protection in Peru?",
+        answer:
+          "Peru's data protection is overseen by the Autoridad Nacional de Protección de Datos Personales (ANPD), which sits within the Ministerio de Justicia y Derechos Humanos and enforces Ley 29733 and its 2025 reglamento (Decreto Supremo 016-2024-JUS). Because Voicetypr's core dictation keeps your voice on your device, you reduce the data-transfer surface the ANPD scrutinises most — though you remain responsible for any personal data you produce.",
+      },
+    ],
+  },
 ];
 
 const geoPagesBySlug: Record<string, GeoPage> = Object.fromEntries(

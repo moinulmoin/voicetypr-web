@@ -111,4 +111,200 @@ export const GEO_PAGE_ES: Record<string, GeoPage> = {
       },
     ],
   },
+  "argentina": {
+    slug: "argentina",
+    country: "Argentina",
+    demonym: "argentina",
+    languages: ["español", "inglés"],
+    privacyLaw:
+      "la Ley 25.326 de Protección de los Datos Personales, con una reforma integral alineada con el RGPD e impulsada por la AAIP actualmente en el Congreso",
+    regulator:
+      "la Agencia de Acceso a la Información Pública (AAIP), la autoridad de protección de datos de Argentina",
+    h1: "Dictado por voz en <em>Argentina</em>, sin conexión por defecto",
+    metaTitle:
+      "Dictado por voz en Argentina — Privado y sin conexión, en español (consciente de la Ley 25.326) | Voicetypr",
+    metaDescription:
+      "Voicetypr: dictado con IA sin conexión para Argentina. Whisper local transcribe tu español en el dispositivo, pensado para la Ley 25.326. Pago único, sin suscripción.",
+    intro:
+      "Voicetypr es una app de dictado por voz para Mac y Windows, privada y sin conexión por defecto. Mantén presionado un atajo de teclado, habla en español y el texto aparece en el campo en el que estés trabajando. En modo local, la transcripción se ejecuta por completo en tu dispositivo, así que tu voz nunca viaja a un servidor y no pagas una suscripción mensual en dólares para dictar en tu propio idioma.",
+    localAngle:
+      "Argentina fue pionera en privacidad: su Ley 25.326 de Protección de los Datos Personales data del año 2000, fue una de las primeras de América Latina y le valió al país el reconocimiento de «adecuación» de la UE. Ese marco se está modernizando: hay proyectos de reforma integral impulsados por la AAIP en el Congreso para alinearlo con el RGPD, aunque la Ley 25.326 sigue siendo la ley vigente. Voicetypr encaja en este mercado por partida doble. Primero, los modelos locales Whisper y Parakeet transcriben el español muy bien en el dispositivo —incluido el vocabulario argentino de todos los días—, así que tu dictado se mantiene sin conexión y privado: en modo local tu audio se transcribe en tu propia máquina, no almacenamos nada en nuestros servidores y ninguna grabación se envía a un servicio de transcripción en la nube. Segundo, Voicetypr es una compra única, no una suscripción recurrente en dólares que cobra tu tarjeta cada mes, una ventaja real en un mercado sensible al precio. Es una propiedad de la arquitectura, no un certificado: sigues siendo el responsable de tus propios datos, y Voicetypr está diseñado para ayudarte a cumplir con las expectativas de la Ley 25.326.",
+    bullets: [
+      "La transcripción local se ejecuta en tu dispositivo: en modo local tu voz nunca sale de tu máquina y no se almacena nada en nuestros servidores.",
+      "El español se transcribe en el dispositivo con los modelos locales Whisper y Parakeet, que lo manejan muy bien —incluido el vocabulario argentino— sin pasar por la nube.",
+      "La transcripción en la nube opcional y el formateo de texto con IA opcional son estrictamente voluntarios, y el formateo con IA envía solo texto, usando tu propio proveedor y tu clave API.",
+      "Diseñado para ayudarte a cumplir con las expectativas de la Ley 25.326 bajo la supervisión de la AAIP, manteniendo la parte sensible —tu voz— en tu dispositivo por defecto.",
+      "Paga una sola vez desde $39 con una prueba gratis de 3 días: un precio único, no una suscripción recurrente en dólares que cobra tu tarjeta cada mes, algo que importa en un mercado sensible al precio.",
+      "Funciona en todo el sistema: correo, chat, documentos, editores de código y cualquier campo de texto en Mac y Windows.",
+    ],
+    faqs: [
+      {
+        question: "¿Voicetypr cumple con la Ley 25.326?",
+        answer:
+          "Ningún software puede simplemente declarar que tu organización cumple; eso depende de toda tu configuración de manejo de datos. Lo que Voicetypr ofrece es una arquitectura que ayuda: en modo local, la transcripción se ejecuta en tu dispositivo, tu voz nunca sale de tu máquina y no almacenamos nada en nuestros servidores. Al mantener tu audio fuera de cualquier nube, Voicetypr está diseñado para ayudarte a cumplir con tus obligaciones de la Ley 25.326, mientras que sigues siendo el responsable del cumplimiento.",
+      },
+      {
+        question: "¿Mi voz sale de mi dispositivo o se envía al extranjero?",
+        answer:
+          "No en modo local. Los modelos locales Whisper y Parakeet transcriben tu habla directamente en tu propia máquina Mac o Windows, así que el audio nunca se sube a ningún lado. Si activas deliberadamente la función opcional de transcripción en la nube, solo esa solicitud específica llega al proveedor que elijas, pero está desactivada por defecto y es enteramente tu decisión.",
+      },
+      {
+        question: "¿Qué tan bien transcribe Voicetypr el español?",
+        answer:
+          "Muy bien. Los modelos locales son multilingües y el español es uno de sus idiomas más fuertes, así que manejan el habla natural, los acentos y el vocabulario argentino y profesional común directamente en tu máquina Mac o Windows, sin pasar por la nube. El formateo de texto con IA opcional puede ordenar después la puntuación, los acentos y las mayúsculas; ese paso envía solo texto, usando tu propio proveedor de IA y tu clave, nunca tu audio.",
+      },
+      {
+        question: "¿Qué autoridad regula la protección de datos en Argentina?",
+        answer:
+          "La protección de datos en Argentina está a cargo de la Agencia de Acceso a la Información Pública (AAIP), que aplica la Ley 25.326, el marco que una reforma integral alineada con el RGPD trabaja ahora por modernizar en el Congreso. Como el dictado central de Voicetypr mantiene tu voz en tu dispositivo, reduces la superficie de transferencia de datos que más vigila esa autoridad, aunque sigues siendo responsable de los datos personales que generes.",
+      },
+    ],
+  },
+  "colombia": {
+    slug: "colombia",
+    country: "Colombia",
+    demonym: "colombiana",
+    languages: ["español", "inglés"],
+    privacyLaw:
+      "la Ley 1581 de 2012 (la Ley Estatutaria de Protección de Datos Personales), que desarrolla el derecho constitucional al hábeas data, con un proyecto de ley en el Congreso para alinearla con el RGPD",
+    regulator:
+      "la Superintendencia de Industria y Comercio (SIC), a través de su Delegatura para la Protección de Datos Personales",
+    h1: "Dictado por voz en <em>Colombia</em>, sin conexión por defecto",
+    metaTitle:
+      "Dictado por voz en Colombia — Privado y sin conexión, en español (consciente de la Ley 1581) | Voicetypr",
+    metaDescription:
+      "Voicetypr: dictado con IA sin conexión para Colombia. Whisper local transcribe tu español en el dispositivo, pensado para la Ley 1581. Pago único, sin suscripción.",
+    intro:
+      "Voicetypr es una app de dictado por voz para Mac y Windows, privada y sin conexión por defecto. Mantén presionado un atajo de teclado, habla en español y el texto aparece en el campo en el que estés trabajando. En modo local, la transcripción se ejecuta por completo en tu dispositivo, así que tu voz nunca viaja a un servidor y no pagas una suscripción mensual en dólares para dictar en tu propio idioma.",
+    localAngle:
+      "Colombia protege los datos personales con la Ley 1581 de 2012, la ley estatutaria que da efecto al derecho constitucional al hábeas data, aplicada por la Superintendencia de Industria y Comercio (SIC) a través de su Delegatura para la Protección de Datos Personales, un regulador activo que impone sanciones reales. Un proyecto de ley de modernización, elaborado de forma conjunta por la SIC y el gobierno nacional, está ahora en el Congreso para alinear el régimen más de cerca con el RGPD, aunque la Ley 1581 sigue vigente. Con un sector de tecnología, BPO y trabajo independiente grande y en rápido crecimiento, aquí se dicta mucho material sensible cada día: notas de clientes, respuestas de soporte, contratos, código. Voicetypr encaja por partida doble. Primero, los modelos locales Whisper y Parakeet transcriben el español muy bien en el dispositivo —incluido el vocabulario colombiano de todos los días—, así que tu dictado se mantiene sin conexión y privado: en modo local tu audio se transcribe en tu propia máquina, no almacenamos nada en nuestros servidores y ninguna grabación se envía a un servicio de transcripción en la nube. Segundo, Voicetypr es una compra única, no una suscripción recurrente en dólares que cobra tu tarjeta cada mes, una ventaja real en un mercado sensible al precio. Es una propiedad de la arquitectura, no un certificado: sigues siendo el responsable de tus propios datos, y Voicetypr está diseñado para ayudarte a cumplir con las expectativas de la Ley 1581.",
+    bullets: [
+      "La transcripción local se ejecuta en tu dispositivo: en modo local tu voz nunca sale de tu máquina y no se almacena nada en nuestros servidores.",
+      "El español se transcribe en el dispositivo con los modelos locales Whisper y Parakeet, que lo manejan muy bien —incluido el vocabulario colombiano— sin pasar por la nube.",
+      "La transcripción en la nube opcional y el formateo de texto con IA opcional son estrictamente voluntarios, y el formateo con IA envía solo texto, usando tu propio proveedor y tu clave API.",
+      "Diseñado para ayudarte a cumplir con las expectativas de la Ley 1581 bajo la supervisión de la SIC, manteniendo la parte sensible —tu voz— en tu dispositivo por defecto.",
+      "Paga una sola vez desde $39 con una prueba gratis de 3 días: un precio único, no una suscripción recurrente en dólares que cobra tu tarjeta cada mes, algo que importa en un mercado sensible al precio.",
+      "Funciona en todo el sistema: correo, chat, documentos, editores de código y cualquier campo de texto en Mac y Windows.",
+    ],
+    faqs: [
+      {
+        question: "¿Voicetypr cumple con la Ley 1581?",
+        answer:
+          "Ningún software puede simplemente declarar que tu organización cumple; eso depende de toda tu configuración de manejo de datos. Lo que Voicetypr ofrece es una arquitectura que ayuda: en modo local, la transcripción se ejecuta en tu dispositivo, tu voz nunca sale de tu máquina y no almacenamos nada en nuestros servidores. Al mantener tu audio fuera de cualquier nube, Voicetypr está diseñado para ayudarte a cumplir con tus obligaciones de la Ley 1581, mientras que sigues siendo el responsable del cumplimiento.",
+      },
+      {
+        question: "¿Mi voz sale de mi dispositivo o se envía al extranjero?",
+        answer:
+          "No en modo local. Los modelos locales Whisper y Parakeet transcriben tu habla directamente en tu propia máquina Mac o Windows, así que el audio nunca se sube a ningún lado. Si activas deliberadamente la función opcional de transcripción en la nube, solo esa solicitud específica llega al proveedor que elijas, pero está desactivada por defecto y es enteramente tu decisión.",
+      },
+      {
+        question: "¿Qué tan bien transcribe Voicetypr el español?",
+        answer:
+          "Muy bien. Los modelos locales son multilingües y el español es uno de sus idiomas más fuertes, así que manejan el habla natural, los acentos y el vocabulario colombiano y profesional común directamente en tu máquina Mac o Windows, sin pasar por la nube. El formateo de texto con IA opcional puede ordenar después la puntuación, los acentos y las mayúsculas; ese paso envía solo texto, usando tu propio proveedor de IA y tu clave, nunca tu audio.",
+      },
+      {
+        question: "¿Qué autoridad regula la protección de datos en Colombia?",
+        answer:
+          "La protección de datos en Colombia está a cargo de la Superintendencia de Industria y Comercio (SIC), a través de su Delegatura para la Protección de Datos Personales, bajo la Ley 1581 de 2012, la ley estatutaria que da efecto al derecho constitucional al hábeas data y que ahora es objeto de un proyecto de modernización alineado con el RGPD en el Congreso. Como el dictado central de Voicetypr mantiene tu voz en tu dispositivo, reduces la superficie de transferencia de datos que más vigila la SIC, aunque sigues siendo responsable de los datos personales que generes.",
+      },
+    ],
+  },
+  "chile": {
+    slug: "chile",
+    country: "Chile",
+    demonym: "chilena",
+    languages: ["español", "inglés"],
+    privacyLaw:
+      "el marco chileno de protección de datos: históricamente la Ley 19.628 sobre Protección de la Vida Privada, ahora modernizada por la Ley 21.719, que entra en vigencia el 1 de diciembre de 2026",
+    regulator:
+      "la nueva Agencia de Protección de Datos Personales (APDP), el organismo autónomo que la Ley 21.719 crea para supervisar la protección de datos en Chile",
+    h1: "Dictado por voz en <em>Chile</em>, sin conexión por defecto",
+    metaTitle:
+      "Dictado por voz en Chile — Privado y sin conexión, en español (consciente de la Ley 21.719) | Voicetypr",
+    metaDescription:
+      "Voicetypr: dictado con IA sin conexión para Chile. Whisper local transcribe tu español en el dispositivo, pensado para la Ley 21.719. Pago único, sin suscripción.",
+    intro:
+      "Voicetypr es una app de dictado por voz para Mac y Windows, privada y sin conexión por defecto. Mantén presionado un atajo de teclado, habla en español y el texto aparece en el campo en el que estés trabajando. En modo local, la transcripción se ejecuta por completo en tu dispositivo, así que tu voz nunca viaja a un servidor y no pagas una suscripción mensual en dólares para dictar en tu propio idioma.",
+    localAngle:
+      "Chile está reconstruyendo su régimen de privacidad: la histórica Ley 19.628 sobre Protección de la Vida Privada se moderniza con la Ley 21.719, que entra en vigencia el 1 de diciembre de 2026 y crea una nueva Agencia de Protección de Datos Personales, autónoma y con verdaderas facultades para investigar y multar. Hasta entonces sigue rigiendo la Ley 19.628, así que las organizaciones chilenas ya se preparan para un estándar más estricto e influido por el RGPD. La arquitectura local-first de Voicetypr encaja con esa dirección: en modo local tu audio se transcribe en tu propia máquina, no almacenamos nada en nuestros servidores y ninguna grabación se envía a un servicio de transcripción en la nube. Los modelos locales Whisper y Parakeet transcriben bien el español chileno en el dispositivo, así que tu dictado en español se mantiene sin conexión y privado por defecto; y como Voicetypr es una compra única y no una suscripción recurrente en dólares, encaja además en un mercado sensible al precio. Es una propiedad de la arquitectura, no un certificado: sigues siendo responsable de los datos personales que manejas, y Voicetypr está diseñado para ayudarte a cumplir con las expectativas de la Ley 21.719 a medida que entra en vigor.",
+    bullets: [
+      "La transcripción local se ejecuta en tu dispositivo: en modo local tu voz nunca sale de tu máquina y no se almacena nada en nuestros servidores.",
+      "El español chileno y el inglés se transcriben en el dispositivo con los modelos locales Whisper y Parakeet, que manejan muy bien el español, sin pasar por la nube para el dictado principal.",
+      "La transcripción en la nube opcional y el formateo de texto con IA opcional son estrictamente voluntarios, y el formateo con IA envía solo texto, usando tu propio proveedor y tu clave API.",
+      "Diseñado para ayudarte a cumplir con las expectativas de la Ley 21.719 —el marco modernizado que Chile adopta el 1 de diciembre de 2026— al mantener la parte sensible, tu voz, en tu dispositivo por defecto.",
+      "Paga una sola vez desde $39 con una prueba gratis de 3 días: una compra única, no una suscripción recurrente en dólares que cobra tu tarjeta cada mes, algo que importa en un mercado sensible al precio.",
+      "Funciona en todo el sistema: correo, chat, documentos, editores de código y cualquier campo de texto en Mac y Windows.",
+    ],
+    faqs: [
+      {
+        question: "¿Voicetypr cumple con la Ley 21.719?",
+        answer:
+          "El cumplimiento depende de toda tu configuración de tratamiento de datos, así que ningún software puede certificarlo por ti —y menos mientras Chile transita de la Ley 19.628 a la Ley 21.719. Lo que Voicetypr ofrece es una arquitectura que ayuda: en modo local, la transcripción se ejecuta en tu dispositivo, tu voz nunca sale de tu máquina y no almacenamos nada en nuestros servidores. Al mantener tu audio fuera de cualquier nube, Voicetypr está diseñado para ayudarte a cumplir con tus obligaciones de la Ley 21.719 a medida que entran en vigor, mientras que tú sigues siendo responsable del cumplimiento.",
+      },
+      {
+        question: "¿Mi voz se sube a un servidor en Chile o en el extranjero?",
+        answer:
+          "No en modo local. Los modelos locales Whisper y Parakeet transcriben tu habla directamente en tu propia máquina Mac o Windows, así que el audio nunca se sube a ningún lado. Si activas deliberadamente la función opcional de transcripción en la nube, solo esa petición concreta llega al proveedor que elijas, pero está desactivada por defecto y es enteramente tu decisión.",
+      },
+      {
+        question: "¿Transcribe bien Voicetypr el español chileno?",
+        answer:
+          "Sí. Los modelos locales son multilingües y manejan muy bien el español —incluido el vocabulario chileno cotidiano— todo en el dispositivo y sin pasar por la nube, y puedes alternar entre español e inglés. El formateo de texto con IA opcional puede ordenar después la puntuación, los acentos y las mayúsculas; ese paso envía solo texto, usando tu propio proveedor de IA y tu clave, nunca tu audio.",
+      },
+      {
+        question: "¿Qué autoridad regulará la protección de datos en Chile?",
+        answer:
+          "Chile está cambiando de regulador. Hoy el marco aún se apoya en la Ley 19.628, pero la Ley 21.719 —vigente desde el 1 de diciembre de 2026— crea una nueva Agencia de Protección de Datos Personales, autónoma y con facultades para investigar y multar. Como el dictado central de Voicetypr mantiene tu voz en tu dispositivo, reduces la superficie de transferencia de datos que esa autoridad más vigilará, aunque sigues siendo responsable de los datos personales que generes.",
+      },
+    ],
+  },
+  "peru": {
+    slug: "peru",
+    country: "Perú",
+    demonym: "peruana",
+    languages: ["español", "inglés"],
+    privacyLaw:
+      "la Ley 29733, Ley de Protección de Datos Personales, junto con su nuevo reglamento (Decreto Supremo 016-2024-JUS), vigente desde el 31 de marzo de 2025",
+    regulator:
+      "la Autoridad Nacional de Protección de Datos Personales (ANPD), dependiente del Ministerio de Justicia y Derechos Humanos",
+    h1: "Dictado por voz en <em>Perú</em>, sin conexión por defecto",
+    metaTitle:
+      "Dictado por voz en Perú — Privado y sin conexión, en español (consciente de la Ley 29733) | Voicetypr",
+    metaDescription:
+      "Voicetypr: dictado con IA sin conexión para Perú. Whisper local transcribe tu español en el dispositivo, pensado para la Ley 29733. Pago único, sin suscripción.",
+    intro:
+      "Voicetypr es una app de dictado por voz para Mac y Windows, privada y sin conexión por defecto. Mantén presionado un atajo de teclado, habla en español y el texto aparece en el campo en el que estés trabajando. En modo local, la transcripción se ejecuta por completo en tu dispositivo, así que tu voz nunca viaja a un servidor y no pagas una suscripción mensual en dólares para dictar en tu propio idioma.",
+    localAngle:
+      "Perú es un mercado de habla hispana en crecimiento y sensible al precio, y sus reglas de privacidad acaban de endurecerse: la Ley 29733, Ley de Protección de Datos Personales, ahora funciona con un nuevo reglamento —el Decreto Supremo 016-2024-JUS, vigente desde el 31 de marzo de 2025— que refuerza a la Autoridad Nacional de Protección de Datos Personales (ANPD), el regulador dentro del Ministerio de Justicia y Derechos Humanos, y aprieta reglas como un plazo de 48 horas para notificar incidentes de seguridad. Voicetypr encaja en este mercado por partida doble. Primero, los modelos locales Whisper y Parakeet transcriben bien el español peruano en el dispositivo, así que tu dictado se mantiene sin conexión y privado por defecto: en modo local tu audio se transcribe en tu propia máquina, no almacenamos nada en nuestros servidores y ninguna grabación se envía a un servicio de transcripción en la nube. Segundo, Voicetypr es una compra única, no una suscripción recurrente en dólares que cobra tu tarjeta cada mes. Es una propiedad de la arquitectura, no un certificado: sigues siendo responsable de los datos personales que manejas, y Voicetypr está diseñado para ayudarte a cumplir con las expectativas de la Ley 29733.",
+    bullets: [
+      "La transcripción local se ejecuta en tu dispositivo: en modo local tu voz nunca sale de tu máquina y no se almacena nada en nuestros servidores.",
+      "El español peruano y el inglés se transcriben en el dispositivo con los modelos locales Whisper y Parakeet, que manejan muy bien el español, sin pasar por la nube para el dictado principal.",
+      "La transcripción en la nube opcional y el formateo de texto con IA opcional son estrictamente voluntarios, y el formateo con IA envía solo texto, usando tu propio proveedor y tu clave API.",
+      "Diseñado para ayudarte a cumplir con las expectativas de la Ley 29733 —reforzada por su reglamento de 2025— al mantener la parte sensible, tu voz, en tu dispositivo por defecto.",
+      "Paga una sola vez desde $39 con una prueba gratis de 3 días: una compra única, no una suscripción recurrente en dólares que cobra tu tarjeta cada mes, algo que importa en un mercado sensible al precio.",
+      "Funciona en todo el sistema: correo, chat, documentos, editores de código y cualquier campo de texto en Mac y Windows.",
+    ],
+    faqs: [
+      {
+        question: "¿Voicetypr cumple con la Ley 29733?",
+        answer:
+          "El cumplimiento depende de toda tu configuración de tratamiento de datos, así que ningún software puede certificarlo por ti. Lo que Voicetypr ofrece es una arquitectura que ayuda: en modo local, la transcripción se ejecuta en tu dispositivo, tu voz nunca sale de tu máquina y no almacenamos nada en nuestros servidores. Al mantener tu audio fuera de cualquier nube, Voicetypr está diseñado para ayudarte a cumplir con tus obligaciones de la Ley 29733 —incluido su reglamento de 2025—, mientras que tú sigues siendo responsable del cumplimiento.",
+      },
+      {
+        question: "¿Mi voz sale de mi dispositivo o se envía fuera de Perú?",
+        answer:
+          "No en modo local. Los modelos locales Whisper y Parakeet transcriben tu habla directamente en tu propia máquina Mac o Windows, así que el audio nunca se sube a ningún lado. Si activas deliberadamente la función opcional de transcripción en la nube, solo esa petición concreta llega al proveedor que elijas, pero está desactivada por defecto y es enteramente tu decisión.",
+      },
+      {
+        question: "¿Transcribe bien Voicetypr el español peruano?",
+        answer:
+          "Sí. Los modelos locales son multilingües y manejan muy bien el español —incluido el vocabulario peruano cotidiano— todo en el dispositivo y sin pasar por la nube, y puedes alternar entre español e inglés. El formateo de texto con IA opcional puede ordenar después la puntuación, los acentos y las mayúsculas; ese paso envía solo texto, usando tu propio proveedor de IA y tu clave, nunca tu audio.",
+      },
+      {
+        question: "¿Qué autoridad regula la protección de datos en Perú?",
+        answer:
+          "La protección de datos en Perú está a cargo de la Autoridad Nacional de Protección de Datos Personales (ANPD), que depende del Ministerio de Justicia y Derechos Humanos y aplica la Ley 29733 y su reglamento de 2025 (Decreto Supremo 016-2024-JUS). Como el dictado central de Voicetypr mantiene tu voz en tu dispositivo, reduces la superficie de transferencia de datos que más vigila la ANPD, aunque sigues siendo responsable de los datos personales que generes.",
+      },
+    ],
+  },
 };

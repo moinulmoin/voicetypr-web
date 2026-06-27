@@ -69,7 +69,7 @@ const TRANSLATED_USE_CASE_SLUGS = [
 // Geo (country) slugs whose Spanish copy has shipped (keys of GEO_PAGE_ES in
 // lib/geo-pages.es.ts) — the Spanish-speaking markets. Same plain-list rationale
 // as the use-case slugs above. Keep in sync when a new /es geo translation lands.
-const TRANSLATED_GEO_SLUGS = ['spain', 'mexico'];
+const TRANSLATED_GEO_SLUGS = ['spain', 'mexico', 'argentina', 'colombia', 'chile', 'peru'];
 
 // "best/<slug>" comparison pages translated to Spanish (keys of SEO_PAGE_ES).
 const TRANSLATED_BEST_SLUGS = [
