@@ -24,7 +24,7 @@ export const GEO_PAGE_ES: Record<string, GeoPage> = {
     regulator: "la Agencia Española de Protección de Datos (AEPD)",
     h1: "Dictado por voz en <em>España</em>, sin conexión por defecto",
     metaTitle:
-      "Dictado por voz en España — Dictado privado y sin conexión (compatible con el RGPD) | Voicetypr",
+      "Dictado por voz en España — Dictado privado y sin conexión (consciente del RGPD) | Voicetypr",
     metaDescription:
       "Voicetypr es una app de dictado por IA sin conexión por defecto para España. La transcripción local mantiene tu voz en tu dispositivo, pensada para ayudarte a cumplir el RGPD bajo la AEPD. Español, catalán e inglés, pago único.",
     intro:

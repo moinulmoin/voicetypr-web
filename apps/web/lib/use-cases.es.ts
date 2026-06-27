@@ -1241,7 +1241,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         title: "La escritura pequeña que lo agrava sin que te des cuenta",
         body:
-          "Mensajes cortos en Slack, notas en tickets, prompts de IA, campos de formulario. Por separado no parece mucho; a lo largo del día es la repetición que más odian los tendones. Dícalo todo y el conteo se mantiene bajo.",
+          "Mensajes cortos en Slack, notas en tickets, prompts de IA, campos de formulario. Por separado no parece mucho; a lo largo del día es la repetición que más odian los tendones. Dilo todo y el conteo se mantiene bajo.",
       },
     ],
     faqs: [
