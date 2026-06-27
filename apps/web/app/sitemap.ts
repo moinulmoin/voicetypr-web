@@ -22,6 +22,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastModified,
       changeFrequency: "daily",
       priority: 1,
+      alternates: { languages: { en: baseUrl, es: `${baseUrl}/es` } },
+    },
+    {
+      // Spanish home — the one localized page (the rest of /es is noindex for now).
+      url: `${baseUrl}/es`,
+      lastModified: lastModified,
+      changeFrequency: "daily",
+      priority: 0.9,
+      alternates: { languages: { en: baseUrl, es: `${baseUrl}/es` } },
     },
     {
       url: `${baseUrl}/download`,

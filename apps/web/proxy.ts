@@ -22,6 +22,11 @@ const GDPR_COUNTRIES = [
 
 const BYPASS_HEADER = 'x-markdown-bypass';
 
+// Alt-locale paths that ARE genuinely translated and may be indexed. Everything
+// else under a non-default locale gets X-Robots-Tag: noindex until its content is
+// localized. Add paths here as each page's Spanish copy ships.
+const INDEXABLE_ALT_LOCALE_PATHS = new Set(['/es']);
+
 // next-intl locale router (localePrefix: "as-needed" — English stays at root,
 // other locales get a /<locale> prefix). Routing only; pages stay prerendered.
 const handleI18nRouting = createMiddleware(routing);
@@ -68,10 +73,11 @@ function isNonDefaultLocalePath(pathname: string): boolean {
 }
 
 function decorate(request: NextRequest, response: NextResponse) {
-  // Non-default-locale pages (/es/...) are not translated yet — their content is
-  // still English. Keep them out of search indexes (avoids duplicate-content) until
-  // the copy is genuinely localized. One header here covers every /es route.
-  if (isNonDefaultLocalePath(request.nextUrl.pathname)) {
+  // Non-default-locale pages are English until translated, so keep them out of
+  // search indexes (avoids duplicate-content) — EXCEPT the ones genuinely localized
+  // (INDEXABLE_ALT_LOCALE_PATHS). One header here covers every /es route.
+  const localePath = request.nextUrl.pathname;
+  if (isNonDefaultLocalePath(localePath) && !INDEXABLE_ALT_LOCALE_PATHS.has(localePath)) {
     response.headers.set('X-Robots-Tag', 'noindex, follow');
   }
 
