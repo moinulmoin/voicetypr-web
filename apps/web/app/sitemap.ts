@@ -4,6 +4,7 @@ import { alternativePages, seoPages } from "@/lib/seo-pages";
 import { getAllUseCases } from "@/lib/use-cases";
 import { USE_CASE_ES } from "@/lib/use-cases.es";
 import { GEO_PAGE_ES } from "@/lib/geo-pages.es";
+import { SEO_PAGE_ES, ALTERNATIVE_PAGE_ES } from "@/lib/seo-pages.es";
 import { getAllFreeTools } from "@/lib/free-tools";
 import { getAllGeoSlugs } from "@/lib/geo-pages";
 
@@ -240,21 +241,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const bestRoutes: MetadataRoute.Sitemap = seoPages.map((page) => ({
-    url: `${baseUrl}/best/${page.slug}`,
-    lastModified: lastModified,
-    changeFrequency: "monthly",
-    priority: 0.65,
-  }));
+  const bestRoutes: MetadataRoute.Sitemap = seoPages.flatMap((page) => {
+    const hasEs = Boolean(SEO_PAGE_ES[page.slug]);
+    const enUrl = `${baseUrl}/best/${page.slug}`;
+    const esUrl = `${baseUrl}/es/best/${page.slug}`;
+    const alternates = hasEs ? { languages: { en: enUrl, es: esUrl } } : undefined;
+    const entries: MetadataRoute.Sitemap = [
+      { url: enUrl, lastModified, changeFrequency: "monthly", priority: 0.65, ...(alternates ? { alternates } : {}) },
+    ];
+    if (hasEs) {
+      entries.push({ url: esUrl, lastModified, changeFrequency: "monthly", priority: 0.6, alternates });
+    }
+    return entries;
+  });
 
   const alternativeRoutes: MetadataRoute.Sitemap = alternativePages
     .filter((page) => page.slug !== "wispr-flow" && page.slug !== "superwhisper")
-    .map((page) => ({
-      url: `${baseUrl}/alternative/${page.slug}`,
-      lastModified: lastModified,
-      changeFrequency: "monthly",
-      priority: 0.65,
-    }));
+    .flatMap((page) => {
+      const hasEs = Boolean(ALTERNATIVE_PAGE_ES[page.slug]);
+      const enUrl = `${baseUrl}/alternative/${page.slug}`;
+      const esUrl = `${baseUrl}/es/alternative/${page.slug}`;
+      const alternates = hasEs ? { languages: { en: enUrl, es: esUrl } } : undefined;
+      const entries: MetadataRoute.Sitemap = [
+        { url: enUrl, lastModified, changeFrequency: "monthly", priority: 0.65, ...(alternates ? { alternates } : {}) },
+      ];
+      if (hasEs) {
+        entries.push({ url: esUrl, lastModified, changeFrequency: "monthly", priority: 0.6, alternates });
+      }
+      return entries;
+    });
 
   const geoRoutes: MetadataRoute.Sitemap = getAllGeoSlugs().flatMap((slug) => {
     const hasEs = Boolean(GEO_PAGE_ES[slug]);

@@ -1,3 +1,5 @@
+import { SEO_PAGE_ES, ALTERNATIVE_PAGE_ES } from "./seo-pages.es";
+
 export type SeoPage = {
   slug: string;
   h1: string;
@@ -1697,10 +1699,18 @@ export function getSeoPageMetaTitle(page: SeoPage): string {
   return `${page.h1} — Voicetypr`;
 }
 
-export function getSeoPageBySlug(slug: string): SeoPage | undefined {
+export function getSeoPageBySlug(slug: string, locale?: string): SeoPage | undefined {
+  if (locale === "es") {
+    const es = SEO_PAGE_ES[slug];
+    if (es) return es;
+  }
   return seoPages.find((p) => p.slug === slug);
 }
 
-export function getAlternativePageBySlug(slug: string): SeoPage | undefined {
+export function getAlternativePageBySlug(slug: string, locale?: string): SeoPage | undefined {
+  if (locale === "es") {
+    const es = ALTERNATIVE_PAGE_ES[slug];
+    if (es) return es;
+  }
   return alternativePages.find((p) => p.slug === slug);
 }

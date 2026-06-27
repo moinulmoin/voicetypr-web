@@ -11,9 +11,54 @@ import {
   getAlternativePageBySlug,
   alternativePages,
 } from "@/lib/seo-pages";
+import { ALTERNATIVE_PAGE_ES } from "@/lib/seo-pages.es";
 
 function safeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
+function isOfflineYes(value: string): boolean {
+  return value.startsWith("Yes") || value.startsWith("Sí");
+}
+
+/** Per-locale chrome strings; en reproduces the original copy verbatim. */
+function getAltStrings(locale: string) {
+  if (locale === "es") {
+    return {
+      breadcrumbAlt: "Alternativa",
+      replacementPath: "La ruta de reemplazo",
+      tableCaption: "Comparativa de herramientas para cambiar desde la opción actual",
+      thTool: "Herramienta",
+      thPrice: "Precio",
+      thPlatforms: "Plataformas",
+      thOffline: "Sin conexión",
+      subscription: "Suscripción",
+      whatGetsBetter: "Qué mejora cuando cambias",
+      chooseVtIf: "Elige Voicetypr si",
+      stayIncumbentIf: "Quédate con la opción actual si",
+      quickNotes: "Notas rápidas de comparación",
+      ctaSubtitle: "Prueba gratis de 3 días. Sin tarjeta. Todas las funciones incluidas.",
+      ctaPrimary: "Empieza la prueba gratis",
+      ctaSecondary: "Ver precio de por vida",
+    };
+  }
+  return {
+    breadcrumbAlt: "Alternative",
+    replacementPath: "The replacement path",
+    tableCaption: "Comparison of tools for switching from the incumbent",
+    thTool: "Tool",
+    thPrice: "Price",
+    thPlatforms: "Platforms",
+    thOffline: "Offline",
+    subscription: "Subscription",
+    whatGetsBetter: "What gets better after you switch",
+    chooseVtIf: "Choose Voicetypr if",
+    stayIncumbentIf: "Stay with the incumbent if",
+    quickNotes: "Quick comparison notes",
+    ctaSubtitle: "3-day free trial. No credit card. All features included.",
+    ctaPrimary: "Start free trial",
+    ctaSecondary: "View lifetime pricing",
+  };
 }
 
 export async function generateStaticParams() {
@@ -28,19 +73,34 @@ const duplicateCanonicalBySlug: Record<string, string> = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const page = getAlternativePageBySlug(slug);
+  const { slug, locale } = await params;
+  const page = getAlternativePageBySlug(slug, locale);
   if (!page) return {};
+  const isEs = locale === "es";
   const duplicateCanonical = duplicateCanonicalBySlug[slug];
-  const canonical = duplicateCanonical ?? `https://voicetypr.com/alternative/${slug}`;
+  // Translatable only when a Spanish entry exists AND it isn't a noindex duplicate.
+  const hasEs = Boolean(ALTERNATIVE_PAGE_ES[slug]) && !duplicateCanonical;
+  const enCanonical = duplicateCanonical ?? `https://voicetypr.com/alternative/${slug}`;
+  const esCanonical = `https://voicetypr.com/es/alternative/${slug}`;
+  const canonical = isEs && hasEs ? esCanonical : enCanonical;
+  const languages = hasEs
+    ? { en: `https://voicetypr.com/alternative/${slug}`, es: esCanonical, "x-default": `https://voicetypr.com/alternative/${slug}` }
+    : undefined;
   const title = `${page.h1} — Voicetypr`;
+  // duplicate slugs stay noindex everywhere; otherwise /es indexes only when translated.
+  const robots = duplicateCanonical
+    ? { index: false, follow: true }
+    : isEs
+      ? { index: hasEs, follow: true }
+      : undefined;
   return {
     title,
     description: page.lede,
     alternates: {
       canonical,
+      ...(languages ? { languages } : {}),
     },
     openGraph: {
       title,
@@ -56,7 +116,7 @@ export async function generateMetadata({
       description: page.lede,
       images: ["/voicetypr-og.png"],
     },
-    ...(duplicateCanonical ? { robots: { index: false, follow: true } } : {}),
+    ...(robots ? { robots } : {}),
   };
 }
 
@@ -66,19 +126,25 @@ const H2_CLASS =
 export default async function AlternativePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const page = getAlternativePageBySlug(slug);
+  const { slug, locale } = await params;
+  const page = getAlternativePageBySlug(slug, locale);
   if (!page) return notFound();
   const relatedGuides = getRelatedGuidesForSeoSlug(slug);
+  const t = getAltStrings(locale);
+  const isEs = locale === "es";
+  const homeHref = isEs ? "/es" : "/";
+  const downloadHref = isEs ? "/es/download" : "/download";
+  const pricingHref = isEs ? "/es#pricing" : "/#pricing";
+  const base = isEs ? "https://voicetypr.com/es" : "https://voicetypr.com";
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Voicetypr", item: "https://voicetypr.com/" },
-      { "@type": "ListItem", position: 2, name: page.h1, item: `https://voicetypr.com/alternative/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Voicetypr", item: `${base}/` },
+      { "@type": "ListItem", position: 2, name: page.h1, item: `${base}/alternative/${slug}` },
     ],
   };
 
@@ -96,11 +162,11 @@ export default async function AlternativePage({
           <Container>
             <div className="mx-auto max-w-3xl">
               <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-                <Link href="/" className="transition-colors hover:text-foreground">
+                <Link href={homeHref} className="transition-colors hover:text-foreground">
                   Voicetypr
                 </Link>
                 <span aria-hidden>/</span>
-                <span>Alternative</span>
+                <span>{t.breadcrumbAlt}</span>
               </div>
 
               <header>
@@ -119,26 +185,26 @@ export default async function AlternativePage({
         <Section>
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className={H2_CLASS}>The replacement path</h2>
+              <h2 className={H2_CLASS}>{t.replacementPath}</h2>
               <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
                 <div className="overflow-x-auto p-1.5">
                   <table className="w-full text-left">
                     <caption className="sr-only">
-                      Comparison of tools for switching from the incumbent
+                      {t.tableCaption}
                     </caption>
                     <thead>
                       <tr>
                         <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
-                          Tool
+                          {t.thTool}
                         </th>
                         <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
-                          Price
+                          {t.thPrice}
                         </th>
                         <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
-                          Platforms
+                          {t.thPlatforms}
                         </th>
                         <th scope="col" className="px-3 pb-3 pt-2 text-xs font-medium text-muted-foreground">
-                          Offline
+                          {t.thOffline}
                         </th>
                       </tr>
                     </thead>
@@ -157,7 +223,7 @@ export default async function AlternativePage({
                                 </span>
                                 {comp.subscription && (
                                   <span className="text-[11px] uppercase tracking-wide text-muted-foreground">
-                                    Subscription
+                                    {t.subscription}
                                   </span>
                                 )}
                               </div>
@@ -169,7 +235,7 @@ export default async function AlternativePage({
                               {comp.platforms}
                             </td>
                             <td className="px-3 py-3 text-sm">
-                              <span className={comp.offline.startsWith("Yes") ? "font-medium text-foreground" : "text-muted-foreground"}>
+                              <span className={isOfflineYes(comp.offline) ? "font-medium text-foreground" : "text-muted-foreground"}>
                                 {comp.offline}
                               </span>
                             </td>
@@ -188,7 +254,7 @@ export default async function AlternativePage({
         <Section>
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className={H2_CLASS}>What gets better after you switch</h2>
+              <h2 className={H2_CLASS}>{t.whatGetsBetter}</h2>
               <ul className="mt-8 space-y-4">
                 {page.whySwitch.map((reason, i) => (
                   <li key={i} className="flex items-start gap-3 text-base leading-relaxed text-muted-foreground">
@@ -209,7 +275,7 @@ export default async function AlternativePage({
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="rounded-2xl border border-border bg-card p-6">
                     <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                      Choose Voicetypr if
+                      {t.chooseVtIf}
                     </h2>
                     <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
                       {page.switchGuide.voiceTyprIf.map((item) => (
@@ -222,7 +288,7 @@ export default async function AlternativePage({
                   </div>
                   <div className="rounded-2xl border border-border bg-card p-6">
                     <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                      Stay with the incumbent if
+                      {t.stayIncumbentIf}
                     </h2>
                     <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
                       {page.switchGuide.otherIf.map((item) => (
@@ -238,7 +304,7 @@ export default async function AlternativePage({
                 {page.switchGuide.notes && page.switchGuide.notes.length > 0 ? (
                   <div className="rounded-2xl bg-muted p-6 md:p-8">
                     <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                      Quick comparison notes
+                      {t.quickNotes}
                     </h2>
                     <div className="mt-5 grid gap-6 md:grid-cols-2">
                       {page.switchGuide.notes.map((note) => (
@@ -255,8 +321,8 @@ export default async function AlternativePage({
           </Section>
         ) : null}
 
-        {/* Related guides */}
-        {relatedGuides.length > 0 ? (
+        {/* Related guides point to English-only pages — English locale only. */}
+        {!isEs && relatedGuides.length > 0 ? (
           <Section>
             <Container>
               <RelatedGuidesSection
@@ -274,10 +340,11 @@ export default async function AlternativePage({
         {/* Final CTA */}
         <FinalCTA
           headline={page.ctaText}
-          subtitle="3-day free trial. No credit card. All features included."
-          primaryLabel="Start free trial"
-          secondaryHref="/#pricing"
-          secondaryLabel="View lifetime pricing"
+          subtitle={t.ctaSubtitle}
+          primaryHref={downloadHref}
+          primaryLabel={t.ctaPrimary}
+          secondaryHref={pricingHref}
+          secondaryLabel={t.ctaSecondary}
         />
 
         <SiteFooter />

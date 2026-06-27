@@ -71,6 +71,34 @@ const TRANSLATED_USE_CASE_SLUGS = [
 // as the use-case slugs above. Keep in sync when a new /es geo translation lands.
 const TRANSLATED_GEO_SLUGS = ['spain', 'mexico'];
 
+// "best/<slug>" comparison pages translated to Spanish (keys of SEO_PAGE_ES).
+const TRANSLATED_BEST_SLUGS = [
+  'mac-dictation',
+  'windows-dictation',
+  'offline-dictation',
+  'windows-voice-typing',
+  'windows-speech-to-text',
+  'accessible-dictation',
+  'voice-to-text-for-developers',
+  'dictation-for-writers',
+  'free-voice-to-text',
+  'dictation-for-students',
+  'voice-to-text-for-chatgpt',
+  'dictation-app',
+];
+
+// "alternative/<slug>" pages translated to Spanish (keys of ALTERNATIVE_PAGE_ES).
+// superwhisper / wispr-flow are noindex duplicates and intentionally NOT translated.
+const TRANSLATED_ALTERNATIVE_SLUGS = [
+  'dragon',
+  'windows-speech-recognition',
+  'otter-ai',
+  'macwhisper',
+  'willow-voice',
+  'talon',
+  'notta',
+];
+
 // Alt-locale paths that ARE genuinely translated and may be indexed. Everything
 // else under a non-default locale gets X-Robots-Tag: noindex until its content is
 // localized. Add paths here as each page's Spanish copy ships.
@@ -79,6 +107,8 @@ const INDEXABLE_ALT_LOCALE_PATHS = new Set([
   '/es/download',
   ...TRANSLATED_USE_CASE_SLUGS.map((slug) => `/es/use-cases/${slug}`),
   ...TRANSLATED_GEO_SLUGS.map((slug) => `/es/voice-typing/${slug}`),
+  ...TRANSLATED_BEST_SLUGS.map((slug) => `/es/best/${slug}`),
+  ...TRANSLATED_ALTERNATIVE_SLUGS.map((slug) => `/es/alternative/${slug}`),
 ]);
 
 // next-intl locale router (localePrefix: "as-needed" — English stays at root,
