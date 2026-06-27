@@ -130,5 +130,37 @@
     "downloadBoth": "Download for Mac & PC",
     "finalCtaFine": "macOS 13+ · Windows 10+ · No card for trial",
     "closeDemo": "Close ✕"
+  },
+  "Download": {
+    "almostThere": "You're almost there.",
+    "startingAuto": "Your {os} download is starting automatically. Didn't work?",
+    "downloadManually": "Download manually",
+    "trialNeedBuild": "Free 3-day trial, no card to start. Need a different build?",
+    "commonQuestions": "Common {os} <sage>questions</sage>",
+    "installing": "Installing Voicetypr…",
+    "applications": "Applications",
+    "macSteps": [
+      ["Open the installer", "Double-click Voicetypr.dmg in your Downloads."],
+      ["Drag to Applications", "Drag the Voicetypr icon into your Applications folder."],
+      ["Launch & talk", "Open Voicetypr, set a hotkey, and start dictating."]
+    ],
+    "winSteps": [
+      ["Open the installer", "Run the Voicetypr .exe from your Downloads."],
+      ["Allow & install", "If Windows shows “Unknown publisher,” click More info → Run anyway."],
+      ["Launch & talk", "Open Voicetypr, set a hotkey, and start dictating."]
+    ],
+    "macFaqs": [
+      ["Is the Mac app notarized?", "Yes — Voicetypr is notarized by Apple, so it opens normally with no Gatekeeper warnings or right-click workarounds. Just open it and start dictating."],
+      ["Apple Silicon or Intel — which build?", "Macs from 2020 on are Apple Silicon (M-series) — use the default build. Older Intel Macs can grab the Intel build from the “Need a different build?” links above."],
+      ["Does it work fully offline?", "Yes — transcription runs on-device with local models, so your voice never leaves your Mac. Optional cloud AI formatting is opt-in and uses your own key."],
+      ["Which macOS versions are supported?", "macOS 13 (Ventura) and later, on both Apple Silicon and Intel."]
+    ],
+    "winFaqs": [
+      ["My browser blocked the download / “isn't commonly downloaded”?", "Because the installer isn't code-signed yet, Chrome and Edge flag it on download (not on running it). Click Keep — in Edge, open the ⋯ menu on the warning → Keep → Keep anyway — to save the .exe, then open it. It's the official build straight from our GitHub releases."],
+      ["“Windows protected your PC” / Unknown publisher?", "SmartScreen shows that because the installer isn't EV-code-signed yet. Click More info → Run anyway — it's the official build straight from our GitHub releases."],
+      ["My antivirus flagged it — is it safe?", "New, unsigned installers occasionally trip a false positive. The build comes directly from our public GitHub releases, where you can verify the source."],
+      ["Does it work fully offline?", "Yes — transcription runs on-device with local models, so your voice never leaves your PC. Optional cloud AI formatting is opt-in and uses your own key."],
+      ["Which Windows versions are supported?", "Windows 10 and 11 (64-bit). Prefer the store? There's a Microsoft Store build too."]
+    ]
   }
 }

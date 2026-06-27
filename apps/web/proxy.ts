@@ -25,7 +25,7 @@ const BYPASS_HEADER = 'x-markdown-bypass';
 // Alt-locale paths that ARE genuinely translated and may be indexed. Everything
 // else under a non-default locale gets X-Robots-Tag: noindex until its content is
 // localized. Add paths here as each page's Spanish copy ships.
-const INDEXABLE_ALT_LOCALE_PATHS = new Set(['/es']);
+const INDEXABLE_ALT_LOCALE_PATHS = new Set(['/es', '/es/download']);
 
 // next-intl locale router (localePrefix: "as-needed" — English stays at root,
 // other locales get a /<locale> prefix). Routing only; pages stay prerendered.

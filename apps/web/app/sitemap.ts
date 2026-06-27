@@ -37,6 +37,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastModified,
       changeFrequency: "daily",
       priority: 0.9,
+      alternates: { languages: { en: `${baseUrl}/download`, es: `${baseUrl}/es/download` } },
+    },
+    {
+      url: `${baseUrl}/es/download`,
+      lastModified: lastModified,
+      changeFrequency: "daily",
+      priority: 0.85,
+      alternates: { languages: { en: `${baseUrl}/download`, es: `${baseUrl}/es/download` } },
     },
     {
       url: `${baseUrl}/tools`,

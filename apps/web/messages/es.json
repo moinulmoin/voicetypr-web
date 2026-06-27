@@ -130,5 +130,37 @@
     "downloadBoth": "Descargar para Mac y PC",
     "finalCtaFine": "macOS 13+ · Windows 10+ · Sin tarjeta para la prueba",
     "closeDemo": "Cerrar ✕"
+  },
+  "Download": {
+    "almostThere": "Ya casi está.",
+    "startingAuto": "Tu descarga de {os} está empezando automáticamente. ¿No funcionó?",
+    "downloadManually": "Descargar manualmente",
+    "trialNeedBuild": "Prueba gratis de 3 días, sin tarjeta. ¿Necesitas otra versión?",
+    "commonQuestions": "Preguntas <sage>frecuentes</sage> de {os}",
+    "installing": "Instalando Voicetypr…",
+    "applications": "Aplicaciones",
+    "macSteps": [
+      ["Abre el instalador", "Haz doble clic en Voicetypr.dmg en tus Descargas."],
+      ["Arrastra a Aplicaciones", "Arrastra el icono de Voicetypr a tu carpeta Aplicaciones."],
+      ["Ábrelo y habla", "Abre Voicetypr, configura un atajo y empieza a dictar."]
+    ],
+    "winSteps": [
+      ["Abre el instalador", "Ejecuta el .exe de Voicetypr desde tus Descargas."],
+      ["Permite e instala", "Si Windows muestra “Editor desconocido”, haz clic en Más información → Ejecutar de todas formas."],
+      ["Ábrelo y habla", "Abre Voicetypr, configura un atajo y empieza a dictar."]
+    ],
+    "macFaqs": [
+      ["¿La app de Mac está notarizada?", "Sí: Voicetypr está notarizada por Apple, así que se abre con normalidad, sin avisos de Gatekeeper ni clics secundarios. Solo ábrela y empieza a dictar."],
+      ["¿Apple Silicon o Intel? ¿Cuál descargo?", "Los Mac de 2020 en adelante son Apple Silicon (serie M): usa la versión por defecto. Los Mac con Intel más antiguos pueden usar la versión Intel desde los enlaces “¿Necesitas otra versión?” de arriba."],
+      ["¿Funciona totalmente sin conexión?", "Sí: la transcripción se ejecuta en el dispositivo con modelos locales, así que tu voz nunca sale de tu Mac. El formato con IA en la nube es opcional y usa tu propia clave."],
+      ["¿Qué versiones de macOS son compatibles?", "macOS 13 (Ventura) y posteriores, tanto en Apple Silicon como en Intel."]
+    ],
+    "winFaqs": [
+      ["¿Mi navegador bloqueó la descarga / “no se descarga habitualmente”?", "Como el instalador aún no está firmado, Chrome y Edge lo marcan al descargarlo (no al ejecutarlo). Haz clic en Conservar —en Edge, abre el menú ⋯ del aviso → Conservar → Conservar de todos modos— para guardar el .exe y luego ábrelo. Es la versión oficial, directa de nuestras releases de GitHub."],
+      ["“Windows protegió tu PC” / ¿Editor desconocido?", "SmartScreen lo muestra porque el instalador aún no tiene firma de código EV. Haz clic en Más información → Ejecutar de todas formas: es la versión oficial, directa de nuestras releases de GitHub."],
+      ["Mi antivirus lo marcó, ¿es seguro?", "Los instaladores nuevos y sin firmar a veces provocan un falso positivo. La versión viene directamente de nuestras releases públicas de GitHub, donde puedes verificar el origen."],
+      ["¿Funciona totalmente sin conexión?", "Sí: la transcripción se ejecuta en el dispositivo con modelos locales, así que tu voz nunca sale de tu PC. El formato con IA en la nube es opcional y usa tu propia clave."],
+      ["¿Qué versiones de Windows son compatibles?", "Windows 10 y 11 (64 bits). ¿Prefieres la tienda? También hay una versión en la Microsoft Store."]
+    ]
   }
 }
