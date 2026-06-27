@@ -42,6 +42,11 @@ const TRANSLATED_USE_CASE_SLUGS = [
   'fibromyalgia',
 ];
 
+// Geo (country) slugs whose Spanish copy has shipped (keys of GEO_PAGE_ES in
+// lib/geo-pages.es.ts) — the Spanish-speaking markets. Same plain-list rationale
+// as the use-case slugs above. Keep in sync when a new /es geo translation lands.
+const TRANSLATED_GEO_SLUGS = ['spain', 'mexico'];
+
 // Alt-locale paths that ARE genuinely translated and may be indexed. Everything
 // else under a non-default locale gets X-Robots-Tag: noindex until its content is
 // localized. Add paths here as each page's Spanish copy ships.
@@ -49,6 +54,7 @@ const INDEXABLE_ALT_LOCALE_PATHS = new Set([
   '/es',
   '/es/download',
   ...TRANSLATED_USE_CASE_SLUGS.map((slug) => `/es/use-cases/${slug}`),
+  ...TRANSLATED_GEO_SLUGS.map((slug) => `/es/voice-typing/${slug}`),
 ]);
 
 // next-intl locale router (localePrefix: "as-needed" — English stays at root,

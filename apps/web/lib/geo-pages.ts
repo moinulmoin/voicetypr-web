@@ -14,6 +14,8 @@
  * Geo focus: European / privacy-first markets where offline dictation fits the culture.
  */
 
+import { GEO_PAGE_ES } from "./geo-pages.es";
+
 export type GeoFaq = {
   question: string;
   answer: string;
@@ -1112,7 +1114,11 @@ const geoPagesBySlug: Record<string, GeoPage> = Object.fromEntries(
   geoPages.map((page) => [page.slug, page]),
 );
 
-export function getGeoPage(slug: string): GeoPage | undefined {
+export function getGeoPage(slug: string, locale?: string): GeoPage | undefined {
+  if (locale === "es") {
+    const es = GEO_PAGE_ES[slug];
+    if (es) return es;
+  }
   return geoPagesBySlug[slug];
 }
 
