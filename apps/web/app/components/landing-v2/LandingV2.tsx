@@ -523,16 +523,9 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
             <div className="hero-cta">
               <div className="hero-actions">
                 <DownloadButton />
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={() => setDemoOpen(true)}
-                  data-track="hero-demo-click"
-                  aria-haspopup="dialog"
-                >
-                  <span className="play-dot" aria-hidden="true"><svg viewBox="0 0 12 12" width="9" height="9" fill="currentColor"><path d="M4.5 3 L9 6 L4.5 9 Z" /></svg></span>
-                  {t('heroWatchDemo')}
-                </button>
+                <a href="#pricing" className="btn btn-buy" data-track="hero-buy-click">
+                  {t('heroBuyNow')}
+                </a>
               </div>
               <p className="hero-meta">{t.rich('heroTrial', { b: (c) => <b>{c}</b> })}</p>
             </div>
