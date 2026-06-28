@@ -93,7 +93,7 @@ export default function CookieConsent() {
   };
 
   return (
-    <div data-markdown-skip className="fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-4 sm:max-w-[21rem]">
+    <div data-markdown-skip className="cookie-consent fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-4 sm:max-w-[21rem]">
       <div className="flex items-center gap-3 rounded-xl border border-brand-line bg-brand-surface px-3.5 py-2.5 shadow-sm">
         <p className="min-w-0 flex-1 text-[12.5px] leading-snug text-brand-ink-2">
           A few cookies help support Voicetypr through ads and affiliate links.{' '}

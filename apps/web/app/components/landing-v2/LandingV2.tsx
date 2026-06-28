@@ -133,7 +133,11 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
     const stickyCta = root.querySelector('#vtStickyCta');
     const onScroll = () => {
       header?.classList.toggle('scrolled', window.scrollY > 12);
-      stickyCta?.classList.toggle('show', window.scrollY > 760);
+      const showSticky = window.scrollY > 760;
+      stickyCta?.classList.toggle('show', showSticky);
+      // Mobile: let the cookie banner stack ABOVE the sticky Buy-now instead of
+      // being covered by it. The banner's CSS raises its bottom when this is set.
+      document.body.classList.toggle('vt-sticky-on', showSticky);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -441,6 +445,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
     return () => {
       cancelled = true;
       window.removeEventListener('scroll', onScroll);
+      document.body.classList.remove('vt-sticky-on');
       document.removeEventListener('visibilitychange', onVisibility);
       io?.disconnect();
       timers.forEach(clearTimeout);
@@ -922,19 +927,17 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
       {/* ============ FOOTER (shared SiteFooter, passed from page.tsx) ============ */}
       {footer}
 
-      <Link
+      {/* Mobile sticky → Buy now (not Download — it's a desktop app, you can't
+          install it on a phone; buy here, install on your Mac/PC later). */}
+      <a
         id="vtStickyCta"
-        href={downloadHrefForOs(os)}
+        href="#pricing"
         className="sticky-cta"
-        data-track="sticky-download-click"
+        data-track="sticky-buy-click"
         data-markdown-skip
       >
-        {os === 'windows'
-          ? t('downloadWindows')
-          : os === 'mac'
-            ? t('downloadMac')
-            : t('downloadBoth')}
-      </Link>
+        {t('heroBuyNow')}
+      </a>
 
       {/* ============ DEMO MODAL ============ */}
       {demoOpen && (

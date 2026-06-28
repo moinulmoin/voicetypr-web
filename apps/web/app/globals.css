@@ -1070,6 +1070,12 @@ html {
   .sticky-cta { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 55; display: none; align-items: center; justify-content: center; height: 50px; border-radius: 13px; background: var(--ink); color: var(--surface); font-family: var(--font-sans); font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 14px 32px -10px rgba(0,0,0,0.45); transform: translateY(150%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
   .sticky-cta.show { transform: translateY(0); }
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
+  /* When the sticky Buy-now is up, lift the cookie banner above it (50px button
+     + 16px base + 12px gap) so the GDPR notice is never covered. */
+  @media (max-width: 760px) {
+    .cookie-consent { transition: bottom 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+    body.vt-sticky-on .cookie-consent { bottom: 78px !important; }
+  }
 
   @media (prefers-reduced-motion: reduce) { .speed-fill { transition: none; } .sticky-cta { transition: none; } }
 
