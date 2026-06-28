@@ -102,7 +102,7 @@
       "Transcripción de archivos de audio y video",
       "Historial local de transcripciones con búsqueda",
       "macOS 13+ y Windows 10+",
-      "Soporte directo del fundador"
+      "Soporte directo del fundador, respuesta en horas"
     ],
 
     "founderQuote": "Creé Voicetypr porque pagar una cuota mensual por un dictado básico no me parecía bien.",
@@ -110,10 +110,10 @@
     "founderSig": "· Fundador en solitario, Voicetypr",
 
     "faqTitle": "Preguntas, <em>respondidas</em>",
-    "faqSub": "¿Tienes otra pregunta? Escribe a support@voicetypr.com y respondemos en un día.",
+    "faqSub": "¿Tienes otra pregunta? Escribe a support@voicetypr.com y respondemos en horas.",
     "faqStill": "¿Aún tienes dudas?",
     "faqEmailSupport": "Escribe a soporte",
-    "faqStillTail": "y respondemos en un día.",
+    "faqStillTail": "y respondemos en horas.",
     "faqs": [
       ["¿Voicetypr funciona en Windows?", "Sí, Windows 10 y posteriores. Descarga el instalador .exe, ejecútalo y listo. Mac y Windows son plataformas de primera clase."],
       ["Windows dice “Editor desconocido”, ¿es seguro?", "Sí. SmartScreen lo muestra porque aún no tengo un certificado de firma de código de Microsoft (cuestan $200–$300 al año y mantengo bajos los costes como fundador en solitario). Haz clic en Más información → Ejecutar de todas formas."],

@@ -102,7 +102,7 @@
       "Audio and video file transcription",
       "Searchable local transcript history",
       "macOS 13+ and Windows 10+",
-      "Direct support from the founder"
+      "Direct support from the founder, replies in hours"
     ],
 
     "founderQuote": "I built Voicetypr because paying a monthly fee for basic dictation didn't feel right.",
@@ -110,10 +110,10 @@
     "founderSig": "· Solo founder, Voicetypr",
 
     "faqTitle": "Questions, <em>answered</em>",
-    "faqSub": "Have a different question? Email support@voicetypr.com and we'll reply within a day.",
+    "faqSub": "Have a different question? Email support@voicetypr.com and we'll reply within hours.",
     "faqStill": "Still have a question?",
     "faqEmailSupport": "Email support",
-    "faqStillTail": "and we'll reply within a day.",
+    "faqStillTail": "and we'll reply within hours.",
     "faqs": [
       ["Does Voicetypr work on Windows?", "Yes, Windows 10 and later. Download the .exe installer, run it, and you're set. We ship Mac and Windows as first-class platforms."],
       ["Windows says “Unknown Publisher,” is it safe?", "Yes. SmartScreen shows that because I don't have a Microsoft code-signing cert yet (they cost $200–$300/year and I'm keeping solo-founder costs lean). Click More info → Run anyway."],
