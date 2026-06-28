@@ -131,21 +131,15 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
 
     const header = root.querySelector('#vtHeader');
     const stickyCta = root.querySelector('#vtStickyCta');
-    // The sticky Buy-now must NOT show while the cookie-consent banner is up — the
-    // banner has to stay the visible, tappable element until the user accepts.
-    const bannerOpen = () => {
-      const c = document.cookie;
-      const hasConsent = /(?:^|; )vt_consent=/.test(c);
-      const geo = c.match(/(?:^|; )vt_geo_requires_consent=([^;]+)/)?.[1];
-      return !hasConsent && geo !== 'false';
-    };
     const onScroll = () => {
       header?.classList.toggle('scrolled', window.scrollY > 12);
-      stickyCta?.classList.toggle('show', window.scrollY > 760 && !bannerOpen());
+      const showCta = window.scrollY > 760;
+      stickyCta?.classList.toggle('show', showCta);
+      // Mobile: when the Buy-now is up, raise the cookie banner above it so BOTH
+      // stay visible — banner on top (tappable), Buy-now below. See .cookie-consent.
+      document.body.classList.toggle('vt-sticky-on', showCta);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    // Re-check when the user accepts cookies (banner closes → CTA may now appear).
-    window.addEventListener('voicetypr:consent-changed', onScroll);
     onScroll();
 
     // Pause CSS + JS motion while the tab is hidden (battery friendly).
@@ -451,7 +445,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
     return () => {
       cancelled = true;
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('voicetypr:consent-changed', onScroll);
+      document.body.classList.remove('vt-sticky-on');
       document.removeEventListener('visibilitychange', onVisibility);
       io?.disconnect();
       timers.forEach(clearTimeout);
