@@ -60,7 +60,9 @@ function initials(name: string) {
 export default function LandingV2({ affonsoReferral, referrer, footer }: LandingV2Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
-  const [plan, setPlan] = useState<PublicPlanKey>('plus');
+  // Default to the lowest tier so the first price shown is $39 (matches the
+  // "from $39" framing used across the SEO pages) — lower anchor, more clicks.
+  const [plan, setPlan] = useState<PublicPlanKey>('pro');
   const [demoOpen, setDemoOpen] = useState(false);
   const os = useDetectedOs();
   const t = useTranslations('Home');
@@ -69,6 +71,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
   const priceFeatures = t.raw('priceFeatures') as string[];
   const deviceLabel = (k: PublicPlanKey) =>
     t(k === 'pro' ? 'devicePro' : k === 'plus' ? 'devicePlus' : 'deviceMax');
+  const deviceHint = (k: PublicPlanKey) =>
+    t(k === 'pro' ? 'deviceHintPro' : k === 'plus' ? 'deviceHintPlus' : 'deviceHintMax');
 
   // Demo modal: lock scroll, close on Escape, trap focus, restore focus on close.
   useEffect(() => {
@@ -802,6 +806,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                   <span className="now">{formatPrice(BASE_PRICES[plan])}</span>
                   <span className="per">{t('priceOnce', { device: deviceLabel(plan) })}</span>
                 </div>
+                <p className="ph-pick-label">{t('deviceQuestion')}</p>
                 <div className="ph-pick">
                   {PUBLIC_PLAN_KEYS.map((key) => (
                     <button
@@ -815,6 +820,7 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
                     </button>
                   ))}
                 </div>
+                <p className="ph-hint">{deviceHint(plan)}</p>
 
                 <div className="ph-cta">
                   <button

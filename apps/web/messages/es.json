@@ -87,6 +87,10 @@
     "devicePro": "1 dispositivo",
     "devicePlus": "2 dispositivos",
     "deviceMax": "4 dispositivos",
+    "deviceQuestion": "¿Cuántos dispositivos?",
+    "deviceHintPro": "Para tu equipo principal.",
+    "deviceHintPlus": "Para un portátil y un equipo de sobremesa.",
+    "deviceHintMax": "Para todos los dispositivos en los que trabajas.",
     "priceFeatures": [
       "Dictado en el dispositivo, sin conexión por defecto",
       "Funciona en cualquier app con campo de texto",

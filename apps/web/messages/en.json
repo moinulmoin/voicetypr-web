@@ -87,6 +87,10 @@
     "devicePro": "1 device",
     "devicePlus": "2 devices",
     "deviceMax": "4 devices",
+    "deviceQuestion": "How many devices?",
+    "deviceHintPro": "For your main machine.",
+    "deviceHintPlus": "For a laptop + desktop.",
+    "deviceHintMax": "For every device you work on.",
     "priceFeatures": [
       "On-device dictation, offline by default",
       "Works in every app with a text cursor",
