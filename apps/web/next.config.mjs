@@ -10,6 +10,10 @@ const nextConfig = {
   outputFileTracingRoot: join(__dirname, "../.."),
   cacheComponents: true,
   reactCompiler: true,
+  // Hide the localhost-only Next.js dev badge (the black "N" circle) so it stops
+  // overlapping the cookie banner / sticky CTA while testing. Dev-only; never
+  // affected production. Remove this to bring the dev indicator back.
+  devIndicators: false,
   images: {
     remotePatterns: [
       {
