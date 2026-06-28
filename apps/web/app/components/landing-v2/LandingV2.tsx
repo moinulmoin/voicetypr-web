@@ -130,14 +130,8 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
     const intervals: ReturnType<typeof setInterval>[] = [];
 
     const header = root.querySelector('#vtHeader');
-    const stickyCta = root.querySelector('#vtStickyCta');
     const onScroll = () => {
       header?.classList.toggle('scrolled', window.scrollY > 12);
-      const showCta = window.scrollY > 760;
-      stickyCta?.classList.toggle('show', showCta);
-      // Mobile: when the Buy-now is up, raise the cookie banner above it so BOTH
-      // stay visible — banner on top (tappable), Buy-now below. See .cookie-consent.
-      document.body.classList.toggle('vt-sticky-on', showCta);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -445,7 +439,6 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
     return () => {
       cancelled = true;
       window.removeEventListener('scroll', onScroll);
-      document.body.classList.remove('vt-sticky-on');
       document.removeEventListener('visibilitychange', onVisibility);
       io?.disconnect();
       timers.forEach(clearTimeout);
@@ -926,18 +919,6 @@ export default function LandingV2({ affonsoReferral, referrer, footer }: Landing
 
       {/* ============ FOOTER (shared SiteFooter, passed from page.tsx) ============ */}
       {footer}
-
-      {/* Mobile sticky → Buy now (not Download — it's a desktop app, you can't
-          install it on a phone; buy here, install on your Mac/PC later). */}
-      <a
-        id="vtStickyCta"
-        href="#pricing"
-        className="sticky-cta"
-        data-track="sticky-buy-click"
-        data-markdown-skip
-      >
-        {t('heroBuyNow')}
-      </a>
 
       {/* ============ DEMO MODAL ============ */}
       {demoOpen && (

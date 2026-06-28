@@ -1066,18 +1066,7 @@ html {
   .speed-foot b { color: var(--ink); font-weight: 600; }
   @media (max-width: 560px) { .speed-label { width: 74px; font-size: 12.5px; } .speed-num { width: 58px; } }
 
-  /* Sticky mobile CTA */
-  .sticky-cta { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 55; display: none; align-items: center; justify-content: center; height: 50px; border-radius: 13px; background: var(--ink); color: var(--surface); font-family: var(--font-sans); font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 14px 32px -10px rgba(0,0,0,0.45); transform: translateY(150%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
-  .sticky-cta.show { transform: translateY(0); }
-  @media (max-width: 760px) { .sticky-cta { display: flex; } }
-  /* Banner is pinned to the bottom by Tailwind bottom-4 (safe default — never
-     flies to the top if this rule is slow to load). On mobile, when the sticky
-     Buy-now is up, lift the banner above it (50px button + 16px + 12px gap) so
-     BOTH stay visible — banner on top, Buy-now below. */
-  .cookie-consent { transition: bottom 0.3s ease; }
-  @media (max-width: 760px) { body.vt-sticky-on .cookie-consent { bottom: 78px !important; } }
-
-  @media (prefers-reduced-motion: reduce) { .speed-fill { transition: none; } .sticky-cta { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .speed-fill { transition: none; } }
 
   /* ---------- Features bento ---------- */
   .bento { display: grid; gap: 14px; margin-top: 44px; grid-template-columns: repeat(3, 1fr); }
