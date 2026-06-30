@@ -85,14 +85,21 @@ export default function RefundPage() {
       </section>
 
       <section className={sectionClass}>
-        <h2 className={h2Class}>8. Related terms</h2>
+        <h2 className={h2Class}>8. Team and volume licenses</h2>
+        <p className={pClass}>
+          The 7-day money-back guarantee above applies to individual purchases made directly through our self-serve checkout. Team, volume, and other licenses arranged through our sales or contact flow are custom orders, and their refund terms are those set out in that specific order or agreement &mdash; we&rsquo;ll always put them in writing before you pay, so nothing comes as a surprise. If something goes wrong with a team purchase, email us all the same; we handle reasonable cases in good faith, just as we do for everyone.
+        </p>
+      </section>
+
+      <section className={sectionClass}>
+        <h2 className={h2Class}>9. Related terms</h2>
         <p className={pClass}>
           This Refund Policy forms part of our <Link href="/terms" className={linkClass}>Terms and Conditions</Link>. For license details see our <Link href="/eula" className={linkClass}>EULA</Link>, and for data practices see our <Link href="/privacy" className={linkClass}>Privacy Policy</Link>.
         </p>
       </section>
 
       <section className={sectionClass}>
-        <h2 className={h2Class}>9. Contact</h2>
+        <h2 className={h2Class}>10. Contact</h2>
         <p className={`${pClass} mt-3 rounded-xl border border-border bg-muted p-4 font-mono text-sm`}>
           Ideaplexa LLC<br />
           30 N Gould St Ste N<br />

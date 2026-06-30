@@ -70,11 +70,11 @@ export default function TermsPage() {
         <ul className={ulClass}>
           <li>Voicetypr is sold as a one-time purchase with no recurring fees</li>
           <li>Purchases include access to software updates we release for the product</li>
-          <li>We offer a 7-day money-back guarantee from the date of purchase</li>
+          <li>We offer a 7-day money-back guarantee on individual purchases from the date of purchase</li>
           <li>Refunds will result in immediate license deactivation</li>
         </ul>
         <p className={`${pClass} mt-3`}>
-          The 7&#8209;day period starts on the purchase date shown on your order confirmation (license issuance), regardless of when you download or activate. See our <Link href="/refund" className="text-sage underline underline-offset-2">Refund Policy</Link> for full details.
+          The 7&#8209;day period starts on the purchase date shown on your order confirmation (license issuance), regardless of when you download or activate. Team, volume, and other licenses arranged through our sales or contact flow are custom orders governed by the refund terms of that specific order rather than this guarantee. See our <Link href="/refund" className="text-sage underline underline-offset-2">Refund Policy</Link> for full details.
         </p>
       </section>
 
