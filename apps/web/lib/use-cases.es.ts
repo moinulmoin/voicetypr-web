@@ -731,7 +731,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         title: "Los prompts cuestan más que antes.",
         body:
-          "La parte de escritura de tu trabajo creció. Especificaciones, prompts, respuestas, post-mortems: todo consume pulsaciones y tiempo reales. La voz reduce ese costo.",
+          "La parte de escritura de tu trabajo creció. Especificaciones, prompts, respuestas, post-mortems: todo consume pulsaciones y tiempo reales. La voz reduce ese coste.",
       },
       {
         title: "El dictado en la nube no es opción para prompts sensibles.",
@@ -771,7 +771,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         title: "Prompts en Cursor / Claude / ChatGPT",
         body:
-          "Las cajas de prompt de los agentes son donde más texto tecleas en un día típico. Mantén pulsado el hotkey, explica el problema como se lo contarías a un colega y pega. El agente recibe un prompt más natural y específico del que habrías tecleado.",
+          "Las cajas de prompt de los agentes son donde más texto tecleas en un día típico. Mantén pulsado el atajo, explica el problema como se lo contarías a un colega y pega. El agente recibe un prompt más natural y específico del que habrías tecleado.",
       },
       {
         title: "Mensajes de commit y descripciones de PR",
@@ -886,12 +886,12 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         title: "Habla el primer borrador, teclea el segundo",
         body:
-          "Abre el documento, mantén pulsado el hotkey y habla el capítulo / ensayo / pieza en tres o cuatro pasadas con descansos. Termina la sesión con un primer borrador completo. La edición de mañana ya es posible porque dejaste de editar lo que escribiste hace diez segundos.",
+          "Abre el documento, mantén pulsado el atajo y habla el capítulo / ensayo / pieza en tres o cuatro pasadas con descansos. Termina la sesión con un primer borrador completo. La edición de mañana ya es posible porque dejaste de editar lo que escribiste hace diez segundos.",
       },
       {
         title: "Captura la idea antes de que el día se la coma",
         body:
-          "En un paseo. En la cocina. Acaba de llegarte el giro de la trama. Mantén pulsado el hotkey en tu portátil conectado al móvil o abre una ventana rápida de Notas: la captura toma noventa segundos y la idea sobrevive.",
+          "En un paseo. En la cocina. Acaba de llegarte el giro de la trama. Mantén pulsado el atajo en tu portátil conectado al móvil o abre una ventana rápida de Notas: la captura toma noventa segundos y la idea sobrevive.",
       },
       {
         title: "Respuestas largas, presentaciones y propuestas",
@@ -903,12 +903,12 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Aguanta bloques largos de habla sin cortarse?",
         a:
-          "Sí: las sesiones pueden durar lo que aguanten tu batería y tu micrófono. El modelo procesa todo el bloque de una vez después de que sueltas el hotkey, así que no hay cortes de streaming como ocurre con las herramientas en la nube que transmiten en vivo.",
+          "Sí: las sesiones pueden durar lo que aguanten tu batería y tu micrófono. El modelo procesa todo el bloque de una vez después de que sueltas el atajo, así que no hay cortes de streaming como ocurre con las herramientas en la nube que transmiten en vivo.",
       },
       {
         q: "¿Puntúa prosa de ficción con diálogos?",
         a:
-          "Puntúa mejor que la herramienta nativa de macOS, pero el formato de los diálogos (rayas, comillas para las líneas habladas) a veces necesita una rápida pasada editorial. El preset de formato por defecto se encarga de la puntuación común; desactívalo si quieres la transcripción en bruto para limpiarla tú.",
+          "Puntúa mejor que la herramienta nativa de macOS, pero el formato de los diálogos (rayas, comillas para las líneas habladas) a veces necesita una rápida pasada editorial. El preajuste de formato por defecto se encarga de la puntuación común; desactívalo si quieres la transcripción en bruto para limpiarla tú.",
       },
       {
         q: "¿Puedo usarlo para redactar en otros idiomas además del inglés?",
@@ -1457,7 +1457,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
         title: "Precio de entrada más bajo que el dictado jurídico tradicional",
         body:
           "Para los abogados que sobre todo necesitan escribir más rápido en el día a día, Voicetypr supone un compromiso mucho menor que el software heredado de alto precio.",
-        meta: "Resultado · costo",
+        meta: "Resultado · coste",
       },
     ],
     workflows: [
@@ -2801,7 +2801,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       eyebrow: "voicetypr para médicos",
       headline: "El diagnóstico toma minutos. <em>La carta toma más.</em>",
       lede:
-        "Cartas de derivación, correos a colegas, borradores, folletos para pacientes, formularios administrativos: la medicina va rápido y lo que frena es escribir. Mantén pulsado un hotkey, di la frase y Voicetypr la escribe donde ya está tu cursor, transcrita en tu propia máquina.",
+        "Cartas de derivación, correos a colegas, borradores, folletos para pacientes, formularios administrativos: la medicina va rápido y lo que frena es escribir. Mantén pulsado un atajo, di la frase y Voicetypr la escribe donde ya está tu cursor, transcrita en tu propia máquina.",
       metaStrip: ["derivaciones · correos · administración", "transcripción local", "pagas una vez · de por vida"],
     },
     pains: [
@@ -2870,7 +2870,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Funciona en mi correo, en Word y en el navegador?",
         a:
-          "Sí. Voicetypr pega en cualquier campo de texto que acepte entrada de teclado: correo, Word, un formulario del navegador, tu app de notas. Coloca el cursor, mantén pulsado el hotkey y habla.",
+          "Sí. Voicetypr pega en cualquier campo de texto que acepte entrada de teclado: correo, Word, un formulario del navegador, tu app de notas. Coloca el cursor, mantén pulsado el atajo y habla.",
       },
       {
         q: "¿Se sube mi voz a algún sitio?",
@@ -2974,7 +2974,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         title: "La pila administrativa entre sesiones",
         body:
-          "Respuestas de admisión, mensajes para agendar citas, notas para la supervisión, la respuesta que le debes a un familiar o a una agencia colaboradora. Mantén pulsado el hotkey, dilo, pega. La escritura pequeña que llena los huecos en silencio se despeja sobre la marcha.",
+          "Respuestas de admisión, mensajes para agendar citas, notas para la supervisión, la respuesta que le debes a un familiar o a una agencia colaboradora. Mantén pulsado el atajo, dilo, pega. La escritura pequeña que llena los huecos en silencio se despeja sobre la marcha.",
       },
     ],
     faqs: [
@@ -2996,7 +2996,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Funciona en las apps en las que escribo?",
         a:
-          "Sí. Pega en campos de texto normales: correo, Word, Google Docs, tu app de notas, formularios del navegador. Coloca el cursor donde quieras el texto, mantén pulsado el hotkey y habla. No hay nada que integrar por cada app.",
+          "Sí. Pega en campos de texto normales: correo, Word, Google Docs, tu app de notas, formularios del navegador. Coloca el cursor donde quieras el texto, mantén pulsado el atajo y habla. No hay nada que integrar por cada app.",
       },
       {
         q: "¿Mac y Windows? ¿Y puedo probarlo primero?",
@@ -3113,7 +3113,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Puedo dictar los comentarios de corrección directamente en el LMS?",
         a:
-          "Si la caja de comentarios acepta texto escrito —Canvas, Moodle, Blackboard, Google Classroom— puedes dictar en ella. Coloca el cursor, mantén pulsado el hotkey, di el comentario y suelta.",
+          "Si la caja de comentarios acepta texto escrito —Canvas, Moodle, Blackboard, Google Classroom— puedes dictar en ella. Coloca el cursor, mantén pulsado el atajo, di el comentario y suelta.",
       },
       {
         q: "¿Funciona en Mac y Windows?",
@@ -3757,7 +3757,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
         marker: "0",
         title: "Pulsaciones con la mano en recuperación",
         body:
-          "Actívalo con la otra mano o con pulsar-para-hablar, y luego habla. La mano operada nunca tiene que llegar al teclado para dejar un párrafo escrito.",
+          "Actívalo con la otra mano o con pulsar para hablar, y luego habla. La mano operada nunca tiene que llegar al teclado para dejar un párrafo escrito.",
         meta: "Resultado · sin teclado",
       },
       {
@@ -3796,7 +3796,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "Mi cirujano me dijo que mantenga la mano quieta—¿puedo usar esto sin ella?",
         a:
-          "Sí. Activa el atajo con la otra mano, o usa pulsar-para-hablar en Option/Alt+Space, y luego habla. La mano operada nunca tiene que tocar el teclado. Sigue siempre las indicaciones de tu cirujano sobre lo que tu mano tiene permitido hacer.",
+          "Sí. Activa el atajo con la otra mano, o usa pulsar para hablar en Option/Alt+Space, y luego habla. La mano operada nunca tiene que tocar el teclado. Sigue siempre las indicaciones de tu cirujano sobre lo que tu mano tiene permitido hacer.",
       },
       {
         q: "¿Esto ayudará a que mi mano se cure?",
@@ -3933,7 +3933,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Puedo iniciarlo sin encontrar un botón en pantalla?",
         a:
-          "Sí. Es un atajo global—⌘+Shift+Space en macOS, Ctrl+Shift+Space en Windows—más pulsar-para-hablar en Option/Alt+Space. Lo activas desde el teclado, en cualquier lugar, sin localizar un control en pantalla.",
+          "Sí. Es un atajo global—⌘+Shift+Space en macOS, Ctrl+Shift+Space en Windows—más pulsar para hablar en Option/Alt+Space. Lo activas desde el teclado, en cualquier lugar, sin localizar un control en pantalla.",
       },
     ],
     finalCta: {

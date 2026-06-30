@@ -20,12 +20,12 @@
   },
   "Home": {
     "heroTitle": "Escribe con tu <em>voz</em>.",
-    "heroSub": "Tu mente va más rápido que tus dedos. Habla y el dictado sin conexión de Voicetypr coloca texto limpio en cualquier app, unas 3 veces más rápido que escribiendo.",
+    "heroSub": "Tu mente va más rápido que tus dedos. Habla y el dictado sin conexión de Voicetypr coloca texto limpio en cualquier app, unas 3 veces más rápido que escribir.",
     "heroWatchDemo": "Ver la demo",
     "heroBuyNow": "Comprar ahora",
     "heroTrial": "Prueba gratis de 3 días, <b>sin tarjeta para empezar</b>",
     "heroLovedBy": "Usado por fundadores, desarrolladores y creadores",
-    "hudHoldToTalk": "mantén para hablar",
+    "hudHoldToTalk": "mantén pulsado para hablar",
 
     "setupTitle": "Listo en minutos",
     "setupSub": "Instala, elige un modelo, configura un atajo y habla. Eso es todo.",
@@ -45,7 +45,7 @@
     "featLangTitle": "99+ idiomas",
     "featLangBody": "Detección automática. Solo habla, en cualquier idioma.",
     "featCliTitle": "CLI y API para agentes",
-    "featCliBody": "Controla Voicetypr desde tu CLI o tus scripts: audio de entrada, texto o JSON de salida. Dales oídos a tus agentes de IA (OpenClaw, Hermes, nanoclaw).",
+    "featCliBody": "Controla Voicetypr desde tu CLI o tus scripts: audio de entrada, texto o JSON de salida. Ponles oídos a tus agentes de IA (OpenClaw, Hermes, nanoclaw).",
     "featCloudTitle": "Local o en la nube, tú decides",
     "featCloudBody": "Whisper y Parakeet en tu dispositivo por defecto. En un equipo más ligero, cambia a un motor en la nube para más velocidad y precisión.",
     "featNetworkTitle": "Usa un equipo más potente",
@@ -106,7 +106,7 @@
     ],
 
     "founderQuote": "Creé Voicetypr porque pagar una cuota mensual por un dictado básico no me parecía bien.",
-    "founderBody": "Escribo más de 12 horas al día. La mayoría de las herramientas me ataban a una suscripción o se sentían anticuadas. Voicetypr es rápido, sin conexión por defecto y se ejecuta en tu equipo. Pruébalo gratis 3 días para ver si de verdad te ahorra tiempo.",
+    "founderBody": "Escribo más de 12 horas al día. La mayoría de las herramientas me ataban a una suscripción o parecían anticuadas. Voicetypr es rápido, sin conexión por defecto y se ejecuta en tu equipo. Pruébalo gratis 3 días para ver si de verdad te ahorra tiempo.",
     "founderSig": "· Fundador en solitario, Voicetypr",
 
     "faqTitle": "Preguntas, <em>respondidas</em>",
