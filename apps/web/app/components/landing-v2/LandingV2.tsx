@@ -60,9 +60,9 @@ function initials(name: string) {
 export default function LandingV2({ affonsoReferral, referrer, footer }: LandingV2Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
-  // Default to the lowest tier so the first price shown is $39 (matches the
-  // "from $39" framing used across the SEO pages) — lower anchor, more clicks.
-  const [plan, setPlan] = useState<PublicPlanKey>('pro');
+  // Default to the 2-device tier ($69) — the tier most buyers actually want
+  // (laptop + desktop); the device toggle still exposes 1/2/4.
+  const [plan, setPlan] = useState<PublicPlanKey>('plus');
   const [demoOpen, setDemoOpen] = useState(false);
   const os = useDetectedOs();
   const t = useTranslations('Home');
