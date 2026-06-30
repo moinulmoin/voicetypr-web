@@ -225,7 +225,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Funciona para alguien cuya lengua materna no es el inglés?",
         a:
-          "Sí: Voicetypr admite más de 99 idiomas. El dictado funciona en tu lengua materna o en inglés. Puedes cambiar desde el selector de idioma del modelo.",
+          "Sí: Voicetypr admite 99 idiomas. El dictado funciona en tu lengua materna o en inglés. Puedes cambiar desde el selector de idioma del modelo.",
       },
     ],
     finalCta: {
@@ -913,7 +913,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Puedo usarlo para redactar en otros idiomas además del inglés?",
         a:
-          "Sí. Voicetypr admite más de 99 idiomas: elige el idioma de tu modelo en los ajustes.",
+          "Sí. Voicetypr admite 99 idiomas: elige el idioma de tu modelo en los ajustes.",
       },
       {
         q: "¿Y para transcribir entrevistas?",
@@ -1962,7 +1962,7 @@ export const USE_CASE_ES: Record<string, UseCase> = {
       {
         q: "¿Puedo redactar en idiomas distintos del inglés?",
         a:
-          "Sí. Voicetypr admite más de 99 idiomas, así que los flujos de reporteo multilingüe funcionan sin problema siempre que elijas el idioma correcto en los ajustes.",
+          "Sí. Voicetypr admite 99 idiomas, así que los flujos de reporteo multilingüe funcionan sin problema siempre que elijas el idioma correcto en los ajustes.",
       },
     ],
     finalCta: {

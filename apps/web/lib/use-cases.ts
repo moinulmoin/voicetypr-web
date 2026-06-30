@@ -275,7 +275,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Does it work for someone whose first language isn't English?",
         a:
-          "Yes — Voicetypr supports 99+ languages. Dictation works in your native tongue or in English. You can switch via the model language picker.",
+          "Yes — Voicetypr supports 99 languages. Dictation works in your native tongue or in English. You can switch via the model language picker.",
       },
     ],
     finalCta: {
@@ -2017,7 +2017,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I use it for non-English drafting?",
         a:
-          "Yes. Voicetypr supports 99+ languages — pick your model language in settings.",
+          "Yes. Voicetypr supports 99 languages — pick your model language in settings.",
       },
       {
         q: "What about transcribing interviews?",
@@ -2257,7 +2257,7 @@ const USE_CASE_ENTRIES: UseCase[] = [
       {
         q: "Can I draft in non-English languages?",
         a:
-          "Yes. Voicetypr supports 99+ languages, so multilingual reporting workflows are fine as long as you pick the right language in settings.",
+          "Yes. Voicetypr supports 99 languages, so multilingual reporting workflows are fine as long as you pick the right language in settings.",
       },
     ],
     finalCta: {

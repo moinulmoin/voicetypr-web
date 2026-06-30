@@ -42,7 +42,7 @@
     "featuresSub": "Local dictation by default. Optional cloud transcription and AI cleanup when you want more.",
     "featAppsTitle": "Talk into every app",
     "featAppsBody": "One global hotkey drops clean text wherever your cursor sits, no per-app setup, no copy-paste.",
-    "featLangTitle": "99+ languages",
+    "featLangTitle": "99 languages",
     "featLangBody": "Automatic detection. Just speak, in any language.",
     "featCliTitle": "Agent CLI & API",
     "featCliBody": "Drive Voicetypr from your CLI or scripts — audio in, text or JSON out. Give your AI agents (OpenClaw, Hermes, nanoclaw) ears.",
@@ -124,7 +124,7 @@
       ["What are the system requirements?", "macOS Ventura 13+ with Apple Silicon recommended, Intel Mac supported, or Windows 10+. Minimum 4 GB RAM."],
       ["How many devices can I use?", "Pick 1, 2, or 4 activations when you buy. Switch machines anytime within your limit. Need a team license? Email support@voicetypr.com."],
       ["What does lifetime mean?", "One price, yours forever. No subscription, no card on file. Updates we ship come with it, and Voicetypr keeps working on the version you own."],
-      ["What languages does Voicetypr support?", "99+ languages including English, Spanish, French, German, Hindi, and Japanese, with automatic detection."],
+      ["What languages does Voicetypr support?", "99 languages including English, Spanish, French, German, Hindi, and Japanese, with automatic detection."],
       ["Does it use my GPU on Windows?", "On Windows, Voicetypr uses your graphics chip when it can for faster transcription. If not, it uses your processor, and it still works."]
     ],
 

@@ -42,7 +42,7 @@
     "featuresSub": "Dictado local por defecto. Transcripción en la nube y limpieza con IA opcionales cuando quieras más.",
     "featAppsTitle": "Habla en cualquier app",
     "featAppsBody": "Un atajo global coloca texto limpio donde esté tu cursor, sin configurar cada app y sin copiar y pegar.",
-    "featLangTitle": "99+ idiomas",
+    "featLangTitle": "99 idiomas",
     "featLangBody": "Detección automática. Solo habla, en cualquier idioma.",
     "featCliTitle": "CLI y API para agentes",
     "featCliBody": "Controla Voicetypr desde tu CLI o tus scripts: audio de entrada, texto o JSON de salida. Ponles oídos a tus agentes de IA (OpenClaw, Hermes, nanoclaw).",
@@ -124,7 +124,7 @@
       ["¿Cuáles son los requisitos del sistema?", "macOS Ventura 13+ con Apple Silicon recomendado, Mac con Intel compatible, o Windows 10+. Mínimo 4 GB de RAM."],
       ["¿En cuántos dispositivos puedo usarlo?", "Elige 1, 2 o 4 activaciones al comprar. Cambia de equipo cuando quieras dentro de tu límite. ¿Necesitas una licencia para equipo? Escribe a support@voicetypr.com."],
       ["¿Qué significa de por vida?", "Un precio, tuyo para siempre. Sin suscripción, sin tarjeta guardada. Las actualizaciones que publicamos vienen incluidas y Voicetypr sigue funcionando en la versión que tienes."],
-      ["¿Qué idiomas admite Voicetypr?", "Más de 99 idiomas, incluidos inglés, español, francés, alemán, hindi y japonés, con detección automática."],
+      ["¿Qué idiomas admite Voicetypr?", "99 idiomas, incluidos inglés, español, francés, alemán, hindi y japonés, con detección automática."],
       ["¿Usa mi GPU en Windows?", "En Windows, Voicetypr usa tu tarjeta gráfica cuando puede para transcribir más rápido. Si no, usa tu procesador, y sigue funcionando."]
     ],
 
