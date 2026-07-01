@@ -25,9 +25,105 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.0.4",
+    date: "2026-07-01",
+    latest: true,
+    highlights: [
+      "Cloud dictation starts faster — the first request skips the connection handshake",
+      "Back-to-back recordings reuse a single connection instead of rebuilding it each time",
+    ],
+    features: [
+      "Cloud STT: warms the active cloud speech-to-text connection at recording start so the first transcription skips the DNS, TCP, and TLS handshake",
+      "AI formatting: pre-warms the active AI-polish connection whenever formatting is enabled with a configured provider",
+      "Performance: reuses one pooled HTTP client across requests instead of rebuilding it per call, speeding up back-to-back dictations",
+    ],
+  },
+  {
+    version: "2.0.3",
+    date: "2026-06-30",
+    latest: false,
+    highlights: [
+      "Deepgram keys now validate correctly and report the real problem",
+      "Each cloud provider card shows which model it's using",
+    ],
+    fixes: [
+      "Cloud STT: validates the Deepgram API key against its documented token endpoint and surfaces a precise \"model unavailable — check the key's scopes and your plan\" message instead of a misleading \"invalid key\"",
+      "Cloud STT: updates Soniox to its current async transcription model",
+      "Cloud STT: shows the underlying transcription model on each cloud provider card",
+    ],
+  },
+  {
+    version: "2.0.2",
+    date: "2026-06-30",
+    latest: false,
+    highlights: [
+      "Hotkey engine rebuilt on one native trigger system for combos, holds, and taps",
+      "Windows tray no longer crashes on startup and adapts its icon to light or dark",
+    ],
+    features: [
+      "Hotkeys: unifies key combos, bare-modifier holds, and isolated taps onto one native trigger engine, retiring the old global-shortcut plugin",
+      "Hotkeys: lone-modifier recording hotkeys now fire even while a Voicetypr text field is focused, via an in-app fallback",
+      "Tray: theme-adaptive tray icon that matches the Windows light or dark taskbar",
+    ],
+    fixes: [
+      "Tray: never crashes on startup when the system tray fails to initialize on Windows",
+      "Windows: ships debug symbols (.pdb) so crash reports symbolicate to real frames",
+      "Hotkeys: arms an upgraded combo at startup and no longer swallows bare modifiers on Windows",
+      "Hotkeys: clears the old combo hotkey before saving a bare-modifier primary so recording can't double-fire",
+      "Windows: guards monitor queries against a stale-handle crash when the display configuration changes",
+    ],
+  },
+  {
+    version: "2.0.1",
+    date: "2026-06-25",
+    latest: false,
+    highlights: [
+      "Crash and reliability hardening across Windows recording, the keyboard hook, and local Whisper",
+      "Diagnostics reporting now defaults to opt-out with clearer consent wording",
+    ],
+    features: [
+      "Diagnostics: crash and error reporting defaults to opt-out with clearer consent wording",
+    ],
+    fixes: [
+      "Recording: prevents a Windows crash from an unbounded audio buffer size and isolates device-callback panics so a hiccup can't abort the app",
+      "Recording: finalizes recorder teardown on a path independent of device disconnects",
+      "Hotkeys: wraps the Windows low-level keyboard hook so a hook failure can't take down input",
+      "Transcription: hard-timeouts in-process Whisper decoding to stop indefinite \"Transcribing…\" hangs, and aborts the watchdog before remapping completed results",
+      "Hotkeys: single-tap triggers now work in onboarding, matching the Shortcuts page",
+      "Settings: avoids a window-state panic when changing the pill offset",
+      "Models: keeps a known model selected on startup, opens native microphone settings, and shows animated progress for Parakeet downloads",
+      "Onboarding: exposes the model Repair action for parity with the dashboard",
+      "Permissions: routes grant buttons to the native settings panes",
+    ],
+  },
+  {
+    version: "2.0.0",
+    date: "2026-06-25",
+    latest: false,
+    highlights: [
+      "Cloud speech-to-text arrives: Soniox, OpenAI, Groq, Deepgram, and Cohere, alongside local models",
+      "AI polish rebuilt natively in Rust, with a unified transcription engine spanning local, cloud, and remote",
+      "A new CLI, speaker diarization, richer history, and Windows GPU/CPU acceleration",
+    ],
+    features: [
+      "Speech-to-text: adds cloud transcription providers — Soniox, OpenAI, Groq, Deepgram, and Cohere — selectable per recording",
+      "AI formatting: rebuilds AI polish natively in Rust for OpenAI, Anthropic, Gemini, and custom OpenAI-compatible endpoints, with a searchable model catalog and a deterministic fallback when formatting fails",
+      "Transcription: unifies local, cloud, and remote transcription behind one engine, with cancel-anywhere, a decode watchdog, silence handling, and device-disconnect recovery",
+      "Upload: adds cloud speaker diarization for file uploads (Deepgram, Soniox), producing speaker-attributed transcripts you can save as .txt or .md",
+      "CLI: installs the `voicetypr` command on your PATH so terminals, scripts, and AI agents can drive transcription directly, with consistent --json output",
+      "History: stores rich per-entry metadata (source, engine, language, duration, diarized) with source, app, and date filters, plus a Show original / Show formatted toggle",
+      "Windows: choose GPU, CPU, or Auto transcription acceleration in Settings and onboarding",
+      "Shortcuts: streamlines the recording shortcut to one flow, with first-class single-key push-to-talk, a bindable Toggle AI formatting key, and lone-modifier hold-to-talk",
+    ],
+    fixes: [
+      "Transcription: shows short, plain messages in the recording overlay instead of long internal error strings, pointing auth and model failures to Settings",
+      "AI: validates custom OpenAI-compatible connections the way formatting actually runs, so Test no longer falsely passes on a public models list",
+    ],
+  },
+  {
     version: "1.12.10",
     date: "2026-06-10",
-    latest: true,
+    latest: false,
     highlights: [
       "Local Whisper transcription no longer gets stuck in Transcribing on slow CPU-only systems",
       "Short CPU dictation is faster by avoiding hidden Whisper retry passes",
