@@ -113,6 +113,7 @@ export const CHANGELOG: ChangelogEntry[] = [
       "CLI: installs the `voicetypr` command on your PATH so terminals, scripts, and AI agents can drive transcription directly, with consistent --json output",
       "History: stores rich per-entry metadata (source, engine, language, duration, diarized) with source, app, and date filters, plus a Show original / Show formatted toggle",
       "Windows: choose GPU, CPU, or Auto transcription acceleration in Settings and onboarding",
+      "Windows: adds a Microsoft Store (MSIX) distribution option, with in-app updates managed by the Store for Store installs",
       "Shortcuts: streamlines the recording shortcut to one flow, with first-class single-key push-to-talk, a bindable Toggle AI formatting key, and lone-modifier hold-to-talk",
     ],
     fixes: [
