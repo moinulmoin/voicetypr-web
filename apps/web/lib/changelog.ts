@@ -121,6 +121,27 @@ export const CHANGELOG: ChangelogEntry[] = [
     ],
   },
   {
+    version: "1.13.0",
+    date: "2026-06-15",
+    latest: false,
+    highlights: [
+      "A quiet pause no longer throws away your recording — silence now shows a non-destructive warning",
+      "Bug reports include full system specs (GPU, CPU, model) for faster support",
+      "More reliable recovery from stuck or auto-stopped recordings",
+    ],
+    features: [
+      "Recording: replaces the destructive silence auto-stop with non-destructive warnings, so a quiet pause no longer discards in-progress audio",
+      "Bug reports: collect full system specs (GPU, CPU, model) so issues are faster to diagnose",
+    ],
+    fixes: [
+      "Recording: recovers from autonomous recorder stops that previously left recording stuck",
+      "Recording: runs stop cleanup on the recorder-error path so a failed recorder no longer hangs the session",
+      "Recording: requires sustained voice before treating audio as speech, reducing false starts from brief noise",
+      "Windows: pauses media players that under-report pause support while recording",
+      "Bug reports: skip software display adapters during GPU detection so the real GPU is reported",
+    ],
+  },
+  {
     version: "1.12.10",
     date: "2026-06-10",
     latest: false,
